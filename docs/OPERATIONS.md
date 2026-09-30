@@ -82,3 +82,10 @@ The full scoring lane (KEI-806) and the knowledge graph (KEI-844) run where thei
 lives, not in this repository. After a full-lane run, `python -m source_pipeline
 scores-extract` compacts its output into `data/scores/`. The newest evaluation per project
 and pair wins; single-project rows are superseded by the next full-lane run.
+
+## Failure drill
+
+To prove the failure path on the real system, run the workflow manually with
+`drill_fail_at: live_refresh` or `drill_fail_at: canonical`. The cycle stops at that step.
+Nothing is promoted, the run record says `failed`, and the `cycle-failure` issue is opened.
+The next successful run closes the issue. Scheduled runs ignore the drill setting.

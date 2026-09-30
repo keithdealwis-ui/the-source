@@ -16,6 +16,12 @@ on:
       reason:
         description: "Why run a cycle now (recorded in the job summary)"
         required: false
+      drill_fail_at:
+        description: "Failure drill: stop the cycle at this step (nothing is promoted)"
+        required: false
+        default: none
+        type: choice
+        options: [none, live_refresh, canonical]
 
 permissions:
   contents: write
@@ -79,7 +85,12 @@ jobs:
           # A dedicated read-only token raises the API budget; the job token works without it.
           GITHUB_TOKEN: ${{ secrets.SOURCE_GITHUB_TOKEN || github.token }}
           TRIGGER: ${{ github.event_name == 'schedule' && 'schedule' || 'manual' }}
-        run: python -m source_pipeline cycle --trigger "$TRIGGER"
+          DRILL: ${{ inputs.drill_fail_at }}
+        run: |
+          if [ "$TRIGGER" = "manual" ] && [ -n "$DRILL" ] && [ "$DRILL" != "none" ]; then
+            export THE_SOURCE_DRILL_FAIL_AT="$DRILL"
+          fi
+          python -m source_pipeline cycle --trigger "$TRIGGER"
 
       - name: Commit the result (promoted data on success; the run record always)
         id: commit

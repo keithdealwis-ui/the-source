@@ -44,6 +44,14 @@ class CycleError(RuntimeError):
     pass
 
 
+def _drill(step: str) -> None:
+    """Failure drill (manual runs only): THE_SOURCE_DRILL_FAIL_AT=<step> stops the cycle at
+    that step, so the failure path (nothing promoted, run record, durable issue, recovery)
+    can be exercised for real. The scheduler never sets it."""
+    if os.environ.get("THE_SOURCE_DRILL_FAIL_AT") == step:
+        raise CycleError(f"failure drill: stopped at {step} (THE_SOURCE_DRILL_FAIL_AT)")
+
+
 def _iso(dt: datetime) -> str:
     return dt.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -116,6 +124,8 @@ def run(trigger: str) -> dict:
         key, attempt = d["cycle_key"], d["attempts"] + 1
     else:
         key, attempt = f"{trigger}-{now.strftime('%Y%m%dT%H%M%SZ')}", 1
+    if trigger == "schedule":
+        os.environ.pop("THE_SOURCE_DRILL_FAIL_AT", None)  # drills are never scheduled
     run_id = f"{key}-{trigger}-a{attempt}"
     (common.ROOT / "raw").mkdir(exist_ok=True)
     before = common.read_json(common.DATA / "canonical" / "MANIFEST.json")["dataset_version"] \
@@ -249,6 +259,7 @@ def work(run_id: str, result_path: Path) -> int:
             raise CycleError(f"{len(snap['failed_keys'])} repositories could not be verified after {tries} "
                              f"retries (e.g. {snap['failed_keys'][:3]}); nothing promoted")
         enrich.write_snapshot(snap)
+        _drill("live_refresh")
 
         # 4. build and validate the dataset
         build.run()
@@ -266,6 +277,7 @@ def work(run_id: str, result_path: Path) -> int:
         if not crep["ok"]:
             raise CycleError(f"canonical validation failed: {[c['id'] for c in crep['checks'] if not c['ok']]}")
         manifest = common.read_json(common.DATA / "canonical" / "MANIFEST.json")
+        _drill("canonical")
 
         # 7. intake outcomes learn whether they were promoted
         promo = intake.reconcile_promotions(run_id)
