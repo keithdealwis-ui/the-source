@@ -1,0 +1,60 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-09-30T03:50:23Z",
+  "canonical": {
+    "status": "rejected"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": true,
+      "canonical_name": "atom/atom",
+      "created_at": "2012-01-20T18:18:21Z",
+      "default_branch": "master",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-09-30T03:50:23Z",
+      "forks": 17163,
+      "found": true,
+      "host_repo_id": 3228505,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 0,
+        "commits_inspected": 0,
+        "issues_closed_12m": 0,
+        "merged_prs_inspected": 10,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2023-01-03T10:49:48Z",
+      "stars": 60729
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a tag",
+      "days_since_meaningful_activity": 1407,
+      "last_meaningful_activity_at": "2022-11-22T16:47:18Z",
+      "status": "stale"
+    }
+  },
+  "note": null,
+  "oss_id": "github.com/atom/atom",
+  "outcome": "rejected",
+  "reasons": [
+    "archived",
+    "stale_no_meaningful_activity_12_months"
+  ],
+  "repo_url": "https://github.com/atom/atom",
+  "request_id": "kei807-reject-01",
+  "saas_hint": null,
+  "scores": null,
+  "submitted_at": "2026-09-30T03:50:23Z",
+  "submitted_by": "claude-code-kei807"
+}
