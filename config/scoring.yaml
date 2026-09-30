@@ -1,0 +1,230 @@
+# The Source — scoring rubric (KEI-806).
+#
+# Keith's approved rubric of 29 Sep 2026, made machine-readable. Three separate outputs,
+# never blended: Project Health, Replacement Fit (per SaaS pair), Evidence Confidence.
+#
+# Everything a score depends on is in this file: dimension weights, the signals inside each
+# dimension and their curves, bands, disqualifiers, trajectory rules, confidence weights and
+# the publication / recommendation thresholds. Changing any of it and bumping `version` then
+# running `score-build` rescores the whole corpus from stored signals: no re-harvest, no
+# schema change, no website or extension change.
+#
+# Curves are piecewise-linear [[x, points], ...] with points 0-100, clamped at both ends.
+# A signal whose evidence is missing is UNKNOWN, never zero: its weight is dropped from the
+# dimension and the gap is charged to Evidence Confidence instead (rubric rule 1).
+
+version: "1.2.0"
+approved_rubric: "Keith, 29 Sep 2026 (KEI-806 description)"
+
+endorsement:
+  keith_tested: false
+  keith_endorsed: false
+  editorial_recommendation: false
+  statement: >-
+    Automatically computed from public repository metadata. Not tested, reviewed or
+    endorsed by Keith de Alwis, and not an editorial recommendation.
+
+project_health:
+  question: "Is this an open-source project I can sensibly depend on?"
+  dimensions:
+    maintenance_momentum:
+      weight: 25
+      signals:
+        days_since_last_commit: {weight: 30, curve: [[0, 100], [30, 100], [90, 85], [180, 65], [365, 35], [730, 0]]}
+        commits_90d:            {weight: 20, curve: [[0, 0], [1, 30], [5, 60], [15, 85], [40, 100]]}
+        commits_365d:           {weight: 15, curve: [[0, 0], [5, 30], [25, 60], [100, 85], [300, 100]]}
+        days_since_last_release: {weight: 15, curve: [[0, 100], [60, 100], [180, 80], [365, 55], [730, 20], [1095, 0]]}
+        activity_ratio_yoy:     {weight: 20, curve: [[0, 0], [0.25, 25], [0.5, 50], [0.8, 75], [1.0, 90], [1.5, 100]]}
+    community_contributors:
+      weight: 15
+      signals:
+        distinct_authors_recent: {weight: 35, curve: [[1, 20], [2, 40], [5, 65], [10, 85], [25, 100]]}
+        top_author_share:        {weight: 25, curve: [[0.2, 100], [0.4, 85], [0.6, 60], [0.8, 35], [1.0, 15]]}
+        external_pr_share:       {weight: 15, curve: [[0, 20], [0.1, 50], [0.3, 80], [0.5, 100]]}
+        stars_log10:             {weight: 15, curve: [[1, 10], [2, 35], [3, 60], [4, 85], [5, 100]]}
+        forks_log10:             {weight: 10, curve: [[0.5, 10], [1.5, 40], [2.5, 70], [3.5, 100]]}
+    issue_pr_responsiveness:
+      weight: 15
+      signals:
+        median_first_response_hours: {weight: 35, curve: [[0, 100], [24, 100], [72, 85], [168, 65], [720, 35], [2160, 10]]}
+        responded_share:             {weight: 20, curve: [[0, 0], [0.3, 35], [0.6, 70], [0.85, 100]]}
+        pr_resolution_share:         {weight: 20, curve: [[0, 0], [0.3, 35], [0.6, 70], [0.85, 100]]}
+        median_pr_resolution_hours:  {weight: 10, curve: [[0, 100], [48, 100], [168, 80], [720, 50], [2160, 20]]}
+        open_issue_ratio:            {weight: 15, curve: [[0, 100], [0.1, 100], [0.3, 75], [0.5, 50], [0.8, 20], [1.0, 10]]}
+    maturity_continuity:
+      weight: 15
+      signals:
+        age_years:            {weight: 35, curve: [[0, 10], [0.5, 25], [1, 45], [2, 65], [4, 85], [7, 100]]}
+        release_count:        {weight: 25, curve: [[0, 0], [1, 30], [5, 60], [20, 85], [50, 100]]}
+        version_stable:       {weight: 20, curve: [[0, 40], [1, 100]]}
+        active_in_prior_year: {weight: 20, curve: [[0, 30], [1, 100]]}
+    documentation_usability:
+      weight: 10
+      signals:
+        readme_bytes:      {weight: 40, curve: [[0, 0], [500, 20], [2000, 50], [6000, 80], [15000, 100]]}
+        docs_present:      {weight: 25, curve: [[0, 30], [1, 100]]}
+        homepage_present:  {weight: 15, curve: [[0, 40], [1, 100]]}
+        examples_present:  {weight: 10, curve: [[0, 50], [1, 100]]}
+        contributing_present: {weight: 10, curve: [[0, 50], [1, 100]]}
+    operational_readiness:
+      weight: 10
+      signals:
+        container_present:   {weight: 25, curve: [[0, 40], [1, 100]]}
+        ci_workflows:        {weight: 25, curve: [[0, 20], [1, 70], [3, 90], [6, 100]]}
+        releases_published:  {weight: 20, curve: [[0, 20], [1, 100]]}
+        package_manifest:    {weight: 15, curve: [[0, 40], [1, 100]]}
+        upgrade_path_evidence: {weight: 15, curve: [[0, 40], [1, 100]]}
+    security_governance:
+      weight: 5
+      signals:
+        security_policy:   {weight: 40, curve: [[0, 20], [1, 100]]}
+        dependency_automation: {weight: 20, curve: [[0, 40], [1, 100]]}
+        codeowners_or_governance: {weight: 20, curve: [[0, 40], [1, 100]]}
+        organisation_owned: {weight: 20, curve: [[0, 50], [1, 100]]}
+    licence:
+      weight: 5
+      signals:
+        licence_usability: {weight: 100, curve: [[0, 0], [1, 100]]}
+
+  # Licence usability, 0-1, by SPDX family. Unlisted recognised identifiers get `other_recognised`.
+  licence_usability:
+    permissive: {value: 1.0, ids: [MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, 0BSD, Unlicense, Zlib, MPL-2.0, PostgreSQL, BSL-1.0, CC0-1.0, WTFPL, Python-2.0, EPL-2.0, Artistic-2.0]}
+    copyleft:   {value: 0.85, ids: [GPL-2.0, GPL-3.0, LGPL-2.1, LGPL-3.0, GPL-2.0-only, GPL-3.0-only, GPL-2.0-or-later, GPL-3.0-or-later, LGPL-2.1-only, LGPL-3.0-only, EUPL-1.2, OSL-3.0, CECILL-2.1]}
+    network_copyleft: {value: 0.75, ids: [AGPL-3.0, AGPL-3.0-only, AGPL-3.0-or-later]}
+    other_recognised: 0.7
+    unclear: 0.2
+
+  bands:
+    - {min: 85, label: Exceptional}
+    - {min: 70, label: Healthy}
+    - {min: 55, label: Developing}
+    - {min: 40, label: Caution}
+    - {min: 0,  label: High Risk}
+  band_note: "Bands describe project health, not endorsement."
+
+  # Below this share of rubric weight with known evidence, the number is still computed
+  # (AC1: every qualified project is scored) but carries `evidence_insufficient: true`.
+  min_known_weight_share: 0.5
+
+# Hard disqualifiers sit OUTSIDE the number (rubric rule 2). A flagged project keeps its
+# score and is never recommendation-eligible while the flag stands.
+disqualifiers:
+  archived:          "Repository is archived by its owner."
+  disabled:          "Repository is disabled by the host."
+  licence_unclear:   "No recognised open-source licence, or licence needs review."
+  demonstrably_dead: "No commit in the last 24 months."
+  not_found:         "Repository no longer resolves on its host."
+  security_concern:  "Serious unresolved security concern recorded."   # no automated source yet; honoured if present in overrides
+
+# Non-disqualifying watch-outs, surfaced beside the score.
+watch_outs:
+  single_maintainer_risk: {top_author_share_min: 0.8, distinct_authors_max: 2}
+  slow_responses:         {median_first_response_hours_min: 720}
+  no_releases:            {release_count_max: 0}
+  pre_1_0:                {version_stable: 0}
+  fork_of_another:        {is_fork: true}
+  open_core_markers:      {readme_terms: ["enterprise edition", "commercial licen", "ee/", "paid plan", "pro version", "premium features"]}
+
+trajectory:
+  # Derived from dated host history (commit and release timestamps), and from stars once two
+  # observations at least `min_observation_span_days` apart exist. Never a score weight.
+  min_events_24m: 12
+  min_age_years_half: 1.0   # half-year vs prior half-year needs a full year of existence
+  min_age_years_yoy: 2.0    # year-on-year needs two full years
+  min_observation_span_days: 28
+  rising_ratio: 1.3
+  declining_ratio: 0.6
+  labels: [Rising, Stable, Declining, Insufficient history]
+
+replacement_fit:
+  question: "How credible is this as an alternative to this specific SaaS product?"
+  dimensions:
+    core_use_case_coverage: {weight: 25}
+    feature_equivalence:    {weight: 15}
+    ease_of_adoption:       {weight: 15}
+    deployment_ownership:   {weight: 10}
+    migration_friction:     {weight: 10}
+    integrations_extensibility: {weight: 10}
+    production_commercial_readiness: {weight: 10}
+    economic_advantage:     {weight: 5}
+  # Core use-case coverage is also a gate: below `gate_min` coverage the Replacement Fit is
+  # capped at `gate_cap`, however strong the secondary dimensions.
+  core_gate:
+    gate_min: 50
+    gate_cap: 45
+    # The category's defining group (what the product IS, config/saas_jobs.yaml) must appear
+    # in the project's own identity text; a term only deep in a long README earns partial credit.
+    defining_group_required: true
+    deep_readme_credit: 0.25
+    # Negative control, checked by score-validate: every pair re-scored against a randomly
+    # mismatched category must pass the gate at most this often.
+    negative_control_max_pass_rate: 0.15
+  # A README shorter than this is not treated as complete documentation: a term it does not
+  # mention is UNKNOWN (charged to confidence), not absent. Longer READMEs: absence counts.
+  text_absence_min_chars: 6000
+  # Generic term families read from README / description / topics (case-insensitive).
+  terms:
+    self_host: ["self-host", "self host", "selfhost", "on-premise", "on-prem", "your own server", "docker run", "docker compose", "docker-compose", "helm"]
+    cloud_option: ["cloud version", "hosted version", "managed service", "saas offering", "cloud offering", "free tier", "sign up", "cloud edition"]
+    quickstart: ["quick start", "quickstart", "getting started", "get started", "installation", "install"]
+    demo: ["demo", "try it", "live preview", "playground", "screenshot"]
+    import: ["import", "migrat", "export", "csv", "backup", "restore"]
+    api: ["rest api", "graphql", "api reference", "api docs", "sdk", " api "]
+    webhook: ["webhook"]
+    plugins: ["plugin", "extension", "add-on", "addon", "integration", "marketplace", "module"]
+    multi_user: ["multi-user", "multiuser", "teams", "team ", "workspace", "organization", "organisation", "roles", "permission", "rbac"]
+    sso: ["sso", "saml", "oidc", "openid", "ldap", "oauth"]
+    support: ["support", "enterprise", "sla", "commercial", "consulting"]
+    data_ownership: ["data ownership", "own your data", "privacy", "gdpr", "your data", "no tracking"]
+  economic:
+    # There is no price data in the catalogue (a known limitation). Economic advantage is
+    # read from licence and self-host evidence and discounted by open-core markers.
+    base_self_hostable: 80
+    base_hosted_only: 40
+    open_core_penalty: 20
+  # Relationship confidence from the graph REPLACES edge (0-1) is carried through as-is.
+
+evidence_confidence:
+  weights:
+    completeness: 30
+    freshness: 25
+    source_quality: 20
+    relationship_confidence: 15
+    cross_source_agreement: 10
+  freshness_curve: [[0, 100], [7, 100], [30, 80], [90, 50], [180, 25], [365, 0]]
+  source_quality:
+    host_api: 90
+    host_api_via_listing: 80
+    readme_text: 60
+    upstream_list_claim: 55
+    inferred_from_graph: 50
+  # Stars/forks/licence/archived observed by both KEI-811 REST and this GraphQL pass.
+  agreement_tolerance: {stars_rel: 0.15, forks_rel: 0.2}
+
+thresholds:
+  # All explicit and exercised by score-validate.
+  health_status: "the band from project_health.bands"
+  credible_alternative:
+    replacement_fit_min: 60
+    core_coverage_min: 50
+    confidence_min: 50
+    requires_no_disqualifier: true
+  publish_mapping:
+    # A mapping below these is refused from publication; the project stays in the corpus
+    # and keeps its Project Health (AC7).
+    confidence_min: 50
+    relationship_statuses: [validated]
+    requires_no_disqualifier: true
+    # A mapping whose core use case is not evidenced (gate failed or unproven) is not published
+    # as a replacement: "X replaces Y" would claim a job the evidence does not show.
+    requires_core_gate_passed: true
+  recommendation_eligible:
+    health_min: 55
+    health_confidence_min: 50
+    requires_no_disqualifier: true
+    requires_graph_eligibility: true
+  high_score_low_confidence:
+    # Rubric: a high score with low confidence is presented as promising/uncertain.
+    score_min: 70
+    confidence_below: 50
+    label: "Promising, uncertain"

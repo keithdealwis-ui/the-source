@@ -1,0 +1,218 @@
+{
+  "api_version": "v1",
+  "dataset_version": "3a6c3535b8bd01d0",
+  "last_checked": {
+    "newest": "2026-09-27T05:08:30Z",
+    "oldest": "2026-09-27T05:08:30Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "diegoleme",
+      "emmraan",
+      "opensaasdirectory",
+      "runacapital",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "github_url": "https://github.com/owncloud/ocis",
+      "last_meaningful_activity_at": "2026-09-25T06:58:21Z",
+      "latest_release": {
+        "published_at": "2026-08-21T06:18:37Z",
+        "tag": "v8.0.8"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "OwnCloud Infinite Scale",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/owncloud/ocis",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 90.8,
+        "trajectory": "Declining"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 86.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/owncloud/ocis",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 2130
+    },
+    {
+      "github_url": "https://github.com/owncloud/core",
+      "last_meaningful_activity_at": "2026-09-25T12:01:30Z",
+      "latest_release": {
+        "published_at": "2026-09-25T12:01:30Z",
+        "tag": "v11.0.1"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Owncloud",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/owncloud/core",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 91.4,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 90.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 86.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/owncloud/core",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital",
+        "diegoleme"
+      ],
+      "stars": 8830
+    },
+    {
+      "github_url": "https://github.com/nextcloud/server",
+      "last_meaningful_activity_at": "2026-09-24T13:54:44Z",
+      "latest_release": {
+        "published_at": "2026-09-24T13:54:44Z",
+        "tag": "v35.0.1"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Nextcloud",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on migration path."
+      },
+      "oss_id": "github.com/nextcloud/server",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 94.6,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 76.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/nextcloud/server",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "runacapital",
+        "opensaasdirectory",
+        "emmraan",
+        "diegoleme"
+      ],
+      "stars": 36933
+    },
+    {
+      "github_url": "https://github.com/mickael-kerjean/filestash",
+      "last_meaningful_activity_at": "2026-09-25T07:28:58Z",
+      "latest_release": null,
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Filestash",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on migration path."
+      },
+      "oss_id": "github.com/mickael-kerjean/filestash",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 94.2,
+        "score": 74.4,
+        "trajectory": "Stable"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 68.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/mickael-kerjean/filestash",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 14730
+    }
+  ],
+  "saas": {
+    "category": "File storage & sync",
+    "compare_path": "/open-source/google-drive-alternatives",
+    "domain": "drive.google.com",
+    "name": "Google Drive",
+    "saas_id": "google-drive",
+    "slug": "google-drive"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

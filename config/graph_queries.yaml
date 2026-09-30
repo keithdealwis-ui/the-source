@@ -1,0 +1,301 @@
+# The Source — representative natural-language questions (KEI-844 AC9).
+#
+# Each question is written the way a person would ask it, then compiled BY HAND into a plan
+# the graph/retrieval layer executes: a start set, then steps. Compiling questions into
+# plans automatically (an LLM planner over this same vocabulary) is later product work;
+# what this file proves is that the model can answer them, with evidence.
+#
+# Plan ops (source_pipeline/graph_retrieval.py):
+#   where    {facet, cond}             keep rows whose field matches (eq/ne/in/gte/lte/exists/contains)
+#   require  {path: [hop, ...]}        keep rows with at least one walk along the path; the edges are evidence
+#   exclude  {path: [hop, ...]}        drop rows that have such a walk
+#   traverse {relation, direction}     move to the neighbours; the edge joins the evidence chain
+#   text     {query, min_score}        semantic filter/score over the retrieval representation
+#   group    {relation, min_count}     aggregate rows by a neighbour and count
+#   rank     {by: score | <facet>}
+# A hop is {relation, direction?, to?, to_type?, where?, min_confidence?, assertion?}.
+#
+# `limitations` names any part of the question the current evidence cannot answer. The
+# runner reports it with the results rather than pretending the constraint was applied.
+# `expect` is what the runner checks: min/max result counts and invariants.
+
+queries:
+  - id: q01
+    question: "Find actively maintained open-source tools that replace expensive SaaS products, support self-hosting, expose APIs, fit AI-agent workflows and show growing contributor activity."
+    kind: multi-constraint (the ticket's reference question)
+    limitations:
+      - "'expensive': the reviewed SaaS catalogue carries no pricing, so price is not a constraint yet"
+      - "'growing contributor activity': contributor counts are not observed and every project has fewer than 28 days of history, so trend status is reported (insufficient_history), not filtered on"
+    plan:
+      start: {type: Project}
+      steps:
+        - {op: where, facet: maintenance_status, cond: {eq: active}}
+        - {op: require, path: [{relation: REPLACES, min_confidence: 0.6}]}
+        - {op: require, path: [{relation: HAS_CAPABILITY, to: capability:self-hosting}]}
+        - {op: require, path: [{relation: HAS_CAPABILITY, to: capability:exposes-api}]}
+        - {op: require, path: [{relation: HAS_CAPABILITY, to: capability:ai-agent-integration}]}
+        - {op: where, facet: trend.status, cond: {exists: true}}
+        - {op: rank, by: stars}
+      limit: 15
+    expect: {min_results: 1, every_result_has_relation: [REPLACES, HAS_CAPABILITY]}
+
+  - id: q02
+    question: "What are the open-source alternatives to Notion?"
+    kind: single-hop reverse
+    plan:
+      start: {ids: ["saas:notion"]}
+      steps:
+        - {op: traverse, relation: REPLACES, direction: in}
+        - {op: rank, by: stars}
+    expect: {min_results: 3, every_result_type: Project}
+
+  - id: q03
+    question: "Which self-hostable Slack alternatives are licensed under AGPL or GPL?"
+    kind: multi-constraint with licence
+    plan:
+      start: {type: Project}
+      steps:
+        - {op: require, path: [{relation: REPLACES, to: saas:slack}]}
+        - {op: require, path: [{relation: LICENSED_UNDER, to: [licence:AGPL-3.0, licence:GPL-3.0, licence:GPL-2.0]}]}
+        - {op: rank, by: stars}
+    expect: {min_results: 1}
+
+  - id: q04
+    question: "Which SaaS categories have the most validated open-source alternatives?"
+    kind: two-hop aggregate
+    plan:
+      start: {type: Project}
+      steps:
+        - {op: traverse, relation: REPLACES}
+        - {op: group, relation: BELONGS_TO_CATEGORY, min_count: 3}
+        - {op: rank, by: score}
+    expect: {min_results: 5, every_result_type: Category}
+
+  - id: q05
+    question: "Show MCP servers that let an AI agent work with Notion, Slack or GitHub."
+    kind: capability + integration
+    plan:
+      start: {type: Project}
+      steps:
+        - {op: require, path: [{relation: HAS_CAPABILITY, to: capability:mcp-server}]}
+        - {op: require, path: [{relation: INTEGRATES_WITH, to: [saas:notion, saas:slack, saas:github]}]}
+        - {op: rank, by: stars}
+    expect: {min_results: 3}
+
+  - id: q06
+    question: "Find Discover-lane projects for agent long-term memory that run locally."
+    kind: lane + use case + capability
+    plan:
+      start: {type: Project}
+      steps:
+        - {op: where, facet: lanes.discover, cond: {eq: true}}
+        - {op: require, path: [{relation: SERVES_USE_CASE, to: use-case:agent-memory}]}
+        - {op: require, path: [{relation: HAS_CAPABILITY, to: capability:local-first}]}
+        - {op: rank, by: stars}
+    expect: {min_results: 3}
+
+  - id: q07
+    question: "Which projects are similar to Plausible Analytics?"
+    kind: similarity traversal
+    plan:
+      start: {type: Project}
+      steps:
+        - {op: where, facet: canonical, cond: {eq: github.com/plausible/analytics}}
+        - {op: traverse, relation: SIMILAR_TO}
+        - {op: rank, by: stars}
+    expect: {min_results: 2}
+
+  - id: q08
+    question: "Which organisations own three or more actively maintained MCP servers?"
+    kind: aggregate over owners
+    plan:
+      start: {type: Project}
+      steps:
+        - {op: where, facet: maintenance_status, cond: {eq: active}}
+        - {op: require, path: [{relation: HAS_CAPABILITY, to: capability:mcp-server, min_confidence: 0.8}]}
+        - {op: group, relation: OWNED_BY, min_count: 3}
+        - {op: where, facet: type, cond: {eq: Organisation}}
+        - {op: rank, by: score}
+    expect: {min_results: 3, every_result_type: Organisation}
+
+  - id: q09
+    question: "What else do the teams behind the open-source Trello alternatives build?"
+    kind: three-hop (SaaS <- REPLACES - project - OWNED_BY -> owner <- OWNED_BY - project)
+    plan:
+      start: {ids: ["saas:trello"]}
+      steps:
+        - {op: traverse, relation: REPLACES, direction: in}
+        - {op: traverse, relation: OWNED_BY}
+        - {op: traverse, relation: OWNED_BY, direction: in}
+        - {op: exclude, path: [{relation: REPLACES, to: saas:trello}]}
+        - {op: rank, by: stars}
+    expect: {min_results: 1, every_result_type: Project}
+
+  - id: q10
+    question: "Rust-based tools that replace a SaaS observability product."
+    kind: technology + two-hop SaaS category
+    plan:
+      start: {type: Project}
+      steps:
+        - {op: require, path: [{relation: USES_TECHNOLOGY, to: technology:rust, min_confidence: 0.9}]}
+        - {op: require, path: [{relation: REPLACES}, {relation: SERVES_USE_CASE, to: use-case:observability}]}
+        - {op: rank, by: stars}
+    expect: {min_results: 1}
+
+  - id: q11
+    question: "Open-source web analytics that respect privacy."
+    kind: hybrid semantic + graph
+    plan:
+      start: {type: Project}
+      steps:
+        - {op: text, query: "privacy friendly web analytics google analytics alternative", min_score: 0.12}
+        - {op: require, path: [{relation: HAS_CAPABILITY, to: capability:privacy-focused}]}
+        - {op: rank, by: score}
+    expect: {min_results: 2}
+
+  - id: q12
+    question: "Which SaaS products have no retained open-source alternative in the corpus yet?"
+    kind: gap analysis (anti-join)
+    plan:
+      start: {type: SaaSProduct}
+      steps:
+        - {op: exclude, path: [{relation: REPLACES, direction: in}]}
+      limit: 50
+    expect: {min_results: 1, every_result_type: SaaSProduct}
+
+  - id: q13
+    question: "Password-manager alternatives that ship a container deployment."
+    kind: two-hop category through SaaS + capability
+    plan:
+      start: {type: Project}
+      steps:
+        - {op: require, path: [{relation: REPLACES}, {relation: BELONGS_TO_CATEGORY, to: category:password-management}]}
+        - {op: require, path: [{relation: HAS_CAPABILITY, to: capability:container-deployment}]}
+        - {op: rank, by: stars}
+    expect: {min_results: 1}
+
+  - id: q14
+    question: "Find a headless browser an AI agent can drive for web scraping."
+    kind: semantic + use case + capability
+    plan:
+      start: {type: Project}
+      steps:
+        - {op: text, query: "headless browser automation for ai agents scraping", min_score: 0.1}
+        - {op: require, path: [{relation: SERVES_USE_CASE, to: use-case:web-scraping}]}
+        - {op: require, path: [{relation: HAS_CAPABILITY, to: capability:ai-agent-integration}]}
+        - {op: rank, by: score}
+    expect: {min_results: 3}
+
+  - id: q15
+    question: "Which maintainers personally run projects in more than one of the curated agent/MCP lists?"
+    kind: aggregate across sources (project - LISTED_IN -> source, grouped by maintainer)
+    plan:
+      start: {type: Project}
+      steps:
+        - {op: require, path: [{relation: LISTED_IN}]}
+        - {op: group, relation: MAINTAINED_BY, min_count: 4}
+        - {op: rank, by: score}
+    expect: {min_results: 1, every_result_type: Maintainer}
+
+  - id: q16
+    question: "Which open-source CRMs are in both the Replace and Discover lanes?"
+    kind: lane intersection
+    plan:
+      start: {type: Project}
+      steps:
+        - {op: where, facet: lanes.replace, cond: {eq: true}}
+        - {op: where, facet: lanes.discover, cond: {eq: true}}
+        - {op: require, path: [{relation: REPLACES}, {relation: BELONGS_TO_CATEGORY, to: category:crm}]}
+    expect: {min_results: 0}
+
+  - id: q17
+    question: "Which workflow-automation projects are built around n8n?"
+    kind: use case + semantic
+    plan:
+      start: {type: Project}
+      steps:
+        - {op: require, path: [{relation: SERVES_USE_CASE, to: use-case:workflow-automation}]}
+        - {op: text, query: "n8n workflow automation", min_score: 0.1}
+        - {op: rank, by: score}
+    expect: {min_results: 1}
+
+  - id: q18
+    question: "Which open-source tools for Retrieval-Augmented Generation use PostgreSQL?"
+    kind: use case + technology
+    plan:
+      start: {type: Project}
+      steps:
+        - {op: require, path: [{relation: SERVES_USE_CASE, to: use-case:retrieval-rag, min_confidence: 0.9}]}
+        - {op: require, path: [{relation: USES_TECHNOLOGY, to: technology:postgresql}]}
+        - {op: rank, by: stars}
+    expect: {min_results: 2}
+
+  - id: q19
+    question: "Alternatives to Zapier that are recommendation-eligible and have a recognised licence."
+    kind: single-hop with quality facets
+    plan:
+      start: {ids: ["saas:zapier"]}
+      steps:
+        - {op: traverse, relation: REPLACES, direction: in}
+        - {op: where, facet: recommendation_eligible, cond: {eq: true}}
+        - {op: require, path: [{relation: LICENSED_UNDER}]}
+        - {op: rank, by: stars}
+    expect: {min_results: 1}
+
+  - id: q20
+    question: "Which alternatives to Google Analytics are also similar to each other (a competitive cluster)?"
+    kind: multi-hop cluster (SaaS <- REPLACES - p1 - SIMILAR_TO - p2 - REPLACES -> SaaS)
+    plan:
+      start: {ids: ["saas:google-analytics"]}
+      steps:
+        - {op: traverse, relation: REPLACES, direction: in}
+        - {op: traverse, relation: SIMILAR_TO}
+        - {op: require, path: [{relation: REPLACES, to: saas:google-analytics}]}
+        - {op: rank, by: stars}
+    expect: {min_results: 2}
+
+  - id: q21
+    question: "Desktop apps for local AI speech-to-text transcription."
+    kind: hybrid semantic + capability
+    plan:
+      start: {type: Project}
+      steps:
+        - {op: require, path: [{relation: SERVES_USE_CASE, to: use-case:speech-audio}]}
+        - {op: require, path: [{relation: HAS_CAPABILITY, to: capability:desktop-app}]}
+        - {op: text, query: "local speech to text transcription whisper", min_score: 0.08}
+        - {op: rank, by: score}
+    expect: {min_results: 1}
+
+  - id: q22
+    question: "Which SaaS products does an AI-agent tool most often integrate with?"
+    kind: aggregate over integrations
+    plan:
+      start: {type: Project}
+      steps:
+        - {op: require, path: [{relation: HAS_CAPABILITY, to: capability:ai-agent-integration}]}
+        - {op: group, relation: INTEGRATES_WITH, min_count: 5}
+        - {op: rank, by: score}
+    expect: {min_results: 3, every_result_type: SaaSProduct}
+
+  - id: q23
+    question: "Which projects replace Jira and what categories do they fall into upstream?"
+    kind: two-hop out via upstream taxonomy
+    plan:
+      start: {ids: ["saas:jira"]}
+      steps:
+        - {op: traverse, relation: REPLACES, direction: in}
+        - {op: traverse, relation: BELONGS_TO_CATEGORY, assertion: explicit}
+        - {op: rank, by: id}
+    expect: {min_results: 1, every_result_type: Category}
+
+  - id: q24
+    question: "Discover-only projects that look like an alternative to a catalogued SaaS product but have no validated REPLACES edge (candidates for the Replace lane)."
+    kind: semantic lane-bridging without forcing an edge
+    plan:
+      start: {type: Project}
+      steps:
+        - {op: where, facet: lanes.replace, cond: {eq: false}}
+        - {op: exclude, path: [{relation: REPLACES}]}
+        - {op: text, query: "open source alternative to", min_score: 0.15}
+        - {op: rank, by: score}
+    expect: {min_results: 3, no_result_has_relation: [REPLACES]}

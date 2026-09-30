@@ -1,0 +1,95 @@
+# Reviewed repository overrides.
+#
+# Some upstream lists link to a project's GitHub organisation, website or a repository
+# that has since moved host, instead of to its repository. Such a claim cannot be
+# verified and is rejected (`repo_url_not_a_repository` / `repository_not_found`).
+# Where the project's main repository is unambiguous, it is mapped here. The mapping
+# only tells the pipeline WHERE to look: the repository is then verified live like any
+# other and is rejected if it is archived, unlicensed or stale. The upstream's original
+# URL is kept in the record's imported.repo_urls, and the provenance entry is marked
+# resolved_by: reviewed_override.
+#
+# Left unmapped on purpose (no single unambiguous repository, or host not verifiable):
+# github.com/codimd, github.com/crusttech, github.com/oc-shopaholic, github.com/Pagure,
+# github.com/Graphite-Docs, github.com/wireapp (several repositories, none primary),
+# sourcehut.org, pleroma, otrs, mediagoblin.
+# (An upstream that links straight to a repository, e.g. github.com/Pagure/pagure, needs
+# no override and is verified as written.)
+
+reviewed_at: "2026-09-27"
+reviewed_by: claude-heavy
+
+overrides:
+  https://github.com/caprover: https://github.com/caprover/caprover
+  https://github.com/matomo-org: https://github.com/matomo-org/matomo
+  https://github.com/onlyoffice: https://github.com/ONLYOFFICE/DocumentServer
+  https://github.com/rocketchat: https://github.com/RocketChat/Rocket.Chat
+  https://github.com/sylius: https://github.com/Sylius/Sylius
+  https://github.com/bagisto: https://github.com/bagisto/bagisto
+  https://github.com/bitwarden: https://github.com/bitwarden/server
+  https://github.com/buttercup: https://github.com/buttercup/buttercup-desktop
+  https://github.com/ceph: https://github.com/ceph/ceph
+  https://github.com/chaskiq: https://github.com/chaskiq/chaskiq
+  https://github.com/chatwoot: https://github.com/chatwoot/chatwoot
+  https://github.com/countly: https://github.com/Countly/countly-server
+  https://github.com/dokku: https://github.com/dokku/dokku
+  https://github.com/erxes: https://github.com/erxes/erxes
+  https://github.com/flynn: https://github.com/flynn/flynn
+  https://github.com/freescout-helpdesk: https://github.com/freescout-helpdesk/freescout
+  https://github.com/getfider: https://github.com/getfider/fider
+  https://github.com/gitlabhq: https://github.com/gitlabhq/gitlabhq
+  https://github.com/go-gitea: https://github.com/go-gitea/gitea
+  https://github.com/gogs: https://github.com/gogs/gogs
+  https://github.com/haiwen: https://github.com/haiwen/seafile
+  https://github.com/helpyio: https://github.com/helpyio/helpy
+  https://github.com/huginn: https://github.com/huginn/huginn
+  https://github.com/jitsi: https://github.com/jitsi/jitsi-meet
+  https://github.com/kanboard: https://github.com/kanboard/kanboard
+  https://github.com/keepassxreboot: https://github.com/keepassxreboot/keepassxc
+  https://github.com/keycloak: https://github.com/keycloak/keycloak
+  https://github.com/leantime: https://github.com/Leantime/leantime
+  https://github.com/mattermost: https://github.com/mattermost/mattermost
+  https://github.com/meilisearch: https://github.com/meilisearch/meilisearch
+  https://github.com/minio: https://github.com/minio/minio
+  https://github.com/n8n-io: https://github.com/n8n-io/n8n
+  https://github.com/nextcloud: https://github.com/nextcloud/server
+  https://github.com/odoo: https://github.com/odoo/odoo
+  https://github.com/ohmyform: https://github.com/ohmyform/ohmyform
+  https://github.com/openfaas: https://github.com/openfaas/faas
+  https://github.com/opensupports: https://github.com/opensupports/opensupports
+  https://github.com/osticket: https://github.com/osTicket/osTicket
+  https://github.com/owncloud: https://github.com/owncloud/core
+  https://github.com/padloc: https://github.com/padloc/padloc
+  https://github.com/paperwork: https://github.com/paperwork/paperwork
+  https://github.com/passwordcockpit: https://github.com/passwordcockpit/passwordcockpit
+  https://github.com/plausible-insights: https://github.com/plausible/analytics
+  https://github.com/prestashop: https://github.com/PrestaShop/PrestaShop
+  https://github.com/reactioncommerce: https://github.com/reactioncommerce/reaction
+  https://github.com/rudderlabs: https://github.com/rudderlabs/rudder-server
+  https://github.com/staticdeploy: https://github.com/staticdeploy/staticdeploy
+  https://github.com/taigaio: https://github.com/taigaio/taiga-back
+  https://github.com/theonedev: https://github.com/theonedev/onedev
+  https://github.com/tsuru: https://github.com/tsuru/tsuru
+  https://github.com/usefathom: https://github.com/usefathom/fathom
+  https://github.com/uvdesk: https://github.com/uvdesk/community-skeleton
+  https://github.com/wekan: https://github.com/wekan/wekan
+  https://github.com/woocommerce: https://github.com/woocommerce/woocommerce
+  https://github.com/zammad: https://github.com/zammad/zammad
+  https://github.com/zulip: https://github.com/zulip/zulip
+  https://www.dolibarr.org: https://github.com/Dolibarr/dolibarr
+  # moved host
+  https://github.com/forgejo/forgejo: https://codeberg.org/forgejo/forgejo
+  https://github.com/glitchtip/glitchtip-backend: https://gitlab.com/glitchtip/glitchtip-backend
+
+# Renames confirmed as the SAME product under a new name and owner. Without an entry
+# here, a repository renamed into a name its listings never used is excluded as
+# `repository_identity_changed_since_listed`. Confirming a rename changes nothing else:
+# the repository is still verified live and must pass every other rule.
+#
+# Left unconfirmed on purpose:
+#   github.com/harness/harness      listed as Drone CI; now a broader platform, not the same product
+#   github.com/mnfst/llm-gateway    listed as CASE / Manifest; now an LLM gateway
+#   github.com/sortlist/max-cli     a CLI for a commercial service
+confirmed_renames:
+  github.com/linode/apl-core: "Otomi was acquired and rebranded as the Akamai/Linode App Platform; same codebase and product"
+  github.com/ory/polis: "BoxyHQ SAML Jackson was transferred to Ory and renamed Polis; same codebase and product"

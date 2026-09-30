@@ -1,0 +1,62 @@
+{
+  "canonical_schema": "the-source.canonical/1",
+  "counts": {
+    "oss_projects": 236,
+    "recommended_relationships": 313,
+    "relationships": 347,
+    "saas_products": 120,
+    "supported_saas": 20,
+    "supported_saas_ok": 20
+  },
+  "data_as_of": "2026-09-27T05:08:30Z",
+  "dataset_version": "3a6c3535b8bd01d0",
+  "export_guard": {
+    "export_licence_constraint": "none beyond attribution notices",
+    "relationships_exported": 347,
+    "relationships_withheld_share_alike_only": 24
+  },
+  "files": {
+    "NOTICE.md": "6d381e97faef644fcd09f30df65d09f45c1b2bb669646649f5cffb249487c8f2",
+    "oss_projects.jsonl": "b08cf91259f052109b578d22c8edf829ef9d99520be78ecfa0fad58f8332dce1",
+    "relationships.jsonl": "a387c56a21de3c3552e60835e502c05ba5a552a37668777bb27fb416f691dc6a",
+    "saas_products.jsonl": "3d621a3d29a9d73e14983a888afebf4e6239107947a1fc8a8c094e8aba0e494a"
+  },
+  "live_checked_at": {
+    "newest": "2026-09-27T05:08:30Z",
+    "oldest": "2026-09-27T05:08:30Z"
+  },
+  "sources": {
+    "altstack": {
+      "decision": "allow_with_conditions",
+      "pinned_commit": "ca28a74d15d3cb3677706a861174b9ec350706a7"
+    },
+    "btwso": {
+      "decision": "allow",
+      "pinned_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6"
+    },
+    "diegoleme": {
+      "decision": "allow",
+      "pinned_commit": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f"
+    },
+    "emmraan": {
+      "decision": "allow",
+      "pinned_commit": "c4cc558b7edf50a5efb4e3fd0d867292c2ae6b63"
+    },
+    "fossalt": {
+      "decision": "allow_with_conditions",
+      "pinned_commit": "305ba7f87b99fa94abb9f7b0fd6d6f6e354f774f"
+    },
+    "opensaasdirectory": {
+      "decision": "allow",
+      "pinned_commit": "3f29e5943fd9fc9910cd500134d5c6a6836a52ce"
+    },
+    "runacapital": {
+      "decision": "allow",
+      "pinned_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb"
+    },
+    "solvohq": {
+      "decision": "allow",
+      "pinned_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8"
+    }
+  }
+}

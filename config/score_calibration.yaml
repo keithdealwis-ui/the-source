@@ -1,0 +1,72 @@
+# The Source — scoring calibration set (KEI-806).
+#
+# Representative strong, weak, mature, emerging, Replace-lane and Discover-only projects,
+# with expectations written down BEFORE the first full scoring run, from outside knowledge
+# of these projects, not fitted to the output. score-validate checks every expectation;
+# a miss is reported, not silently tuned away. Selection rules for the rule-defined groups
+# (emerging, weak) are stated so the sample is reproducible.
+#
+# Authored 2026-09-29 by claude-code.
+
+version: "1.0.0"
+
+named:
+  # Mature, widely deployed, actively maintained: expect Healthy or better.
+  mature_strong:
+    expect: {health_min: 70, no_disqualifier: true, trajectory_not: ["Insufficient history"]}
+    projects:
+      - github.com/grafana/grafana
+      - github.com/nextcloud/server
+      - github.com/keycloak/keycloak
+      - github.com/go-gitea/gitea
+      - github.com/immich-app/immich
+      - github.com/tryghost/ghost
+      - github.com/mastodon/mastodon
+      - github.com/jitsi/jitsi-meet
+      - github.com/matomo-org/matomo
+      - github.com/supabase/supabase
+  # Strong projects whose licence KEI-805/811 flagged: healthy, but a hard disqualifier
+  # must keep them out of recommendation without zeroing their health.
+  strong_but_licence_flagged:
+    expect: {health_min: 70, disqualifier: licence_unclear, recommendation_eligible: false}
+    projects:
+      - github.com/n8n-io/n8n
+      - github.com/getsentry/sentry
+  # Replace-lane pairs that are the canonical alternative to the incumbent: expect the core
+  # gate to pass and a credible Replacement Fit.
+  replace_canonical_pairs:
+    expect: {core_gate: passed, fit_min: 60}
+    pairs:
+      - [github.com/plausible/analytics, saas:google-analytics]
+      - [github.com/umami-software/umami, saas:google-analytics]
+      - [github.com/keycloak/keycloak, saas:auth0]
+      - [github.com/documenso/documenso, saas:docusign]
+      - [github.com/mattermost/mattermost, saas:slack]
+      - [github.com/penpot/penpot, saas:figma]
+      - [github.com/louislam/uptime-kuma, saas:uptimerobot]
+      - [github.com/chatwoot/chatwoot, saas:intercom]
+  # Discover-only: health-scored, never given a Replacement Fit.
+  discover_only:
+    expect: {health_scored: true, replacement_fit: none}
+    projects:
+      - github.com/authelia/authelia
+      - github.com/linkwarden/linkwarden
+      - github.com/just-every/mcp-read-website-fast
+
+# Rule-defined groups: drawn from the corpus by the rule, all members checked.
+rules:
+  emerging:
+    select: {age_years_below: 1.0, commits_90d_min: 30}   # strictly younger than one year
+    expect:
+      trajectory: "Insufficient history"          # too young for a complete prior window
+      maturity_below_maintenance: true            # youth shows in maturity, not in momentum
+  archived:
+    select: {archived: true}
+    # KEI-805/811 retention already excludes repositories archived when they were harvested,
+    # so this group can legitimately be empty on a first run; it fills as refreshes observe
+    # projects being archived. The rule is exercised synthetically in tests/test_score.py.
+    allow_empty: true
+    expect: {disqualifier: archived, recommendation_eligible: false}
+  dormant:
+    select: {commits_365d_max: 0, cprev_max: 0}
+    expect: {disqualifier: demonstrably_dead, maintenance_max: 25}

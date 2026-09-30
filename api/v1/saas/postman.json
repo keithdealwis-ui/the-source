@@ -1,0 +1,268 @@
+{
+  "api_version": "v1",
+  "dataset_version": "3a6c3535b8bd01d0",
+  "last_checked": {
+    "newest": "2026-09-27T05:08:30Z",
+    "oldest": "2026-09-27T05:08:30Z"
+  },
+  "more_available": 1,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "altstack",
+      "btwso",
+      "diegoleme",
+      "opensaasdirectory",
+      "runacapital",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "github_url": "https://github.com/Kong/insomnia",
+      "last_meaningful_activity_at": "2026-09-24T14:17:20Z",
+      "latest_release": {
+        "published_at": "2026-09-23T11:04:33Z",
+        "tag": "core@13.3.0"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Insomnia",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity."
+      },
+      "oss_id": "github.com/kong/insomnia",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 92.2,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 86.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Kong/insomnia",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "opensaasdirectory",
+        "btwso"
+      ],
+      "stars": 40032
+    },
+    {
+      "github_url": "https://github.com/hoppscotch/hoppscotch",
+      "last_meaningful_activity_at": "2026-09-24T10:08:53Z",
+      "latest_release": {
+        "published_at": "2026-09-23T04:35:43Z",
+        "tag": "2026.8.2"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Hoppscotch",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "migration path"
+        ],
+        "text": "Strongest on core use-case coverage and migration path."
+      },
+      "oss_id": "github.com/hoppscotch/hoppscotch",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 91.8,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 86.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/hoppscotch/hoppscotch",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "runacapital",
+        "opensaasdirectory",
+        "btwso",
+        "diegoleme",
+        "altstack"
+      ],
+      "stars": 80520
+    },
+    {
+      "github_url": "https://github.com/scalar/scalar",
+      "last_meaningful_activity_at": "2026-09-26T20:37:38Z",
+      "latest_release": {
+        "published_at": "2026-09-25T10:38:11Z",
+        "tag": "release-2026-09-25-85e8e22"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Scalar",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/scalar/scalar",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 93.9,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 81.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/scalar/scalar",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "opensaasdirectory"
+      ],
+      "stars": 16196
+    },
+    {
+      "github_url": "https://github.com/VoidenHQ/voiden",
+      "last_meaningful_activity_at": "2026-09-25T11:25:22Z",
+      "latest_release": {
+        "published_at": "2026-09-22T12:21:08Z",
+        "tag": "v2.3.0"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Voiden",
+      "note": {
+        "gaps": [
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "migration path"
+        ],
+        "text": "Strongest on core use-case coverage and migration path; weakest on cost advantage."
+      },
+      "oss_id": "github.com/voidenhq/voiden",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 87.5,
+        "trajectory": "Rising"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 79.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/VoidenHQ/voiden",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "diegoleme"
+      ],
+      "stars": 1809
+    },
+    {
+      "github_url": "https://github.com/usebruno/bruno",
+      "last_meaningful_activity_at": "2026-09-25T07:42:00Z",
+      "latest_release": {
+        "published_at": "2026-09-23T14:25:55Z",
+        "tag": "v4.2.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Bruno",
+      "note": {
+        "gaps": [
+          "integrations and extensibility"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "migration path"
+        ],
+        "text": "Strongest on core use-case coverage and migration path; weakest on integrations and extensibility."
+      },
+      "oss_id": "github.com/usebruno/bruno",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 92.3,
+        "trajectory": "Stable"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 77.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/usebruno/bruno",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 47221
+    }
+  ],
+  "saas": {
+    "category": "API tooling",
+    "compare_path": "/open-source/postman-alternatives",
+    "domain": "postman.com",
+    "name": "Postman",
+    "saas_id": "postman",
+    "slug": "postman"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

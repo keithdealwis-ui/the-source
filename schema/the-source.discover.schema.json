@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-source.internal/schema/the-source.discover/1",
+  "title": "The Source — Discover corpus (KEI-811)",
+  "description": "Graph-ready records for the Replace and Discover lanes. Stable ids; relationship candidates are evidence for KEI-844, not resolved edges.",
+  "$defs": {
+    "entityId": {"type": "string", "pattern": "^(github:[0-9]+|kei805:.+)$"},
+    "route": {
+      "type": "object",
+      "required": ["strategy", "source", "depth", "via", "locator"],
+      "additionalProperties": false,
+      "properties": {
+        "strategy": {"enum": ["keith_seed", "github_starred", "github_watching", "replace_lane", "owner_neighbourhood",
+                              "readme_links", "topic_search", "curated_list", "trending"]},
+        "source": {"type": "string", "minLength": 1},
+        "depth": {"type": "integer", "minimum": 0, "maximum": 2},
+        "via": {"type": ["array", "null"], "items": {"type": "string"}},
+        "locator": {"type": ["string", "null"]}
+      }
+    },
+    "project": {
+      "type": "object",
+      "required": ["schema", "id", "canonical", "url", "aliases", "lanes", "outcome", "recommendation_eligible",
+                   "endorsed", "publication_status", "entry_reason", "provenance", "discovery", "quality", "live",
+                   "descriptive", "entities", "replace", "freshness"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {"const": "the-source.discover/1"},
+        "id": {"$ref": "#/$defs/entityId"},
+        "canonical": {"type": "string"},
+        "url": {"type": "string", "pattern": "^https://"},
+        "aliases": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+        "lanes": {
+          "type": "object", "required": ["replace", "discover"], "additionalProperties": false,
+          "properties": {"replace": {"type": "boolean"}, "discover": {"type": "boolean"}},
+          "anyOf": [{"properties": {"replace": {"const": true}}}, {"properties": {"discover": {"const": true}}}]
+        },
+        "outcome": {"enum": ["retained", "recommendation_eligible"]},
+        "recommendation_eligible": {"type": "boolean"},
+        "endorsed": {"const": false},
+        "publication_status": {"const": "internal_not_published"},
+        "entry_reason": {"type": "string", "minLength": 1},
+        "provenance": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/route"}},
+        "discovery": {
+          "type": "object", "required": ["depth", "distinct_routes", "strategies"],
+          "properties": {"depth": {"type": "integer"}, "distinct_routes": {"type": "integer", "minimum": 1},
+                         "strategies": {"type": "array", "items": {"type": "string"}}}
+        },
+        "quality": {
+          "type": "object", "required": ["basis", "evaluated_as_of", "quality_lane", "exclusion_reasons", "maintenance", "licence"],
+          "properties": {
+            "basis": {"enum": ["discover", "kei805"]},
+            "quality_lane": {"enum": ["recommendable", "licence_exception"]},
+            "exclusion_reasons": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "live": {"type": "object"},
+        "descriptive": {"type": "object", "required": ["description", "homepage"]},
+        "entities": {
+          "type": "object", "required": ["owner", "topics", "languages"],
+          "properties": {
+            "owner": {"type": ["object", "null"], "required": ["id", "login"]},
+            "topics": {"type": "array", "items": {"type": "string", "pattern": "^github-topic:"}},
+            "languages": {"type": "array", "items": {"type": "string", "pattern": "^language:"}}
+          }
+        },
+        "replace": {
+          "type": ["object", "null"],
+          "required": ["kei805_oss_id", "kei805_lane", "saas_edge_ids"]
+        },
+        "freshness": {
+          "type": "object", "required": ["observed_as_of", "history", "history_source"],
+          "properties": {"history": {"type": "array", "items": {"type": "object", "required": ["id", "as_of"]}}}
+        }
+      }
+    },
+    "rejection": {
+      "type": "object",
+      "required": ["candidate", "reasons", "stage", "as_of", "routes"],
+      "properties": {
+        "reasons": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "stage": {"enum": ["seed", "metadata", "universe_cap", "prefilter", "quality_bar", "replace_lane"]}
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "required": ["from", "relation", "to", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "from": {"type": "string"}, "to": {"type": "string"},
+        "relation": {"enum": ["owned_by", "has_topic", "written_in", "listed_in", "readme_links_to",
+                              "discovered_via_topic", "saas_replacement_candidate"]},
+        "evidence": {"type": "object"}
+      }
+    }
+  }
+}

@@ -1,0 +1,185 @@
+# The Source — graph ontology (KEI-844).
+#
+# The reviewed vocabulary that turns what a repository host reports about a project into
+# Technology, Capability and Use Case entities. It is the only place a free-text tag
+# becomes a graph concept, so every mapping is inspectable and every edge it produces
+# names the rule that produced it.
+#
+# Each concept:
+#   id        stable, lower-case, never reused for a different meaning
+#   name      display name
+#   topics    GitHub topics that mean this concept. The owner applied the tag, so the
+#             claim is the owner's; the mapping to the concept is ours.
+#   languages host-reported language names that mean this concept (technology only)
+#   keywords  whole-word patterns matched in the owner's description. Weaker than a
+#             topic: the owner described the project, but did not tag it. Case-insensitive.
+#   lists     curated lists whose inclusion criterion IS this concept
+#
+# Two spellings of one thing are one concept (postgres / postgresql / postgresql-database).
+# A concept is added only when it helps answer a question someone will ask; the long tail
+# of topics stays as tags on the project and remains searchable as text.
+
+reviewed_at: "2026-09-29"
+reviewed_by: claude-code
+
+confidence:
+  host_language: 1.0         # the host computed it from the code
+  host_topic: 0.9            # the owner tagged it; the mapping is ours
+  curated_list: 0.8          # a licence-cleared curated list admitted it for that reason
+  description_keyword: 0.6   # the owner's description mentions it
+  replaced_saas_category: 0.7  # the project is a validated alternative to a SaaS in that category
+
+technologies:
+  - {id: typescript, name: TypeScript, topics: [typescript], languages: [TypeScript]}
+  - {id: javascript, name: JavaScript, topics: [javascript], languages: [JavaScript]}
+  - {id: python, name: Python, topics: [python, python3], languages: [Python]}
+  - {id: rust, name: Rust, topics: [rust, rust-lang], languages: [Rust]}
+  - {id: go, name: Go, topics: [go, golang], languages: [Go]}
+  - {id: java, name: Java, topics: [java], languages: [Java]}
+  - {id: kotlin, name: Kotlin, topics: [kotlin], languages: [Kotlin]}
+  - {id: csharp, name: "C#", topics: [csharp, dotnet, dotnet-core], languages: ["C#"]}
+  - {id: cpp, name: "C++", topics: [cpp, cplusplus], languages: ["C++"]}
+  - {id: c, name: C, topics: [c], languages: [C]}
+  - {id: php, name: PHP, topics: [php, laravel], languages: [PHP]}
+  - {id: ruby, name: Ruby, topics: [ruby, rails, ruby-on-rails], languages: [Ruby]}
+  - {id: swift, name: Swift, topics: [swift, swiftui], languages: [Swift]}
+  - {id: dart, name: Dart, topics: [dart, flutter], languages: [Dart]}
+  - {id: elixir, name: Elixir, topics: [elixir, phoenix-framework], languages: [Elixir]}
+  - {id: shell, name: Shell, topics: [bash, shell, zsh], languages: [Shell]}
+  - {id: nodejs, name: Node.js, topics: [nodejs, node, node-js, bun, deno], keywords: ["node\\.js", "nodejs"]}
+  - {id: react, name: React, topics: [react, reactjs, react-native, nextjs, next-js], keywords: ["next\\.js"]}
+  - {id: vue, name: Vue, topics: [vue, vuejs, vue3, nuxt, nuxtjs], keywords: ["vue\\.?js", "nuxt"]}
+  - {id: svelte, name: Svelte, topics: [svelte, sveltekit], languages: [Svelte]}
+  - {id: angular, name: Angular, topics: [angular]}
+  - {id: tailwind, name: Tailwind CSS, topics: [tailwindcss, tailwind, shadcn-ui, shadcn]}
+  - {id: electron, name: Electron, topics: [electron]}
+  - {id: tauri, name: Tauri, topics: [tauri]}
+  - {id: django, name: Django, topics: [django]}
+  - {id: fastapi, name: FastAPI, topics: [fastapi]}
+  - {id: postgresql, name: PostgreSQL, topics: [postgresql, postgres, pgvector], keywords: ["postgres(?:ql)?"]}
+  - {id: mysql, name: MySQL, topics: [mysql, mariadb]}
+  - {id: sqlite, name: SQLite, topics: [sqlite, sqlite3], keywords: ["sqlite"]}
+  - {id: mongodb, name: MongoDB, topics: [mongodb]}
+  - {id: redis, name: Redis, topics: [redis, valkey]}
+  - {id: docker, name: Docker, topics: [docker, docker-compose, dockerfile, containers], languages: [Dockerfile], keywords: ["docker"]}
+  - {id: kubernetes, name: Kubernetes, topics: [kubernetes, k8s, helm, k3s], keywords: ["kubernetes", "k8s"]}
+  - {id: wasm, name: WebAssembly, topics: [wasm, webassembly]}
+  - {id: playwright, name: Playwright, topics: [playwright]}
+  - {id: puppeteer, name: Puppeteer, topics: [puppeteer]}
+  - {id: ffmpeg, name: FFmpeg, topics: [ffmpeg]}
+  - {id: pytorch, name: PyTorch, topics: [pytorch]}
+  - {id: langchain, name: LangChain, topics: [langchain, langgraph]}
+  - {id: ollama, name: Ollama, topics: [ollama], keywords: ["ollama"]}
+  - {id: openai-api, name: OpenAI API, topics: [openai, openai-api, chatgpt, gpt], keywords: ["openai"]}
+  - {id: anthropic-api, name: Anthropic API, topics: [anthropic, claude, claude-ai, claude-api], keywords: ["anthropic", "claude"]}
+  - {id: gemini-api, name: Gemini API, topics: [gemini, gemini-api, google-gemini]}
+  - {id: mcp, name: Model Context Protocol, topics: [mcp, model-context-protocol, modelcontextprotocol, fastmcp, mcp-sdk], keywords: ["mcp", "model context protocol"]}
+  - {id: graphql, name: GraphQL, topics: [graphql]}
+  - {id: opentelemetry, name: OpenTelemetry, topics: [opentelemetry, otel]}
+  - {id: tree-sitter, name: Tree-sitter, topics: [tree-sitter]}
+  - {id: cloudflare-workers, name: Cloudflare Workers, topics: [cloudflare-workers, cloudflare]}
+  - {id: blockchain, name: Blockchain, topics: [blockchain, ethereum, solana, web3, bitcoin, defi, crypto, cryptocurrency]}
+
+capabilities:
+  - {id: self-hosting, name: Self-hostable, topics: [self-hosted, selfhosted, self-hosting, self-host, homelab, on-premise, on-premises], keywords: ["self-host(?:ed|able|ing)?", "on-prem(?:ise|ises)?"]}
+  - {id: container-deployment, name: Ships a container deployment, topics: [docker, docker-compose, docker-image, containers, helm], languages: [Dockerfile], keywords: ["docker(?:-compose)?", "helm chart"]}
+  - {id: exposes-api, name: Exposes an API, topics: [api, rest-api, restful-api, openapi, graphql, grpc, api-server, webhooks], keywords: ["rest api", "graphql api", "openapi", "http api", "api server", "api-first", "webhooks?"]}
+  - {id: mcp-server, name: MCP server, topics: [mcp-server, mcp-servers, mcp-tools], keywords: ["mcp server"], lists: ["list:punkpeye/awesome-mcp-servers", "list:wong2/awesome-mcp-servers"]}
+  - {id: mcp-client, name: MCP client, topics: [mcp-client], keywords: ["mcp client"], lists: ["list:punkpeye/awesome-mcp-clients"]}
+  - {id: agent-skill, name: Agent skill or plugin, topics: [agent-skills, agent-skill, skills, claude-skills, claude-skill, claude-code-skill, claude-code-skills, claude-code-plugin, codex-skill, codex-skills, openclaw-skill, openclaw-skills, gemini-cli-extension], keywords: ["agent skills?", "claude code (?:skill|plugin)s?"], lists: ["list:VoltAgent/awesome-agent-skills"]}
+  - {id: ai-agent-integration, name: Fits AI-agent workflows, topics: [ai-agents, ai-agent, agent, agents, agentic-ai, agentic, autonomous-agents, multi-agent, multi-agent-systems, agent-framework, agent-orchestration, llm-agents, llm-agent, coding-agents, coding-agent, a2a, agentic-workflow, agent-tools, mcp, mcp-server, model-context-protocol, claude-code, codex, opencode], keywords: ["ai agents?", "agentic", "llm agents?", "coding agents?", "mcp"]}
+  - {id: local-first, name: Local-first or offline, topics: [local-first, offline-first, local-ai, local-llm, offline], keywords: ["local-first", "offline", "runs locally", "fully local"]}
+  - {id: privacy-focused, name: Privacy-focused, topics: [privacy, privacy-focused, end-to-end-encryption, e2ee, encryption, zero-knowledge], keywords: ["privacy", "end-to-end encrypt(?:ed|ion)", "e2ee"]}
+  - {id: cli, name: Command-line interface, topics: [cli, command-line, command-line-tool, terminal, tui, cli-tool], keywords: ["cli", "command[- ]line", "terminal"]}
+  - {id: desktop-app, name: Desktop application, topics: [desktop-app, desktop, electron, tauri, macos, windows, linux-desktop, gui], keywords: ["desktop app(?:lication)?"]}
+  - {id: mobile-app, name: Mobile application, topics: [android, ios, react-native, flutter, mobile, mobile-app], keywords: ["android", "ios app", "mobile app"]}
+  - {id: browser-extension, name: Browser extension, topics: [chrome-extension, browser-extension, firefox-extension, firefox-addon], keywords: ["chrome extension", "browser extension"]}
+  - {id: sso-auth, name: SSO / OAuth / OIDC, topics: [oauth, oauth2, oidc, openid-connect, saml, sso], keywords: ["sso", "oauth2?", "oidc", "saml"]}
+  - {id: multi-tenant, name: Multi-tenant, topics: [multi-tenant, multitenancy], keywords: ["multi-tenan(?:t|cy)"]}
+  - {id: realtime-collaboration, name: Real-time collaboration, topics: [collaboration, real-time-collaboration, crdt, multiplayer], keywords: ["real-time collaborat(?:ion|ive)", "collaborative"]}
+  - {id: plugin-extensible, name: Plugin-extensible, topics: [plugin, plugins, plugin-system, extensions], keywords: ["plugin system", "extensible"]}
+
+use_cases:
+  - {id: ai-coding-assistance, name: AI coding assistance, topics: [ai-coding, coding-agents, coding-agent, claude-code, codex, codex-cli, cursor, cursor-ai, windsurf, opencode, copilot, github-copilot, vibe-coding, code-review], keywords: ["coding agents?", "code review", "coding assistant"]}
+  - {id: agent-memory, name: Agent memory and context, topics: [memory, agent-memory, ai-memory, long-term-memory, persistent-memory, llm-memory, context-engineering], keywords: ["long-term memory", "persistent memory", "agent memory", "context engineering"]}
+  - {id: retrieval-rag, name: Retrieval and RAG, topics: [rag, retrieval-augmented-generation, semantic-search, vector-search, vector-database, embeddings, knowledge-graph], keywords: ["rag", "retrieval[- ]augmented", "semantic search", "vector (?:search|database|store)", "embeddings?"]}
+  - {id: web-scraping, name: Web scraping and crawling, topics: [web-scraping, scraper, scraping, crawler, web-crawler, web-scraper, webscraping, data-extraction, browser-automation], keywords: ["scrap(?:e|er|ing)", "crawl(?:er|ing)?"]}
+  - {id: workflow-automation, name: Workflow automation, topics: [automation, workflow-automation, workflow, n8n, no-code, low-code, rpa, zapier], keywords: ["workflow automation", "automate workflows?", "no-code", "low-code"]}
+  - {id: observability, name: Monitoring and observability, topics: [observability, monitoring, opentelemetry, logging, tracing, apm, metrics, uptime-monitor], keywords: ["observability", "monitoring", "tracing", "uptime"]}
+  - {id: security-testing, name: Security testing, topics: [security, security-tools, pentesting, penetration-testing, cybersecurity, devsecops, osint, hacking, vulnerability-scanner, static-analysis, sast], keywords: ["pentest(?:ing)?", "vulnerabilit(?:y|ies)", "security scan(?:ner|ning)?"]}
+  - {id: knowledge-management, name: Knowledge management and notes, topics: [knowledge-base, knowledge-management, note-taking, notes, wiki, obsidian, markdown-editor, second-brain, pkm], keywords: ["note[- ]taking", "knowledge base", "wiki", "second brain"]}
+  - {id: marketing-seo, name: Marketing and SEO, topics: [seo, seo-tools, marketing, marketing-automation, geo, aeo, generative-engine-optimization, ai-visibility, social-media, social-media-automation, content-creation], keywords: ["seo", "marketing", "social media"]}
+  - {id: finance-trading, name: Finance and trading, topics: [finance, trading, quantitative-finance, algorithmic-trading, stock-market, stocks, backtesting, quant, market-data, fintech], keywords: ["trading", "backtest(?:ing)?"]}
+  - {id: document-processing, name: Document processing, topics: [pdf, docx, xlsx, pptx, ocr, office, excel, powerpoint, word, markdown-conversion], keywords: ["pdf", "ocr", "docx", "spreadsheets?"]}
+  - {id: speech-audio, name: Speech and audio, topics: [text-to-speech, tts, speech-to-text, whisper, transcription, speech-synthesis, voice-assistant, audio], keywords: ["text[- ]to[- ]speech", "speech[- ]to[- ]text", "transcri(?:be|ption)"]}
+  - {id: video-media, name: Video and media, topics: [video, video-generation, video-editing, ai-video, youtube, ffmpeg, streaming, image-generation], keywords: ["video", "image generation"]}
+  - {id: devops-infra, name: DevOps and infrastructure, topics: [devops, infrastructure, kubernetes, ci-cd, github-actions, deployment, cloud-native, serverless, infrastructure-as-code, terraform], keywords: ["devops", "ci/cd", "infrastructure as code", "deploy(?:ment)? pipelines?"]}
+  - {id: data-analytics, name: Data and analytics, topics: [analytics, data-analysis, data-science, data-visualization, dashboard, business-intelligence, bi, data-engineering, etl], keywords: ["analytics", "dashboards?", "business intelligence", "etl"]}
+  - {id: team-chat, name: Team chat and messaging, topics: [chat, messaging, slack-alternative, team-chat, telegram, discord-bot, matrix], keywords: ["team chat", "messaging"]}
+  - {id: project-management, name: Project management, topics: [project-management, kanban, issue-tracker, task-management, todo], keywords: ["project management", "kanban", "issue track(?:er|ing)", "task management"]}
+  - {id: ecommerce, name: E-commerce, topics: [ecommerce, e-commerce, shop, storefront, payments], keywords: ["e-?commerce", "storefront", "online store"]}
+  - {id: email, name: Email, topics: [email, email-marketing, newsletter, smtp, imap, mail-server], keywords: ["email", "newsletter"]}
+  - {id: crm-sales, name: CRM and sales, topics: [crm, sales, customer-relationship-management], keywords: ["crm"]}
+  - {id: browser-testing, name: Browser automation and testing, topics: [playwright, puppeteer, selenium, testing, e2e-testing, test-automation, browser-automation], keywords: ["end-to-end tests?", "e2e", "test automation"]}
+  - {id: password-secrets, name: Passwords and secrets, topics: [password-manager, secrets-management, vault, secrets], keywords: ["password manager", "secrets? management"]}
+
+# Reviewed SaaS catalogue categories that serve a use case. A SaaS product in one of these
+# categories SERVES_USE_CASE at confidence 1.0 of this mapping (the catalogue category is
+# reviewed, and so is this table). Categories absent here serve no mapped use case yet.
+saas_category_use_cases:
+  AI coding assistant: [ai-coding-assistance]
+  Vector database: [retrieval-rag]
+  Search: [retrieval-rag]
+  Web scraping: [web-scraping]
+  Workflow automation: [workflow-automation]
+  Process automation: [workflow-automation]
+  Low-code platform: [workflow-automation]
+  Observability: [observability]
+  Uptime monitoring: [observability]
+  Error tracking: [observability]
+  Log management: [observability]
+  Status pages: [observability]
+  Session replay: [observability]
+  Application security: [security-testing]
+  Note taking: [knowledge-management]
+  Knowledge management: [knowledge-management]
+  Developer documentation: [knowledge-management]
+  Marketing automation: [marketing-seo]
+  Social media management: [marketing-seo]
+  Email marketing: [email, marketing-seo]
+  Transactional email: [email]
+  Email: [email]
+  Personal finance: [finance-trading]
+  PDF tools: [document-processing]
+  Documents: [document-processing]
+  E-signature: [document-processing]
+  Transcription: [speech-audio]
+  Video hosting: [video-media]
+  Live streaming: [video-media]
+  Media processing: [video-media]
+  AI image generation: [video-media]
+  CI/CD: [devops-infra]
+  Platform as a service: [devops-infra]
+  Container registry: [devops-infra]
+  Business intelligence: [data-analytics]
+  Product analytics: [data-analytics]
+  Web analytics: [data-analytics]
+  Data warehouse: [data-analytics]
+  Data integration: [data-analytics]
+  Team chat: [team-chat]
+  Project management: [project-management]
+  Task management: [project-management]
+  E-commerce: [ecommerce]
+  Payments: [ecommerce]
+  CRM: [crm-sales]
+  Sales engagement: [crm-sales]
+  Password management: [password-secrets]
+  Secrets management: [password-secrets]
+
+# INTEGRATES_WITH is inferred when a project's host topic is exactly a catalogued SaaS
+# product's key and the project is not an alternative to that product. These keys are
+# ordinary words or other things' names far more often than they are the product, so a
+# topic equal to one of them is not evidence of an integration.
+integration_topic_stoplist: [front, make, circle, linear, kit, merge, split, render, harvest, medium, readme,
+                             heap, segment, railway, knock, courier, drift, crisp, loom, glean, sanity,
+                             discourse-hosting, empower-personal-wealth, claude, chatgpt]

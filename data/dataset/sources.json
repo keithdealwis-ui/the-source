@@ -1,0 +1,341 @@
+[
+  {
+    "attribution": "SolvoHQ/awesome-self-host-saas-alternatives (CC0 1.0)",
+    "conditions": [
+      "Only the repository at the pinned commit is harvested."
+    ],
+    "decision": "allow",
+    "github_detected_spdx": "NOASSERTION",
+    "harvest": {
+      "decision": "allow",
+      "entries": 294,
+      "entries_with_saas_claim": 294,
+      "harvested": true,
+      "licence_file_sha256": "5c85788fb09f01adf06bb4f37b7e43b94684292fa3d21b8699190fa121b2fbb3",
+      "pinned_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+      "relationship_claims": 294,
+      "unparseable_files": 0
+    },
+    "licence_file": "LICENSE",
+    "licence_file_sha256": "5c85788fb09f01adf06bb4f37b7e43b94684292fa3d21b8699190fa121b2fbb3",
+    "licence_spdx": "CC0-1.0",
+    "pinned_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+    "priority": 1,
+    "rationale": "The LICENSE file and the README \"License\" section both dedicate \"the curation, ordering, and descriptive text of this list\" to the public domain under CC0 1.0. GitHub reports NOASSERTION only because the LICENSE file is a short CC0 notice rather than the full legal code; the text itself is unambiguous. CC0 imposes no attribution or share-alike duty. We attribute anyway, as provenance.\n",
+    "refused_adjacent": [
+      {
+        "decision": "refuse",
+        "rationale": "The CC0 dedication covers the list in the repository. No licence or terms were found for the site or its API, so neither is harvested.\n",
+        "target": "osalt.dev website and its JSON API (code-rho-dun.vercel.app)"
+      }
+    ],
+    "repo": "SolvoHQ/awesome-self-host-saas-alternatives",
+    "reviewed_at": "2026-09-27",
+    "reviewed_by": "claude-heavy",
+    "schema_version": "1.0.0",
+    "share_alike": false,
+    "source_id": "solvohq",
+    "url": "https://github.com/SolvoHQ/awesome-self-host-saas-alternatives"
+  },
+  {
+    "attribution": "awesome-selfhosted-data, (c) the awesome-selfhosted community (see AUTHORS in the upstream repository), licensed CC BY-SA 3.0 Unported, https://github.com/awesome-selfhosted/awesome-selfhosted-data",
+    "conditions": [
+      "Attribution, the licence name and the licence URI accompany any public export that includes material from this source.",
+      "No upstream description text is imported.",
+      "Edges whose ONLY provenance is this source are flagged share_alike and are excluded from a public export unless the export is itself released under CC BY-SA or Keith approves otherwise.",
+      "No technical measure may restrict onward use of material from this source."
+    ],
+    "covers_also": [
+      {
+        "licence_file_sha256": "16fd5f5e502cc76c18d8bc28e5f7f1e949a2228e9c1d4ea4e89b9f9087e39413",
+        "note": "The seed named on the ticket. Its README is generated from awesome-selfhosted-data and carries the same CC BY-SA 3.0 licence, so the machine-readable data repository is parsed instead and the README is not parsed a second time. Same decision, same conditions.\n",
+        "pinned_commit": "9c46157a85cff7fe010d9475857193bc6a4776e1",
+        "repo": "awesome-selfhosted/awesome-selfhosted"
+      }
+    ],
+    "decision": "allow_with_conditions",
+    "github_detected_spdx": "NOASSERTION",
+    "harvest": {
+      "decision": "allow_with_conditions",
+      "entries": 1351,
+      "entries_with_saas_claim": 84,
+      "harvested": true,
+      "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
+      "pinned_commit": "c10a71ae91ccc513dc4329578896810c499c4b21",
+      "relationship_claims": 144,
+      "unparseable_files": 0
+    },
+    "licence_file": "LICENSE",
+    "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
+    "licence_spdx": "CC-BY-SA-3.0",
+    "pinned_commit": "c10a71ae91ccc513dc4329578896810c499c4b21",
+    "priority": 2,
+    "rationale": "CC BY-SA 3.0 Unported permits reproduction and adaptation, including commercially, provided attribution is given and adaptations are released under the same or a compatible licence. Harvesting is therefore permitted. The share-alike duty is the constraint: if our dataset is an \"Adaptation\" of their list, the adapted material must itself be CC BY-SA. We limit exposure by importing facts only and none of their descriptive text, and by tagging every record and edge that depends on this source so a public export can either carry the CC BY-SA terms for that material or leave it out.\n",
+    "repo": "awesome-selfhosted/awesome-selfhosted-data",
+    "reviewed_at": "2026-09-27",
+    "reviewed_by": "claude-heavy",
+    "schema_version": "1.0.0",
+    "share_alike": true,
+    "source_id": "awesome-selfhosted",
+    "url": "https://github.com/awesome-selfhosted/awesome-selfhosted-data"
+  },
+  {
+    "attribution": "RunaCapital/awesome-oss-alternatives, Copyright (c) 2022 Igor Kotua, MIT License",
+    "conditions": [
+      "The MIT copyright and permission notice is reproduced in any public export."
+    ],
+    "decision": "allow",
+    "github_detected_spdx": "MIT",
+    "harvest": {
+      "decision": "allow",
+      "entries": 215,
+      "entries_with_saas_claim": 215,
+      "harvested": true,
+      "licence_file_sha256": "1592244b8a144e0d86603351222ee4df1b2c22dfed6961d0c4a75adb625b1079",
+      "pinned_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+      "relationship_claims": 329,
+      "unparseable_files": 0
+    },
+    "licence_file": "LICENSE",
+    "licence_file_sha256": "1592244b8a144e0d86603351222ee4df1b2c22dfed6961d0c4a75adb625b1079",
+    "licence_spdx": "MIT",
+    "pinned_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+    "priority": 3,
+    "rationale": "MIT permits use, copying, modification, merging, publication and distribution provided the copyright and permission notice accompany copies or substantial portions. The notice is reproduced in NOTICE.md. Upstream was last pushed 2025-09-03, so its claims are old; that is handled by independent live verification of every project, not by trusting the list.\n",
+    "repo": "RunaCapital/awesome-oss-alternatives",
+    "reviewed_at": "2026-09-27",
+    "reviewed_by": "claude-heavy",
+    "schema_version": "1.0.0",
+    "share_alike": false,
+    "source_id": "runacapital",
+    "url": "https://github.com/RunaCapital/awesome-oss-alternatives"
+  },
+  {
+    "attribution": "open-saas-directory/awesome-saas-directory, Copyright (c) 2026 Open SaaS Directory, MIT License",
+    "conditions": [
+      "The MIT copyright and permission notice is reproduced in any public export.",
+      "Only the repository at the pinned commit is harvested."
+    ],
+    "decision": "allow",
+    "github_detected_spdx": "MIT",
+    "harvest": {
+      "decision": "allow",
+      "entries": 98,
+      "entries_with_saas_claim": 98,
+      "harvested": true,
+      "licence_file_sha256": "cdfd14ebf0763fce15d9fe27398b6138e1d92186b7be997aa64e9eccaa2c13c8",
+      "pinned_commit": "3f29e5943fd9fc9910cd500134d5c6a6836a52ce",
+      "relationship_claims": 172,
+      "unparseable_files": 0
+    },
+    "licence_file": "LICENSE",
+    "licence_file_sha256": "cdfd14ebf0763fce15d9fe27398b6138e1d92186b7be997aa64e9eccaa2c13c8",
+    "licence_spdx": "MIT",
+    "pinned_commit": "3f29e5943fd9fc9910cd500134d5c6a6836a52ce",
+    "priority": 4,
+    "rationale": "The repository is MIT licensed and its README states \"This list is under the MIT License\". The README is a periodic export of the opensaas.directory database, but what is harvested is the MIT-licensed file in the repository.\n",
+    "refused_adjacent": [
+      {
+        "decision": "refuse",
+        "rationale": "No terms of use or data licence could be found for the site (https://opensaas.directory/terms returned 404 on 2026-09-27). Absent terms granting reuse, the site is not scraped.\n",
+        "target": "opensaas.directory website"
+      }
+    ],
+    "repo": "open-saas-directory/awesome-saas-directory",
+    "reviewed_at": "2026-09-27",
+    "reviewed_by": "claude-heavy",
+    "schema_version": "1.0.0",
+    "share_alike": false,
+    "source_id": "opensaasdirectory",
+    "url": "https://github.com/open-saas-directory/awesome-saas-directory"
+  },
+  {
+    "attribution": "Emmraan/awesome-saas-alternatives, Copyright (c) 2026 awesome-saas-alternatives contributors, MIT License",
+    "conditions": [
+      "The MIT copyright and permission notice is reproduced in any public export."
+    ],
+    "decision": "allow",
+    "github_detected_spdx": "MIT",
+    "harvest": {
+      "decision": "allow",
+      "entries": 63,
+      "entries_with_saas_claim": 63,
+      "harvested": true,
+      "licence_file_sha256": "cc749dffc88eef1456b2e57eb350ef42d82f8a92d7ab8f32a4427cbf11f3d6cf",
+      "pinned_commit": "c4cc558b7edf50a5efb4e3fd0d867292c2ae6b63",
+      "relationship_claims": 130,
+      "unparseable_files": 0
+    },
+    "licence_file": "LICENSE",
+    "licence_file_sha256": "cc749dffc88eef1456b2e57eb350ef42d82f8a92d7ab8f32a4427cbf11f3d6cf",
+    "licence_spdx": "MIT",
+    "pinned_commit": "c4cc558b7edf50a5efb4e3fd0d867292c2ae6b63",
+    "priority": 5,
+    "rationale": "MIT licensed, stated in both LICENSE and README, and the data file sits inside the licensed repository. The source is new (zero stars, data dated 2026-08-19) and its claims carry no independent authority, so it is ranked last and, like every source, none of its claims is accepted without live verification.\n",
+    "repo": "Emmraan/awesome-saas-alternatives",
+    "reviewed_at": "2026-09-27",
+    "reviewed_by": "claude-heavy",
+    "schema_version": "1.0.0",
+    "share_alike": false,
+    "source_id": "emmraan",
+    "url": "https://github.com/Emmraan/awesome-saas-alternatives"
+  },
+  {
+    "attribution": "btw-so/open-source-alternatives, Copyright (c) 2023 btw, MIT License",
+    "conditions": [
+      "The MIT copyright and permission notice is reproduced in any public export."
+    ],
+    "decision": "allow",
+    "github_detected_spdx": "MIT",
+    "harvest": {
+      "decision": "allow",
+      "entries": 113,
+      "entries_with_saas_claim": 113,
+      "harvested": true,
+      "licence_file_sha256": "9ccd6b836c5948af69c6b78da77d09a45109cc87c1fc7487ac229abedb2970c4",
+      "pinned_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+      "relationship_claims": 149,
+      "unparseable_files": 0
+    },
+    "licence_file": "LICENSE",
+    "licence_file_sha256": "9ccd6b836c5948af69c6b78da77d09a45109cc87c1fc7487ac229abedb2970c4",
+    "licence_spdx": "MIT",
+    "pinned_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+    "priority": 6,
+    "rationale": "MIT licensed; the LICENSE file is the standard MIT text and GitHub detects it as MIT. The list was last pushed 2024-11-08, so many of its entries will be out of date; that is exactly what independent live verification is for.\n",
+    "repo": "btw-so/open-source-alternatives",
+    "reviewed_at": "2026-09-27",
+    "reviewed_by": "claude-heavy",
+    "schema_version": "1.0.0",
+    "share_alike": false,
+    "source_id": "btwso",
+    "url": "https://github.com/btw-so/open-source-alternatives"
+  },
+  {
+    "attribution": "diegoleme/awesome-open-source-alternatives, Copyright (c) 2020 Diego Leme, MIT License",
+    "conditions": [
+      "The MIT copyright and permission notice is reproduced in any public export."
+    ],
+    "decision": "allow",
+    "github_detected_spdx": "MIT",
+    "harvest": {
+      "decision": "allow",
+      "entries": 111,
+      "entries_with_saas_claim": 111,
+      "harvested": true,
+      "licence_file_sha256": "10ad93c1eb1b6ca388229b5620c2aaf2f2ec05b709e64879e7138c1e2aa7de39",
+      "pinned_commit": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+      "relationship_claims": 111,
+      "unparseable_files": 0
+    },
+    "licence_file": "LICENSE",
+    "licence_file_sha256": "10ad93c1eb1b6ca388229b5620c2aaf2f2ec05b709e64879e7138c1e2aa7de39",
+    "licence_spdx": "MIT",
+    "pinned_commit": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+    "priority": 7,
+    "rationale": "MIT licensed; standard MIT text, detected as MIT by GitHub. Many entries link to a GitHub organisation rather than a repository; those cannot be verified and are rejected at normalisation.\n",
+    "repo": "diegoleme/awesome-open-source-alternatives",
+    "reviewed_at": "2026-09-27",
+    "reviewed_by": "claude-heavy",
+    "schema_version": "1.0.0",
+    "share_alike": false,
+    "source_id": "diegoleme",
+    "url": "https://github.com/diegoleme/awesome-open-source-alternatives"
+  },
+  {
+    "attribution": "The AltStack data (altstackHQ/altstack-data), https://github.com/altstackHQ/altstack-data, licensed CC BY 4.0 per its README and Apache-2.0 per its LICENSE file; facts extracted, no text reproduced",
+    "conditions": [
+      "Attribution names the source, links to it, names both licences and states that the material was modified.",
+      "No referral URL, pricing figure, pros/cons text or description is imported."
+    ],
+    "decision": "allow_with_conditions",
+    "github_detected_spdx": "Apache-2.0",
+    "harvest": {
+      "decision": "allow_with_conditions",
+      "entries": 64,
+      "entries_with_saas_claim": 64,
+      "harvested": true,
+      "licence_file_sha256": "c76f488fd52bf3c9bac423df8456156f997835d1bc012f4786d07c1208aad409",
+      "pinned_commit": "ca28a74d15d3cb3677706a861174b9ec350706a7",
+      "relationship_claims": 71,
+      "unparseable_files": 0
+    },
+    "licence_file": "LICENSE",
+    "licence_file_sha256": "c76f488fd52bf3c9bac423df8456156f997835d1bc012f4786d07c1208aad409",
+    "licence_spdx": "Apache-2.0 (LICENSE file) / CC-BY-4.0 (README statement)",
+    "pinned_commit": "ca28a74d15d3cb3677706a861174b9ec350706a7",
+    "priority": 8,
+    "rationale": "The upstream is inconsistent about its own licence: the LICENSE file is the Apache License 2.0 text, while the README badge, file tree and \"Using the Data\" section all say the data is CC BY 4.0 and invite reuse with attribution. Both licences permit reuse, including commercially; neither is share-alike. Rather than choose, the conditions of BOTH are met: attribution with a link and licence name and a statement that the material was changed (CC BY 4.0), and the licence notice retained (Apache-2.0). The inconsistency is recorded as a residual question for Keith. The data contains affiliate referral URLs, pricing estimates and machine-written pros and cons; none of those is imported.\n",
+    "repo": "altstackHQ/altstack-data",
+    "reviewed_at": "2026-09-27",
+    "reviewed_by": "claude-heavy",
+    "schema_version": "1.0.0",
+    "share_alike": false,
+    "source_id": "altstack",
+    "url": "https://github.com/altstackHQ/altstack-data"
+  },
+  {
+    "attribution": "\"Awesome Free / Open Source Alternatives (to common SaaS products) for Business Use\" by Stefane Fermigier and contributors, https://github.com/sfermigier/awesome-foss-alternatives, licensed CC BY 4.0; facts extracted, no text reproduced",
+    "conditions": [
+      "Attribution names the work, links to it and to the CC BY 4.0 licence, and states that the material was modified.",
+      "No upstream description text is imported."
+    ],
+    "decision": "allow_with_conditions",
+    "github_detected_spdx": "CC-BY-4.0",
+    "harvest": {
+      "decision": "allow_with_conditions",
+      "entries": 93,
+      "entries_with_saas_claim": 93,
+      "harvested": true,
+      "licence_file_sha256": "dca018b777d7bbaad6a295cd35b9653e8ffe014ac8a737292157e1f33b769753",
+      "pinned_commit": "305ba7f87b99fa94abb9f7b0fd6d6f6e354f774f",
+      "relationship_claims": 122,
+      "unparseable_files": 0
+    },
+    "licence_file": "licence.md",
+    "licence_file_sha256": "dca018b777d7bbaad6a295cd35b9653e8ffe014ac8a737292157e1f33b769753",
+    "licence_spdx": "CC-BY-4.0",
+    "pinned_commit": "305ba7f87b99fa94abb9f7b0fd6d6f6e354f774f",
+    "priority": 9,
+    "rationale": "CC BY 4.0 International permits copying and adaptation for any purpose, including commercially, on condition of attribution, a link to the licence and an indication that changes were made. It is not share-alike. GitHub detects the licence file as CC-BY-4.0 and the file is the CC BY 4.0 legal code.\n",
+    "repo": "sfermigier/awesome-foss-alternatives",
+    "reviewed_at": "2026-09-27",
+    "reviewed_by": "claude-heavy",
+    "schema_version": "1.0.0",
+    "share_alike": false,
+    "source_id": "fossalt",
+    "url": "https://github.com/sfermigier/awesome-foss-alternatives"
+  },
+  {
+    "attribution": "The Source intake ledger (data/intake/admitted.jsonl): relationships stated by each project in its own public repository and assessed by The Source",
+    "conditions": [
+      "a relationship is recorded only with evidence from the project's own public repository",
+      "matched text is kept as a short evidence excerpt in the outcome record, never republished"
+    ],
+    "decision": "allow",
+    "harvest": {
+      "decision": "allow",
+      "entries": 0,
+      "entries_with_saas_claim": 0,
+      "harvested": true,
+      "licence_file_sha256": "ccc2475e96c83d6774422c036d4e7b7f495de3522c25bd03f852d78edff5a022",
+      "pinned_commit": "0000000000000000000000000000000000000000",
+      "relationship_claims": 0,
+      "unparseable_files": 0
+    },
+    "kind": "intake",
+    "licence_file": "docs/INTAKE-POLICY.md",
+    "licence_file_sha256": "ccc2475e96c83d6774422c036d4e7b7f495de3522c25bd03f852d78edff5a022",
+    "licence_spdx": "n/a (The Source's own assessment record)",
+    "pinned_commit": "0000000000000000000000000000000000000000",
+    "priority": 10,
+    "rationale": "No third-party list is involved. Each relationship rests on the project's own public statement that it is an alternative to the SaaS product, captured as evidence in the intake outcome record, and on The Source's independent live verification. Keith (or a tool acting for him) submits a URL; a conversational or human preliminary assessment is advisory only and never recorded as approval.\n",
+    "repo": "keithdealwis-ui/the-source",
+    "reviewed_at": "2026-09-27",
+    "reviewed_by": "claude-heavy",
+    "schema_version": "1.0.0",
+    "share_alike": false,
+    "source_id": "intake",
+    "url": "https://github.com/keithdealwis-ui/the-source/blob/main/data/intake/admitted.jsonl"
+  }
+]

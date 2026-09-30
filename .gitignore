@@ -1,0 +1,25 @@
+# Local environments and caches
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.promoting/
+
+# Pinned upstream checkouts: fetched on demand at their pinned commit, never committed
+raw/
+
+# Research lanes whose evidence stays where it was produced (KEI-806 / KEI-811 / KEI-844).
+# The canonical repository carries their compacted output only (data/scores/).
+data/score/
+data/graph/
+data/discover/
+data/live-smoke/
+data/export-public/
+data/score_harvest_run.log
+data/cross_check_launch.json
+
+# Internal delivery material (verification packs, coordination, drafts)
+evidence/
+verifier/
+.aiq/
+docs/SESSION-NOTE-DRAFT.md

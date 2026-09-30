@@ -1,0 +1,501 @@
+{
+  "as_of": "2026-09-27T05:08:30Z",
+  "checks": [
+    {
+      "criterion": 1,
+      "description": "every source record conforms to the schema",
+      "examples": [],
+      "failures": 0,
+      "id": "schema.source",
+      "kind": "assertion",
+      "observed": 10,
+      "ok": true
+    },
+    {
+      "criterion": 1,
+      "description": "every SaaS product record conforms to the schema",
+      "examples": [],
+      "failures": 0,
+      "id": "schema.saas",
+      "kind": "assertion",
+      "observed": 268,
+      "ok": true
+    },
+    {
+      "criterion": 1,
+      "description": "every OSS project record conforms to the schema",
+      "examples": [],
+      "failures": 0,
+      "id": "schema.oss",
+      "kind": "assertion",
+      "observed": 590,
+      "ok": true
+    },
+    {
+      "criterion": 1,
+      "description": "every relationship record conforms to the schema",
+      "examples": [],
+      "failures": 0,
+      "id": "schema.edge",
+      "kind": "assertion",
+      "observed": 849,
+      "ok": true
+    },
+    {
+      "criterion": 2,
+      "description": "every relationship carries provenance naming a registered source, its pinned commit and a locator",
+      "examples": [],
+      "failures": 0,
+      "id": "provenance.edge",
+      "kind": "assertion",
+      "observed": 849,
+      "ok": true
+    },
+    {
+      "criterion": 2,
+      "description": "every OSS project carries provenance to a registered source",
+      "examples": [],
+      "failures": 0,
+      "id": "provenance.oss",
+      "kind": "assertion",
+      "observed": 590,
+      "ok": true
+    },
+    {
+      "criterion": 2,
+      "description": "every imported value names the source it was copied from",
+      "examples": [],
+      "failures": 0,
+      "id": "provenance.imported_values",
+      "kind": "assertion",
+      "observed": null,
+      "ok": true
+    },
+    {
+      "criterion": 3,
+      "description": "every upstream has a licence decision with rationale, pinned to a licence-file hash",
+      "examples": [],
+      "failures": 0,
+      "id": "licence.sources_decided",
+      "kind": "assertion",
+      "observed": 10,
+      "ok": true
+    },
+    {
+      "criterion": 3,
+      "description": "the licence file read at harvest is the one the decision was made about",
+      "examples": [],
+      "failures": 0,
+      "id": "licence.hash_verified_at_harvest",
+      "kind": "assertion",
+      "observed": null,
+      "ok": true
+    },
+    {
+      "criterion": 3,
+      "description": "no staged claim comes from a source that is not licence-cleared, and no refused repository was fetched or registered",
+      "examples": [],
+      "failures": 0,
+      "id": "licence.refused_not_harvested",
+      "kind": "assertion",
+      "observed": {
+        "refused_repositories": [
+          "fffaraz/awesome-selfhosted-aws",
+          "junaid33/opensource.builders",
+          "piotrkulpinski/open-source-alternatives",
+          "tycrek/degoogle"
+        ],
+        "staged_claims": 2402
+      },
+      "ok": true
+    },
+    {
+      "criterion": 5,
+      "description": "no duplicate saas_id",
+      "examples": [],
+      "failures": 0,
+      "id": "dedupe.saas_ids_unique",
+      "kind": "assertion",
+      "observed": 268,
+      "ok": true
+    },
+    {
+      "criterion": 5,
+      "description": "no duplicate oss_id",
+      "examples": [],
+      "failures": 0,
+      "id": "dedupe.oss_ids_unique",
+      "kind": "assertion",
+      "observed": 590,
+      "ok": true
+    },
+    {
+      "criterion": 5,
+      "description": "no duplicate edge_id",
+      "examples": [],
+      "failures": 0,
+      "id": "dedupe.edge_ids_unique",
+      "kind": "assertion",
+      "observed": 849,
+      "ok": true
+    },
+    {
+      "criterion": 5,
+      "description": "no two project records point at the same repository on the host",
+      "examples": [],
+      "failures": 0,
+      "id": "dedupe.one_record_per_repository",
+      "kind": "assertion",
+      "observed": 575,
+      "ok": true
+    },
+    {
+      "criterion": 5,
+      "description": "one relationship per (SaaS, OSS) pair",
+      "examples": [],
+      "failures": 0,
+      "id": "dedupe.one_edge_per_pair",
+      "kind": "assertion",
+      "observed": null,
+      "ok": true
+    },
+    {
+      "criterion": 5,
+      "description": "every relationship resolves to a SaaS record and an OSS record",
+      "examples": [],
+      "failures": 0,
+      "id": "integrity.edge_endpoints",
+      "kind": "assertion",
+      "observed": null,
+      "ok": true
+    },
+    {
+      "criterion": 7,
+      "description": "every recommended project has meaningful activity within 12 months",
+      "examples": [],
+      "failures": 0,
+      "id": "activity.recommended_within_12_months",
+      "kind": "assertion",
+      "observed": 365,
+      "ok": true
+    },
+    {
+      "criterion": 8,
+      "description": "every piece of evidence relied on exists in the raw snapshot and, judged from its full path list, is human-authored code or a version release that ships more than documentation",
+      "examples": [],
+      "failures": 0,
+      "id": "activity.evidence_is_not_docs_only",
+      "kind": "assertion",
+      "observed": 1348,
+      "ok": true
+    },
+    {
+      "criterion": 9,
+      "description": "no archived repository is recommended",
+      "examples": [],
+      "failures": 0,
+      "id": "archived.excluded",
+      "kind": "assertion",
+      "observed": 19,
+      "ok": true
+    },
+    {
+      "criterion": 9,
+      "description": "every archived repository carries the exclusion reason",
+      "examples": [],
+      "failures": 0,
+      "id": "archived.reason_recorded",
+      "kind": "assertion",
+      "observed": null,
+      "ok": true
+    },
+    {
+      "criterion": 10,
+      "description": "every recommended project has a recognised open-source licence or an approved exception",
+      "examples": [],
+      "failures": 0,
+      "id": "licence.recommended_have_recognised_licence",
+      "kind": "assertion",
+      "observed": 365,
+      "ok": true
+    },
+    {
+      "criterion": 10,
+      "description": "every verified project without a recognised licence carries an issue record: category, exact reason, what was detected, upstream claims, evidence and review status",
+      "examples": [],
+      "failures": 0,
+      "id": "licence_lane.every_licence_issue_is_described",
+      "kind": "assertion",
+      "observed": 139,
+      "ok": true
+    },
+    {
+      "criterion": 10,
+      "description": "every project whose only shortcoming is its licence is retained in the licence-exception lane, and nothing else is in that lane",
+      "examples": [],
+      "failures": 0,
+      "id": "licence_lane.retained_not_discarded",
+      "kind": "assertion",
+      "observed": 121,
+      "ok": true
+    },
+    {
+      "criterion": 10,
+      "description": "no licence-exception record, and no relationship pointing at one, is recommendation-eligible, validated, or in the launch set",
+      "examples": [],
+      "failures": 0,
+      "id": "licence_lane.never_recommended",
+      "kind": "assertion",
+      "observed": {
+        "projects": 121,
+        "relationships": 208
+      },
+      "ok": true
+    },
+    {
+      "criterion": 15,
+      "description": "the local export contains no project that is not recommendation-eligible",
+      "examples": [],
+      "failures": 0,
+      "id": "licence_lane.never_exported",
+      "kind": "assertion",
+      "observed": 347,
+      "ok": true
+    },
+    {
+      "criterion": 10,
+      "description": "lane, recommendation_eligible and the underlying verdict agree on every record",
+      "examples": [],
+      "failures": 0,
+      "id": "lanes.consistent",
+      "kind": "assertion",
+      "observed": {
+        "oss_projects": {
+          "licence_exception": 121,
+          "recommendable": 365,
+          "rejected": 104
+        },
+        "relationships": {
+          "licence_exception": 208,
+          "recommendable": 483,
+          "rejected": 158
+        }
+      },
+      "ok": true
+    },
+    {
+      "criterion": 10,
+      "description": "every licence exception in use names its approver",
+      "examples": [],
+      "failures": 0,
+      "id": "licence.exceptions_are_approved",
+      "kind": "assertion",
+      "observed": 0,
+      "ok": true
+    },
+    {
+      "criterion": 11,
+      "description": "status, recomputed from the dates of the evidence itself: active <= 90 days, maintained <= 365 days, otherwise stale",
+      "examples": [],
+      "failures": 0,
+      "id": "maintenance.classification_matches_definition",
+      "kind": "assertion",
+      "observed": {
+        "active": 453,
+        "maintained": 43,
+        "stale": 79,
+        "unverified": 15
+      },
+      "ok": true
+    },
+    {
+      "criterion": 11,
+      "description": "no stale project is recommended",
+      "examples": [],
+      "failures": 0,
+      "id": "maintenance.stale_excluded",
+      "kind": "assertion",
+      "observed": null,
+      "ok": true
+    },
+    {
+      "criterion": 12,
+      "description": "every eligibility verdict is unchanged when stars are set to 0 or to 10,000,000",
+      "examples": [],
+      "failures": 0,
+      "id": "stars.do_not_change_any_verdict",
+      "kind": "assertion",
+      "observed": 590,
+      "ok": true
+    },
+    {
+      "criterion": 13,
+      "description": "every rejected project has a rejection record stating why",
+      "examples": [],
+      "failures": 0,
+      "id": "strategy.every_rejection_is_recorded",
+      "kind": "assertion",
+      "observed": 225,
+      "ok": true
+    },
+    {
+      "criterion": 14,
+      "description": "a project has no top-level field outside the identity fields and the imported, live and derived blocks, and no field name appears in both imported and live",
+      "examples": [],
+      "failures": 0,
+      "id": "origin.no_unlabelled_fields",
+      "kind": "assertion",
+      "observed": 590,
+      "ok": true
+    },
+    {
+      "criterion": 14,
+      "description": "every live field equals what the host returned in the snapshot",
+      "examples": [],
+      "failures": 0,
+      "id": "origin.live_matches_snapshot",
+      "kind": "assertion",
+      "observed": 590,
+      "ok": true
+    },
+    {
+      "criterion": 14,
+      "description": "no imported value is longer than 80 characters",
+      "examples": [],
+      "failures": 0,
+      "id": "origin.imported_values_are_facts_not_prose",
+      "kind": "assertion",
+      "observed": null,
+      "ok": true
+    },
+    {
+      "criterion": 14,
+      "description": "every live block is dated",
+      "examples": [],
+      "failures": 0,
+      "id": "origin.live_is_dated",
+      "kind": "assertion",
+      "observed": null,
+      "ok": true
+    },
+    {
+      "criterion": 15,
+      "description": "dataset marked internal; no git remote configured; any local export is unpublished and withholds share-alike-only relationships",
+      "examples": [],
+      "failures": 0,
+      "id": "publication.guard",
+      "kind": "assertion",
+      "observed": {
+        "publication_status": "internal_not_published",
+        "share_alike_only_relationships_all_lanes": 61,
+        "share_alike_only_relationships_in_launch": 24,
+        "share_alike_only_relationships_validated": 47,
+        "withheld_from_default_export": 24
+      },
+      "ok": true
+    },
+    {
+      "criterion": 5,
+      "description": "within the launch set a SaaS lists each product once, even when the product has several repositories",
+      "examples": [],
+      "failures": 0,
+      "id": "dedupe.one_repository_per_product_per_saas",
+      "kind": "assertion",
+      "observed": 371,
+      "ok": true
+    },
+    {
+      "criterion": 6,
+      "description": "every launch relationship is validated",
+      "examples": [],
+      "failures": 0,
+      "id": "launch.only_validated_edges",
+      "kind": "assertion",
+      "observed": 371,
+      "ok": true
+    },
+    {
+      "criterion": 6,
+      "description": "every launch relationship points at a recommendable project",
+      "examples": [],
+      "failures": 0,
+      "id": "launch.only_recommendable_projects",
+      "kind": "assertion",
+      "observed": null,
+      "ok": true
+    },
+    {
+      "criterion": 6,
+      "description": "the launch SaaS products are exactly the first N of the declared ranking (independent sources, then validated alternatives, then name): nothing was skipped or promoted",
+      "examples": [],
+      "failures": 0,
+      "id": "launch.ranking_unchanged",
+      "kind": "assertion",
+      "observed": {
+        "floor": 100,
+        "launch_saas": 121,
+        "mode": "floor"
+      },
+      "ok": true
+    },
+    {
+      "criterion": 6,
+      "description": "launch corpus size against the ticket's targets (100 SaaS read as a floor per dr-KEI-805-507e4f70)",
+      "examples": [],
+      "failures": 0,
+      "id": "launch.targets",
+      "kind": "assertion",
+      "observed": {
+        "oss_distinct_products": 250,
+        "oss_projects": 251,
+        "relationships": 371,
+        "saas_products": 121
+      },
+      "ok": true
+    }
+  ],
+  "observations": [
+    {
+      "criterion": 15,
+      "description": "whether a local export built from THIS dataset was present to be checked",
+      "id": "export.local_dry_run",
+      "kind": "observation",
+      "observed": {
+        "present": true,
+        "rows": 347
+      }
+    },
+    {
+      "criterion": 12,
+      "description": "projects with 10,000+ stars that were rejected, and launch projects with fewer than 500",
+      "id": "stars.rejected_despite_stars",
+      "kind": "observation",
+      "observed": {
+        "examples": [
+          "github.com/n8n-io/n8n (206069 stars: no_recognised_open_source_licence)",
+          "github.com/langgenius/dify (157298 stars: no_recognised_open_source_licence)",
+          "github.com/open-webui/open-webui (153283 stars: no_recognised_open_source_licence)",
+          "github.com/lobehub/lobehub (82842 stars: no_recognised_open_source_licence)",
+          "github.com/elastic/elasticsearch (78004 stars: no_recognised_open_source_licence)"
+        ],
+        "launch_projects_under_500_stars": 12,
+        "rejected_with_10k_plus_stars": 92
+      }
+    },
+    {
+      "criterion": 13,
+      "description": "harvested volume against accepted volume",
+      "id": "strategy.harvest_broad_reject_aggressive",
+      "kind": "observation",
+      "observed": {
+        "entries_read": 2402,
+        "oss_candidates": 590,
+        "oss_recommendable": 365,
+        "rejections_recorded": 460,
+        "relationship_claims_read": 1522,
+        "relationships_validated": 483
+      }
+    }
+  ],
+  "ok": true
+}

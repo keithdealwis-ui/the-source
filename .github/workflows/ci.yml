@@ -1,0 +1,44 @@
+name: CI
+
+# Schema validation and reproducibility (KEI-807 criterion 2). Runs with the network
+# refused: the committed dataset, canonical data and read surface must be exactly what
+# the committed code produces from the committed inputs.
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Rebuild the dataset from committed claims and live snapshot (no network)
+        env:
+          THE_SOURCE_NO_NETWORK: "1"
+        run: python -m source_pipeline build
+
+      - name: Canonical schema, integrity, read surface and determinism checks
+        env:
+          THE_SOURCE_NO_NETWORK: "1"
+        run: python -m source_pipeline canonical-validate
+
+      - name: Tests
+        env:
+          THE_SOURCE_NO_NETWORK: "1"
+        run: python -m pytest tests/test_canonical.py -q
+
+      - name: Committed data equals the rebuild
+        run: |
+          git status --porcelain
+          git diff --stat --exit-code -- data api

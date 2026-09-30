@@ -1,0 +1,213 @@
+{
+  "api_version": "v1",
+  "dataset_version": "3a6c3535b8bd01d0",
+  "last_checked": {
+    "newest": "2026-09-27T05:08:30Z",
+    "oldest": "2026-09-27T05:08:30Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "btwso",
+      "opensaasdirectory",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "github_url": "https://github.com/LibreChat-AI/LibreChat",
+      "last_meaningful_activity_at": "2026-09-27T03:31:05Z",
+      "latest_release": {
+        "published_at": "2026-09-23T03:58:57Z",
+        "tag": "v0.8.8-rc4"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "LibreChat",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/librechat-ai/librechat",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 91.0,
+        "score": 94.7,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 92.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 94.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/LibreChat-AI/LibreChat",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "opensaasdirectory"
+      ],
+      "stars": 44982
+    },
+    {
+      "github_url": "https://github.com/Mintplex-Labs/anything-llm",
+      "last_meaningful_activity_at": "2026-09-26T00:28:47Z",
+      "latest_release": {
+        "published_at": "2026-09-22T19:06:03Z",
+        "tag": "v1.16.2"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "AnythingLLM",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity."
+      },
+      "oss_id": "github.com/mintplex-labs/anything-llm",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 94.5,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 81.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Mintplex-Labs/anything-llm",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "opensaasdirectory"
+      ],
+      "stars": 66509
+    },
+    {
+      "github_url": "https://github.com/chatboxai/chatbox",
+      "last_meaningful_activity_at": "2026-09-24T14:09:30Z",
+      "latest_release": {
+        "published_at": "2026-09-24T14:09:30Z",
+        "tag": "v1.23.5"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Chatbox",
+      "note": {
+        "gaps": [
+          "migration path",
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on migration path and cost advantage."
+      },
+      "oss_id": "github.com/chatboxai/chatbox",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 80.6,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 70.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/chatboxai/chatbox",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "opensaasdirectory"
+      ],
+      "stars": 41862
+    },
+    {
+      "github_url": "https://github.com/leon-ai/leon",
+      "last_meaningful_activity_at": "2026-09-26T01:18:58Z",
+      "latest_release": {
+        "published_at": "2026-02-19T09:08:01Z",
+        "tag": "tcp-server_v2.0.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Leon",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage"
+        ],
+        "text": "Strongest on core use-case coverage."
+      },
+      "oss_id": "github.com/leon-ai/leon",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 95.5,
+        "score": 81.3,
+        "trajectory": "Rising"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 62.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/leon-ai/leon",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "btwso"
+      ],
+      "stars": 17549
+    }
+  ],
+  "saas": {
+    "category": "AI assistant",
+    "compare_path": "/open-source/chatgpt-alternatives",
+    "domain": "chatgpt.com",
+    "name": "ChatGPT",
+    "saas_id": "chatgpt",
+    "slug": "chatgpt"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

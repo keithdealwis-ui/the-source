@@ -1,0 +1,216 @@
+{
+  "api_version": "v1",
+  "dataset_version": "3a6c3535b8bd01d0",
+  "last_checked": {
+    "newest": "2026-09-27T05:08:30Z",
+    "oldest": "2026-09-27T05:08:30Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "btwso",
+      "fossalt",
+      "runacapital",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "github_url": "https://github.com/siyuan-note/siyuan",
+      "last_meaningful_activity_at": "2026-09-26T08:41:45Z",
+      "latest_release": {
+        "published_at": "2026-09-26T08:41:45Z",
+        "tag": "v3.8.6-alpha.8"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "SiYuan",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/siyuan-note/siyuan",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 93.6,
+        "score": 89.9,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 90.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 87.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/siyuan-note/siyuan",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "btwso",
+        "fossalt"
+      ],
+      "stars": 46526
+    },
+    {
+      "github_url": "https://github.com/TriliumNext/Trilium",
+      "last_meaningful_activity_at": "2026-09-26T20:18:09Z",
+      "latest_release": {
+        "published_at": "2026-09-25T18:21:42Z",
+        "tag": "v0.106.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Trilium.cc",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "ease of adoption",
+          "feature parity"
+        ],
+        "text": "Strongest on ease of adoption and feature parity."
+      },
+      "oss_id": "github.com/triliumnext/trilium",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 91.8,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 77.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/TriliumNext/Trilium",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 38013
+    },
+    {
+      "github_url": "https://github.com/logseq/logseq",
+      "last_meaningful_activity_at": "2026-09-26T14:51:21Z",
+      "latest_release": {
+        "published_at": "2026-09-26T15:51:34Z",
+        "tag": "nightly"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Logseq",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/logseq/logseq",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 90.9,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 76.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/logseq/logseq",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "solvohq",
+        "btwso",
+        "fossalt"
+      ],
+      "stars": 45064
+    },
+    {
+      "github_url": "https://github.com/streetwriters/notesnook",
+      "last_meaningful_activity_at": "2026-09-26T07:10:56Z",
+      "latest_release": {
+        "published_at": "2026-09-15T11:30:33Z",
+        "tag": "3.4.13-android"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Notesnook",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "integrations and extensibility",
+          "migration path"
+        ],
+        "text": "Strongest on integrations and extensibility and migration path."
+      },
+      "oss_id": "github.com/streetwriters/notesnook",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 84.5,
+        "trajectory": "Stable"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 76.5,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/streetwriters/notesnook",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital",
+        "btwso",
+        "fossalt"
+      ],
+      "stars": 14646
+    }
+  ],
+  "saas": {
+    "category": "Note taking",
+    "compare_path": "/open-source/evernote-alternatives",
+    "domain": "evernote.com",
+    "name": "Evernote",
+    "saas_id": "evernote",
+    "slug": "evernote"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

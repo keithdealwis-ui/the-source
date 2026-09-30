@@ -1,0 +1,257 @@
+{
+  "api_version": "v1",
+  "dataset_version": "3a6c3535b8bd01d0",
+  "last_checked": {
+    "newest": "2026-09-27T05:08:30Z",
+    "oldest": "2026-09-27T05:08:30Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "altstack",
+      "diegoleme",
+      "runacapital",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "github_url": "https://github.com/rustfs/rustfs",
+      "last_meaningful_activity_at": "2026-09-26T23:53:54Z",
+      "latest_release": {
+        "published_at": "2026-09-24T12:04:16Z",
+        "tag": "1.0.1-preview.11"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "RustFS",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity."
+      },
+      "oss_id": "github.com/rustfs/rustfs",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 94.2,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 90.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/rustfs/rustfs",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "altstack"
+      ],
+      "stars": 33945
+    },
+    {
+      "github_url": "https://github.com/seaweedfs/seaweedfs",
+      "last_meaningful_activity_at": "2026-09-26T23:05:22Z",
+      "latest_release": {
+        "published_at": "2026-09-14T01:31:59Z",
+        "tag": "4.47"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "SeaweedFS",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity."
+      },
+      "oss_id": "github.com/seaweedfs/seaweedfs",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 95.1,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 92.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 83.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/seaweedfs/seaweedfs",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "altstack"
+      ],
+      "stars": 35000
+    },
+    {
+      "github_url": "https://github.com/openstack/swift",
+      "last_meaningful_activity_at": "2026-09-24T00:32:22Z",
+      "latest_release": null,
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "SwiftStack",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
+      },
+      "oss_id": "github.com/openstack/swift",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 90.4,
+        "score": 87.3,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 82.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/openstack/swift",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "diegoleme"
+      ],
+      "stars": 2802
+    },
+    {
+      "github_url": "https://github.com/storj/storj",
+      "last_meaningful_activity_at": "2026-09-25T13:11:32Z",
+      "latest_release": {
+        "published_at": "2026-09-22T16:15:01Z",
+        "tag": "v1.163.6"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Storj",
+      "note": {
+        "gaps": [
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on cost advantage."
+      },
+      "oss_id": "github.com/storj/storj",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 94.7,
+        "score": 84.4,
+        "trajectory": "Stable"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 81.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 79.1,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/storj/storj",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 3282
+    },
+    {
+      "github_url": "https://github.com/deuxfleurs-org/garage",
+      "last_meaningful_activity_at": "2026-09-26T15:44:46Z",
+      "latest_release": null,
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Garage",
+      "note": {
+        "gaps": [
+          "production readiness"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on production readiness."
+      },
+      "oss_id": "github.com/deuxfleurs-org/garage",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 88.0,
+        "score": 81.7,
+        "trajectory": "Stable"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 90.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 78.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/deuxfleurs-org/garage",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "altstack"
+      ],
+      "stars": 4592
+    }
+  ],
+  "saas": {
+    "category": "Object storage",
+    "compare_path": "/open-source/amazon-s3-alternatives",
+    "domain": "aws.amazon.com",
+    "name": "Amazon S3",
+    "saas_id": "amazon-s3",
+    "slug": "amazon-s3"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

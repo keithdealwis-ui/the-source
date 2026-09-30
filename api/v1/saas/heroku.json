@@ -1,0 +1,262 @@
+{
+  "api_version": "v1",
+  "dataset_version": "3a6c3535b8bd01d0",
+  "last_checked": {
+    "newest": "2026-09-27T05:08:30Z",
+    "oldest": "2026-09-27T05:08:30Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "altstack",
+      "btwso",
+      "diegoleme",
+      "opensaasdirectory",
+      "runacapital",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "github_url": "https://github.com/tsuru/tsuru",
+      "last_meaningful_activity_at": "2026-09-16T12:44:47Z",
+      "latest_release": {
+        "published_at": "2026-09-03T18:38:08Z",
+        "tag": "v1.32.0"
+      },
+      "licence_spdx": "BSD-3-Clause",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Tsuru",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/tsuru/tsuru",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 89.4,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 91.6,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/tsuru/tsuru",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "diegoleme"
+      ],
+      "stars": 5311
+    },
+    {
+      "github_url": "https://github.com/coollabsio/coolify",
+      "last_meaningful_activity_at": "2026-09-26T21:43:23Z",
+      "latest_release": {
+        "published_at": "2026-09-18T13:38:15Z",
+        "tag": "v4.3.23"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Coolify",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/coollabsio/coolify",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 93.2,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 88.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/coollabsio/coolify",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "runacapital",
+        "opensaasdirectory",
+        "btwso",
+        "altstack"
+      ],
+      "stars": 62300
+    },
+    {
+      "github_url": "https://github.com/kubero-dev/kubero",
+      "last_meaningful_activity_at": "2026-06-24T12:08:52Z",
+      "latest_release": {
+        "published_at": "2025-09-17T09:26:34Z",
+        "tag": "v3.1.1"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "maintained",
+      "name": "Kubero",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/kubero-dev/kubero",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 96.6,
+        "score": 68.7,
+        "trajectory": "Declining"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 78.1,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/kubero-dev/kubero",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "btwso"
+      ],
+      "stars": 4428
+    },
+    {
+      "github_url": "https://github.com/dyrector-io/dyrectorio",
+      "last_meaningful_activity_at": "2026-09-09T19:19:15Z",
+      "latest_release": {
+        "published_at": "2025-05-11T11:28:50Z",
+        "tag": "0.15.4"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "dyrector.io",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on feature parity."
+      },
+      "oss_id": "github.com/dyrector-io/dyrectorio",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 82.4,
+        "trajectory": "Declining"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 71.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/dyrector-io/dyrectorio",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 1850
+    },
+    {
+      "github_url": "https://github.com/Qovery/engine",
+      "last_meaningful_activity_at": "2026-09-25T10:07:33Z",
+      "latest_release": null,
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Qovery",
+      "note": {
+        "gaps": [
+          "production readiness",
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage"
+        ],
+        "text": "Strongest on core use-case coverage; weakest on production readiness and migration path."
+      },
+      "oss_id": "github.com/qovery/engine",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 94.2,
+        "score": 76.0,
+        "trajectory": "Stable"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 64.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Qovery/engine",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 2465
+    }
+  ],
+  "saas": {
+    "category": "Platform as a service",
+    "compare_path": "/open-source/heroku-alternatives",
+    "domain": "heroku.com",
+    "name": "Heroku",
+    "saas_id": "heroku",
+    "slug": "heroku"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

@@ -1,0 +1,317 @@
+# The Source — what each SaaS category is bought to do (KEI-806, Replacement Fit).
+#
+# `core`: the primary job, as groups of evidence terms. The FIRST group is the defining group:
+# specific phrases for what the product IS. It must be evidenced in the project's identity
+# text (description, topics, upstream category, README opening) or the core gate fails. Other
+# groups are the job's verbs/objects. Core use-case coverage is the credited share of groups
+# (full credit in identity text, reduced credit deeper in the README) and gates Replacement
+# Fit (config/scoring.yaml replacement_fit.core_gate).
+#
+# v1.1.0 (2026-09-29): defining groups tightened after a negative control (every pair scored
+# against a randomly mismatched category) showed v1.0.0 passing 49% of mismatched pairs:
+# generic stems ("analytic", "docs", "api", "database") matched almost any README.
+# v1.1.0 calibration: the 47 true pairs v1.1.0 gated were each reviewed by hand; where a real
+# alternative describes itself in words the defining group missed (Thumbor "imaging service",
+# Harbor "cloud native registry", vLLM "inference engine", Healthchecks "cron job monitor",
+# MediaCMS "video and media CMS", Moodle "learning platform", Vale "linter for prose", rrweb
+# "record and replay", ...), the phrase was added. Correct gatings were left gated (Plausible
+# vs Mixpanel, Grafana vs Better Stack, GIMP vs Canva, Docusaurus vs ReadMe, mailcow vs SES).
+# The negative control is re-run by score-validate after every change.
+# `features`: the breadth checklist behind Feature equivalence; share of terms evidenced.
+#
+# These are desk-authored descriptions of a category's job, not claims about any product.
+# They are deliberately generic so a project is judged on the job, not on marketing words.
+# Authored 2026-09-29 by claude-code for KEI-806. Every category with a REPLACES edge has one;
+# score-validate fails if a category is missing.
+
+version: "1.1.0"
+
+categories:
+  AI assistant:
+    core: [["chatgpt", "ai assistant", "ai chat", "chat ui", "chat interface", "chatbot", "llm chat", "chat with", "conversational ai", "local llm", "llm ui", "llm frontend", "ai interface", "webui", "web ui for llm"], ["llm", "language model", "gpt", "openai", "ollama", "model"]]
+    features: [history, "multi-model", rag, "document", plugin, voice, "web search", prompt, "image", agent]
+  AI coding assistant:
+    core: [["coding assistant", "code assistant", "code completion", "copilot", "ai pair programm", "autocomplete", "ai coding", "coding agent"], ["llm", "model", "ai", "copilot"]]
+    features: [vscode, "neovim", jetbrains, "inline", chat, "local model", "fill-in-the-middle", refactor, "multi-file", context]
+  AI platform:
+    core: [["machine learning platform", "mlops", "ml platform", "model serving", "inference server", "llm platform", "ai platform", "model deployment", "llmops", "ml pipeline", "train and deploy", "inference engine", "serving engine", "llm inference", "large language models", "openai-compatible", "run llms", "llm app", "agentic workflow", "ai app development"], ["serve", "deploy", "api", "pipeline", "training", "workflow"]]
+    features: [gpu, "fine-tun", "model registry", monitoring, scaling, notebook, dataset, "experiment", kubernetes, "rest api"]
+  API tooling:
+    core: [["api client", "api testing", "api development", "api design", "api gateway", "http client", "rest client", "openapi", "swagger", "postman"], ["request", "test", "design", "gateway", "openapi", "swagger", "collection"]]
+    features: [openapi, graphql, grpc, websocket, environment, "mock", collection, "code generation", "rate limit", documentation]
+  Accounting:
+    core: [["accounting", "bookkeeping", "invoicing", "general ledger", "double-entry"], ["invoice", "expense", "double-entry", "journal", "balance sheet"]]
+    features: [invoice, "bank", reconcil, "tax", report, "multi-currency", payroll, "profit and loss", "chart of accounts", budget]
+  Audience engagement:
+    core: [["live poll", "polling", "audience", "quiz", "q&a", "interactive presentation", "live quiz", "voting"], ["live", "audience", "presentation", "real-time", "realtime"]]
+    features: [leaderboard, "word cloud", "multiple choice", "qr", anonymous, results, "slide", timer, moderation, export]
+  Audio streaming:
+    core: [["music server", "music streaming", "audio streaming", "audiobook", "podcast", "music player", "subsonic", "media server", "media system", "streaming your media"], ["stream", "player", "listen", "library"]]
+    features: [playlist, "subsonic", "mobile app", transcod, scrobbl, "metadata", offline, "multi-user", search, chromecast]
+  Backend as a service:
+    core: [["backend as a service", "baas", "firebase alternative", "backend server", "backend platform", "realtime database", "backend for"], ["auth", "api", "storage", "function"]]
+    features: [authentication, "file storage", realtime, "cloud function", "rest api", graphql, sdk, "row level", "push", dashboard]
+  Billing:
+    core: [["billing", "subscription management", "recurring payment", "usage-based", "metering", "invoic"], ["payment", "plan", "recurring", "usage-based", "metered"]]
+    features: [invoice, "stripe", "dunning", coupon, tax, "customer portal", webhook, proration, "usage", "multi-currency"]
+  Bookmarking:
+    core: [["bookmark", "read-it-later", "read later", "link saver", "web archiv"], ["save", "collection", "tag", "archive"]]
+    features: [tag, "full-text", "browser extension", archive, "import", collection, share, "mobile", search, screenshot]
+  Business intelligence:
+    core: [["business intelligence", "dashboards", "data visualization", "data visualisation", "bi tool", "bi platform", "data exploration", "analytics dashboard", "reporting tool"], ["sql", "query", "data source", "database", "analytics"]]
+    features: [dashboard, "sql editor", "scheduled", alert, "embed", permission, "data source", "drill", export, "semantic"]
+  CI/CD:
+    core: [["continuous integration", "continuous delivery", "continuous deployment", "ci/cd", "ci server", "build server", "ci system"], ["build", "deploy", "test", "runner"]]
+    features: [pipeline, runner, docker, kubernetes, "matrix", cache, artifact, secret, "pull request", yaml]
+  CRM:
+    core: [["crm", "customer relationship", "sales pipeline", "contact management"], ["contact", "lead", "deal", "pipeline", "sales", "account"]]
+    features: [contact, deal, pipeline, email, "task", report, "custom field", import, api, "activity"]
+  Cloud development environment:
+    core: [["development environment", "dev environment", "cloud ide", "remote development", "online ide", "vs code in the browser", "code-server", "workspace", "devcontainer"], ["cloud", "remote", "browser", "container"]]
+    features: [devcontainer, "vs code", kubernetes, docker, "prebuild", terminal, "port forward", git, extension, "ssh"]
+  Communications API:
+    core: [["sms gateway", "sms api", "communications api", "voice api", "messaging api", "sms", "telephony", "otp", "webrtc", "real-time communication", "video api"], ["api", "gateway", "send"]]
+    features: [sms, voice, "otp", webhook, "whatsapp", "number", "delivery report", sdk, "sip", queue]
+  Community:
+    core: [["forum", "community platform", "discussion platform", "comment system", "commenting", "discussion board", "community software"], ["member", "thread", "post", "topic", "moderation"]]
+    features: [moderation, "notification", "sso", "search", "reactions", "email", "categories", "badges", api, "mobile"]
+  Container registry:
+    core: [["container registry", "docker registry", "image registry", "oci registry", "artifact registry", "cloud native registry", "repository manager", "registry"], ["push", "pull", "store", "host", "distribution"]]
+    features: [oci, "vulnerability", scan, replication, "access control", helm, "garbage collection", webhook, "signing", proxy]
+  Customer data platform:
+    core: [["customer data platform", "cdp", "event pipeline", "event streaming", "segment alternative", "data collection", "customer data"], ["pipeline", "destination", "collect", "route", "sync"]]
+    features: [sdk, destination, "identity resolution", warehouse, "real-time", transform, "schema", "consent", audience, webhook]
+  Customer feedback:
+    core: [["feedback", "feature request", "feature voting", "roadmap", "idea board", "user feedback"], ["vote", "upvote", "board", "prioriti"]]
+    features: [vote, roadmap, changelog, "comment", "status", "sso", "widget", "notification", integration, "custom domain"]
+  Customer support:
+    core: [["helpdesk", "help desk", "customer support", "live chat", "support ticket", "ticketing", "customer service", "customer engagement", "shared inbox"], ["customer", "agent", "conversation", "chat"]]
+    features: [ticket, "live chat", "knowledge base", email, "canned", "sla", "widget", "chatbot", report, "multi-channel"]
+  Data integration:
+    core: [["etl", "elt", "data integration", "data pipeline", "data connector", "data replication", "change data capture"], ["connector", "source", "destination", "warehouse"]]
+    features: [connector, "incremental", "cdc", schedule, transform, warehouse, "schema", monitoring, api, "normaliz"]
+  Data warehouse:
+    core: [["data warehouse", "olap", "analytical database", "columnar", "analytics database", "column-oriented"], ["sql", "query", "database"]]
+    features: [sql, columnar, "petabyte", "distributed", "object storage", "materialized", "join", compression, "separation of storage", "time travel"]
+  Design:
+    core: [["design tool", "ui design", "graphic design", "vector graphic", "prototyping", "design platform", "figma", "design and prototyp", "image editor"], ["canvas", "editor", "collaborat", "template"]]
+    features: [prototyp, "component", "real-time", "export", "svg", template, "plugin", comment, "design system", "figma"]
+  Developer analytics:
+    core: [["coding activity", "coding time", "time tracking for programmers", "wakatime", "programming metrics", "coding stats", "developer analytics"], ["track", "stat", "dashboard", "metric"]]
+    features: [editor, plugin, dashboard, language, project, "leaderboard", "api", "goal", "wakatime", report]
+  Developer documentation:
+    core: [["documentation generator", "documentation site", "api documentation", "docs site", "static site generator for documentation", "developer portal", "api reference"], ["api", "developer", "reference", "site"]]
+    features: [openapi, "search", markdown, versioning, "try it", "custom domain", theme, "changelog", "code sample", analytics]
+  Documents:
+    core: [["office suite", "word processor", "document editor", "spreadsheet", "online office", "collaborative editing", "docs editor"], ["edit", "collaborat", "real-time", "share"]]
+    features: [spreadsheet, presentation, "real-time", comment, "track changes", docx, export, "offline", share, "version"]
+  E-commerce:
+    core: [["e-commerce", "ecommerce", "online store", "shopping cart", "commerce platform", "headless commerce", "storefront", "webshop"], ["product", "cart", "checkout", "order", "payment"]]
+    features: [product, cart, checkout, payment, inventory, "shipping", "multi-currency", "discount", "headless", theme]
+  E-signature:
+    core: [["e-signature", "esignature", "electronic signature", "digital signature", "document signing", "docusign"], ["document", "pdf", "contract"]]
+    features: [template, "audit trail", "multiple signers", "api", "embed", reminder, "certificate", "form field", webhook, "bulk"]
+  ERP:
+    core: [["erp", "enterprise resource planning"], ["accounting", "inventory", "manufactur", "supply chain", "purchase", "hr"]]
+    features: [accounting, inventory, crm, manufactur, "purchase", "sales", "hr", "point of sale", report, module]
+  Email:
+    core: [["email client", "webmail", "mail client", "mail server", "email server", "email app", "gmail"], ["inbox", "send", "receive", "client", "server"]]
+    features: [imap, smtp, "spam", "calendar", "contacts", search, "filter", "encryption", "mobile", "multiple accounts"]
+  Email marketing:
+    core: [["newsletter", "email marketing", "mailing list", "email campaign", "mailchimp"], ["subscriber", "send", "list", "email"]]
+    features: [template, segment, "automation", "a/b", analytics, "double opt-in", "unsubscribe", "bounce", smtp, api]
+  Error tracking:
+    core: [["error tracking", "crash reporting", "exception tracking", "error monitoring", "sentry"], ["track", "monitor", "report", "alert"]]
+    features: [stack trace, "source map", alert, "release", "performance", sdk, "grouping", "issue", "breadcrumb", integration]
+  Experimentation:
+    core: [["a/b test", "ab test", "experimentation", "split test", "experiment platform"], ["variant", "test", "metric", "statistic"]]
+    features: [statistic, "feature flag", "sdk", "targeting", "bayesian", metric, "segment", "warehouse", "visual editor", report]
+  Feature flags:
+    core: [["feature flag", "feature toggle", "feature management"], ["rollout", "toggle", "target", "sdk"]]
+    features: [sdk, "percentage", "targeting", "a/b", "audit", "environment", "webhook", "segment", "rollout", api]
+  Feed reader:
+    core: [["rss", "feed reader", "news aggregator", "atom feed"], ["reader", "aggregat", "subscribe"]]
+    features: [opml, "full-text", "mobile", "fever", "google reader", filter, tag, search, "keyboard", "mark as read"]
+  File storage & sync:
+    core: [["file sync", "file hosting", "file storage", "cloud storage", "file sharing", "dropbox", "file server", "sync and share"], ["sync", "share", "upload", "drive"]]
+    features: [sync, share, "desktop client", "mobile", "version", "webdav", encryption, "collaborat", "office", "external storage"]
+  File transfer:
+    core: [["file transfer", "file sharing", "send files", "share files", "file upload", "wetransfer", "pastebin"], ["share", "link", "send", "download"]]
+    features: [expir, password, "end-to-end", "large file", "resumable", "link", "encryption", "download limit", api, "s3"]
+  Forms & surveys:
+    core: [["form builder", "survey", "forms", "questionnaire", "typeform"], ["response", "question", "submission", "field"]]
+    features: [logic, "conditional", template, "file upload", "webhook", "analytics", "embed", "payment", export, "multi-page"]
+  HR:
+    core: [["hr software", "human resource", "hrms", "hris", "payroll", "employee management", "people management"], ["leave", "onboarding", "recruit", "time off", "attendance", "people"]]
+    features: [employee, "leave", payroll, "onboarding", "recruit", "performance", "attendance", report, "self-service", "org chart"]
+  Headless CMS:
+    core: [["headless cms", "cms", "content management", "content platform"], ["content", "api", "model", "editor"]]
+    features: [graphql, "rest api", "content model", "i18n", "media library", "role", webhook, "preview", "version", plugin]
+  Identity & access:
+    core: [["identity provider", "identity and access", "single sign-on", "sso", "authentication", "iam", "openid connect", "oauth2 server", "auth server", "user management"], ["user", "oidc", "saml", "oauth", "access"]]
+    features: [oidc, saml, "mfa", "2fa", ldap, "social login", "passwordless", "rbac", "user management", "session"]
+  Incident response:
+    core: [["incident management", "incident response", "on-call", "on call", "alert management", "pager"], ["escalat", "schedule", "notify", "page"]]
+    features: [schedule, escalation, "status page", "slack", "sms", "postmortem", integration, "acknowledge", api, "rotation"]
+  Internal tools:
+    core: [["internal tool", "admin panel", "low-code", "app builder", "retool", "internal apps", "admin dashboard"], ["build", "drag", "component", "ui"]]
+    features: [database, "rest api", "drag", component, "permission", javascript, "self-host", workflow, "form", "table"]
+  Knowledge management:
+    core: [["wiki", "knowledge base", "knowledge management", "documentation platform", "note-taking", "notion alternative", "team documentation"], ["page", "write", "editor", "collaborat", "search"]]
+    features: [markdown, search, "real-time", permission, "version", "template", "comment", "import", api, "database"]
+  Link in bio:
+    core: [["link in bio", "linktree", "link page", "bio link"], ["link", "profile", "page"]]
+    features: [theme, analytics, "custom domain", "social", "qr", "short link", "multi-user", "icon", "button", "embed"]
+  Link management:
+    core: [["url shortener", "link shortener", "short link", "shorten url", "link management"], ["link", "url", "redirect"]]
+    features: [analytics, "custom domain", "qr", "api", "expir", "password", "utm", "bulk", "tag", "click"]
+  Live streaming:
+    core: [["live stream", "livestream", "streaming server", "broadcast", "rtmp"], ["video", "rtmp", "webrtc", "hls"]]
+    features: [rtmp, hls, webrtc, chat, "record", "transcod", "obs", "multi-stream", "moderation", "viewer"]
+  Localisation:
+    core: [["translation management", "localization", "localisation", "i18n", "internationalization", "translation platform"], ["string", "project", "translator", "language"]]
+    features: ["machine translation", "translation memory", glossary, "git", "api", "review", "context", "file format", "cli", "webhook"]
+  Log management:
+    core: [["log management", "log aggregation", "logging platform", "log analysis", "centralized logging", "log search", "logs"], ["search", "aggregat", "collect", "ingest", "stream"]]
+    features: [search, alert, "retention", dashboard, "syslog", "structured", "query language", "tail", "archive", "parse"]
+  Low-code platform:
+    core: [["low-code", "low code", "no-code", "no code", "application platform", "app builder"], ["application", "app", "build", "workflow"]]
+    features: [workflow, "drag", "database", "api", "form", "permission", "deploy", "mobile", "integration", "component"]
+  Managed database:
+    core: [["database", "key-value store", "sql database", "distributed database", "graph database", "document database", "postgres", "in-memory"], ["query", "storage", "replicat", "cluster"]]
+    features: [replicat, "backup", "high availability", "scal", "sql", "transaction", "cluster", "monitoring", "kubernetes", "branch"]
+  Marketing automation:
+    core: [["marketing automation", "customer engagement", "customer messaging", "campaign management", "lifecycle marketing"], ["email", "message", "segment", "trigger"]]
+    features: [segment, "journey", email, "push", "sms", "a/b", "analytics", "event", template, webhook]
+  Media processing:
+    core: [["image processing", "image optimization", "image resizing", "media processing", "image transformation", "video transcod", "image server", "image proxy", "imaging service", "resizing", "image service", "processing images", "converting images"], ["resiz", "transform", "optimi", "process", "cdn"]]
+    features: [resize, crop, "format", webp, avif, "on-the-fly", "cdn", "watermark", "face", "url"]
+  Messaging & queues:
+    core: [["message queue", "message broker", "pub/sub", "pubsub", "event streaming", "task queue", "queue"], ["publish", "consum", "produc", "topic"]]
+    features: ["at-least-once", "dead letter", persistent, "cluster", "delay", "fifo", "ack", "ordering", "stream", "protocol"]
+  Networking & VPN:
+    core: [["vpn", "wireguard", "mesh network", "tunnel", "dns", "zero trust network", "overlay network", "reverse proxy", "expose local"], ["peer", "connect", "expose", "resolve", "private"]]
+    features: [wireguard, "nat traversal", acl, "exit node", "sso", "dns", "https", "reverse proxy", "blocklist", "mesh"]
+  No-code database:
+    core: [["no-code database", "airtable alternative", "spreadsheet database", "online database", "smartsheet", "spreadsheet", "no-code"], ["table", "record", "view", "field"]]
+    features: ["grid view", "kanban", "form view", "gallery", "api", "automation", "permission", "formula", "import", "collaborat"]
+  Note taking:
+    core: [["note-taking", "note taking", "notes app", "notebook", "notes"], ["write", "markdown", "editor", "capture"]]
+    features: [markdown, "sync", tag, search, "offline", "mobile", "backlink", "encryption", "web clipper", "attachment"]
+  Notifications:
+    core: [["notification", "push notification", "notification infrastructure", "notification service"], ["send", "deliver", "channel", "inbox"]]
+    features: ["push", email, "sms", "in-app", template, "preference", "workflow", "digest", "webhook", sdk]
+  Object storage:
+    core: [["object storage", "s3 compatible", "s3-compatible", "blob storage", "object store", "distributed storage"], ["store", "storage", "object"]]
+    features: ["s3-compatible", "s3 compatible", erasure, replicat, "versioning", "encryption", "lifecycle", "multi-part", "iam", "distributed"]
+  Observability:
+    core: [["observability", "monitoring", "apm", "metrics", "tracing", "telemetry"], ["dashboard", "alert", "log", "trace"]]
+    features: [metric, log, trace, "opentelemetry", alert, dashboard, "apm", "prometheus", "anomaly", "service map"]
+  Online courses:
+    core: [["learning management", "lms", "online course", "e-learning", "elearning", "flashcard", "spaced repetition", "education platform", "learning platform"], ["student", "lesson", "learn", "teach"]]
+    features: [quiz, "progress", "certificate", "video", "payment", "flashcard", "gradebook", "mobile", "scorm", "discussion"]
+  PDF tools:
+    core: [["pdf"], ["merge", "split", "convert", "compress", "edit", "sign"]]
+    features: [merge, split, compress, convert, ocr, sign, "rotate", "watermark", "api", "page"]
+  Password management:
+    core: [["password manager", "password management", "password vault", "credential manager", "passwords"], ["manager", "store", "autofill", "generat"]]
+    features: [autofill, "browser extension", "mobile", "sharing", "2fa", "totp", "end-to-end", "organization", "import", "passkey"]
+  Personal finance:
+    core: [["personal finance", "budget", "budgeting", "money manager", "expense tracker", "finance manager"], ["expense", "account", "transaction", "spending"]]
+    features: [budget, "bank sync", "import", report, "category", "multi-currency", "investment", "goal", "mobile", "recurring"]
+  Photo management:
+    core: [["photo", "photos", "image gallery", "photo management", "photo backup"], ["album", "library", "backup", "manage"]]
+    features: ["face recognition", "mobile", "backup", "album", "share", "map", "search", "video", "exif", "timeline"]
+  Platform as a service:
+    core: [["paas", "platform as a service", "heroku alternative", "self-hosted heroku", "deployment platform", "app deployment", "deploy apps", "vercel alternative", "netlify alternative"], ["app", "application", "git", "container", "docker"]]
+    features: ["git push", buildpack, docker, "custom domain", "ssl", "database", "preview", "scal", "zero-downtime", "cli"]
+  Product analytics:
+    core: [["product analytics", "funnel", "user analytics", "behavioral analytics", "event analytics", "session analytics"], ["funnel", "retention", "cohort", "track", "user"]]
+    features: [funnel, retention, cohort, "session", "feature flag", "sql", "dashboard", "sdk", "path", "a/b"]
+  Product information management:
+    core: [["product information management", "pim", "product data", "product catalog"], ["product", "attribute", "channel", "enrich"]]
+    features: [attribute, "channel", "import", "export", "workflow", "asset", "api", "variant", "validation", "locali"]
+  Project management:
+    core: [["project management", "issue tracker", "issue tracking", "kanban", "task management", "agile", "scrum"], ["board", "kanban", "sprint", "track", "plan"]]
+    features: [kanban, sprint, "gantt", "time tracking", "roadmap", "milestone", "label", "permission", "api", "import"]
+  Publishing:
+    core: [["blogging", "blog", "publishing platform", "newsletter", "writing platform"], ["post", "article", "reader", "subscriber"]]
+    features: ["newsletter", "membership", "paid", "custom domain", "seo", "theme", "markdown", "comment", "rss", "analytics"]
+  Remote access:
+    core: [["remote desktop", "remote access", "remote control", "remote support", "teamviewer", "anydesk", "vnc", "rdp"], ["screen", "connect", "session", "control"]]
+    features: ["unattended", "file transfer", "cross-platform", "relay", "encryption", "clipboard", "multi-monitor", "web client", "address book", "mobile"]
+  Scheduling:
+    core: [["scheduling", "booking", "appointment", "calendly", "meeting scheduler"], ["schedule", "availability", "meeting", "event"]]
+    features: ["calendar sync", "google calendar", "reminder", "timezone", "payment", "team", "round robin", "embed", "webhook", "video"]
+  Search:
+    core: [["search engine", "full-text search", "search server", "enterprise search", "search api", "semantic search", "search backend"], ["index", "query", "relevance", "full-text", "engine"]]
+    features: ["typo", "facet", "filter", "vector", "semantic", "synonym", "highlight", "rest api", "ranking", "instant"]
+  Secrets management:
+    core: [["secrets management", "secret management", "secrets manager", "environment variables", "env var", "vault"], ["manage", "sync", "store", "inject", "vault"]]
+    features: ["encryption", "audit", "rotation", "cli", "kubernetes", "environment", "access control", "sdk", "sync", "version"]
+  Session replay:
+    core: [["session replay", "session recording", "heatmap", "record and replay"], ["record", "session", "user"]]
+    features: ["heatmap", "privacy", "console", "network", "funnel", "sdk", "mask", "rage click", "search", "dom"]
+  Site builder:
+    core: [["website builder", "site builder", "page builder", "static site", "cms", "website"], ["drag", "template", "page", "publish"]]
+    features: [template, "drag", "seo", "custom domain", "e-commerce", "blog", "form", "responsive", "hosting", "theme"]
+  Social media management:
+    core: [["social media management", "social media scheduling", "schedule posts", "social media"], ["post", "schedule", "publish", "account"]]
+    features: [schedule, "calendar", analytics, "multiple accounts", "team", "approval", "twitter", "linkedin", "instagram", "mastodon"]
+  Social network:
+    core: [["social network", "fediverse", "activitypub", "microblog", "federated", "social media platform", "forum", "link aggregator", "photo sharing"], ["post", "follow", "feed", "share", "timeline"]]
+    features: [activitypub, "federat", "mobile", "timeline", "moderation", "media", "notification", "hashtag", "direct message", "api"]
+  Source control:
+    core: [["git hosting", "code hosting", "git service", "git server", "forge", "version control", "source code management", "github alternative", "gitlab", "git platform"], ["host", "repository", "pull request", "merge request", "code"]]
+    features: ["pull request", "issue", "ci", "wiki", "code review", "ssh", "lfs", "webhook", "organization", "package registry"]
+  Status pages:
+    core: [["status page", "statuspage"], ["incident", "uptime", "outage", "monitor"]]
+    features: [incident, "subscriber", "maintenance", "custom domain", "uptime", "notification", "component", "history", "api", "rss"]
+  Task management:
+    core: [["task manager", "todo", "to-do", "task list", "task management"], ["list", "project", "reminder", "due"]]
+    features: [reminder, "due date", "recurring", "sync", "mobile", "tag", "priority", "sub-task", "calendar", "offline"]
+  Team chat:
+    core: [["team chat", "chat server", "messaging platform", "team communication", "instant messaging", "chat app", "matrix", "slack alternative", "collaboration platform"], ["channel", "team", "room", "workspace"]]
+    features: [channel, "thread", "voice", "video", "file sharing", "search", "mobile", "sso", "bot", "end-to-end"]
+  Time tracking:
+    core: [["time tracking", "time tracker", "timesheet", "track time"], ["project", "timer", "report", "hour"]]
+    features: [timer, report, "invoice", "project", "team", "billable", "calendar", "mobile", "export", "api"]
+  Transactional email:
+    core: [["transactional email", "email api", "smtp server", "mail server", "email delivery", "email sending"], ["send", "deliver", "transactional", "api"]]
+    features: ["smtp", "api", "template", "bounce", "webhook", "dkim", "tracking", "queue", "analytics", "suppression"]
+  Transcription:
+    core: [["transcription", "speech-to-text", "speech to text", "speech recognition", "asr", "whisper"], ["audio", "speech", "meeting", "voice"]]
+    features: ["speaker", "diariz", "real-time", "timestamp", "subtitle", "language", "summar", "export", "gpu", "api"]
+  Translation:
+    core: [["machine translation", "translation api", "translator", "translate"], ["language", "text", "machine", "document"]]
+    features: ["document", "api", "offline", "language detection", "self-host", "glossary", "neural", "batch", "browser", "privacy"]
+  Uptime monitoring:
+    core: [["uptime monitor", "uptime", "status monitoring", "website monitoring", "health check", "synthetic monitoring", "cron job monitor", "heartbeat monitor", "healthchecks"], ["alert", "notify", "check", "status"]]
+    features: ["http", "tcp", "ping", "status page", "notification", "ssl", "keyword", "dns", "heartbeat", "multi-location"]
+  Vector database:
+    core: [["vector database", "vector search", "vector store", "vector similarity", "embeddings database"], ["database", "search", "embedding", "similarity", "index"]]
+    features: ["ann", "hnsw", "filter", "hybrid", "scal", "sdk", "rest api", "grpc", "cluster", "quantiz"]
+  Video conferencing:
+    core: [["video conferenc", "video call", "video meeting", "web conferenc", "meetings"], ["video", "audio", "call", "room"]]
+    features: ["screen shar", "record", "chat", "breakout", "moderation", "end-to-end", "mobile", "sip", "streaming", "recording"]
+  Video hosting:
+    core: [["video hosting", "video platform", "video sharing", "video streaming", "youtube", "video cms", "media cms", "video and media"], ["host", "upload", "stream", "platform", "watch"]]
+    features: ["transcod", "hls", "subtitle", "channel", "playlist", "federat", "comment", "live", "embed", "search"]
+  Video messaging:
+    core: [["screen recording", "screen recorder", "video message", "loom"], ["record", "share", "video"]]
+    features: ["webcam", "share link", "annotation", "trim", "comment", "transcri", "download", "browser extension", "desktop", "gif"]
+  Web analytics:
+    core: [["web analytics", "website analytics", "google analytics", "privacy-friendly analytics", "site analytics", "visitor analytics"], ["page view", "pageview", "visitor", "traffic", "event"]]
+    features: ["privacy", "cookie", "gdpr", "dashboard", "goal", "utm", "real-time", "api", "script", "report"]
+  Web scraping:
+    core: [["web scraping", "scraper", "web crawler", "crawler", "scraping"], ["web", "page", "html", "site"]]
+    features: ["headless", "javascript", "proxy", "api", "schedule", "structured", "browser", "llm", "markdown", "rate limit"]
+  Whiteboarding:
+    core: [["whiteboard", "diagram", "diagramming", "drawing tool", "sketching"], ["draw", "collaborat", "shape", "board"]]
+    features: ["real-time", "collaborat", "export", "template", "infinite", "shape", "sticky", "library", "svg", "embed"]
+  Workflow automation:
+    core: [["workflow automation", "automation platform", "zapier", "integration platform", "ipaas", "workflow engine"], ["integration", "trigger", "action", "node", "connect"]]
+    features: ["trigger", "webhook", "schedule", "node", "code", "integration", "retry", "self-host", "ai", "api"]
+  Writing assistant:
+    core: [["grammar checker", "spell checker", "proofreading", "writing assistant", "style checker", "language checker", "linter for prose", "prose linter"], ["check", "correct", "text", "language"]]
+    features: ["browser extension", "language", "rules", "api", "self-host", "office", "style", "offline", "editor", "plugin"]

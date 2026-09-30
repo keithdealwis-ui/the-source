@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "the-source.graph/1",
+  "title": "The Source knowledge graph (KEI-844)",
+  "description": "Canonical, storage-independent records. Relationship semantics live in source_pipeline/graph_model.py and docs/GRAPH.md.",
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "required": ["ref"],
+      "properties": {
+        "ref": {"type": "string", "pattern": "^(kei811|kei811-history|kei805|kei805-live|ontology|graph):[^#]+#.+$"},
+        "field": {"type": "string"}, "basis": {"type": ["string", "null"]}, "as_of": {"type": "string"}
+      }
+    },
+    "entity": {
+      "type": "object",
+      "required": ["id", "type", "name", "aliases", "attrs", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "minLength": 3},
+        "type": {"enum": ["Project", "SaaSProduct", "Organisation", "Maintainer", "Category", "Capability", "UseCase", "Technology", "Licence", "Source"]},
+        "name": {"type": "string"},
+        "aliases": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "attrs": {"type": "object"},
+        "evidence": {"type": "array", "items": {"$ref": "#/$defs/evidence"}}
+      }
+    },
+    "edge": {
+      "type": "object",
+      "required": ["id", "relation", "from", "to", "assertion", "confidence", "evidence", "attrs", "observed_as_of"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"},
+        "relation": {"enum": ["REPLACES", "SIMILAR_TO", "INTEGRATES_WITH", "DEPENDS_ON", "OWNED_BY", "MAINTAINED_BY", "BELONGS_TO_CATEGORY", "USES_TECHNOLOGY", "HAS_CAPABILITY", "SERVES_USE_CASE", "LICENSED_UNDER", "LISTED_IN", "LINKS_TO"]},
+        "from": {"type": "string"}, "to": {"type": "string"},
+        "assertion": {"enum": ["explicit", "inferred"]},
+        "confidence": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "evidence": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/evidence"}},
+        "attrs": {"type": "object"},
+        "observed_as_of": {"type": "string"},
+        "first_observed": {"type": "string"}
+      }
+    },
+    "observation": {
+      "type": "object",
+      "required": ["id", "entity", "as_of", "source", "evidence", "metrics"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string"}, "entity": {"type": "string"}, "as_of": {"type": "string"},
+        "source": {"enum": ["kei811-history", "kei805-live"]},
+        "evidence": {"$ref": "#/$defs/evidence"},
+        "metrics": {"type": "object"}
+      }
+    }
+  }
+}

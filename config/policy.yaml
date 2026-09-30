@@ -1,0 +1,157 @@
+# The Source — quality policy (KEI-805 criteria 7-13).
+# Everything the pipeline rejects on is declared here, not buried in code.
+
+maintenance:
+  active_days: 90          # meaningful activity within the last 90 days
+  maintained_days: 365     # meaningful activity within the last 12 months
+  # older than maintained_days => Stale => excluded from recommendations
+
+  # Evidence kinds that QUALIFY as meaningful activity.
+  qualifying_evidence:
+    - code_commit          # human-authored commit touching at least one non-documentation path
+    - release              # published, non-draft release
+    - tag                  # version tag
+    - merged_pr            # human-authored merged PR touching at least one non-documentation path
+  # Recorded, but never sufficient by itself.
+  supporting_evidence:
+    - issues_closed
+  # How many of the newest commits / merged PRs are inspected for a qualifying one.
+  commit_lookback: 15
+  merged_pr_lookback: 10
+
+  # Automation accounts. Their commits and PRs never qualify: a repository kept
+  # "green" only by dependency, CI or release bots is not being maintained by anyone.
+  bot_login_patterns:
+    - '\[bot\]$'
+    - '(^|[^a-z])bot([^a-z]|$)'
+    - 'bot$'
+    - '^dependabot'
+    - '^renovate'
+    - '^github-actions'
+    - '^actions-user$'
+    - '^jenkins$'
+    - 'weblate'
+    - '^greenkeeper'
+    - '^imgbot'
+    - '^allcontributors'
+    - '^transifex'
+    - '^crowdin'
+    - '-command$'
+    - '-integration$'
+    - '(-|_)ci$'
+    - '^(openproject|cdr)ci$'
+    - '^ci-'
+
+  # A release or tag counts only if its name looks like a version. Floating tags
+  # (nightly, latest, stable, main-*) are moved, not released.
+  version_tag_pattern: '^(release[-_/]?|version[-_/]?|@?[a-z][a-z0-9_./-]*[-_@/])?v?[0-9]+(\.[0-9]+)+([-+._]?[0-9a-z.]+)*$'
+
+  # Paths that are always code, checked first.
+  code_path_overrides:
+    - '(^|/)requirements[^/]*\.txt$'
+    - '(^|/)cmakelists\.txt$'
+    - '(^|/)constraints[^/]*\.txt$'
+
+  # DOCUMENTATION: prose, media and translations. A commit or PR made up only of these
+  # is documentation churn. A release whose tagged commit is made up only of these is
+  # not evidence of a release of the software.
+  documentation_path_patterns:
+    - '(^|/)(readme|changelog|changes|history|news|releases?|version|license|licence|copying|notice|authors|contributors|contributing|code_of_conduct|security|support|maintainers|funding|codeowners|roadmap|todo)(\.(md|mdx|markdown|txt|rst|adoc|asciidoc|yml|yaml))?$'
+    - '\.(md|mdx|markdown|rst|adoc|asciidoc|txt)$'
+    - '\.(png|jpe?g|gif|svg|webp|ico|bmp|mp4|webm|mov|pdf)$'
+    - '^(docs?|documentation|website|wiki|blog|examples?|screenshots?|samples?)/'
+    - '(^|/)docs?/'
+    - '(^|/)assets/(images|img|screenshots)/'
+    - '(^|/)(locales?|i18n|translations?|lang|langs|languages|l10n|messages)/.*\.(json|ya?ml|po|pot|xml|properties|ini|strings|arb|xlf|xliff|csv|toml|ftl|resx)$'
+    - '(^|/)values-[a-z]{2}[^/]*/strings\.xml$'
+    - '\.(po|pot|xliff|xlf|arb|strings|ftl)$'
+    - '(^|/)(crowdin|mkdocs|\.readthedocs)\.ya?ml$'
+    - '(^|/)\.all-contributorsrc$'
+
+  # HOUSEKEEPING: repository plumbing, CI, dependency manifests and lockfiles. A commit
+  # or PR made up only of documentation and housekeeping does not qualify.
+  housekeeping_path_patterns:
+    - '(^|/)\.github/'
+    - '(^|/)\.gitlab-ci[^/]*$'
+    - '(^|/)\.(forgejo|gitea|woodpecker|circleci|husky|vscode|idea|devcontainer)/'
+    - '(^|/)\.(gitignore|gitattributes|gitmodules|editorconfig|dockerignore|npmrc|nvmrc|prettierrc[^/]*|eslintrc[^/]*|pre-commit-config\.yaml|env[^/]*)$'
+    - '(^|/)(renovate|dependabot)[^/]*\.(json5?|ya?ml)$'
+    - '(^|/)(package-lock\.json|pnpm-lock\.yaml|yarn\.lock|composer\.lock|cargo\.lock|poetry\.lock|uv\.lock|gemfile\.lock|go\.sum|bun\.lockb?|flake\.lock|mix\.lock|pubspec\.lock)$'
+    - '(^|/)(package\.json|composer\.json|go\.mod|cargo\.toml|pyproject\.toml|gemfile|pubspec\.yaml|mix\.exs|build\.gradle(\.kts)?|pom\.xml)$'
+    - '(^|/)docker-compose[^/]*\.ya?ml$'
+    - '(^|/)compose[^/]*\.ya?ml$'
+
+licence:
+  # Recognised, usable open-source licences: SPDX identifiers that are OSI-approved.
+  # Anything else (no licence, NOASSERTION, source-available, fair-code, BSL, SSPL,
+  # Elastic, FSL, "Commons Clause", custom) is excluded unless listed in
+  # config/licence_exceptions.yaml with a named approver.
+  recognised_spdx:
+    - 0BSD
+    - AFL-3.0
+    - AGPL-3.0
+    - AGPL-3.0-only
+    - AGPL-3.0-or-later
+    - Apache-2.0
+    - Artistic-2.0
+    - BSD-2-Clause
+    - BSD-3-Clause
+    - BSD-3-Clause-Clear
+    - BSL-1.0            # Boost Software License (not Business Source License)
+    - CECILL-2.1
+    - ECL-2.0
+    - EPL-1.0
+    - EPL-2.0
+    - EUPL-1.1
+    - EUPL-1.2
+    - GPL-2.0
+    - GPL-2.0-only
+    - GPL-2.0-or-later
+    - GPL-3.0
+    - GPL-3.0-only
+    - GPL-3.0-or-later
+    - ISC
+    - LGPL-2.1
+    - LGPL-2.1-only
+    - LGPL-2.1-or-later
+    - LGPL-3.0
+    - LGPL-3.0-only
+    - LGPL-3.0-or-later
+    - MIT
+    - MIT-0
+    - MPL-2.0
+    - MulanPSL-2.0
+    - NCSA
+    - OSL-3.0
+    - PostgreSQL
+    - Unlicense
+    - UPL-1.0
+    - Zlib
+
+hosts:
+  # Hosts whose API lets us verify archive state, licence and activity ourselves.
+  # A project hosted anywhere else cannot be independently verified and is rejected.
+  supported:
+    - github.com
+    - gitlab.com
+    - codeberg.org
+
+launch:
+  # Criterion 6 names three targets: 100 SaaS, 250+ OSS, ~300-400 relationships.
+  # Strategy decision dr-KEI-805-507e4f70 (2026-09-27T05:37:42Z, Option A): 100 SaaS is a
+  # FLOOR. The ranking continues past 100, unchanged, only as far as is needed to reach
+  # oss_minimum, and never beyond edges_max. The quality bar is not touched.
+  saas_target_is: floor        # floor | fixed
+  saas_target_decision_ref: "dr-KEI-805-507e4f70"
+  saas_target: 100
+  oss_minimum: 250
+  edges_min: 300
+  edges_max: 400
+  # "High value" is decided by evidence, never by stars:
+  #   1. the SaaS product is in the reviewed catalogue (config/saas_catalogue.yaml)
+  #   2. ranked by number of independent sources naming it, then by number of
+  #      validated alternatives, then by name
+  # Per-SaaS cap applied to keep the launch set inside edges_max; the alternatives
+  # kept are those with the most independent sources, then the most recent
+  # meaningful activity, then id. Stars take no part in any ordering.
+  max_edges_per_saas: null   # null = computed: largest cap that keeps edges <= edges_max

@@ -1,0 +1,254 @@
+{
+  "api_version": "v1",
+  "dataset_version": "3a6c3535b8bd01d0",
+  "last_checked": {
+    "newest": "2026-09-27T05:08:30Z",
+    "oldest": "2026-09-27T05:08:30Z"
+  },
+  "more_available": 2,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "btwso",
+      "fossalt",
+      "runacapital"
+    ]
+  },
+  "recommendations": [
+    {
+      "github_url": "https://github.com/docmost/docmost",
+      "last_meaningful_activity_at": "2026-09-20T20:30:45Z",
+      "latest_release": {
+        "published_at": "2026-09-08T14:18:03Z",
+        "tag": "v0.96.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "docmost",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "migration path"
+        ],
+        "text": "Strongest on core use-case coverage and migration path."
+      },
+      "oss_id": "github.com/docmost/docmost",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 93.1,
+        "score": 71.6,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 89.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 83.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/docmost/docmost",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "btwso"
+      ],
+      "stars": 21794
+    },
+    {
+      "github_url": "https://github.com/churichard/notabase",
+      "last_meaningful_activity_at": "2026-07-17T17:01:39Z",
+      "latest_release": null,
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Notabase",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "migration path"
+        ],
+        "text": "Strongest on core use-case coverage and migration path."
+      },
+      "oss_id": "github.com/churichard/notabase",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 94.2,
+        "score": 67.5,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 83.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 78.6,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/churichard/notabase",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 912
+    },
+    {
+      "github_url": "https://github.com/xwiki/xwiki-platform",
+      "last_meaningful_activity_at": "2026-09-25T15:52:53Z",
+      "latest_release": {
+        "published_at": "2026-09-17T11:51:25Z",
+        "tag": "xwiki-platform-18.8.0-rc-1"
+      },
+      "licence_spdx": "LGPL-2.1",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "XWiki",
+      "note": {
+        "gaps": [
+          "cost advantage",
+          "ease of adoption"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on cost advantage and ease of adoption."
+      },
+      "oss_id": "github.com/xwiki/xwiki-platform",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 91.2,
+        "score": 88.4,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 78.5,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/xwiki/xwiki-platform",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "fossalt"
+      ],
+      "stars": 1314
+    },
+    {
+      "github_url": "https://github.com/wikimedia/mediawiki",
+      "last_meaningful_activity_at": "2026-09-26T21:30:30Z",
+      "latest_release": null,
+      "licence_spdx": "GPL-2.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "MediaWiki",
+      "note": {
+        "gaps": [
+          "production readiness",
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on production readiness and feature parity."
+      },
+      "oss_id": "github.com/wikimedia/mediawiki",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 88.0,
+        "score": 82.9,
+        "trajectory": "Stable"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 81.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 72.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/wikimedia/mediawiki",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "fossalt"
+      ],
+      "stars": 5180
+    },
+    {
+      "github_url": "https://github.com/bangle-io/bangle-io",
+      "last_meaningful_activity_at": "2026-09-20T15:12:47Z",
+      "latest_release": null,
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Bangle.io",
+      "note": {
+        "gaps": [
+          "cost advantage",
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on cost advantage and feature parity."
+      },
+      "oss_id": "github.com/bangle-io/bangle-io",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 94.2,
+        "score": 71.1,
+        "trajectory": "Rising"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 83.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 70.1,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/bangle-io/bangle-io",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 1231
+    }
+  ],
+  "saas": {
+    "category": "Knowledge management",
+    "compare_path": "/open-source/notion-alternatives",
+    "domain": "notion.so",
+    "name": "Notion",
+    "saas_id": "notion",
+    "slug": "notion"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

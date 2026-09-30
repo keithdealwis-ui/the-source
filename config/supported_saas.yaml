@@ -1,0 +1,119 @@
+# The Source — initial supported SaaS products (KEI-807 criterion 3).
+#
+# These are the SaaS products the read surface (api/v1/) serves. The Chrome extension
+# (KEI-808) detects them locally from `match`, and the de-alwis.com template (KEI-809)
+# renders one page per product at `compare_path`.
+#
+# Selection rule (mechanical; recorded so it can be re-run and challenged):
+#   among catalogued SaaS products, rank by the number of recommended alternatives
+#   (export-guarded relationship + Replacement Fit publishable + credible alternative),
+#   then by how many independent upstream sources name the product, then by saas_id;
+#   take the top 20. Ranked 2026-09-30 from dataset as_of 2026-09-27 and scores
+#   evaluated 2026-09-29 (score_version 1.2.0). `scripts/rank_supported_saas.py` prints
+#   the ranking.
+#
+# `match` is editorial: it says which browser locations mean "the user is on this
+# product". Rules are checked locally by a client; nothing is sent anywhere.
+#   host         exact hostname (a leading "www." on the page is ignored)
+#   host_suffix  hostname ends with this (for per-customer subdomains)
+#   path_prefix  optional; the URL path must start with it
+# A rule with a path_prefix is more specific than one without, and wins.
+#
+# Adding or removing a product here needs no extension or site code change.
+
+schema: the-source.supported/1
+selected_by: claude-code
+selected_at: "2026-09-30"
+ticket: KEI-807
+
+recommendations:
+  min: 3      # a supported product with fewer is served with status insufficient_recommendations
+  max: 5      # at most this many are served; more_available says how many were left out
+
+match_semantics: >-
+  Lowercase the page hostname and strip one leading "www.". A rule matches when its host
+  equals the hostname (or the hostname ends with its host_suffix) and, if it has a
+  path_prefix, the URL path starts with it. When several rules match, the one with a
+  path_prefix wins; otherwise the first in file order.
+
+products:
+  - saas_id: google-analytics
+    slug: google-analytics
+    compare_path: /open-source/google-analytics-alternatives
+    match: [{host: analytics.google.com}, {host: marketingplatform.google.com, path_prefix: /about/analytics}]
+  - saas_id: datadog
+    slug: datadog
+    compare_path: /open-source/datadog-alternatives
+    match: [{host: datadoghq.com}, {host: app.datadoghq.com}, {host: us5.datadoghq.com}, {host: app.datadoghq.eu}]
+  - saas_id: notion
+    slug: notion
+    compare_path: /open-source/notion-alternatives
+    match: [{host: notion.so}, {host: notion.com}, {host_suffix: .notion.site}]
+  - saas_id: auth0
+    slug: auth0
+    compare_path: /open-source/auth0-alternatives
+    match: [{host: auth0.com}, {host: manage.auth0.com}]
+  - saas_id: trello
+    slug: trello
+    compare_path: /open-source/trello-alternatives
+    match: [{host: trello.com}]
+  - saas_id: firebase
+    slug: firebase
+    compare_path: /open-source/firebase-alternatives
+    match: [{host: firebase.google.com}, {host: console.firebase.google.com}]
+  - saas_id: postman
+    slug: postman
+    compare_path: /open-source/postman-alternatives
+    match: [{host: postman.com}, {host: web.postman.co}, {host: go.postman.co}]
+  - saas_id: contentful
+    slug: contentful
+    compare_path: /open-source/contentful-alternatives
+    match: [{host: contentful.com}, {host: app.contentful.com}]
+  - saas_id: heroku
+    slug: heroku
+    compare_path: /open-source/heroku-alternatives
+    match: [{host: heroku.com}, {host: dashboard.heroku.com}]
+  - saas_id: shopify
+    slug: shopify
+    compare_path: /open-source/shopify-alternatives
+    match: [{host: shopify.com}, {host: admin.shopify.com}, {host_suffix: .myshopify.com}]
+  - saas_id: amazon-s3
+    slug: amazon-s3
+    compare_path: /open-source/amazon-s3-alternatives
+    match: [{host: aws.amazon.com, path_prefix: /s3}, {host: s3.console.aws.amazon.com}]
+  - saas_id: new-relic
+    slug: new-relic
+    compare_path: /open-source/new-relic-alternatives
+    match: [{host: newrelic.com}, {host: one.newrelic.com}, {host: one.eu.newrelic.com}]
+  - saas_id: evernote
+    slug: evernote
+    compare_path: /open-source/evernote-alternatives
+    match: [{host: evernote.com}]
+  - saas_id: jira
+    slug: jira
+    compare_path: /open-source/jira-alternatives
+    match: [{host: atlassian.com, path_prefix: /software/jira}, {host_suffix: .atlassian.net, path_prefix: /jira}, {host_suffix: .atlassian.net, path_prefix: /browse}]
+  - saas_id: asana
+    slug: asana
+    compare_path: /open-source/asana-alternatives
+    match: [{host: asana.com}, {host: app.asana.com}]
+  - saas_id: zoom
+    slug: zoom
+    compare_path: /open-source/zoom-alternatives
+    match: [{host: zoom.us}, {host: zoom.com}, {host: app.zoom.us}]
+  - saas_id: dropbox
+    slug: dropbox
+    compare_path: /open-source/dropbox-alternatives
+    match: [{host: dropbox.com}]
+  - saas_id: google-drive
+    slug: google-drive
+    compare_path: /open-source/google-drive-alternatives
+    match: [{host: drive.google.com}]
+  - saas_id: monday-com
+    slug: monday
+    compare_path: /open-source/monday-alternatives
+    match: [{host: monday.com}, {host_suffix: .monday.com}]
+  - saas_id: chatgpt
+    slug: chatgpt
+    compare_path: /open-source/chatgpt-alternatives
+    match: [{host: chatgpt.com}, {host: chat.openai.com}]

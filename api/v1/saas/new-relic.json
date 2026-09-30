@@ -1,0 +1,259 @@
+{
+  "api_version": "v1",
+  "dataset_version": "3a6c3535b8bd01d0",
+  "last_checked": {
+    "newest": "2026-09-27T05:08:30Z",
+    "oldest": "2026-09-27T05:08:30Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "emmraan",
+      "opensaasdirectory",
+      "runacapital",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "github_url": "https://github.com/grafana/grafana",
+      "last_meaningful_activity_at": "2026-09-27T02:30:05Z",
+      "latest_release": {
+        "published_at": "2026-09-15T12:43:46Z",
+        "tag": "v13.0.9"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Grafana",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/grafana/grafana",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 96.3,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 93.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/grafana/grafana",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "solvohq",
+        "runacapital",
+        "opensaasdirectory",
+        "emmraan"
+      ],
+      "stars": 76936
+    },
+    {
+      "github_url": "https://github.com/netdata/netdata",
+      "last_meaningful_activity_at": "2026-09-26T19:11:21Z",
+      "latest_release": {
+        "published_at": "2026-09-16T16:35:20Z",
+        "tag": "v2.11.1"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Netdata",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/netdata/netdata",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 93.7,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 90.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 91.1,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/netdata/netdata",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "runacapital",
+        "opensaasdirectory"
+      ],
+      "stars": 80668
+    },
+    {
+      "github_url": "https://github.com/uptrace/uptrace",
+      "last_meaningful_activity_at": "2026-08-13T14:47:22Z",
+      "latest_release": {
+        "published_at": "2026-08-13T14:47:22Z",
+        "tag": "v2.1.0-beta.8"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Uptrace",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/uptrace/uptrace",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 72.3,
+        "trajectory": "Declining"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 81.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 89.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/uptrace/uptrace",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 4293
+    },
+    {
+      "github_url": "https://github.com/openobserve/openobserve",
+      "last_meaningful_activity_at": "2026-09-26T20:03:01Z",
+      "latest_release": {
+        "published_at": "2026-09-24T11:57:05Z",
+        "tag": "v1.0.4"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "OpenObserve",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity."
+      },
+      "oss_id": "github.com/openobserve/openobserve",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 94.0,
+        "trajectory": "Rising"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 87.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/openobserve/openobserve",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 22146
+    },
+    {
+      "github_url": "https://github.com/VictoriaMetrics/VictoriaMetrics",
+      "last_meaningful_activity_at": "2026-09-25T13:38:22Z",
+      "latest_release": {
+        "published_at": "2026-09-14T10:36:37Z",
+        "tag": "v1.152.0"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "VictoriaMetrics",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "feature parity",
+          "ease of adoption"
+        ],
+        "text": "Strongest on feature parity and ease of adoption."
+      },
+      "oss_id": "github.com/victoriametrics/victoriametrics",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 94.7,
+        "trajectory": "Stable"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 69.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/VictoriaMetrics/VictoriaMetrics",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 17772
+    }
+  ],
+  "saas": {
+    "category": "Observability",
+    "compare_path": "/open-source/new-relic-alternatives",
+    "domain": "newrelic.com",
+    "name": "New Relic",
+    "saas_id": "new-relic",
+    "slug": "new-relic"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

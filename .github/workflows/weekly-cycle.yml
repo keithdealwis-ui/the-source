@@ -1,0 +1,118 @@
+name: Weekly research and refresh cycle
+
+# KEI-807 criteria 9-12. The cron below is only a wake-up: every hour the job asks
+# `source_pipeline cycle-due` whether config/schedule.yaml says a cycle is due (default
+# Sunday 03:00 Asia/Dubai, 4-hour window). Change the schedule there, not here.
+#
+# One writer at a time: this workflow and the intake workflow share a concurrency group,
+# so two jobs never modify the canonical data at once.
+
+on:
+  schedule:
+    - cron: "7 * * * *"
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: "Why run a cycle now (recorded in the job summary)"
+        required: false
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: canonical-writer
+  cancel-in-progress: false
+
+jobs:
+  cycle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Is a cycle due?
+        id: due
+        env:
+          EVENT: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT" = "schedule" ]; then
+            python -m source_pipeline cycle-due | tee due.json
+            echo "due=$(python -c 'import json;print(str(json.load(open("due.json"))["due"]).lower())')" >> "$GITHUB_OUTPUT"
+          else
+            echo "due=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Restore upstream checkouts
+        if: steps.due.outputs.due == 'true'
+        uses: actions/cache@v4
+        with:
+          path: raw
+          key: raw-${{ hashFiles('config/sources.yaml', 'data/state/source_pins.json') }}
+          restore-keys: raw-
+
+      - name: Run the cycle
+        if: steps.due.outputs.due == 'true'
+        id: cycle
+        continue-on-error: true
+        env:
+          # A dedicated read-only token raises the API budget; the job token works without it.
+          GITHUB_TOKEN: ${{ secrets.SOURCE_GITHUB_TOKEN || github.token }}
+          TRIGGER: ${{ github.event_name == 'schedule' && 'schedule' || 'manual' }}
+        run: python -m source_pipeline cycle --trigger "$TRIGGER"
+
+      - name: Commit the result (promoted data on success; the run record always)
+        if: steps.due.outputs.due == 'true'
+        id: commit
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          RUN=$(python - <<'PY'
+          import json, glob
+          rs = [json.load(open(p)) for p in glob.glob("runs/*.json")]
+          print(max(rs, key=lambda r: r["started_at"])["run_id"])
+          PY
+          )
+          STATUS=$(python -c "import json;print(json.load(open('runs/$RUN.json'))['status'])")
+          VERSION=$(python -c "import json;print(json.load(open('runs/$RUN.json'))['canonical']['dataset_version_after'])")
+          echo "run=$RUN" >> "$GITHUB_OUTPUT"
+          echo "status=$STATUS" >> "$GITHUB_OUTPUT"
+          git config user.name "the-source-cycle"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/
+          if [ "$STATUS" = "succeeded" ]; then git add data api; fi
+          git commit -m "cycle: $RUN $STATUS (dataset $VERSION)" || echo "nothing to commit"
+          if [ "$STATUS" = "succeeded" ]; then git tag "cycle/$RUN"; fi
+          git push origin "HEAD:$BRANCH"
+          if [ "$STATUS" = "succeeded" ]; then git push origin "cycle/$RUN"; fi
+          {
+            echo "## Cycle $RUN: $STATUS"
+            echo
+            echo '```json'
+            python -c "import json;r=json.load(open('runs/$RUN.json'));print(json.dumps({k:r[k] for k in ('status','counts','canonical','error')},indent=2))"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Surface the outcome durably
+        if: steps.due.outputs.due == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN: ${{ steps.commit.outputs.run }}
+          STATUS: ${{ steps.commit.outputs.status }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh label create cycle-failure --color B60205 --description "Weekly cycle failed" 2>/dev/null || true
+          OPEN=$(gh issue list --label cycle-failure --state open --json number --jq '.[0].number')
+          if [ "$STATUS" = "failed" ]; then
+            BODY="Run \`$RUN\` failed. The last known-good dataset is unchanged. Record: runs/$RUN.json. Log: $RUN_URL. The next wake-up inside the window retries automatically."
+            if [ -n "$OPEN" ]; then gh issue comment "$OPEN" --body "$BODY"
+            else gh issue create --title "Weekly cycle failing" --label cycle-failure --body "$BODY"; fi
+            exit 1
+          elif [ -n "$OPEN" ]; then
+            gh issue close "$OPEN" --comment "Recovered: run \`$RUN\` succeeded ($RUN_URL)."
+          fi

@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://the-source.local/schema/the-source.score.schema.json",
+  "title": "The Source — scored project record (KEI-806)",
+  "description": "One line of data/score/records.jsonl. Stable across rubric versions: a rubric change bumps score_version, never this schema.",
+  "definitions": {
+    "evidence_item": {
+      "type": "object",
+      "required": ["text", "evidence"],
+      "properties": {"text": {"type": "string"}, "evidence": {"type": ["string", "null"]}}
+    },
+    "flag": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {"id": {"type": "string"}, "reason": {"type": "string"}, "detail": {"type": "string"},
+                     "evidence": {"type": ["string", "null"]}}
+    },
+    "nullable_score": {"type": ["number", "null"], "minimum": 0, "maximum": 100}
+  },
+  "type": "object",
+  "required": ["project", "canonical", "name", "url", "lanes", "score_version", "evaluated_at", "endorsement",
+               "project_health", "trajectory", "evidence_confidence", "replacement_fit", "replacement_fit_applicable",
+               "why", "disqualifiers", "watch_outs", "recommendation_eligible", "recommendation_blockers", "evidence"],
+  "additionalProperties": false,
+  "properties": {
+    "project": {"type": "string"},
+    "canonical": {"type": "string"},
+    "name": {"type": "string"},
+    "url": {"type": "string"},
+    "lanes": {"type": "object", "required": ["discover", "replace"],
+              "properties": {"discover": {"type": "boolean"}, "replace": {"type": "boolean"}}},
+    "score_version": {"type": "string"},
+    "evaluated_at": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"},
+    "endorsement": {
+      "type": "object",
+      "required": ["keith_tested", "keith_endorsed", "editorial_recommendation", "statement"],
+      "properties": {
+        "keith_tested": {"const": false},
+        "keith_endorsed": {"const": false},
+        "editorial_recommendation": {"const": false},
+        "statement": {"type": "string", "minLength": 20}
+      }
+    },
+    "project_health": {
+      "type": "object",
+      "required": ["score", "band", "evidence_insufficient", "band_note"],
+      "properties": {
+        "score": {"$ref": "#/definitions/nullable_score"},
+        "band": {"enum": ["Exceptional", "Healthy", "Developing", "Caution", "High Risk", null]},
+        "evidence_insufficient": {"type": "boolean"},
+        "band_note": {"type": "string"}
+      }
+    },
+    "trajectory": {"enum": ["Rising", "Stable", "Declining", "Insufficient history"]},
+    "evidence_confidence": {"$ref": "#/definitions/nullable_score"},
+    "presentation_label": {"type": ["string", "null"]},
+    "replacement_fit": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["saas", "saas_name", "score", "core_gate", "confidence", "credible_alternative", "publish",
+                     "refusal_reasons"],
+        "properties": {
+          "saas": {"type": "string", "pattern": "^saas:"},
+          "saas_name": {"type": "string"},
+          "score": {"$ref": "#/definitions/nullable_score"},
+          "core_gate": {"enum": ["passed", "failed", "unproven"]},
+          "confidence": {"$ref": "#/definitions/nullable_score"},
+          "credible_alternative": {"type": "boolean"},
+          "publish": {"type": "boolean"},
+          "refusal_reasons": {"type": "array", "items": {"type": "string"}},
+          "presentation_label": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "replacement_fit_applicable": {"type": "boolean"},
+    "why": {"type": "array", "items": {"$ref": "#/definitions/evidence_item"}},
+    "disqualifiers": {"type": "array", "items": {"$ref": "#/definitions/flag"}},
+    "watch_outs": {"type": "array", "items": {"$ref": "#/definitions/flag"}},
+    "recommendation_eligible": {"type": "boolean"},
+    "recommendation_blockers": {"type": "array", "items": {"type": "string"}},
+    "evidence": {
+      "type": "object",
+      "required": ["signals", "health", "replacement_fit"],
+      "properties": {"signals": {"type": "string"}, "health": {"type": "string"},
+                     "replacement_fit": {"type": "array", "items": {"type": "string"}}}
+    }
+  }
+}

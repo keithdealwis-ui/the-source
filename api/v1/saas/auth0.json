@@ -1,0 +1,274 @@
+{
+  "api_version": "v1",
+  "dataset_version": "3a6c3535b8bd01d0",
+  "last_checked": {
+    "newest": "2026-09-27T05:08:30Z",
+    "oldest": "2026-09-27T05:08:30Z"
+  },
+  "more_available": 2,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "altstack",
+      "btwso",
+      "diegoleme",
+      "emmraan",
+      "fossalt",
+      "opensaasdirectory",
+      "runacapital",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "github_url": "https://github.com/authgear/authgear-server",
+      "last_meaningful_activity_at": "2026-09-23T09:13:05Z",
+      "latest_release": {
+        "published_at": "2026-09-23T13:23:19Z",
+        "tag": "2026-09-23.0"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Authgear",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/authgear/authgear-server",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 88.3,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 92.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 96.5,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/authgear/authgear-server",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "diegoleme",
+        "fossalt"
+      ],
+      "stars": 2071
+    },
+    {
+      "github_url": "https://github.com/keycloak/keycloak",
+      "last_meaningful_activity_at": "2026-09-25T17:03:13Z",
+      "latest_release": {
+        "published_at": "2026-09-16T14:44:06Z",
+        "tag": "26.7.4"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Keycloak",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/keycloak/keycloak",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 95.1,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 86.6,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/keycloak/keycloak",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "runacapital",
+        "opensaasdirectory",
+        "emmraan",
+        "btwso",
+        "diegoleme",
+        "altstack",
+        "fossalt"
+      ],
+      "stars": 37002
+    },
+    {
+      "github_url": "https://github.com/ory/kratos",
+      "last_meaningful_activity_at": "2026-07-29T09:30:36Z",
+      "latest_release": {
+        "published_at": "2026-03-20T14:10:32Z",
+        "tag": "v26.2.0"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Ory",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/ory/kratos",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 89.1,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 82.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/ory/kratos",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 13894
+    },
+    {
+      "github_url": "https://github.com/logto-io/logto",
+      "last_meaningful_activity_at": "2026-09-26T00:49:30Z",
+      "latest_release": {
+        "published_at": "2026-08-31T11:56:01Z",
+        "tag": "v1.43.0"
+      },
+      "licence_spdx": "MPL-2.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Logto",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness; weakest on migration path."
+      },
+      "oss_id": "github.com/logto-io/logto",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 92.1,
+        "trajectory": "Rising"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 90.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 81.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/logto-io/logto",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "btwso",
+        "fossalt"
+      ],
+      "stars": 14637
+    },
+    {
+      "github_url": "https://github.com/zitadel/zitadel",
+      "last_meaningful_activity_at": "2026-09-25T15:05:33Z",
+      "latest_release": {
+        "published_at": "2026-09-23T16:33:07Z",
+        "tag": "v4.19.1"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Zitadel",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity; weakest on migration path."
+      },
+      "oss_id": "github.com/zitadel/zitadel",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 91.9,
+        "trajectory": "Stable"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 79.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/zitadel/zitadel",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "runacapital",
+        "opensaasdirectory"
+      ],
+      "stars": 15113
+    }
+  ],
+  "saas": {
+    "category": "Identity & access",
+    "compare_path": "/open-source/auth0-alternatives",
+    "domain": "auth0.com",
+    "name": "Auth0",
+    "saas_id": "auth0",
+    "slug": "auth0"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

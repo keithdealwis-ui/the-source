@@ -1,0 +1,32 @@
+# The Source — weekly research + refresh cycle (KEI-807 criteria 9-12).
+#
+# The scheduler (.github/workflows/weekly-cycle.yml) wakes every hour and asks
+# `python -m source_pipeline cycle --trigger schedule` whether a cycle is due. Changing
+# the day, time, timezone or window here changes when the cycle runs; no code or
+# workflow change is needed.
+
+schema: the-source.schedule/1
+
+# Default: Sunday 03:00 Asia/Dubai, a quiet off-peak window.
+timezone: Asia/Dubai
+weekday: sunday          # monday .. sunday
+time: "03:00"            # local time the window opens
+window_hours: 4          # the cycle may start any time inside the window (hourly wake-ups)
+max_attempts: 3          # per weekly cycle; a failed attempt is retried at the next wake-up
+
+# Discovery and update strategies run by each cycle, in order. Every strategy is recorded
+# in the run record with what it did.
+strategies:
+  - upstream_lists       # move licence-cleared upstream lists to their newest commit (research.py)
+  - intake_ledger        # repositories admitted through the manual intake path (intake.py)
+  - live_refresh         # re-verify every candidate against its host; stale/archived detection
+  - new_pair_scoring     # Replacement Fit / Project Health for relationships not yet scored
+
+research:
+  min_entry_ratio: 0.8   # an upstream that suddenly yields fewer entries keeps its old pin
+
+refresh:
+  retry_failed_lookups: 2   # re-ask only the repositories whose lookup failed, this many times
+
+scoring:
+  max_new_projects_per_cycle: 60   # single-project scoring budget; the rest wait a week

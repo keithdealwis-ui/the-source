@@ -1,0 +1,66 @@
+# Licence-exception lane (KEI-805 criterion 10).
+#
+# Keith directed on 2026-09-27 that projects with licence issues are RETAINED in the
+# dataset as flagged records rather than discarded. Retention is not recommendation:
+#
+#   - every such record is recommendation_eligible = false
+#   - none enters the launch set or a public export
+#   - retention is not evidence of any right to reuse, copy or redistribute
+#
+# A single project is admitted to recommendations only by a named entry in
+# config/licence_exceptions.yaml with a human approver.
+
+retained_under:
+  decided_by: keith
+  decision_ref: "Linear KEI-805 comment 258b38dd-a288-4b6e-bbe6-9fae7220d4fd"
+  decided_at: "2026-09-27"
+  scope: "schema inclusion and flagged retention only; not recommendation, publication or redistribution"
+
+# Issue categories, in the order they are tested. The first that applies is assigned.
+categories:
+  undetermined: "the licence files could not be read, so nothing can be said"
+  missing: "no licence file at the repository root and the host reports no licence"
+  source_available: "the licence text names source-available or use-restricted terms (Business Source, Elastic, SSPL, Functional Source, Sustainable Use, Commons Clause, fair-code, non-commercial)"
+  open_core: "an open licence covers part of the repository; an enterprise or commercial licence covers the rest"
+  restricted: "a standard licence with terms added or removed"
+  non_osi: "the host identifies the licence, and it is not on the recognised open-source list"
+  conflicting: "upstream lists declare a recognised open-source licence that the repository's own licence files do not bear out"
+  unrecognised: "licence text is present and matches no reference licence"
+
+source_available_markers:
+  - business source
+  - elastic license
+  - server side public
+  - functional source
+  - sustainable use
+  - commons clause
+  - fair source
+  - fair code
+  - non commercial
+  - noncommercial
+  - source available
+
+open_core_markers:
+  - enterprise
+  - commercial
+  - proprietary
+  - subscription
+  - license key
+  - licence key
+  - portions of
+  - as follows
+  - directory
+  - directories
+  - folder
+  - resides under
+  - license defined in
+  - licence defined in
+  - separate license
+  - different license
+  - dual license
+  - dual licensed
+  - multi license
+  - files in
+  - files under
+  - tree
+  - reference to an ee/ or enterprise/ path

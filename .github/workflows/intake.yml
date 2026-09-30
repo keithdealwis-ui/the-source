@@ -1,0 +1,98 @@
+name: Intake
+
+# KEI-807 criteria 13-18: the authenticated intake surface. A client submits a repository
+# URL by dispatching this workflow (GitHub authenticates the caller). A client needs only
+# "Actions: read and write" on this repository to submit and follow a request; it never
+# receives write access to the repository's contents. The job itself is the only writer.
+#
+#   submit   POST /repos/{owner}/{repo}/actions/workflows/intake.yml/dispatches
+#   status   GET  /repos/{owner}/{repo}/actions/workflows/intake.yml/runs  (run name "intake <request_id>")
+#   outcome  GET  /repos/{owner}/{repo}/contents/data/intake/outcomes/<request_id>.json
+#
+# scripts/source_intake.py wraps all three. See docs/INTAKE.md.
+
+run-name: "intake ${{ inputs.request_id }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo_url:
+        description: "Repository URL to assess"
+        required: true
+      request_id:
+        description: "Client-chosen id, 6-80 of [A-Za-z0-9._-]; the key for status and outcome"
+        required: true
+      saas_hint:
+        description: "Optional SaaS id the submitter believes it replaces (advisory only)"
+        required: false
+      submitted_by:
+        description: "Who or what submitted it (for example keith, chatgpt, simon)"
+        required: false
+      note:
+        description: "Optional note"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: canonical-writer
+  cancel-in-progress: false
+
+jobs:
+  assess:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Refuse a malformed request id before it reaches any path
+        env:
+          REQUEST_ID: ${{ inputs.request_id }}
+        run: |
+          python -c "import os,re,sys; sys.exit(0 if re.fullmatch(r'[A-Za-z0-9._-]{6,80}', os.environ['REQUEST_ID']) and '..' not in os.environ['REQUEST_ID'] else 'invalid request_id')"
+
+      - name: Assess
+        id: assess
+        env:
+          GITHUB_TOKEN: ${{ secrets.SOURCE_GITHUB_TOKEN || github.token }}
+          REPO_URL: ${{ inputs.repo_url }}
+          REQUEST_ID: ${{ inputs.request_id }}
+          SAAS_HINT: ${{ inputs.saas_hint }}
+          SUBMITTED_BY: ${{ inputs.submitted_by || github.actor }}
+          NOTE: ${{ inputs.note }}
+        run: |
+          set +e
+          python -m source_pipeline intake-assess --url "$REPO_URL" --request-id "$REQUEST_ID" \
+            ${SAAS_HINT:+--saas-hint "$SAAS_HINT"} --submitted-by "$SUBMITTED_BY" ${NOTE:+--note "$NOTE"} > outcome.json
+          echo "rc=$?" >> "$GITHUB_OUTPUT"
+          cat outcome.json
+
+      - name: Record the outcome
+        env:
+          REQUEST_ID: ${{ inputs.request_id }}
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          test -f "data/intake/outcomes/$REQUEST_ID.json" || { echo "no outcome recorded"; exit 1; }
+          OUTCOME=$(python -c "import json,os;print(json.load(open('data/intake/outcomes/'+os.environ['REQUEST_ID']+'.json'))['outcome'])")
+          git config user.name "the-source-intake"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/intake data/scores
+          git commit -m "intake: $REQUEST_ID $OUTCOME" || echo "outcome already recorded"
+          git push origin "HEAD:$BRANCH"
+          {
+            echo "## Intake $REQUEST_ID: $OUTCOME"
+            echo '```json'
+            python -c "import json,os;o=json.load(open('data/intake/outcomes/'+os.environ['REQUEST_ID']+'.json'));print(json.dumps({k:o[k] for k in ('repo_url','oss_id','outcome','reasons','canonical')},indent=2))"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: intake-outcome-${{ inputs.request_id }}
+          path: data/intake/outcomes/${{ inputs.request_id }}.json

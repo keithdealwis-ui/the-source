@@ -1,0 +1,81 @@
+# The Source — Discover lane (KEI-811).
+#
+# Every way a repository can enter the discovery universe is declared here, with its
+# bound. Discovery is reproducible: `discover-harvest` records what each strategy
+# returned in data/discover/frontier.json, and everything downstream reads only that
+# record. The quality bar is NOT declared here: it is config/policy.yaml, the same file
+# the Replace lane (KEI-805) is judged by, applied unchanged.
+
+schema: the-source.discover/1
+
+# Depth 0 inputs.
+seeds:
+  # Keith's corpus, pasted verbatim. Any github.com/<owner>/<repo> URL in the file is a seed.
+  keith_seed_file: config/discover_seeds.md
+  # GitHub accounts whose starred and watched repositories are seeds. Read through the
+  # API on every harvest, so Keith never ingests a project by hand.
+  github_accounts:
+    - keithdealwis-ui
+  # The Replace lane: every repository in the KEI-805 dataset enters the universe as a
+  # candidate. Its KEI-805 record is referenced, never rewritten.
+  replace_lane_dataset: data/dataset/oss_projects.jsonl
+
+# Depth 1 strategies, applied to every depth-0 seed from Keith's corpus and accounts.
+strategies:
+  owner_neighbourhood:
+    # The owner's other public, non-fork repositories, most-starred first.
+    per_owner: 25
+  readme_links:
+    # Repositories a seed's README links to: integrations, dependencies, companions.
+    per_repo: 40
+  topic_search:
+    # Topics carried by the seeds, ranked by how many seeds carry them (then by name).
+    # Each topic is searched once; results are most-starred first.
+    max_topics: 90
+    per_topic: 100
+    min_stars: 50
+    # Topics too generic to say anything about a project's neighbourhood.
+    stop_topics: [hacktoberfest, open-source, opensource, github, awesome, awesome-list, list,
+                  python, javascript, typescript, go, golang, rust, java, react, nodejs, docker,
+                  self-hosted, selfhosted, free, tool, tools, app, library, api]
+  curated_lists:
+    # Link harvesting only: a listed URL is a fact that makes a repository a candidate.
+    # No list text is kept or republished. Lists without a recognised licence are refused
+    # so that nothing rests on a selection we have no right to use.
+    allowed_licences: [MIT, Apache-2.0, CC0-1.0, CC-BY-4.0, BSD-3-Clause, Unlicense]
+    lists:
+      - punkpeye/awesome-mcp-servers
+      - punkpeye/awesome-mcp-clients
+      - wong2/awesome-mcp-servers
+      - VoltAgent/awesome-agent-skills
+      - Shubhamsaboo/awesome-llm-apps
+      - steven2358/awesome-generative-ai
+      - hesreallyhim/awesome-claude-code      # expected refusal: NOASSERTION
+      - ComposioHQ/awesome-claude-skills      # expected refusal: no licence
+      - e2b-dev/awesome-ai-agents             # expected refusal: NOASSERTION
+  trending:
+    # Highly starred and fast-growing repositories, as GitHub search reports them.
+    # {as_of - N days} placeholders are resolved against the harvest clock and recorded.
+    queries:
+      - {id: new_fast_growing, q: "created:>={as_of-180d} stars:>=300", pages: 10}
+      - {id: established_active, q: "stars:>=15000 pushed:>={as_of-30d}", pages: 10}
+
+# Depth 2: recursion from depth-1 candidates that more than one independent route
+# reached. Bounded so that a single prolific owner or list cannot run away with it.
+recursion:
+  max_depth: 2
+  frontier_min_routes: 2       # a depth-1 candidate needs >= 2 distinct routes to expand
+  frontier_max: 250            # ordered by routes desc, then stars desc, then id
+  owner_neighbourhood_per_owner: 10
+  readme_links_per_repo: 20
+
+# Hard ceiling on the raw universe. Candidates past it (ordered by depth, then number of
+# routes, then id) are not evaluated and are recorded as rejected with
+# `discovery_budget_exceeded`, never dropped.
+raw_universe_cap: 12000
+
+# Discover-lane rejections that are not in policy.yaml.
+aliases:
+  # A fork is recorded as an alias of its parent and not retained on its own, unless it
+  # is named here with a human reason.
+  admitted_forks: {}

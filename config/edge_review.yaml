@@ -1,0 +1,55 @@
+# Relationship plausibility review.
+#
+# Every relationship that passed the automated checks was read by a reviewer, and the
+# ones below were rejected because the project is plainly not a replacement for the
+# product: it is a different kind of software, a library rather than a product, or a
+# repository that is not the project's code.
+#
+# This is a desk review of what each thing IS. It is not a test of how well one
+# replaces the other; fitness testing and scoring are out of scope (KEI-805).
+# A relationship not listed here was read and left standing.
+
+reviewed_at: "2026-09-27"
+reviewed_by: claude-heavy
+scope: "all relationships with validation.status == validated, as of the 2026-09-27 run"
+
+rejected:
+  - {saas: auth0, oss: github.com/cerbos/cerbos, reason: "authorisation policy engine; does not authenticate users"}
+  - {saas: okta, oss: github.com/cerbos/cerbos, reason: "authorisation policy engine; does not authenticate users"}
+  - {saas: auth0, oss: github.com/permitio/opal, reason: "policy administration layer; not an identity provider"}
+  - {saas: okta, oss: github.com/permitio/opal, reason: "policy administration layer; not an identity provider"}
+  - {saas: sentry, oss: github.com/bugzilla/bugzilla, reason: "bug tracker; does not capture application errors"}
+  - {saas: heroku, oss: github.com/pulumi/pulumi, reason: "infrastructure-as-code tool; not a platform that runs applications"}
+  - {saas: firebase, oss: github.com/encoredev/encore, reason: "backend development framework; not a hosted backend service"}
+  - {saas: zapier, oss: github.com/temporalio/temporal, reason: "workflow engine programmed in code; not a no-code automation product"}
+  - {saas: algolia, oss: github.com/qdrant/qdrant, reason: "vector database; not a site-search service"}
+  - {saas: algolia, oss: github.com/quickwit-oss/tantivy, reason: "search library; not a product"}
+  - {saas: algolia, oss: github.com/appbaseio/reactivesearch, reason: "UI component library; not a search backend"}
+  - {saas: typeform, oss: github.com/formkit/formkit, reason: "form library for developers; not a form product"}
+  - {saas: figma, oss: github.com/radix-ui/primitives, reason: "UI component library; not a design tool"}
+  - {saas: figma, oss: github.com/plasmicapp/plasmic, reason: "visual page builder; not a design tool"}
+  - {saas: figma, oss: github.com/excalidraw/excalidraw, reason: "whiteboard; not an interface design tool"}
+  - {saas: contentful, oss: github.com/plasmicapp/plasmic, reason: "visual page builder; not a headless CMS"}
+  - {saas: datadog, oss: github.com/kubestellar/console, reason: "multi-cluster Kubernetes console; not an observability platform"}
+  - {saas: datadog, oss: github.com/openstatushq/openstatus, reason: "status page and uptime monitor; not an observability platform"}
+  - {saas: new-relic, oss: github.com/openstatushq/openstatus, reason: "status page and uptime monitor; not an observability platform"}
+  - {saas: buffer, oss: github.com/mastodon/mastodon, reason: "social network; not a tool for scheduling posts to other networks"}
+  - {saas: discord, oss: github.com/discourse/discourse, reason: "forum; not real-time chat"}
+  - {saas: discord, oss: github.com/stoatchat/self-hosted, reason: "deployment configuration repository; not the project's code"}
+  - {saas: github, oss: github.com/gerritcodereview/gerrit, reason: "code review tool; not repository hosting"}
+  - {saas: github, oss: github.com/reviewboard/reviewboard, reason: "code review tool; not repository hosting"}
+  - {saas: github-copilot, oss: github.com/ycm-core/ycmd, reason: "conventional code-completion engine; not an AI assistant"}
+  - {saas: cloudinary, oss: github.com/lovell/sharp, reason: "image processing library; not a media service"}
+  - {saas: openai-api, oss: github.com/huggingface/sentence-transformers, reason: "embedding library; not a model-serving API"}
+  - {saas: mongodb-atlas, oss: github.com/pocketbase/pocketbase, reason: "application backend on SQLite; not a document database"}
+  - {saas: amazon-dynamodb, oss: github.com/postgres/postgres, reason: "relational database; not a key-value store"}
+  - {saas: planetscale, oss: github.com/postgres/postgres, reason: "the claim is generic; the product is a managed database platform, not a database engine"}
+  - {saas: pusher, oss: github.com/svix/svix-webhooks, reason: "webhook delivery; not realtime channels"}
+  - {saas: google-vertex-ai, oss: github.com/qdrant/qdrant, reason: "vector database; not a machine-learning platform"}
+  - {saas: stripe, oss: github.com/getlago/lago, reason: "billing and metering; does not process payments"}
+  - {saas: apollo-io, oss: github.com/sortlist/overloop-cli, reason: "command-line client for a commercial service; not a replacement product"}
+  - {saas: vimeo, oss: github.com/jellyfin/jellyfin, reason: "personal media server; not video hosting for publishing"}
+  - {saas: zendesk, oss: github.com/suitecrm/suitecrm, reason: "CRM; not a help desk"}
+  - {saas: fivetran, oss: github.com/dagster-io/dagster, reason: "orchestrator; supplies no managed connectors"}
+  - {saas: fivetran, oss: github.com/prefecthq/prefect, reason: "orchestrator; supplies no managed connectors"}
+  - {saas: fivetran, oss: github.com/kestra-io/kestra, reason: "orchestrator; supplies no managed connectors"}

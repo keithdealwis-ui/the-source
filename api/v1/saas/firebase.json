@@ -1,0 +1,271 @@
+{
+  "api_version": "v1",
+  "dataset_version": "3a6c3535b8bd01d0",
+  "last_checked": {
+    "newest": "2026-09-27T05:08:30Z",
+    "oldest": "2026-09-27T05:08:30Z"
+  },
+  "more_available": 1,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "altstack",
+      "btwso",
+      "emmraan",
+      "fossalt",
+      "opensaasdirectory",
+      "runacapital",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "github_url": "https://github.com/kuzzleio/kuzzle",
+      "last_meaningful_activity_at": "2026-09-27T04:42:20Z",
+      "latest_release": {
+        "published_at": "2026-09-27T04:42:20Z",
+        "tag": "v2.57.0-beta.2"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Kuzzle",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/kuzzleio/kuzzle",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 92.1,
+        "score": 81.8,
+        "trajectory": "Declining"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 90.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/kuzzleio/kuzzle",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 1670
+    },
+    {
+      "github_url": "https://github.com/nhost/nhost",
+      "last_meaningful_activity_at": "2026-09-24T19:17:37Z",
+      "latest_release": {
+        "published_at": "2026-09-22T19:44:19Z",
+        "tag": "auth@0.52.1-beta1"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Nhost",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/nhost/nhost",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 89.5,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 82.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/nhost/nhost",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital",
+        "btwso",
+        "fossalt"
+      ],
+      "stars": 9315
+    },
+    {
+      "github_url": "https://github.com/supabase/supabase",
+      "last_meaningful_activity_at": "2026-09-26T03:22:47Z",
+      "latest_release": {
+        "published_at": "2026-08-07T13:57:57Z",
+        "tag": "v1.26.08"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Supabase",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/supabase/supabase",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 97.9,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 82.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/supabase/supabase",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "runacapital",
+        "opensaasdirectory",
+        "emmraan",
+        "btwso",
+        "altstack",
+        "fossalt"
+      ],
+      "stars": 110793
+    },
+    {
+      "github_url": "https://github.com/appwrite/appwrite",
+      "last_meaningful_activity_at": "2026-09-26T17:15:58Z",
+      "latest_release": {
+        "published_at": "2026-09-23T13:52:45Z",
+        "tag": "2.3.0"
+      },
+      "licence_spdx": "BSD-3-Clause",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Appwrite",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness."
+      },
+      "oss_id": "github.com/appwrite/appwrite",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 94.1,
+        "trajectory": "Rising"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 78.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/appwrite/appwrite",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "runacapital",
+        "opensaasdirectory",
+        "btwso",
+        "altstack",
+        "fossalt"
+      ],
+      "stars": 57486
+    },
+    {
+      "github_url": "https://github.com/appy-one/acebase",
+      "last_meaningful_activity_at": "2026-06-25T16:55:42Z",
+      "latest_release": {
+        "published_at": "2026-06-25T16:55:42Z",
+        "tag": "v1.29.13"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "maintained",
+      "name": "AceBase",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness."
+      },
+      "oss_id": "github.com/appy-one/acebase",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 75.7,
+        "trajectory": "Rising"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 68.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/appy-one/acebase",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 524
+    }
+  ],
+  "saas": {
+    "category": "Backend as a service",
+    "compare_path": "/open-source/firebase-alternatives",
+    "domain": "firebase.google.com",
+    "name": "Firebase",
+    "saas_id": "firebase",
+    "slug": "firebase"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

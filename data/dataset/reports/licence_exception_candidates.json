@@ -1,0 +1,4339 @@
+[
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [
+        "ee"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "PostHog",
+    "oss_id": "github.com/posthog/posthog",
+    "reason": "enterprise directory at the repository root: ee; licence text scopes or splits the licence: as follows, directories, directory, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 7,
+    "repo_url": "https://github.com/PostHog/posthog",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "MIT"
+      },
+      {
+        "source_id": "awesome-selfhosted",
+        "value": "MIT"
+      },
+      {
+        "source_id": "emmraan",
+        "value": "MIT"
+      },
+      {
+        "source_id": "altstack",
+        "value": "Other"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [
+        "enterprise"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "enterprise",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Chatwoot",
+    "oss_id": "github.com/chatwoot/chatwoot",
+    "reason": "enterprise directory at the repository root: enterprise; licence text scopes or splits the licence: as follows, directories, directory, enterprise, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 6,
+    "repo_url": "https://github.com/chatwoot/chatwoot",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "MIT"
+      },
+      {
+        "source_id": "awesome-selfhosted",
+        "value": "Proprietary"
+      },
+      {
+        "source_id": "emmraan",
+        "value": "MIT"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "business source",
+        "exceptions",
+        "licensed under something that is not a recognised open licence",
+        "require"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Budibase",
+    "oss_id": "github.com/budibase/budibase",
+    "reason": "licence text contains source-available or use-restricted terms: business source",
+    "recommendation_eligible": false,
+    "relationships_flagged": 5,
+    "repo_url": "https://github.com/Budibase/budibase",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "awesome-selfhosted",
+        "value": "Proprietary"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "apply",
+        "commercial",
+        "competing",
+        "except",
+        "functional source",
+        "non commercial"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Sentry",
+    "oss_id": "github.com/getsentry/sentry",
+    "reason": "licence text contains source-available or use-restricted terms: functional source, non commercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 4,
+    "repo_url": "https://github.com/getsentry/sentry",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "enterprise",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Authentik",
+    "oss_id": "github.com/goauthentik/authentik",
+    "reason": "licence text scopes or splits the licence: as follows, directories, directory, enterprise, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 4,
+    "repo_url": "https://github.com/goauthentik/authentik",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "MIT"
+      },
+      {
+        "source_id": "emmraan",
+        "value": "MIT"
+      },
+      {
+        "source_id": "altstack",
+        "value": "MIT"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "applies",
+        "directory",
+        "licensed under something that is not a recognised open licence",
+        "may not",
+        "unless"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Joplin",
+    "oss_id": "github.com/laurent22/joplin",
+    "reason": "licence text scopes or splits the licence: directory",
+    "recommendation_eligible": false,
+    "relationships_flagged": 4,
+    "repo_url": "https://github.com/laurent22/joplin",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "AGPL-3.0"
+      },
+      {
+        "source_id": "awesome-selfhosted",
+        "value": "MIT"
+      },
+      {
+        "source_id": "emmraan",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [
+        "enterprise"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE-AGPL.txt",
+        "LICENSE-EMBEDDING.txt",
+        "LICENSE-MCL.txt",
+        "LICENSE.txt"
+      ],
+      "restriction_markers": [
+        "additional permission",
+        "apply",
+        "commercial",
+        "directory",
+        "enterprise",
+        "except",
+        "files in",
+        "licensed under something that is not a recognised open licence",
+        "may not",
+        "not permitted",
+        "only",
+        "portions of",
+        "prohibited",
+        "proprietary",
+        "purchase",
+        "reference to an ee/ or enterprise/ path",
+        "required",
+        "unless"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Metabase",
+    "oss_id": "github.com/metabase/metabase",
+    "reason": "enterprise directory at the repository root: enterprise; licence text scopes or splits the licence: commercial, directory, enterprise, files in, portions of, proprietary, reference to an ee/ or enterprise/ path",
+    "recommendation_eligible": false,
+    "relationships_flagged": 4,
+    "repo_url": "https://github.com/metabase/metabase",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "AGPL-3.0"
+      },
+      {
+        "source_id": "altstack",
+        "value": "AGPLv3"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [
+        "enterprise"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE-ENTERPRISE",
+        "LICENSE-MIT"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "commercial",
+        "directories",
+        "enterprise",
+        "except",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "may not",
+        "portions of",
+        "proprietary",
+        "reference to an ee/ or enterprise/ path",
+        "required",
+        "resides under",
+        "tree"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Novu",
+    "oss_id": "github.com/novuhq/novu",
+    "reason": "enterprise directory at the repository root: enterprise; licence text scopes or splits the licence: as follows, commercial, directories, enterprise, license defined in, portions of, proprietary, reference to an ee/ or enterprise/ path, resides under, tree",
+    "recommendation_eligible": false,
+    "relationships_flagged": 4,
+    "repo_url": "https://github.com/novuhq/novu",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": null,
+      "host_spdx": null,
+      "licence_files": [],
+      "restriction_markers": []
+    },
+    "issue_category": "missing",
+    "maintenance": "active",
+    "name": "inlang",
+    "oss_id": "github.com/opral/inlang",
+    "reason": "no licence file at the repository root and the host reports no licence",
+    "recommendation_eligible": false,
+    "relationships_flagged": 4,
+    "repo_url": "https://github.com/opral/inlang",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "Apache-2.0"
+      ],
+      "enterprise_directories": [
+        "ee"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Tolgee",
+    "oss_id": "github.com/tolgee/tolgee-platform",
+    "reason": "enterprise directory at the repository root: ee; licence text scopes or splits the licence: as follows, directories, directory, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 4,
+    "repo_url": "https://github.com/tolgee/tolgee-platform",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as a service",
+        "cannot",
+        "unless"
+      ]
+    },
+    "issue_category": "restricted",
+    "maintenance": "active",
+    "name": "CapRover",
+    "oss_id": "github.com/caprover/caprover",
+    "reason": "licence text adds or removes terms: as a service, cannot, unless",
+    "recommendation_eligible": false,
+    "relationships_flagged": 3,
+    "repo_url": "https://github.com/caprover/caprover",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "Apache-2.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [
+        "ee"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "additional permission",
+        "apply",
+        "commercial",
+        "enterprise",
+        "except",
+        "files in",
+        "licensed under something that is not a recognised open licence",
+        "only",
+        "reference to an ee/ or enterprise/ path",
+        "require"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Customermates",
+    "oss_id": "github.com/customermates/customermates",
+    "reason": "enterprise directory at the repository root: ee; licence text scopes or splits the licence: commercial, enterprise, files in, reference to an ee/ or enterprise/ path",
+    "recommendation_eligible": false,
+    "relationships_flagged": 3,
+    "repo_url": "https://github.com/customermates/customermates",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "altstack",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.MD",
+        "LICENSE_PROPRIETARY.md"
+      ],
+      "restriction_markers": [
+        "applies",
+        "as follows",
+        "commercial",
+        "directories",
+        "directory",
+        "folder",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "only",
+        "portions of",
+        "proprietary",
+        "resides under",
+        "source available",
+        "subscription"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Dokploy",
+    "oss_id": "github.com/dokploy/dokploy",
+    "reason": "licence text contains source-available or use-restricted terms: source available",
+    "recommendation_eligible": false,
+    "relationships_flagged": 3,
+    "repo_url": "https://github.com/Dokploy/dokploy",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "Apache-2.0"
+      },
+      {
+        "source_id": "emmraan",
+        "value": "MIT"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Formbricks",
+    "oss_id": "github.com/formbricks/formbricks",
+    "reason": "licence text scopes or splits the licence: as follows, directories, directory, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 3,
+    "repo_url": "https://github.com/formbricks/formbricks",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "AGPL-3.0"
+      },
+      {
+        "source_id": "emmraan",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "GitLab CE",
+    "oss_id": "github.com/gitlabhq/gitlabhq",
+    "reason": "licence text scopes or splits the licence: as follows, directories, directory, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 3,
+    "repo_url": "https://github.com/gitlabhq/gitlabhq",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "MIT"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as a service",
+        "server side public"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Graylog",
+    "oss_id": "github.com/graylog2/graylog2-server",
+    "reason": "licence text contains source-available or use-restricted terms: server side public",
+    "recommendation_eligible": false,
+    "relationships_flagged": 3,
+    "repo_url": "https://github.com/Graylog2/graylog2-server",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "SSPL-1.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "LGPL-2.1"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "applies",
+        "apply",
+        "cannot",
+        "except",
+        "exception",
+        "exceptions",
+        "may not",
+        "must not",
+        "noncommercial",
+        "not allowed",
+        "only",
+        "prohibited",
+        "proprietary",
+        "provided that you",
+        "required",
+        "restricted",
+        "unless"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "LimeSurvey",
+    "oss_id": "github.com/limesurvey/limesurvey",
+    "reason": "licence text contains source-available or use-restricted terms: noncommercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 3,
+    "repo_url": "https://github.com/LimeSurvey/LimeSurvey",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "GPL-2.0"
+      },
+      {
+        "source_id": "emmraan",
+        "value": "GPL-2.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.enterprise",
+        "LICENSE.txt"
+      ],
+      "restriction_markers": [
+        "additional terms",
+        "applies",
+        "apply",
+        "cannot",
+        "commercial",
+        "different license",
+        "enterprise",
+        "except",
+        "exceptions",
+        "licensed under something that is not a recognised open licence",
+        "may not",
+        "only",
+        "provided that you",
+        "required",
+        "separate license",
+        "shall not",
+        "source available",
+        "subscription",
+        "unless"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Mattermost",
+    "oss_id": "github.com/mattermost/mattermost",
+    "reason": "licence text contains source-available or use-restricted terms: source available",
+    "recommendation_eligible": false,
+    "relationships_flagged": 3,
+    "repo_url": "https://github.com/mattermost/mattermost",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "AGPL-3.0"
+      },
+      {
+        "source_id": "awesome-selfhosted",
+        "value": "Proprietary"
+      },
+      {
+        "source_id": "altstack",
+        "value": "Other"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [
+        "ee"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under",
+        "restriction"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "OpenReplay",
+    "oss_id": "github.com/openreplay/openreplay",
+    "reason": "enterprise directory at the repository root: ee; licence text scopes or splits the licence: as follows, directories, directory, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 3,
+    "repo_url": "https://github.com/openreplay/openreplay",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "Elastic-2.0"
+      },
+      {
+        "source_id": "emmraan",
+        "value": "MIT"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "additional restriction",
+        "applies",
+        "apply",
+        "business source",
+        "commercial",
+        "employees",
+        "may not",
+        "production use",
+        "provided that you",
+        "purchase",
+        "required",
+        "restriction"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Outline",
+    "oss_id": "github.com/outline/outline",
+    "reason": "licence text contains source-available or use-restricted terms: business source",
+    "recommendation_eligible": false,
+    "relationships_flagged": 3,
+    "repo_url": "https://github.com/outline/outline",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "BSL-1.1"
+      },
+      {
+        "source_id": "altstack",
+        "value": "Other"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [
+        "ee"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Rocket.Chat",
+    "oss_id": "github.com/rocketchat/rocket.chat",
+    "reason": "enterprise directory at the repository root: ee; licence text scopes or splits the licence: as follows, directories, directory, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 3,
+    "repo_url": "https://github.com/RocketChat/Rocket.Chat",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "MIT"
+      },
+      {
+        "source_id": "awesome-selfhosted",
+        "value": "MIT"
+      },
+      {
+        "source_id": "altstack",
+        "value": "Other"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [
+        "ee"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "enterprise",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "SigNoz",
+    "oss_id": "github.com/signoz/signoz",
+    "reason": "enterprise directory at the repository root: ee; licence text scopes or splits the licence: as follows, directories, directory, enterprise, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 3,
+    "repo_url": "https://github.com/SigNoz/signoz",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "MIT"
+      },
+      {
+        "source_id": "altstack",
+        "value": "MIT"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "resides under",
+        "tree"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Hanko",
+    "oss_id": "github.com/teamhanko/hanko",
+    "reason": "licence text scopes or splits the licence: as follows, directories, directory, license defined in, portions of, resides under, tree",
+    "recommendation_eligible": false,
+    "relationships_flagged": 3,
+    "repo_url": "https://github.com/teamhanko/hanko",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "additional permission",
+        "applies",
+        "apply",
+        "commercial",
+        "enterprise",
+        "exception",
+        "licensed under something that is not a recognised open licence",
+        "only",
+        "proprietary",
+        "reference to an ee/ or enterprise/ path",
+        "restriction",
+        "subscription"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Twenty",
+    "oss_id": "github.com/twentyhq/twenty",
+    "reason": "licence text scopes or splits the licence: commercial, enterprise, proprietary, reference to an ee/ or enterprise/ path, subscription",
+    "recommendation_eligible": false,
+    "relationships_flagged": 3,
+    "repo_url": "https://github.com/twentyhq/twenty",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "AGPL-3.0"
+      },
+      {
+        "source_id": "altstack",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "BSD-3-Clause"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE",
+        "LICENSE-BSD"
+      ],
+      "restriction_markers": [
+        "directories",
+        "directory",
+        "license key",
+        "licensed under something that is not a recognised open licence",
+        "only"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Weaviate",
+    "oss_id": "github.com/weaviate/weaviate",
+    "reason": "licence text scopes or splits the licence: directories, directory, license key",
+    "recommendation_eligible": false,
+    "relationships_flagged": 3,
+    "repo_url": "https://github.com/weaviate/weaviate",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "emmraan",
+        "value": "BSD-3-Clause"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Activepieces",
+    "oss_id": "github.com/activepieces/activepieces",
+    "reason": "licence text scopes or splits the licence: as follows, directories, directory, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/activepieces/activepieces",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "MIT"
+      },
+      {
+        "source_id": "altstack",
+        "value": "MIT"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "applies",
+        "apply",
+        "business source",
+        "commercial",
+        "may not",
+        "production use",
+        "provided that you",
+        "purchase",
+        "required"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "ArangoDB",
+    "oss_id": "github.com/arangodb/arangodb",
+    "reason": "licence text contains source-available or use-restricted terms: business source",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/arangodb/arangodb",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "additional terms",
+        "applies",
+        "apply",
+        "cannot",
+        "commercial",
+        "except",
+        "exception",
+        "licensed under something that is not a recognised open licence",
+        "must not",
+        "only",
+        "portions of",
+        "prohibited",
+        "require",
+        "required",
+        "restriction",
+        "shall not",
+        "unless"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "GoatCounter",
+    "oss_id": "github.com/arp242/goatcounter",
+    "reason": "licence text scopes or splits the licence: commercial, portions of",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/arp242/goatcounter",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "EUPL-1.2"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "apply",
+        "commercial",
+        "competing",
+        "except",
+        "functional source",
+        "non commercial"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Typebot",
+    "oss_id": "github.com/baptistearno/typebot.io",
+    "reason": "licence text contains source-available or use-restricted terms: functional source, non commercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/baptisteArno/typebot.io",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "awesome-selfhosted",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.txt",
+        "LICENSE_AGPL.txt",
+        "LICENSE_BITWARDEN.txt",
+        "LICENSE_FAQ.md"
+      ],
+      "restriction_markers": [
+        "applies",
+        "as a service",
+        "cannot",
+        "commercial",
+        "competing",
+        "directories",
+        "directory",
+        "enterprise",
+        "except",
+        "files under",
+        "hosted",
+        "licensed under something that is not a recognised open licence",
+        "managed service",
+        "may not",
+        "only",
+        "production use",
+        "prohibited",
+        "required",
+        "requires",
+        "restricted",
+        "source available",
+        "subscription",
+        "unless"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "BitWarden",
+    "oss_id": "github.com/bitwarden/server",
+    "reason": "licence text contains source-available or use-restricted terms: source available",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/bitwarden/server",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "AGPL-3.0"
+      },
+      {
+        "source_id": "altstack",
+        "value": "Other"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.txt"
+      ],
+      "restriction_markers": [
+        "commons clause",
+        "required"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Chaskiq",
+    "oss_id": "github.com/chaskiq/chaskiq",
+    "reason": "licence text contains source-available or use-restricted terms: commons clause",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/chaskiq/chaskiq",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "altstack",
+        "value": "GPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "additional terms",
+        "cannot"
+      ]
+    },
+    "issue_category": "restricted",
+    "maintenance": "active",
+    "name": "Countly",
+    "oss_id": "github.com/countly/countly-server",
+    "reason": "licence text adds or removes terms: additional terms, cannot",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/Countly/countly-server",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "license"
+      ],
+      "restriction_markers": [
+        "apply",
+        "commercial",
+        "competing",
+        "except",
+        "license key",
+        "may not",
+        "must not",
+        "non commercial"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Directus",
+    "oss_id": "github.com/directus/directus",
+    "reason": "licence text contains source-available or use-restricted terms: non commercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/directus/directus",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "BSL-1.1"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "directories",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "tree"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Dub",
+    "oss_id": "github.com/dubinc/dub",
+    "reason": "licence text scopes or splits the licence: directories, license defined in, portions of, tree",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/dubinc/dub",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "compete",
+        "directories",
+        "directory",
+        "enterprise",
+        "hosted",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "not permitted",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under",
+        "saas",
+        "tree"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Erxes",
+    "oss_id": "github.com/erxes/erxes",
+    "reason": "licence text scopes or splits the licence: as follows, directories, directory, enterprise, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under, tree",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/erxes/erxes",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE",
+        "license_header_checker.py"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "commercial",
+        "directories",
+        "directory",
+        "except",
+        "exception",
+        "files in",
+        "licensed under something that is not a recognised open licence",
+        "may not",
+        "portions of",
+        "prohibited",
+        "proprietary"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Pangolin",
+    "oss_id": "github.com/fosrl/pangolin",
+    "reason": "licence text scopes or splits the licence: as follows, commercial, directories, directory, files in, portions of, proprietary",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/fosrl/pangolin",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "awesome-selfhosted",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": null,
+      "host_spdx": null,
+      "licence_files": [],
+      "restriction_markers": []
+    },
+    "issue_category": "missing",
+    "maintenance": "active",
+    "name": "FusionAuth",
+    "oss_id": "github.com/fusionauth/fusionauth-containers",
+    "reason": "no licence file at the repository root and the host reports no licence",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/FusionAuth/fusionauth-containers",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "Apache-2.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "commercial",
+        "different license",
+        "require",
+        "requires"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "ImageMagick",
+    "oss_id": "github.com/imagemagick/imagemagick",
+    "reason": "licence text scopes or splits the licence: commercial, different license",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/ImageMagick/ImageMagick",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "emmraan",
+        "value": "ImageMagick License"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "elastic license",
+        "hosted",
+        "license key",
+        "managed service",
+        "may not"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Invoice Ninja",
+    "oss_id": "github.com/invoiceninja/invoiceninja",
+    "reason": "licence text contains source-available or use-restricted terms: elastic license",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/invoiceninja/invoiceninja",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "commercial",
+        "licensed under something that is not a recognised open licence"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Lobe Chat",
+    "oss_id": "github.com/lobehub/lobehub",
+    "reason": "licence text scopes or splits the licence: commercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/lobehub/lobehub",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "commercial",
+        "enterprise",
+        "except",
+        "reference to an ee/ or enterprise/ path"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Medusa",
+    "oss_id": "github.com/medusajs/medusa",
+    "reason": "licence text scopes or splits the licence: commercial, enterprise, reference to an ee/ or enterprise/ path",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/medusajs/medusa",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "MIT"
+      },
+      {
+        "source_id": "altstack",
+        "value": "MIT"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE",
+        "LICENSE-EE",
+        "LICENSE-MIT"
+      ],
+      "restriction_markers": [
+        "applies",
+        "apply",
+        "business source",
+        "commercial",
+        "enterprise",
+        "evaluation",
+        "licensed under something that is not a recognised open licence",
+        "only",
+        "production use",
+        "provided that you",
+        "purchase",
+        "reference to an ee/ or enterprise/ path",
+        "required",
+        "requires"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Meilisearch",
+    "oss_id": "github.com/meilisearch/meilisearch",
+    "reason": "licence text contains source-available or use-restricted terms: business source",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/meilisearch/meilisearch",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "MIT"
+      },
+      {
+        "source_id": "emmraan",
+        "value": "MIT"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "business source",
+        "directory",
+        "enterprise",
+        "licensed under something that is not a recognised open licence",
+        "unless"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Memgraph",
+    "oss_id": "github.com/memgraph/memgraph",
+    "reason": "licence text contains source-available or use-restricted terms: business source",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/memgraph/memgraph",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md",
+        "LICENSE_EE.md"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "commercial",
+        "enterprise",
+        "licensed under something that is not a recognised open licence",
+        "may not",
+        "non commercial",
+        "only",
+        "portions of",
+        "subscription",
+        "sustainable use"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "n8n",
+    "oss_id": "github.com/n8n-io/n8n",
+    "reason": "licence text contains source-available or use-restricted terms: non commercial, sustainable use",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/n8n-io/n8n",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "Sustainable Use License"
+      },
+      {
+        "source_id": "altstack",
+        "value": "Sustainable Use License"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "commercial",
+        "licensed under something that is not a recognised open licence",
+        "may not",
+        "non commercial",
+        "only",
+        "portions of",
+        "sustainable use"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "NocoDB",
+    "oss_id": "github.com/nocodb/nocodb",
+    "reason": "licence text contains source-available or use-restricted terms: non commercial, sustainable use",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/nocodb/nocodb",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "AGPL-3.0"
+      },
+      {
+        "source_id": "awesome-selfhosted",
+        "value": "SUL-1.0"
+      },
+      {
+        "source_id": "emmraan",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "GPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "COPYRIGHT",
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "applies",
+        "apply",
+        "exception",
+        "files in",
+        "not allowed",
+        "only",
+        "portions of",
+        "provided that you",
+        "required",
+        "tree"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Odoo",
+    "oss_id": "github.com/odoo/odoo",
+    "reason": "licence text scopes or splits the licence: files in, portions of, tree",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/odoo/odoo",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "altstack",
+        "value": "LGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "apply",
+        "as a service",
+        "commercial",
+        "different license",
+        "must not",
+        "proprietary",
+        "shall not",
+        "source available",
+        "unless"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Pipedream",
+    "oss_id": "github.com/pipedreamhq/pipedream",
+    "reason": "licence text contains source-available or use-restricted terms: source available",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/PipedreamHQ/pipedream",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [
+        "enterprise"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "elastic license",
+        "hosted",
+        "license key",
+        "managed service",
+        "may not"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "RudderStack",
+    "oss_id": "github.com/rudderlabs/rudder-server",
+    "reason": "licence text contains source-available or use-restricted terms: elastic license",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/rudderlabs/rudder-server",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "AGPL-3.0"
+      },
+      {
+        "source_id": "awesome-selfhosted",
+        "value": "Elastic-2.0"
+      },
+      {
+        "source_id": "emmraan",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "additional restriction",
+        "applies",
+        "apply",
+        "business source",
+        "commercial",
+        "production use",
+        "provided that you",
+        "purchase",
+        "required",
+        "restriction"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "maintained",
+    "name": "Seldon",
+    "oss_id": "github.com/seldonio/seldon-core",
+    "reason": "licence text contains source-available or use-restricted terms: business source",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/SeldonIO/seldon-core",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "apply",
+        "as a service",
+        "commercial",
+        "competing",
+        "except",
+        "functional source",
+        "hosted",
+        "may not",
+        "non commercial"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Spacedrive",
+    "oss_id": "github.com/spacedriveapp/spacedrive",
+    "reason": "licence text contains source-available or use-restricted terms: functional source, non commercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/spacedriveapp/spacedrive",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "applies",
+        "apply",
+        "as follows",
+        "directory",
+        "enterprise",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "only",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under",
+        "subscription",
+        "unless"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Strapi",
+    "oss_id": "github.com/strapi/strapi",
+    "reason": "licence text scopes or splits the licence: as follows, directory, enterprise, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under, subscription",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/strapi/strapi",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "MIT"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "Apache-2.0"
+      ],
+      "enterprise_directories": [
+        "ee"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Supertokens",
+    "oss_id": "github.com/supertokens/supertokens-core",
+    "reason": "enterprise directory at the repository root: ee; licence text scopes or splits the licence: as follows, directories, directory, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/supertokens/supertokens-core",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE",
+        "LICENSE-MIT"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "AFFiNE",
+    "oss_id": "github.com/toeverything/affine",
+    "reason": "licence text scopes or splits the licence: as follows, directories, directory, license defined in, portions of, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/toeverything/AFFiNE",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "MIT"
+      },
+      {
+        "source_id": "emmraan",
+        "value": "MIT"
+      },
+      {
+        "source_id": "altstack",
+        "value": "Other"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "commons clause",
+        "required"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Tracardi",
+    "oss_id": "github.com/tracardi/tracardi",
+    "reason": "licence text contains source-available or use-restricted terms: commons clause",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/Tracardi/tracardi",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "additional permission",
+        "commercial",
+        "different license",
+        "exception"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Vendure",
+    "oss_id": "github.com/vendurehq/vendure",
+    "reason": "licence text scopes or splits the licence: commercial, different license",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/vendurehq/vendure",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "commercial",
+        "directories",
+        "evaluation",
+        "licensed under something that is not a recognised open licence",
+        "production use",
+        "required",
+        "trial"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Yugabyte",
+    "oss_id": "github.com/yugabyte/yugabyte-db",
+    "reason": "licence text scopes or splits the licence: commercial, directories",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/yugabyte/yugabyte-db",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE",
+        "LICENSE_SHORT"
+      ],
+      "restriction_markers": [
+        "elastic license",
+        "hosted",
+        "license key",
+        "managed service",
+        "may not"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Airbyte",
+    "oss_id": "github.com/airbytehq/airbyte",
+    "reason": "licence text contains source-available or use-restricted terms: elastic license",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/airbytehq/airbyte",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.txt"
+      ],
+      "restriction_markers": [
+        "applies",
+        "apply",
+        "business source",
+        "commercial",
+        "employees",
+        "production use",
+        "provided that you",
+        "purchase",
+        "required"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Akaunting",
+    "oss_id": "github.com/akaunting/akaunting",
+    "reason": "licence text contains source-available or use-restricted terms: business source",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/akaunting/akaunting",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "GPL-3.0"
+      },
+      {
+        "source_id": "altstack",
+        "value": "GPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "Apache-2.0"
+      ],
+      "enterprise_directories": [
+        "ee"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "maintained",
+    "name": "Amplication",
+    "oss_id": "github.com/amplication/amplication",
+    "reason": "enterprise directory at the repository root: ee; licence text scopes or splits the licence: as follows, directories, directory, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/amplication/amplication",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "files in",
+        "folder",
+        "licensed under something that is not a recognised open licence",
+        "only"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Anki",
+    "oss_id": "github.com/ankitects/anki",
+    "reason": "licence text scopes or splits the licence: files in, folder",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/ankitects/anki",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE",
+        "LICENSE.agpl",
+        "LICENSE.enterprise"
+      ],
+      "restriction_markers": [
+        "applies",
+        "enterprise",
+        "except",
+        "files in",
+        "licensed under something that is not a recognised open licence",
+        "only",
+        "subscription"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "maintained",
+    "name": "Automatisch",
+    "oss_id": "github.com/automatisch/automatisch",
+    "reason": "licence text scopes or splits the licence: enterprise, files in, subscription",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/automatisch/automatisch",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "awesome-selfhosted",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [
+        "enterprise",
+        "premium"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "enterprise",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "reference to an ee/ or enterprise/ path",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Baserow",
+    "oss_id": "github.com/baserow/baserow",
+    "reason": "enterprise directory at the repository root: enterprise, premium; licence text scopes or splits the licence: as follows, directories, directory, enterprise, license defined in, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/baserow/baserow",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "MIT"
+      },
+      {
+        "source_id": "emmraan",
+        "value": "MIT"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "GPL-3.0",
+        "MIT"
+      ],
+      "enterprise_directories": [
+        "enterprise"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE",
+        "license_cache.json"
+      ],
+      "restriction_markers": [
+        "additional permission",
+        "additional terms",
+        "applies",
+        "apply",
+        "as follows",
+        "cannot",
+        "commercial",
+        "different license",
+        "directories",
+        "directory",
+        "enterprise",
+        "except",
+        "exception",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "may not",
+        "not allowed",
+        "only",
+        "portions of",
+        "proprietary",
+        "provided that you",
+        "reference to an ee/ or enterprise/ path",
+        "required",
+        "requires",
+        "resides under",
+        "restriction",
+        "separate license",
+        "shall not",
+        "unless"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "LiteLLM",
+    "oss_id": "github.com/berriai/litellm",
+    "reason": "enterprise directory at the repository root: enterprise; licence text scopes or splits the licence: as follows, commercial, different license, directories, directory, enterprise, license defined in, portions of, proprietary, reference to an ee/ or enterprise/ path, resides under, separate license",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/BerriAI/litellm",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "MIT"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "GPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.txt",
+        "LICENSE_BITWARDEN.txt",
+        "LICENSE_GPL.txt"
+      ],
+      "restriction_markers": [
+        "commercial",
+        "competing",
+        "directory",
+        "except",
+        "licensed under something that is not a recognised open licence",
+        "may not",
+        "only",
+        "prohibited",
+        "required",
+        "restricted",
+        "unless"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Bitwarden",
+    "oss_id": "github.com/bitwarden/clients",
+    "reason": "licence text scopes or splits the licence: commercial, directory",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/bitwarden/clients",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "commercial",
+        "non commercial",
+        "only"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Cachet",
+    "oss_id": "github.com/cachethq/cachet",
+    "reason": "licence text contains source-available or use-restricted terms: non commercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/cachethq/cachet",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "MIT"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "licensed under something that is not a recognised open licence",
+        "portions of"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Cap",
+    "oss_id": "github.com/capsoftware/cap",
+    "reason": "licence text scopes or splits the licence: as follows, portions of",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/CapSoftware/Cap",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "GPL-2.0",
+        "LGPL-2.1",
+        "LGPL-3.0",
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "COPYING",
+        "COPYING-GPL2",
+        "COPYING-LGPL2.1",
+        "COPYING-LGPL3"
+      ],
+      "restriction_markers": [
+        "commercial",
+        "except",
+        "may not",
+        "must not",
+        "required"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "ceph",
+    "oss_id": "github.com/ceph/ceph",
+    "reason": "licence text scopes or splits the licence: commercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/ceph/ceph",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "altstack",
+        "value": "LGPL-2.1"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "unless"
+      ]
+    },
+    "issue_category": "restricted",
+    "maintenance": "active",
+    "name": "Cube.js",
+    "oss_id": "github.com/cube-js/cube",
+    "reason": "licence text adds or removes terms: unless",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/cube-js/cube",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "elastic license",
+        "enterprise",
+        "license defined in",
+        "license key",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "resides under"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Databend",
+    "oss_id": "github.com/databendlabs/databend",
+    "reason": "licence text contains source-available or use-restricted terms: elastic license",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/databendlabs/databend",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.txt"
+      ],
+      "restriction_markers": [
+        "elastic license",
+        "folder",
+        "only",
+        "server side public",
+        "unless"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Elastic Search",
+    "oss_id": "github.com/elastic/elasticsearch",
+    "reason": "licence text contains source-available or use-restricted terms: elastic license, server side public",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/elastic/elasticsearch",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "COPYRIGHT.txt",
+        "LICENSE.txt"
+      ],
+      "restriction_markers": [
+        "applies",
+        "apply",
+        "cannot",
+        "directory",
+        "except",
+        "exception",
+        "exceptions",
+        "may not",
+        "noncommercial",
+        "not allowed",
+        "only",
+        "prohibited",
+        "proprietary",
+        "provided that you",
+        "required",
+        "restricted",
+        "unless"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Elgg",
+    "oss_id": "github.com/elgg/elgg",
+    "reason": "licence text contains source-available or use-restricted terms: noncommercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/Elgg/Elgg",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "apply",
+        "commercial",
+        "competing",
+        "except",
+        "license key",
+        "must not",
+        "non commercial",
+        "proprietary"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Flipt",
+    "oss_id": "github.com/flipt-io/flipt",
+    "reason": "licence text contains source-available or use-restricted terms: non commercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/flipt-io/flipt",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "awesome-selfhosted",
+        "value": "GPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MPL-2.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "applies",
+        "apply",
+        "business source",
+        "commercial",
+        "exception",
+        "hosted",
+        "licensed under something that is not a recognised open licence",
+        "production use",
+        "provided that you",
+        "purchase",
+        "required"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Forward Email",
+    "oss_id": "github.com/forwardemail/forwardemail.net",
+    "reason": "licence text contains source-available or use-restricted terms: business source",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/forwardemail/forwardemail.net",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "altstack",
+        "value": "MIT"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "apply",
+        "commercial",
+        "competing",
+        "except",
+        "functional source",
+        "non commercial"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Sentry self-hosted",
+    "oss_id": "github.com/getsentry/self-hosted",
+    "reason": "licence text contains source-available or use-restricted terms: functional source, non commercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/getsentry/self-hosted",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "FSL"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "GPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "COPYING",
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "cannot",
+        "directory",
+        "files in",
+        "folder",
+        "portions of"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "GIMP",
+    "oss_id": "github.com/gnome/gimp",
+    "reason": "licence text scopes or splits the licence: directory, files in, folder, portions of",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/GNOME/gimp",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "emmraan",
+        "value": "GPL-3.0"
+      },
+      {
+        "source_id": "altstack",
+        "value": "Other"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "Apache-2.0"
+      ],
+      "enterprise_directories": [
+        "pro"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Gravitl",
+    "oss_id": "github.com/gravitl/netmaker",
+    "reason": "enterprise directory at the repository root: pro; licence text scopes or splits the licence: as follows, directories, directory, license defined in, portions of, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/gravitl/netmaker",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "enterprise",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "GrowthBook",
+    "oss_id": "github.com/growthbook/growthbook",
+    "reason": "licence text scopes or splits the licence: as follows, directories, enterprise, portions of, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/growthbook/growthbook",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "MIT"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "GPL-2.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.txt"
+      ],
+      "restriction_markers": [
+        "additional permission"
+      ]
+    },
+    "issue_category": "restricted",
+    "maintenance": "active",
+    "name": "Seafile",
+    "oss_id": "github.com/haiwen/seafile",
+    "reason": "licence text adds or removes terms: additional permission",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/haiwen/seafile",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.txt"
+      ],
+      "restriction_markers": [
+        "additional permission",
+        "directory",
+        "files under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Seafile",
+    "oss_id": "github.com/haiwen/seafile-server",
+    "reason": "licence text scopes or splits the licence: directory, files under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/haiwen/seafile-server",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "Apache-2.0"
+      ],
+      "enterprise_directories": [
+        "enterprise"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "enterprise",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "highlight",
+    "oss_id": "github.com/highlight/highlight",
+    "reason": "enterprise directory at the repository root: enterprise; licence text scopes or splits the licence: as follows, directories, directory, enterprise, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/highlight/highlight",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE",
+        "LICENSE.AGPL-3.0-or-later"
+      ],
+      "restriction_markers": [
+        "proprietary"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "HumHub",
+    "oss_id": "github.com/humhub/humhub",
+    "reason": "licence text scopes or splits the licence: proprietary",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/humhub/humhub",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Infisical",
+    "oss_id": "github.com/infisical/infisical",
+    "reason": "licence text scopes or splits the licence: as follows, directories, directory, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/Infisical/infisical",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.txt"
+      ],
+      "restriction_markers": [
+        "apply",
+        "may not",
+        "not allowed"
+      ]
+    },
+    "issue_category": "restricted",
+    "maintenance": "active",
+    "name": "InvoicePlane",
+    "oss_id": "github.com/invoiceplane/invoiceplane",
+    "reason": "licence text adds or removes terms: apply, may not, not allowed",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/InvoicePlane/InvoicePlane",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "MIT"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": []
+    },
+    "issue_category": "conflicting",
+    "maintenance": "active",
+    "name": "Jan",
+    "oss_id": "github.com/janhq/jan",
+    "reason": "upstream lists declare AGPL-3.0; the repository's licence files do not match that licence as a plain standard text",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/janhq/jan",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "directory",
+        "only"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "maintained",
+    "name": "Revu",
+    "oss_id": "github.com/juliusbrussee/revu-swift",
+    "reason": "licence text scopes or splits the licence: directory",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/JuliusBrussee/revu-swift",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "BSD-2-Clause",
+        "GPL-2.0",
+        "GPL-3.0",
+        "LGPL-2.1",
+        "LGPL-3.0",
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "COPYING",
+        "LICENSE.BSD",
+        "LICENSE.CC0",
+        "LICENSE.GPL-2",
+        "LICENSE.GPL-3",
+        "LICENSE.LGPL-2.1",
+        "LICENSE.LGPL-3",
+        "LICENSE.MIT",
+        "LICENSE.NOKIA-LGPL-EXCEPTION",
+        "LICENSE.OFL"
+      ],
+      "restriction_markers": [
+        "additional permission",
+        "applies",
+        "apply",
+        "cannot",
+        "commercial",
+        "except",
+        "exception",
+        "folder",
+        "licensed under something that is not a recognised open licence",
+        "may not",
+        "must not",
+        "only",
+        "required",
+        "restriction",
+        "shall not",
+        "unless"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "KeePassXC",
+    "oss_id": "github.com/keepassxreboot/keepassxc",
+    "reason": "licence text scopes or splits the licence: commercial, folder",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/keepassxreboot/keepassxc",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "altstack",
+        "value": "Other"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [
+        "ee"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Keep",
+    "oss_id": "github.com/keephq/keep",
+    "reason": "enterprise directory at the repository root: ee; licence text scopes or splits the licence: as follows, directories, directory, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/keephq/keep",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "MIT"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "commercial",
+        "directory",
+        "licensed under something that is not a recognised open licence",
+        "may not",
+        "restriction",
+        "unless"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Dify",
+    "oss_id": "github.com/langgenius/dify",
+    "reason": "licence text scopes or splits the licence: commercial, directory",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/langgenius/dify",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "LightDash",
+    "oss_id": "github.com/lightdash/lightdash",
+    "reason": "licence text scopes or splits the licence: as follows, directories, directory, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/lightdash/lightdash",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": null,
+      "host_spdx": null,
+      "licence_files": [],
+      "restriction_markers": []
+    },
+    "issue_category": "missing",
+    "maintenance": "active",
+    "name": "Mezon",
+    "oss_id": "github.com/mezonai/mezon",
+    "reason": "no licence file at the repository root and the host reports no licence",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/mezonai/mezon",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.txt"
+      ],
+      "restriction_markers": []
+    },
+    "issue_category": "unrecognised",
+    "maintenance": "active",
+    "name": "MoinMoin",
+    "oss_id": "github.com/moinwiki/moin",
+    "reason": "licence text is present and matches no reference licence closely enough",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/moinwiki/moin",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE-Community.txt"
+      ],
+      "restriction_markers": [
+        "as a service",
+        "server side public"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "MongoDB Community Server",
+    "oss_id": "github.com/mongodb/mongo",
+    "reason": "licence text contains source-available or use-restricted terms: server side public",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/mongodb/mongo",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "SSPL-1.0"
+      },
+      {
+        "source_id": "emmraan",
+        "value": "SSPL-1.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "BSD-3-Clause"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "applies",
+        "directories",
+        "directory",
+        "except"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Netbird",
+    "oss_id": "github.com/netbirdio/netbird",
+    "reason": "licence text scopes or splits the licence: directories, directory",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/netbirdio/netbird",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "BSD-3-Clause"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "BSD-3-Clause",
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE",
+        "LICENSE_HISTORY",
+        "LICENSE_NOTICE"
+      ],
+      "restriction_markers": [
+        "enterprise",
+        "except",
+        "licensed under something that is not a recognised open licence",
+        "multi license",
+        "prohibited"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Open WebUI",
+    "oss_id": "github.com/open-webui/open-webui",
+    "reason": "licence text scopes or splits the licence: enterprise, multi license",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/open-webui/open-webui",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "BSD-3-Clause"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [
+        "pro"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "commercial",
+        "licensed under something that is not a recognised open licence",
+        "required"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "OpenFaas",
+    "oss_id": "github.com/openfaas/faas",
+    "reason": "enterprise directory at the repository root: pro; licence text scopes or splits the licence: commercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/openfaas/faas",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "directories",
+        "directory",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "OpenSign",
+    "oss_id": "github.com/opensignlabs/opensign",
+    "reason": "licence text scopes or splits the licence: directories, directory, license defined in, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/OpenSignLabs/OpenSign",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "AGPL-3.0"
+      },
+      {
+        "source_id": "awesome-selfhosted",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "additional terms",
+        "commercial",
+        "may not",
+        "non commercial",
+        "proprietary"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "PhotoPrism",
+    "oss_id": "github.com/photoprism/photoprism",
+    "reason": "licence text contains source-available or use-restricted terms: non commercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/photoprism/photoprism",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "commercial",
+        "enterprise",
+        "files in",
+        "folder",
+        "hosted",
+        "licensed under something that is not a recognised open licence",
+        "may not",
+        "only",
+        "prohibited",
+        "requires",
+        "restricted",
+        "revenue"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Planka",
+    "oss_id": "github.com/plankanban/planka",
+    "reason": "licence text scopes or splits the licence: as follows, commercial, enterprise, files in, folder",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/plankanban/planka",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "AGPL-3.0"
+      },
+      {
+        "source_id": "awesome-selfhosted",
+        "value": "Proprietary"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "licensed under something that is not a recognised open licence"
+      ]
+    },
+    "issue_category": "restricted",
+    "maintenance": "active",
+    "name": "PrestaShop",
+    "oss_id": "github.com/prestashop/prestashop",
+    "reason": "licence text adds or removes terms: licensed under something that is not a recognised open licence",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/PrestaShop/PrestaShop",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "Apache-2.0",
+        "MPL-2.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE",
+        "LICENSE-APACHE2",
+        "LICENSE-MPL-RabbitMQ"
+      ],
+      "restriction_markers": []
+    },
+    "issue_category": "conflicting",
+    "maintenance": "active",
+    "name": "RabbitMQ",
+    "oss_id": "github.com/rabbitmq/rabbitmq-server",
+    "reason": "upstream lists declare MPL-2.0; the repository's licence files do not match that licence as a plain standard text",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/rabbitmq/rabbitmq-server",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "MPL-2.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.txt"
+      ],
+      "restriction_markers": [
+        "additional terms",
+        "applies",
+        "apply",
+        "as a service",
+        "as follows",
+        "cannot",
+        "commercial",
+        "except",
+        "exceptions",
+        "licensed under something that is not a recognised open licence",
+        "may not",
+        "not allowed",
+        "only",
+        "provided that you",
+        "require",
+        "required",
+        "restriction",
+        "server side public",
+        "source available",
+        "unless"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Redis",
+    "oss_id": "github.com/redis/redis",
+    "reason": "licence text contains source-available or use-restricted terms: server side public, source available",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/redis/redis",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "emmraan",
+        "value": "RSALv2"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.txt"
+      ],
+      "restriction_markers": [
+        "directory"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Redmine",
+    "oss_id": "github.com/redmine/redmine",
+    "reason": "licence text scopes or splits the licence: directory",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/redmine/redmine",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "GPL-2.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": null,
+      "host_spdx": null,
+      "licence_files": [],
+      "restriction_markers": []
+    },
+    "issue_category": "missing",
+    "maintenance": "active",
+    "name": "Redpanda",
+    "oss_id": "github.com/redpanda-data/redpanda",
+    "reason": "no licence file at the repository root and the host reports no licence",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/redpanda-data/redpanda",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "BSL-1.1"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": null,
+      "host_spdx": null,
+      "licence_files": [],
+      "restriction_markers": []
+    },
+    "issue_category": "missing",
+    "maintenance": "maintained",
+    "name": "Swetrix",
+    "oss_id": "github.com/swetrix/selfhosting",
+    "reason": "no licence file at the repository root and the host reports no licence",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/Swetrix/selfhosting",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "awesome-selfhosted",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [
+        "ee"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "maintained",
+    "name": "Tabby",
+    "oss_id": "github.com/tabbyml/tabby",
+    "reason": "enterprise directory at the repository root: ee; licence text scopes or splits the licence: as follows, directories, directory, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/TabbyML/tabby",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "Apache-2.0"
+      },
+      {
+        "source_id": "altstack",
+        "value": "Apache License 2.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "additional terms",
+        "apply",
+        "commercial",
+        "directory",
+        "exception",
+        "files in",
+        "may not",
+        "prohibited"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Teable",
+    "oss_id": "github.com/teableio/teable",
+    "reason": "licence text scopes or splits the licence: commercial, directory, files in",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/teableio/teable",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "commercial",
+        "license key",
+        "non commercial",
+        "only",
+        "trial",
+        "unless"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "tldraw",
+    "oss_id": "github.com/tldraw/tldraw",
+    "reason": "licence text contains source-available or use-restricted terms: non commercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/tldraw/tldraw",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "solvohq",
+        "value": "Apache-2.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": null,
+      "host_spdx": null,
+      "licence_files": [],
+      "restriction_markers": []
+    },
+    "issue_category": "missing",
+    "maintenance": "maintained",
+    "name": "Vue Storefront",
+    "oss_id": "github.com/vuestorefront/vue-storefront",
+    "reason": "no licence file at the repository root and the host reports no licence",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/vuestorefront/vue-storefront",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "enterprise",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "reference to an ee/ or enterprise/ path",
+        "resides under"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Webiny",
+    "oss_id": "github.com/webiny/webiny-js",
+    "reason": "licence text scopes or splits the licence: as follows, directories, enterprise, license defined in, portions of, reference to an ee/ or enterprise/ path, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/webiny/webiny-js",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0",
+        "Apache-2.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE",
+        "LICENSE-AGPL",
+        "LICENSE-APACHE"
+      ],
+      "restriction_markers": [
+        "commercial",
+        "enterprise",
+        "except",
+        "files under",
+        "hosted",
+        "licensed under something that is not a recognised open licence",
+        "managed service",
+        "must not",
+        "proprietary",
+        "require",
+        "unless"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Windmill",
+    "oss_id": "github.com/windmill-labs/windmill",
+    "reason": "licence text scopes or splits the licence: commercial, enterprise, files under, proprietary",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/windmill-labs/windmill",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "Apache-2.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "COPYRIGHT",
+        "LICENSE"
+      ],
+      "restriction_markers": []
+    },
+    "issue_category": "unrecognised",
+    "maintenance": "active",
+    "name": "Zinc Labs",
+    "oss_id": "github.com/zincsearch/zincsearch",
+    "reason": "licence text is present and matches no reference licence closely enough",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/zincsearch/zincsearch",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": null,
+      "host_spdx": null,
+      "licence_files": [],
+      "restriction_markers": []
+    },
+    "issue_category": "missing",
+    "maintenance": "active",
+    "name": "Drop",
+    "oss_id": "github.com/drop-oss/drop",
+    "reason": "no licence file at the repository root and the host reports no licence",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://github.com/Drop-OSS/drop",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "awesome-selfhosted",
+        "value": "AGPL-3.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.txt"
+      ],
+      "restriction_markers": [
+        "applies",
+        "apply",
+        "cannot",
+        "commercial",
+        "except",
+        "licensed under something that is not a recognised open licence",
+        "must not",
+        "only",
+        "required",
+        "restriction",
+        "shall not",
+        "unless"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Font-Awesome",
+    "oss_id": "github.com/fortawesome/font-awesome",
+    "reason": "licence text scopes or splits the licence: commercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://github.com/FortAwesome/Font-Awesome",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.txt"
+      ],
+      "restriction_markers": [
+        "as a service",
+        "server side public"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Hook0",
+    "oss_id": "github.com/hook0/hook0",
+    "reason": "licence text contains source-available or use-restricted terms: server side public",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://github.com/hook0/hook0",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "folder",
+        "tree"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "LibreCAD",
+    "oss_id": "github.com/librecad/librecad",
+    "reason": "licence text scopes or splits the licence: folder, tree",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://github.com/LibreCAD/LibreCAD",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "altstack",
+        "value": "GPLv2"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "GPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "except"
+      ]
+    },
+    "issue_category": "restricted",
+    "maintenance": "active",
+    "name": "Tiramisu",
+    "oss_id": "github.com/mrrobotogit/tiramisu",
+    "reason": "licence text adds or removes terms: except",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://github.com/MrRobotoGit/tiramisu",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "awesome-selfhosted",
+        "value": "GPL-2.0"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": null,
+      "host_spdx": null,
+      "licence_files": [],
+      "restriction_markers": []
+    },
+    "issue_category": "missing",
+    "maintenance": "active",
+    "name": "ERP5",
+    "oss_id": "github.com/nexedi/erp5",
+    "reason": "no licence file at the repository root and the host reports no licence",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://github.com/Nexedi/erp5",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "files in"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "OpenBB Terminal",
+    "oss_id": "github.com/openbb-finance/openbb",
+    "reason": "licence text scopes or splits the licence: files in",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://github.com/OpenBB-finance/OpenBB",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "License"
+      ],
+      "restriction_markers": [
+        "apply",
+        "commercial",
+        "competing",
+        "licensed under something that is not a recognised open licence",
+        "may not",
+        "non commercial",
+        "only",
+        "portions of",
+        "prohibited",
+        "require",
+        "required",
+        "saas"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "maintained",
+    "name": "RemixIcon",
+    "oss_id": "github.com/remix-design/remixicon",
+    "reason": "licence text contains source-available or use-restricted terms: non commercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://github.com/Remix-Design/RemixIcon",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE",
+        "LICENSE-APACHE"
+      ],
+      "restriction_markers": [
+        "directory",
+        "folder",
+        "licensed under something that is not a recognised open licence",
+        "unless"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "TimescaleDB",
+    "oss_id": "github.com/timescale/timescaledb",
+    "reason": "licence text scopes or splits the licence: directory, folder",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://github.com/timescale/timescaledb",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": null,
+      "licence_files": [],
+      "restriction_markers": []
+    },
+    "issue_category": "undetermined",
+    "maintenance": "active",
+    "name": "Mayan EDMS",
+    "oss_id": "gitlab.com/mayan-edms/mayan-edms",
+    "reason": "the repository's licence files could not be read on this host",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://gitlab.com/mayan-edms/mayan-edms",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  }
+]

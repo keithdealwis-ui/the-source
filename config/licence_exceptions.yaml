@@ -1,0 +1,19 @@
+# Licence exceptions (KEI-805 criterion 10).
+#
+# A repository without a recognised open-source licence is excluded from
+# recommendations. It may be admitted ONLY by an entry here, and an entry is valid
+# only with a named human approver and a reference to where the approval is recorded.
+# The pipeline refuses entries whose approver is an executor or is empty.
+#
+# None has been approved. Candidates for review are generated on every run at
+# data/dataset/reports/licence_exception_candidates.json.
+#
+# Example:
+#   - oss_id: github.com/example/project
+#     licence_as_found: "AGPL-3.0 core + proprietary ee/ directory"
+#     approved_by: keith
+#     approval_ref: "KEI-nnn comment 2026-10-01"
+#     reviewed_at: "2026-10-01"
+#     rationale: "Core is AGPL-3.0; ee/ is optional and not needed to self-host."
+
+exceptions: []

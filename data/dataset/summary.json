@@ -1,0 +1,247 @@
+{
+  "as_of": "2026-09-27T05:08:30Z",
+  "field_origin": {
+    "derived": "computed by The Source from live fields and config/policy.yaml",
+    "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
+    "live": "read from the repository host's API by The Source at live.fetched_at; refreshed on every run"
+  },
+  "harvest": {
+    "by_source": {
+      "altstack": {
+        "decision": "allow_with_conditions",
+        "entries": 64,
+        "entries_with_saas_claim": 64,
+        "harvested": true,
+        "licence_file_sha256": "c76f488fd52bf3c9bac423df8456156f997835d1bc012f4786d07c1208aad409",
+        "pinned_commit": "ca28a74d15d3cb3677706a861174b9ec350706a7",
+        "relationship_claims": 71,
+        "unparseable_files": 0
+      },
+      "awesome-selfhosted": {
+        "decision": "allow_with_conditions",
+        "entries": 1351,
+        "entries_with_saas_claim": 84,
+        "harvested": true,
+        "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
+        "pinned_commit": "c10a71ae91ccc513dc4329578896810c499c4b21",
+        "relationship_claims": 144,
+        "unparseable_files": 0
+      },
+      "btwso": {
+        "decision": "allow",
+        "entries": 113,
+        "entries_with_saas_claim": 113,
+        "harvested": true,
+        "licence_file_sha256": "9ccd6b836c5948af69c6b78da77d09a45109cc87c1fc7487ac229abedb2970c4",
+        "pinned_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+        "relationship_claims": 149,
+        "unparseable_files": 0
+      },
+      "diegoleme": {
+        "decision": "allow",
+        "entries": 111,
+        "entries_with_saas_claim": 111,
+        "harvested": true,
+        "licence_file_sha256": "10ad93c1eb1b6ca388229b5620c2aaf2f2ec05b709e64879e7138c1e2aa7de39",
+        "pinned_commit": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+        "relationship_claims": 111,
+        "unparseable_files": 0
+      },
+      "emmraan": {
+        "decision": "allow",
+        "entries": 63,
+        "entries_with_saas_claim": 63,
+        "harvested": true,
+        "licence_file_sha256": "cc749dffc88eef1456b2e57eb350ef42d82f8a92d7ab8f32a4427cbf11f3d6cf",
+        "pinned_commit": "c4cc558b7edf50a5efb4e3fd0d867292c2ae6b63",
+        "relationship_claims": 130,
+        "unparseable_files": 0
+      },
+      "fossalt": {
+        "decision": "allow_with_conditions",
+        "entries": 93,
+        "entries_with_saas_claim": 93,
+        "harvested": true,
+        "licence_file_sha256": "dca018b777d7bbaad6a295cd35b9653e8ffe014ac8a737292157e1f33b769753",
+        "pinned_commit": "305ba7f87b99fa94abb9f7b0fd6d6f6e354f774f",
+        "relationship_claims": 122,
+        "unparseable_files": 0
+      },
+      "intake": {
+        "decision": "allow",
+        "entries": 0,
+        "entries_with_saas_claim": 0,
+        "harvested": true,
+        "licence_file_sha256": "ccc2475e96c83d6774422c036d4e7b7f495de3522c25bd03f852d78edff5a022",
+        "pinned_commit": "0000000000000000000000000000000000000000",
+        "relationship_claims": 0,
+        "unparseable_files": 0
+      },
+      "opensaasdirectory": {
+        "decision": "allow",
+        "entries": 98,
+        "entries_with_saas_claim": 98,
+        "harvested": true,
+        "licence_file_sha256": "cdfd14ebf0763fce15d9fe27398b6138e1d92186b7be997aa64e9eccaa2c13c8",
+        "pinned_commit": "3f29e5943fd9fc9910cd500134d5c6a6836a52ce",
+        "relationship_claims": 172,
+        "unparseable_files": 0
+      },
+      "runacapital": {
+        "decision": "allow",
+        "entries": 215,
+        "entries_with_saas_claim": 215,
+        "harvested": true,
+        "licence_file_sha256": "1592244b8a144e0d86603351222ee4df1b2c22dfed6961d0c4a75adb625b1079",
+        "pinned_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+        "relationship_claims": 329,
+        "unparseable_files": 0
+      },
+      "solvohq": {
+        "decision": "allow",
+        "entries": 294,
+        "entries_with_saas_claim": 294,
+        "harvested": true,
+        "licence_file_sha256": "5c85788fb09f01adf06bb4f37b7e43b94684292fa3d21b8699190fa121b2fbb3",
+        "pinned_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+        "relationship_claims": 294,
+        "unparseable_files": 0
+      }
+    },
+    "entries_read": 2402,
+    "relationship_claims_read": 1522
+  },
+  "lanes": {
+    "oss_projects": {
+      "licence_exception": 121,
+      "recommendable": 365,
+      "rejected": 104
+    },
+    "relationships": {
+      "licence_exception": 208,
+      "recommendable": 483,
+      "rejected": 158
+    }
+  },
+  "launch": {
+    "cap_per_saas": 10,
+    "oss_distinct_products": 250,
+    "oss_projects": 251,
+    "relationships": 371,
+    "relationships_corroborated_by_2plus_sources": 136,
+    "relationships_share_alike_only": 24,
+    "saas_added_beyond_floor": 21,
+    "saas_named_by_a_single_source": 9,
+    "saas_products": 121,
+    "saas_target_decision_ref": "dr-KEI-805-507e4f70",
+    "saas_target_is": "floor",
+    "targets": {
+      "edges_max": 400,
+      "edges_min": 300,
+      "oss_minimum": 250,
+      "saas_target": 100
+    },
+    "targets_met": {
+      "oss_projects": true,
+      "relationships": true,
+      "saas_products": true
+    }
+  },
+  "licence_exception_lane": {
+    "by_issue_category": {
+      "conflicting": 2,
+      "missing": 8,
+      "open_core": 64,
+      "restricted": 7,
+      "source_available": 37,
+      "undetermined": 1,
+      "unrecognised": 2
+    },
+    "named_exceptions_approved": 0,
+    "note": "retained and flagged; recommendation_eligible is false for every record; none is in the launch set or in any export; retention establishes no reuse rights",
+    "oss_projects": 121,
+    "oss_with_licence_issue_also_rejected_for_other_reasons": 18,
+    "relationships_flagged": 208,
+    "retained_under": {
+      "decided_at": "2026-09-27",
+      "decided_by": "keith",
+      "decision_ref": "Linear KEI-805 comment 258b38dd-a288-4b6e-bbe6-9fae7220d4fd",
+      "scope": "schema inclusion and flagged retention only; not recommendation, publication or redistribution"
+    },
+    "saas_products_touched": 128
+  },
+  "publication_status": "internal_not_published",
+  "reconciled": {
+    "oss_candidates": 590,
+    "oss_candidates_before_identity_merge": 609,
+    "relationship_candidates": 849,
+    "renamed_or_duplicate_repositories_merged": 19,
+    "saas_products_named": 268
+  },
+  "rejections": {
+    "by_reason": {
+      "eligibility:archived": 6,
+      "eligibility:archived;no_recognised_open_source_licence;stale_no_meaningful_activity_12_months": 2,
+      "eligibility:archived;stale_no_meaningful_activity_12_months": 11,
+      "eligibility:host_not_independently_verifiable": 3,
+      "eligibility:no_recognised_open_source_licence": 121,
+      "eligibility:no_recognised_open_source_licence;repository_identity_changed_since_listed": 1,
+      "eligibility:no_recognised_open_source_licence;stale_no_meaningful_activity_12_months": 14,
+      "eligibility:no_recognised_open_source_licence;stale_no_meaningful_activity_12_months;repository_identity_changed_since_listed": 1,
+      "eligibility:repository_identity_changed_since_listed": 3,
+      "eligibility:repository_not_found": 12,
+      "eligibility:stale_no_meaningful_activity_12_months": 51,
+      "normalise:repo_url_not_a_repository": 20,
+      "normalise:saas_not_in_catalogue": 176,
+      "plausibility_review:CRM; not a help desk": 1,
+      "plausibility_review:UI component library; not a design tool": 1,
+      "plausibility_review:UI component library; not a search backend": 1,
+      "plausibility_review:application backend on SQLite; not a document database": 1,
+      "plausibility_review:authorisation policy engine; does not authenticate users": 2,
+      "plausibility_review:backend development framework; not a hosted backend service": 1,
+      "plausibility_review:billing and metering; does not process payments": 1,
+      "plausibility_review:bug tracker; does not capture application errors": 1,
+      "plausibility_review:code review tool; not repository hosting": 2,
+      "plausibility_review:command-line client for a commercial service; not a replacement product": 1,
+      "plausibility_review:conventional code-completion engine; not an AI assistant": 1,
+      "plausibility_review:deployment configuration repository; not the project's code": 1,
+      "plausibility_review:embedding library; not a model-serving API": 1,
+      "plausibility_review:form library for developers; not a form product": 1,
+      "plausibility_review:forum; not real-time chat": 1,
+      "plausibility_review:image processing library; not a media service": 1,
+      "plausibility_review:infrastructure-as-code tool; not a platform that runs applications": 1,
+      "plausibility_review:multi-cluster Kubernetes console; not an observability platform": 1,
+      "plausibility_review:orchestrator; supplies no managed connectors": 3,
+      "plausibility_review:personal media server; not video hosting for publishing": 1,
+      "plausibility_review:policy administration layer; not an identity provider": 2,
+      "plausibility_review:relational database; not a key-value store": 1,
+      "plausibility_review:search library; not a product": 1,
+      "plausibility_review:social network; not a tool for scheduling posts to other networks": 1,
+      "plausibility_review:status page and uptime monitor; not an observability platform": 2,
+      "plausibility_review:the claim is generic; the product is a managed database platform, not a database engine": 1,
+      "plausibility_review:vector database; not a machine-learning platform": 1,
+      "plausibility_review:vector database; not a site-search service": 1,
+      "plausibility_review:visual page builder; not a design tool": 1,
+      "plausibility_review:visual page builder; not a headless CMS": 1,
+      "plausibility_review:webhook delivery; not realtime channels": 1,
+      "plausibility_review:whiteboard; not an interface design tool": 1,
+      "plausibility_review:workflow engine programmed in code; not a no-code automation product": 1
+    },
+    "total": 460
+  },
+  "schema_version": "1.0.0",
+  "verified": {
+    "maintenance_status": {
+      "active": 453,
+      "maintained": 43,
+      "stale": 79,
+      "unverified": 15
+    },
+    "oss_recommendable": 365,
+    "oss_rejected": 225,
+    "relationships_flagged_licence_exception": 208,
+    "relationships_rejected": 158,
+    "relationships_validated": 483,
+    "saas_with_validated_alternatives": 214
+  }
+}

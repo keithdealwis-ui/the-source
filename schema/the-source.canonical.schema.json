@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/keithdealwis-ui/the-source/schema/the-source.canonical.schema.json",
+  "title": "The Source — canonical dataset, read surface, run records and intake outcomes (KEI-807)",
+  "description": "One schema file, one $defs entry per record kind. Validated in CI by `python -m source_pipeline canonical-validate`.",
+  "$defs": {
+    "ts": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"},
+    "ts_or_null": {"anyOf": [{"$ref": "#/$defs/ts"}, {"type": "null"}]},
+    "score": {"anyOf": [{"type": "number", "minimum": 0, "maximum": 100}, {"type": "null"}]},
+    "oss_id": {"type": "string", "pattern": "^[a-z0-9.-]+\\.[a-z]+/[^\\s]+$"},
+    "saas_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "maintenance_status": {"enum": ["active", "maintained"]},
+    "checked_range": {
+      "type": "object", "additionalProperties": false, "required": ["oldest", "newest"],
+      "properties": {"oldest": {"$ref": "#/$defs/ts_or_null"}, "newest": {"$ref": "#/$defs/ts_or_null"}}
+    },
+    "scoring_path": {"enum": ["full_lane", "single_project"]},
+
+    "saas_product": {
+      "type": "object", "additionalProperties": false,
+      "required": ["saas_id", "name", "domain", "category", "aliases", "supported"],
+      "properties": {
+        "saas_id": {"$ref": "#/$defs/saas_id"},
+        "name": {"type": "string", "minLength": 1},
+        "domain": {"type": "string", "minLength": 3},
+        "category": {"type": "string", "minLength": 1},
+        "aliases": {"type": "array", "items": {"type": "string"}},
+        "supported": {"type": "boolean"}
+      }
+    },
+
+    "project_health": {
+      "type": "object", "additionalProperties": false,
+      "required": ["score", "band", "trajectory", "confidence", "watch_outs", "evidence_insufficient", "score_version", "evaluated_at", "scoring_path"],
+      "properties": {
+        "score": {"$ref": "#/$defs/score"}, "band": {"type": ["string", "null"]},
+        "trajectory": {"type": ["string", "null"]}, "confidence": {"$ref": "#/$defs/score"},
+        "watch_outs": {"type": "array", "items": {"type": "string"}},
+        "evidence_insufficient": {"type": "boolean"},
+        "score_version": {"type": "string"}, "evaluated_at": {"$ref": "#/$defs/ts"},
+        "scoring_path": {"$ref": "#/$defs/scoring_path"}
+      }
+    },
+
+    "oss_project": {
+      "type": "object", "additionalProperties": false,
+      "required": ["oss_id", "name", "host", "repo_url", "github_url", "live", "maintenance", "licence", "project_health"],
+      "properties": {
+        "oss_id": {"$ref": "#/$defs/oss_id"},
+        "name": {"type": "string", "minLength": 1},
+        "host": {"enum": ["github.com", "gitlab.com", "codeberg.org"]},
+        "repo_url": {"type": "string", "pattern": "^https://"},
+        "github_url": {"anyOf": [{"type": "string", "pattern": "^https://github\\.com/"}, {"type": "null"}]},
+        "live": {
+          "type": "object", "additionalProperties": false,
+          "required": ["stars", "forks", "archived", "licence_spdx", "pushed_at", "latest_release", "checked_at"],
+          "properties": {
+            "stars": {"type": ["integer", "null"], "minimum": 0},
+            "forks": {"type": ["integer", "null"], "minimum": 0},
+            "archived": {"const": false},
+            "licence_spdx": {"type": ["string", "null"]},
+            "pushed_at": {"$ref": "#/$defs/ts_or_null"},
+            "latest_release": {"anyOf": [{"type": "null"}, {"type": "object", "additionalProperties": false,
+              "required": ["tag", "published_at"], "properties": {"tag": {"type": "string"}, "published_at": {"$ref": "#/$defs/ts"}}}]},
+            "checked_at": {"$ref": "#/$defs/ts"}
+          }
+        },
+        "maintenance": {
+          "type": "object", "additionalProperties": false,
+          "required": ["status", "last_meaningful_activity_at", "days_since_meaningful_activity", "basis"],
+          "properties": {
+            "status": {"$ref": "#/$defs/maintenance_status"},
+            "last_meaningful_activity_at": {"$ref": "#/$defs/ts"},
+            "days_since_meaningful_activity": {"type": "integer", "minimum": 0, "maximum": 366},
+            "basis": {"type": "string"}
+          }
+        },
+        "licence": {
+          "type": "object", "additionalProperties": false, "required": ["spdx", "status"],
+          "properties": {"spdx": {"type": "string", "minLength": 1}, "status": {"enum": ["recognised", "exception_approved"]}}
+        },
+        "project_health": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/project_health"}]}
+      }
+    },
+
+    "fit": {
+      "type": "object", "additionalProperties": false,
+      "required": ["score", "credible_alternative", "publish", "core_gate", "confidence", "dimensions", "score_version", "evaluated_at", "scoring_path"],
+      "properties": {
+        "score": {"$ref": "#/$defs/score"}, "credible_alternative": {"type": "boolean"}, "publish": {"type": "boolean"},
+        "core_gate": {"type": "string"}, "confidence": {"$ref": "#/$defs/score"},
+        "dimensions": {"type": "object", "additionalProperties": {"$ref": "#/$defs/score"}},
+        "score_version": {"type": "string"}, "evaluated_at": {"$ref": "#/$defs/ts"},
+        "scoring_path": {"$ref": "#/$defs/scoring_path"}
+      }
+    },
+
+    "relationship": {
+      "type": "object", "additionalProperties": false,
+      "required": ["edge_id", "saas_id", "oss_id", "relation", "corroborated", "sources", "provenance", "validated_as_of", "replacement_fit", "recommended"],
+      "properties": {
+        "edge_id": {"type": "string", "minLength": 3},
+        "saas_id": {"$ref": "#/$defs/saas_id"},
+        "oss_id": {"$ref": "#/$defs/oss_id"},
+        "relation": {"const": "open_source_alternative_to"},
+        "corroborated": {"type": "boolean"},
+        "sources": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "provenance": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["source_id", "source_commit", "locator"]}},
+        "validated_as_of": {"$ref": "#/$defs/ts"},
+        "replacement_fit": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/fit"}]},
+        "recommended": {"type": "boolean"}
+      }
+    },
+
+    "recommendation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["rank", "oss_id", "name", "repo_url", "github_url", "stars", "licence_spdx", "maintenance_status",
+                   "last_meaningful_activity_at", "latest_release", "replacement_fit", "project_health", "self_hosting",
+                   "note", "sources", "live_checked_at"],
+      "properties": {
+        "rank": {"type": "integer", "minimum": 1},
+        "oss_id": {"$ref": "#/$defs/oss_id"}, "name": {"type": "string", "minLength": 1},
+        "repo_url": {"type": "string", "pattern": "^https://"},
+        "github_url": {"type": ["string", "null"]},
+        "stars": {"type": ["integer", "null"]}, "licence_spdx": {"type": "string"},
+        "maintenance_status": {"$ref": "#/$defs/maintenance_status"},
+        "last_meaningful_activity_at": {"$ref": "#/$defs/ts"},
+        "latest_release": {"type": ["object", "null"]},
+        "replacement_fit": {"type": "object", "required": ["score", "confidence", "score_version", "evaluated_at"]},
+        "project_health": {"type": ["object", "null"]},
+        "self_hosting": {"type": "object", "required": ["self_hostable", "basis"]},
+        "note": {"type": "object", "required": ["strengths", "gaps", "text", "origin"], "properties": {"origin": {"const": "derived"}}},
+        "sources": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "live_checked_at": {"$ref": "#/$defs/ts"}
+      }
+    },
+
+    "api_saas": {
+      "type": "object", "additionalProperties": false,
+      "required": ["api_version", "dataset_version", "saas", "status", "recommendations", "more_available", "last_checked", "scoring", "provenance"],
+      "properties": {
+        "api_version": {"const": "v1"}, "dataset_version": {"type": "string", "pattern": "^[0-9a-f]{16}$"},
+        "saas": {"type": "object", "required": ["saas_id", "name", "domain", "category", "slug", "compare_path"],
+                 "properties": {"compare_path": {"type": "string", "pattern": "^/open-source/[a-z0-9-]+-alternatives$"}}},
+        "status": {"enum": ["ok", "insufficient_recommendations"]},
+        "recommendations": {"type": "array", "maxItems": 5, "items": {"$ref": "#/$defs/recommendation"}},
+        "more_available": {"type": "integer", "minimum": 0},
+        "last_checked": {"$ref": "#/$defs/checked_range"},
+        "scoring": {"type": "object"}, "provenance": {"type": "object", "required": ["sources", "notice"]}
+      }
+    },
+
+    "api_index": {
+      "type": "object", "additionalProperties": false,
+      "required": ["api_version", "dataset_version", "canonical_schema", "data_as_of", "live_checked_at", "supported_saas", "domains"],
+      "properties": {
+        "api_version": {"const": "v1"}, "dataset_version": {"type": "string"}, "canonical_schema": {"const": "the-source.canonical/1"},
+        "data_as_of": {"$ref": "#/$defs/ts"}, "live_checked_at": {"$ref": "#/$defs/checked_range"},
+        "supported_saas": {"type": "array", "minItems": 1, "items": {"type": "object",
+          "required": ["saas_id", "name", "slug", "path", "compare_path", "recommendations", "status"]}},
+        "domains": {"const": "domains.json"}
+      }
+    },
+
+    "api_domains": {
+      "type": "object", "additionalProperties": false, "required": ["api_version", "dataset_version", "match_semantics", "rules"],
+      "properties": {
+        "api_version": {"const": "v1"}, "dataset_version": {"type": "string"}, "match_semantics": {"type": "string"},
+        "rules": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["saas_id"],
+          "properties": {"saas_id": {"$ref": "#/$defs/saas_id"}, "host": {"type": "string"}, "host_suffix": {"type": "string", "pattern": "^\\."},
+                         "path_prefix": {"type": "string", "pattern": "^/"}},
+          "anyOf": [{"required": ["host"]}, {"required": ["host_suffix"]}]}}
+      }
+    },
+
+    "run_record": {
+      "type": "object",
+      "required": ["run_id", "cycle_key", "attempt", "trigger", "started_at", "ended_at", "status", "strategies", "counts", "canonical", "error"],
+      "properties": {
+        "run_id": {"type": "string"}, "cycle_key": {"type": "string"}, "attempt": {"type": "integer", "minimum": 1},
+        "trigger": {"enum": ["schedule", "manual", "local"]},
+        "started_at": {"$ref": "#/$defs/ts"}, "ended_at": {"$ref": "#/$defs/ts_or_null"},
+        "status": {"enum": ["running", "succeeded", "failed"]},
+        "strategies": {"type": "array", "items": {"type": "object", "required": ["id", "status"]}},
+        "counts": {"type": "object"},
+        "canonical": {"type": "object", "required": ["dataset_version_before", "dataset_version_after", "changed"]},
+        "error": {"type": ["string", "null"]}
+      }
+    },
+
+    "intake_outcome": {
+      "type": "object",
+      "required": ["request_id", "repo_url", "oss_id", "submitted_at", "assessed_at", "outcome", "reasons", "evidence", "canonical"],
+      "properties": {
+        "request_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{6,80}$"},
+        "repo_url": {"type": "string"}, "oss_id": {"type": ["string", "null"]},
+        "submitted_at": {"$ref": "#/$defs/ts"}, "assessed_at": {"$ref": "#/$defs/ts"},
+        "outcome": {"enum": ["accepted", "rejected", "already_known", "needs_more_evidence", "failed"]},
+        "reasons": {"type": "array", "items": {"type": "string"}},
+        "evidence": {"type": "object"},
+        "canonical": {"type": "object", "required": ["status"]}
+      }
+    }
+  }
+}

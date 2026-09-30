@@ -1,0 +1,273 @@
+{
+  "api_version": "v1",
+  "dataset_version": "3a6c3535b8bd01d0",
+  "last_checked": {
+    "newest": "2026-09-27T05:08:30Z",
+    "oldest": "2026-09-27T05:08:30Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "btwso",
+      "diegoleme",
+      "opensaasdirectory",
+      "runacapital",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "github_url": "https://github.com/itswadesh/svelte-commerce",
+      "last_meaningful_activity_at": "2026-09-09T08:31:57Z",
+      "latest_release": {
+        "published_at": "2025-06-08T08:36:40Z",
+        "tag": "v4.0.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Litekart",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/itswadesh/svelte-commerce",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 80.6,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 81.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/itswadesh/svelte-commerce",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "btwso"
+      ],
+      "stars": 1815
+    },
+    {
+      "github_url": "https://github.com/saleor/saleor",
+      "last_meaningful_activity_at": "2026-09-24T09:06:08Z",
+      "latest_release": {
+        "published_at": "2026-09-24T09:06:43Z",
+        "tag": "3.23.36"
+      },
+      "licence_spdx": "BSD-3-Clause",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Saleor",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity; weakest on migration path."
+      },
+      "oss_id": "github.com/saleor/saleor",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 90.7,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 79.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/saleor/saleor",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "runacapital",
+        "opensaasdirectory",
+        "diegoleme"
+      ],
+      "stars": 23379
+    },
+    {
+      "github_url": "https://github.com/Sylius/Sylius",
+      "last_meaningful_activity_at": "2026-09-25T13:50:34Z",
+      "latest_release": {
+        "published_at": "2026-09-02T14:03:48Z",
+        "tag": "v2.2.9"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Sylius",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "cost advantage"
+        ],
+        "text": "Strongest on core use-case coverage and cost advantage; weakest on migration path."
+      },
+      "oss_id": "github.com/sylius/sylius",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 86.1,
+        "trajectory": "Declining"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 64.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Sylius/Sylius",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "runacapital",
+        "btwso",
+        "diegoleme"
+      ],
+      "stars": 8542
+    },
+    {
+      "github_url": "https://github.com/bagisto/bagisto",
+      "last_meaningful_activity_at": "2026-09-22T15:45:57Z",
+      "latest_release": {
+        "published_at": "2026-09-22T15:45:57Z",
+        "tag": "v2.5.0-beta4"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Bagisto",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "ease of adoption",
+          "cost advantage"
+        ],
+        "text": "Strongest on ease of adoption and cost advantage; weakest on migration path."
+      },
+      "oss_id": "github.com/bagisto/bagisto",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 92.0,
+        "trajectory": "Stable"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 64.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/bagisto/bagisto",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "runacapital",
+        "btwso",
+        "diegoleme"
+      ],
+      "stars": 28176
+    },
+    {
+      "github_url": "https://github.com/woocommerce/woocommerce",
+      "last_meaningful_activity_at": "2026-09-25T18:36:09Z",
+      "latest_release": {
+        "published_at": "2026-09-22T19:03:56Z",
+        "tag": "11.1.2"
+      },
+      "licence_spdx": "GPL-2.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "WooCommerce",
+      "note": {
+        "gaps": [
+          "feature parity",
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "integrations and extensibility",
+          "production readiness"
+        ],
+        "text": "Strongest on integrations and extensibility and production readiness; weakest on feature parity and cost advantage."
+      },
+      "oss_id": "github.com/woocommerce/woocommerce",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 95.1,
+        "trajectory": "Rising"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 87.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 61.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/woocommerce/woocommerce",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "solvohq",
+        "diegoleme"
+      ],
+      "stars": 10537
+    }
+  ],
+  "saas": {
+    "category": "E-commerce",
+    "compare_path": "/open-source/shopify-alternatives",
+    "domain": "shopify.com",
+    "name": "Shopify",
+    "saas_id": "shopify",
+    "slug": "shopify"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

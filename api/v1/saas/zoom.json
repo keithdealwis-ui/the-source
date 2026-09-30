@@ -1,0 +1,220 @@
+{
+  "api_version": "v1",
+  "dataset_version": "3a6c3535b8bd01d0",
+  "last_checked": {
+    "newest": "2026-09-27T05:08:30Z",
+    "oldest": "2026-09-27T05:08:30Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "altstack",
+      "diegoleme",
+      "fossalt",
+      "opensaasdirectory",
+      "runacapital",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "github_url": "https://github.com/jitsi/jitsi-meet",
+      "last_meaningful_activity_at": "2026-09-25T16:01:58Z",
+      "latest_release": {
+        "published_at": "2026-09-14T13:07:11Z",
+        "tag": "stable/jitsi-meet_11248"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Jitsi Meet",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/jitsi/jitsi-meet",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 94.8,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 92.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 89.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/jitsi/jitsi-meet",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "runacapital",
+        "opensaasdirectory",
+        "diegoleme",
+        "altstack",
+        "fossalt"
+      ],
+      "stars": 30001
+    },
+    {
+      "github_url": "https://github.com/bigbluebutton/bigbluebutton",
+      "last_meaningful_activity_at": "2026-09-26T01:15:50Z",
+      "latest_release": {
+        "published_at": "2026-09-11T18:05:36Z",
+        "tag": "v4.0.0-rc.3"
+      },
+      "licence_spdx": "LGPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "BigBlueButton",
+      "note": {
+        "gaps": [
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on cost advantage."
+      },
+      "oss_id": "github.com/bigbluebutton/bigbluebutton",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 87.9,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 90.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 83.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/bigbluebutton/bigbluebutton",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "solvohq",
+        "fossalt"
+      ],
+      "stars": 9228
+    },
+    {
+      "github_url": "https://github.com/jech/galene",
+      "last_meaningful_activity_at": "2026-09-25T14:21:25Z",
+      "latest_release": null,
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Galene",
+      "note": {
+        "gaps": [
+          "ease of adoption"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on ease of adoption."
+      },
+      "oss_id": "github.com/jech/galene",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 94.2,
+        "score": 72.2,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 80.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 79.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/jech/galene",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "fossalt"
+      ],
+      "stars": 1411
+    },
+    {
+      "github_url": "https://github.com/element-hq/element-call",
+      "last_meaningful_activity_at": "2026-09-24T09:52:03Z",
+      "latest_release": {
+        "published_at": "2026-09-21T13:48:25Z",
+        "tag": "v0.26.1-rc.1"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-09-27T05:08:30Z",
+      "maintenance_status": "active",
+      "name": "Element Call",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/element-hq/element-call",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 87.3,
+        "trajectory": "Rising"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 74.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/element-hq/element-call",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "fossalt"
+      ],
+      "stars": 1001
+    }
+  ],
+  "saas": {
+    "category": "Video conferencing",
+    "compare_path": "/open-source/zoom-alternatives",
+    "domain": "zoom.us",
+    "name": "Zoom",
+    "saas_id": "zoom",
+    "slug": "zoom"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

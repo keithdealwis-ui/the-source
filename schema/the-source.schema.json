@@ -1,0 +1,1085 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-source.internal/schema/1.0.0/the-source.schema.json",
+  "title": "The Source canonical schema",
+  "description": "Canonical records for upstream sources, SaaS products, OSS projects and SaaS<->OSS relationship edges. Every project record separates three origins of data: `imported` (copied from an upstream list, each value tagged with its source), `live` (read by The Source from the repository host, dated by fetched_at) and `derived` (computed from live fields and policy).",
+  "$defs": {
+    "timestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_id": {
+      "enum": [
+        "solvohq",
+        "awesome-selfhosted",
+        "runacapital",
+        "opensaasdirectory",
+        "emmraan",
+        "btwso",
+        "diegoleme",
+        "altstack",
+        "fossalt",
+        "intake"
+      ]
+    },
+    "saas_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "oss_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9.-]+\\.[a-z]+/[^\\s]+/[^\\s]+$"
+    },
+    "provenance": {
+      "description": "Where a statement was read: which upstream, at which pinned commit, at which file and line or key.",
+      "type": "object",
+      "required": [
+        "source_id",
+        "source_commit",
+        "locator"
+      ],
+      "properties": {
+        "source_id": {
+          "$ref": "#/$defs/source_id"
+        },
+        "source_commit": {
+          "$ref": "#/$defs/commit"
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "resolved_by": {
+          "const": "reviewed_override"
+        },
+        "upstream_url": {
+          "type": "string"
+        }
+      }
+    },
+    "edge_provenance": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/provenance"
+        }
+      ],
+      "required": [
+        "claimed_saas_name",
+        "claimed_oss_name"
+      ],
+      "properties": {
+        "claimed_saas_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claimed_oss_name": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "imported_value": {
+      "type": "object",
+      "required": [
+        "value",
+        "source_id"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_id": {
+          "$ref": "#/$defs/source_id"
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "source_id",
+        "repo",
+        "url",
+        "pinned_commit",
+        "licence_file",
+        "licence_file_sha256",
+        "licence_spdx",
+        "decision",
+        "rationale",
+        "attribution",
+        "share_alike",
+        "conditions",
+        "reviewed_at",
+        "reviewed_by",
+        "harvest"
+      ],
+      "properties": {
+        "source_id": {
+          "$ref": "#/$defs/source_id"
+        },
+        "pinned_commit": {
+          "$ref": "#/$defs/commit"
+        },
+        "licence_file_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "licence_spdx": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decision": {
+          "enum": [
+            "allow",
+            "allow_with_conditions",
+            "refuse"
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 40
+        },
+        "attribution": {
+          "type": "string",
+          "minLength": 1
+        },
+        "share_alike": {
+          "type": "boolean"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "refused_adjacent": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "target",
+              "decision",
+              "rationale"
+            ],
+            "properties": {
+              "decision": {
+                "const": "refuse"
+              }
+            }
+          }
+        }
+      }
+    },
+    "saas_product": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "saas_id",
+        "name",
+        "domain",
+        "category",
+        "aliases",
+        "record_origin",
+        "imported",
+        "derived"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "saas_id": {
+          "$ref": "#/$defs/saas_id"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "domain": {
+          "type": "string",
+          "pattern": "^[a-z0-9.-]+\\.[a-z]+$"
+        },
+        "category": {
+          "type": "string",
+          "minLength": 1
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "record_origin": {
+          "const": "reviewed_catalogue"
+        },
+        "imported": {
+          "type": "object",
+          "required": [
+            "named_by_sources",
+            "spellings_seen"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "named_by_sources": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/source_id"
+              }
+            },
+            "spellings_seen": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "derived": {
+          "type": "object",
+          "required": [
+            "source_count",
+            "validated_alternatives",
+            "launch",
+            "launch_rank"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "source_count": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "validated_alternatives": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "launch": {
+              "type": "boolean"
+            },
+            "launch_rank": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 1
+            }
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "kind",
+        "at"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "code_commit",
+            "release",
+            "tag",
+            "merged_pr"
+          ]
+        },
+        "at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "author": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "code_paths_sample": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "tagged_commit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "shipped_paths_sample": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "enum": [
+                  "code_commit",
+                  "merged_pr"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "code_paths_sample"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "enum": [
+                  "release",
+                  "tag"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "ref",
+              "tagged_commit",
+              "shipped_paths_sample"
+            ]
+          }
+        }
+      ]
+    },
+    "maintenance": {
+      "type": "object",
+      "required": [
+        "status",
+        "last_meaningful_activity_at",
+        "days_since_meaningful_activity",
+        "evidence",
+        "supporting",
+        "basis"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "active",
+            "maintained",
+            "stale"
+          ]
+        },
+        "last_meaningful_activity_at": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/timestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "days_since_meaningful_activity": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "basis": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "active",
+                  "maintained"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "evidence": {
+                "minItems": 1
+              },
+              "last_meaningful_activity_at": {
+                "$ref": "#/$defs/timestamp"
+              },
+              "days_since_meaningful_activity": {
+                "type": "integer",
+                "maximum": 365
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "active"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "days_since_meaningful_activity": {
+                "maximum": 90
+              }
+            }
+          }
+        }
+      ]
+    },
+    "licence_issue": {
+      "description": "What is wrong with a project's licence. Present on every project without a recognised open-source licence.",
+      "type": "object",
+      "required": [
+        "category",
+        "category_meaning",
+        "reason",
+        "detected",
+        "upstream_claims",
+        "upstream_claims_disagree_with_repository",
+        "evidence",
+        "review_status",
+        "retained_under",
+        "named_exception",
+        "reuse_rights_established"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "enum": [
+            "undetermined",
+            "missing",
+            "source_available",
+            "open_core",
+            "restricted",
+            "non_osi",
+            "conflicting",
+            "unrecognised"
+          ]
+        },
+        "category_meaning": {
+          "type": "string",
+          "minLength": 10
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 10
+        },
+        "detected": {
+          "type": "object",
+          "required": [
+            "host_spdx",
+            "host_licence_name",
+            "licence_files",
+            "closest_standard_licences",
+            "enterprise_directories",
+            "restriction_markers"
+          ]
+        },
+        "upstream_claims": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/imported_value"
+          }
+        },
+        "upstream_claims_disagree_with_repository": {
+          "type": "boolean"
+        },
+        "evidence": {
+          "type": "object",
+          "required": [
+            "basis",
+            "fetched_at",
+            "per_file"
+          ]
+        },
+        "review_status": {
+          "enum": [
+            "flagged_retained_not_reviewed_individually",
+            "exception_approved"
+          ]
+        },
+        "retained_under": {
+          "type": "object",
+          "required": [
+            "decided_by",
+            "decision_ref",
+            "decided_at",
+            "scope"
+          ]
+        },
+        "named_exception": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "required": [
+                "approved_by",
+                "approval_ref"
+              ]
+            }
+          ]
+        },
+        "reuse_rights_established": {
+          "const": false
+        }
+      }
+    },
+    "oss_project": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "oss_id",
+        "name",
+        "name_origin",
+        "product_group",
+        "host",
+        "repo_url",
+        "harvested_as",
+        "imported",
+        "live",
+        "derived",
+        "provenance"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "oss_id": {
+          "$ref": "#/$defs/oss_id"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name_origin": {
+          "type": "object",
+          "required": [
+            "block",
+            "source_id"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "block": {
+              "const": "imported"
+            },
+            "source_id": {
+              "$ref": "#/$defs/source_id"
+            }
+          }
+        },
+        "product_group": {
+          "type": "string",
+          "minLength": 3,
+          "description": "Repositories of the same product share a group; a launch SaaS lists at most one repository per group."
+        },
+        "host": {
+          "type": "string"
+        },
+        "repo_url": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "harvested_as": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "imported": {
+          "description": "Copied from upstream lists. Never refreshed. Never used to decide eligibility.",
+          "type": "object",
+          "required": [
+            "names",
+            "repo_urls",
+            "declared_licences",
+            "categories"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "names": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/imported_value"
+              }
+            },
+            "repo_urls": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/imported_value"
+              }
+            },
+            "declared_licences": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/imported_value"
+              }
+            },
+            "categories": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/imported_value"
+              }
+            }
+          }
+        },
+        "live": {
+          "description": "Read from the repository host by The Source. Dated. Refreshed every run.",
+          "type": "object",
+          "required": [
+            "provider",
+            "fetched_at",
+            "found"
+          ],
+          "properties": {
+            "provider": {
+              "type": "string"
+            },
+            "fetched_at": {
+              "$ref": "#/$defs/timestamp"
+            },
+            "found": {
+              "type": "boolean"
+            },
+            "archived": {
+              "type": "boolean"
+            },
+            "licence_spdx": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "stars": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            }
+          }
+        },
+        "derived": {
+          "type": "object",
+          "required": [
+            "evaluated_as_of",
+            "maintenance",
+            "licence",
+            "eligibility",
+            "recommendation_eligible",
+            "lane",
+            "launch"
+          ],
+          "allOf": [
+            {
+              "description": "A project outside the recommendable lane is never recommendation-eligible and never in the launch set.",
+              "if": {
+                "properties": {
+                  "lane": {
+                    "enum": [
+                      "licence_exception",
+                      "rejected"
+                    ]
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "recommendation_eligible": {
+                    "const": false
+                  },
+                  "launch": {
+                    "const": false
+                  }
+                }
+              }
+            },
+            {
+              "description": "A project in the licence-exception lane must carry a complete licence issue record.",
+              "if": {
+                "properties": {
+                  "lane": {
+                    "const": "licence_exception"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "licence": {
+                    "type": "object",
+                    "required": [
+                      "issue"
+                    ],
+                    "properties": {
+                      "status": {
+                        "const": "issue"
+                      },
+                      "issue": {
+                        "$ref": "#/$defs/licence_issue"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "evaluated_as_of": {
+              "$ref": "#/$defs/timestamp"
+            },
+            "recommendation_eligible": {
+              "type": "boolean"
+            },
+            "lane": {
+              "enum": [
+                "recommendable",
+                "licence_exception",
+                "rejected"
+              ]
+            },
+            "maintenance": {
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/maintenance"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "licence": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "spdx",
+                    "recognised",
+                    "exception",
+                    "usable",
+                    "status",
+                    "issue"
+                  ],
+                  "properties": {
+                    "status": {
+                      "enum": [
+                        "recognised",
+                        "exception_approved",
+                        "issue"
+                      ]
+                    },
+                    "issue": {
+                      "oneOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "$ref": "#/$defs/licence_issue"
+                        }
+                      ]
+                    },
+                    "recognised": {
+                      "type": "boolean"
+                    },
+                    "usable": {
+                      "type": "boolean"
+                    },
+                    "exception": {
+                      "oneOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "approved_by",
+                            "approval_ref"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            "eligibility": {
+              "type": "object",
+              "required": [
+                "recommended",
+                "exclusion_reasons"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "recommended": {
+                  "type": "boolean"
+                },
+                "exclusion_reasons": {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      "archived",
+                      "disabled",
+                      "empty_repository",
+                      "no_recognised_open_source_licence",
+                      "stale_no_meaningful_activity_12_months",
+                      "repository_not_found",
+                      "host_not_independently_verifiable",
+                      "repository_identity_changed_since_listed",
+                      "live_verification_failed"
+                    ]
+                  }
+                }
+              }
+            },
+            "launch": {
+              "type": "boolean"
+            }
+          }
+        },
+        "provenance": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/provenance"
+          }
+        }
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "edge_id",
+        "saas_id",
+        "oss_id",
+        "relation",
+        "provenance",
+        "source_ids",
+        "source_count",
+        "corroborated",
+        "share_alike_only",
+        "lane",
+        "recommendation_eligible",
+        "validation",
+        "launch"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "lane": {
+                "enum": [
+                  "licence_exception",
+                  "rejected"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "recommendation_eligible": {
+                "const": false
+              },
+              "launch": {
+                "const": false
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "lane": {
+                "const": "licence_exception"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "validation": {
+                "properties": {
+                  "status": {
+                    "const": "flagged_licence_exception"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "edge_id": {
+          "type": "string",
+          "minLength": 3
+        },
+        "saas_id": {
+          "$ref": "#/$defs/saas_id"
+        },
+        "oss_id": {
+          "$ref": "#/$defs/oss_id"
+        },
+        "relation": {
+          "const": "open_source_alternative_to"
+        },
+        "provenance": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/edge_provenance"
+          }
+        },
+        "source_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/source_id"
+          }
+        },
+        "source_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "corroborated": {
+          "type": "boolean"
+        },
+        "share_alike_only": {
+          "type": "boolean"
+        },
+        "lane": {
+          "enum": [
+            "recommendable",
+            "licence_exception",
+            "rejected"
+          ]
+        },
+        "recommendation_eligible": {
+          "type": "boolean"
+        },
+        "validation": {
+          "type": "object",
+          "required": [
+            "status",
+            "method",
+            "checks",
+            "reasons",
+            "validated_as_of",
+            "plausibility_review"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "plausibility_review": {
+              "type": "object",
+              "required": [
+                "reviewed_by",
+                "reviewed_at",
+                "outcome"
+              ],
+              "properties": {
+                "outcome": {
+                  "enum": [
+                    "rejected",
+                    "left standing",
+                    "not reviewed"
+                  ]
+                }
+              }
+            },
+            "status": {
+              "enum": [
+                "validated",
+                "flagged_licence_exception",
+                "rejected"
+              ]
+            },
+            "method": {
+              "type": "string"
+            },
+            "checks": {
+              "type": "object",
+              "required": [
+                "passed_plausibility_review",
+                "saas_in_reviewed_catalogue",
+                "provenance_present",
+                "all_sources_licence_allowed",
+                "oss_live_verified",
+                "oss_recommendable"
+              ],
+              "additionalProperties": {
+                "type": "boolean"
+              }
+            },
+            "reasons": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "validated_as_of": {
+              "$ref": "#/$defs/timestamp"
+            }
+          }
+        },
+        "launch": {
+          "type": "boolean"
+        },
+        "launch_position": {
+          "type": "object",
+          "required": [
+            "saas_rank",
+            "position"
+          ],
+          "properties": {
+            "saas_rank": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "position": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

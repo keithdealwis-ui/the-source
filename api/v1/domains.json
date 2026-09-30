@@ -1,0 +1,188 @@
+{
+  "api_version": "v1",
+  "dataset_version": "3a6c3535b8bd01d0",
+  "match_semantics": "Lowercase the page hostname and strip one leading \"www.\". A rule matches when its host equals the hostname (or the hostname ends with its host_suffix) and, if it has a path_prefix, the URL path starts with it. When several rules match, the one with a path_prefix wins; otherwise the first in file order.",
+  "rules": [
+    {
+      "host_suffix": ".atlassian.net",
+      "path_prefix": "/browse",
+      "saas_id": "jira"
+    },
+    {
+      "host_suffix": ".atlassian.net",
+      "path_prefix": "/jira",
+      "saas_id": "jira"
+    },
+    {
+      "host_suffix": ".monday.com",
+      "saas_id": "monday-com"
+    },
+    {
+      "host_suffix": ".myshopify.com",
+      "saas_id": "shopify"
+    },
+    {
+      "host_suffix": ".notion.site",
+      "saas_id": "notion"
+    },
+    {
+      "host": "admin.shopify.com",
+      "saas_id": "shopify"
+    },
+    {
+      "host": "analytics.google.com",
+      "saas_id": "google-analytics"
+    },
+    {
+      "host": "app.asana.com",
+      "saas_id": "asana"
+    },
+    {
+      "host": "app.contentful.com",
+      "saas_id": "contentful"
+    },
+    {
+      "host": "app.datadoghq.com",
+      "saas_id": "datadog"
+    },
+    {
+      "host": "app.datadoghq.eu",
+      "saas_id": "datadog"
+    },
+    {
+      "host": "app.zoom.us",
+      "saas_id": "zoom"
+    },
+    {
+      "host": "asana.com",
+      "saas_id": "asana"
+    },
+    {
+      "host": "atlassian.com",
+      "path_prefix": "/software/jira",
+      "saas_id": "jira"
+    },
+    {
+      "host": "auth0.com",
+      "saas_id": "auth0"
+    },
+    {
+      "host": "aws.amazon.com",
+      "path_prefix": "/s3",
+      "saas_id": "amazon-s3"
+    },
+    {
+      "host": "chat.openai.com",
+      "saas_id": "chatgpt"
+    },
+    {
+      "host": "chatgpt.com",
+      "saas_id": "chatgpt"
+    },
+    {
+      "host": "console.firebase.google.com",
+      "saas_id": "firebase"
+    },
+    {
+      "host": "contentful.com",
+      "saas_id": "contentful"
+    },
+    {
+      "host": "dashboard.heroku.com",
+      "saas_id": "heroku"
+    },
+    {
+      "host": "datadoghq.com",
+      "saas_id": "datadog"
+    },
+    {
+      "host": "drive.google.com",
+      "saas_id": "google-drive"
+    },
+    {
+      "host": "dropbox.com",
+      "saas_id": "dropbox"
+    },
+    {
+      "host": "evernote.com",
+      "saas_id": "evernote"
+    },
+    {
+      "host": "firebase.google.com",
+      "saas_id": "firebase"
+    },
+    {
+      "host": "go.postman.co",
+      "saas_id": "postman"
+    },
+    {
+      "host": "heroku.com",
+      "saas_id": "heroku"
+    },
+    {
+      "host": "manage.auth0.com",
+      "saas_id": "auth0"
+    },
+    {
+      "host": "marketingplatform.google.com",
+      "path_prefix": "/about/analytics",
+      "saas_id": "google-analytics"
+    },
+    {
+      "host": "monday.com",
+      "saas_id": "monday-com"
+    },
+    {
+      "host": "newrelic.com",
+      "saas_id": "new-relic"
+    },
+    {
+      "host": "notion.com",
+      "saas_id": "notion"
+    },
+    {
+      "host": "notion.so",
+      "saas_id": "notion"
+    },
+    {
+      "host": "one.eu.newrelic.com",
+      "saas_id": "new-relic"
+    },
+    {
+      "host": "one.newrelic.com",
+      "saas_id": "new-relic"
+    },
+    {
+      "host": "postman.com",
+      "saas_id": "postman"
+    },
+    {
+      "host": "s3.console.aws.amazon.com",
+      "saas_id": "amazon-s3"
+    },
+    {
+      "host": "shopify.com",
+      "saas_id": "shopify"
+    },
+    {
+      "host": "trello.com",
+      "saas_id": "trello"
+    },
+    {
+      "host": "us5.datadoghq.com",
+      "saas_id": "datadog"
+    },
+    {
+      "host": "web.postman.co",
+      "saas_id": "postman"
+    },
+    {
+      "host": "zoom.com",
+      "saas_id": "zoom"
+    },
+    {
+      "host": "zoom.us",
+      "saas_id": "zoom"
+    }
+  ]
+}
