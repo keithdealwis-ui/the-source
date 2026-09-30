@@ -1,0 +1,109 @@
+{
+  "attempt": 1,
+  "canonical": {
+    "changed": false,
+    "commit_tag": null,
+    "dataset_version_after": "4a669ecae22a2c92",
+    "dataset_version_before": "4a669ecae22a2c92"
+  },
+  "counts": {},
+  "cycle_key": "manual-20260930T035411Z",
+  "ended_at": "2026-09-30T03:58:29Z",
+  "error": "CycleError: CycleError: failure drill: stopped at canonical (THE_SOURCE_DRILL_FAIL_AT)",
+  "run_id": "manual-20260930T035411Z-manual-a1",
+  "schedule": {
+    "time": "07:45",
+    "timezone": "Asia/Dubai",
+    "weekday": "wednesday",
+    "window_hours": 3
+  },
+  "started_at": "2026-09-30T03:54:11Z",
+  "status": "failed",
+  "strategies": [
+    {
+      "advanced": 1,
+      "detail": [
+        {
+          "from": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+          "source_id": "solvohq",
+          "status": "unchanged"
+        },
+        {
+          "from": "e758ae1836eb1d3ebd17525722f46bc59ffa5a46",
+          "source_id": "awesome-selfhosted",
+          "status": "unchanged"
+        },
+        {
+          "from": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+          "source_id": "runacapital",
+          "status": "unchanged"
+        },
+        {
+          "from": "3f29e5943fd9fc9910cd500134d5c6a6836a52ce",
+          "source_id": "opensaasdirectory",
+          "status": "unchanged"
+        },
+        {
+          "from": "c4cc558b7edf50a5efb4e3fd0d867292c2ae6b63",
+          "source_id": "emmraan",
+          "status": "unchanged"
+        },
+        {
+          "from": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+          "source_id": "btwso",
+          "status": "unchanged"
+        },
+        {
+          "from": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+          "source_id": "diegoleme",
+          "status": "unchanged"
+        },
+        {
+          "entries": [
+            64,
+            64
+          ],
+          "from": "895978f66aafdef18873ed34157344ffd1139611",
+          "source_id": "altstack",
+          "status": "advanced",
+          "to": "8f559eedb08f79f09f1706b7bb47d0bb46611d7e"
+        },
+        {
+          "from": "305ba7f87b99fa94abb9f7b0fd6d6f6e354f774f",
+          "source_id": "fossalt",
+          "status": "unchanged"
+        }
+      ],
+      "id": "upstream_lists",
+      "kept": [],
+      "sources": 9,
+      "status": "ok"
+    },
+    {
+      "admitted_entries": 1,
+      "id": "intake_ledger",
+      "ledger_version": "feb7d601b43d46fdbc692e43a3082998c61cc659",
+      "status": "ok"
+    },
+    {
+      "as_of": "2026-09-30T03:54:21Z",
+      "found": 595,
+      "http_calls": 1015,
+      "id": "live_refresh",
+      "repositories": 610,
+      "retries": 0,
+      "status": "ok",
+      "still_failing": []
+    },
+    {
+      "deferred_to_next_cycle": 0,
+      "errors": [],
+      "id": "new_pair_scoring",
+      "pairs_scored": 1,
+      "projects_scored": 1,
+      "status": "ok"
+    }
+  ],
+  "transitions": {},
+  "trigger": "manual"
+}
