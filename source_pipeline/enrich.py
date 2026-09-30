@@ -566,8 +566,10 @@ def codeberg(http: Http, key: str, since: datetime, rules: Rules, policy: dict, 
 ADAPTERS = {"github.com": github, "gitlab.com": gitlab, "codeberg.org": codeberg}
 
 
-def observe(keys: list[str], as_of: datetime | None = None, workers: int = 8, progress=None) -> dict:
-    """Ask every host about every key. Returns a snapshot; writes only the commit cache."""
+def observe(keys: list[str], as_of: datetime | None = None, workers: int = 8, progress=None,
+            save_cache: bool = True) -> dict:
+    """Ask every host about every key. Returns a snapshot; writes only the commit cache,
+    and not even that with save_cache=False (intake: the cache belongs to the cycle)."""
     policy = common.load_policy()
     rules = Rules(policy)
     as_of = as_of or datetime.now(timezone.utc).replace(microsecond=0)
@@ -599,7 +601,8 @@ def observe(keys: list[str], as_of: datetime | None = None, workers: int = 8, pr
                 failed_keys.append(key)
             if progress and i % 50 == 0:
                 progress(i, len(keys))
-    CACHE.save()
+    if save_cache:
+        CACHE.save()
     return {
         "http_calls": calls,
         "lookup_failures": sorted(failures),

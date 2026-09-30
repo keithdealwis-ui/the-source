@@ -165,7 +165,7 @@ def assess(url: str, request_id: str, submitted_by: str | None = None, saas_hint
                        "canonical": {"status": "canonical" if known.get("canonical") else known.get("lane", "pending_promotion")}})
 
     try:
-        snap = enrich.observe([key], workers=1)
+        snap = enrich.observe([key], workers=1, save_cache=False)
     except Exception as exc:
         return _write({**out, "outcome": "failed", "reasons": [f"live_verification_error:{type(exc).__name__}"]})
     live = snap["projects"][key]
