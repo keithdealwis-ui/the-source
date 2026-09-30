@@ -42,9 +42,6 @@ def load_sources(overlay: bool = True) -> dict:
         for s in cfg["sources"]:
             if s["source_id"] in advanced:
                 s["pinned_commit"] = advanced[s["source_id"]]["pinned_commit"]
-    for s in cfg["sources"]:
-        if s.get("kind") == "intake":
-            s["pinned_commit"] = intake_ledger_version()
     return cfg
 
 

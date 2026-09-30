@@ -508,6 +508,10 @@ def run() -> dict:
         row["reviewed_at"] = sources_cfg["reviewed_at"]
         row["reviewed_by"] = sources_cfg["reviewed_by"]
         row["harvest"] = harvest_stats.get(s["source_id"], {})
+        if s.get("kind") == "intake":
+            # The ledger as harvested, not as it is now: an admission changes the dataset
+            # only when a cycle harvests it (KEI-807).
+            row["pinned_commit"] = row["harvest"].get("pinned_commit", row["pinned_commit"])
         source_rows.append(row)
 
     edges.sort(key=lambda e: e["edge_id"])
