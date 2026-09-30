@@ -1,0 +1,133 @@
+{
+  "attempt": 1,
+  "canonical": {
+    "changed": true,
+    "commit_tag": "cycle/manual-20260930T033448Z-manual-a1",
+    "dataset_version_after": "4a669ecae22a2c92",
+    "dataset_version_before": "3a6c3535b8bd01d0"
+  },
+  "counts": {
+    "candidates": 609,
+    "canonical_checks": 27,
+    "canonical_projects": 236,
+    "canonical_relationships": 347,
+    "canonical_relationships_added": 0,
+    "canonical_relationships_removed": 0,
+    "canonical_warnings": 0,
+    "discovered": 0,
+    "intake_pending": 0,
+    "intake_promoted": 0,
+    "refreshed_records": 594,
+    "rejected": 0,
+    "retained": 0,
+    "stale_or_abandoned_detected": 0,
+    "supported_saas_ok": 20
+  },
+  "cycle_key": "manual-20260930T033448Z",
+  "ended_at": "2026-09-30T03:39:54Z",
+  "error": null,
+  "run_id": "manual-20260930T033448Z-manual-a1",
+  "schedule": {
+    "time": "03:00",
+    "timezone": "Asia/Dubai",
+    "weekday": "sunday",
+    "window_hours": 4
+  },
+  "started_at": "2026-09-30T03:34:48Z",
+  "status": "succeeded",
+  "strategies": [
+    {
+      "advanced": 2,
+      "detail": [
+        {
+          "from": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+          "source_id": "solvohq",
+          "status": "unchanged"
+        },
+        {
+          "entries": [
+            1351,
+            1351
+          ],
+          "from": "c10a71ae91ccc513dc4329578896810c499c4b21",
+          "source_id": "awesome-selfhosted",
+          "status": "advanced",
+          "to": "e758ae1836eb1d3ebd17525722f46bc59ffa5a46"
+        },
+        {
+          "from": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+          "source_id": "runacapital",
+          "status": "unchanged"
+        },
+        {
+          "from": "3f29e5943fd9fc9910cd500134d5c6a6836a52ce",
+          "source_id": "opensaasdirectory",
+          "status": "unchanged"
+        },
+        {
+          "from": "c4cc558b7edf50a5efb4e3fd0d867292c2ae6b63",
+          "source_id": "emmraan",
+          "status": "unchanged"
+        },
+        {
+          "from": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+          "source_id": "btwso",
+          "status": "unchanged"
+        },
+        {
+          "from": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+          "source_id": "diegoleme",
+          "status": "unchanged"
+        },
+        {
+          "entries": [
+            64,
+            64
+          ],
+          "from": "ca28a74d15d3cb3677706a861174b9ec350706a7",
+          "source_id": "altstack",
+          "status": "advanced",
+          "to": "895978f66aafdef18873ed34157344ffd1139611"
+        },
+        {
+          "from": "305ba7f87b99fa94abb9f7b0fd6d6f6e354f774f",
+          "source_id": "fossalt",
+          "status": "unchanged"
+        }
+      ],
+      "id": "upstream_lists",
+      "kept": [],
+      "sources": 9,
+      "status": "ok"
+    },
+    {
+      "admitted_entries": 0,
+      "id": "intake_ledger",
+      "ledger_version": "0000000000000000000000000000000000000000",
+      "status": "ok"
+    },
+    {
+      "as_of": "2026-09-30T03:35:14Z",
+      "found": 594,
+      "http_calls": 1571,
+      "id": "live_refresh",
+      "repositories": 609,
+      "retries": 0,
+      "status": "ok",
+      "still_failing": []
+    },
+    {
+      "deferred_to_next_cycle": 0,
+      "errors": [],
+      "id": "new_pair_scoring",
+      "pairs_scored": 0,
+      "projects_scored": 0,
+      "status": "ok"
+    }
+  ],
+  "transitions": {
+    "became_recommendable": [],
+    "no_longer_recommendable": []
+  },
+  "trigger": "manual"
+}
