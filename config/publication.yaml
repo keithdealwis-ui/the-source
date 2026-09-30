@@ -6,6 +6,6 @@
 # whose status is anything but private without an approval, or whose git remote is not
 # the canonical repository.
 
-status: private_repository          # private_repository | public
+status: public                      # private_repository | public
 canonical_remote: github.com/keithdealwis-ui/the-source
-approval: null                      # required when status is public, e.g. "gate-KEI-807-xxxx"
+approval: gate-KEI-807-bfaf2354       # Keith, Telegram, 2026-09-30T05:23:38Z

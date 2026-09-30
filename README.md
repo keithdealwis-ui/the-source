@@ -10,7 +10,7 @@ This repository is the single source of truth. The Source Chrome extension, the
 comparison pages on de-alwis.com and every future Source workflow read from it.
 Nothing downstream keeps its own copy.
 
-> **Status:** private. Making the repository public is a separate, approved step.
+> **Licence:** code MIT (`LICENSE`); data CC BY 4.0, with the parts adapted from a share-alike source under CC BY-SA 3.0 (`DATA-LICENCE.md`).
 
 ## What is here
 
