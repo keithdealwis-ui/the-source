@@ -50,8 +50,14 @@ def load_sources(overlay: bool = True) -> dict:
 
 def intake_ledger_version() -> str:
     """Content hash of the intake ledger, in the 40-hex shape every source commit has."""
-    ledger = INTAKE / "admitted.jsonl"
-    return sha256_file(ledger)[:40] if ledger.exists() else "0" * 40
+    ledger = INTAKE / "admitted"
+    files = sorted(ledger.glob("*.json")) if ledger.exists() else []
+    if not files:
+        return "0" * 40
+    h = hashlib.sha256()
+    for f in files:
+        h.update(f.name.encode() + b"\0" + f.read_bytes() + b"\0")
+    return h.hexdigest()[:40]
 
 
 def load_policy() -> dict:

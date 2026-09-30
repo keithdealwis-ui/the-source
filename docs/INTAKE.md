@@ -59,13 +59,15 @@ The checks run in this order, and the first failure decides the outcome.
    meaningful activity within 12 months (`config/policy.yaml`). A failure gives
    `rejected`, with reasons.
 5. **Scores**: Project Health and Evidence Confidence through the scoring rubric
-   (single-project path), stored in the shared score history.
+   (single-project path). These are reported in the outcome as preliminary. The cycle that
+   promotes the repository scores it again through the same path and writes the shared
+   score history, so there is one history and one writer.
 6. **Relationship evidence**: the project's own description, topics and README are
    searched for "alternative to X", "X alternative" or a topic `x-alternative`, where
    `X` is a product in the reviewed SaaS catalogue. The whole item must match, so
    "alternative to GitHub Gist" does not count as GitHub. None found gives
    `needs_more_evidence`. Found gives a preliminary Replacement Fit per relationship, and
-   the repository is admitted to `data/intake/admitted.jsonl` with outcome `accepted`.
+   the repository is admitted to `data/intake/admitted/<request_id>.json` with outcome `accepted`.
 
 ## The outcome record
 

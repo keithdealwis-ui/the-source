@@ -82,13 +82,14 @@ def _harvest_intake(source: dict, claims: list, st: dict) -> None:
     the SaaS relationships its own public statement evidenced; the ledger is The Source's
     own record, so no upstream licence applies. Same claim shape as every other source."""
     st["licence_file_sha256"] = verify_licence(source, common.ROOT)
-    ledger = common.INTAKE / "admitted.jsonl"
-    rows = common.read_jsonl(ledger) if ledger.exists() else []
+    ledger = common.INTAKE / "admitted"
+    rows = [common.read_json(p) for p in sorted(ledger.glob("*.json"))] if ledger.exists() else []
+    rows.sort(key=lambda r: (r["oss_id"], r["request_id"]))
     version = common.intake_ledger_version()
     with_claims = 0
     for r in rows:
         claims.append({"category": r.get("category"), "declared_licence": r.get("declared_licence"),
-                       "locator": f"data/intake/admitted.jsonl#request_id={r['request_id']}",
+                       "locator": f"data/intake/admitted/{r['request_id']}.json",
                        "oss_name": r["oss_name"], "repo_url": r["repo_url"], "saas_names": r["saas_names"],
                        "source_commit": version, "source_id": source["source_id"]})
         with_claims += bool(r["saas_names"])

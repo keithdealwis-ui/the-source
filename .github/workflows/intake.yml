@@ -10,6 +10,7 @@ name: Intake
 #   outcome  GET  /repos/{owner}/{repo}/contents/data/intake/outcomes/<request_id>.json
 #
 # scripts/source_intake.py wraps all three. See docs/INTAKE.md.
+# The job only ADDS files (data/intake/outcomes/<id>.json, data/intake/admitted/<id>.json).
 
 run-name: "intake ${{ inputs.request_id }}"
 
@@ -35,8 +36,10 @@ on:
 permissions:
   contents: write
 
+# Per request: a duplicate dispatch of the same request id waits for the first. Intake
+# only adds new files, so it needs no lock against the weekly cycle.
 concurrency:
-  group: canonical-writer
+  group: intake-${{ inputs.request_id }}
   cancel-in-progress: false
 
 jobs:
@@ -82,9 +85,13 @@ jobs:
           OUTCOME=$(python -c "import json,os;print(json.load(open('data/intake/outcomes/'+os.environ['REQUEST_ID']+'.json'))['outcome'])")
           git config user.name "the-source-intake"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/intake data/scores
+          git add data/intake/outcomes data/intake/admitted
           git commit -m "intake: $REQUEST_ID $OUTCOME" || echo "outcome already recorded"
-          git push origin "HEAD:$BRANCH"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin "$BRANCH" && git push origin "HEAD:$BRANCH" && break
+            sleep $((i * 5))
+          done
+          git fetch origin "$BRANCH" && git merge-base --is-ancestor HEAD "origin/$BRANCH" || { echo "push failed"; exit 1; }
           {
             echo "## Intake $REQUEST_ID: $OUTCOME"
             echo '```json'

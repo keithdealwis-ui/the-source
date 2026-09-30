@@ -280,7 +280,7 @@ sources:
   - source_id: intake
     kind: intake
     repo: keithdealwis-ui/the-source
-    url: https://github.com/keithdealwis-ui/the-source/blob/main/data/intake/admitted.jsonl
+    url: https://github.com/keithdealwis-ui/the-source/blob/main/data/intake/admitted/
     # Replaced at load time by the ledger's content hash (common.load_sources).
     pinned_commit: "0000000000000000000000000000000000000000"
     licence_file: docs/INTAKE-POLICY.md
@@ -288,10 +288,10 @@ sources:
     licence_spdx: "n/a (The Source's own assessment record)"
     decision: allow
     parser: intake
-    parse_path: data/intake/admitted.jsonl
+    parse_path: data/intake/admitted/
     priority: 10
     attribution: >-
-      The Source intake ledger (data/intake/admitted.jsonl): relationships stated by each
+      The Source intake ledger (data/intake/admitted/): relationships stated by each
       project in its own public repository and assessed by The Source
     share_alike: false
     conditions:

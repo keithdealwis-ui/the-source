@@ -4,8 +4,9 @@ name: Weekly research and refresh cycle
 # `source_pipeline cycle-due` whether config/schedule.yaml says a cycle is due (default
 # Sunday 03:00 Asia/Dubai, 4-hour window). Change the schedule there, not here.
 #
-# One writer at a time: this workflow and the intake workflow share a concurrency group,
-# so two jobs never modify the canonical data at once.
+# One cycle at a time (concurrency group canonical-writer on the cycle job). Intake jobs
+# only ADD files (an outcome and, if admitted, a ledger entry) that a cycle never writes,
+# and every job rebases before pushing, so concurrent intake never conflicts with a cycle.
 
 on:
   schedule:
@@ -20,14 +21,15 @@ permissions:
   contents: write
   issues: write
 
-concurrency:
-  group: canonical-writer
-  cancel-in-progress: false
-
 jobs:
-  cycle:
+  # Hourly wake-up. Cheap, and deliberately outside the writer concurrency group: GitHub
+  # keeps only one pending job per group and cancels the older, so no-op wake-ups must
+  # never queue there.
+  check:
     runs-on: ubuntu-latest
-    timeout-minutes: 340
+    timeout-minutes: 5
+    outputs:
+      due: ${{ steps.due.outputs.due }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -35,7 +37,6 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-
       - name: Is a cycle due?
         id: due
         env:
@@ -48,8 +49,23 @@ jobs:
             echo "due=true" >> "$GITHUB_OUTPUT"
           fi
 
+  cycle:
+    needs: check
+    if: needs.check.outputs.due == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    concurrency:
+      group: canonical-writer
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
       - name: Restore upstream checkouts
-        if: steps.due.outputs.due == 'true'
         uses: actions/cache@v4
         with:
           path: raw
@@ -57,7 +73,6 @@ jobs:
           restore-keys: raw-
 
       - name: Run the cycle
-        if: steps.due.outputs.due == 'true'
         id: cycle
         continue-on-error: true
         env:
@@ -67,7 +82,6 @@ jobs:
         run: python -m source_pipeline cycle --trigger "$TRIGGER"
 
       - name: Commit the result (promoted data on success; the run record always)
-        if: steps.due.outputs.due == 'true'
         id: commit
         env:
           BRANCH: ${{ github.ref_name }}
@@ -87,9 +101,12 @@ jobs:
           git add runs/
           if [ "$STATUS" = "succeeded" ]; then git add data api; fi
           git commit -m "cycle: $RUN $STATUS (dataset $VERSION)" || echo "nothing to commit"
-          if [ "$STATUS" = "succeeded" ]; then git tag "cycle/$RUN"; fi
-          git push origin "HEAD:$BRANCH"
-          if [ "$STATUS" = "succeeded" ]; then git push origin "cycle/$RUN"; fi
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin "$BRANCH" && git push origin "HEAD:$BRANCH" && break
+            sleep $((i * 10))
+          done
+          git fetch origin "$BRANCH" && git merge-base --is-ancestor HEAD "origin/$BRANCH" || { echo "push failed"; exit 1; }
+          if [ "$STATUS" = "succeeded" ]; then git tag -f "cycle/$RUN" && git push origin "cycle/$RUN"; fi
           {
             echo "## Cycle $RUN: $STATUS"
             echo
@@ -99,7 +116,7 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Surface the outcome durably
-        if: steps.due.outputs.due == 'true'
+        if: always()
         env:
           GH_TOKEN: ${{ github.token }}
           RUN: ${{ steps.commit.outputs.run }}
@@ -108,8 +125,8 @@ jobs:
         run: |
           gh label create cycle-failure --color B60205 --description "Weekly cycle failed" 2>/dev/null || true
           OPEN=$(gh issue list --label cycle-failure --state open --json number --jq '.[0].number')
-          if [ "$STATUS" = "failed" ]; then
-            BODY="Run \`$RUN\` failed. The last known-good dataset is unchanged. Record: runs/$RUN.json. Log: $RUN_URL. The next wake-up inside the window retries automatically."
+          if [ "$STATUS" != "succeeded" ]; then
+            BODY="Run \`${RUN:-unknown}\` ended ${STATUS:-without a run record}. The last known-good dataset is unchanged. Record: runs/$RUN.json. Log: $RUN_URL. The next wake-up inside the window retries automatically."
             if [ -n "$OPEN" ]; then gh issue comment "$OPEN" --body "$BODY"
             else gh issue create --title "Weekly cycle failing" --label cycle-failure --body "$BODY"; fi
             exit 1

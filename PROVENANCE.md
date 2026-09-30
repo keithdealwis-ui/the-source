@@ -31,7 +31,7 @@ Take one row of `api/v1/saas/notion.json`:
 ## Manual intake
 
 Repositories admitted through intake have `source_id: intake`. The locator points at the
-admitting request (`data/intake/admitted.jsonl#request_id=...`). The outcome record
+admitting request (`data/intake/admitted/<request_id>.json`). The outcome record
 `data/intake/outcomes/<request_id>.json` keeps the matched evidence. The intake source's
 "licence file" is `docs/INTAKE-POLICY.md`, pinned by hash like any upstream licence.
 

@@ -5,7 +5,7 @@
 
 Assesses one submitted repository with the same rules as scheduled discovery, records
 exactly one durable outcome under data/intake/outcomes/<request_id>.json, and, when the
-repository qualifies, admits it to the intake ledger (data/intake/admitted.jsonl), which
+repository qualifies, admits it to the intake ledger (data/intake/admitted/<request_id>.json), which
 the next cycle harvests like any other source. See docs/INTAKE-POLICY.md.
 
 Outcomes:
@@ -27,7 +27,7 @@ from .activity import Rules, evaluate, parse_ts
 from .normalise import repo_key
 
 OUTCOMES = common.INTAKE / "outcomes"
-LEDGER = common.INTAKE / "admitted.jsonl"
+LEDGER = common.INTAKE / "admitted"   # one file per admission: concurrent intakes never conflict
 REQUEST_ID = re.compile(r"^[A-Za-z0-9._-]{6,80}$")
 README_SCAN_CHARS = 20000
 EXCERPT = 80
@@ -120,12 +120,15 @@ def _known(key: str) -> dict | None:
                     "exclusion_reasons": p["derived"]["eligibility"]["exclusion_reasons"],
                     "canonical": in_canon,
                     "relationships": sorted(f"{e['saas_id']}:{e['validation']['status']}" for e in rels)}
-    if LEDGER.exists():
-        for r in common.read_jsonl(LEDGER):
+    for r in ledger_rows():
             if r["oss_id"] == key:
                 return {"where": "intake_ledger", "oss_id": key, "admitted_by_request": r["request_id"],
                         "saas": r["saas_ids"]}
     return None
+
+
+def ledger_rows() -> list[dict]:
+    return [common.read_json(p) for p in sorted(LEDGER.glob("*.json"))] if LEDGER.exists() else []
 
 
 def _write(out: dict) -> dict:
@@ -203,16 +206,17 @@ def assess(url: str, request_id: str, submitted_by: str | None = None, saas_hint
         hint_note = [f"hinted SaaS '{saas_hint}' is not evidenced by the repository itself"]
     if not evid:
         if scored.get("health"):
-            score_one.store(scored)
-            out["scores"] = {"project_health": scored["health"], "replacement_fit": []}
+            out["scores"] = {"project_health": scored["health"], "replacement_fit": [], "preliminary": True}
         return _write({**out, "outcome": "needs_more_evidence",
                        "reasons": ["no_evidenced_saas_relationship"] + hint_note,
                        "canonical": {"status": "not_admitted"}})
 
     pairs = [{"saas_id": e["saas_id"], "status": "validated", "source_count": 1, "corroborated": False,
               "reviewed": False} for e in evid]
+    # Preliminary scores are reported in the outcome only. The shared score history
+    # (data/scores/) is written by the cycle that promotes the repository, through the
+    # same scoring path, so intake never writes a file the cycle also writes.
     scored = score_one.score(key, live, licence, pairs, snap["as_of"])
-    score_one.store(scored)
     out["scores"] = {"project_health": scored["health"], "replacement_fit": scored["fit"],
                      "preliminary": True, "errors": scored["errors"]}
 
@@ -221,11 +225,8 @@ def assess(url: str, request_id: str, submitted_by: str | None = None, saas_hint
            "repo_url": "https://" + (f"{key.split('/', 1)[0]}/{live['canonical_name']}" if live.get("canonical_name") else key),
            "saas_ids": [e["saas_id"] for e in evid], "saas_names": [e["saas_name"] for e in evid],
            "category": evid[0]["category"], "declared_licence": licence["spdx"], "admitted_at": now}
-    rows = common.read_jsonl(LEDGER) if LEDGER.exists() else []
-    if not any(r["oss_id"] == key for r in rows):
-        rows.append(row)
-        rows.sort(key=lambda r: r["oss_id"])
-        common.write_jsonl(LEDGER, rows)
+    if not any(r["oss_id"] == key for r in ledger_rows()):
+        common.write_json(LEDGER / f"{request_id}.json", row)
     return _write({**out, "outcome": "accepted", "reasons": ["passes every rule; relationship evidenced"] + hint_note,
                    "canonical": {"status": "pending_promotion", "promoted_in_run": None}})
 

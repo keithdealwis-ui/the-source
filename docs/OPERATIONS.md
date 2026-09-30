@@ -41,9 +41,14 @@ To run one now, use Actions, then *Weekly research and refresh cycle*, then *Run
   commented on if already open, and the workflow run is marked failed. The next hourly
   wake-up inside the window retries. A later success closes the issue.
 - **Retries are safe.** Every output is a deterministic function of its inputs. Keys are
-  content-derived, histories are append-only and de-duplicated, and one concurrency group
-  (`canonical-writer`) serialises the cycle and intake jobs, so nothing is written twice or
-  concurrently.
+  content-derived and histories are append-only and de-duplicated, so a retry writes
+  nothing twice.
+- **One writer, no lost submissions.** Only a due cycle job joins the `canonical-writer`
+  concurrency group. The hourly no-op checks run outside it, because GitHub keeps only
+  one pending job per group and would otherwise cancel queued work. Intake jobs only
+  *add* files that a cycle never writes: an outcome record, and a ledger entry per
+  admission. Every job rebases before pushing and retries, so a cycle and concurrent
+  intakes never conflict.
 - **Lookup failures are not data.** A failed host lookup looks exactly like a project with
   nothing to show, so a cycle with unresolved failures promotes nothing.
 
