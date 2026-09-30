@@ -9,9 +9,9 @@ schema: the-source.schedule/1
 
 # Default: Sunday 03:00 Asia/Dubai, a quiet off-peak window.
 timezone: Asia/Dubai
-weekday: sunday          # monday .. sunday
-time: "03:00"            # local time the window opens
-window_hours: 4          # the cycle may start any time inside the window (hourly wake-ups)
+weekday: wednesday       # monday .. sunday
+time: "07:45"            # local time the window opens
+window_hours: 3          # the cycle may start any time inside the window (hourly wake-ups)
 max_attempts: 3          # per weekly cycle; a failed attempt is retried at the next wake-up
 
 # Discovery and update strategies run by each cycle, in order. Every strategy is recorded
