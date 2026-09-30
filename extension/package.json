@@ -1,0 +1,17 @@
+{
+  "name": "the-source-extension",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "The Source: Open Source Alternatives - Chrome extension (KEI-808)",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "icons": "node scripts/make-icons.mjs",
+    "e2e": "node scripts/e2e.mjs",
+    "package": "node scripts/package.mjs",
+    "store-assets": "node scripts/store-assets.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "1.63.0"
+  }
+}

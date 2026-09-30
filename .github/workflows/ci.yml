@@ -42,3 +42,20 @@ jobs:
         run: |
           git status --porcelain
           git diff --stat --exit-code -- data api
+
+  extension:
+    # KEI-808: the Chrome extension's unit tests (matching conformance with the Python
+    # reference, data layer, panel states, permission lint) against the committed
+    # read surface, and a package build. No network, no dependencies.
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: extension
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm test
+      - run: node scripts/package.mjs

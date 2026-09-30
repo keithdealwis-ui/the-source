@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "The Source: Open Source Alternatives",
+  "short_name": "The Source",
+  "version": "0.1.0",
+  "description": "Credible open-source alternatives to the SaaS product you are using. Detection runs in your browser; no browsing data is collected.",
+  "minimum_chrome_version": "116",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "The Source: open-source alternatives",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/idle-16.png",
+      "32": "icons/idle-32.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "permissions": ["declarativeContent", "activeTab", "storage", "alarms"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' https://raw.githubusercontent.com https://cdn.jsdelivr.net"
+  },
+  "homepage_url": "https://github.com/keithdealwis-ui/the-source"
+}

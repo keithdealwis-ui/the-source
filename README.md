@@ -26,6 +26,7 @@ Nothing downstream keeps its own copy.
 | `runs/` | One record per weekly cycle: what ran, what was found, what changed. |
 | `config/` | Sources and licence decisions, quality policy, SaaS catalogue, scoring rubric, supported products, schedule. |
 | `schema/` | JSON Schema for every record, validated in CI. |
+| `extension/` | **The Chrome extension** (KEI-808): a thin client of `api/v1/`. See [`extension/README.md`](extension/README.md). |
 | `source_pipeline/` | The pipeline. Python 3.12, standard library plus PyYAML and jsonschema. |
 | `docs/` | Methodology, scoring, read API, intake, operations, licence review. |
 
