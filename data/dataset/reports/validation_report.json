@@ -380,13 +380,13 @@
     },
     {
       "criterion": 15,
-      "description": "dataset marked internal; no git remote configured; any local export is unpublished and withholds share-alike-only relationships",
+      "description": "publication state matches config/publication.yaml (public only with a recorded approval); the only git remote is the canonical repository; any local export is unpublished and withholds share-alike-only relationships",
       "examples": [],
       "failures": 0,
       "id": "publication.guard",
       "kind": "assertion",
       "observed": {
-        "publication_status": "internal_not_published",
+        "publication_status": "private_repository",
         "share_alike_only_relationships_all_lanes": 61,
         "share_alike_only_relationships_in_launch": 24,
         "share_alike_only_relationships_validated": 47,

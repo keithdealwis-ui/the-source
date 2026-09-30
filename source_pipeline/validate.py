@@ -298,11 +298,21 @@ def run() -> dict:
     # built) withholds share-alike-only material and is marked unpublished.
     share = [e["edge_id"] for e in edges if e["share_alike_only"]]
     bad = []
-    if summary["publication_status"] != "internal_not_published":
-        bad.append("summary.publication_status")
+    # KEI-807: the canonical repository is the approved home of this data. A remote is
+    # allowed only if it is that repository; any status but private needs Keith's approval.
+    pub = common.load_yaml(common.CONFIG / "publication.yaml") if (common.CONFIG / "publication.yaml").exists() \
+        else {"status": "internal_not_published", "canonical_remote": None, "approval": None}
+    if summary["publication_status"] != pub["status"]:
+        bad.append("summary.publication_status disagrees with config/publication.yaml")
+    if pub["status"] not in ("internal_not_published", "private_repository") and not pub.get("approval"):
+        bad.append(f"publication status {pub['status']!r} has no recorded approval")
     git_config = common.ROOT / ".git" / "config"
-    if git_config.exists() and "[remote" in git_config.read_text():
-        bad.append("a git remote is configured")
+    if git_config.exists():
+        import re as _re
+        for url in _re.findall(r"^\s*url\s*=\s*(\S+)", git_config.read_text(), _re.M):
+            norm = _re.sub(r"^(https?://|git@|ssh://git@)", "", url).replace(":", "/").removesuffix(".git").lower()
+            if not pub.get("canonical_remote") or norm != pub["canonical_remote"].lower():
+                bad.append(f"a git remote other than the canonical repository is configured: {url}")
     if export_current:
         exp = common.read_json(export_dir / "EXPORT.json")
         if exp.get("published") is not False:
@@ -312,7 +322,7 @@ def run() -> dict:
             leaked = [e["edge_id"] for e in edges if e["share_alike_only"] and (e["saas_id"], e["oss_id"]) in exported]
             bad += [f"share-alike-only edge exported: {x}" for x in leaked]
     check("publication.guard", 15,
-          "dataset marked internal; no git remote configured; any local export is unpublished and withholds share-alike-only relationships",
+          "publication state matches config/publication.yaml (public only with a recorded approval); the only git remote is the canonical repository; any local export is unpublished and withholds share-alike-only relationships",
           bad, {"publication_status": summary["publication_status"],
                 # Three different populations; each is named so they cannot be confused.
                 "share_alike_only_relationships_all_lanes": len(share),

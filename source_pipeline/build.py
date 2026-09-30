@@ -558,7 +558,7 @@ def run() -> dict:
     summary = {
         "schema_version": common.SCHEMA_VERSION,
         "as_of": snapshot["as_of"],
-        "publication_status": "internal_not_published",
+        "publication_status": (common.load_yaml(common.CONFIG / "publication.yaml") or {}).get("status", "internal_not_published"),
         "field_origin": {"imported": IMPORTED_NOTE, "live": LIVE_NOTE, "derived": DERIVED_NOTE},
         "harvest": {
             "entries_read": sum(s.get("entries", 0) for s in harvest_stats.values()),
