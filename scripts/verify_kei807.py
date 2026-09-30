@@ -157,11 +157,17 @@ for r in sched:
 fields = ["started_at", "ended_at", "strategies", "counts", "status", "canonical"]
 cnt = ["discovered", "retained", "rejected", "refreshed_records"]
 tags = set(git("tag", "--list", "cycle/*").split())
+FIX = "2026-09-30T04:00:00Z"  # ab87f99: failed runs carry the counts reached before the failure
 for r in runs:
-    ok = all(r.get(f) is not None for f in fields) and all(k in r["counts"] for k in cnt)
+    ok = all(r.get(f) is not None for f in fields) and (r["status"] == "succeeded" or bool(r.get("error")))
+    if r["status"] == "succeeded" or r["started_at"] > FIX:
+        ok = ok and all(k in r["counts"] for k in cnt)
     if r["status"] == "succeeded":
         ok = ok and r["canonical"]["commit_tag"] in tags and r["canonical"]["dataset_version_after"]
-    check(11, f"run_record[{r['run_id']}]", ok, f"status={r['status']} tag={r['canonical'].get('commit_tag')} counts={ {k: r['counts'].get(k) for k in cnt} }")
+    note = " (pre-fix failed record: counts not required)" if r["status"] == "failed" and r["started_at"] <= FIX else ""
+    check(11, f"run_record[{r['run_id']}]", ok, f"status={r['status']} tag={r['canonical'].get('commit_tag')} counts={ {k: r['counts'].get(k) for k in cnt} }{note}")
+check(11, "failed_run_carries_counts", any(r["status"] == "failed" and r["started_at"] > FIX and all(k in r["counts"] for k in cnt) for r in runs),
+      "a failed run after the fix records discovered/retained/rejected/refreshed")
 
 # --- AC13-18 intake
 outs = {p.stem: json.loads(p.read_text()) for p in (REPO / "data" / "intake" / "outcomes").glob("*.json")}
