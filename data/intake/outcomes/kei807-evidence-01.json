@@ -1,0 +1,84 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-09-30T03:50:24Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "every-app/open-seo",
+      "created_at": "2026-02-27T18:57:41Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-09-30T03:50:24Z",
+      "forks": 2789,
+      "found": true,
+      "host_repo_id": 1168753718,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 577,
+        "commits_inspected": 2,
+        "issues_closed_12m": 44,
+        "merged_prs_inspected": 10,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-09-30T01:39:05Z",
+      "stars": 21786
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a code_commit",
+      "days_since_meaningful_activity": 10,
+      "last_meaningful_activity_at": "2026-09-19T23:55:56Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 268,
+      "description": true,
+      "readme": true,
+      "topics": 11
+    }
+  },
+  "note": null,
+  "oss_id": "github.com/every-app/open-seo",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship"
+  ],
+  "repo_url": "https://github.com/every-app/open-seo",
+  "request_id": "kei807-evidence-01",
+  "saas_hint": null,
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Healthy",
+      "confidence": 91.9,
+      "disqualifiers": [],
+      "evaluated_at": "2026-09-30T03:50:24Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/every-app/open-seo",
+      "score": 71.6,
+      "score_version": "1.2.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "pre_1_0"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-09-30T03:50:24Z",
+  "submitted_by": "claude-code-kei807"
+}
