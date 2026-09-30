@@ -159,7 +159,7 @@ def run(trigger: str) -> dict:
         record["status"] = "succeeded"
     except Exception as exc:  # the live copy is untouched; the failure is recorded, never swallowed
         record["status"] = "failed"
-        record["error"] = f"{type(exc).__name__}: {exc}"[:2000]
+        record["error"] = (str(exc) if isinstance(exc, CycleError) else f"{type(exc).__name__}: {exc}")[:2000]
     finally:
         record["ended_at"] = _iso(datetime.now(timezone.utc))
         common.write_json(path, record)
@@ -265,6 +265,22 @@ def work(run_id: str, result_path: Path) -> int:
         build.run()
         report = validate.run()
         failed = [c["id"] for c in report["checks"] if not c["ok"] and c["criterion"] != 6]
+        now = _lanes(common.DATASET / "oss_projects.jsonl")
+        new = sorted(set(now) - set(prev))
+        dropped = sorted(k for k, (lane, _) in now.items() if k in prev and prev[k][0] == "recommendable" and lane != "recommendable")
+        res["transitions"] = {
+            "no_longer_recommendable": [{"oss_id": k, "lane": now[k][0], "reasons": now[k][1]} for k in dropped],
+            "became_recommendable": sorted(k for k, (lane, _) in now.items()
+                                           if lane == "recommendable" and k in prev and prev[k][0] != "recommendable"),
+        }
+        res["counts"].update({
+            "candidates": len(keys),
+            "discovered": len(new),
+            "retained": sum(1 for k in new if now[k][0] == "recommendable"),
+            "rejected": sum(1 for k in new if now[k][0] != "recommendable"),
+            "refreshed_records": found,
+            "stale_or_abandoned_detected": len(dropped),
+        })
         if failed:
             raise CycleError(f"dataset validation failed: {failed}")
 
@@ -282,22 +298,8 @@ def work(run_id: str, result_path: Path) -> int:
         # 7. intake outcomes learn whether they were promoted
         promo = intake.reconcile_promotions(run_id)
 
-        now = _lanes(common.DATASET / "oss_projects.jsonl")
-        new = sorted(set(now) - set(prev))
         rel_now = {(r["saas_id"], r["oss_id"]) for r in common.read_jsonl(common.DATA / "canonical" / "relationships.jsonl")}
-        dropped = sorted(k for k, (lane, _) in now.items() if k in prev and prev[k][0] == "recommendable" and lane != "recommendable")
-        res["transitions"] = {
-            "no_longer_recommendable": [{"oss_id": k, "lane": now[k][0], "reasons": now[k][1]} for k in dropped],
-            "became_recommendable": sorted(k for k, (lane, _) in now.items()
-                                           if lane == "recommendable" and k in prev and prev[k][0] != "recommendable"),
-        }
-        res["counts"] = {
-            "candidates": len(keys),
-            "discovered": len(new),
-            "retained": sum(1 for k in new if now[k][0] == "recommendable"),
-            "rejected": sum(1 for k in new if now[k][0] != "recommendable"),
-            "refreshed_records": found,
-            "stale_or_abandoned_detected": len(dropped),
+        res["counts"].update({
             "canonical_relationships": len(rel_now),
             "canonical_relationships_added": len(rel_now - prev_rel),
             "canonical_relationships_removed": len(prev_rel - rel_now),
@@ -305,7 +307,7 @@ def work(run_id: str, result_path: Path) -> int:
             "supported_saas_ok": manifest["counts"]["supported_saas_ok"],
             "intake_promoted": promo["promoted"], "intake_pending": promo["pending"],
             "canonical_checks": len(crep["checks"]), "canonical_warnings": len(crep["warnings"]),
-        }
+        })
         res.update(ok=True, dataset_version=manifest["dataset_version"])
     except Exception as exc:
         res["error"] = f"{type(exc).__name__}: {exc}"[:2000]
