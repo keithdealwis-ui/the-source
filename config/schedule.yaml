@@ -11,7 +11,7 @@ schema: the-source.schedule/1
 timezone: Asia/Dubai
 weekday: wednesday       # monday .. sunday
 time: "07:45"            # local time the window opens
-window_hours: 3          # the cycle may start any time inside the window (hourly wake-ups)
+window_hours: 6          # the cycle may start any time inside the window (hourly wake-ups)
 max_attempts: 3          # per weekly cycle; a failed attempt is retried at the next wake-up
 
 # Discovery and update strategies run by each cycle, in order. Every strategy is recorded
