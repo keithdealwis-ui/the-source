@@ -85,7 +85,7 @@ jobs:
           OUTCOME=$(python -c "import json,os;print(json.load(open('data/intake/outcomes/'+os.environ['REQUEST_ID']+'.json'))['outcome'])")
           git config user.name "the-source-intake"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/intake/outcomes data/intake/admitted
+          git add -A -- data/intake
           git commit -m "intake: $REQUEST_ID $OUTCOME" || echo "outcome already recorded"
           for i in 1 2 3 4 5; do
             git pull --rebase origin "$BRANCH" && git push origin "HEAD:$BRANCH" && break
