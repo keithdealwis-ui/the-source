@@ -75,19 +75,27 @@ def due(now: datetime | None = None) -> dict:
     if slot > now:
         slot -= timedelta(days=7)
     window_end = slot + timedelta(hours=float(cfg["window_hours"]))
+    # GitHub's hourly cron is best effort and can go hours between wake-ups, so a wake-up
+    # can miss the whole window. Up to catch_up_hours after the window, the first wake-up
+    # still runs the week's cycle (marked late) rather than skipping the week.
+    catch_up_end = window_end + timedelta(hours=float(cfg.get("catch_up_hours", 0)))
     key = slot.date().isoformat()
     mine = [r for r in runs() if r["cycle_key"] == key and r["trigger"] == "schedule"]
     succeeded = any(r["status"] == "succeeded" for r in mine)
     attempts = len(mine)
-    out = {"cycle_key": key, "slot": _iso(slot), "window_end": _iso(window_end), "now": _iso(now),
+    out = {"cycle_key": key, "slot": _iso(slot), "window_end": _iso(window_end),
+           "catch_up_end": _iso(catch_up_end), "now": _iso(now),
            "timezone": cfg["timezone"], "attempts": attempts, "max_attempts": cfg["max_attempts"],
            "succeeded": succeeded}
     if succeeded:
         return {**out, "due": False, "reason": "this week's cycle already succeeded"}
-    if now >= window_end:
+    if now >= catch_up_end:
         return {**out, "due": False, "reason": "outside the off-peak window"}
     if attempts >= cfg["max_attempts"]:
         return {**out, "due": False, "reason": "attempts exhausted for this cycle; see the failure issue"}
+    if now >= window_end:
+        return {**out, "due": True, "late": True,
+                "reason": "window missed by the scheduler; catching up within catch_up_hours"}
     return {**out, "due": True, "reason": "inside the window and not yet succeeded"}
 
 

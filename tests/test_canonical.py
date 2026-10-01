@@ -144,6 +144,19 @@ def test_due_inside_and_outside_window(tmp_path, monkeypatch):
     assert not d["due"] and d["cycle_key"] == "2026-09-27"
 
 
+def test_due_catches_up_a_window_the_scheduler_missed(tmp_path, monkeypatch):
+    monkeypatch.setattr(cycle, "SCHEDULE", _write_schedule(tmp_path, catch_up_hours=24))
+    runs = tmp_path / "runs"
+    runs.mkdir()
+    monkeypatch.setattr(cycle, "RUNS", runs)
+    d = cycle.due(datetime(2026, 10, 4, 8, 0, tzinfo=timezone.utc))  # 12:00 Dubai, window over
+    assert d["due"] and d["late"] and d["cycle_key"] == "2026-10-04"
+    d = cycle.due(datetime(2026, 10, 5, 4, 0, tzinfo=timezone.utc))  # past window + 24 h
+    assert not d["due"] and d["reason"] == "outside the off-peak window"
+    (runs / "r1.json").write_text(json.dumps({"cycle_key": "2026-10-04", "trigger": "schedule", "status": "succeeded"}))
+    assert not cycle.due(datetime(2026, 10, 4, 8, 0, tzinfo=timezone.utc))["due"]
+
+
 def test_schedule_is_configuration_not_code(tmp_path, monkeypatch):
     monkeypatch.setattr(cycle, "SCHEDULE", _write_schedule(tmp_path, weekday="wednesday", time="01:00",
                                                            timezone="Europe/London"))
