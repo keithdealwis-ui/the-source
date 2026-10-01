@@ -2,33 +2,33 @@
   "canonical_schema": "the-source.canonical/1",
   "counts": {
     "oss_projects": 236,
-    "recommended_relationships": 313,
-    "relationships": 347,
-    "saas_products": 120,
+    "recommended_relationships": 312,
+    "relationships": 346,
+    "saas_products": 119,
     "supported_saas": 20,
     "supported_saas_ok": 20
   },
-  "data_as_of": "2026-09-30T03:35:14Z",
-  "dataset_version": "4a669ecae22a2c92",
+  "data_as_of": "2026-10-01T08:45:04Z",
+  "dataset_version": "f565b237b781d828",
   "export_guard": {
     "export_licence_constraint": "none beyond attribution notices",
-    "relationships_exported": 347,
+    "relationships_exported": 346,
     "relationships_withheld_share_alike_only": 24
   },
   "files": {
-    "NOTICE.md": "e58f4dc3f72853993e11785da1abf895fb5d6cb654cf80a074f89535175147e3",
-    "oss_projects.jsonl": "10801bb261fb41177823d4b54810d126d1f3aa37b44e1fa1acde591dc5fc14d4",
-    "relationships.jsonl": "7ce2994817a68c8155414cb313bfefc0bd8212193afeea4c18cbad2b342b28cb",
-    "saas_products.jsonl": "3d621a3d29a9d73e14983a888afebf4e6239107947a1fc8a8c094e8aba0e494a"
+    "NOTICE.md": "d767ef622486543f3c5469003669c32bfe49e6bf45674ec6716e18f3e3203826",
+    "oss_projects.jsonl": "8f3e0d5549af91e4ad7c99ccebbe6042811525507d2edfe2d44f25d897e3ca29",
+    "relationships.jsonl": "f17943bfdc7cdf1f9cc3b3473d5649ef413b42e177e480f5c56496e980821927",
+    "saas_products.jsonl": "551fb609fb802e4f756839ead165b9dce44fb1e931e224d7828a4e73894e79c9"
   },
   "live_checked_at": {
-    "newest": "2026-09-30T03:35:14Z",
-    "oldest": "2026-09-30T03:35:14Z"
+    "newest": "2026-10-01T08:45:04Z",
+    "oldest": "2026-10-01T08:45:04Z"
   },
   "sources": {
     "altstack": {
       "decision": "allow_with_conditions",
-      "pinned_commit": "895978f66aafdef18873ed34157344ffd1139611"
+      "pinned_commit": "a2243021f7caeb3df6c05f130ea93d2ab903a078"
     },
     "btwso": {
       "decision": "allow",
@@ -45,6 +45,10 @@
     "fossalt": {
       "decision": "allow_with_conditions",
       "pinned_commit": "305ba7f87b99fa94abb9f7b0fd6d6f6e354f774f"
+    },
+    "intake": {
+      "decision": "allow",
+      "pinned_commit": "feb7d601b43d46fdbc692e43a3082998c61cc659"
     },
     "opensaasdirectory": {
       "decision": "allow",

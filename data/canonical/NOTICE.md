@@ -152,7 +152,7 @@ SOFTWARE.
 
 ## altstackHQ/altstack-data
 
-- Source: https://github.com/altstackHQ/altstack-data at commit 895978f66aafdef18873ed34157344ffd1139611
+- Source: https://github.com/altstackHQ/altstack-data at commit a2243021f7caeb3df6c05f130ea93d2ab903a078
 - Licence: Apache-2.0 (LICENSE file) / CC-BY-4.0 (README statement)
 - Attribution: The AltStack data (altstackHQ/altstack-data), https://github.com/altstackHQ/altstack-data, licensed CC BY 4.0 per its README and Apache-2.0 per its LICENSE file; facts extracted, no text reproduced
 
@@ -161,3 +161,9 @@ SOFTWARE.
 - Source: https://github.com/sfermigier/awesome-foss-alternatives at commit 305ba7f87b99fa94abb9f7b0fd6d6f6e354f774f
 - Licence: CC-BY-4.0
 - Attribution: "Awesome Free / Open Source Alternatives (to common SaaS products) for Business Use" by Stefane Fermigier and contributors, https://github.com/sfermigier/awesome-foss-alternatives, licensed CC BY 4.0; facts extracted, no text reproduced
+
+## keithdealwis-ui/the-source
+
+- Source: https://github.com/keithdealwis-ui/the-source/blob/main/data/intake/admitted/ at commit feb7d601b43d46fdbc692e43a3082998c61cc659
+- Licence: n/a (The Source's own assessment record)
+- Attribution: The Source intake ledger (data/intake/admitted/): relationships stated by each project in its own public repository and assessed by The Source
