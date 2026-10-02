@@ -1,4 +1,5 @@
-"""Run tests/test_canonical.py without pytest (KEI-807 verifier route).
+"""Run tests/test_canonical.py and tests/test_daily.py without pytest (KEI-807 / KEI-848
+verifier route). Pass module names to run only those.
 
 Verification hosts carry python3 + pyyaml + jsonschema but not pytest. This runner
 supplies the small part of pytest the tests use (mark.skipif, mark.parametrize, raises,
@@ -65,9 +66,13 @@ sys.modules["pytest"] = fake
 
 
 def main() -> int:
-    mod = importlib.import_module("test_canonical")
+    mods = sys.argv[1:] or ["test_canonical", "test_daily"]
     passed = failed = skipped = 0
-    for name, fn in sorted(inspect.getmembers(mod, inspect.isfunction), key=lambda x: x[1].__code__.co_firstlineno):
+    tests = []
+    for m in mods:
+        mod = importlib.import_module(m)
+        tests += sorted(inspect.getmembers(mod, inspect.isfunction), key=lambda x: x[1].__code__.co_firstlineno)
+    for name, fn in tests:
         if not name.startswith("test_"):
             continue
         if getattr(fn, "_skip", (False, ""))[0]:

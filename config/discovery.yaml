@@ -1,0 +1,42 @@
+# The Source: approved daily discovery lanes (KEI-848).
+#
+# A lane finds candidate repositories. A candidate is NOT a canonical entity: it is
+# reconciled against the corpus (by key, resolved name and host repository id) and, if
+# genuinely new, held in data/discovery/candidates.jsonl until a licence-cleared upstream
+# list or the intake path states a relationship to a SaaS product. Build-vs-ingest
+# decision for every provider below: docs/BUILD-VS-INGEST.md.
+
+schema: the-source.discovery/1
+
+# Only repositories at or above this many stars are kept from search lanes (noise floor).
+min_stars: 50
+# Look-back for "recently created / recently active" lanes, in days. Overlap is harmless:
+# reconciliation makes repeated sightings idempotent.
+lookback_days: 7
+
+lanes:
+  # GitHub's own search API: authoritative for github.com, 30 searches/min authenticated,
+  # 1,000 results per query. Queries are narrow so the cap is never the limit.
+  - id: gh-topic-self-hosted-new
+    provider: github_search
+    query: "topic:self-hosted created:>={since} stars:>={min_stars}"
+  - id: gh-topic-open-source-alternative-new
+    provider: github_search
+    query: "topic:open-source-alternative created:>={since} stars:>={min_stars}"
+  - id: gh-topic-alternative-active
+    provider: github_search
+    query: "topic:alternative pushed:>={since} stars:>={min_stars} archived:false"
+  - id: gh-topic-saas-alternative
+    provider: github_search
+    query: "topic:saas-alternative stars:>={min_stars} archived:false"
+  - id: gh-topic-selfhosted-active
+    provider: github_search
+    query: "topic:selfhosted pushed:>={since} stars:>={min_stars} archived:false"
+
+  # awesome.ecosyste.ms: awesome-selfhosted as parsed by ecosyste.ms. A seed only: our own
+  # pinned harvest of the same list keeps only entries that name a SaaS product, so this
+  # lane surfaces listed projects the corpus does not yet hold. CC BY-SA 4.0: no values
+  # from it are stored, only the repository address and id.
+  - id: ecosystems-awesome-selfhosted
+    provider: ecosystems_awesome
+    list_url: https://github.com/awesome-selfhosted/awesome-selfhosted

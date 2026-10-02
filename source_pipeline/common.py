@@ -29,7 +29,7 @@ def load_yaml(path: Path):
 
 
 def load_sources(overlay: bool = True) -> dict:
-    """config/sources.yaml, with pins advanced by the weekly research cycle applied.
+    """config/sources.yaml, with pins advanced by the research cycle applied.
 
     The reviewed decision (licence, conditions, licence-file hash) lives only in the YAML.
     data/state/source_pins.json records a newer commit for a source ONLY after research.py

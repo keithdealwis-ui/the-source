@@ -1,6 +1,6 @@
 """Validate the canonical dataset and read surface (KEI-807 criteria 2-8).
 
-Runs in CI on every push and pull request, and at the end of every weekly cycle before
+Runs in CI on every push and pull request, and at the end of every cycle before
 anything is promoted. Exits non-zero on any failed check. Warnings are reported but do
 not fail: they describe states the read surface already represents truthfully (for
 example a supported product that has dropped below the minimum recommendations).

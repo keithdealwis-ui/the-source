@@ -25,8 +25,14 @@
     python -m source_pipeline research             advance upstream pins where the licence is unchanged
     python -m source_pipeline intake-assess --url URL --request-id ID [--saas-hint ID] [--submitted-by WHO]
     python -m source_pipeline intake-status --request-id ID
-    python -m source_pipeline cycle --trigger schedule|manual   the weekly research + refresh cycle
+    python -m source_pipeline cycle --trigger schedule|manual   the daily intelligence cycle (KEI-848)
     python -m source_pipeline cycle-due            is a scheduled cycle due now, and why
+
+  Daily intelligence (KEI-848):
+    python -m source_pipeline history-days         the dated daily snapshots held (data/history/)
+    python -m source_pipeline history-delta --days N [--on YYYY-MM-DD] [--key KEY]
+                                                   change over N days (1, 7, 30, 90...) from the snapshots
+    python -m source_pipeline discovery-pool       the reconciled candidate pool (data/discovery/)
 
   Knowledge graph (KEI-844):
     python -m source_pipeline graph-build          build data/graph/ from the corpus; no network
@@ -171,7 +177,8 @@ def main(argv=None) -> int:
                                         "discover-validate", "graph-build", "graph-validate", "graph-query",
                                         "score-harvest", "score-build", "score-validate",
                                         "canonical-build", "canonical-validate", "scores-extract", "research",
-                                        "intake-assess", "intake-status", "cycle", "cycle-due", "cycle-work"])
+                                        "intake-assess", "intake-status", "cycle", "cycle-due", "cycle-work",
+                                        "history-days", "history-delta", "discovery-pool"])
     ap.add_argument("target", nargs="?", help="graph-query: a plan file or a query id")
     ap.add_argument("--only-failed", action="store_true", help="discover-verify: retry only failed lookups")
     ap.add_argument("--refresh", action="store_true", help="score-harvest: re-observe everything")
@@ -185,11 +192,28 @@ def main(argv=None) -> int:
     ap.add_argument("--submitted-by", help="intake-assess: who or what submitted it")
     ap.add_argument("--note", help="intake-assess: free-text note from the submitter")
     ap.add_argument("--trigger", default="manual", choices=["schedule", "manual", "local"], help="cycle: what started it")
+    ap.add_argument("--days", type=int, help="history-delta: window in days")
+    ap.add_argument("--on", help="history-delta: end day (default: newest held)")
+    ap.add_argument("--key", action="append", help="history-delta: restrict to these project keys")
     ap.add_argument("--run-id", help="cycle-work: internal")
     ap.add_argument("--result", help="cycle-work: internal")
     args = ap.parse_args(argv)
 
     out = {}
+    if args.command.startswith(("history-", "discovery-")):
+        from . import daily
+
+        if args.command == "history-days":
+            out = {"days": daily.history_days()}
+        elif args.command == "discovery-pool":
+            pool = daily.load_pool()
+            out = {"size": len(pool), "candidates": list(pool.values())}
+        else:
+            if not args.days:
+                ap.error("history-delta needs --days")
+            out = daily.delta(args.days, args.on, args.key)
+        print(json.dumps(out, indent=2, sort_keys=True))
+        return 0 if out.get("ok", True) else 1
     if args.command.startswith(("canonical-", "intake-", "cycle")) or args.command in ("scores-extract", "research"):
         return _canonical(args)
     if args.command.startswith("score-"):

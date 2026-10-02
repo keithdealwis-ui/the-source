@@ -12,7 +12,7 @@ lands in the same corpus as scheduled discovery. The rules are in
 2. Keith says "add it". The tool submits the URL through the intake surface.
 3. The intake job assesses it and records one outcome.
 4. The tool reads the outcome back and reports it to Keith.
-5. If the outcome is `accepted`, the next weekly cycle promotes the repository into the
+5. If the outcome is `accepted`, the next daily cycle promotes the repository into the
    canonical dataset. Its outcome record then shows `canonical.status: canonical` and the
    run that promoted it.
 

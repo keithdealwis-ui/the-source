@@ -1,4 +1,6 @@
-"""The weekly research + refresh cycle (KEI-807 criteria 5, 7, 9-12).
+"""The research + refresh cycle: weekly under KEI-807 (criteria 5, 7, 9-12), daily under
+KEI-848 (light refresh for everything, deep enrichment and re-scoring only where something
+changed, dated history, discovery reconciliation, upstream corroboration; see daily.py).
 
     python -m source_pipeline cycle --trigger schedule   # scheduler wake-up; runs only when due
     python -m source_pipeline cycle --trigger manual     # run now (workflow_dispatch)
@@ -37,7 +39,7 @@ RUNS = common.ROOT / "runs"
 SCHEDULE = common.CONFIG / "schedule.yaml"
 WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 PROMOTE = ["data/staging", "data/live", "data/dataset", "data/state", "data/scores", "data/canonical",
-           "data/intake/outcomes", "api/v1"]
+           "data/intake/outcomes", "data/history", "data/discovery", "api/v1"]
 
 
 class CycleError(RuntimeError):
@@ -69,26 +71,35 @@ def due(now: datetime | None = None) -> dict:
     tz = ZoneInfo(cfg["timezone"])
     now = (now or datetime.now(timezone.utc)).astimezone(tz)
     hh, mm = (int(x) for x in str(cfg["time"]).split(":"))
-    target = WEEKDAYS.index(cfg["weekday"].lower())
-    slot_date = now.date() - timedelta(days=(now.weekday() - target) % 7)
+    cadence = cfg.get("cadence", "weekly")
+    period = timedelta(days=1 if cadence == "daily" else 7)
+    window, catch_up = float(cfg["window_hours"]), float(cfg.get("catch_up_hours", 0))
+    if timedelta(hours=window + catch_up) >= period:
+        raise CycleError(f"schedule: window_hours + catch_up_hours must stay under the {cadence} period")
+    if cadence == "daily":
+        slot_date = now.date()
+    else:
+        target = WEEKDAYS.index(cfg["weekday"].lower())
+        slot_date = now.date() - timedelta(days=(now.weekday() - target) % 7)
     slot = datetime(slot_date.year, slot_date.month, slot_date.day, hh, mm, tzinfo=tz)
     if slot > now:
-        slot -= timedelta(days=7)
-    window_end = slot + timedelta(hours=float(cfg["window_hours"]))
+        slot -= period
+    window_end = slot + timedelta(hours=window)
     # GitHub's hourly cron is best effort and can go hours between wake-ups, so a wake-up
     # can miss the whole window. Up to catch_up_hours after the window, the first wake-up
-    # still runs the week's cycle (marked late) rather than skipping the week.
-    catch_up_end = window_end + timedelta(hours=float(cfg.get("catch_up_hours", 0)))
+    # still runs the period's cycle (marked late) rather than skipping it.
+    catch_up_end = window_end + timedelta(hours=catch_up)
     key = slot.date().isoformat()
     mine = [r for r in runs() if r["cycle_key"] == key and r["trigger"] == "schedule"]
     succeeded = any(r["status"] == "succeeded" for r in mine)
     attempts = len(mine)
-    out = {"cycle_key": key, "slot": _iso(slot), "window_end": _iso(window_end),
+    period_name = "today's" if cadence == "daily" else "this week's"
+    out = {"cycle_key": key, "cadence": cadence, "slot": _iso(slot), "window_end": _iso(window_end),
            "catch_up_end": _iso(catch_up_end), "now": _iso(now),
            "timezone": cfg["timezone"], "attempts": attempts, "max_attempts": cfg["max_attempts"],
            "succeeded": succeeded}
     if succeeded:
-        return {**out, "due": False, "reason": "this week's cycle already succeeded"}
+        return {**out, "due": False, "reason": f"{period_name} cycle already succeeded"}
     if now >= catch_up_end:
         return {**out, "due": False, "reason": "outside the off-peak window"}
     if attempts >= cfg["max_attempts"]:
@@ -140,7 +151,7 @@ def run(trigger: str) -> dict:
         if (common.DATA / "canonical" / "MANIFEST.json").exists() else None
     record = {"run_id": run_id, "cycle_key": key, "attempt": attempt, "trigger": trigger,
               "started_at": _iso(now), "ended_at": None, "status": "running",
-              "schedule": {k: load_schedule()[k] for k in ("timezone", "weekday", "time", "window_hours")},
+              "schedule": {k: load_schedule().get(k) for k in ("cadence", "timezone", "weekday", "time", "window_hours")},
               "strategies": [], "counts": {}, "transitions": {},
               "canonical": {"dataset_version_before": before, "dataset_version_after": before, "changed": False,
                             "commit_tag": None},
@@ -157,7 +168,8 @@ def run(trigger: str) -> dict:
         proc = subprocess.run([sys.executable, "-m", "source_pipeline", "cycle-work", "--run-id", run_id,
                                "--result", str(result_file)], cwd=common.ROOT, env=env)
         result = common.read_json(result_file) if result_file.exists() else {}
-        record.update({k: result[k] for k in ("strategies", "counts", "transitions") if k in result})
+        record.update({k: result[k] for k in ("strategies", "counts", "transitions", "timings_s", "retries",
+                                               "failures", "history_day") if k in result})
         if proc.returncode != 0 or not result.get("ok"):
             raise CycleError(result.get("error") or f"cycle worker exited {proc.returncode} without a result")
         _promote(work)
@@ -225,20 +237,87 @@ def _score_new(budget: int, res: dict) -> None:
                               "errors": errors[:20]})
 
 
+def _rescore(keys: list[str], budget: int, res: dict) -> list[str]:
+    """Re-score projects whose light refresh showed a material change (KEI-848). Only
+    projects that already hold a score are re-scored here; unscored ones are _score_new's."""
+    from . import canonical, score_one
+
+    fit, health = canonical._load_scores()
+    oss = {p["oss_id"]: p for p in common.read_jsonl(common.DATASET / "oss_projects.jsonl")}
+    snap = common.read_json(common.LIVE / "snapshot.json")["projects"]
+    pairs: dict[str, list] = {}
+    for e in common.read_jsonl(common.DATASET / "relationships.jsonl"):
+        if e["validation"]["status"] == "validated":
+            pairs.setdefault(e["oss_id"], []).append({
+                "saas_id": e["saas_id"], "status": "validated", "source_count": e["source_count"],
+                "corroborated": e["corroborated"],
+                "reviewed": e["validation"]["plausibility_review"]["outcome"] != "not reviewed"})
+    todo = []
+    for key in keys:
+        live = snap.get(key) or {}
+        oid = live.get("canonical_id") or key
+        p = oss.get(oid)
+        if p and p["host"] == "github.com" and p["derived"]["lane"] == "recommendable" and oid in health:
+            todo.append((oid, live, p))
+    todo = sorted({t[0]: t for t in todo}.values(), key=lambda t: t[0])  # one per canonical project
+    done, errors = [], []
+    for oid, live, p in todo[:budget]:
+        r = score_one.score(oid, live, p["derived"]["licence"], pairs.get(oid, []), p["derived"]["evaluated_as_of"])
+        if r["health"] is None:
+            errors.append(f"{oid}: {r['errors']}")
+            continue
+        score_one.store(r)
+        done.append(oid)
+        errors += [f"{oid}: {e}" for e in r["errors"]]
+    res["strategies"].append({"id": "rescoring", "status": "ok" if not errors else "degraded",
+                              "candidates": len(todo), "rescored": len(done), "projects": done[:50],
+                              "deferred_to_next_cycle": max(0, len(todo) - budget), "errors": errors[:20]})
+    return done
+
+
+class _Timer:
+    def __init__(self, res: dict):
+        self.res, self.t = res, None
+
+    def __call__(self, step: str):
+        import time
+
+        now = time.monotonic()
+        if self.t is not None:
+            self.res["timings_s"][self.t[0]] = round(now - self.t[1], 1)
+        self.t = (step, now) if step else None
+
+
 def work(run_id: str, result_path: Path) -> int:
     """Everything a cycle does. Runs with THE_SOURCE_ROOT set to a scratch copy."""
-    from . import build, canonical, canonical_validate, enrich, harvest, intake, research, validate
+    from . import (build, canonical, canonical_validate, corroborate, daily, discovery_search, enrich, harvest,
+                   intake, research, validate)
     from .normalise import reconcile
 
     cfg = load_schedule()
-    res = {"ok": False, "strategies": [], "counts": {}, "transitions": {}, "error": None}
-    as_of = _iso(datetime.now(timezone.utc))
+    policy = common.load_policy()
+    res = {"ok": False, "strategies": [], "counts": {}, "transitions": {}, "error": None, "timings_s": {},
+           "retries": {}, "failures": []}
+    step = _Timer(res)
+    as_of_dt = datetime.now(timezone.utc).replace(microsecond=0)
+    as_of = _iso(as_of_dt)
+    day = as_of_dt.astimezone(ZoneInfo(cfg["timezone"])).date().isoformat()
     try:
         prev = _lanes(common.DATASET / "oss_projects.jsonl")
         prev_rel = {(e["saas_id"], e["oss_id"]) for e in common.read_jsonl(common.DATA / "canonical" / "relationships.jsonl")} \
             if (common.DATA / "canonical" / "relationships.jsonl").exists() else set()
+        prev_canon = {p["oss_id"] for p in common.read_jsonl(common.DATA / "canonical" / "oss_projects.jsonl")} \
+            if (common.DATA / "canonical" / "oss_projects.jsonl").exists() else set()
+        prev_snap = common.read_json(common.LIVE / "snapshot.json") if (common.LIVE / "snapshot.json").exists() else {}
+        last_activity = {}
+        if (common.DATASET / "oss_projects.jsonl").exists():
+            for p in common.read_jsonl(common.DATASET / "oss_projects.jsonl"):
+                at = ((p["derived"].get("maintenance") or {}).get("last_meaningful_activity_at"))
+                for k in [p["oss_id"], *p.get("harvested_as", [])]:
+                    last_activity[k] = at
 
         # 1. research: upstream lists
+        step("upstream_lists")
         pins = research.advance_pins(cfg["research"]["min_entry_ratio"], as_of)
         bad = [p for p in pins if p["status"] not in ("unchanged", "advanced")]
         res["strategies"].append({"id": "upstream_lists", "status": "ok" if not bad else "degraded",
@@ -246,6 +325,7 @@ def work(run_id: str, result_path: Path) -> int:
                                   "kept": [{k: p.get(k) for k in ("source_id", "status", "detail")} for p in bad],
                                   "detail": pins})
         # 2. harvest every source at its pin, plus the intake ledger
+        step("intake_ledger")
         stats = harvest.run()
         res["strategies"].append({"id": "intake_ledger", "status": "ok",
                                   "admitted_entries": stats.get("intake", {}).get("entries", 0),
@@ -253,23 +333,77 @@ def work(run_id: str, result_path: Path) -> int:
         claims = common.read_jsonl(common.STAGING / "claims.jsonl")
         keys = sorted(reconcile(claims, common.load_sources())["oss"])
 
-        # 3. live refresh, retrying only what failed
-        snap = enrich.observe(keys)
+        # 3. light refresh of the whole corpus, retrying only what failed
+        step("light_refresh")
+        bs = int(cfg["refresh"].get("batch_size", 50))
+        light = daily.light_refresh(keys, bs, as_of_dt)
         tries = 0
-        while snap["failed_keys"] and tries < cfg["refresh"]["retry_failed_lookups"]:
+        while light["failed_keys"] and tries < cfg["refresh"]["retry_failed_lookups"]:
             tries += 1
-            snap = enrich.retry_failed(snap)
-        found = sum(1 for p in snap["projects"].values() if p.get("found"))
-        res["strategies"].append({"id": "live_refresh", "status": "ok" if not snap["failed_keys"] else "failed",
-                                  "repositories": len(keys), "found": found, "http_calls": snap["http_calls"],
-                                  "retries": tries, "still_failing": snap["failed_keys"][:20], "as_of": snap["as_of"]})
-        if snap["failed_keys"]:
-            raise CycleError(f"{len(snap['failed_keys'])} repositories could not be verified after {tries} "
-                             f"retries (e.g. {snap['failed_keys'][:3]}); nothing promoted")
-        enrich.write_snapshot(snap)
-        _drill("live_refresh")
+            light = daily.retry_light(light, bs)
+        res["retries"]["light_refresh"] = tries
+        res["strategies"].append({"id": "light_refresh", "status": "ok" if not light["failed_keys"] else "failed",
+                                  "repositories": len(keys),
+                                  "found": sum(1 for v in light["projects"].values() if v.get("found")),
+                                  "http_calls": light["http_calls"], "retries": tries,
+                                  "still_failing": light["failed_keys"][:20], "as_of": light["as_of"]})
+        if light["failed_keys"]:
+            raise CycleError(f"{len(light['failed_keys'])} repositories could not be refreshed after {tries} "
+                             f"retries (e.g. {light['failed_keys'][:3]}); nothing promoted")
+        _drill("light_refresh")
 
-        # 4. build and validate the dataset
+        # 4. discovery: approved search lanes, reconciled against the corpus before anything is new
+        step("discovery_search")
+        disc = discovery_search.run(as_of_dt)
+        rec = daily.reconcile_candidates(disc["candidates"], light["projects"], daily.load_pool(), day)
+        daily.write_pool(rec["pool"])
+        res["strategies"].append({"id": "discovery_search", "status": disc["status"], "lanes": disc["lanes"],
+                                  "returned": len(disc["candidates"]), "known_in_corpus": len(rec["known"]),
+                                  "new_candidates": rec["new"][:100], "new_count": len(rec["new"]),
+                                  "seen_again": len(rec["refreshed"]), "pool_size": len(rec["pool"]),
+                                  "errors": disc["errors"][:20]})
+
+        # 5. corroboration: independent upstreams checked against the light refresh; never canonical
+        step("corroboration")
+        corr = corroborate.run(light["projects"], as_of_dt)
+        res["strategies"].append({"id": "corroboration", **corr["summary"]})
+
+        # 6. deep enrichment only where it can change something
+        step("deep_enrichment")
+        classes = daily.classify(light, prev_snap.get("projects") or {}, cfg["deep"], policy, as_of, last_activity)
+        selected, deferred = daily.select_deep(classes, int(cfg["deep"]["max_per_cycle"]))
+        deep = enrich.observe(selected, as_of=as_of_dt) if selected else {"projects": {}, "failed_keys": [],
+                                                                          "http_calls": 0, "lookup_failures": []}
+        dtries = 0
+        while deep["failed_keys"] and dtries < cfg["refresh"]["retry_failed_lookups"]:
+            dtries += 1
+            deep = enrich.retry_failed(deep)
+        res["retries"]["deep_enrichment"] = dtries
+        prior = prev_snap.get("projects") or {}
+        unrecoverable = [k for k in deep["failed_keys"] if k not in prior]
+        if unrecoverable:
+            raise CycleError(f"{len(unrecoverable)} new repositories could not be deep-enriched after {dtries} "
+                             f"retries (e.g. {unrecoverable[:3]}); nothing promoted")
+        kept_prior = list(deep["failed_keys"])
+        for k in kept_prior:  # a known project whose deep lookup failed keeps its last good observation
+            deep["projects"].pop(k, None)
+        res["failures"] += [{"step": "deep_enrichment", "key": k, "outcome": "kept previous deep observation"}
+                            for k in kept_prior]
+        merged = daily.merge_snapshot(prev_snap, light, deep, keys)
+        enrich.write_snapshot(merged)
+        by_class = {}
+        for k, c in classes.items():
+            by_class.setdefault(c["class"], []).append(k)
+        res["strategies"].append({"id": "deep_enrichment", "status": "ok" if not kept_prior else "degraded",
+                                  "selected": len(selected), "http_calls": deep.get("http_calls", 0),
+                                  "retries": dtries, "kept_previous_after_failure": kept_prior[:20],
+                                  "deferred_rotation": len(deferred),
+                                  "by_class": {c: len(v) for c, v in sorted(by_class.items())},
+                                  "changed": [{"key": k, "reasons": classes[k]["reasons"]}
+                                              for k in sorted(by_class.get("changed", []))][:100]})
+
+        # 7. build and validate the dataset
+        step("build_validate")
         build.run()
         report = validate.run()
         failed = [c["id"] for c in report["checks"] if not c["ok"] and c["criterion"] != 6]
@@ -281,21 +415,35 @@ def work(run_id: str, result_path: Path) -> int:
             "became_recommendable": sorted(k for k, (lane, _) in now.items()
                                            if lane == "recommendable" and k in prev and prev[k][0] != "recommendable"),
         }
+        changed_keys = sorted(by_class.get("changed", []))
         res["counts"].update({
             "candidates": len(keys),
-            "discovered": len(new),
+            "discovered": len(new) + len(rec["new"]),
+            "discovered_in_corpus": len(new),
+            "discovered_pool": len(rec["new"]),
             "retained": sum(1 for k in new if now[k][0] == "recommendable"),
             "rejected": sum(1 for k in new if now[k][0] != "recommendable"),
-            "refreshed_records": found,
+            "refreshed_records": sum(1 for v in light["projects"].values() if v.get("found")),
+            "changed": len(changed_keys),
+            "unchanged": len(by_class.get("unchanged", [])) + len(by_class.get("stale", [])),
+            "deep_enriched": len(selected) - len(kept_prior),
+            "failed": len(kept_prior),
+            "deferred": len(deferred),
             "stale_or_abandoned_detected": len(dropped),
         })
         if failed:
             raise CycleError(f"dataset validation failed: {failed}")
 
-        # 5. score what is new
+        # 8. score what is new, re-score what materially changed
+        step("scoring")
         _score_new(cfg["scoring"]["max_new_projects_per_cycle"], res)
+        rescored = _rescore(changed_keys, int(cfg["scoring"].get("max_rescored_per_cycle", 40)), res)
+        res["counts"]["rescored"] = len(rescored)
+        res["counts"]["deferred"] += next(s for s in res["strategies"] if s["id"] == "rescoring")["deferred_to_next_cycle"]
+        res["counts"]["deferred"] += next(s for s in res["strategies"] if s["id"] == "new_pair_scoring")["deferred_to_next_cycle"]
 
-        # 6. canonical dataset + read surface, then its own validation
+        # 9. canonical dataset + read surface, then its own validation
+        step("canonical")
         canonical.build()
         crep = canonical_validate.run()
         if not crep["ok"]:
@@ -303,11 +451,24 @@ def work(run_id: str, result_path: Path) -> int:
         manifest = common.read_json(common.DATA / "canonical" / "MANIFEST.json")
         _drill("canonical")
 
-        # 7. intake outcomes learn whether they were promoted
+        # 10. intake outcomes learn whether they were promoted
         promo = intake.reconcile_promotions(run_id)
 
+        # 11. the day's dated snapshot, for 1/7/30/90-day deltas
+        step("history")
+        hist = daily.write_history(day, light, classes, manifest["dataset_version"], run_id)
+        pruned = daily.prune_history(int(cfg["history"]["retain_days"]), day)
+        res["strategies"].append({"id": "history", "status": "ok", "day": day, "rows": hist["rows"],
+                                  "sha256": hist["sha256"], "days_held": len(daily.history_days()),
+                                  "pruned": pruned})
+        _drill("history")
+        step(None)
+
+        canon_now = {p["oss_id"] for p in common.read_jsonl(common.DATA / "canonical" / "oss_projects.jsonl")}
         rel_now = {(r["saas_id"], r["oss_id"]) for r in common.read_jsonl(common.DATA / "canonical" / "relationships.jsonl")}
         res["counts"].update({
+            "added": len(canon_now - prev_canon),
+            "canonical_projects_removed": len(prev_canon - canon_now),
             "canonical_relationships": len(rel_now),
             "canonical_relationships_added": len(rel_now - prev_rel),
             "canonical_relationships_removed": len(prev_rel - rel_now),
@@ -316,8 +477,9 @@ def work(run_id: str, result_path: Path) -> int:
             "intake_promoted": promo["promoted"], "intake_pending": promo["pending"],
             "canonical_checks": len(crep["checks"]), "canonical_warnings": len(crep["warnings"]),
         })
-        res.update(ok=True, dataset_version=manifest["dataset_version"])
+        res.update(ok=True, dataset_version=manifest["dataset_version"], history_day=day)
     except Exception as exc:
+        step(None)
         res["error"] = f"{type(exc).__name__}: {exc}"[:2000]
     common.write_json(result_path, res)
     return 0 if res["ok"] else 1

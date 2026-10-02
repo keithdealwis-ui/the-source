@@ -2,7 +2,7 @@
 
 The full scoring lane (KEI-806) scores the whole knowledge graph from ~0.5 GB of stored
 evidence and runs where that evidence lives. A repository that arrives between full runs
-(a manual intake submission, or a relationship the weekly cycle has just discovered)
+(a manual intake submission, or a relationship the daily cycle has just discovered)
 is scored here instead, through the SAME rubric functions, the same config/scoring.yaml
 and the same score_version, from evidence observed for that one repository:
 

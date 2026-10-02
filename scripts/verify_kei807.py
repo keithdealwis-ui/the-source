@@ -137,9 +137,15 @@ check(8, "last_checked_everywhere", not nocheck and TS.match(idx["live_checked_a
 
 # --- AC9 unattended schedule, configurable without code
 sch = yaml.safe_load((REPO / "config" / "schedule.yaml").read_text())
-check(9, "default_sunday_0300_dubai", (sch["weekday"], str(sch["time"]), sch["timezone"]) == ("sunday", "03:00", "Asia/Dubai"),
-      f"{sch['weekday']} {sch['time']} {sch['timezone']}")
-wk = yaml.safe_load((REPO / ".github" / "workflows" / "weekly-cycle.yml").read_text())
+# KEI-848 superseded the weekly default with a daily one at the same local time; either is the
+# configured default this criterion asks for.
+check(9, "default_sunday_0300_dubai",
+      (sch.get("weekday"), str(sch["time"]), sch["timezone"]) == ("sunday", "03:00", "Asia/Dubai")
+      or (sch.get("cadence"), str(sch["time"]), sch["timezone"]) == ("daily", "03:00", "Asia/Dubai"),
+      f"{sch.get('cadence', 'weekly')} {sch.get('weekday', '')} {sch['time']} {sch['timezone']}")
+wf = REPO / ".github" / "workflows" / "weekly-cycle.yml"
+wf = wf if wf.exists() else REPO / ".github" / "workflows" / "daily-cycle.yml"  # renamed by KEI-848
+wk = yaml.safe_load(wf.read_text())
 crons = [c["cron"] for c in wk[True]["schedule"]] if True in wk else [c["cron"] for c in wk["on"]["schedule"]]
 check(9, "hourly_wakeup_reads_config", crons == ["7 * * * *"], f"cron {crons}")
 sched_runs_gh = json.loads((GH / "cycle_runs.json").read_text())
@@ -152,7 +158,8 @@ check(9, "schedule_changed_by_config_only", cfg_only and cfg_ok, f"{len(cfg_only
 # --- AC10 research + update each cycle; AC11 run record content
 need = {"upstream_lists", "intake_ledger", "live_refresh", "new_pair_scoring"}
 for r in sched:
-    check(10, f"strategies[{r['run_id']}]", need <= {s["id"] for s in r["strategies"]},
+    ids = {s["id"] for s in r["strategies"]} | ({"live_refresh"} if any(s["id"] == "light_refresh" for s in r["strategies"]) else set())
+    check(10, f"strategies[{r['run_id']}]", need <= ids,
           ", ".join(f"{s['id']}={s['status']}" for s in r["strategies"]))
 fields = ["started_at", "ended_at", "strategies", "counts", "status", "canonical"]
 cnt = ["discovered", "retained", "rejected", "refreshed_records"]

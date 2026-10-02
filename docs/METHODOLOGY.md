@@ -2,9 +2,9 @@
 
 How The Source decides what it recommends. The pipeline was built in stages: the data
 foundation (KEI-805), discovery (KEI-811), the knowledge graph (KEI-844), scoring (KEI-806),
-and the canonical repository with its weekly cycle and intake (KEI-807). This document
+and the canonical repository with its cycle (weekly under KEI-807, daily since KEI-848) and intake. This document
 covers the rules every recommendation must pass. For the canonical dataset and read
-surface see `docs/READ-API.md`; for the weekly cycle see `docs/OPERATIONS.md`; for manual
+surface see `docs/READ-API.md`; for the daily cycle see `docs/OPERATIONS.md`; for manual
 intake see `docs/INTAKE.md`.
 
 Nothing an upstream list says about a project's licence, archive state or activity is

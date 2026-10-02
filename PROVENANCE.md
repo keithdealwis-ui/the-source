@@ -5,8 +5,8 @@ Every fact in The Source is in one of three classes, and every record says which
 | Class | Where it comes from | Refreshed | Marked by |
 |---|---|---|---|
 | **imported** | An upstream list, at a pinned commit, under a recorded licence decision | When research moves the pin | `imported.*`, with a `source_id` on each value |
-| **live** | The project's own repository host, asked directly by The Source | Every weekly cycle | `live.*`, with `checked_at` / `fetched_at` |
-| **derived** | Computed by The Source from live facts and `config/` | Every weekly cycle | `derived.*`, scores with `score_version` and `evaluated_at` |
+| **live** | The project's own repository host, asked directly by The Source | Light fields every daily cycle; full evidence when new, materially changed or 7 days old (KEI-848) | `live.*`, with `checked_at` / `fetched_at` |
+| **derived** | Computed by The Source from live facts and `config/` | Every daily cycle; scores when new or materially changed | `derived.*`, scores with `score_version` and `evaluated_at` |
 
 ## Tracing a recommendation
 
@@ -17,7 +17,7 @@ Take one row of `api/v1/saas/notion.json`:
    which is the file and line or record in the upstream at that commit.
 2. `config/sources.yaml` holds the licence decision for each source, pinned to the SHA-256
    of the licence file the decision was made about. `data/state/source_pins.json` records
-   any newer commit the weekly research moved to, and proves the licence file was
+   any newer commit the daily research moved to, and proves the licence file was
    unchanged. `data/canonical/NOTICE.md` carries the attributions each licence requires.
 3. `live_checked_at` says when the host was asked. The full observation, including which
    commits, pull requests and releases counted as meaningful activity and which were
@@ -41,3 +41,19 @@ Descriptions, taglines, comparisons, pros and cons, pricing, setup estimates, re
 links and logos. The Source keeps facts only: names, repository URLs, declared licence
 identifiers, short category labels and relationship claims. See
 [`docs/LICENCE-REVIEW.md`](docs/LICENCE-REVIEW.md).
+
+## Upstream services (KEI-848)
+
+The daily cycle asks independent services to corroborate what the repository hosts say,
+and to suggest candidate repositories. None of them is a source of any published value:
+canonical facts come from the repository host only. The decision record, with licences,
+limits, freshness and fallbacks, is [`docs/BUILD-VS-INGEST.md`](docs/BUILD-VS-INGEST.md).
+
+| Service | Role | Licence of its data | What The Source keeps |
+|---|---|---|---|
+| GitHub, GitLab, Codeberg APIs | Primary: the repository facts themselves | Host terms (aggregate metadata only, no personal data) | The facts, with `fetched_at` |
+| [ecosyste.ms](https://ecosyste.ms) (repos, awesome) | Corroboration; discovery seed | CC BY-SA 4.0, attribution "ecosyste.ms" | Agreement statistics, disagreeing keys, and candidate repository addresses. No ecosyste.ms values |
+| [deps.dev](https://deps.dev) (Open Source Insights) | Corroboration | CC BY 4.0 | Agreement statistics and disagreeing keys |
+
+Corroboration data from ecosyste.ms and deps.dev is used under their licences; attribution:
+"ecosyste.ms" (CC BY-SA 4.0) and "Open Source Insights, deps.dev" (CC BY 4.0).

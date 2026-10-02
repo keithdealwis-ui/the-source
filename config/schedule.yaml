@@ -1,33 +1,52 @@
-# The Source — weekly research + refresh cycle (KEI-807 criteria 9-12).
+# The Source — daily intelligence cycle (KEI-848; the KEI-807 weekly cycle, made daily).
 #
-# The scheduler (.github/workflows/weekly-cycle.yml) wakes every hour and asks
-# `python -m source_pipeline cycle --trigger schedule` whether a cycle is due. Changing
-# the day, time, timezone or window here changes when the cycle runs; no code or
-# workflow change is needed.
+# The scheduler (.github/workflows/daily-cycle.yml) wakes every hour and asks
+# `python -m source_pipeline cycle-due` whether a cycle is due. Changing the cadence, day,
+# time, timezone or window here changes when the cycle runs; no code or workflow change
+# is needed.
 
-schema: the-source.schedule/1
+schema: the-source.schedule/2
 
-# Default: Sunday 03:00 Asia/Dubai, a quiet off-peak window.
+cadence: daily           # daily | weekly (weekly also needs `weekday`)
 timezone: Asia/Dubai
-weekday: sunday          # monday .. sunday
-time: "03:00"            # local time the window opens
+time: "03:00"            # local time the window opens, every day
 window_hours: 4          # the cycle may start any time inside the window (hourly wake-ups)
-catch_up_hours: 24       # GitHub's cron is best effort; a missed window runs late, up to this long after
-max_attempts: 3          # per weekly cycle; a failed attempt is retried at the next wake-up
+catch_up_hours: 16       # GitHub's cron is best effort; a missed window still runs, marked late,
+                         # up to this long after it. window + catch-up must stay under 24 h.
+max_attempts: 3          # per daily cycle; a failed attempt is retried at the next wake-up
 
 # Discovery and update strategies run by each cycle, in order. Every strategy is recorded
 # in the run record with what it did.
 strategies:
   - upstream_lists       # move licence-cleared upstream lists to their newest commit (research.py)
   - intake_ledger        # repositories admitted through the manual intake path (intake.py)
-  - live_refresh         # re-verify every candidate against its host; stale/archived detection
-  - new_pair_scoring     # Replacement Fit / Project Health for relationships not yet scored
+  - light_refresh        # cheap batched metadata for the whole corpus, every day (daily.py)
+  - discovery_search     # new candidate repositories from the approved search lanes, reconciled
+  - corroboration        # light refresh checked against independent upstreams (corroborate.py)
+  - deep_enrichment      # full evidence only for new, materially changed or rotation-due projects
+  - rescoring            # Project Health / Replacement Fit for new and materially changed projects
+  - history              # dated snapshot for 1/7/30/90-day deltas (data/history/)
 
 research:
   min_entry_ratio: 0.8   # an upstream that suddenly yields fewer entries keeps its old pin
 
 refresh:
-  retry_failed_lookups: 2   # re-ask only the repositories whose lookup failed, this many times
+  batch_size: 50              # repositories per GraphQL light query
+  retry_failed_lookups: 2     # re-ask only the repositories whose lookup failed, this many times
+
+deep:
+  max_age_days: 7             # rotation: every project is deep-enriched at least this often
+  max_per_cycle: 150          # new + changed always go; rotation fills the rest, oldest first
+  material_star_change:       # a star change is material at max(absolute, relative x previous)
+    absolute: 500
+    relative: 0.1
 
 scoring:
-  max_new_projects_per_cycle: 60   # single-project scoring budget; the rest wait a week
+  max_new_projects_per_cycle: 60   # single-project scoring of unscored projects; the rest wait a day
+  max_rescored_per_cycle: 40       # re-scoring of materially changed projects; the rest wait a day
+
+history:
+  retain_days: 400                 # enough for 90-day deltas with a year of look-back
+
+discovery:
+  config: config/discovery.yaml    # the approved search lanes and their budgets

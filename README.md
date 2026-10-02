@@ -21,10 +21,12 @@ Nothing downstream keeps its own copy.
 | `data/dataset/` | The full evaluated corpus behind it, every lane included, with validation reports. |
 | `data/staging/`, `data/live/` | Harvested claims and the dated live snapshot the dataset is rebuilt from. |
 | `data/scores/` | Project Health and Replacement Fit summaries, plus append-only score history. |
+| `data/history/` | One dated, hashed snapshot per day of every repository's light metadata, for 1/7/30/90-day deltas (`history-delta`). |
+| `data/discovery/` | Candidate repositories found by the daily discovery lanes, reconciled against the corpus, awaiting relationship evidence. |
 | `data/intake/` | Manual intake: outcome records and the ledger of admitted repositories. |
-| `data/state/` | Operational state, such as upstream pins advanced by the weekly research. |
-| `runs/` | One record per weekly cycle: what ran, what was found, what changed. |
-| `config/` | Sources and licence decisions, quality policy, SaaS catalogue, scoring rubric, supported products, schedule. |
+| `data/state/` | Operational state, such as upstream pins advanced by the daily research. |
+| `runs/` | One record per cycle (daily since KEI-848): what ran, what was found, what changed. |
+| `config/` | Sources and licence decisions, quality policy, SaaS catalogue, scoring rubric, supported products, schedule, discovery lanes, corroboration. |
 | `schema/` | JSON Schema for every record, validated in CI. |
 | `extension/` | **The Chrome extension** (KEI-808): a thin client of `api/v1/`. See [`extension/README.md`](extension/README.md). |
 | `source_pipeline/` | The pipeline. Python 3.12, standard library plus PyYAML and jsonschema. |
@@ -43,27 +45,33 @@ api/v1/saas/<saas_id>.json   3-5 ranked recommendations for one product
 Each recommendation carries the GitHub link, stars, maintenance status, licence, latest
 release, Replacement Fit, Project Health, self-hosting evidence, a short machine-derived
 strengths/gaps note, its sources, and `live_checked_at`. The files are regenerated only
-by the weekly cycle, so they can be cached or served from a CDN. Full contract:
+by the daily cycle, so they can be cached or served from a CDN. Full contract:
 [`docs/READ-API.md`](docs/READ-API.md).
 
 ## How it stays current
 
-A scheduled GitHub Actions workflow runs a **weekly research and refresh cycle**,
-Sunday 03:00 Asia/Dubai by default. To change the timing, edit `config/schedule.yaml`.
-Each cycle does the following:
+A scheduled GitHub Actions workflow runs a **daily intelligence cycle** (KEI-848; weekly under
+KEI-807), every day at 03:00 Asia/Dubai by default. To change the timing, edit
+`config/schedule.yaml`. Each cycle does the following:
 
 1. Moves each licence-cleared upstream list to its newest commit, but only if its licence
-   file is byte-identical to the reviewed one.
-2. Harvests the lists plus the manual-intake ledger, and finds new candidate repositories.
-3. Re-verifies every candidate against its host. Newly stale, archived or missing
-   projects drop out.
-4. Rebuilds and validates the dataset, scores new relationships, and rebuilds and
-   validates the canonical dataset and read surface.
-5. Promotes the result only if every check passes, and commits it with a run record,
+   file is byte-identical to the reviewed one, and harvests the lists plus the
+   manual-intake ledger.
+2. Refreshes cheap metadata for every known repository from its own host (stars, forks,
+   pushes, archive state, licence, releases, identity), in batches.
+3. Runs the daily discovery lanes and reconciles what they find against the corpus, so a
+   renamed or re-found repository never becomes a second entity.
+4. Checks a rotating sample against independent services (ecosyste.ms, deps.dev). They can
+   flag a disagreement; they never change a value.
+5. Re-reads the full evidence only for new, materially changed, or week-old projects, and
+   re-scores the ones that changed. Newly stale, archived or missing projects drop out.
+6. Rebuilds and validates the dataset, the canonical dataset and the read surface, and
+   keeps a dated snapshot for 1/7/30/90-day deltas.
+7. Promotes the result only if every check passes, and commits it with a run record,
    tagged `cycle/<run_id>`.
 
 A failed cycle changes nothing and opens a GitHub issue. It is retried automatically at
-the next hourly wake-up inside the window. Details: [`docs/OPERATIONS.md`](docs/OPERATIONS.md).
+the next hourly wake-up inside the window or its catch-up. Details: [`docs/OPERATIONS.md`](docs/OPERATIONS.md).
 
 ## Suggesting a repository
 
@@ -92,7 +100,8 @@ GITHUB_TOKEN=... .venv/bin/python -m source_pipeline cycle --trigger local   # a
 - [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md): the quality bar, lanes, validation and launch selection
 - [`docs/SCORING.md`](docs/SCORING.md): Project Health, Replacement Fit and Evidence Confidence
 - [`docs/READ-API.md`](docs/READ-API.md): the consumer contract
-- [`docs/OPERATIONS.md`](docs/OPERATIONS.md): the weekly cycle, failures, retries and run records
+- [`docs/OPERATIONS.md`](docs/OPERATIONS.md): the daily cycle, failures, retries, run records and history
+- [`docs/BUILD-VS-INGEST.md`](docs/BUILD-VS-INGEST.md): which upstream services are used, for what, under which terms, and why the rest are not
 - [`docs/INTAKE.md`](docs/INTAKE.md) and [`docs/INTAKE-POLICY.md`](docs/INTAKE-POLICY.md): manual intake
 - [`PROVENANCE.md`](PROVENANCE.md): where every fact comes from, and how to trace it
 - [`docs/LICENCE-REVIEW.md`](docs/LICENCE-REVIEW.md) and [`NOTICE.md`](NOTICE.md): upstream licences and attribution

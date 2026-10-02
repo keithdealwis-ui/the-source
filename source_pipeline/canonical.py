@@ -10,7 +10,7 @@ workflows. Nothing here calls a network; it reads only what earlier stages store
 Determinism: every output is a pure function of its inputs. No wall-clock time is
 written; the only timestamps are observation times recorded by earlier stages. Running
 the build twice on the same inputs produces byte-identical files, which is what lets a
-failed or repeated weekly cycle be retried without duplicating or corrupting anything.
+failed or repeated cycle be retried without duplicating or corrupting anything.
 
 Only relationships that pass the public export guard (export.py, KEI-805 criterion 15)
 become canonical, so nothing withheld for licence reasons can leak into a read surface.
@@ -132,7 +132,7 @@ def _write_scores(fit: dict, health: dict) -> None:
 
 def append_score_history(fit_rows: list, health_rows: list) -> int:
     """Append-only score history, keyed (kind, project, pair, score_version, evaluated_at).
-    Shared by every scoring path so manual intake and weekly discovery have one history."""
+    Shared by every scoring path so manual intake and the cycle have one history."""
     path = SCORES / "history.jsonl"
     seen = set()
     if path.exists():
@@ -224,7 +224,7 @@ def _sha(path: Path) -> str:
 def build(out_root: Path | None = None) -> dict:
     """Build data/canonical/ and api/v1/ under out_root (default: the repository root).
 
-    Callers that must not disturb the live copy (the weekly cycle) build into a staging
+    Callers that must not disturb the live copy (the cycle) build into a staging
     root and swap it in only after validation passes.
     """
     from . import export

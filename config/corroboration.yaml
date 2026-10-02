@@ -1,0 +1,24 @@
+# The Source: upstream corroboration (KEI-848). Independent providers are asked about a
+# rotating daily sample and checked against the host's own answer. They can flag; they
+# never change a canonical value. Decision record: docs/BUILD-VS-INGEST.md.
+
+schema: the-source.corroboration/1
+
+sample_per_day: 120        # rotates deterministically: the ~600-repo corpus is covered every ~5 days
+mailto: null               # set to an operator address to join ecosyste.ms's polite pool (15k/h)
+
+tolerance:                 # stars move between an upstream's syncs; beyond this they disagree
+  stars_absolute: 200
+  stars_relative: 0.05
+
+degraded_if:               # a provider is marked degraded (run record + job summary) when
+  error_rate_above: 0.2    #   more than 20% of the sample could not be answered, or
+  agreement_below: 0.8     #   fewer than 80% of answers agree with the host
+
+providers:
+  ecosystems:              # repos.ecosyste.ms, GitHub only; CC BY-SA 4.0 (attribution, share-alike)
+    enabled: true
+    trusted_for: [existence, archive state, licence, repository id (uuid = GitHub databaseId), star order of magnitude]
+  depsdev:                 # api.deps.dev v3 projects; CC BY 4.0
+    enabled: true
+    trusted_for: [existence, licence (SPDX), star order of magnitude]

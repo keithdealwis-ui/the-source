@@ -37,7 +37,7 @@ permissions:
   contents: write
 
 # Per request: a duplicate dispatch of the same request id waits for the first. Intake
-# only adds new files, so it needs no lock against the weekly cycle.
+# only adds new files, so it needs no lock against the daily cycle.
 concurrency:
   group: intake-${{ inputs.request_id }}
   cancel-in-progress: false

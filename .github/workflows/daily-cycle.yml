@@ -1,8 +1,9 @@
-name: Weekly research and refresh cycle
+name: Daily intelligence cycle
 
-# KEI-807 criteria 9-12. The cron below is only a wake-up: every hour the job asks
-# `source_pipeline cycle-due` whether config/schedule.yaml says a cycle is due (default
-# Sunday 03:00 Asia/Dubai, 4-hour window). Change the schedule there, not here.
+# KEI-848 (daily), built on KEI-807 criteria 9-12 (weekly). The cron below is only a
+# wake-up: every hour the job asks `source_pipeline cycle-due` whether config/schedule.yaml
+# says a cycle is due (default every day 03:00 Asia/Dubai, 4-hour window, 16-hour catch-up).
+# Change the schedule there, not here.
 #
 # One cycle at a time (concurrency group canonical-writer on the cycle job). Intake jobs
 # only ADD files (an outcome and, if admitted, a ledger entry) that a cycle never writes,
@@ -21,7 +22,7 @@ on:
         required: false
         default: none
         type: choice
-        options: [none, live_refresh, canonical]
+        options: [none, light_refresh, canonical, history]
 
 permissions:
   contents: write
@@ -122,7 +123,13 @@ jobs:
             echo "## Cycle $RUN: $STATUS"
             echo
             echo '```json'
-            python -c "import json;r=json.load(open('runs/$RUN.json'));print(json.dumps({k:r[k] for k in ('status','counts','canonical','error')},indent=2))"
+            python -c "import json;r=json.load(open('runs/$RUN.json'));print(json.dumps({k:r.get(k) for k in ('status','counts','canonical','timings_s','retries','failures','error')},indent=2))"
+            echo '```'
+            echo
+            echo '### Strategies'
+            echo
+            echo '```'
+            python -c "import json;r=json.load(open('runs/$RUN.json'));[print(s['id'], s.get('status')) for s in r['strategies']]"
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
@@ -134,12 +141,12 @@ jobs:
           STATUS: ${{ steps.commit.outputs.status }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          gh label create cycle-failure --color B60205 --description "Weekly cycle failed" 2>/dev/null || true
+          gh label create cycle-failure --color B60205 --description "Daily cycle failed" 2>/dev/null || true
           OPEN=$(gh issue list --label cycle-failure --state open --json number --jq '.[0].number')
           if [ "$STATUS" != "succeeded" ]; then
             BODY="Run \`${RUN:-unknown}\` ended ${STATUS:-without a run record}. The last known-good dataset is unchanged. Record: runs/$RUN.json. Log: $RUN_URL. The next wake-up inside the window retries automatically."
             if [ -n "$OPEN" ]; then gh issue comment "$OPEN" --body "$BODY"
-            else gh issue create --title "Weekly cycle failing" --label cycle-failure --body "$BODY"; fi
+            else gh issue create --title "Daily cycle failing" --label cycle-failure --body "$BODY"; fi
             exit 1
           elif [ -n "$OPEN" ]; then
             gh issue close "$OPEN" --comment "Recovered: run \`$RUN\` succeeded ($RUN_URL)."

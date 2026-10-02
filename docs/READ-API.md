@@ -1,6 +1,6 @@
 # Read API (v1)
 
-The read surface is a set of static JSON files under `api/v1/`. The weekly cycle
+The read surface is a set of static JSON files under `api/v1/`. The daily cycle
 generates them from the canonical dataset. They are meant to be fetched and cached by
 clients (the Chrome extension, the de-alwis.com template, internal tools). No client
 needs to call GitHub or any upstream to render a recommendation.
