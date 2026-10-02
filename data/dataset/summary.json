@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-01T08:45:04Z",
+  "as_of": "2026-10-02T15:52:46Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -13,18 +13,18 @@
         "entries_with_saas_claim": 64,
         "harvested": true,
         "licence_file_sha256": "c76f488fd52bf3c9bac423df8456156f997835d1bc012f4786d07c1208aad409",
-        "pinned_commit": "a2243021f7caeb3df6c05f130ea93d2ab903a078",
+        "pinned_commit": "194f5e227b312477f5579c169cf3cd121e20b6ed",
         "relationship_claims": 71,
         "unparseable_files": 0
       },
       "awesome-selfhosted": {
         "decision": "allow_with_conditions",
-        "entries": 1351,
-        "entries_with_saas_claim": 84,
+        "entries": 1352,
+        "entries_with_saas_claim": 85,
         "harvested": true,
         "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
-        "pinned_commit": "e758ae1836eb1d3ebd17525722f46bc59ffa5a46",
-        "relationship_claims": 144,
+        "pinned_commit": "01e5beebdcedef9de38e63206f02af7f6eaacee5",
+        "relationship_claims": 145,
         "unparseable_files": 0
       },
       "btwso": {
@@ -108,13 +108,13 @@
         "unparseable_files": 0
       }
     },
-    "entries_read": 2403,
-    "relationship_claims_read": 1523
+    "entries_read": 2404,
+    "relationship_claims_read": 1524
   },
   "lanes": {
     "oss_projects": {
       "licence_exception": 121,
-      "recommendable": 366,
+      "recommendable": 367,
       "rejected": 104
     },
     "relationships": {
@@ -172,8 +172,8 @@
   },
   "publication_status": "public",
   "reconciled": {
-    "oss_candidates": 591,
-    "oss_candidates_before_identity_merge": 610,
+    "oss_candidates": 592,
+    "oss_candidates_before_identity_merge": 611,
     "relationship_candidates": 850,
     "renamed_or_duplicate_repositories_merged": 19,
     "saas_products_named": 268
@@ -192,7 +192,7 @@
       "eligibility:repository_not_found": 12,
       "eligibility:stale_no_meaningful_activity_12_months": 51,
       "normalise:repo_url_not_a_repository": 20,
-      "normalise:saas_not_in_catalogue": 176,
+      "normalise:saas_not_in_catalogue": 177,
       "plausibility_review:CRM; not a help desk": 1,
       "plausibility_review:UI component library; not a design tool": 1,
       "plausibility_review:UI component library; not a search backend": 1,
@@ -227,17 +227,17 @@
       "plausibility_review:whiteboard; not an interface design tool": 1,
       "plausibility_review:workflow engine programmed in code; not a no-code automation product": 1
     },
-    "total": 460
+    "total": 461
   },
   "schema_version": "1.0.0",
   "verified": {
     "maintenance_status": {
-      "active": 453,
-      "maintained": 44,
+      "active": 452,
+      "maintained": 46,
       "stale": 79,
       "unverified": 15
     },
-    "oss_recommendable": 366,
+    "oss_recommendable": 367,
     "oss_rejected": 225,
     "relationships_flagged_licence_exception": 208,
     "relationships_rejected": 158,
