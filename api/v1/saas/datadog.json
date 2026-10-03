@@ -1,11 +1,11 @@
 {
   "api_version": "v1",
-  "dataset_version": "621e24f02f2cc7bf",
+  "dataset_version": "18326d92b4c5f8ac",
   "last_checked": {
-    "newest": "2026-10-02T15:52:46Z",
-    "oldest": "2026-10-02T15:52:46Z"
+    "newest": "2026-10-03T00:23:01Z",
+    "oldest": "2026-10-03T00:23:01Z"
   },
-  "more_available": 3,
+  "more_available": 4,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -25,7 +25,7 @@
         "tag": "v1.27.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-02T15:52:46Z",
+      "live_checked_at": "2026-10-03T00:23:01Z",
       "maintenance_status": "active",
       "name": "Coroot",
       "note": {
@@ -59,7 +59,7 @@
       "sources": [
         "fossalt"
       ],
-      "stars": 7949
+      "stars": 7950
     },
     {
       "github_url": "https://github.com/grafana/grafana",
@@ -69,7 +69,7 @@
         "tag": "v13.2.3"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-02T15:52:46Z",
+      "live_checked_at": "2026-10-03T00:23:01Z",
       "maintenance_status": "active",
       "name": "Grafana",
       "note": {
@@ -106,7 +106,7 @@
         "opensaasdirectory",
         "emmraan"
       ],
-      "stars": 77035
+      "stars": 77042
     },
     {
       "github_url": "https://github.com/netdata/netdata",
@@ -116,7 +116,7 @@
         "tag": "v2.12.0"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-02T15:52:46Z",
+      "live_checked_at": "2026-10-03T00:23:01Z",
       "maintenance_status": "active",
       "name": "Netdata",
       "note": {
@@ -151,7 +151,7 @@
         "runacapital",
         "opensaasdirectory"
       ],
-      "stars": 80777
+      "stars": 80778
     },
     {
       "github_url": "https://github.com/uptrace/uptrace",
@@ -161,7 +161,7 @@
         "tag": "v2.1.0-beta.8"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-02T15:52:46Z",
+      "live_checked_at": "2026-10-03T00:23:01Z",
       "maintenance_status": "active",
       "name": "Uptrace",
       "note": {
@@ -199,42 +199,40 @@
       "stars": 4298
     },
     {
-      "github_url": "https://github.com/hyperdxio/hyperdx",
-      "last_meaningful_activity_at": "2026-09-30T21:49:20Z",
+      "github_url": "https://github.com/Telemetry-Tracker/telemetry-tracker",
+      "last_meaningful_activity_at": "2026-10-02T10:29:43Z",
       "latest_release": {
-        "published_at": "2026-09-19T00:43:38Z",
-        "tag": "@hyperdx/api@2.39.1"
+        "published_at": "2026-09-27T08:20:09Z",
+        "tag": "v1.17.25"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-02T15:52:46Z",
+      "live_checked_at": "2026-10-03T00:23:01Z",
       "maintenance_status": "active",
-      "name": "hyperdx",
+      "name": "Telemetry Tracker",
       "note": {
-        "gaps": [
-          "migration path"
-        ],
+        "gaps": [],
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
           "ease of adoption"
         ],
-        "text": "Strongest on core use-case coverage and ease of adoption; weakest on migration path."
+        "text": "Strongest on core use-case coverage and ease of adoption."
       },
-      "oss_id": "github.com/hyperdxio/hyperdx",
+      "oss_id": "github.com/telemetry-tracker/telemetry-tracker",
       "project_health": {
-        "band": "Exceptional",
-        "confidence": 95.0,
-        "score": 90.9,
-        "trajectory": "Rising"
+        "band": "Healthy",
+        "confidence": 90.8,
+        "score": 82.9,
+        "trajectory": "Insufficient history"
       },
       "rank": 5,
       "replacement_fit": {
         "confidence": 84.5,
-        "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 81.7,
+        "evaluated_at": "2026-10-03T00:23:01Z",
+        "score": 83.7,
         "score_version": "1.2.0"
       },
-      "repo_url": "https://github.com/hyperdxio/hyperdx",
+      "repo_url": "https://github.com/Telemetry-Tracker/telemetry-tracker",
       "self_hosting": {
         "basis": "self-hosting documented in the project's README",
         "self_hostable": true
@@ -242,7 +240,7 @@
       "sources": [
         "fossalt"
       ],
-      "stars": 9926
+      "stars": 32
     }
   ],
   "saas": {

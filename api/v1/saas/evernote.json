@@ -1,9 +1,9 @@
 {
   "api_version": "v1",
-  "dataset_version": "621e24f02f2cc7bf",
+  "dataset_version": "18326d92b4c5f8ac",
   "last_checked": {
-    "newest": "2026-10-02T15:52:46Z",
-    "oldest": "2026-10-02T15:52:46Z"
+    "newest": "2026-10-03T00:23:01Z",
+    "oldest": "2026-10-03T00:23:01Z"
   },
   "more_available": 0,
   "provenance": {
@@ -24,7 +24,7 @@
         "tag": "v3.8.7-alpha.1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-02T15:52:46Z",
+      "live_checked_at": "2026-10-03T00:23:01Z",
       "maintenance_status": "active",
       "name": "SiYuan",
       "note": {
@@ -59,7 +59,7 @@
         "btwso",
         "fossalt"
       ],
-      "stars": 46606
+      "stars": 46611
     },
     {
       "github_url": "https://github.com/TriliumNext/Trilium",
@@ -69,7 +69,7 @@
         "tag": "v0.106.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-02T15:52:46Z",
+      "live_checked_at": "2026-10-03T00:23:01Z",
       "maintenance_status": "active",
       "name": "Trilium.cc",
       "note": {
@@ -103,7 +103,7 @@
       "sources": [
         "runacapital"
       ],
-      "stars": 38158
+      "stars": 38171
     },
     {
       "github_url": "https://github.com/logseq/logseq",
@@ -113,7 +113,7 @@
         "tag": "nightly"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-02T15:52:46Z",
+      "live_checked_at": "2026-10-03T00:23:01Z",
       "maintenance_status": "active",
       "name": "Logseq",
       "note": {
@@ -149,7 +149,7 @@
         "btwso",
         "fossalt"
       ],
-      "stars": 45109
+      "stars": 45116
     },
     {
       "github_url": "https://github.com/streetwriters/notesnook",
@@ -159,7 +159,7 @@
         "tag": "3.4.13-android"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-02T15:52:46Z",
+      "live_checked_at": "2026-10-03T00:23:01Z",
       "maintenance_status": "active",
       "name": "Notesnook",
       "note": {
@@ -195,7 +195,51 @@
         "btwso",
         "fossalt"
       ],
-      "stars": 14708
+      "stars": 14707
+    },
+    {
+      "github_url": "https://github.com/codexu/note-gen",
+      "last_meaningful_activity_at": "2026-09-30T12:29:39Z",
+      "latest_release": {
+        "published_at": "2026-09-30T12:29:39Z",
+        "tag": "note-gen-v0.38.0"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-03T00:23:01Z",
+      "maintenance_status": "active",
+      "name": "NoteGen",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity."
+      },
+      "oss_id": "github.com/codexu/note-gen",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 76.5,
+        "trajectory": "Stable"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-03T00:23:01Z",
+        "score": 74.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/codexu/note-gen",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "fossalt"
+      ],
+      "stars": 12867
     }
   ],
   "saas": {

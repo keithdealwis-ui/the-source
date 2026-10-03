@@ -152,13 +152,13 @@ SOFTWARE.
 
 ## altstackHQ/altstack-data
 
-- Source: https://github.com/altstackHQ/altstack-data at commit 194f5e227b312477f5579c169cf3cd121e20b6ed
+- Source: https://github.com/altstackHQ/altstack-data at commit 453abcc487a4b08cd53633c5ab74f5584eec5c93
 - Licence: Apache-2.0 (LICENSE file) / CC-BY-4.0 (README statement)
 - Attribution: The AltStack data (altstackHQ/altstack-data), https://github.com/altstackHQ/altstack-data, licensed CC BY 4.0 per its README and Apache-2.0 per its LICENSE file; facts extracted, no text reproduced
 
 ## sfermigier/awesome-foss-alternatives
 
-- Source: https://github.com/sfermigier/awesome-foss-alternatives at commit 305ba7f87b99fa94abb9f7b0fd6d6f6e354f774f
+- Source: https://github.com/sfermigier/awesome-foss-alternatives at commit 3a69df61b34eea1b314103ff9afa9269cdebfd8a
 - Licence: CC-BY-4.0
 - Attribution: "Awesome Free / Open Source Alternatives (to common SaaS products) for Business Use" by Stefane Fermigier and contributors, https://github.com/sfermigier/awesome-foss-alternatives, licensed CC BY 4.0; facts extracted, no text reproduced
 

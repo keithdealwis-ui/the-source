@@ -4255,6 +4255,32 @@
   },
   {
     "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "cannot"
+      ]
+    },
+    "issue_category": "restricted",
+    "maintenance": "active",
+    "name": "Open Source POS",
+    "oss_id": "github.com/opensourcepos/opensourcepos",
+    "reason": "licence text adds or removes terms: cannot",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://github.com/opensourcepos/opensourcepos",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
       "closest_standard_licences": [],
       "enterprise_directories": [],
       "host_licence_name": "Other",

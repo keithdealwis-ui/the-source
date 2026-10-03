@@ -3,32 +3,32 @@
   "counts": {
     "oss_projects": 236,
     "recommended_relationships": 312,
-    "relationships": 346,
-    "saas_products": 119,
+    "relationships": 347,
+    "saas_products": 118,
     "supported_saas": 20,
     "supported_saas_ok": 20
   },
-  "data_as_of": "2026-10-02T15:52:46Z",
-  "dataset_version": "621e24f02f2cc7bf",
+  "data_as_of": "2026-10-03T00:23:01Z",
+  "dataset_version": "18326d92b4c5f8ac",
   "export_guard": {
     "export_licence_constraint": "none beyond attribution notices",
-    "relationships_exported": 346,
+    "relationships_exported": 347,
     "relationships_withheld_share_alike_only": 24
   },
   "files": {
-    "NOTICE.md": "86cd34d2300826a80e4292638fbbc81cd3a9f2731932d69252fa7ce9c85df573",
-    "oss_projects.jsonl": "c34aa5357aa5babf76295d9b416b41b2f41bfd1940353491efc60734343b6db9",
-    "relationships.jsonl": "33b4d98fe7f51447e0fe742194f9a3abc460b823cc8c3bb2226eac959230ce0f",
-    "saas_products.jsonl": "551fb609fb802e4f756839ead165b9dce44fb1e931e224d7828a4e73894e79c9"
+    "NOTICE.md": "e46c4ad6ef159bafd221ea56834598533cb21d230151291cfd32db24dcbd9667",
+    "oss_projects.jsonl": "8c0489f7785a37ee82ea9a8d0f644d91c67ebe0f45b5a27209cef547b6d0df2d",
+    "relationships.jsonl": "38e0e6761e306a71622e3bd1a61d2036d9956fb86f0aa23c0318ee31f720ab8d",
+    "saas_products.jsonl": "6525c4957847344b550dd105e291e3ce2aac69bc069215a9bb0f4cecf3f0bbaf"
   },
   "live_checked_at": {
-    "newest": "2026-10-02T15:52:46Z",
-    "oldest": "2026-10-02T15:52:46Z"
+    "newest": "2026-10-03T00:23:01Z",
+    "oldest": "2026-10-03T00:23:01Z"
   },
   "sources": {
     "altstack": {
       "decision": "allow_with_conditions",
-      "pinned_commit": "194f5e227b312477f5579c169cf3cd121e20b6ed"
+      "pinned_commit": "453abcc487a4b08cd53633c5ab74f5584eec5c93"
     },
     "btwso": {
       "decision": "allow",
@@ -44,7 +44,7 @@
     },
     "fossalt": {
       "decision": "allow_with_conditions",
-      "pinned_commit": "305ba7f87b99fa94abb9f7b0fd6d6f6e354f774f"
+      "pinned_commit": "3a69df61b34eea1b314103ff9afa9269cdebfd8a"
     },
     "intake": {
       "decision": "allow",
