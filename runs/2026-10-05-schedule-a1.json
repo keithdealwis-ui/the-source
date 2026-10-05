@@ -1,0 +1,437 @@
+{
+  "attempt": 1,
+  "canonical": {
+    "changed": true,
+    "commit_tag": "cycle/2026-10-05-schedule-a1",
+    "dataset_version_after": "4c094a86b65ba0b2",
+    "dataset_version_before": "6a4dc6586a0595c5"
+  },
+  "counts": {
+    "added": 0,
+    "candidates": 625,
+    "canonical_checks": 27,
+    "canonical_projects": 236,
+    "canonical_projects_removed": 0,
+    "canonical_relationships": 347,
+    "canonical_relationships_added": 0,
+    "canonical_relationships_removed": 0,
+    "canonical_warnings": 0,
+    "changed": 15,
+    "deep_enriched": 16,
+    "deferred": 0,
+    "discovered": 6,
+    "discovered_in_corpus": 1,
+    "discovered_pool": 5,
+    "failed": 0,
+    "intake_pending": 0,
+    "intake_promoted": 0,
+    "refreshed_records": 610,
+    "rejected": 0,
+    "rescored": 11,
+    "retained": 1,
+    "stale_or_abandoned_detected": 0,
+    "supported_saas_ok": 20,
+    "unchanged": 609
+  },
+  "cycle_key": "2026-10-05",
+  "ended_at": "2026-10-05T00:49:26Z",
+  "error": null,
+  "failures": [],
+  "history_day": "2026-10-05",
+  "retries": {
+    "deep_enrichment": 0,
+    "light_refresh": 0
+  },
+  "run_id": "2026-10-05-schedule-a1",
+  "schedule": {
+    "cadence": "daily",
+    "time": "03:00",
+    "timezone": "Asia/Dubai",
+    "weekday": null,
+    "window_hours": 4
+  },
+  "started_at": "2026-10-05T00:44:03Z",
+  "status": "succeeded",
+  "strategies": [
+    {
+      "advanced": 2,
+      "detail": [
+        {
+          "from": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+          "source_id": "solvohq",
+          "status": "unchanged"
+        },
+        {
+          "entries": [
+            1352,
+            1355
+          ],
+          "from": "417511688b493ac7bea47bfddef6583057447191",
+          "source_id": "awesome-selfhosted",
+          "status": "advanced",
+          "to": "ce701c5a11027af22fc5674acdc3cb406c619259"
+        },
+        {
+          "from": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+          "source_id": "runacapital",
+          "status": "unchanged"
+        },
+        {
+          "from": "3f29e5943fd9fc9910cd500134d5c6a6836a52ce",
+          "source_id": "opensaasdirectory",
+          "status": "unchanged"
+        },
+        {
+          "from": "c4cc558b7edf50a5efb4e3fd0d867292c2ae6b63",
+          "source_id": "emmraan",
+          "status": "unchanged"
+        },
+        {
+          "from": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+          "source_id": "btwso",
+          "status": "unchanged"
+        },
+        {
+          "from": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+          "source_id": "diegoleme",
+          "status": "unchanged"
+        },
+        {
+          "entries": [
+            64,
+            64
+          ],
+          "from": "5cd355d95b61e714ade6c3e892332335f39bcec4",
+          "source_id": "altstack",
+          "status": "advanced",
+          "to": "d37b5db7d924155f830c709e177db1ea96ba96f6"
+        },
+        {
+          "from": "3a69df61b34eea1b314103ff9afa9269cdebfd8a",
+          "source_id": "fossalt",
+          "status": "unchanged"
+        }
+      ],
+      "id": "upstream_lists",
+      "kept": [],
+      "sources": 9,
+      "status": "ok"
+    },
+    {
+      "admitted_entries": 1,
+      "id": "intake_ledger",
+      "ledger_version": "feb7d601b43d46fdbc692e43a3082998c61cc659",
+      "status": "ok"
+    },
+    {
+      "as_of": "2026-10-05T00:44:03Z",
+      "found": 610,
+      "http_calls": 34,
+      "id": "light_refresh",
+      "repositories": 625,
+      "retries": 0,
+      "status": "ok",
+      "still_failing": []
+    },
+    {
+      "errors": [],
+      "id": "discovery_search",
+      "known_in_corpus": 42,
+      "lanes": [
+        {
+          "id": "gh-topic-self-hosted-new",
+          "provider": "github_search",
+          "query": "topic:self-hosted created:>=2026-09-28 stars:>=50",
+          "returned": 6,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-open-source-alternative-new",
+          "provider": "github_search",
+          "query": "topic:open-source-alternative created:>=2026-09-28 stars:>=50",
+          "returned": 1,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-alternative-active",
+          "provider": "github_search",
+          "query": "topic:alternative pushed:>=2026-09-28 stars:>=50 archived:false",
+          "returned": 14,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-saas-alternative",
+          "provider": "github_search",
+          "query": "topic:saas-alternative stars:>=50 archived:false",
+          "returned": 2,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-selfhosted-active",
+          "provider": "github_search",
+          "query": "topic:selfhosted pushed:>=2026-09-28 stars:>=50 archived:false",
+          "returned": 149,
+          "status": "ok"
+        },
+        {
+          "id": "ecosystems-awesome-selfhosted",
+          "provider": "ecosystems_awesome",
+          "query": "https://github.com/awesome-selfhosted/awesome-selfhosted",
+          "returned": 287,
+          "status": "ok"
+        }
+      ],
+      "new_candidates": [
+        "github.com/aixisstudio/snitch",
+        "github.com/baker-scripts/starrscripts",
+        "github.com/joecarl/mularr",
+        "github.com/jub0t/mechon",
+        "github.com/r0073d-l053r/proxmate"
+      ],
+      "new_count": 5,
+      "pool_size": 428,
+      "returned": 459,
+      "seen_again": 405,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-05",
+      "degraded_providers": [],
+      "id": "corroboration",
+      "providers": {
+        "depsdev": {
+          "agreement": 0.9817,
+          "answered": 120,
+          "asked": 120,
+          "canonical_effect": "none: flags only; the host's own answer stays canonical",
+          "coverage": 0.9083,
+          "disagreeing_keys": {
+            "github.com/stepci/stepci": [
+              "licence"
+            ],
+            "github.com/valeriansaliou/sonic": [
+              "licence"
+            ]
+          },
+          "disagreements_by_field": {
+            "licence": 2
+          },
+          "errors": 0,
+          "not_covered": [
+            "github.com/bangle-io/bangle-io",
+            "github.com/gamosoft/notediscovery",
+            "github.com/grafana/oncall",
+            "github.com/klausschaefers/quant-ux",
+            "github.com/nexedi/erp5",
+            "github.com/omibranch/qnote",
+            "github.com/riggraz/astuto",
+            "github.com/spacebarchat/spacebarchat",
+            "github.com/tracardi/tracardi",
+            "github.com/triliumnext/notes",
+            "github.com/voidenhq/voiden"
+          ],
+          "reason": null,
+          "status": "ok",
+          "trusted_for": [
+            "existence",
+            "licence (SPDX)",
+            "star order of magnitude"
+          ]
+        },
+        "ecosystems": {
+          "agreement": 0.9833,
+          "answered": 120,
+          "asked": 120,
+          "canonical_effect": "none: flags only; the host's own answer stays canonical",
+          "coverage": 1.0,
+          "disagreeing_keys": {
+            "github.com/omibranch/qnote": [
+              "archived"
+            ],
+            "github.com/rorkai/21st": [
+              "stars"
+            ]
+          },
+          "disagreements_by_field": {
+            "archived": 1,
+            "stars": 1
+          },
+          "errors": 0,
+          "not_covered": [],
+          "reason": null,
+          "status": "ok",
+          "trusted_for": [
+            "existence",
+            "archive state",
+            "licence",
+            "repository id (uuid = GitHub databaseId)",
+            "star order of magnitude"
+          ]
+        }
+      },
+      "sample": 120,
+      "status": "ok"
+    },
+    {
+      "by_class": {
+        "changed": 15,
+        "new": 1,
+        "unchanged": 609
+      },
+      "changed": [
+        {
+          "key": "github.com/apioo/fusio",
+          "reasons": [
+            "release v7.1.1 -> v7.2.0"
+          ]
+        },
+        {
+          "key": "github.com/erxes/erxes",
+          "reasons": [
+            "release 3.2.11 -> 3.2.12"
+          ]
+        },
+        {
+          "key": "github.com/fluxerapp/fluxer",
+          "reasons": [
+            "release fluxer-unfurl@2026.1003.155631 -> fluxer-gateway@2026.1004.10845"
+          ]
+        },
+        {
+          "key": "github.com/forwardemail/forwardemail.net",
+          "reasons": [
+            "release v2.17.0 -> v2.18.1"
+          ]
+        },
+        {
+          "key": "github.com/ghostfolio/ghostfolio",
+          "reasons": [
+            "release 3.78.0 -> 3.79.0"
+          ]
+        },
+        {
+          "key": "github.com/huginn/huginn",
+          "reasons": [
+            "release v2026.09.22 -> v2026.10.04"
+          ]
+        },
+        {
+          "key": "github.com/leantime/leantime",
+          "reasons": [
+            "release v3.10.2 -> v3.10.3"
+          ]
+        },
+        {
+          "key": "github.com/lightdash/lightdash",
+          "reasons": [
+            "release 2.423.2 -> 2.425.0"
+          ]
+        },
+        {
+          "key": "github.com/matomo-org/matomo",
+          "reasons": [
+            "release 5.14.0 -> 5.14.1"
+          ]
+        },
+        {
+          "key": "github.com/mcankul/offpdf",
+          "reasons": [
+            "release v0.3.2 -> v0.4.0"
+          ]
+        },
+        {
+          "key": "github.com/paca-ai/paca",
+          "reasons": [
+            "release v0.18.4 -> v0.18.5"
+          ]
+        },
+        {
+          "key": "github.com/requarks/wiki",
+          "reasons": [
+            "release 3.0.0-beta.617 -> 3.0.0-beta.628"
+          ]
+        },
+        {
+          "key": "github.com/rodrgds/openpost",
+          "reasons": [
+            "release v7.8.8 -> v7.11.0"
+          ]
+        },
+        {
+          "key": "github.com/wekan/wekan",
+          "reasons": [
+            "release v12.17 -> v12.18"
+          ]
+        },
+        {
+          "key": "github.com/windmill-labs/windmill",
+          "reasons": [
+            "release v1.822.0 -> v1.823.0"
+          ]
+        }
+      ],
+      "deferred_rotation": 0,
+      "http_calls": 68,
+      "id": "deep_enrichment",
+      "kept_previous_after_failure": [],
+      "retries": 0,
+      "selected": 16,
+      "status": "ok"
+    },
+    {
+      "deferred_to_next_cycle": 0,
+      "errors": [],
+      "id": "new_pair_scoring",
+      "pairs_scored": 1,
+      "projects_scored": 1,
+      "status": "ok"
+    },
+    {
+      "candidates": 11,
+      "deferred_to_next_cycle": 0,
+      "errors": [],
+      "id": "rescoring",
+      "projects": [
+        "github.com/apioo/fusio",
+        "github.com/fluxerapp/fluxer",
+        "github.com/getopenpost/openpost",
+        "github.com/ghostfolio/ghostfolio",
+        "github.com/huginn/huginn",
+        "github.com/leantime/leantime",
+        "github.com/matomo-org/matomo",
+        "github.com/mcankul/offpdf",
+        "github.com/paca-ai/paca",
+        "github.com/requarks/wiki",
+        "github.com/wekan/wekan"
+      ],
+      "rescored": 11,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-05",
+      "days_held": 4,
+      "id": "history",
+      "pruned": [],
+      "rows": 625,
+      "sha256": "0e85ed8bcf6246b600c7644bf7a8a96f421501bc8aac3b0675d6a6589a27cf40",
+      "status": "ok"
+    }
+  ],
+  "timings_s": {
+    "build_validate": 61.0,
+    "canonical": 89.4,
+    "corroboration": 17.0,
+    "deep_enrichment": 9.4,
+    "discovery_search": 14.3,
+    "history": 0.0,
+    "intake_ledger": 2.1,
+    "light_refresh": 80.4,
+    "scoring": 35.8,
+    "upstream_lists": 13.4
+  },
+  "transitions": {
+    "became_recommendable": [],
+    "no_longer_recommendable": []
+  },
+  "trigger": "schedule"
+}

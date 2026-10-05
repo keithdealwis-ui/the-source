@@ -152,7 +152,7 @@ SOFTWARE.
 
 ## altstackHQ/altstack-data
 
-- Source: https://github.com/altstackHQ/altstack-data at commit 5cd355d95b61e714ade6c3e892332335f39bcec4
+- Source: https://github.com/altstackHQ/altstack-data at commit d37b5db7d924155f830c709e177db1ea96ba96f6
 - Licence: Apache-2.0 (LICENSE file) / CC-BY-4.0 (README statement)
 - Attribution: The AltStack data (altstackHQ/altstack-data), https://github.com/altstackHQ/altstack-data, licensed CC BY 4.0 per its README and Apache-2.0 per its LICENSE file; facts extracted, no text reproduced
 
