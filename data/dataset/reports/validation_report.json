@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-05T00:44:03Z",
+  "as_of": "2026-10-06T02:53:13Z",
   "checks": [
     {
       "criterion": 1,
@@ -176,7 +176,7 @@
       "failures": 0,
       "id": "activity.recommended_within_12_months",
       "kind": "assertion",
-      "observed": 380,
+      "observed": 381,
       "ok": true
     },
     {
@@ -186,7 +186,7 @@
       "failures": 0,
       "id": "activity.evidence_is_not_docs_only",
       "kind": "assertion",
-      "observed": 1407,
+      "observed": 1409,
       "ok": true
     },
     {
@@ -216,7 +216,7 @@
       "failures": 0,
       "id": "licence.recommended_have_recognised_licence",
       "kind": "assertion",
-      "observed": 380,
+      "observed": 381,
       "ok": true
     },
     {
@@ -226,7 +226,7 @@
       "failures": 0,
       "id": "licence_lane.every_licence_issue_is_described",
       "kind": "assertion",
-      "observed": 140,
+      "observed": 139,
       "ok": true
     },
     {
@@ -236,7 +236,7 @@
       "failures": 0,
       "id": "licence_lane.retained_not_discarded",
       "kind": "assertion",
-      "observed": 122,
+      "observed": 121,
       "ok": true
     },
     {
@@ -247,8 +247,8 @@
       "id": "licence_lane.never_recommended",
       "kind": "assertion",
       "observed": {
-        "projects": 122,
-        "relationships": 208
+        "projects": 121,
+        "relationships": 206
       },
       "ok": true
     },
@@ -271,13 +271,13 @@
       "kind": "assertion",
       "observed": {
         "oss_projects": {
-          "licence_exception": 122,
-          "recommendable": 380,
+          "licence_exception": 121,
+          "recommendable": 381,
           "rejected": 104
         },
         "relationships": {
-          "licence_exception": 208,
-          "recommendable": 493,
+          "licence_exception": 206,
+          "recommendable": 495,
           "rejected": 158
         }
       },
@@ -301,8 +301,8 @@
       "id": "maintenance.classification_matches_definition",
       "kind": "assertion",
       "observed": {
-        "active": 465,
-        "maintained": 47,
+        "active": 464,
+        "maintained": 48,
         "stale": 79,
         "unverified": 15
       },
@@ -335,7 +335,7 @@
       "failures": 0,
       "id": "strategy.every_rejection_is_recorded",
       "kind": "assertion",
-      "observed": 226,
+      "observed": 225,
       "ok": true
     },
     {
@@ -401,7 +401,7 @@
       "failures": 0,
       "id": "dedupe.one_repository_per_product_per_saas",
       "kind": "assertion",
-      "observed": 372,
+      "observed": 374,
       "ok": true
     },
     {
@@ -411,7 +411,7 @@
       "failures": 0,
       "id": "launch.only_validated_edges",
       "kind": "assertion",
-      "observed": 372,
+      "observed": 374,
       "ok": true
     },
     {
@@ -446,9 +446,9 @@
       "id": "launch.targets",
       "kind": "assertion",
       "observed": {
-        "oss_distinct_products": 251,
-        "oss_projects": 252,
-        "relationships": 372,
+        "oss_distinct_products": 252,
+        "oss_projects": 253,
+        "relationships": 374,
         "saas_products": 119
       },
       "ok": true
@@ -472,14 +472,14 @@
       "kind": "observation",
       "observed": {
         "examples": [
-          "github.com/n8n-io/n8n (206660 stars: no_recognised_open_source_licence)",
-          "github.com/langgenius/dify (157851 stars: no_recognised_open_source_licence)",
-          "github.com/open-webui/open-webui (153956 stars: no_recognised_open_source_licence)",
-          "github.com/lobehub/lobehub (82989 stars: no_recognised_open_source_licence)",
-          "github.com/elastic/elasticsearch (78194 stars: no_recognised_open_source_licence)"
+          "github.com/n8n-io/n8n (206736 stars: no_recognised_open_source_licence)",
+          "github.com/langgenius/dify (157907 stars: no_recognised_open_source_licence)",
+          "github.com/open-webui/open-webui (154025 stars: no_recognised_open_source_licence)",
+          "github.com/lobehub/lobehub (82998 stars: no_recognised_open_source_licence)",
+          "github.com/elastic/elasticsearch (78193 stars: no_recognised_open_source_licence)"
         ],
         "launch_projects_under_500_stars": 16,
-        "rejected_with_10k_plus_stars": 92
+        "rejected_with_10k_plus_stars": 91
       }
     },
     {
@@ -490,10 +490,10 @@
       "observed": {
         "entries_read": 2421,
         "oss_candidates": 606,
-        "oss_recommendable": 380,
-        "rejections_recorded": 477,
+        "oss_recommendable": 381,
+        "rejections_recorded": 476,
         "relationship_claims_read": 1549,
-        "relationships_validated": 493
+        "relationships_validated": 495
       }
     }
   ],

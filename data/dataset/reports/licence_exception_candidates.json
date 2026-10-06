@@ -1018,8 +1018,8 @@
       "restriction_markers": [
         "directories",
         "directory",
+        "enterprise",
         "license key",
-        "licensed under something that is not a recognised open licence",
         "only"
       ]
     },
@@ -1027,7 +1027,7 @@
     "maintenance": "active",
     "name": "Weaviate",
     "oss_id": "github.com/weaviate/weaviate",
-    "reason": "licence text scopes or splits the licence: directories, directory, license key",
+    "reason": "licence text scopes or splits the licence: directories, directory, enterprise, license key",
     "recommendation_eligible": false,
     "relationships_flagged": 3,
     "repo_url": "https://github.com/weaviate/weaviate",
@@ -1925,38 +1925,6 @@
     "recommendation_eligible": false,
     "relationships_flagged": 2,
     "repo_url": "https://github.com/SeldonIO/seldon-core",
-    "review_status": "flagged_retained_not_reviewed_individually",
-    "upstream_claims": []
-  },
-  {
-    "detected": {
-      "closest_standard_licences": [],
-      "enterprise_directories": [],
-      "host_licence_name": "Other",
-      "host_spdx": "NOASSERTION",
-      "licence_files": [
-        "LICENSE"
-      ],
-      "restriction_markers": [
-        "apply",
-        "as a service",
-        "commercial",
-        "competing",
-        "except",
-        "functional source",
-        "hosted",
-        "may not",
-        "non commercial"
-      ]
-    },
-    "issue_category": "source_available",
-    "maintenance": "active",
-    "name": "Spacedrive",
-    "oss_id": "github.com/spacedriveapp/spacedrive",
-    "reason": "licence text contains source-available or use-restricted terms: functional source, non commercial",
-    "recommendation_eligible": false,
-    "relationships_flagged": 2,
-    "repo_url": "https://github.com/spacedriveapp/spacedrive",
     "review_status": "flagged_retained_not_reviewed_individually",
     "upstream_claims": []
   },
