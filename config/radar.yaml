@@ -1,0 +1,79 @@
+# The Source: Community Radar (KEI-850). Methodology: docs/RADAR.md.
+#
+# Repositories people are discussing right now, from two lawful public sources: Hacker News
+# (its official API) and Forem (dev.to's documented public API). Neither source is scraped,
+# neither needs a key, and nothing written by a person is stored: no titles, no text, no
+# usernames. A mention keeps only the item id, its own address, its public points and
+# comment counts, when it was published, and the repository addresses it links to.
+#
+# The radar is a signal to look closer, never a canonical fact. It does not change the
+# canonical dataset, its version or api/v1/. New repositories it finds join the discovery
+# pool (data/discovery/), which still needs relationship evidence before anything becomes
+# canonical.
+#
+# Versioning: `extract`, `ranking` and `reconcile` define what a published rank means, so
+# they are fingerprinted (sha256 of their canonical JSON) and `methodology.released` maps
+# each released version to that fingerprint. Changing one without releasing a new version
+# fails `radar-validate`, the tests and the daily cycle. `sources` and `resolve` are
+# collection budgets: they change how much is asked, not what a rank means.
+
+schema: the-source.radar-config/1
+
+methodology:
+  id: the-source.radar
+  version: "1.0.0"
+  doc: docs/RADAR.md
+  released:
+    "1.0.0": 9c894b0e2a2ec530af445079f265d18fcd1218d838c70b28aae510861aaf6512
+
+sources:
+  hn:
+    provider: hn_firebase                       # https://github.com/HackerNews/API (no key, no rate limit stated)
+    api: https://hacker-news.firebaseio.com/v0
+    lists: [showstories, beststories, topstories]
+    max_items_per_list: 150                     # ids taken from the head of each list
+    max_items: 300                              # item reads per cycle, after de-duplicating the lists
+    min_points: 10
+    max_age_days: 7
+    workers: 4
+  forem:
+    provider: forem                             # https://developers.forem.com/api/v1 (public endpoints, no key)
+    api: https://dev.to/api
+    tags: [opensource, selfhosted, showdev, github]
+    top_days: 7                                 # most popular articles of the last N days, per tag
+    per_page: 30
+    max_articles: 60                            # article reads (to find repository links) per cycle
+    min_reactions: 10
+    max_age_days: 7
+
+resolve:
+  # github.com links are resolved against GitHub itself (one REST call each) so a renamed
+  # or transferred repository reconciles by repository id, never as a second entity.
+  max_lookups: 60                               # per cycle, highest-ranked unresolved first
+  max_age_days: 30                              # a resolution older than this is asked again
+
+retain_days: 30                                 # mentions older than this are dropped
+
+extract:
+  hosts: [github.com, gitlab.com, codeberg.org]
+  max_repos_per_item: 3                         # a link list does not spread one item over 20 repositories
+  # github.com paths that are site pages, not owners
+  reserved_owners: [about, apps, collections, contact, customer-stories, enterprise, events, explore, features,
+                    login, marketplace, new, notifications, orgs, organizations, pricing, pulls, issues, readme,
+                    search, security, settings, site, sponsors, team, topics, trending, user-attachments, users]
+
+ranking:
+  window_days: 7                                # only mentions published in the last N days count
+  half_life_days: 3                             # a mention's weight halves every N days
+  source_weight: {hn: 1.0, forem: 0.8}
+  points_weight: 1.0                            # engagement = points_weight x ln(1 + points)
+  comments_weight: 0.5                          #            + comments_weight x ln(1 + comments)
+  max_mentions_per_repo: 5                      # only the strongest N mentions count
+  second_source_bonus: 0.25                     # x (1 + bonus) when both sources mention it
+  max_ranked: 50
+
+reconcile:
+  # A resolved repository that is in neither the corpus nor the pool joins the pool only
+  # if it exists, is not a fork, is not archived and scores at least this much.
+  pool_min_score: 4.0
+  max_pool_additions: 20                        # per cycle, highest-ranked first

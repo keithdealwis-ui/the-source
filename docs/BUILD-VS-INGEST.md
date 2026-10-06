@@ -16,6 +16,7 @@ the read surface.
 | repos.ecosyste.ms (GitHub host) | **Adopt: corroborate** | Existence, archive state, licence, repository id, stars to a tolerance | Anything canonical; any non-GitHub host (Codeberg last synced 2023, GitLab Jan 2026) | `corroborate` (`ecosystems`) |
 | deps.dev v3 projects | **Adopt: corroborate** | Existence, SPDX licence, stars to a tolerance | Anything canonical; Codeberg (HTTP 400) | `corroborate` (`depsdev`) |
 | awesome.ecosyste.ms | **Adopt: discovery seed** | "This repository is on awesome-selfhosted" (address and id only) | Any metric | `discovery_search` (`ecosystems_awesome`) |
+| Hacker News official API, Forem v1 API (KEI-850) | **Adopt: community signal** | "This item, with these public counts, links this repository" | Any repository fact; any canonical value; any authored content (titles, text, usernames are never stored) | `radar` (`community_radar` cycle step), see [`RADAR.md`](RADAR.md) |
 | packages.ecosyste.ms | Evaluated, not adopted now | Package downloads and releases (fresh) | n/a | none: downloads are not a KEI-848 field; candidate for future enrichment |
 | Software Heritage | Evaluated, not adopted now | Proof a repository existed, last archived snapshot (covers Codeberg/GitLab) | Any metric (it has none) | none: a fallback for "upstream 404s" provenance; recorded as follow-on residue |
 | OSS Insight | **Not adopted** | n/a | Stars: Aider 36,841 vs 49,335 live (−25%); n8n series frozen at 2025-02-19 | none |
@@ -130,6 +131,21 @@ then the `projects_url` it returns. awesome-selfhosted parsed: 1,406 projects, s
 entries that name a SaaS product; this lane surfaces the listed projects the corpus does
 not yet hold. Only the repository address and id are carried forward; CC BY-SA values
 (stars, descriptions) are not stored.
+
+### Hacker News and Forem (community signal, KEI-850)
+
+Added 2026-10-06 and probed live that day (HN: 303 calls, 300 stories read, 28 linking a
+repository; Forem: 37 calls, 33 articles read, 3 removed since listing, 20 linking a
+repository). Each source is used only through the interface its operator publishes for
+programmatic access: HN's official Firebase API (YC's terms forbid scraping the site, and
+the API is the means they made available) and Forem's documented public v1 API. No key is
+needed for either. Neither offers a better ingestible alternative for "what is being
+discussed now", so nothing is rebuilt. The radar keeps only facts and addresses, never
+authored content, and its output never enters `data/canonical/` or `api/v1/`. Its
+repository facts still come from GitHub. Not adopted: the Algolia HN search API (a
+third-party index of the same data, so the official API is preferred) and Reddit (its
+Data API needs registered OAuth access under its own terms, which is a decision for the
+owner, not an engineering default).
 
 ### Not adopted
 

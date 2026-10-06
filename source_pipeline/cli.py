@@ -41,6 +41,14 @@
                               [--momentum surging|rising|flat|declining] [--acceleration accelerating|steady|decelerating]
                               [--limit N]          read the committed momentum, with the window's coverage
 
+  Community Radar (KEI-850, docs/RADAR.md):
+    python -m source_pipeline radar-collect        ask Hacker News and Forem, resolve, rank (network)
+    python -m source_pipeline radar-build [--as-of TS]   data/radar/radar.jsonl from what is held; no network
+    python -m source_pipeline radar-validate       rebuild-equals-committed, schema, released methodology
+    python -m source_pipeline radar [--key KEY]... [--source hn|forem]
+                              [--status canonical|corpus|candidate|not_found|unresolved] [--limit N]
+                                                   read the committed radar, with what each source answered
+
   Knowledge graph (KEI-844):
     python -m source_pipeline graph-build          build data/graph/ from the corpus; no network
     python -m source_pipeline graph-validate       run the query suite and the acceptance checks
@@ -175,6 +183,39 @@ def _canonical(args) -> int:
         return cycle.work(args.run_id, Path(args.result))
     raise SystemExit(f"unknown command {c}")
 
+def _radar(args, ap) -> int:
+    from datetime import datetime, timezone
+
+    from . import radar
+
+    if args.command == "radar-collect":
+        # the cycle's own step, run against the live copy: what an operator runs to see it work
+        from zoneinfo import ZoneInfo
+
+        from .cycle import load_schedule
+
+        now = datetime.now(timezone.utc).replace(microsecond=0)
+        day = now.astimezone(ZoneInfo(load_schedule()["timezone"])).date().isoformat()
+        light = (common.read_json(common.LIVE / "snapshot.json")["projects"]
+                 if (common.LIVE / "snapshot.json").exists() else {})
+        r = radar.guarded_cycle_step(now, day, light)
+        out = {"ok": r["ok"], "failed_checks": r["failed_checks"], **r["strategy"]}
+    elif args.command == "radar-build":
+        try:
+            m = radar.build(args.as_of)
+        except ValueError as exc:
+            ap.error(str(exc))
+        out = {"ok": True, **{k: m[k] for k in ("as_of", "methodology", "counts", "files")}}
+    elif args.command == "radar-validate":
+        out = radar.validate()
+    else:
+        try:
+            out = radar.retrieve(args.key, args.source, args.status, args.limit)
+        except (ValueError, FileNotFoundError) as exc:
+            ap.error(str(exc))
+    print(json.dumps(out, indent=2, sort_keys=True))
+    return 0 if out.get("ok", True) else 1
+
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="source_pipeline", description=__doc__,
@@ -186,7 +227,8 @@ def main(argv=None) -> int:
                                         "canonical-build", "canonical-validate", "scores-extract", "research",
                                         "intake-assess", "intake-status", "cycle", "cycle-due", "cycle-work",
                                         "history-days", "history-delta", "discovery-pool",
-                                        "momentum-build", "momentum-validate", "momentum"])
+                                        "momentum-build", "momentum-validate", "momentum",
+                                        "radar-collect", "radar-build", "radar-validate", "radar"])
     ap.add_argument("target", nargs="?", help="graph-query: a plan file or a query id")
     ap.add_argument("--only-failed", action="store_true", help="discover-verify: retry only failed lookups")
     ap.add_argument("--refresh", action="store_true", help="score-harvest: re-observe everything")
@@ -202,17 +244,22 @@ def main(argv=None) -> int:
     ap.add_argument("--trigger", default="manual", choices=["schedule", "manual", "local"], help="cycle: what started it")
     ap.add_argument("--days", type=int, help="history-delta: window in days")
     ap.add_argument("--on", help="history-delta: end day (default: newest held)")
-    ap.add_argument("--key", action="append", help="history-delta, momentum: restrict to these project keys")
+    ap.add_argument("--key", action="append", help="history-delta, momentum, radar: restrict to these project keys")
     ap.add_argument("--window", type=int, default=7, help="momentum: window in days")
     ap.add_argument("--sort", choices=["growth", "stars_per_day", "acceleration"], help="momentum: rank by")
     ap.add_argument("--momentum", dest="momentum_band", help="momentum: only this momentum band")
     ap.add_argument("--acceleration", help="momentum: only this acceleration label")
-    ap.add_argument("--limit", type=int, help="momentum: at most this many projects")
+    ap.add_argument("--limit", type=int, help="momentum, radar: at most this many entries")
+    ap.add_argument("--as-of", help="radar-build: rank as of this UTC timestamp (default: the last collection's)")
+    ap.add_argument("--source", help="radar: only entries mentioned on this source")
+    ap.add_argument("--status", help="radar: only entries with this reconciliation status")
     ap.add_argument("--run-id", help="cycle-work: internal")
     ap.add_argument("--result", help="cycle-work: internal")
     args = ap.parse_args(argv)
 
     out = {}
+    if args.command.startswith("radar"):
+        return _radar(args, ap)
     if args.command.startswith("momentum"):
         from . import momentum
 

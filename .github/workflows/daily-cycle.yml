@@ -22,7 +22,7 @@ on:
         required: false
         default: none
         type: choice
-        options: [none, light_refresh, canonical, history]
+        options: [none, light_refresh, canonical, history, community_radar]
 
 permissions:
   contents: write

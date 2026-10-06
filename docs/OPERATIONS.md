@@ -44,6 +44,7 @@ To run one now, use Actions, then *Daily intelligence cycle*, then *Run workflow
 | 10 | (intake) | Record on each pending intake outcome whether it is now canonical. |
 | 11 | `history` | Write the day's light observations to `data/history/daily/<day>.jsonl.gz` (deterministic gzip) and `data/history/INDEX.json` (hash, rows, run, dataset version). Kept `history.retain_days` (400). |
 | 12 | `momentum` | Measure every repository's momentum and acceleration over 1/7/30/90 days from the history, including today's snapshot (KEI-849, [`MOMENTUM.md`](MOMENTUM.md)). Write `data/momentum/` and validate it (released methodology version, schema, byte-identical rebuild). A window without enough history says so per repository. A failure fails the cycle. |
+| 13 | `community_radar` | Ask Hacker News (official API) and Forem (public API) which repositories are being discussed, rank them (capped, deterministic), reconcile each with the corpus and pool by name and GitHub repository id, and admit new ones to the discovery pool (KEI-850, [`RADAR.md`](RADAR.md)). A source outage degrades the strategy. A radar that fails its own validation is rolled back to the previous one, and the cycle carries on. |
 
 Typical cost: a steady-state day with nothing changed made ~33 light calls plus discovery
 and corroboration, no deep calls, and took about 4 minutes; the first daily run, which
@@ -80,6 +81,21 @@ the providers and lanes that found them, aliases (the same repository id seen un
 another name) and the GitHub facts search returned. A candidate never becomes a canonical
 entity by being found: it still needs a licence-cleared relationship claim (an upstream
 list at a reviewed pin, or accepted intake). Once it is in the corpus it leaves the pool.
+
+## Community radar
+
+```bash
+python -m source_pipeline radar --limit 20
+python -m source_pipeline radar --key github.com/n8n-io/n8n
+python -m source_pipeline radar-validate
+```
+
+These read `data/radar/`, which step 13 rewrites each day. The run record's
+`community_radar` strategy gives each source's status, calls, removed (`gone`) items and
+errors, the resolution budget used and deferred, the repositories admitted to the pool,
+and the top ten. `counts.radar_ranked` and `counts.radar_pool_added` summarise it.
+Repositories the radar admits show `provider: community_radar` in the discovery pool.
+Methodology, sources and their terms: [`RADAR.md`](RADAR.md).
 
 ## Safety
 

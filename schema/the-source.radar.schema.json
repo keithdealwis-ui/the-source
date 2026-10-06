@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/the-source/schema/the-source.radar.schema.json",
+  "title": "The Source: Community Radar (KEI-850)",
+  "description": "data/radar/: mentions of repositories on Hacker News and Forem (facts and addresses only), their GitHub resolutions, and the deterministic ranking reconciled against the corpus. Methodology: docs/RADAR.md.",
+  "$defs": {
+    "ts": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"},
+    "repo_key": {"type": "string", "pattern": "^(github\\.com|gitlab\\.com|codeberg\\.org)/[a-z0-9][a-z0-9_.-]*/[a-z0-9_.-]+$"},
+    "source": {"enum": ["hn", "forem"]},
+    "status": {"enum": ["canonical", "corpus", "candidate", "not_found", "unresolved"]},
+    "mention": {
+      "description": "One Hacker News story or Forem article that links a repository. Holds no title, text or username by design (additionalProperties false).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "item_id", "permalink", "published_at", "observed_at", "points", "comments", "via", "repos"],
+      "properties": {
+        "source": {"$ref": "#/$defs/source"},
+        "item_id": {"type": "string", "pattern": "^[0-9]+$"},
+        "permalink": {"type": "string", "pattern": "^https://(news\\.ycombinator\\.com/item\\?id=[0-9]+|dev\\.to/.+)$"},
+        "published_at": {"$ref": "#/$defs/ts"},
+        "observed_at": {"$ref": "#/$defs/ts"},
+        "points": {"type": "integer", "minimum": 0},
+        "comments": {"type": "integer", "minimum": 0},
+        "via": {"type": "array", "minItems": 1, "items": {"type": "string"}, "description": "HN lists or Forem tags it was found through"},
+        "repos": {"type": "array", "minItems": 1, "maxItems": 3, "uniqueItems": true, "items": {"$ref": "#/$defs/repo_key"}}
+      }
+    },
+    "resolution": {
+      "description": "GitHub's own answer for a linked github.com address (GET /repos/{owner}/{name}, which follows renames and transfers).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "found", "resolved_at"],
+      "properties": {
+        "key": {"$ref": "#/$defs/repo_key"},
+        "found": {"type": "boolean"},
+        "resolved_at": {"$ref": "#/$defs/ts"},
+        "http_status": {"type": "integer"},
+        "host_repo_id": {"type": ["integer", "null"]},
+        "canonical_name": {"type": ["string", "null"]},
+        "archived": {"type": "boolean"},
+        "fork": {"type": "boolean"},
+        "stars": {"type": ["integer", "null"]},
+        "created_at": {"type": ["string", "null"]},
+        "pushed_at": {"type": ["string", "null"]},
+        "licence_spdx": {"type": ["string", "null"]}
+      }
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rank", "key", "score", "status", "status_reason", "oss_id", "pool_key", "host_repo_id", "canonical_name",
+                   "link_keys", "sources", "first_mentioned_at", "last_mentioned_at", "mentions", "explanation"],
+      "properties": {
+        "rank": {"type": "integer", "minimum": 1},
+        "key": {"type": "string"},
+        "score": {"type": "number", "minimum": 0},
+        "status": {"$ref": "#/$defs/status"},
+        "status_reason": {"type": "string", "minLength": 1},
+        "oss_id": {"type": ["string", "null"]},
+        "pool_key": {"type": ["string", "null"]},
+        "host_repo_id": {"type": ["integer", "null"]},
+        "canonical_name": {"type": ["string", "null"]},
+        "link_keys": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/repo_key"}},
+        "sources": {
+          "type": "object", "minProperties": 1, "propertyNames": {"$ref": "#/$defs/source"},
+          "additionalProperties": {"type": "object", "required": ["mentions", "points", "comments"],
+                                   "additionalProperties": {"type": "integer", "minimum": 0}}
+        },
+        "first_mentioned_at": {"$ref": "#/$defs/ts"},
+        "last_mentioned_at": {"$ref": "#/$defs/ts"},
+        "mentions": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["source", "item_id", "permalink", "published_at", "points", "comments", "shared_with", "age_days", "contribution", "counted"],
+            "properties": {
+              "source": {"$ref": "#/$defs/source"}, "item_id": {"type": "string"}, "permalink": {"type": "string"},
+              "published_at": {"$ref": "#/$defs/ts"}, "points": {"type": "integer"}, "comments": {"type": "integer"},
+              "shared_with": {"type": "integer", "minimum": 0}, "age_days": {"type": "number", "minimum": 0},
+              "contribution": {"type": "number", "minimum": 0}, "counted": {"type": "boolean"}
+            }
+          }
+        },
+        "explanation": {"type": "string", "minLength": 1}
+      },
+      "allOf": [
+        {"if": {"properties": {"status": {"enum": ["canonical", "corpus"]}}}, "then": {"properties": {"oss_id": {"type": "string"}}}},
+        {"if": {"properties": {"status": {"const": "candidate"}}}, "then": {"properties": {"pool_key": {"type": "string"}}}}
+      ]
+    },
+    "source_collection": {
+      "type": "object",
+      "required": ["status", "listed", "items_read", "gone", "mentions", "errors", "http_calls"],
+      "properties": {
+        "status": {"enum": ["ok", "degraded", "failed"]},
+        "listed": {"type": "integer", "minimum": 0},
+        "items_read": {"type": "integer", "minimum": 0},
+        "gone": {"type": "integer", "minimum": 0, "description": "listed, then 404/410 when read: removed, not an outage"},
+        "mentions": {"type": "integer", "minimum": 0},
+        "http_calls": {"type": "integer", "minimum": 0},
+        "errors": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "manifest": {
+      "type": "object",
+      "required": ["schema", "as_of", "methodology", "window_days", "collection", "inputs", "counts", "files"],
+      "properties": {
+        "schema": {"const": "the-source.radar/1"},
+        "as_of": {"$ref": "#/$defs/ts"},
+        "methodology": {
+          "type": "object", "required": ["id", "version", "parameters_sha256", "doc"],
+          "properties": {"id": {"const": "the-source.radar"}, "version": {"type": "string"},
+                         "parameters_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "doc": {"type": "string"}}
+        },
+        "window_days": {"type": "integer", "minimum": 1},
+        "collection": {
+          "type": "object", "required": ["as_of", "sources"],
+          "properties": {
+            "as_of": {"$ref": "#/$defs/ts"},
+            "sources": {"type": "object", "required": ["hn", "forem"],
+                        "additionalProperties": {"$ref": "#/$defs/source_collection"}},
+            "resolve": {"type": "object", "required": ["asked", "resolved", "transient_failures", "deferred", "pool_added"]}
+          }
+        },
+        "inputs": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+        "counts": {"type": "object", "required": ["mentions_held", "mentions_in_window", "repositories_mentioned", "ranked",
+                                                  "truncated", "ranked_by_status", "resolutions_held"]},
+        "files": {"type": "object", "required": ["radar.jsonl"], "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+      }
+    }
+  }
+}

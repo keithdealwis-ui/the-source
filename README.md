@@ -23,6 +23,7 @@ Nothing downstream keeps its own copy.
 | `data/scores/` | Project Health and Replacement Fit summaries, plus append-only score history. |
 | `data/history/` | One dated, hashed snapshot per day of every repository's light metadata, for 1/7/30/90-day deltas (`history-delta`). |
 | `data/momentum/` | Momentum and acceleration per repository over 1/7/30/90 days, derived from `data/history/`, with honest per-window coverage (KEI-849). |
+| `data/radar/` | Community Radar: repositories being discussed on Hacker News and Forem, ranked and reconciled against the corpus (KEI-850). Facts and addresses only. |
 | `data/discovery/` | Candidate repositories found by the daily discovery lanes, reconciled against the corpus, awaiting relationship evidence. |
 | `data/intake/` | Manual intake: outcome records and the ledger of admitted repositories. |
 | `data/state/` | Operational state, such as upstream pins advanced by the daily research. |
@@ -69,7 +70,10 @@ KEI-807), every day at 03:00 Asia/Dubai by default. To change the timing, edit
 6. Rebuilds and validates the dataset, the canonical dataset and the read surface, and
    keeps a dated snapshot for 1/7/30/90-day deltas, from which it measures each
    repository's momentum and acceleration wherever the history is long enough.
-7. Promotes the result only if every check passes, and commits it with a run record,
+7. Ranks the repositories being discussed on Hacker News and Forem (Community Radar),
+   reconciles each with what The Source already holds, and adds new ones to the discovery
+   pool. This step can never block the steps above.
+8. Promotes the result only if every check passes, and commits it with a run record,
    tagged `cycle/<run_id>`.
 
 A failed cycle changes nothing and opens a GitHub issue. It is retried automatically at
@@ -102,6 +106,7 @@ GITHUB_TOKEN=... .venv/bin/python -m source_pipeline cycle --trigger local   # a
 - [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md): the quality bar, lanes, validation and launch selection
 - [`docs/SCORING.md`](docs/SCORING.md): Project Health, Replacement Fit and Evidence Confidence
 - [`docs/MOMENTUM.md`](docs/MOMENTUM.md): repository momentum and acceleration (versioned methodology, coverage)
+- [`docs/RADAR.md`](docs/RADAR.md): Community Radar (Hacker News and Forem; sources, terms, ranking, reconciliation)
 - [`docs/READ-API.md`](docs/READ-API.md): the consumer contract
 - [`docs/OPERATIONS.md`](docs/OPERATIONS.md): the daily cycle, failures, retries, run records and history
 - [`docs/BUILD-VS-INGEST.md`](docs/BUILD-VS-INGEST.md): which upstream services are used, for what, under which terms, and why the rest are not

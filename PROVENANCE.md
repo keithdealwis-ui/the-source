@@ -58,6 +58,7 @@ limits, freshness and fallbacks, is [`docs/BUILD-VS-INGEST.md`](docs/BUILD-VS-IN
 | GitHub, GitLab, Codeberg APIs | Primary: the repository facts themselves | Host terms (aggregate metadata only, no personal data) | The facts, with `fetched_at` |
 | [ecosyste.ms](https://ecosyste.ms) (repos, awesome) | Corroboration; discovery seed | CC BY-SA 4.0, attribution "ecosyste.ms" | Agreement statistics, disagreeing keys, and candidate repository addresses. No ecosyste.ms values |
 | [deps.dev](https://deps.dev) (Open Source Insights) | Corroboration | CC BY 4.0 | Agreement statistics and disagreeing keys |
+| [Hacker News API](https://github.com/HackerNews/API), [Forem API](https://developers.forem.com/api/v1) (dev.to) | Community Radar (KEI-850): which repositories are being discussed | Site terms; authored content belongs to its authors | Item id, its own address, publication time, public points and comment counts, linked repository addresses. No titles, text or usernames. Never a canonical value ([`docs/RADAR.md`](docs/RADAR.md)) |
 
 Corroboration data from ecosyste.ms and deps.dev is used under their licences; attribution:
 "ecosyste.ms" (CC BY-SA 4.0) and "Open Source Insights, deps.dev" (CC BY 4.0).

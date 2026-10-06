@@ -27,6 +27,7 @@ strategies:
   - rescoring            # Project Health / Replacement Fit for new and materially changed projects
   - history              # dated snapshot for 1/7/30/90-day deltas (data/history/)
   - momentum             # momentum and acceleration over 1/7/30/90 days from that history (KEI-849)
+  - community_radar      # repositories discussed on Hacker News and Forem, ranked and reconciled (data/radar/)
 
 research:
   min_entry_ratio: 0.8   # an upstream that suddenly yields fewer entries keeps its old pin
@@ -51,3 +52,6 @@ history:
 
 discovery:
   config: config/discovery.yaml    # the approved search lanes and their budgets
+
+radar:
+  config: config/radar.yaml        # Community Radar sources, budgets and the versioned ranking method

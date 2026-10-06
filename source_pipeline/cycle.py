@@ -39,7 +39,7 @@ RUNS = common.ROOT / "runs"
 SCHEDULE = common.CONFIG / "schedule.yaml"
 WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 PROMOTE = ["data/staging", "data/live", "data/dataset", "data/state", "data/scores", "data/canonical",
-           "data/intake/outcomes", "data/history", "data/momentum", "data/discovery", "api/v1"]
+           "data/intake/outcomes", "data/history", "data/momentum", "data/discovery", "data/radar", "api/v1"]
 
 
 class CycleError(RuntimeError):
@@ -291,7 +291,7 @@ class _Timer:
 def work(run_id: str, result_path: Path) -> int:
     """Everything a cycle does. Runs with THE_SOURCE_ROOT set to a scratch copy."""
     from . import (build, canonical, canonical_validate, corroborate, daily, discovery_search, enrich, harvest,
-                   intake, momentum, research, validate)
+                   intake, momentum, radar, research, validate)
     from .normalise import reconcile
 
     cfg = load_schedule()
@@ -472,6 +472,19 @@ def work(run_id: str, result_path: Path) -> int:
         res["strategies"].append(mom["strategy"])
         res["counts"]["momentum_measured"] = mom["measured"]
         _drill("momentum")
+
+        # 13. community radar (KEI-850): Hacker News and Forem mentions, ranked and reconciled
+        # against the corpus just built; new repositories join the discovery pool, never canonical.
+        # A community signal never blocks canonical truth: if the radar fails, the last good radar
+        # and pool are put back, the strategy says failed, and the cycle carries on.
+        step("community_radar")
+        rad = radar.guarded_cycle_step(as_of_dt, day, light["projects"])
+        res["strategies"].append(rad["strategy"])
+        if not rad["ok"]:
+            res["failures"].append({"step": "community_radar", "key": "data/radar",
+                                    "outcome": f"kept the previous radar and pool: {rad['failed_checks']}"})
+        res["counts"].update({"radar_ranked": rad["ranked"], "radar_pool_added": rad["pool_added"]})
+        _drill("community_radar")
         step(None)
 
         canon_now = {p["oss_id"] for p in common.read_jsonl(common.DATA / "canonical" / "oss_projects.jsonl")}
