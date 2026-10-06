@@ -33,10 +33,15 @@ jobs:
           THE_SOURCE_NO_NETWORK: "1"
         run: python -m source_pipeline canonical-validate
 
+      - name: Momentum rebuild, schema and released methodology (KEI-849)
+        env:
+          THE_SOURCE_NO_NETWORK: "1"
+        run: python -m source_pipeline momentum-validate
+
       - name: Tests
         env:
           THE_SOURCE_NO_NETWORK: "1"
-        run: python -m pytest tests/test_canonical.py tests/test_daily.py -q
+        run: python -m pytest tests/test_canonical.py tests/test_daily.py tests/test_momentum.py -q
 
       - name: Committed data equals the rebuild
         run: |

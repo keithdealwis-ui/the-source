@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/the-source/schema/the-source.momentum.schema.json",
+  "title": "The Source: repository momentum and acceleration (KEI-849)",
+  "description": "data/momentum/MANIFEST.json and data/momentum/projects.jsonl. Methodology: docs/MOMENTUM.md.",
+  "$defs": {
+    "day": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "status": {"enum": ["measured", "insufficient_history", "no_baseline", "not_observed", "identity_changed"]},
+    "not_measured": {
+      "type": "object",
+      "required": ["status", "reason"],
+      "properties": {
+        "status": {"enum": ["insufficient_history", "no_baseline", "not_observed", "identity_changed"]},
+        "reason": {"type": "string", "minLength": 1},
+        "base_day": {"$ref": "#/$defs/day"},
+        "prior_base_day": {"$ref": "#/$defs/day"}
+      },
+      "additionalProperties": false
+    },
+    "acceleration_measured": {
+      "type": "object",
+      "required": ["status", "prior_base_day", "prior_span_days", "prior_stars_delta", "prior_stars_per_day",
+                   "stars_per_day_change", "threshold_per_day", "label", "explanation"],
+      "properties": {
+        "status": {"const": "measured"},
+        "prior_base_day": {"$ref": "#/$defs/day"},
+        "prior_span_days": {"type": "number", "exclusiveMinimum": 0},
+        "prior_stars_delta": {"type": "integer"},
+        "prior_stars_per_day": {"type": "number"},
+        "stars_per_day_change": {"type": "number"},
+        "threshold_per_day": {"type": "number", "exclusiveMinimum": 0},
+        "label": {"enum": ["accelerating", "steady", "decelerating"]},
+        "explanation": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "window_measured": {
+      "type": "object",
+      "required": ["status", "base_day", "exact", "span_days", "stars_base", "stars_now", "stars_delta",
+                   "stars_per_day", "growth_pct_per_30d", "momentum", "forks_delta", "activity", "acceleration",
+                   "explanation"],
+      "properties": {
+        "status": {"const": "measured"},
+        "base_day": {"$ref": "#/$defs/day"},
+        "exact": {"type": "boolean"},
+        "span_days": {"type": "number", "exclusiveMinimum": 0},
+        "stars_base": {"type": "integer", "minimum": 0},
+        "stars_now": {"type": "integer", "minimum": 0},
+        "stars_delta": {"type": "integer"},
+        "stars_per_day": {"type": "number"},
+        "growth_pct_per_30d": {"type": "number"},
+        "momentum": {"enum": ["surging", "rising", "flat", "declining"]},
+        "forks_delta": {"type": ["integer", "null"]},
+        "activity": {
+          "type": "object",
+          "required": ["pushed_since_base", "new_release", "latest_release_tag", "head_changed_day_pairs",
+                       "day_pairs_observed", "day_pairs_in_window"],
+          "properties": {
+            "pushed_since_base": {"type": "boolean"},
+            "new_release": {"type": "boolean"},
+            "latest_release_tag": {"type": ["string", "null"]},
+            "head_changed_day_pairs": {"type": "integer", "minimum": 0},
+            "day_pairs_observed": {"type": "integer", "minimum": 0},
+            "day_pairs_in_window": {"type": "integer", "minimum": 1}
+          },
+          "additionalProperties": false
+        },
+        "acceleration": {"oneOf": [{"$ref": "#/$defs/acceleration_measured"}, {"$ref": "#/$defs/not_measured"}]},
+        "explanation": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "notes": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "project": {
+      "type": "object",
+      "required": ["key", "canonical_id", "canonical_name", "on", "stars", "windows"],
+      "properties": {
+        "key": {"type": "string", "minLength": 3},
+        "canonical_id": {"type": ["string", "null"]},
+        "canonical_name": {"type": ["string", "null"]},
+        "on": {"$ref": "#/$defs/day"},
+        "stars": {"type": ["integer", "null"]},
+        "windows": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {"pattern": "^[1-9][0-9]*$"},
+          "additionalProperties": {"oneOf": [{"$ref": "#/$defs/window_measured"}, {"$ref": "#/$defs/not_measured"}]}
+        }
+      },
+      "additionalProperties": false
+    },
+    "manifest": {
+      "type": "object",
+      "required": ["schema", "methodology", "on", "as_of", "history", "windows", "coverage", "counts", "files"],
+      "properties": {
+        "schema": {"const": "the-source.momentum/1"},
+        "methodology": {
+          "type": "object",
+          "required": ["id", "version", "doc", "parameters_sha256"],
+          "properties": {
+            "id": {"const": "the-source.momentum"},
+            "version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
+            "doc": {"type": "string"},
+            "parameters_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+          },
+          "additionalProperties": false
+        },
+        "on": {"$ref": "#/$defs/day"},
+        "as_of": {"type": "string"},
+        "history": {
+          "type": "object",
+          "required": ["days_held", "oldest", "newest", "days_read", "day_sha256"],
+          "properties": {
+            "days_held": {"type": "integer", "minimum": 1},
+            "oldest": {"$ref": "#/$defs/day"},
+            "newest": {"$ref": "#/$defs/day"},
+            "days_read": {"type": "array", "items": {"$ref": "#/$defs/day"}},
+            "day_sha256": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+          }
+        },
+        "windows": {"type": "array", "items": {"type": "integer", "minimum": 1}, "minItems": 1},
+        "coverage": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["status", "base", "snapshots_in_window", "calendar_days_in_window", "measurable_from",
+                         "projects", "momentum", "acceleration"],
+            "properties": {
+              "status": {"enum": ["measured", "insufficient_history"]},
+              "measurable_from": {"$ref": "#/$defs/day"}
+            }
+          }
+        },
+        "counts": {"type": "object", "required": ["projects", "measured_any_window"]},
+        "files": {"type": "object", "required": ["projects.jsonl"]}
+      }
+    }
+  }
+}

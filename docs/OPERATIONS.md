@@ -43,6 +43,7 @@ To run one now, use Actions, then *Daily intelligence cycle*, then *Run workflow
 | 9 | (canonical) | Rebuild `data/canonical/` and `api/v1/`, then run canonical validation, including a byte-for-byte rebuild check. |
 | 10 | (intake) | Record on each pending intake outcome whether it is now canonical. |
 | 11 | `history` | Write the day's light observations to `data/history/daily/<day>.jsonl.gz` (deterministic gzip) and `data/history/INDEX.json` (hash, rows, run, dataset version). Kept `history.retain_days` (400). |
+| 12 | `momentum` | Measure every repository's momentum and acceleration over 1/7/30/90 days from the history, including today's snapshot (KEI-849, [`MOMENTUM.md`](MOMENTUM.md)). Write `data/momentum/` and validate it (released methodology version, schema, byte-identical rebuild). A window without enough history says so per repository. A failure fails the cycle. |
 
 Typical cost: a steady-state day with nothing changed made ~33 light calls plus discovery
 and corroboration, no deep calls, and took about 4 minutes; the first daily run, which
@@ -59,6 +60,18 @@ python -m source_pipeline history-delta --days 30 --on 2026-11-01 --key github.c
 The base is the newest snapshot on or before `on - days`; `exact` says whether it is that
 very day. With no snapshot old enough the answer is `insufficient history`, never an
 invented baseline. Every snapshot's sha256 is checked against `INDEX.json` on read.
+
+## Momentum and acceleration
+
+```bash
+python -m source_pipeline momentum --window 7 --sort acceleration --limit 20
+python -m source_pipeline momentum-validate
+```
+
+These commands read `data/momentum/`, which the cycle rebuilds after each history day.
+Each window is `measured` or carries its reason (`insufficient_history`, `no_baseline`,
+`not_observed`, `identity_changed`), and the manifest gives each window's
+`measurable_from` day. Methodology and versioning: [`MOMENTUM.md`](MOMENTUM.md).
 
 ## Discovery pool
 

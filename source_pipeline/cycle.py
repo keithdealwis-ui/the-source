@@ -39,7 +39,7 @@ RUNS = common.ROOT / "runs"
 SCHEDULE = common.CONFIG / "schedule.yaml"
 WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 PROMOTE = ["data/staging", "data/live", "data/dataset", "data/state", "data/scores", "data/canonical",
-           "data/intake/outcomes", "data/history", "data/discovery", "api/v1"]
+           "data/intake/outcomes", "data/history", "data/momentum", "data/discovery", "api/v1"]
 
 
 class CycleError(RuntimeError):
@@ -291,7 +291,7 @@ class _Timer:
 def work(run_id: str, result_path: Path) -> int:
     """Everything a cycle does. Runs with THE_SOURCE_ROOT set to a scratch copy."""
     from . import (build, canonical, canonical_validate, corroborate, daily, discovery_search, enrich, harvest,
-                   intake, research, validate)
+                   intake, momentum, research, validate)
     from .normalise import reconcile
 
     cfg = load_schedule()
@@ -462,6 +462,16 @@ def work(run_id: str, result_path: Path) -> int:
                                   "sha256": hist["sha256"], "days_held": len(daily.history_days()),
                                   "pruned": pruned})
         _drill("history")
+
+        # 12. momentum and acceleration over 1/7/30/90 days from the dated history (KEI-849);
+        # measured only where the history reaches, never on an invented baseline
+        step("momentum")
+        mom = momentum.cycle_step(day)
+        if not mom["ok"]:
+            raise CycleError(f"momentum validation failed: {mom['failed_checks']}")
+        res["strategies"].append(mom["strategy"])
+        res["counts"]["momentum_measured"] = mom["measured"]
+        _drill("momentum")
         step(None)
 
         canon_now = {p["oss_id"] for p in common.read_jsonl(common.DATA / "canonical" / "oss_projects.jsonl")}

@@ -27,6 +27,10 @@ Take one row of `api/v1/saas/notion.json`:
    score came from the full scoring lane or the single-project path.
 5. `runs/<run_id>.json` records the cycle that produced this version, and the
    `cycle/<run_id>` tag is the commit.
+6. Momentum and acceleration (`data/momentum/`, KEI-849) are computed only from the dated
+   history snapshots. Each value names its base and current days. The manifest records the
+   sha256 of every history day it read and the methodology version and parameter hash
+   ([`docs/MOMENTUM.md`](docs/MOMENTUM.md)).
 
 ## Manual intake
 

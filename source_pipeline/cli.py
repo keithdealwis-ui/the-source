@@ -34,6 +34,13 @@
                                                    change over N days (1, 7, 30, 90...) from the snapshots
     python -m source_pipeline discovery-pool       the reconciled candidate pool (data/discovery/)
 
+  Momentum and acceleration (KEI-849, docs/MOMENTUM.md):
+    python -m source_pipeline momentum-build [--on YYYY-MM-DD]   data/momentum/ from data/history/; no network
+    python -m source_pipeline momentum-validate    rebuild-equals-committed, schema, released methodology
+    python -m source_pipeline momentum [--window 1|7|30|90] [--key KEY]... [--sort growth|stars_per_day|acceleration]
+                              [--momentum surging|rising|flat|declining] [--acceleration accelerating|steady|decelerating]
+                              [--limit N]          read the committed momentum, with the window's coverage
+
   Knowledge graph (KEI-844):
     python -m source_pipeline graph-build          build data/graph/ from the corpus; no network
     python -m source_pipeline graph-validate       run the query suite and the acceptance checks
@@ -178,7 +185,8 @@ def main(argv=None) -> int:
                                         "score-harvest", "score-build", "score-validate",
                                         "canonical-build", "canonical-validate", "scores-extract", "research",
                                         "intake-assess", "intake-status", "cycle", "cycle-due", "cycle-work",
-                                        "history-days", "history-delta", "discovery-pool"])
+                                        "history-days", "history-delta", "discovery-pool",
+                                        "momentum-build", "momentum-validate", "momentum"])
     ap.add_argument("target", nargs="?", help="graph-query: a plan file or a query id")
     ap.add_argument("--only-failed", action="store_true", help="discover-verify: retry only failed lookups")
     ap.add_argument("--refresh", action="store_true", help="score-harvest: re-observe everything")
@@ -194,12 +202,34 @@ def main(argv=None) -> int:
     ap.add_argument("--trigger", default="manual", choices=["schedule", "manual", "local"], help="cycle: what started it")
     ap.add_argument("--days", type=int, help="history-delta: window in days")
     ap.add_argument("--on", help="history-delta: end day (default: newest held)")
-    ap.add_argument("--key", action="append", help="history-delta: restrict to these project keys")
+    ap.add_argument("--key", action="append", help="history-delta, momentum: restrict to these project keys")
+    ap.add_argument("--window", type=int, default=7, help="momentum: window in days")
+    ap.add_argument("--sort", choices=["growth", "stars_per_day", "acceleration"], help="momentum: rank by")
+    ap.add_argument("--momentum", dest="momentum_band", help="momentum: only this momentum band")
+    ap.add_argument("--acceleration", help="momentum: only this acceleration label")
+    ap.add_argument("--limit", type=int, help="momentum: at most this many projects")
     ap.add_argument("--run-id", help="cycle-work: internal")
     ap.add_argument("--result", help="cycle-work: internal")
     args = ap.parse_args(argv)
 
     out = {}
+    if args.command.startswith("momentum"):
+        from . import momentum
+
+        if args.command == "momentum-build":
+            out = momentum.build(args.on)
+            out = {"ok": True, **{k: out[k] for k in ("methodology", "on", "counts", "files")},
+                   "coverage": momentum.summary(out)}
+        elif args.command == "momentum-validate":
+            out = momentum.validate()
+        else:
+            try:
+                out = momentum.retrieve(args.key, args.window, args.sort, args.momentum_band, args.acceleration,
+                                        args.limit)
+            except ValueError as exc:
+                ap.error(str(exc))
+        print(json.dumps(out, indent=2, sort_keys=True))
+        return 0 if out.get("ok", True) else 1
     if args.command.startswith(("history-", "discovery-")):
         from . import daily
 

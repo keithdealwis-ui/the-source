@@ -1,0 +1,50 @@
+# KEI-849 momentum fixture: a synthetic daily history, written through daily.write_history
+# into a temporary data/history/ by tests/test_momentum.py, then measured as of `end`.
+# expected.json is the full momentum output for it; the tests also assert the numbers
+# below by hand, so the golden file is not the only oracle.
+#
+# Day d is observed at (d - 1) 23:30Z (03:30 Asia/Dubai), so consecutive days are exactly
+# 1.0 d apart. Stars are piecewise linear: `per_day` from each `from` day onwards.
+
+days:
+  start: "2026-04-01"
+  end: "2026-10-04"
+  # 30-day target 2026-09-04 is missing, as is the day before: the base falls back to
+  # 2026-09-02, two days early, inside the 3-day tolerance (exact: false).
+  missing: ["2026-09-03", "2026-09-04"]
+
+projects:
+  github.com/fx/steady:              # constant +2/day: rising, steady on every window
+    repo_id: 1
+    stars: [{from: "2026-04-01", base: 1000, per_day: 2}]
+    head_every: 2                    # default-branch head moves every 2nd day
+  github.com/fx/accelerating:        # +5/day, then +25/day for the last 7 days
+    repo_id: 2
+    stars: [{from: "2026-04-01", base: 2000, per_day: 5}, {from: "2026-09-27", per_day: 25}]
+    releases: [{day: "2026-04-01", tag: "v1.0"}, {day: "2026-10-01", tag: "v1.1"}]
+  github.com/fx/decelerating:        # +40/day, then +2/day for the last 7 days
+    repo_id: 3
+    stars: [{from: "2026-04-01", base: 5000, per_day: 40}, {from: "2026-09-27", per_day: 2}]
+  github.com/fx/declining:           # loses a star a day
+    repo_id: 4
+    stars: [{from: "2026-04-01", base: 800, per_day: -1}]
+  github.com/fx/flat-small:          # 20, 21, 20, 21 ...: under min_abs_change, flat
+    repo_id: 5
+    stars: [{from: "2026-04-01", base: 20, per_day: 0}]
+    wobble: 1
+  github.com/fx/new:                 # enters the corpus on 2026-10-01
+    repo_id: 6
+    present_from: "2026-10-01"
+    stars: [{from: "2026-10-01", base: 300, per_day: 3}]
+  github.com/fx/renamed:             # renamed on 2026-09-30, same repository id: still comparable
+    repo_id: 7
+    rename: {day: "2026-09-30", canonical_id: "github.com/fx/renamed-now"}
+    stars: [{from: "2026-04-01", base: 4000, per_day: 4}]
+  github.com/fx/replaced:            # the name now points at a different repository
+    repo_id: 8
+    new_repo_id: {day: "2026-09-30", id: 88}
+    stars: [{from: "2026-04-01", base: 3000, per_day: 1}]
+  github.com/fx/gone:                # not found from 2026-10-02
+    repo_id: 9
+    found_until: "2026-10-01"
+    stars: [{from: "2026-04-01", base: 600, per_day: 1}]

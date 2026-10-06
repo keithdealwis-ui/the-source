@@ -1,0 +1,1659 @@
+{
+  "manifest": {
+    "as_of": "2026-10-03T23:30:00Z",
+    "counts": {
+      "measured_any_window": 8,
+      "projects": 9
+    },
+    "coverage": {
+      "1": {
+        "acceleration": {
+          "labels": {
+            "steady": 8
+          },
+          "measurable_from": "2026-04-03",
+          "prior_base": {
+            "base_day": "2026-10-02",
+            "base_gap_days": 0,
+            "exact": true,
+            "target_day": "2026-10-02"
+          },
+          "projects": {
+            "identity_changed": 0,
+            "insufficient_history": 0,
+            "measured": 8,
+            "no_baseline": 0,
+            "not_observed": 0
+          },
+          "status": "measured"
+        },
+        "base": {
+          "base_day": "2026-10-03",
+          "base_gap_days": 0,
+          "exact": true,
+          "target_day": "2026-10-03",
+          "tolerance_days": 0
+        },
+        "calendar_days_in_window": 2,
+        "measurable_from": "2026-04-02",
+        "momentum": {
+          "flat": 5,
+          "rising": 1,
+          "surging": 2
+        },
+        "projects": {
+          "identity_changed": 0,
+          "insufficient_history": 0,
+          "measured": 8,
+          "no_baseline": 0,
+          "not_observed": 1
+        },
+        "snapshots_in_window": 2,
+        "status": "measured"
+      },
+      "30": {
+        "acceleration": {
+          "labels": {
+            "accelerating": 1,
+            "steady": 5
+          },
+          "measurable_from": "2026-05-31",
+          "prior_base": {
+            "base_day": "2026-08-03",
+            "base_gap_days": 0,
+            "exact": true,
+            "target_day": "2026-08-03"
+          },
+          "projects": {
+            "identity_changed": 0,
+            "insufficient_history": 0,
+            "measured": 6,
+            "no_baseline": 0,
+            "not_observed": 0
+          },
+          "status": "measured"
+        },
+        "base": {
+          "base_day": "2026-09-02",
+          "base_gap_days": 2,
+          "exact": false,
+          "target_day": "2026-09-04",
+          "tolerance_days": 3
+        },
+        "calendar_days_in_window": 33,
+        "measurable_from": "2026-05-01",
+        "momentum": {
+          "declining": 1,
+          "flat": 1,
+          "rising": 3,
+          "surging": 1
+        },
+        "projects": {
+          "identity_changed": 1,
+          "insufficient_history": 0,
+          "measured": 6,
+          "no_baseline": 1,
+          "not_observed": 1
+        },
+        "snapshots_in_window": 31,
+        "status": "measured"
+      },
+      "7": {
+        "acceleration": {
+          "labels": {
+            "accelerating": 1,
+            "decelerating": 1,
+            "steady": 4
+          },
+          "measurable_from": "2026-04-15",
+          "prior_base": {
+            "base_day": "2026-09-20",
+            "base_gap_days": 0,
+            "exact": true,
+            "target_day": "2026-09-20"
+          },
+          "projects": {
+            "identity_changed": 0,
+            "insufficient_history": 0,
+            "measured": 6,
+            "no_baseline": 0,
+            "not_observed": 0
+          },
+          "status": "measured"
+        },
+        "base": {
+          "base_day": "2026-09-27",
+          "base_gap_days": 0,
+          "exact": true,
+          "target_day": "2026-09-27",
+          "tolerance_days": 1
+        },
+        "calendar_days_in_window": 8,
+        "measurable_from": "2026-04-08",
+        "momentum": {
+          "declining": 1,
+          "flat": 2,
+          "rising": 2,
+          "surging": 1
+        },
+        "projects": {
+          "identity_changed": 1,
+          "insufficient_history": 0,
+          "measured": 6,
+          "no_baseline": 1,
+          "not_observed": 1
+        },
+        "snapshots_in_window": 8,
+        "status": "measured"
+      },
+      "90": {
+        "acceleration": {
+          "labels": {
+            "accelerating": 1,
+            "steady": 5
+          },
+          "measurable_from": "2026-09-28",
+          "prior_base": {
+            "base_day": "2026-04-07",
+            "base_gap_days": 0,
+            "exact": true,
+            "target_day": "2026-04-07"
+          },
+          "projects": {
+            "identity_changed": 0,
+            "insufficient_history": 0,
+            "measured": 6,
+            "no_baseline": 0,
+            "not_observed": 0
+          },
+          "status": "measured"
+        },
+        "base": {
+          "base_day": "2026-07-06",
+          "base_gap_days": 0,
+          "exact": true,
+          "target_day": "2026-07-06",
+          "tolerance_days": 7
+        },
+        "calendar_days_in_window": 91,
+        "measurable_from": "2026-06-30",
+        "momentum": {
+          "declining": 1,
+          "flat": 1,
+          "rising": 3,
+          "surging": 1
+        },
+        "projects": {
+          "identity_changed": 1,
+          "insufficient_history": 0,
+          "measured": 6,
+          "no_baseline": 1,
+          "not_observed": 1
+        },
+        "snapshots_in_window": 89,
+        "status": "measured"
+      }
+    },
+    "history": {
+      "dataset_version": "fixture",
+      "day_sha256": {
+        "2026-04-07": "b8343b02c3d44a5cbcaba628727f29a7a3a0a657673b426171ed0998160f9ce6",
+        "2026-04-08": "90b2a0c6a039692f745a0536bf75b0ca800354fcc42ed5448f3afacdc1463975",
+        "2026-04-09": "628e9493a78e760dbe3fd9b96583a8b0a3c04e7a47d093671be82f0389d89913",
+        "2026-04-10": "6517c0bc078f10c442ba1134cc1e72465cb5b04a00196ecf1f2b982523105199",
+        "2026-04-11": "5e95326612b06badba16fba75fc5c803b50e7e50925252fc695bf74c117c0314",
+        "2026-04-12": "27565a3097ad9ebffb4ff76e091933d1c53ae41e617d448c78e6ad16a07655a2",
+        "2026-04-13": "1357911256f35b91ec868bde31c6c11cddabf514d85159ab4293e986c9ea9727",
+        "2026-04-14": "a21b92d11f6e4307d2df254d0a527acc853d5ee5fca48b5f78d65aad736d652e",
+        "2026-04-15": "aa6fb47d2ebd33c0f9923f3aedeedecfb7b8c5fc094ba8fa5ad24f9ad24233a7",
+        "2026-04-16": "777a4c9d5b77abb50a9deda06c7b8c2b06e185e4975507749b5129b633632576",
+        "2026-04-17": "252e19ba6820b233ca0d2f87fe0bd83d804969b42f95cf081b3635173f7bb939",
+        "2026-04-18": "6ac822d1df3ae30105e03ddda6181c2a9fff5cee529c09fe6fe066e550707415",
+        "2026-04-19": "d67c044bc6be0bd06b59f3dbef3cc0ed9a19aa69271b8c7de347553fd6b16870",
+        "2026-04-20": "100dac0550bda2c62f73b8b35595b628ff50b9302515a4975a7acc1d98fee3da",
+        "2026-04-21": "157288f26c04f62f564bffcfe8401f84a01ca2eca0af8d64e400de559b2c9bfe",
+        "2026-04-22": "1da99d58e103d6c41acb3f4a988817c26026231f3296cd5854113a40bbd80d85",
+        "2026-04-23": "65e4005101070c07773a260fe51185c79f10e6b4239098ca980e3ace8d32c3d8",
+        "2026-04-24": "db663ef15f8223d3f62d23fcdb8ab723bdd0f19c040d352d0f6b0a543da73390",
+        "2026-04-25": "1988a68345c21c2dd4a6a4f30dc2daea07a3ef709d41a24deefe28cc70a2277d",
+        "2026-04-26": "231e5426d0e80fda11b97de61b31de100b33ce1b3db1d00af8179ab3258a4dae",
+        "2026-04-27": "c6bb67fb5e299b6c9916ea049e513d24024014a65f55d7c6e780f95ba211c62c",
+        "2026-04-28": "a76222b02549ba71fae19fc96aec77bf73bf9b6ed2d962c8a74cb50fe0ef17b2",
+        "2026-04-29": "2c6d7cebc19f6e277d9c6fcef3b183b7efd8c3e47c1c7b8f4bc2663fab7146ed",
+        "2026-04-30": "f683353b366acfe3dcec2f7d21044445f75f4d2624b5facbfbdbb16cc56edfee",
+        "2026-05-01": "92e584f4f13e3f31ef5ee78de7af7e1bf4a70b276afff3781ee91cd232522fe9",
+        "2026-05-02": "babcf3e1f969d1944b4fda3c0c3d5b3163d93e3c6f63f399198a16f700c32ee9",
+        "2026-05-03": "32696c50581176926b0df4b8b729d4626a2a7eb60e7a2e21465644232d7d110e",
+        "2026-05-04": "f0ec48e7938cf3dc7aacc4e5ff3e3e343e7cfd6097067597772bab4879a1f0aa",
+        "2026-05-05": "0dccc972755146fb2b0b7f59d642c54fba560bf6af9b772fbe08cc3e22735d59",
+        "2026-05-06": "bb076b9e9dc60c66221f75f5a0babbae7ac3f064656e5a6007df8a57fd2cd677",
+        "2026-05-07": "45ffb3c06d43045a83024e79fb874bc105a589659fb6479ac30e5d5481802e01",
+        "2026-05-08": "e7e8a481d5880de21f778a1bae72dda0ac0ead87b34c13efbd9f0eb4a800358d",
+        "2026-05-09": "9c35a01dbd2dfd62780ad6c8bf36456800ced5081fa04ac5709dd755470caf93",
+        "2026-05-10": "1cf360b0b478234ae811388f3105be9c4198b64464f5b9d0117957a01d59a2e7",
+        "2026-05-11": "bca08b041b74e0465a7f479f231226141724b4355d251f006bb82867380aa301",
+        "2026-05-12": "9bdab3a630ce3a1b996daa509e0713ae266ac9bfc72b2aff6e09434c806ccacd",
+        "2026-05-13": "200f926a7036402516f18b7e01ca639157c0772e47f62c7e9a17b730478ff5df",
+        "2026-05-14": "069e3297db2ddee5bc627007c9ec4e4e4b329bb4a5e366e2c89dcfaa1f5cbcb3",
+        "2026-05-15": "6749c7bccf17d462ade3f901ec8fb290c6a1a7131c6c5e2a1493a9368949cc68",
+        "2026-05-16": "99b5055edce86ffdacf1aca1bd3d234c83a8116b6d7182ecd741f66090ba2b76",
+        "2026-05-17": "1a384bb4a9a764eee1a29e9a746f31490e2e0944c1d3af1d29a92da3248461c1",
+        "2026-05-18": "c73452905bcdc0971706d99763c3adb32cd39c0d7101fcbc333a12a90090de0e",
+        "2026-05-19": "cdb5b9faf980332e329978400c1e60787add526bb4248b76fb0651e53d4c9cd7",
+        "2026-05-20": "38d343b41ea3119abece8dd0c0366cd8e7ad0b21ddc43e7a6cbad3295d7bfe4b",
+        "2026-05-21": "657238b6d0f0537461283459518ce4f22c3ccbb07370d3845276e4ae6a4033e9",
+        "2026-05-22": "71aa579827a2e2e1f6fb919d081e4b1fea063b8340432ff4b335413cad9ac1b3",
+        "2026-05-23": "01f1f8cd66646cd0f37c78ae10e5745e25cc46d054f03367aad225e74d7710fa",
+        "2026-05-24": "bc94628b8ab993c99ee41fc643c6f325f69822a304dd32d2360e97af57629307",
+        "2026-05-25": "c311c076a952f259aad2f26af419b593a6f60e9bee5896f0543b16b716ceaead",
+        "2026-05-26": "fd3bf9e115b7f654a2480de5c941d16947beb33986fe872f6fe0f80fd89b8efb",
+        "2026-05-27": "d1040c0efacc956d836973b21b1623e507fcbc2c272e6a2eb2fdef57a7478d3f",
+        "2026-05-28": "7748be87fff092c908d165ca129ec0ca422dc3f909b062fd445fd9e6652162d4",
+        "2026-05-29": "c9074605a471e8b3dde52e2d8d351c3c807fd6bebd28049cf366ee8feccb2038",
+        "2026-05-30": "6d75a0c1d041e4895cbf1fe9547792576db4dd9fd8f031e47f20056cbdb2db86",
+        "2026-05-31": "54220d018841ba7f2fc61871b595bc024cce133d88da9f30783d512845841d6b",
+        "2026-06-01": "f79337eefffb1fb3142d50e644954bcee7a2cb9b2cd30dc13267d5fb539e20c6",
+        "2026-06-02": "12820008c06bd41d8bea9c8ecb800f0469d8b0ccba2bb7a172d1f7eac31166e1",
+        "2026-06-03": "03c5185d8e1fbf5444b9fb0292a2d8c137b5e3c6da90cca7f6de0e8f817e33d6",
+        "2026-06-04": "b512179282c5f5dc9e091eb2c5821b29fd4b1579ea69a75fea04fd049148e1f3",
+        "2026-06-05": "0e94aafb72ad9262bde7fcda8f0525c3e4aa2df6dfe2372e9060924ae425bbc6",
+        "2026-06-06": "aed2115509a5beb57c76dcdb454f3dbc0f8f9ed13c978cabace417d4a40791c3",
+        "2026-06-07": "8a0151e90163feed154752aa79c4f693b152f2581cb14f99ab508af59812f783",
+        "2026-06-08": "c2e3203ea950b86318fd712aa64a882670e6cc85eab9ceb7c1130e84f0f1364c",
+        "2026-06-09": "87c90cb0952c46bf3600db14c04c0f8bc04261ef976f3889187be327cc8c0b27",
+        "2026-06-10": "010dde877e02116efd6607506d11a17a1f7824d26cf0d8fa777917cfac3ba025",
+        "2026-06-11": "65ba9bc65707abce4e73bfa34435ba546f99be618d29f280836550a9608b67ec",
+        "2026-06-12": "e3cf3398f4786ddffe120c08812054e58ba960873fb69cec45f366db886db4ea",
+        "2026-06-13": "0e3e84c41964ade079e6284f2bc929c50d97c47e58d83fff39c9c00f05aee492",
+        "2026-06-14": "e5245cccec4561ee76987e94f129279715188c51a0fd91abef7fcfa7a3b35451",
+        "2026-06-15": "23bb6b7d99d314fb1ee3100375141b173feb61878d52a10bf48c22c2a060d6f8",
+        "2026-06-16": "67df8ea4d90754a9422f85c2af599a442cb6f3d007330bb04ff5b1b623a3ac07",
+        "2026-06-17": "c1c69dc5439164ce5eec52d76a58614ed2ea03984ffc09b8ad794cbd43afa305",
+        "2026-06-18": "afa1b75ad5d855010f6aadd2a455c50e06b375b0a628389c03681209d73adb8b",
+        "2026-06-19": "29de90c3a2b2b1c0fc731482031e58e439636a295326b3459587b9edc8223210",
+        "2026-06-20": "aabb271db5169834c23e42687a2297160e636b047a57c272420831b2642dc155",
+        "2026-06-21": "efe9a1f5b3e65dca232b98260b3fbe61c4cef034d710411d2da1ba0edff82373",
+        "2026-06-22": "475497cfb8ad5d2f2b225ded00f136398c0f47dde3f58fbff4541d9e7620b122",
+        "2026-06-23": "29375011154d02c96cf45b38a117dd6979eb3ac96509dcaa2c7ea4ba1cf62cc6",
+        "2026-06-24": "bb3a7e312badd67d96fd44bbea8825b534b23b1492af4505f659d7b4837787f9",
+        "2026-06-25": "a8a0cab605023378f181dde94b3e6399d184a37dbcba1d515c6009921504e83f",
+        "2026-06-26": "cf0dd8e4fcb8d87b5dc89a2d230b83ba9406499c2efc062b998fb03b6a32ade2",
+        "2026-06-27": "9e67cd54fad63bc24e2d8f0474621c87362f4a42eda1d418389faf87a02d3e4f",
+        "2026-06-28": "dc21585d173284d60a9abeac772067eccf7936c6166f266efa72bb553f0ff3eb",
+        "2026-06-29": "276e8d5c71942afc01170646a266b6ad939e992e8bf4fad7d1104dc3049d3dc7",
+        "2026-06-30": "36fec4dfc51a7778d1436ac1d8a94d692820317c527f24ad21625525180846fa",
+        "2026-07-01": "63864dbe2b7afeff974d7d90c6a132cd94943996b900df33c7600e1d919dbc5a",
+        "2026-07-02": "658779ca4e1ce95207ae581f74a4dd913fca293c476535b5d8142f96888e7fcb",
+        "2026-07-03": "b99f61e7c45ab2cc099a063a78947728219f88313121db020a96823d1705f5d2",
+        "2026-07-04": "42514b414e49d51f8858619d0295e809077119cc4e1e10749a6f11aa2352067d",
+        "2026-07-05": "0882b9d4ecfa54ff5bb67a49c7d78f67db7e76248000ad603afb17aec1ba423b",
+        "2026-07-06": "b94c3441e9fdc3cd03f8726b82d831c483a080791c3acd35c99f2033ec246856",
+        "2026-07-07": "9e96047937222e5bb35b943a68be63dfc69bb66ed734e783b845abfd1b64a968",
+        "2026-07-08": "877f10c61a1a4828a1a0c93043502a19ef699e4915e4e892bc63299f4b88b8de",
+        "2026-07-09": "1c19b43658dc2bc9a6717771ed4296da38e40cdd8b5d7bb30205161ce24ea52a",
+        "2026-07-10": "b080641ca225767c98880cc0c3da53a3c6dbda11888101da4f2727d194dce639",
+        "2026-07-11": "eee07e8b4a774616c7c9656b0f22bc68cb747cc9efc5c974e835a3da9de69378",
+        "2026-07-12": "5a6b146b2eabed52d93e64f675a56cda9062e443ba3051e23078f11b1172f708",
+        "2026-07-13": "f6987e4d859a52c6b413313a62395d94753b1f0a811b1a0bfef5bcc14888ac6a",
+        "2026-07-14": "0105d4a66c7924b45b0a0b81fbca880efec4d949235ce911b7e0df19a95a5cca",
+        "2026-07-15": "943d2c169ba72b8de0821ee928bc8c204bf5c07e798187cee10034ef345c83f7",
+        "2026-07-16": "f5854612980d27e8131dba13798b0bbd38bc843a2c71525713e3dc8888d2d63e",
+        "2026-07-17": "e47ab9b23de414db729d096769916f700d669e22da35b559265c059fd9a36711",
+        "2026-07-18": "d434e4cc707a4b4540067bb626c3a11b41bfeedbc5205d5755004fe169786346",
+        "2026-07-19": "f5b5bb6685867fd7f4ca40602c0b243f659b2d3b0f4bc0b6914d1362df024c7f",
+        "2026-07-20": "204ae3caf2a20a683bbdadc11b45bf81c9caca268a5eb6293ab271fa684624ba",
+        "2026-07-21": "a3e41753ef3b99e31de7e717d2cfa93a2aa2f797612357487b5cace4493945af",
+        "2026-07-22": "5f82808438dc4b0cf421df8f7f49da923654cf42b76861adc96305df33d1c7e3",
+        "2026-07-23": "fd803e973246048e9b98b9a3bc3eda6be1835946f778326a10c54e310eea0b00",
+        "2026-07-24": "8cad2eece931cf05e8349627b97cbe5862df6d470ba6fd0497f46090b8bdcd15",
+        "2026-07-25": "28aa8447fdd2f6168f7a0ef2691d201f0e078d37f76e31250f00bac1449a846b",
+        "2026-07-26": "d693a405a4a8bf0743b70b9621c199146273d12fc37e3b1c9fc14c54beed08e5",
+        "2026-07-27": "d3c521854f0387ae0982da1859aa0be87ff9192a306ea7f6131c5b5e004abe76",
+        "2026-07-28": "0fcb8caa2f9402d270f05e9e91a67bc6a62a727bf04c7b622c274c561f218ec1",
+        "2026-07-29": "ed0f7bb454f062721c21670db211ffddc32ac9e31cdd77e130f818cbbe4559c8",
+        "2026-07-30": "cd6bd7b9f64fe55b9f26581218f77f805fee92b4080ff388f5b4df4049f5ed5f",
+        "2026-07-31": "d5e90262fc94904c30601a9f5a0a1ffff3f8ac90f01e1fb415325aa73adace04",
+        "2026-08-01": "33cd071d66c52841caa812066846caafa0c6bafc2c0bc54ffc206b1ca879eb11",
+        "2026-08-02": "040939968d29da32f19ce99d162108a7a29c940e03da2bc640b140e647a46c9c",
+        "2026-08-03": "be4d742624c99fd9198cf3af76af4438af77aad7730eb5880250688c366b969e",
+        "2026-08-04": "8e4e9c4ad6dcfa56a2a7b04e46b61eb353b1b5c90ab13978f5b7e3cb7d8bac4a",
+        "2026-08-05": "6e2ef026ff4d25ad9876e414551e9ef2b87e9a77b4e7b6eeabb47c15be451e82",
+        "2026-08-06": "75422bc263477fb840cf285527d9de7f2bd5cfdb0df65e5f95a9e7a5a8886f9b",
+        "2026-08-07": "18c8453dc7477a0d3af1324bd25814f403fd1c55e8ea0cced7d4ca71bb57c1fb",
+        "2026-08-08": "1cbe7665cebd889401cbe12ed47f7780f9015cb2b00dead1d422bae01560868f",
+        "2026-08-09": "7fbecc8e85593e9fe4595f114b7fdb67ba814ace4e184a93b5cf6c1ea280391f",
+        "2026-08-10": "d437297d0b031e1981e51128327a383c04458ccf8945a7c232e7a93bb574d5dc",
+        "2026-08-11": "e3b4ad40a3ab3b499e63050b2dde1e7ebd626268eccfe3b2f393c0e6c9613616",
+        "2026-08-12": "f7e6f0171e9176fb4101946734ac37ce2de975fe7929662f9c14cf4e446d8dfd",
+        "2026-08-13": "c463bb0b7ff10e3b6a0df7d8f9ebad446ad11f70b54c466263bcc13d00d4fe12",
+        "2026-08-14": "92a7ee06b2570c78b48eed4b70f1fc1e02a3e383fcee4162bb326c2ebc530b08",
+        "2026-08-15": "0260acc927ab4a59a086d9886bc55b9ebe7cdbd1a21c41d1d0cda5f5a01e51fb",
+        "2026-08-16": "4cfdebc81d60f3b6769292c6d9aeb9becdaaf26a6488e761fecbe97d108433d4",
+        "2026-08-17": "e127c702eea973aed18dcd971753a2b3e910299a89e476b58f038107adfe6fa5",
+        "2026-08-18": "2e1814be39f8bc62334231f6bf41f168b3ff807d473e07c0571f0ccfb7d29502",
+        "2026-08-19": "dec1be505a4d847741015fc6ca68401ed871a61ed870dec9f522c1f9b5b8992f",
+        "2026-08-20": "d708df0e8c04f08a7c1698a7fa71d0eada058b35aad223d0da03a9207d56e95d",
+        "2026-08-21": "3eec61308aece0cb3bd9b5bba55da281a769ad412bd2c463549325111ef07800",
+        "2026-08-22": "172ee950e11722b9c72c0e4639f99894b6998e0b0201a7138132394c64bedfc7",
+        "2026-08-23": "7c69e423aa05f71364401f0326abe0b8400523650ee9edf41806d90714df5dc5",
+        "2026-08-24": "b7fdfab6b254590808fe871d362a1e695571393fe7a6212c5f6cae2120d2fc73",
+        "2026-08-25": "665f3d48477397c70fef1fe29825f3a1d02d39af86b037928bc0c01ad5397b34",
+        "2026-08-26": "a19604a43f44f72b89a36416c9a6190ce506d1ed996a14d0a630537a29d9f6d3",
+        "2026-08-27": "16aa3bd1103a45dfaa1e273b1ac8a30b4301f7647a4fb0ca28cf02a1012d6a1c",
+        "2026-08-28": "6cc1a4d2c8b8a6b8a056e502b08262ec69ed06984d31dc2e92547d46e2fd01bc",
+        "2026-08-29": "c31b722e1fde24729cc18deaf17309940057e85f8caacd7f8996b453fa1688a3",
+        "2026-08-30": "e4d92e6bb58536eb946b05676d884ac7bda2749c9cdaf3415699e159ba156bcb",
+        "2026-08-31": "7b4ffb04e2cdb01b601b8d8e4ebdc9a41043f7ee98d28d37662ba25e763d7194",
+        "2026-09-01": "3d2b901210a61203dc6f019f6c082a8e15fe775c299c075e0ea6c7e370ecbe27",
+        "2026-09-02": "30e8b3ef01a0a2ceeb46e22991f264b744d68e865ee98238fcedbc9ef44471f9",
+        "2026-09-05": "8ccf77fe3692cf7e20b9cd3fc8831bff0159326a4967afc864229942f3cec3a7",
+        "2026-09-06": "e381796a0a24f5ada91e704a123a46a28fa6e132b3f346fe0eaa6d20bafc6bf4",
+        "2026-09-07": "d37f4837679fdf4bf428e4a78059bffda28c7db4d0429e8f9bc9aa7c6b627bed",
+        "2026-09-08": "76f8387d940f103b5fd6ed704926afc316cffa2aea8ba4b029c86de7f6f15b37",
+        "2026-09-09": "b4d5705515c2efec8f0b6eea8f8ba8c17e12b05786aaada149cafeb405fe4dd2",
+        "2026-09-10": "fd9e6a05b8b6010de6a5a70eb1f307320374b0306efa928ae5e82e1b304662af",
+        "2026-09-11": "d768891b97f8aa4b6ac24404ef390a89b06349a0954d1671623b73242b875a74",
+        "2026-09-12": "2712e125b5b9f3bf7e60abaa7d6ff905d0d6af86e243d50571c35de5f0c1a7eb",
+        "2026-09-13": "37f7ef6317877c42f21a5c6a278f07de4fba58f22694078d6bc6f1183aa8404b",
+        "2026-09-14": "3183ce17dde8cffca680455d8f9169ed013b16e8ad7835f9fde8d957ac59f406",
+        "2026-09-15": "bf3530153641808a2a9ffe4de66e27c316eb8e34fd6374c83425d5489bf68ec3",
+        "2026-09-16": "4597231364bc42d244838d24c74b4798caaffc8d1996264db86fe5621d4e06b8",
+        "2026-09-17": "b336ea2ee053033855c4268797f3b74fdc843f6cade6509bd4b640f926ef581c",
+        "2026-09-18": "da94a212c999dbfc7d26c9a989bc667c17d0f14564f8e3594b5765dac86d9936",
+        "2026-09-19": "47939f36760fbad38458349ecc194f5a7b6f6f91319e9968ec797bf7326d054b",
+        "2026-09-20": "d38201d0cc7860d0b86cddee5fa43df5305991d7078557cdadee950da554a447",
+        "2026-09-21": "78e7cf7caf131550a110703db0e8a28d13152e2e1a94403950c4f9ca921b0ad9",
+        "2026-09-22": "e3def8c658f72b2bd6b5cae4c3bb432bcaef54372fbeebe18789d8d1d3050247",
+        "2026-09-23": "2246a59c68bbf83b9cd337e0ad01473037c35f1c08aafd87112d7599a6556586",
+        "2026-09-24": "ee89870898f867da2259244e747a9a2a1a2ba935bf1b7e6d935c666d842ccca0",
+        "2026-09-25": "1336462b0078ed640678d2715224941e52a538cfe634e9a4878d451ce8e44819",
+        "2026-09-26": "ac440485ef8c7ebe924572ee110372555dbc638beb2bcd027e43fbf58f3a3766",
+        "2026-09-27": "fefdb519d9280286aa75eca2b23662d5a9c2bbbdde1d30483b2f2ed555cae196",
+        "2026-09-28": "24d8a751ff91cbece9645f1e40d91aea61133ee5b3393dad5de909dde71b4472",
+        "2026-09-29": "10785adc37a80a57601b4a3dca0a4c9da8487d12bada70c08382bd9f3b6e2213",
+        "2026-09-30": "6387777f66493b925c4f6bd6f473567b9b8d7211db43eeb6cf6efd3f65beaaa1",
+        "2026-10-01": "7a69522d2273a55716b1f799566617935fae7c1f0e48539511e564590e5da5ed",
+        "2026-10-02": "89e22fa77bb0f827963cabf39820483ba91310c8010d7b300f30216b9823a79c",
+        "2026-10-03": "35e123f2c319d4a5208096bdd792f54dc38bd84a1bd64be6cb6e494098d1142d",
+        "2026-10-04": "b8fcf553ec956854ea03e33687c23024b199b731118e1bca6d22ab55afdd805c"
+      },
+      "days_held": 185,
+      "days_read": [
+        "2026-04-07",
+        "2026-04-08",
+        "2026-04-09",
+        "2026-04-10",
+        "2026-04-11",
+        "2026-04-12",
+        "2026-04-13",
+        "2026-04-14",
+        "2026-04-15",
+        "2026-04-16",
+        "2026-04-17",
+        "2026-04-18",
+        "2026-04-19",
+        "2026-04-20",
+        "2026-04-21",
+        "2026-04-22",
+        "2026-04-23",
+        "2026-04-24",
+        "2026-04-25",
+        "2026-04-26",
+        "2026-04-27",
+        "2026-04-28",
+        "2026-04-29",
+        "2026-04-30",
+        "2026-05-01",
+        "2026-05-02",
+        "2026-05-03",
+        "2026-05-04",
+        "2026-05-05",
+        "2026-05-06",
+        "2026-05-07",
+        "2026-05-08",
+        "2026-05-09",
+        "2026-05-10",
+        "2026-05-11",
+        "2026-05-12",
+        "2026-05-13",
+        "2026-05-14",
+        "2026-05-15",
+        "2026-05-16",
+        "2026-05-17",
+        "2026-05-18",
+        "2026-05-19",
+        "2026-05-20",
+        "2026-05-21",
+        "2026-05-22",
+        "2026-05-23",
+        "2026-05-24",
+        "2026-05-25",
+        "2026-05-26",
+        "2026-05-27",
+        "2026-05-28",
+        "2026-05-29",
+        "2026-05-30",
+        "2026-05-31",
+        "2026-06-01",
+        "2026-06-02",
+        "2026-06-03",
+        "2026-06-04",
+        "2026-06-05",
+        "2026-06-06",
+        "2026-06-07",
+        "2026-06-08",
+        "2026-06-09",
+        "2026-06-10",
+        "2026-06-11",
+        "2026-06-12",
+        "2026-06-13",
+        "2026-06-14",
+        "2026-06-15",
+        "2026-06-16",
+        "2026-06-17",
+        "2026-06-18",
+        "2026-06-19",
+        "2026-06-20",
+        "2026-06-21",
+        "2026-06-22",
+        "2026-06-23",
+        "2026-06-24",
+        "2026-06-25",
+        "2026-06-26",
+        "2026-06-27",
+        "2026-06-28",
+        "2026-06-29",
+        "2026-06-30",
+        "2026-07-01",
+        "2026-07-02",
+        "2026-07-03",
+        "2026-07-04",
+        "2026-07-05",
+        "2026-07-06",
+        "2026-07-07",
+        "2026-07-08",
+        "2026-07-09",
+        "2026-07-10",
+        "2026-07-11",
+        "2026-07-12",
+        "2026-07-13",
+        "2026-07-14",
+        "2026-07-15",
+        "2026-07-16",
+        "2026-07-17",
+        "2026-07-18",
+        "2026-07-19",
+        "2026-07-20",
+        "2026-07-21",
+        "2026-07-22",
+        "2026-07-23",
+        "2026-07-24",
+        "2026-07-25",
+        "2026-07-26",
+        "2026-07-27",
+        "2026-07-28",
+        "2026-07-29",
+        "2026-07-30",
+        "2026-07-31",
+        "2026-08-01",
+        "2026-08-02",
+        "2026-08-03",
+        "2026-08-04",
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-08",
+        "2026-08-09",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-22",
+        "2026-08-23",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28",
+        "2026-08-29",
+        "2026-08-30",
+        "2026-08-31",
+        "2026-09-01",
+        "2026-09-02",
+        "2026-09-05",
+        "2026-09-06",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10",
+        "2026-09-11",
+        "2026-09-12",
+        "2026-09-13",
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-19",
+        "2026-09-20",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24",
+        "2026-09-25",
+        "2026-09-26",
+        "2026-09-27",
+        "2026-09-28",
+        "2026-09-29",
+        "2026-09-30",
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-03",
+        "2026-10-04"
+      ],
+      "newest": "2026-10-04",
+      "oldest": "2026-04-01",
+      "run_id": "run-2026-10-04"
+    },
+    "methodology": {
+      "doc": "docs/MOMENTUM.md",
+      "id": "the-source.momentum",
+      "parameters_sha256": "4a17d531344223f94617834263d8b41601adbd59539572cd41b0ebb0d96fabe3",
+      "version": "1.0.0"
+    },
+    "on": "2026-10-04",
+    "schema": "the-source.momentum/1",
+    "windows": [
+      1,
+      7,
+      30,
+      90
+    ]
+  },
+  "projects": [
+    {
+      "canonical_id": "github.com/fx/accelerating",
+      "canonical_name": "fx/accelerating",
+      "key": "github.com/fx/accelerating",
+      "on": "2026-10-04",
+      "stars": 3070,
+      "windows": {
+        "1": {
+          "acceleration": {
+            "explanation": "+25.00/day (2026-10-03 -> now) vs +25.00/day (2026-10-02 -> 2026-10-03): change +0.00/day, threshold +/-6.25 -> steady",
+            "label": "steady",
+            "prior_base_day": "2026-10-02",
+            "prior_span_days": 1.0,
+            "prior_stars_delta": 25,
+            "prior_stars_per_day": 25.0,
+            "stars_per_day_change": 0.0,
+            "status": "measured",
+            "threshold_per_day": 6.25
+          },
+          "activity": {
+            "day_pairs_in_window": 1,
+            "day_pairs_observed": 1,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": "v1.1",
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-10-03",
+          "exact": true,
+          "explanation": [
+            "stars 3045 -> 3070 (+25) over 1.0 d (2026-10-03 -> 2026-10-04): +25.00/day, +24.631% of 3045 per 30 d -> surging",
+            "+25.00/day (2026-10-03 -> now) vs +25.00/day (2026-10-02 -> 2026-10-03): change +0.00/day, threshold +/-6.25 -> steady"
+          ],
+          "forks_delta": 0,
+          "growth_pct_per_30d": 24.631,
+          "momentum": "surging",
+          "span_days": 1.0,
+          "stars_base": 3045,
+          "stars_delta": 25,
+          "stars_now": 3070,
+          "stars_per_day": 25.0,
+          "status": "measured"
+        },
+        "30": {
+          "acceleration": {
+            "explanation": "+9.38/day (2026-09-02 -> now) vs +5.00/day (2026-08-03 -> 2026-09-02): change +4.38/day, threshold +/-1.25 -> accelerating",
+            "label": "accelerating",
+            "prior_base_day": "2026-08-03",
+            "prior_span_days": 30.0,
+            "prior_stars_delta": 150,
+            "prior_stars_per_day": 5.0,
+            "stars_per_day_change": 4.375,
+            "status": "measured",
+            "threshold_per_day": 1.25
+          },
+          "activity": {
+            "day_pairs_in_window": 32,
+            "day_pairs_observed": 29,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": "v1.1",
+            "new_release": true,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-09-02",
+          "exact": false,
+          "explanation": [
+            "stars 2770 -> 3070 (+300) over 32.0 d (2026-09-02 -> 2026-10-04): +9.38/day, +10.153% of 2770 per 30 d -> surging",
+            "+9.38/day (2026-09-02 -> now) vs +5.00/day (2026-08-03 -> 2026-09-02): change +4.38/day, threshold +/-1.25 -> accelerating"
+          ],
+          "forks_delta": 3,
+          "growth_pct_per_30d": 10.153,
+          "momentum": "surging",
+          "span_days": 32.0,
+          "stars_base": 2770,
+          "stars_delta": 300,
+          "stars_now": 3070,
+          "stars_per_day": 9.375,
+          "status": "measured"
+        },
+        "7": {
+          "acceleration": {
+            "explanation": "+25.00/day (2026-09-27 -> now) vs +5.00/day (2026-09-20 -> 2026-09-27): change +20.00/day, threshold +/-1.25 -> accelerating",
+            "label": "accelerating",
+            "prior_base_day": "2026-09-20",
+            "prior_span_days": 7.0,
+            "prior_stars_delta": 35,
+            "prior_stars_per_day": 5.0,
+            "stars_per_day_change": 20.0,
+            "status": "measured",
+            "threshold_per_day": 1.25
+          },
+          "activity": {
+            "day_pairs_in_window": 7,
+            "day_pairs_observed": 7,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": "v1.1",
+            "new_release": true,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-09-27",
+          "exact": true,
+          "explanation": [
+            "stars 2895 -> 3070 (+175) over 7.0 d (2026-09-27 -> 2026-10-04): +25.00/day, +25.907% of 2895 per 30 d -> surging",
+            "+25.00/day (2026-09-27 -> now) vs +5.00/day (2026-09-20 -> 2026-09-27): change +20.00/day, threshold +/-1.25 -> accelerating"
+          ],
+          "forks_delta": 1,
+          "growth_pct_per_30d": 25.907,
+          "momentum": "surging",
+          "span_days": 7.0,
+          "stars_base": 2895,
+          "stars_delta": 175,
+          "stars_now": 3070,
+          "stars_per_day": 25.0,
+          "status": "measured"
+        },
+        "90": {
+          "acceleration": {
+            "explanation": "+6.56/day (2026-07-06 -> now) vs +5.00/day (2026-04-07 -> 2026-07-06): change +1.56/day, threshold +/-1.25 -> accelerating",
+            "label": "accelerating",
+            "prior_base_day": "2026-04-07",
+            "prior_span_days": 90.0,
+            "prior_stars_delta": 450,
+            "prior_stars_per_day": 5.0,
+            "stars_per_day_change": 1.5556,
+            "status": "measured",
+            "threshold_per_day": 1.25
+          },
+          "activity": {
+            "day_pairs_in_window": 90,
+            "day_pairs_observed": 87,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": "v1.1",
+            "new_release": true,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-07-06",
+          "exact": true,
+          "explanation": [
+            "stars 2480 -> 3070 (+590) over 90.0 d (2026-07-06 -> 2026-10-04): +6.56/day, +7.930% of 2480 per 30 d -> rising",
+            "+6.56/day (2026-07-06 -> now) vs +5.00/day (2026-04-07 -> 2026-07-06): change +1.56/day, threshold +/-1.25 -> accelerating"
+          ],
+          "forks_delta": 9,
+          "growth_pct_per_30d": 7.93,
+          "momentum": "rising",
+          "span_days": 90.0,
+          "stars_base": 2480,
+          "stars_delta": 590,
+          "stars_now": 3070,
+          "stars_per_day": 6.5556,
+          "status": "measured"
+        }
+      }
+    },
+    {
+      "canonical_id": "github.com/fx/decelerating",
+      "canonical_name": "fx/decelerating",
+      "key": "github.com/fx/decelerating",
+      "on": "2026-10-04",
+      "stars": 12174,
+      "windows": {
+        "1": {
+          "acceleration": {
+            "explanation": "+2.00/day (2026-10-03 -> now) vs +2.00/day (2026-10-02 -> 2026-10-03): change +0.00/day, threshold +/-0.50 -> steady (both windows under 3 stars)",
+            "label": "steady",
+            "prior_base_day": "2026-10-02",
+            "prior_span_days": 1.0,
+            "prior_stars_delta": 2,
+            "prior_stars_per_day": 2.0,
+            "stars_per_day_change": 0.0,
+            "status": "measured",
+            "threshold_per_day": 0.5
+          },
+          "activity": {
+            "day_pairs_in_window": 1,
+            "day_pairs_observed": 1,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-10-03",
+          "exact": true,
+          "explanation": [
+            "stars 12172 -> 12174 (+2) over 1.0 d (2026-10-03 -> 2026-10-04): +2.00/day, +0.493% of 12172 per 30 d -> flat (|change| under 3 stars)",
+            "+2.00/day (2026-10-03 -> now) vs +2.00/day (2026-10-02 -> 2026-10-03): change +0.00/day, threshold +/-0.50 -> steady (both windows under 3 stars)"
+          ],
+          "forks_delta": 0,
+          "growth_pct_per_30d": 0.493,
+          "momentum": "flat",
+          "span_days": 1.0,
+          "stars_base": 12172,
+          "stars_delta": 2,
+          "stars_now": 12174,
+          "stars_per_day": 2.0,
+          "status": "measured"
+        },
+        "30": {
+          "acceleration": {
+            "explanation": "+31.69/day (2026-09-02 -> now) vs +40.00/day (2026-08-03 -> 2026-09-02): change -8.31/day, threshold +/-10.00 -> steady",
+            "label": "steady",
+            "prior_base_day": "2026-08-03",
+            "prior_span_days": 30.0,
+            "prior_stars_delta": 1200,
+            "prior_stars_per_day": 40.0,
+            "stars_per_day_change": -8.3125,
+            "status": "measured",
+            "threshold_per_day": 10.0
+          },
+          "activity": {
+            "day_pairs_in_window": 32,
+            "day_pairs_observed": 29,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-09-02",
+          "exact": false,
+          "explanation": [
+            "stars 11160 -> 12174 (+1014) over 32.0 d (2026-09-02 -> 2026-10-04): +31.69/day, +8.518% of 11160 per 30 d -> rising",
+            "+31.69/day (2026-09-02 -> now) vs +40.00/day (2026-08-03 -> 2026-09-02): change -8.31/day, threshold +/-10.00 -> steady"
+          ],
+          "forks_delta": 3,
+          "growth_pct_per_30d": 8.518,
+          "momentum": "rising",
+          "span_days": 32.0,
+          "stars_base": 11160,
+          "stars_delta": 1014,
+          "stars_now": 12174,
+          "stars_per_day": 31.6875,
+          "status": "measured"
+        },
+        "7": {
+          "acceleration": {
+            "explanation": "+2.00/day (2026-09-27 -> now) vs +40.00/day (2026-09-20 -> 2026-09-27): change -38.00/day, threshold +/-10.00 -> decelerating",
+            "label": "decelerating",
+            "prior_base_day": "2026-09-20",
+            "prior_span_days": 7.0,
+            "prior_stars_delta": 280,
+            "prior_stars_per_day": 40.0,
+            "stars_per_day_change": -38.0,
+            "status": "measured",
+            "threshold_per_day": 10.0
+          },
+          "activity": {
+            "day_pairs_in_window": 7,
+            "day_pairs_observed": 7,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-09-27",
+          "exact": true,
+          "explanation": [
+            "stars 12160 -> 12174 (+14) over 7.0 d (2026-09-27 -> 2026-10-04): +2.00/day, +0.493% of 12160 per 30 d -> flat",
+            "+2.00/day (2026-09-27 -> now) vs +40.00/day (2026-09-20 -> 2026-09-27): change -38.00/day, threshold +/-10.00 -> decelerating"
+          ],
+          "forks_delta": 1,
+          "growth_pct_per_30d": 0.493,
+          "momentum": "flat",
+          "span_days": 7.0,
+          "stars_base": 12160,
+          "stars_delta": 14,
+          "stars_now": 12174,
+          "stars_per_day": 2.0,
+          "status": "measured"
+        },
+        "90": {
+          "acceleration": {
+            "explanation": "+37.04/day (2026-07-06 -> now) vs +40.00/day (2026-04-07 -> 2026-07-06): change -2.96/day, threshold +/-10.00 -> steady",
+            "label": "steady",
+            "prior_base_day": "2026-04-07",
+            "prior_span_days": 90.0,
+            "prior_stars_delta": 3600,
+            "prior_stars_per_day": 40.0,
+            "stars_per_day_change": -2.9556,
+            "status": "measured",
+            "threshold_per_day": 10.0
+          },
+          "activity": {
+            "day_pairs_in_window": 90,
+            "day_pairs_observed": 87,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-07-06",
+          "exact": true,
+          "explanation": [
+            "stars 8840 -> 12174 (+3334) over 90.0 d (2026-07-06 -> 2026-10-04): +37.04/day, +12.572% of 8840 per 30 d -> surging",
+            "+37.04/day (2026-07-06 -> now) vs +40.00/day (2026-04-07 -> 2026-07-06): change -2.96/day, threshold +/-10.00 -> steady"
+          ],
+          "forks_delta": 9,
+          "growth_pct_per_30d": 12.572,
+          "momentum": "surging",
+          "span_days": 90.0,
+          "stars_base": 8840,
+          "stars_delta": 3334,
+          "stars_now": 12174,
+          "stars_per_day": 37.0444,
+          "status": "measured"
+        }
+      }
+    },
+    {
+      "canonical_id": "github.com/fx/declining",
+      "canonical_name": "fx/declining",
+      "key": "github.com/fx/declining",
+      "on": "2026-10-04",
+      "stars": 614,
+      "windows": {
+        "1": {
+          "acceleration": {
+            "explanation": "-1.00/day (2026-10-03 -> now) vs -1.00/day (2026-10-02 -> 2026-10-03): change +0.00/day, threshold +/-0.50 -> steady (both windows under 3 stars)",
+            "label": "steady",
+            "prior_base_day": "2026-10-02",
+            "prior_span_days": 1.0,
+            "prior_stars_delta": -1,
+            "prior_stars_per_day": -1.0,
+            "stars_per_day_change": 0.0,
+            "status": "measured",
+            "threshold_per_day": 0.5
+          },
+          "activity": {
+            "day_pairs_in_window": 1,
+            "day_pairs_observed": 1,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-10-03",
+          "exact": true,
+          "explanation": [
+            "stars 615 -> 614 (-1) over 1.0 d (2026-10-03 -> 2026-10-04): -1.00/day, -4.878% of 615 per 30 d -> flat (|change| under 3 stars)",
+            "-1.00/day (2026-10-03 -> now) vs -1.00/day (2026-10-02 -> 2026-10-03): change +0.00/day, threshold +/-0.50 -> steady (both windows under 3 stars)"
+          ],
+          "forks_delta": 0,
+          "growth_pct_per_30d": -4.878,
+          "momentum": "flat",
+          "span_days": 1.0,
+          "stars_base": 615,
+          "stars_delta": -1,
+          "stars_now": 614,
+          "stars_per_day": -1.0,
+          "status": "measured"
+        },
+        "30": {
+          "acceleration": {
+            "explanation": "-1.00/day (2026-09-02 -> now) vs -1.00/day (2026-08-03 -> 2026-09-02): change +0.00/day, threshold +/-0.50 -> steady",
+            "label": "steady",
+            "prior_base_day": "2026-08-03",
+            "prior_span_days": 30.0,
+            "prior_stars_delta": -30,
+            "prior_stars_per_day": -1.0,
+            "stars_per_day_change": 0.0,
+            "status": "measured",
+            "threshold_per_day": 0.5
+          },
+          "activity": {
+            "day_pairs_in_window": 32,
+            "day_pairs_observed": 29,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-09-02",
+          "exact": false,
+          "explanation": [
+            "stars 646 -> 614 (-32) over 32.0 d (2026-09-02 -> 2026-10-04): -1.00/day, -4.644% of 646 per 30 d -> declining",
+            "-1.00/day (2026-09-02 -> now) vs -1.00/day (2026-08-03 -> 2026-09-02): change +0.00/day, threshold +/-0.50 -> steady"
+          ],
+          "forks_delta": 3,
+          "growth_pct_per_30d": -4.644,
+          "momentum": "declining",
+          "span_days": 32.0,
+          "stars_base": 646,
+          "stars_delta": -32,
+          "stars_now": 614,
+          "stars_per_day": -1.0,
+          "status": "measured"
+        },
+        "7": {
+          "acceleration": {
+            "explanation": "-1.00/day (2026-09-27 -> now) vs -1.00/day (2026-09-20 -> 2026-09-27): change +0.00/day, threshold +/-0.50 -> steady",
+            "label": "steady",
+            "prior_base_day": "2026-09-20",
+            "prior_span_days": 7.0,
+            "prior_stars_delta": -7,
+            "prior_stars_per_day": -1.0,
+            "stars_per_day_change": 0.0,
+            "status": "measured",
+            "threshold_per_day": 0.5
+          },
+          "activity": {
+            "day_pairs_in_window": 7,
+            "day_pairs_observed": 7,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-09-27",
+          "exact": true,
+          "explanation": [
+            "stars 621 -> 614 (-7) over 7.0 d (2026-09-27 -> 2026-10-04): -1.00/day, -4.831% of 621 per 30 d -> declining",
+            "-1.00/day (2026-09-27 -> now) vs -1.00/day (2026-09-20 -> 2026-09-27): change +0.00/day, threshold +/-0.50 -> steady"
+          ],
+          "forks_delta": 1,
+          "growth_pct_per_30d": -4.831,
+          "momentum": "declining",
+          "span_days": 7.0,
+          "stars_base": 621,
+          "stars_delta": -7,
+          "stars_now": 614,
+          "stars_per_day": -1.0,
+          "status": "measured"
+        },
+        "90": {
+          "acceleration": {
+            "explanation": "-1.00/day (2026-07-06 -> now) vs -1.00/day (2026-04-07 -> 2026-07-06): change +0.00/day, threshold +/-0.50 -> steady",
+            "label": "steady",
+            "prior_base_day": "2026-04-07",
+            "prior_span_days": 90.0,
+            "prior_stars_delta": -90,
+            "prior_stars_per_day": -1.0,
+            "stars_per_day_change": 0.0,
+            "status": "measured",
+            "threshold_per_day": 0.5
+          },
+          "activity": {
+            "day_pairs_in_window": 90,
+            "day_pairs_observed": 87,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-07-06",
+          "exact": true,
+          "explanation": [
+            "stars 704 -> 614 (-90) over 90.0 d (2026-07-06 -> 2026-10-04): -1.00/day, -4.261% of 704 per 30 d -> declining",
+            "-1.00/day (2026-07-06 -> now) vs -1.00/day (2026-04-07 -> 2026-07-06): change +0.00/day, threshold +/-0.50 -> steady"
+          ],
+          "forks_delta": 9,
+          "growth_pct_per_30d": -4.261,
+          "momentum": "declining",
+          "span_days": 90.0,
+          "stars_base": 704,
+          "stars_delta": -90,
+          "stars_now": 614,
+          "stars_per_day": -1.0,
+          "status": "measured"
+        }
+      }
+    },
+    {
+      "canonical_id": "github.com/fx/flat-small",
+      "canonical_name": "fx/flat-small",
+      "key": "github.com/fx/flat-small",
+      "on": "2026-10-04",
+      "stars": 20,
+      "windows": {
+        "1": {
+          "acceleration": {
+            "explanation": "-1.00/day (2026-10-03 -> now) vs +1.00/day (2026-10-02 -> 2026-10-03): change -2.00/day, threshold +/-0.50 -> steady (both windows under 3 stars)",
+            "label": "steady",
+            "prior_base_day": "2026-10-02",
+            "prior_span_days": 1.0,
+            "prior_stars_delta": 1,
+            "prior_stars_per_day": 1.0,
+            "stars_per_day_change": -2.0,
+            "status": "measured",
+            "threshold_per_day": 0.5
+          },
+          "activity": {
+            "day_pairs_in_window": 1,
+            "day_pairs_observed": 1,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-10-03",
+          "exact": true,
+          "explanation": [
+            "stars 21 -> 20 (-1) over 1.0 d (2026-10-03 -> 2026-10-04): -1.00/day, -30.000% of 100 per 30 d -> flat (|change| under 3 stars)",
+            "-1.00/day (2026-10-03 -> now) vs +1.00/day (2026-10-02 -> 2026-10-03): change -2.00/day, threshold +/-0.50 -> steady (both windows under 3 stars)"
+          ],
+          "forks_delta": 0,
+          "growth_pct_per_30d": -30.0,
+          "momentum": "flat",
+          "span_days": 1.0,
+          "stars_base": 21,
+          "stars_delta": -1,
+          "stars_now": 20,
+          "stars_per_day": -1.0,
+          "status": "measured"
+        },
+        "30": {
+          "acceleration": {
+            "explanation": "+0.00/day (2026-09-02 -> now) vs +0.00/day (2026-08-03 -> 2026-09-02): change +0.00/day, threshold +/-0.50 -> steady (both windows under 3 stars)",
+            "label": "steady",
+            "prior_base_day": "2026-08-03",
+            "prior_span_days": 30.0,
+            "prior_stars_delta": 0,
+            "prior_stars_per_day": 0.0,
+            "stars_per_day_change": 0.0,
+            "status": "measured",
+            "threshold_per_day": 0.5
+          },
+          "activity": {
+            "day_pairs_in_window": 32,
+            "day_pairs_observed": 29,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-09-02",
+          "exact": false,
+          "explanation": [
+            "stars 20 -> 20 (+0) over 32.0 d (2026-09-02 -> 2026-10-04): +0.00/day, +0.000% of 100 per 30 d -> flat (|change| under 3 stars)",
+            "+0.00/day (2026-09-02 -> now) vs +0.00/day (2026-08-03 -> 2026-09-02): change +0.00/day, threshold +/-0.50 -> steady (both windows under 3 stars)"
+          ],
+          "forks_delta": 3,
+          "growth_pct_per_30d": 0.0,
+          "momentum": "flat",
+          "span_days": 32.0,
+          "stars_base": 20,
+          "stars_delta": 0,
+          "stars_now": 20,
+          "stars_per_day": 0.0,
+          "status": "measured"
+        },
+        "7": {
+          "acceleration": {
+            "explanation": "-0.14/day (2026-09-27 -> now) vs +0.14/day (2026-09-20 -> 2026-09-27): change -0.29/day, threshold +/-0.50 -> steady (both windows under 3 stars)",
+            "label": "steady",
+            "prior_base_day": "2026-09-20",
+            "prior_span_days": 7.0,
+            "prior_stars_delta": 1,
+            "prior_stars_per_day": 0.1429,
+            "stars_per_day_change": -0.2857,
+            "status": "measured",
+            "threshold_per_day": 0.5
+          },
+          "activity": {
+            "day_pairs_in_window": 7,
+            "day_pairs_observed": 7,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-09-27",
+          "exact": true,
+          "explanation": [
+            "stars 21 -> 20 (-1) over 7.0 d (2026-09-27 -> 2026-10-04): -0.14/day, -4.286% of 100 per 30 d -> flat (|change| under 3 stars)",
+            "-0.14/day (2026-09-27 -> now) vs +0.14/day (2026-09-20 -> 2026-09-27): change -0.29/day, threshold +/-0.50 -> steady (both windows under 3 stars)"
+          ],
+          "forks_delta": 1,
+          "growth_pct_per_30d": -4.286,
+          "momentum": "flat",
+          "span_days": 7.0,
+          "stars_base": 21,
+          "stars_delta": -1,
+          "stars_now": 20,
+          "stars_per_day": -0.1429,
+          "status": "measured"
+        },
+        "90": {
+          "acceleration": {
+            "explanation": "+0.00/day (2026-07-06 -> now) vs +0.00/day (2026-04-07 -> 2026-07-06): change +0.00/day, threshold +/-0.50 -> steady (both windows under 3 stars)",
+            "label": "steady",
+            "prior_base_day": "2026-04-07",
+            "prior_span_days": 90.0,
+            "prior_stars_delta": 0,
+            "prior_stars_per_day": 0.0,
+            "stars_per_day_change": 0.0,
+            "status": "measured",
+            "threshold_per_day": 0.5
+          },
+          "activity": {
+            "day_pairs_in_window": 90,
+            "day_pairs_observed": 87,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-07-06",
+          "exact": true,
+          "explanation": [
+            "stars 20 -> 20 (+0) over 90.0 d (2026-07-06 -> 2026-10-04): +0.00/day, +0.000% of 100 per 30 d -> flat (|change| under 3 stars)",
+            "+0.00/day (2026-07-06 -> now) vs +0.00/day (2026-04-07 -> 2026-07-06): change +0.00/day, threshold +/-0.50 -> steady (both windows under 3 stars)"
+          ],
+          "forks_delta": 9,
+          "growth_pct_per_30d": 0.0,
+          "momentum": "flat",
+          "span_days": 90.0,
+          "stars_base": 20,
+          "stars_delta": 0,
+          "stars_now": 20,
+          "stars_per_day": 0.0,
+          "status": "measured"
+        }
+      }
+    },
+    {
+      "canonical_id": null,
+      "canonical_name": null,
+      "key": "github.com/fx/gone",
+      "on": "2026-10-04",
+      "stars": null,
+      "windows": {
+        "1": {
+          "base_day": "2026-10-03",
+          "reason": "not found (or no star count) in the current snapshot",
+          "status": "not_observed"
+        },
+        "30": {
+          "base_day": "2026-09-02",
+          "reason": "not found (or no star count) in the current snapshot",
+          "status": "not_observed"
+        },
+        "7": {
+          "base_day": "2026-09-27",
+          "reason": "not found (or no star count) in the current snapshot",
+          "status": "not_observed"
+        },
+        "90": {
+          "base_day": "2026-07-06",
+          "reason": "not found (or no star count) in the current snapshot",
+          "status": "not_observed"
+        }
+      }
+    },
+    {
+      "canonical_id": "github.com/fx/new",
+      "canonical_name": "fx/new",
+      "key": "github.com/fx/new",
+      "on": "2026-10-04",
+      "stars": 309,
+      "windows": {
+        "1": {
+          "acceleration": {
+            "explanation": "+3.00/day (2026-10-03 -> now) vs +3.00/day (2026-10-02 -> 2026-10-03): change +0.00/day, threshold +/-0.75 -> steady",
+            "label": "steady",
+            "prior_base_day": "2026-10-02",
+            "prior_span_days": 1.0,
+            "prior_stars_delta": 3,
+            "prior_stars_per_day": 3.0,
+            "stars_per_day_change": 0.0,
+            "status": "measured",
+            "threshold_per_day": 0.75
+          },
+          "activity": {
+            "day_pairs_in_window": 1,
+            "day_pairs_observed": 1,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-10-03",
+          "exact": true,
+          "explanation": [
+            "stars 306 -> 309 (+3) over 1.0 d (2026-10-03 -> 2026-10-04): +3.00/day, +29.412% of 306 per 30 d -> surging",
+            "+3.00/day (2026-10-03 -> now) vs +3.00/day (2026-10-02 -> 2026-10-03): change +0.00/day, threshold +/-0.75 -> steady"
+          ],
+          "forks_delta": 0,
+          "growth_pct_per_30d": 29.412,
+          "momentum": "surging",
+          "span_days": 1.0,
+          "stars_base": 306,
+          "stars_delta": 3,
+          "stars_now": 309,
+          "stars_per_day": 3.0,
+          "status": "measured"
+        },
+        "30": {
+          "base_day": "2026-09-02",
+          "reason": "not in the base snapshot (new to the corpus since)",
+          "status": "no_baseline"
+        },
+        "7": {
+          "base_day": "2026-09-27",
+          "reason": "not in the base snapshot (new to the corpus since)",
+          "status": "no_baseline"
+        },
+        "90": {
+          "base_day": "2026-07-06",
+          "reason": "not in the base snapshot (new to the corpus since)",
+          "status": "no_baseline"
+        }
+      }
+    },
+    {
+      "canonical_id": "github.com/fx/renamed-now",
+      "canonical_name": "fx/renamed",
+      "key": "github.com/fx/renamed",
+      "on": "2026-10-04",
+      "stars": 4744,
+      "windows": {
+        "1": {
+          "acceleration": {
+            "explanation": "+4.00/day (2026-10-03 -> now) vs +4.00/day (2026-10-02 -> 2026-10-03): change +0.00/day, threshold +/-1.00 -> steady",
+            "label": "steady",
+            "prior_base_day": "2026-10-02",
+            "prior_span_days": 1.0,
+            "prior_stars_delta": 4,
+            "prior_stars_per_day": 4.0,
+            "stars_per_day_change": 0.0,
+            "status": "measured",
+            "threshold_per_day": 1.0
+          },
+          "activity": {
+            "day_pairs_in_window": 1,
+            "day_pairs_observed": 1,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-10-03",
+          "exact": true,
+          "explanation": [
+            "stars 4740 -> 4744 (+4) over 1.0 d (2026-10-03 -> 2026-10-04): +4.00/day, +2.532% of 4740 per 30 d -> rising",
+            "+4.00/day (2026-10-03 -> now) vs +4.00/day (2026-10-02 -> 2026-10-03): change +0.00/day, threshold +/-1.00 -> steady"
+          ],
+          "forks_delta": 0,
+          "growth_pct_per_30d": 2.532,
+          "momentum": "rising",
+          "span_days": 1.0,
+          "stars_base": 4740,
+          "stars_delta": 4,
+          "stars_now": 4744,
+          "stars_per_day": 4.0,
+          "status": "measured"
+        },
+        "30": {
+          "acceleration": {
+            "explanation": "+4.00/day (2026-09-02 -> now) vs +4.00/day (2026-08-03 -> 2026-09-02): change +0.00/day, threshold +/-1.00 -> steady",
+            "label": "steady",
+            "prior_base_day": "2026-08-03",
+            "prior_span_days": 30.0,
+            "prior_stars_delta": 120,
+            "prior_stars_per_day": 4.0,
+            "stars_per_day_change": 0.0,
+            "status": "measured",
+            "threshold_per_day": 1.0
+          },
+          "activity": {
+            "day_pairs_in_window": 32,
+            "day_pairs_observed": 29,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-09-02",
+          "exact": false,
+          "explanation": [
+            "stars 4616 -> 4744 (+128) over 32.0 d (2026-09-02 -> 2026-10-04): +4.00/day, +2.600% of 4616 per 30 d -> rising",
+            "+4.00/day (2026-09-02 -> now) vs +4.00/day (2026-08-03 -> 2026-09-02): change +0.00/day, threshold +/-1.00 -> steady"
+          ],
+          "forks_delta": 3,
+          "growth_pct_per_30d": 2.6,
+          "momentum": "rising",
+          "notes": [
+            "renamed github.com/fx/renamed -> github.com/fx/renamed-now (same repository id)"
+          ],
+          "span_days": 32.0,
+          "stars_base": 4616,
+          "stars_delta": 128,
+          "stars_now": 4744,
+          "stars_per_day": 4.0,
+          "status": "measured"
+        },
+        "7": {
+          "acceleration": {
+            "explanation": "+4.00/day (2026-09-27 -> now) vs +4.00/day (2026-09-20 -> 2026-09-27): change +0.00/day, threshold +/-1.00 -> steady",
+            "label": "steady",
+            "prior_base_day": "2026-09-20",
+            "prior_span_days": 7.0,
+            "prior_stars_delta": 28,
+            "prior_stars_per_day": 4.0,
+            "stars_per_day_change": 0.0,
+            "status": "measured",
+            "threshold_per_day": 1.0
+          },
+          "activity": {
+            "day_pairs_in_window": 7,
+            "day_pairs_observed": 7,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-09-27",
+          "exact": true,
+          "explanation": [
+            "stars 4716 -> 4744 (+28) over 7.0 d (2026-09-27 -> 2026-10-04): +4.00/day, +2.545% of 4716 per 30 d -> rising",
+            "+4.00/day (2026-09-27 -> now) vs +4.00/day (2026-09-20 -> 2026-09-27): change +0.00/day, threshold +/-1.00 -> steady"
+          ],
+          "forks_delta": 1,
+          "growth_pct_per_30d": 2.545,
+          "momentum": "rising",
+          "notes": [
+            "renamed github.com/fx/renamed -> github.com/fx/renamed-now (same repository id)"
+          ],
+          "span_days": 7.0,
+          "stars_base": 4716,
+          "stars_delta": 28,
+          "stars_now": 4744,
+          "stars_per_day": 4.0,
+          "status": "measured"
+        },
+        "90": {
+          "acceleration": {
+            "explanation": "+4.00/day (2026-07-06 -> now) vs +4.00/day (2026-04-07 -> 2026-07-06): change +0.00/day, threshold +/-1.00 -> steady",
+            "label": "steady",
+            "prior_base_day": "2026-04-07",
+            "prior_span_days": 90.0,
+            "prior_stars_delta": 360,
+            "prior_stars_per_day": 4.0,
+            "stars_per_day_change": 0.0,
+            "status": "measured",
+            "threshold_per_day": 1.0
+          },
+          "activity": {
+            "day_pairs_in_window": 90,
+            "day_pairs_observed": 87,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-07-06",
+          "exact": true,
+          "explanation": [
+            "stars 4384 -> 4744 (+360) over 90.0 d (2026-07-06 -> 2026-10-04): +4.00/day, +2.737% of 4384 per 30 d -> rising",
+            "+4.00/day (2026-07-06 -> now) vs +4.00/day (2026-04-07 -> 2026-07-06): change +0.00/day, threshold +/-1.00 -> steady"
+          ],
+          "forks_delta": 9,
+          "growth_pct_per_30d": 2.737,
+          "momentum": "rising",
+          "notes": [
+            "renamed github.com/fx/renamed -> github.com/fx/renamed-now (same repository id)"
+          ],
+          "span_days": 90.0,
+          "stars_base": 4384,
+          "stars_delta": 360,
+          "stars_now": 4744,
+          "stars_per_day": 4.0,
+          "status": "measured"
+        }
+      }
+    },
+    {
+      "canonical_id": "github.com/fx/replaced",
+      "canonical_name": "fx/replaced",
+      "key": "github.com/fx/replaced",
+      "on": "2026-10-04",
+      "stars": 3186,
+      "windows": {
+        "1": {
+          "acceleration": {
+            "explanation": "+1.00/day (2026-10-03 -> now) vs +1.00/day (2026-10-02 -> 2026-10-03): change +0.00/day, threshold +/-0.50 -> steady (both windows under 3 stars)",
+            "label": "steady",
+            "prior_base_day": "2026-10-02",
+            "prior_span_days": 1.0,
+            "prior_stars_delta": 1,
+            "prior_stars_per_day": 1.0,
+            "stars_per_day_change": 0.0,
+            "status": "measured",
+            "threshold_per_day": 0.5
+          },
+          "activity": {
+            "day_pairs_in_window": 1,
+            "day_pairs_observed": 1,
+            "head_changed_day_pairs": 0,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-10-03",
+          "exact": true,
+          "explanation": [
+            "stars 3185 -> 3186 (+1) over 1.0 d (2026-10-03 -> 2026-10-04): +1.00/day, +0.942% of 3185 per 30 d -> flat (|change| under 3 stars)",
+            "+1.00/day (2026-10-03 -> now) vs +1.00/day (2026-10-02 -> 2026-10-03): change +0.00/day, threshold +/-0.50 -> steady (both windows under 3 stars)"
+          ],
+          "forks_delta": 0,
+          "growth_pct_per_30d": 0.942,
+          "momentum": "flat",
+          "span_days": 1.0,
+          "stars_base": 3185,
+          "stars_delta": 1,
+          "stars_now": 3186,
+          "stars_per_day": 1.0,
+          "status": "measured"
+        },
+        "30": {
+          "base_day": "2026-09-02",
+          "reason": "host repository id 8 -> 88: a different repository, not comparable",
+          "status": "identity_changed"
+        },
+        "7": {
+          "base_day": "2026-09-27",
+          "reason": "host repository id 8 -> 88: a different repository, not comparable",
+          "status": "identity_changed"
+        },
+        "90": {
+          "base_day": "2026-07-06",
+          "reason": "host repository id 8 -> 88: a different repository, not comparable",
+          "status": "identity_changed"
+        }
+      }
+    },
+    {
+      "canonical_id": "github.com/fx/steady",
+      "canonical_name": "fx/steady",
+      "key": "github.com/fx/steady",
+      "on": "2026-10-04",
+      "stars": 1372,
+      "windows": {
+        "1": {
+          "acceleration": {
+            "explanation": "+2.00/day (2026-10-03 -> now) vs +2.00/day (2026-10-02 -> 2026-10-03): change +0.00/day, threshold +/-0.50 -> steady (both windows under 3 stars)",
+            "label": "steady",
+            "prior_base_day": "2026-10-02",
+            "prior_span_days": 1.0,
+            "prior_stars_delta": 2,
+            "prior_stars_per_day": 2.0,
+            "stars_per_day_change": 0.0,
+            "status": "measured",
+            "threshold_per_day": 0.5
+          },
+          "activity": {
+            "day_pairs_in_window": 1,
+            "day_pairs_observed": 1,
+            "head_changed_day_pairs": 1,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-10-03",
+          "exact": true,
+          "explanation": [
+            "stars 1370 -> 1372 (+2) over 1.0 d (2026-10-03 -> 2026-10-04): +2.00/day, +4.380% of 1370 per 30 d -> flat (|change| under 3 stars)",
+            "+2.00/day (2026-10-03 -> now) vs +2.00/day (2026-10-02 -> 2026-10-03): change +0.00/day, threshold +/-0.50 -> steady (both windows under 3 stars)"
+          ],
+          "forks_delta": 0,
+          "growth_pct_per_30d": 4.38,
+          "momentum": "flat",
+          "span_days": 1.0,
+          "stars_base": 1370,
+          "stars_delta": 2,
+          "stars_now": 1372,
+          "stars_per_day": 2.0,
+          "status": "measured"
+        },
+        "30": {
+          "acceleration": {
+            "explanation": "+2.00/day (2026-09-02 -> now) vs +2.00/day (2026-08-03 -> 2026-09-02): change +0.00/day, threshold +/-0.50 -> steady",
+            "label": "steady",
+            "prior_base_day": "2026-08-03",
+            "prior_span_days": 30.0,
+            "prior_stars_delta": 60,
+            "prior_stars_per_day": 2.0,
+            "stars_per_day_change": 0.0,
+            "status": "measured",
+            "threshold_per_day": 0.5
+          },
+          "activity": {
+            "day_pairs_in_window": 32,
+            "day_pairs_observed": 29,
+            "head_changed_day_pairs": 15,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-09-02",
+          "exact": false,
+          "explanation": [
+            "stars 1308 -> 1372 (+64) over 32.0 d (2026-09-02 -> 2026-10-04): +2.00/day, +4.587% of 1308 per 30 d -> rising",
+            "+2.00/day (2026-09-02 -> now) vs +2.00/day (2026-08-03 -> 2026-09-02): change +0.00/day, threshold +/-0.50 -> steady"
+          ],
+          "forks_delta": 3,
+          "growth_pct_per_30d": 4.587,
+          "momentum": "rising",
+          "span_days": 32.0,
+          "stars_base": 1308,
+          "stars_delta": 64,
+          "stars_now": 1372,
+          "stars_per_day": 2.0,
+          "status": "measured"
+        },
+        "7": {
+          "acceleration": {
+            "explanation": "+2.00/day (2026-09-27 -> now) vs +2.00/day (2026-09-20 -> 2026-09-27): change +0.00/day, threshold +/-0.50 -> steady",
+            "label": "steady",
+            "prior_base_day": "2026-09-20",
+            "prior_span_days": 7.0,
+            "prior_stars_delta": 14,
+            "prior_stars_per_day": 2.0,
+            "stars_per_day_change": 0.0,
+            "status": "measured",
+            "threshold_per_day": 0.5
+          },
+          "activity": {
+            "day_pairs_in_window": 7,
+            "day_pairs_observed": 7,
+            "head_changed_day_pairs": 4,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-09-27",
+          "exact": true,
+          "explanation": [
+            "stars 1358 -> 1372 (+14) over 7.0 d (2026-09-27 -> 2026-10-04): +2.00/day, +4.418% of 1358 per 30 d -> rising",
+            "+2.00/day (2026-09-27 -> now) vs +2.00/day (2026-09-20 -> 2026-09-27): change +0.00/day, threshold +/-0.50 -> steady"
+          ],
+          "forks_delta": 1,
+          "growth_pct_per_30d": 4.418,
+          "momentum": "rising",
+          "span_days": 7.0,
+          "stars_base": 1358,
+          "stars_delta": 14,
+          "stars_now": 1372,
+          "stars_per_day": 2.0,
+          "status": "measured"
+        },
+        "90": {
+          "acceleration": {
+            "explanation": "+2.00/day (2026-07-06 -> now) vs +2.00/day (2026-04-07 -> 2026-07-06): change +0.00/day, threshold +/-0.50 -> steady",
+            "label": "steady",
+            "prior_base_day": "2026-04-07",
+            "prior_span_days": 90.0,
+            "prior_stars_delta": 180,
+            "prior_stars_per_day": 2.0,
+            "stars_per_day_change": 0.0,
+            "status": "measured",
+            "threshold_per_day": 0.5
+          },
+          "activity": {
+            "day_pairs_in_window": 90,
+            "day_pairs_observed": 87,
+            "head_changed_day_pairs": 44,
+            "latest_release_tag": null,
+            "new_release": false,
+            "pushed_since_base": true
+          },
+          "base_day": "2026-07-06",
+          "exact": true,
+          "explanation": [
+            "stars 1192 -> 1372 (+180) over 90.0 d (2026-07-06 -> 2026-10-04): +2.00/day, +5.034% of 1192 per 30 d -> rising",
+            "+2.00/day (2026-07-06 -> now) vs +2.00/day (2026-04-07 -> 2026-07-06): change +0.00/day, threshold +/-0.50 -> steady"
+          ],
+          "forks_delta": 9,
+          "growth_pct_per_30d": 5.034,
+          "momentum": "rising",
+          "span_days": 90.0,
+          "stars_base": 1192,
+          "stars_delta": 180,
+          "stars_now": 1372,
+          "stars_per_day": 2.0,
+          "status": "measured"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+# The Source — repository momentum and acceleration (KEI-849). Methodology: docs/MOMENTUM.md.
+#
+# Momentum and acceleration are derived only from the dated daily snapshots in
+# data/history/ (KEI-848). Nothing here calls a network, and nothing here changes the
+# canonical dataset or its version.
+#
+# Versioning: every parameter below `methodology` is fingerprinted (sha256 of its canonical
+# JSON). `methodology.released` maps each released version to the fingerprint of the
+# parameters it was released with. Changing a parameter without releasing a new version
+# fails `momentum-validate` and the tests, so a published label always means one thing.
+
+schema: the-source.momentum-config/1
+
+methodology:
+  id: the-source.momentum
+  version: "1.0.0"
+  doc: docs/MOMENTUM.md
+  released:
+    "1.0.0": 4a17d531344223f94617834263d8b41601adbd59539572cd41b0ebb0d96fabe3
+
+windows: [1, 7, 30, 90]          # days; each one is measured, or says why it is not
+
+base:
+  # The base of a W-day window is the newest snapshot on or before (day - W). It may be
+  # older than that target by at most this many days, otherwise the window is
+  # insufficient_history. A base is never interpolated or invented.
+  tolerance_days: {"1": 0, "7": 1, "30": 3, "90": 7}
+  # The observed elapsed time (as_of to as_of) must be at least this share of W, so a
+  # "1-day" window between two runs a few hours apart is not reported as a day.
+  min_span_ratio: 0.5
+
+momentum:
+  metric: stars                   # adoption: stargazers, per elapsed day
+  relative_floor_stars: 100       # growth % divides by max(base stars, this): small repos are not inflated
+  min_abs_change: 3               # fewer stars gained or lost than this over the window is "flat"
+  bands:                          # growth, % of base per 30 days; checked top to bottom
+    surging: 10.0
+    rising: 1.0
+    declining: -0.5               # at or below; anything between declining and rising is "flat"
+
+acceleration:
+  # Compares the window just ended with the window before it, both W days, so 2W days of
+  # history are needed. Change is in stars/day; it counts only above both thresholds.
+  relative: 0.25                  # |change| >= this share of |prior stars/day| ...
+  min_rate_change_per_day: 0.5    # ... and >= this many stars/day
