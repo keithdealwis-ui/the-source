@@ -46,7 +46,7 @@ jobs:
       - name: Tests
         env:
           THE_SOURCE_NO_NETWORK: "1"
-        run: python -m pytest tests/test_canonical.py tests/test_daily.py tests/test_momentum.py tests/test_radar.py -q
+        run: python -m pytest tests/test_canonical.py tests/test_daily.py tests/test_momentum.py tests/test_radar.py tests/test_momentum_radar.py -q
 
       - name: Committed data equals the rebuild
         run: |
