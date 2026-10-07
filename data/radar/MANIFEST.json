@@ -1,30 +1,26 @@
 {
-  "as_of": "2026-10-07T02:02:24Z",
+  "as_of": "2026-10-07T10:33:33Z",
   "collection": {
-    "as_of": "2026-10-07T02:02:24Z",
+    "as_of": "2026-10-07T10:33:33Z",
     "resolve": {
-      "asked": 50,
+      "asked": 10,
       "deferred": 0,
       "pool_added": [
-        "github.com/boykopovar/anyps5",
-        "github.com/eolix/photosuite",
-        "github.com/fesens/opentpu",
-        "github.com/gatewai-dev/framefields",
-        "github.com/openai/math",
-        "github.com/rui314/mold",
-        "github.com/storytold/photocraft"
+        "github.com/m-abozaid/esp32-c3-adblock",
+        "github.com/shader-effects-inc/shaders",
+        "github.com/szabadkai/c64-keyboard-font"
       ],
-      "resolved": 50,
+      "resolved": 10,
       "transient_failures": []
     },
     "sources": {
       "forem": {
         "errors": [],
-        "gone": 3,
-        "http_calls": 38,
-        "items_read": 34,
-        "listed": 34,
-        "mentions": 23,
+        "gone": 2,
+        "http_calls": 39,
+        "items_read": 35,
+        "listed": 35,
+        "mentions": 25,
         "status": "ok"
       },
       "hn": {
@@ -32,42 +28,42 @@
         "gone": 0,
         "http_calls": 303,
         "items_read": 300,
-        "listed": 342,
-        "mentions": 25,
+        "listed": 355,
+        "mentions": 28,
         "status": "ok"
       }
     }
   },
   "counts": {
-    "mentions_held": 48,
-    "mentions_in_window": 48,
+    "mentions_held": 57,
+    "mentions_in_window": 55,
     "mentions_in_window_by_source": {
-      "forem": 23,
-      "hn": 25
+      "forem": 25,
+      "hn": 30
     },
     "ranked": 50,
     "ranked_by_status": {
-      "candidate": 7,
+      "candidate": 10,
       "canonical": 0,
       "corpus": 0,
       "not_found": 1,
-      "unresolved": 42
+      "unresolved": 39
     },
-    "repositories_mentioned": 54,
-    "resolutions_held": 50,
-    "truncated": 4
+    "repositories_mentioned": 62,
+    "resolutions_held": 60,
+    "truncated": 12
   },
   "files": {
-    "collection.json": "2bfb2827196f2d1b507d9e9ba30d08a01b22fdc5c72a37b3bc75552f51e569db",
-    "mentions.jsonl": "f79bcb51a6762de6601c0e3aacc4bac66744d1a44303d09af28d1d6f45a67cb6",
-    "radar.jsonl": "c91820ed98cbff7144b029f4fd8cd46910c9d1a6a7a6e940b2f5d2f65bc03747",
-    "resolved.jsonl": "465fbc0ee5343bd9ff05c8cd081dc66a952ffe4d192fad659b37d9f0fb84f176"
+    "collection.json": "46a789baeedffc8f6a5de9438051d3351476731e5d35aebd53ebced77d95911d",
+    "mentions.jsonl": "4c28d264429a2c580cbdc83176521bbf476750a9c63bf0a02c0b0ee7f6376880",
+    "radar.jsonl": "1963db4baa200fbbca453d7ea5a3353de2bac30339754854be0059283953c855",
+    "resolved.jsonl": "d86c9c4caab760cbd222a2dd4596fc2431ccbd11c53fa8cf970cedc98f6f1989"
   },
   "inputs": {
-    "data/canonical/oss_projects.jsonl": "e21a798a8e013b6a4ef53c948ceb331efe9a4b1c9ee5cac71fbc1c65ab1c672f",
-    "data/dataset/oss_projects.jsonl": "58c28dfd2ed5c9fc30d41b5880423e6d95f87720303cb4d1ff9d357edb3a0917",
-    "data/discovery/candidates.jsonl": "9e88b251b5ec7e82f2a4135ad93588ace5283cc0c8983b35845177282c6c0459",
-    "data/live/snapshot.json": "7d36429801b6674f1d006653b6bbaa807dc28e03feced8efd78dbbaeed7d7280"
+    "data/canonical/oss_projects.jsonl": "2ea3480a1a23fcf198383718ae52a7c335e48814b55341805bdb568a5c6e0fd0",
+    "data/dataset/oss_projects.jsonl": "0bc29edcc28ba0a41d5195b3e94e0c1f6a52bf845b2ed720570d860ae7dfea98",
+    "data/discovery/candidates.jsonl": "1dc0ff4570e79b20a33c6fd87d1db7d31f73802a06a5af53b102c32ad3a1a1d4",
+    "data/live/snapshot.json": "d887c45952251edaa3faa72a8cff2f74150880ab92a957c88c14a330ee3a23f1"
   },
   "methodology": {
     "doc": "docs/RADAR.md",

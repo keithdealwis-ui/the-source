@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-07T02:02:24Z",
+  "as_of": "2026-10-07T10:33:33Z",
   "counts": {
     "measured_any_window": 610,
     "projects": 625
@@ -8,9 +8,9 @@
     "1": {
       "acceleration": {
         "labels": {
-          "accelerating": 214,
-          "decelerating": 50,
-          "steady": 346
+          "accelerating": 209,
+          "decelerating": 49,
+          "steady": 352
         },
         "measurable_from": "2026-10-04",
         "prior_base": {
@@ -38,9 +38,9 @@
       "calendar_days_in_window": 2,
       "measurable_from": "2026-10-03",
       "momentum": {
-        "flat": 425,
-        "rising": 181,
-        "surging": 4
+        "flat": 431,
+        "rising": 176,
+        "surging": 3
       },
       "projects": {
         "identity_changed": 0,
@@ -150,14 +150,14 @@
     }
   },
   "files": {
-    "projects.jsonl": "b1e5a3df87c39d3b1bf458a5ebfec024272153122b2d1302bf250f2a36a46768"
+    "projects.jsonl": "914ff435b5961b9218d07a1bece0bf9a4f5d10e69ac8de3d77b98bfd9eed0cfa"
   },
   "history": {
-    "dataset_version": "36a6a8d29f8eac81",
+    "dataset_version": "9a374db4781aa0ba",
     "day_sha256": {
       "2026-10-05": "0e85ed8bcf6246b600c7644bf7a8a96f421501bc8aac3b0675d6a6589a27cf40",
       "2026-10-06": "732cfe7b8b49f8495d603994d4f22ec243e12c46fab8b0f9fe284e2fe0b430ec",
-      "2026-10-07": "b62a53b5d5a5cde0e53a80c7ac2197214f5bd7cc68d109909ea0f7a1443d35e1"
+      "2026-10-07": "5eacab70e9aba853157d171edd1e8f34472ef5b13cb11a54407715191e459265"
     },
     "days_held": 6,
     "days_read": [
@@ -167,7 +167,7 @@
     ],
     "newest": "2026-10-07",
     "oldest": "2026-10-02",
-    "run_id": "manual-20261007T020224Z-manual-a1"
+    "run_id": "manual-20261007T103333Z-manual-a1"
   },
   "methodology": {
     "doc": "docs/MOMENTUM.md",
