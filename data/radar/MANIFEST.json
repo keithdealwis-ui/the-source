@@ -1,0 +1,80 @@
+{
+  "as_of": "2026-10-07T02:02:24Z",
+  "collection": {
+    "as_of": "2026-10-07T02:02:24Z",
+    "resolve": {
+      "asked": 50,
+      "deferred": 0,
+      "pool_added": [
+        "github.com/boykopovar/anyps5",
+        "github.com/eolix/photosuite",
+        "github.com/fesens/opentpu",
+        "github.com/gatewai-dev/framefields",
+        "github.com/openai/math",
+        "github.com/rui314/mold",
+        "github.com/storytold/photocraft"
+      ],
+      "resolved": 50,
+      "transient_failures": []
+    },
+    "sources": {
+      "forem": {
+        "errors": [],
+        "gone": 3,
+        "http_calls": 38,
+        "items_read": 34,
+        "listed": 34,
+        "mentions": 23,
+        "status": "ok"
+      },
+      "hn": {
+        "errors": [],
+        "gone": 0,
+        "http_calls": 303,
+        "items_read": 300,
+        "listed": 342,
+        "mentions": 25,
+        "status": "ok"
+      }
+    }
+  },
+  "counts": {
+    "mentions_held": 48,
+    "mentions_in_window": 48,
+    "mentions_in_window_by_source": {
+      "forem": 23,
+      "hn": 25
+    },
+    "ranked": 50,
+    "ranked_by_status": {
+      "candidate": 7,
+      "canonical": 0,
+      "corpus": 0,
+      "not_found": 1,
+      "unresolved": 42
+    },
+    "repositories_mentioned": 54,
+    "resolutions_held": 50,
+    "truncated": 4
+  },
+  "files": {
+    "collection.json": "2bfb2827196f2d1b507d9e9ba30d08a01b22fdc5c72a37b3bc75552f51e569db",
+    "mentions.jsonl": "f79bcb51a6762de6601c0e3aacc4bac66744d1a44303d09af28d1d6f45a67cb6",
+    "radar.jsonl": "c91820ed98cbff7144b029f4fd8cd46910c9d1a6a7a6e940b2f5d2f65bc03747",
+    "resolved.jsonl": "465fbc0ee5343bd9ff05c8cd081dc66a952ffe4d192fad659b37d9f0fb84f176"
+  },
+  "inputs": {
+    "data/canonical/oss_projects.jsonl": "e21a798a8e013b6a4ef53c948ceb331efe9a4b1c9ee5cac71fbc1c65ab1c672f",
+    "data/dataset/oss_projects.jsonl": "58c28dfd2ed5c9fc30d41b5880423e6d95f87720303cb4d1ff9d357edb3a0917",
+    "data/discovery/candidates.jsonl": "9e88b251b5ec7e82f2a4135ad93588ace5283cc0c8983b35845177282c6c0459",
+    "data/live/snapshot.json": "7d36429801b6674f1d006653b6bbaa807dc28e03feced8efd78dbbaeed7d7280"
+  },
+  "methodology": {
+    "doc": "docs/RADAR.md",
+    "id": "the-source.radar",
+    "parameters_sha256": "9c894b0e2a2ec530af445079f265d18fcd1218d838c70b28aae510861aaf6512",
+    "version": "1.0.0"
+  },
+  "schema": "the-source.radar/1",
+  "window_days": 7
+}

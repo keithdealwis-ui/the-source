@@ -149921,6 +149921,12 @@
   ],
   "github:235879795:compare:0.5.2...0.5.3-SNAPSHOT": [],
   "github:235879795:compare:0.5.3-SNAPSHOT...0.5.2": [],
+  "github:235901813:20c5d4b984c6111bba6033a1d0674a0f885da75c": [
+    "frontend/snapshots.yml",
+    "products/replay_vision/frontend/replay_scanners/ReplayScannersScene.stories.tsx",
+    "products/replay_vision/frontend/replay_scanners/components/ExperimentScopeFilter.tsx",
+    "products/replay_vision/frontend/replay_scanners/components/ScannerTriggers.tsx"
+  ],
   "github:235901813:2ed3b1d26c33681e080f6c169fde3812478f25c4": [
     "docs/internal/feature-flags/database-interaction-patterns.md",
     "docs/internal/feature-flags/flag-evaluation-engine.md",
@@ -150071,6 +150077,7 @@
     "rust/feature-flags/src/utils/test_utils.rs",
     "rust/feature-flags/tests/test_flags.rs"
   ],
+  "github:235901813:compare:agent-skills-v0.2663.0...desktop-v0.61.654": [],
   "github:235901813:compare:agent-v2.4.236...desktop-v0.61.603": [],
   "github:235901813:compare:agent-v2.4.247...agent-skills-v0.2377.0": [
     "docs/internal/feature-flags/api-writes.md",
@@ -150347,6 +150354,17 @@
     "tools/hogli-commands/hogli_commands/db_schema.py",
     "tools/hogli-commands/hogli_commands/tests/test_db_schema.py",
     "uv.lock"
+  ],
+  "github:235901813:compare:desktop-v0.61.654...agent-skills-v0.2663.0": [
+    "frontend/snapshots.yml",
+    "frontend/src/lib/components/SignupRoleSelect.tsx",
+    "frontend/src/scenes/organization/ConfirmOrganization/ConfirmOrganization.test.tsx",
+    "frontend/src/scenes/organization/ConfirmOrganization/ConfirmOrganization.tsx",
+    "posthog/api/signup.py",
+    "posthog/api/test/test_signup.py",
+    "products/replay_vision/frontend/replay_scanners/ReplayScannersScene.stories.tsx",
+    "products/replay_vision/frontend/replay_scanners/components/ExperimentScopeFilter.tsx",
+    "products/replay_vision/frontend/replay_scanners/components/ScannerTriggers.tsx"
   ],
   "github:235901813:fc46b497c23921c5affd2f5689b72bc2261bc47b": [
     "frontend/snapshots.yml",
