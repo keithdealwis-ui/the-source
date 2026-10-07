@@ -27,6 +27,7 @@
     python -m source_pipeline intake-status --request-id ID
     python -m source_pipeline cycle --trigger schedule|manual   the daily intelligence cycle (KEI-848)
     python -m source_pipeline cycle-due            is a scheduled cycle due now, and why
+    python -m source_pipeline runs-latest [--runs-dir DIR]   the newest runs/*.json cycle summary
 
   Daily intelligence (KEI-848):
     python -m source_pipeline history-days         the dated daily snapshots held (data/history/)
@@ -226,6 +227,7 @@ def main(argv=None) -> int:
                                         "score-harvest", "score-build", "score-validate",
                                         "canonical-build", "canonical-validate", "scores-extract", "research",
                                         "intake-assess", "intake-status", "cycle", "cycle-due", "cycle-work",
+                                        "runs-latest",
                                         "history-days", "history-delta", "discovery-pool",
                                         "momentum-build", "momentum-validate", "momentum",
                                         "radar-collect", "radar-build", "radar-validate", "radar"])
@@ -253,6 +255,7 @@ def main(argv=None) -> int:
     ap.add_argument("--as-of", help="radar-build: rank as of this UTC timestamp (default: the last collection's)")
     ap.add_argument("--source", help="radar: only entries mentioned on this source")
     ap.add_argument("--status", help="radar: only entries with this reconciliation status")
+    ap.add_argument("--runs-dir", help="runs-latest: read cycle records from here (default: runs/)")
     ap.add_argument("--run-id", help="cycle-work: internal")
     ap.add_argument("--result", help="cycle-work: internal")
     args = ap.parse_args(argv)
@@ -291,6 +294,15 @@ def main(argv=None) -> int:
             out = daily.delta(args.days, args.on, args.key)
         print(json.dumps(out, indent=2, sort_keys=True))
         return 0 if out.get("ok", True) else 1
+    if args.command == "runs-latest":
+        from . import cycle
+
+        out = cycle.latest(args.runs_dir)
+        if out is None:
+            print(f"runs-latest: no cycle summaries (*.json) in {args.runs_dir or cycle.RUNS}", file=sys.stderr)
+            return 1
+        print(json.dumps(out, indent=2, sort_keys=True))
+        return 0
     if args.command.startswith(("canonical-", "intake-", "cycle")) or args.command in ("scores-extract", "research"):
         return _canonical(args)
     if args.command.startswith("score-"):

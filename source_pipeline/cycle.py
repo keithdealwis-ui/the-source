@@ -66,6 +66,20 @@ def runs() -> list[dict]:
     return [common.read_json(p) for p in sorted(RUNS.glob("*.json"))] if RUNS.exists() else []
 
 
+LATEST_FIELDS = ("cycle_key", "ended_at", "error", "counts", "canonical")
+
+
+def latest(runs_dir: Path | None = None) -> dict | None:
+    """The newest cycle summary in runs/ (KEI-887): the record that ended last (a record still
+    running counts from its start), ties broken by file name. None when there are no records."""
+    d = RUNS if runs_dir is None else Path(runs_dir)
+    records = [(common.read_json(p), p.name) for p in sorted(d.glob("*.json"))] if d.is_dir() else []
+    if not records:
+        return None
+    rec, _ = max(records, key=lambda r: (r[0].get("ended_at") or r[0].get("started_at") or "", r[1]))
+    return {k: rec.get(k) for k in LATEST_FIELDS}
+
+
 def due(now: datetime | None = None) -> dict:
     cfg = load_schedule()
     tz = ZoneInfo(cfg["timezone"])
