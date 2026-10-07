@@ -1,9 +1,9 @@
 {
   "api_version": "v1",
-  "dataset_version": "d22298120c1b78d1",
+  "dataset_version": "e0df7c05a9158390",
   "last_checked": {
-    "newest": "2026-10-06T02:53:13Z",
-    "oldest": "2026-10-06T02:53:13Z"
+    "newest": "2026-10-07T01:24:34Z",
+    "oldest": "2026-10-07T01:24:34Z"
   },
   "more_available": 0,
   "provenance": {
@@ -25,7 +25,7 @@
         "tag": "v4.0.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-06T02:53:13Z",
+      "live_checked_at": "2026-10-07T01:24:34Z",
       "maintenance_status": "active",
       "name": "Litekart",
       "note": {
@@ -63,13 +63,13 @@
     },
     {
       "github_url": "https://github.com/saleor/saleor",
-      "last_meaningful_activity_at": "2026-09-30T14:35:31Z",
+      "last_meaningful_activity_at": "2026-10-06T14:20:56Z",
       "latest_release": {
-        "published_at": "2026-09-30T10:55:59Z",
-        "tag": "3.23.37"
+        "published_at": "2026-10-06T10:39:32Z",
+        "tag": "3.23.39"
       },
       "licence_spdx": "BSD-3-Clause",
-      "live_checked_at": "2026-10-06T02:53:13Z",
+      "live_checked_at": "2026-10-07T01:24:34Z",
       "maintenance_status": "active",
       "name": "Saleor",
       "note": {
@@ -87,13 +87,13 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 95.0,
-        "score": 90.7,
+        "score": 92.1,
         "trajectory": "Stable"
       },
       "rank": 2,
       "replacement_fit": {
         "confidence": 95.0,
-        "evaluated_at": "2026-09-29T18:28:27Z",
+        "evaluated_at": "2026-10-07T01:24:34Z",
         "score": 79.2,
         "score_version": "1.2.0"
       },
@@ -108,7 +108,53 @@
         "opensaasdirectory",
         "diegoleme"
       ],
-      "stars": 23409
+      "stars": 23418
+    },
+    {
+      "github_url": "https://github.com/bagisto/bagisto",
+      "last_meaningful_activity_at": "2026-10-06T14:11:45Z",
+      "latest_release": {
+        "published_at": "2026-10-06T14:11:45Z",
+        "tag": "v2.5.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-07T01:24:34Z",
+      "maintenance_status": "active",
+      "name": "Bagisto",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "ease of adoption",
+          "cost advantage"
+        ],
+        "text": "Strongest on ease of adoption and cost advantage."
+      },
+      "oss_id": "github.com/bagisto/bagisto",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 91.7,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-10-07T01:24:34Z",
+        "score": 67.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/bagisto/bagisto",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital",
+        "btwso",
+        "diegoleme"
+      ],
+      "stars": 28213
     },
     {
       "github_url": "https://github.com/Sylius/Sylius",
@@ -118,7 +164,7 @@
         "tag": "v2.3.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-06T02:53:13Z",
+      "live_checked_at": "2026-10-07T01:24:34Z",
       "maintenance_status": "active",
       "name": "Sylius",
       "note": {
@@ -139,7 +185,7 @@
         "score": 86.1,
         "trajectory": "Declining"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "confidence": 95.0,
         "evaluated_at": "2026-09-29T18:28:27Z",
@@ -156,55 +202,7 @@
         "btwso",
         "diegoleme"
       ],
-      "stars": 8551
-    },
-    {
-      "github_url": "https://github.com/bagisto/bagisto",
-      "last_meaningful_activity_at": "2026-10-01T08:13:41Z",
-      "latest_release": {
-        "published_at": "2026-09-29T15:46:13Z",
-        "tag": "v2.5.0-beta5"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-06T02:53:13Z",
-      "maintenance_status": "active",
-      "name": "Bagisto",
-      "note": {
-        "gaps": [
-          "migration path"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "ease of adoption",
-          "cost advantage"
-        ],
-        "text": "Strongest on ease of adoption and cost advantage; weakest on migration path."
-      },
-      "oss_id": "github.com/bagisto/bagisto",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 96.6,
-        "score": 92.0,
-        "trajectory": "Stable"
-      },
-      "rank": 4,
-      "replacement_fit": {
-        "confidence": 95.0,
-        "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 64.0,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/bagisto/bagisto",
-      "self_hosting": {
-        "basis": "no self-hosting evidence found; not evidence of absence",
-        "self_hostable": null
-      },
-      "sources": [
-        "runacapital",
-        "btwso",
-        "diegoleme"
-      ],
-      "stars": 28214
+      "stars": 8552
     },
     {
       "github_url": "https://github.com/woocommerce/woocommerce",
@@ -214,7 +212,7 @@
         "tag": "11.2.0-beta.2"
       },
       "licence_spdx": "GPL-2.0",
-      "live_checked_at": "2026-10-06T02:53:13Z",
+      "live_checked_at": "2026-10-07T01:24:34Z",
       "maintenance_status": "active",
       "name": "WooCommerce",
       "note": {
