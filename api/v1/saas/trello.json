@@ -1,9 +1,9 @@
 {
   "api_version": "v1",
-  "dataset_version": "9a374db4781aa0ba",
+  "dataset_version": "f46717377d74b462",
   "last_checked": {
-    "newest": "2026-10-07T10:33:33Z",
-    "oldest": "2026-10-07T10:33:33Z"
+    "newest": "2026-10-08T01:46:58Z",
+    "oldest": "2026-10-08T01:46:58Z"
   },
   "more_available": 3,
   "provenance": {
@@ -11,12 +11,61 @@
     "sources": [
       "btwso",
       "diegoleme",
+      "emmraan",
       "fossalt",
       "runacapital",
       "solvohq"
     ]
   },
   "recommendations": [
+    {
+      "github_url": "https://github.com/wekan/wekan",
+      "last_meaningful_activity_at": "2026-10-07T21:14:14Z",
+      "latest_release": {
+        "published_at": "2026-10-07T21:14:14Z",
+        "tag": "v12.22"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-08T01:46:58Z",
+      "maintenance_status": "active",
+      "name": "Wekan",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/wekan/wekan",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 92.8,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-10-08T01:46:58Z",
+        "score": 94.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/wekan/wekan",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "emmraan",
+        "btwso",
+        "diegoleme",
+        "fossalt"
+      ],
+      "stars": 21111
+    },
     {
       "github_url": "https://github.com/go-vikunja/vikunja",
       "last_meaningful_activity_at": "2026-10-02T21:18:37Z",
@@ -25,7 +74,7 @@
         "tag": "v2.7.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-07T10:33:33Z",
+      "live_checked_at": "2026-10-08T01:46:58Z",
       "maintenance_status": "active",
       "name": "Vikunja",
       "note": {
@@ -44,7 +93,7 @@
         "score": 83.3,
         "trajectory": "Rising"
       },
-      "rank": 1,
+      "rank": 2,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-03T00:23:01Z",
@@ -59,7 +108,7 @@
       "sources": [
         "runacapital"
       ],
-      "stars": 5629
+      "stars": 5636
     },
     {
       "github_url": "https://github.com/tehnika-mk/monomap",
@@ -69,7 +118,7 @@
         "tag": "v1.2"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-07T10:33:33Z",
+      "live_checked_at": "2026-10-08T01:46:58Z",
       "maintenance_status": "active",
       "name": "MonoMap",
       "note": {
@@ -88,7 +137,7 @@
         "score": 59.8,
         "trajectory": "Insufficient history"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "confidence": 81.5,
         "evaluated_at": "2026-10-03T00:23:01Z",
@@ -113,7 +162,7 @@
         "tag": "v1.4.2"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-07T10:33:33Z",
+      "live_checked_at": "2026-10-08T01:46:58Z",
       "maintenance_status": "active",
       "name": "Plane",
       "note": {
@@ -134,7 +183,7 @@
         "score": 88.0,
         "trajectory": "Declining"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
@@ -149,7 +198,7 @@
       "sources": [
         "runacapital"
       ],
-      "stars": 60474
+      "stars": 60504
     },
     {
       "github_url": "https://github.com/super-productivity/super-productivity",
@@ -159,7 +208,7 @@
         "tag": "v19.1.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-07T10:33:33Z",
+      "live_checked_at": "2026-10-08T01:46:58Z",
       "maintenance_status": "active",
       "name": "Super Productivity",
       "note": {
@@ -178,7 +227,7 @@
         "score": 93.0,
         "trajectory": "Stable"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "confidence": 86.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
@@ -193,56 +242,7 @@
       "sources": [
         "fossalt"
       ],
-      "stars": 22596
-    },
-    {
-      "github_url": "https://github.com/kanboard/kanboard",
-      "last_meaningful_activity_at": "2026-09-11T20:43:44Z",
-      "latest_release": {
-        "published_at": "2026-08-29T02:38:58Z",
-        "tag": "v1.2.54"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-07T10:33:33Z",
-      "maintenance_status": "active",
-      "name": "Kanboard",
-      "note": {
-        "gaps": [
-          "feature parity"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "self-hosting and data ownership"
-        ],
-        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
-      },
-      "oss_id": "github.com/kanboard/kanboard",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 96.6,
-        "score": 88.2,
-        "trajectory": "Stable"
-      },
-      "rank": 5,
-      "replacement_fit": {
-        "confidence": 89.0,
-        "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 75.9,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/kanboard/kanboard",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "solvohq",
-        "btwso",
-        "diegoleme",
-        "fossalt"
-      ],
-      "stars": 9896
+      "stars": 22605
     }
   ],
   "saas": {
