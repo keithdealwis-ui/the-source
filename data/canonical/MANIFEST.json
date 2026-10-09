@@ -2,33 +2,33 @@
   "canonical_schema": "the-source.canonical/1",
   "counts": {
     "oss_projects": 237,
-    "recommended_relationships": 312,
+    "recommended_relationships": 310,
     "relationships": 349,
     "saas_products": 118,
     "supported_saas": 20,
     "supported_saas_ok": 20
   },
-  "data_as_of": "2026-10-08T01:46:58Z",
-  "dataset_version": "f46717377d74b462",
+  "data_as_of": "2026-10-09T01:58:15Z",
+  "dataset_version": "69d482e1618b488b",
   "export_guard": {
     "export_licence_constraint": "none beyond attribution notices",
     "relationships_exported": 349,
     "relationships_withheld_share_alike_only": 25
   },
   "files": {
-    "NOTICE.md": "8b434b4ff0b142d727c2a9bc31c00f3c3d118b20b3c4b64707fb519a3e79c18d",
-    "oss_projects.jsonl": "5a3818cd9adf10dd798c33d8e63e79af984df8ebb192e81b0b4f8ff49518d57b",
-    "relationships.jsonl": "55760eb13673990f4aba721fe7ea224ae8d08d190b924df3e8cdfd2da07bf215",
+    "NOTICE.md": "533fbf3d7478eaf5b0488297aa98f24a219282076f6bf6ada0fb8a6a142faea5",
+    "oss_projects.jsonl": "2034a9dc1a8246d8c9d5259dec261e344af63b7ea92e5b0fd8f046bcdff20521",
+    "relationships.jsonl": "9cf395ab93d29cb05331084188369b9f41819d72ff73017e1b4b8070c9efb5ab",
     "saas_products.jsonl": "6525c4957847344b550dd105e291e3ce2aac69bc069215a9bb0f4cecf3f0bbaf"
   },
   "live_checked_at": {
-    "newest": "2026-10-08T01:46:58Z",
-    "oldest": "2026-10-08T01:46:58Z"
+    "newest": "2026-10-09T01:58:15Z",
+    "oldest": "2026-10-09T01:58:15Z"
   },
   "sources": {
     "altstack": {
       "decision": "allow_with_conditions",
-      "pinned_commit": "e4fa17d14c4f485c21cb91a579fa3d681d8a9a8c"
+      "pinned_commit": "0af0b48331c1dc5c957b693f88a24e897c3d7ab1"
     },
     "btwso": {
       "decision": "allow",

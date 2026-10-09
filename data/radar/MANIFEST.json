@@ -1,30 +1,27 @@
 {
-  "as_of": "2026-10-08T01:46:58Z",
+  "as_of": "2026-10-09T01:58:15Z",
   "collection": {
-    "as_of": "2026-10-08T01:46:58Z",
+    "as_of": "2026-10-09T01:58:15Z",
     "resolve": {
-      "asked": 13,
+      "asked": 11,
       "deferred": 0,
       "pool_added": [
-        "github.com/akawashiro/procinsh",
-        "github.com/al-255/fm-1-re",
-        "github.com/docker/docker-agent",
-        "github.com/nano-muse/nanomuse",
-        "github.com/pingdotgg/ts-rust",
-        "github.com/queuingtheorydotcom/11squaresformalized",
-        "github.com/snuri00/psp-web-recomp"
+        "github.com/duckdb/ducklake",
+        "github.com/p10node/k10s",
+        "github.com/samsunglabs/littlebit",
+        "github.com/zerobrewhq/zerobrew"
       ],
-      "resolved": 13,
+      "resolved": 11,
       "transient_failures": []
     },
     "sources": {
       "forem": {
         "errors": [],
         "gone": 1,
-        "http_calls": 43,
-        "items_read": 39,
-        "listed": 39,
-        "mentions": 28,
+        "http_calls": 42,
+        "items_read": 37,
+        "listed": 37,
+        "mentions": 27,
         "status": "ok"
       },
       "hn": {
@@ -32,42 +29,42 @@
         "gone": 0,
         "http_calls": 303,
         "items_read": 300,
-        "listed": 347,
-        "mentions": 35,
+        "listed": 346,
+        "mentions": 36,
         "status": "ok"
       }
     }
   },
   "counts": {
-    "mentions_held": 74,
-    "mentions_in_window": 70,
+    "mentions_held": 89,
+    "mentions_in_window": 81,
     "mentions_in_window_by_source": {
-      "forem": 28,
-      "hn": 42
+      "forem": 29,
+      "hn": 52
     },
     "ranked": 50,
     "ranked_by_status": {
-      "candidate": 17,
+      "candidate": 22,
       "canonical": 0,
       "corpus": 0,
-      "not_found": 1,
-      "unresolved": 32
+      "not_found": 0,
+      "unresolved": 28
     },
-    "repositories_mentioned": 78,
-    "resolutions_held": 73,
-    "truncated": 28
+    "repositories_mentioned": 87,
+    "resolutions_held": 84,
+    "truncated": 37
   },
   "files": {
-    "collection.json": "2e2535687daa3400dfc03e68dab7993a3fcdabf6177e3bd65d79a2ab0652b54a",
-    "mentions.jsonl": "75ed94006958c161ef51ef3d53598833388a6efa069069d9b45a915dfda33f06",
-    "radar.jsonl": "bf6e40a90643edd7e902278a096cf111733f5d041443162fd7d0586f5713a68c",
-    "resolved.jsonl": "18028678ed51d9a1cef9b0889b7bfcc717ffe374f70364133076d6912055cd86"
+    "collection.json": "a05827c4801b7952b1f2f2c7cbe2c790cf93c5cf77be9abf8abaacb7a82cc579",
+    "mentions.jsonl": "785c513c37ca587aea0fe03ee3cdfb2b1a89ace13933d095458c66a88601dc38",
+    "radar.jsonl": "bd5a58600d551ac43dd268c385a69e779e2c6bc67c46545a85e9ea3d8ae2b090",
+    "resolved.jsonl": "704f74c38c5b9532821edf71aa4a15e19a2343d4ea66cc31cb313d0b1814319c"
   },
   "inputs": {
-    "data/canonical/oss_projects.jsonl": "5a3818cd9adf10dd798c33d8e63e79af984df8ebb192e81b0b4f8ff49518d57b",
-    "data/dataset/oss_projects.jsonl": "f874a0eb80785b24647d131a651df7227d1e33963ff45adf28afda3ef79d9f00",
-    "data/discovery/candidates.jsonl": "7aea6c67fde57ababe27b84f29b5f3c496c1a7ecbff53f2b3fa79d37b44d58df",
-    "data/live/snapshot.json": "845e4c62ef2fca6221acdaa0695466e764ddfd121c667eb2c12e125a16ed2cfb"
+    "data/canonical/oss_projects.jsonl": "2034a9dc1a8246d8c9d5259dec261e344af63b7ea92e5b0fd8f046bcdff20521",
+    "data/dataset/oss_projects.jsonl": "1102462dcc415ec82379113b7f76849d386973c44b82602c9c960b7bb8b83b66",
+    "data/discovery/candidates.jsonl": "9ff06bbe080fcb15e41db6a3c7814379b5d3e4dba82597785d9322453102b7fd",
+    "data/live/snapshot.json": "c27ec1f821f6be026171fcb73a35259176c02f7c65ef249302586d3e059dda7f"
   },
   "methodology": {
     "doc": "docs/RADAR.md",
