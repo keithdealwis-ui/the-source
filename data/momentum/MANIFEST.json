@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-10T14:28:36Z",
+  "as_of": "2026-10-10T15:57:25Z",
   "counts": {
     "measured_any_window": 610,
     "projects": 625
@@ -8,9 +8,9 @@
     "1": {
       "acceleration": {
         "labels": {
-          "accelerating": 99,
-          "decelerating": 140,
-          "steady": 371
+          "accelerating": 103,
+          "decelerating": 138,
+          "steady": 369
         },
         "measurable_from": "2026-10-04",
         "prior_base": {
@@ -38,9 +38,9 @@
       "calendar_days_in_window": 2,
       "measurable_from": "2026-10-03",
       "momentum": {
-        "declining": 8,
-        "flat": 453,
-        "rising": 141,
+        "declining": 7,
+        "flat": 451,
+        "rising": 144,
         "surging": 8
       },
       "projects": {
@@ -161,10 +161,10 @@
     }
   },
   "files": {
-    "projects.jsonl": "b14aba95b4e9a24401744f65a130f99448e554a7ede9d5df03178159d1b60293"
+    "projects.jsonl": "74e1e1801c0922fe6fb22d2fecf8640cab779213ad8dcd3b23b66896547f51ef"
   },
   "history": {
-    "dataset_version": "19300765e4b65abd",
+    "dataset_version": "02138adc09d8ca9b",
     "day_sha256": {
       "2026-10-03": "1fa4fbc66dce0baa18d2137ccdf6d402a3ec0908597a199bcfdd5a3caf3267bb",
       "2026-10-04": "7d014f220b9ea1de9db075f9ef04e3369a31690da58b4d9f3b084e90f4fbe69d",
@@ -173,7 +173,7 @@
       "2026-10-07": "5eacab70e9aba853157d171edd1e8f34472ef5b13cb11a54407715191e459265",
       "2026-10-08": "34af132680cde4a0b3cd73bbab419fedef6c44d31bf6aff5456a962b86bba895",
       "2026-10-09": "89e2f50a3c7aa392ede2b92b59da29bb2f02b1203356d5373b87488663dde577",
-      "2026-10-10": "b311ad8d783998ef58c77dce2ebb7237f1755b1f3d47bb3c93330bc0d69e7622"
+      "2026-10-10": "33ceab8f292e959cd92b8f478dd020b83179b0526c52ab07fa76925f0ed54fd2"
     },
     "days_held": 9,
     "days_read": [
@@ -188,7 +188,7 @@
     ],
     "newest": "2026-10-10",
     "oldest": "2026-10-02",
-    "run_id": "manual-20261010T142835Z-manual-a1"
+    "run_id": "manual-20261010T155725Z-manual-a1"
   },
   "methodology": {
     "doc": "docs/MOMENTUM.md",

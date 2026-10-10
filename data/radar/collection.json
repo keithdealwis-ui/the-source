@@ -1,13 +1,23 @@
 {
-  "as_of": "2026-10-10T14:28:36Z",
+  "as_of": "2026-10-10T15:57:25Z",
   "resolve": {
-    "asked": 0,
+    "asked": 6,
     "deferred": 0,
     "pool_added": [],
-    "resolved": 0,
+    "resolved": 6,
     "transient_failures": []
   },
   "sources": {
+    "bluesky": {
+      "errors": [],
+      "gone": 0,
+      "host": "https://api.bsky.app",
+      "http_calls": 2,
+      "items_read": 98,
+      "listed": 98,
+      "mentions": 69,
+      "status": "ok"
+    },
     "forem": {
       "errors": [],
       "gone": 1,
@@ -22,9 +32,31 @@
       "gone": 0,
       "http_calls": 303,
       "items_read": 300,
-      "listed": 352,
+      "listed": 351,
       "mentions": 22,
       "status": "ok"
+    },
+    "instagram": {
+      "errors": [
+        "INSTAGRAM_ACCESS_TOKEN or INSTAGRAM_USER_ID is not set: Instagram is not asked"
+      ],
+      "gone": 0,
+      "http_calls": 0,
+      "items_read": 0,
+      "listed": 0,
+      "mentions": 0,
+      "status": "unconfigured"
+    },
+    "x": {
+      "errors": [
+        "X_BEARER_TOKEN is not set: X is not asked"
+      ],
+      "gone": 0,
+      "http_calls": 0,
+      "items_read": 0,
+      "listed": 0,
+      "mentions": 0,
+      "status": "unconfigured"
     }
   }
 }
