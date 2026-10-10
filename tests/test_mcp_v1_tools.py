@@ -205,3 +205,18 @@ def test_telemetry_is_aggregate_only():
     assert day["source_recommend"]["ok"]["count"] == 1
     assert day["source_compare_projects"]["tool_error"]["count"] == 1
     assert set(day["source_recommend"]["ok"]) == {"count", "latency"}
+
+
+def test_renamed_repositories_are_one_project_and_never_shadowed():
+    rows = [json.loads(l) for l in (ROOT / "data" / "momentum" / "projects.jsonl").read_text().splitlines() if l]
+    renamed = [r for r in rows if r.get("canonical_id") and r["key"] != r["canonical_id"]
+               and any(o["key"] == r["canonical_id"] for o in rows)]
+    assert renamed, "the committed momentum layer has renamed repositories"
+    for r in renamed:
+        assert S.layer.momentum[M._repo_key(r["canonical_id"])]["key"] == r["canonical_id"]
+        assert S.layer.momentum[M._repo_key(r["key"])]["key"] == r["key"]
+    idents = [M._repo_key(r.get("canonical_id") or r["key"]) for r in S.layer.momentum_projects]
+    assert len(idents) == len(set(idents))
+    r = _ok(S, "source_emerging_projects", window="7", limit=50, momentum=list(M.MOMENTUM_LABELS))
+    keys = [x["key"] for x in r["repository_momentum"]]
+    assert len(keys) == len(set(keys))

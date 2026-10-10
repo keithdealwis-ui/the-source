@@ -311,10 +311,24 @@ class Layer:
         self.signals = {name: _load_signal(self.root, name, self.dataset_version) for name in SIGNALS}
         self.momentum, self.radar = {}, {}
         mom = self.signals["momentum"]
-        for row in mom.pop("rows") or []:
-            for key in (row.get("key"), row.get("canonical_id")):
-                if key:
-                    self.momentum.setdefault(_repo_key(key), row)
+        rows = mom.pop("rows") or []
+        # A renamed repository has a row under its old key and one under its canonical id. Each row is indexed by
+        # its own key first, so a canonical-id alias never shadows a real row; one row per project is listed,
+        # preferring the row whose key is the canonical id.
+        for row in rows:
+            if row.get("key"):
+                self.momentum.setdefault(_repo_key(row["key"]), row)
+        for row in rows:
+            if row.get("canonical_id"):
+                self.momentum.setdefault(_repo_key(row["canonical_id"]), row)
+        best = {}
+        for row in rows:
+            ident = _repo_key(row.get("canonical_id") or row.get("key") or "")
+            current = best.get(ident)
+            if current is None or (_repo_key(row.get("key") or "") == ident
+                                   and _repo_key(current.get("key") or "") != ident):
+                best[ident] = row
+        self.momentum_projects = sorted(best.values(), key=lambda r: r.get("key") or "")
         rad = self.signals["radar"]
         for row in rad.pop("rows") or []:
             for key in [row.get("key"), row.get("oss_id"), *(row.get("link_keys") or [])]:
@@ -1163,11 +1177,8 @@ def tool_emerging(layer, args, server):
         in_scope = {h["key"] for h in hits if h["score"] >= 0.15}
 
     cov = (layer.signals["momentum"].get("coverage") or {}).get(window, {})
-    repo_rows, seen = [], set()
-    for key, row in layer.momentum.items():
-        if id(row) in seen:
-            continue
-        seen.add(id(row))
+    repo_rows = []
+    for row in layer.momentum_projects:
         win = (row.get("windows") or {}).get(window) or {}
         if win.get("status") != "measured" or win.get("momentum") not in labels:
             continue
