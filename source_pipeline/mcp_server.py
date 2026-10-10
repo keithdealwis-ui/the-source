@@ -1274,8 +1274,8 @@ MEASURES = {
     "replacement_fit": "How well does the project replace one specific SaaS product? Scored per pairing.",
     "repository_momentum": "Is the repository's star growth rising or falling, and accelerating, over 1/7/30/90 "
                            "days (data/momentum)? Measured from daily snapshots, not opinion.",
-    "community_momentum": "Is the project being discussed now (Hacker News, DEV/Forem mentions in the Radar "
-                          "window, data/radar)? Attention, not quality.",
+    "community_momentum": "Is the project being discussed now (Hacker News, DEV/Forem and, where configured, X and "
+                          "Instagram mentions in the Radar window, data/radar)? Attention, not quality.",
 }
 
 

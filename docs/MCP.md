@@ -83,7 +83,7 @@ CC BY 4.0, see `DATA-LICENCE.md`), and the two published signal layers beside it
 | `data/canonical/NOTICE.md` | upstream attribution |
 | `api/v1/index.json`, `api/v1/domains.json`, `api/v1/saas/<saas_id>.json` | the published pages and domain rules |
 | `data/momentum/MANIFEST.json`, `projects.jsonl` | Repository Momentum: star growth and acceleration over 1/7/30/90 days ([MOMENTUM.md](MOMENTUM.md)) |
-| `data/radar/MANIFEST.json`, `radar.jsonl` | Community Momentum: ranked Hacker News / DEV mentions in the Radar window ([RADAR.md](RADAR.md)) |
+| `data/radar/MANIFEST.json`, `radar.jsonl` | Community Momentum: ranked Hacker News / DEV / Bluesky (and, where configured, X and Instagram) mentions in the Radar window ([RADAR.md](RADAR.md)) |
 | `data/corpus/MANIFEST.json`, `projects.jsonl`, `live.jsonl` | the discovery corpus: every project the Discover lane found, served as the `discovery` tier ([CORPUS.md](CORPUS.md), KEI-912, gate-KEI-912-dba84c8b) |
 
 It reads nothing else: not the internal Discover lane build (`data/discover/`), staging,

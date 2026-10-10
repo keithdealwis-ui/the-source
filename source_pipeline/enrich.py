@@ -54,10 +54,14 @@ class Http:
         self.calls = 0
         self._lock = threading.Lock()
 
-    def call(self, url, data=None, auth=False, tries=5):
+    def call(self, url, data=None, auth=False, tries=5, token=None):
+        """`auth` sends the cycle's GitHub token; `token` sends another operator's bearer
+        token (an X or Instagram credential, KEI-913) for that call only. Neither is logged."""
         common.refuse_network(url)
         headers = {"User-Agent": UA, "Accept": "application/json"}
-        if auth and self.token:
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+        elif auth and self.token:
             headers["Authorization"] = f"Bearer {self.token}"
         body = json.dumps(data).encode() if data is not None else None
         if body:

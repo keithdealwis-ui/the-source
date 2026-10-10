@@ -1,10 +1,15 @@
-# The Source: Community Radar (KEI-850). Methodology: docs/RADAR.md.
+# The Source: Community Radar (KEI-850, KEI-913). Methodology: docs/RADAR.md.
 #
-# Repositories people are discussing right now, from two lawful public sources: Hacker News
-# (its official API) and Forem (dev.to's documented public API). Neither source is scraped,
-# neither needs a key, and nothing written by a person is stored: no titles, no text, no
-# usernames. A mention keeps only the item id, its own address, its public points and
-# comment counts, when it was published, and the repository addresses it links to.
+# Repositories people are discussing right now, from lawful public sources, each through the
+# interface its operator provides for it: Hacker News (its official API), Forem (dev.to's
+# documented public API) and Bluesky (its documented public search) need no key; X (the X
+# API v2 recent search) and Instagram (the Instagram Platform hashtag endpoints) need a
+# credential the operator issues, and stay `unconfigured` until one is set
+# (docs/RADAR-SOCIAL.md). Nothing is scraped, and nothing
+# written by a person is stored: no titles, no text, no usernames. A mention keeps only the
+# item id, its own address, its public points and comment counts, when it was published,
+# the repository addresses it links to and, where the source exposes an opaque account id,
+# a truncated hash of that id so independent authors can be counted without naming anyone.
 #
 # The radar is a signal to look closer, never a canonical fact. It does not change the
 # canonical dataset, its version or api/v1/. New repositories it finds join the discovery
@@ -21,10 +26,11 @@ schema: the-source.radar-config/1
 
 methodology:
   id: the-source.radar
-  version: "1.0.0"
+  version: "1.1.0"
   doc: docs/RADAR.md
   released:
     "1.0.0": 9c894b0e2a2ec530af445079f265d18fcd1218d838c70b28aae510861aaf6512
+    "1.1.0": 9077af4dda26aa7a8732c52b34327c5fe0e4d98e060c7c7d1a94ed9fe12d5077
 
 sources:
   hn:
@@ -44,6 +50,35 @@ sources:
     per_page: 30
     max_articles: 60                            # article reads (to find repository links) per cycle
     min_reactions: 10
+    max_age_days: 7
+  bluesky:
+    provider: bluesky_search                    # app.bsky.feed.searchPosts (endpoints.bsky.app): public reads need no token
+    hosts: [https://public.api.bsky.app, https://api.bsky.app]   # the documented public AppView first; the AppView the
+                                                #   Bluesky app itself uses if that host refuses the search method (403 on 2026-10-10)
+    queries: [github]                           # `q` is required by the method; `domain` does the filtering
+    domain: github.com
+    sort: top                                   # most-liked first within `since`
+    limit: 100                                  # the documented maximum, one page per query per cycle
+    min_points: 5                               # likes
+    max_age_days: 7
+  x:
+    provider: x_api_v2                          # X API v2, GET /2/tweets/search/recent (docs.x.com); a bearer token issued
+    api: https://api.x.com/2                    # by X under its developer agreement; the tier sets the monthly read cap
+    credential_env: X_BEARER_TOKEN              # unset: the source is `unconfigured`, asks nothing and degrades nothing
+    queries:                                    # recent-search operators; -is:retweet drops reposts at the source
+      - 'url:"github.com" -is:retweet -is:reply'
+    max_results: 100                            # posts per query per cycle: one page, the documented maximum
+    min_points: 5                               # likes
+    max_age_days: 7
+  instagram:
+    provider: instagram_graph                   # Instagram Platform hashtag search (developers.facebook.com): a token for a
+    api: https://graph.facebook.com/v21.0       # professional account, issued by Meta after app review
+    credential_env: INSTAGRAM_ACCESS_TOKEN      # unset: the source is `unconfigured`
+    user_env: INSTAGRAM_USER_ID                 # the professional account id the token belongs to (ig_hashtag_search needs it)
+    hashtags: [opensource, github, selfhosted]  # Meta allows 30 distinct hashtags per account per 7 days
+    edge: top_media                             # top_media (most popular) or recent_media (the last 24 hours)
+    max_items_per_hashtag: 50
+    min_points: 5                               # likes
     max_age_days: 7
 
 resolve:
@@ -65,11 +100,15 @@ extract:
 ranking:
   window_days: 7                                # only mentions published in the last N days count
   half_life_days: 3                             # a mention's weight halves every N days
-  source_weight: {hn: 1.0, forem: 0.8}
+  source_weight: {hn: 1.0, forem: 0.8, bluesky: 0.7, x: 0.6, instagram: 0.5}
   points_weight: 1.0                            # engagement = points_weight x ln(1 + points)
   comments_weight: 0.5                          #            + comments_weight x ln(1 + comments)
+  velocity_weight: 0.5                          #            + velocity_weight x ln(1 + points gained per day since first observed)
+  max_observations: 8                           # observations kept per mention (first and the latest ones) to measure that
+  same_author_factor: 0.25                      # a second and later mention of a repository by one author counts this fraction
   max_mentions_per_repo: 5                      # only the strongest N mentions count
-  second_source_bonus: 0.25                     # x (1 + bonus) when both sources mention it
+  second_source_bonus: 0.25                     # x (1 + bonus x (corroborating sources - 1))
+  max_corroborating_sources: 3                  # the bonus stops growing past this many sources
   max_ranked: 50
 
 reconcile:
@@ -77,3 +116,4 @@ reconcile:
   # if it exists, is not a fork, is not archived and scores at least this much.
   pool_min_score: 4.0
   max_pool_additions: 20                        # per cycle, highest-ranked first
+  max_candidates: 30                            # data/radar/candidates.jsonl: the strongest N repositories new to The Source

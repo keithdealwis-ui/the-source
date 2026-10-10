@@ -1,0 +1,313 @@
+{
+ "posts": [
+  {
+   "uri": "at://did:plc:aaaa1111/app.bsky.feed.post/3lxa1",
+   "cid": "bafy3lxa1",
+   "author": {
+    "did": "did:plc:aaaa1111",
+    "handle": "3lxa1.example.test",
+    "displayName": "Someone Real",
+    "createdAt": "2026-10-05T10:00:00.000Z"
+   },
+   "record": {
+    "$type": "app.bsky.feed.post",
+    "createdAt": "2026-10-05T10:00:00.000Z",
+    "text": "a post nobody may store",
+    "langs": [
+     "en"
+    ],
+    "facets": [
+     {
+      "index": {
+       "byteStart": 0,
+       "byteEnd": 5
+      },
+      "features": [
+       {
+        "$type": "app.bsky.richtext.facet#link",
+        "uri": "https://github.com/fresh/social-thing"
+       }
+      ]
+     }
+    ]
+   },
+   "replyCount": 8,
+   "repostCount": 30,
+   "likeCount": 120,
+   "quoteCount": 0,
+   "bookmarkCount": 0,
+   "indexedAt": "2026-10-05T10:00:00.000Z",
+   "labels": []
+  },
+  {
+   "uri": "at://did:plc:bbbb2222/app.bsky.feed.post/3lxb2",
+   "cid": "bafy3lxb2",
+   "author": {
+    "did": "did:plc:bbbb2222",
+    "handle": "3lxb2.example.test",
+    "displayName": "Someone Real",
+    "createdAt": "2026-10-05T12:00:00.123Z"
+   },
+   "record": {
+    "$type": "app.bsky.feed.post",
+    "createdAt": "2026-10-05T12:00:00.123Z",
+    "text": "a post nobody may store",
+    "langs": [
+     "en"
+    ],
+    "facets": [],
+    "embed": {
+     "$type": "app.bsky.embed.external",
+     "external": {
+      "uri": "https://github.com/Fresh/Social-Thing/tree/main",
+      "title": "t",
+      "description": "d"
+     }
+    }
+   },
+   "replyCount": 3,
+   "repostCount": 10,
+   "likeCount": 80,
+   "quoteCount": 0,
+   "bookmarkCount": 0,
+   "indexedAt": "2026-10-05T12:00:00.123Z",
+   "labels": []
+  },
+  {
+   "uri": "at://did:plc:cccc3333/app.bsky.feed.post/3lxc3",
+   "cid": "bafy3lxc3",
+   "author": {
+    "did": "did:plc:cccc3333",
+    "handle": "3lxc3.example.test",
+    "displayName": "Someone Real",
+    "createdAt": "2026-10-04T09:00:00.000Z"
+   },
+   "record": {
+    "$type": "app.bsky.feed.post",
+    "createdAt": "2026-10-04T09:00:00.000Z",
+    "text": "a post nobody may store",
+    "langs": [
+     "en"
+    ],
+    "facets": [
+     {
+      "index": {
+       "byteStart": 0,
+       "byteEnd": 5
+      },
+      "features": [
+       {
+        "$type": "app.bsky.richtext.facet#link",
+        "uri": "https://github.com/fresh/social-thing#readme"
+       }
+      ]
+     }
+    ]
+   },
+   "replyCount": 2,
+   "repostCount": 5,
+   "likeCount": 60,
+   "quoteCount": 0,
+   "bookmarkCount": 0,
+   "indexedAt": "2026-10-04T09:00:00.000Z",
+   "labels": []
+  },
+  {
+   "uri": "at://did:plc:aaaa1111/app.bsky.feed.post/3lxa4",
+   "cid": "bafy3lxa4",
+   "author": {
+    "did": "did:plc:aaaa1111",
+    "handle": "3lxa4.example.test",
+    "displayName": "Someone Real",
+    "createdAt": "2026-10-05T18:00:00.000Z"
+   },
+   "record": {
+    "$type": "app.bsky.feed.post",
+    "createdAt": "2026-10-05T18:00:00.000Z",
+    "text": "a post nobody may store",
+    "langs": [
+     "en"
+    ],
+    "facets": [
+     {
+      "index": {
+       "byteStart": 0,
+       "byteEnd": 5
+      },
+      "features": [
+       {
+        "$type": "app.bsky.richtext.facet#link",
+        "uri": "https://github.com/fresh/social-thing"
+       }
+      ]
+     }
+    ]
+   },
+   "replyCount": 1,
+   "repostCount": 2,
+   "likeCount": 95,
+   "quoteCount": 0,
+   "bookmarkCount": 0,
+   "indexedAt": "2026-10-05T18:00:00.000Z",
+   "labels": []
+  },
+  {
+   "uri": "at://did:plc:dddd4444/app.bsky.feed.post/3lxd5",
+   "cid": "bafy3lxd5",
+   "author": {
+    "did": "did:plc:dddd4444",
+    "handle": "3lxd5.example.test",
+    "displayName": "Someone Real",
+    "createdAt": "2026-10-05T08:00:00.000Z"
+   },
+   "record": {
+    "$type": "app.bsky.feed.post",
+    "createdAt": "2026-10-05T08:00:00.000Z",
+    "text": "a post nobody may store",
+    "langs": [
+     "en"
+    ],
+    "facets": [
+     {
+      "index": {
+       "byteStart": 0,
+       "byteEnd": 5
+      },
+      "features": [
+       {
+        "$type": "app.bsky.richtext.facet#link",
+        "uri": "https://github.com/old-org/tool"
+       }
+      ]
+     }
+    ]
+   },
+   "replyCount": 4,
+   "repostCount": 1,
+   "likeCount": 40,
+   "quoteCount": 0,
+   "bookmarkCount": 0,
+   "indexedAt": "2026-10-05T08:00:00.000Z",
+   "labels": []
+  },
+  {
+   "uri": "at://did:plc:eeee5555/app.bsky.feed.post/3lxe6",
+   "cid": "bafy3lxe6",
+   "author": {
+    "did": "did:plc:eeee5555",
+    "handle": "3lxe6.example.test",
+    "displayName": "Someone Real",
+    "createdAt": "2026-10-05T08:30:00.000Z"
+   },
+   "record": {
+    "$type": "app.bsky.feed.post",
+    "createdAt": "2026-10-05T08:30:00.000Z",
+    "text": "a post nobody may store",
+    "langs": [
+     "en"
+    ],
+    "facets": [
+     {
+      "index": {
+       "byteStart": 0,
+       "byteEnd": 5
+      },
+      "features": [
+       {
+        "$type": "app.bsky.richtext.facet#link",
+        "uri": "https://github.com/tiny/mention"
+       }
+      ]
+     }
+    ]
+   },
+   "replyCount": 0,
+   "repostCount": 0,
+   "likeCount": 2,
+   "quoteCount": 0,
+   "bookmarkCount": 0,
+   "indexedAt": "2026-10-05T08:30:00.000Z",
+   "labels": []
+  },
+  {
+   "uri": "at://did:plc:ffff6666/app.bsky.feed.post/3lxf7",
+   "cid": "bafy3lxf7",
+   "author": {
+    "did": "did:plc:ffff6666",
+    "handle": "3lxf7.example.test",
+    "displayName": "Someone Real",
+    "createdAt": "2026-09-20T08:30:00.000Z"
+   },
+   "record": {
+    "$type": "app.bsky.feed.post",
+    "createdAt": "2026-09-20T08:30:00.000Z",
+    "text": "a post nobody may store",
+    "langs": [
+     "en"
+    ],
+    "facets": [
+     {
+      "index": {
+       "byteStart": 0,
+       "byteEnd": 5
+      },
+      "features": [
+       {
+        "$type": "app.bsky.richtext.facet#link",
+        "uri": "https://github.com/stale/thing"
+       }
+      ]
+     }
+    ]
+   },
+   "replyCount": 9,
+   "repostCount": 9,
+   "likeCount": 500,
+   "quoteCount": 0,
+   "bookmarkCount": 0,
+   "indexedAt": "2026-09-20T08:30:00.000Z",
+   "labels": []
+  },
+  {
+   "uri": "at://did:plc:gggg7777/app.bsky.feed.post/3lxg8",
+   "cid": "bafy3lxg8",
+   "author": {
+    "did": "did:plc:gggg7777",
+    "handle": "3lxg8.example.test",
+    "displayName": "Someone Real",
+    "createdAt": "2026-10-05T08:30:00.000Z"
+   },
+   "record": {
+    "$type": "app.bsky.feed.post",
+    "createdAt": "2026-10-05T08:30:00.000Z",
+    "text": "a post nobody may store",
+    "langs": [
+     "en"
+    ],
+    "facets": [
+     {
+      "index": {
+       "byteStart": 0,
+       "byteEnd": 5
+      },
+      "features": [
+       {
+        "$type": "app.bsky.richtext.facet#link",
+        "uri": "https://example.com/not-a-repo"
+       }
+      ]
+     }
+    ]
+   },
+   "replyCount": 1,
+   "repostCount": 1,
+   "likeCount": 70,
+   "quoteCount": 0,
+   "bookmarkCount": 0,
+   "indexedAt": "2026-10-05T08:30:00.000Z",
+   "labels": []
+  }
+ ],
+ "hitsTotal": 8,
+ "cursor": null
+}

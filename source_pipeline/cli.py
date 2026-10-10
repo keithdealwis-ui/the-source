@@ -52,7 +52,7 @@
     python -m source_pipeline radar-collect        ask Hacker News and Forem, resolve, rank (network)
     python -m source_pipeline radar-build [--as-of TS]   data/radar/radar.jsonl from what is held; no network
     python -m source_pipeline radar-validate       rebuild-equals-committed, schema, released methodology
-    python -m source_pipeline radar [--key KEY]... [--source hn|forem]
+    python -m source_pipeline radar [--key KEY]... [--source hn|forem|x|instagram] [--candidates]
                               [--status canonical|corpus|candidate|not_found|unresolved] [--limit N]
                                                    read the committed radar, with what each source answered
 
@@ -223,7 +223,7 @@ def _radar(args, ap) -> int:
         out = radar.validate()
     else:
         try:
-            out = radar.retrieve(args.key, args.source, args.status, args.limit)
+            out = radar.retrieve(args.key, args.source, args.status, args.limit, args.candidates)
         except (ValueError, FileNotFoundError) as exc:
             ap.error(str(exc))
     print(json.dumps(out, indent=2, sort_keys=True))
@@ -277,6 +277,7 @@ def main(argv=None) -> int:
     ap.add_argument("--as-of", help="radar-build: rank as of this UTC timestamp (default: the last collection's)")
     ap.add_argument("--source", help="radar: only entries mentioned on this source")
     ap.add_argument("--status", help="radar: only entries with this reconciliation status")
+    ap.add_argument("--candidates", action="store_true", help="radar: the daily list of repositories new to The Source")
     ap.add_argument("--runs-dir", help="runs-latest: read cycle records from here (default: runs/)")
     ap.add_argument("--run-id", help="cycle-work: internal")
     ap.add_argument("--result", help="cycle-work: internal")

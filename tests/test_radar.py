@@ -20,9 +20,11 @@ class FakeHttp:
     def __init__(self, responses):
         self.responses, self.calls, self.seen = responses, 0, []
 
-    def call(self, url, data=None, auth=False, tries=5):
+    def call(self, url, data=None, auth=False, tries=5, token=None):
         self.calls += 1
         self.seen.append(url)
+        if token:
+            self.tokens = getattr(self, "tokens", []) + [token]
         return self.responses.get(url, (404, None))
 
 
@@ -99,8 +101,25 @@ def test_links_are_normalised_deduplicated_and_capped():
 
 # ---------------------------------------------------------------- collection
 
-def _sources(hn_items=None, forem_tags=None, forem_bodies=None, hn_lists=None):
+def _bluesky_urls(as_of=AS_OF, cfg=None):
+    """The exact search addresses the collector asks, on each configured host."""
+    import urllib.parse
+    from datetime import timedelta
+
+    src = (cfg or radar.load_config())["sources"]["bluesky"]
+    since = radar.iso(as_of - timedelta(days=float(src["max_age_days"])))
+    out = []
+    for q in src["queries"]:
+        params = urllib.parse.urlencode({"q": q, "domain": src["domain"], "sort": src.get("sort", "top"),
+                                         "since": since, "limit": int(src["limit"])})
+        out += [f"{h.rstrip('/')}/xrpc/app.bsky.feed.searchPosts?{params}" for h in src["hosts"]]
+    return out
+
+
+def _sources(hn_items=None, forem_tags=None, forem_bodies=None, hn_lists=None, bluesky=None):
     r = {}
+    for u in _bluesky_urls():
+        r[u] = (200, bluesky if bluesky is not None else {"posts": []})
     for name in ("showstories", "beststories", "topstories"):
         r[f"{HN}/{name}.json"] = (200, (hn_lists or {}).get(name, []))
     for i, it in (hn_items or {}).items():
@@ -156,8 +175,12 @@ def test_network_refusal_is_a_recorded_source_failure(monkeypatch):
     from source_pipeline.enrich import Http
 
     monkeypatch.setenv("THE_SOURCE_NO_NETWORK", "1")
+    for k in ("X_BEARER_TOKEN", "INSTAGRAM_ACCESS_TOKEN", "INSTAGRAM_USER_ID"):
+        monkeypatch.delenv(k, raising=False)
     got = radar.collect(AS_OF, Http())
-    assert {s["status"] for s in got["sources"].values()} == {"failed"} and got["mentions"] == []
+    assert {s: v["status"] for s, v in got["sources"].items()} == {
+        "hn": "failed", "forem": "failed", "bluesky": "failed", "x": "unconfigured", "instagram": "unconfigured"}
+    assert got["mentions"] == []
 
 
 def test_merge_keeps_the_newest_observation_and_prunes_old_mentions():
@@ -165,8 +188,11 @@ def test_merge_keeps_the_newest_observation_and_prunes_old_mentions():
     new = _mention("hn", 1, ["github.com/a/b"], points=90, observed="2026-10-06T00:00:00Z")
     stale = _mention("forem", 2, ["github.com/c/d"], age=40)
     got = radar.merge_mentions([old, stale], [new], AS_OF, 30)
-    assert got == [new]
-    assert radar.merge_mentions([new], [old], AS_OF, 30) == [new]          # order of arrival does not matter
+    expect = {**new, "observations": [{"at": "2026-10-05T00:00:00Z", "points": 10, "comments": 10},
+                                      {"at": "2026-10-06T00:00:00Z", "points": 90, "comments": 10}]}
+    assert got == [expect]                                                   # the earlier reading is kept, oldest first
+    assert radar.merge_mentions([new], [old], AS_OF, 30) == [expect]       # order of arrival does not matter
+    assert radar.merge_mentions([new], [new], AS_OF, 30) == [new]          # the same reading twice is one observation
 
 
 # ---------------------------------------------------------------- ranking

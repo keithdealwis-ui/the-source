@@ -31,11 +31,15 @@
     }
   },
   "counts": {
+    "candidates": 30,
     "mentions_held": 103,
     "mentions_in_window": 84,
     "mentions_in_window_by_source": {
+      "bluesky": 0,
       "forem": 29,
-      "hn": 55
+      "hn": 55,
+      "instagram": 0,
+      "x": 0
     },
     "ranked": 50,
     "ranked_by_status": {
@@ -50,9 +54,10 @@
     "truncated": 43
   },
   "files": {
+    "candidates.jsonl": "7fc3ac6ef2661b17e18afebb47d6686028877c93dcfbee7301c71a0997f4537b",
     "collection.json": "31cd319dfdf54cba17b1954bcacf128ac7bb9e8137746ff8945e4edd68328118",
     "mentions.jsonl": "6f8b8df8ac038275950f04a8800aa1ccf957f93f1d99de24c32510ebda0f36ea",
-    "radar.jsonl": "1fae9e70f0193a480a1bcf3b4a36984667550dca24cc0a780b7e5cbc7563b49a",
+    "radar.jsonl": "89cf8638575ff0964a0f78cc56e3b63102f513ca00afcd476a05cfd20746ae2b",
     "resolved.jsonl": "9a83a119f5d197bfb2ce1f9f406a0d8ccd46be06fffc10979b860738c47168f7"
   },
   "inputs": {
@@ -64,8 +69,8 @@
   "methodology": {
     "doc": "docs/RADAR.md",
     "id": "the-source.radar",
-    "parameters_sha256": "9c894b0e2a2ec530af445079f265d18fcd1218d838c70b28aae510861aaf6512",
-    "version": "1.0.0"
+    "parameters_sha256": "9077af4dda26aa7a8732c52b34327c5fe0e4d98e060c7c7d1a94ed9fe12d5077",
+    "version": "1.1.0"
   },
   "schema": "the-source.radar/1",
   "window_days": 7

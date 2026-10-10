@@ -85,6 +85,11 @@ jobs:
         env:
           # A dedicated read-only token raises the API budget; the job token works without it.
           GITHUB_TOKEN: ${{ secrets.SOURCE_GITHUB_TOKEN || github.token }}
+          # Community Radar social sources (KEI-913). Each stays `unconfigured` until its
+          # secret exists; adding one is a credential decision, not a code change.
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
           TRIGGER: ${{ github.event_name == 'schedule' && 'schedule' || 'manual' }}
           DRILL: ${{ inputs.drill_fail_at }}
         run: |

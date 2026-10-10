@@ -1,0 +1,122 @@
+{
+ "data": [
+  {
+   "id": "1900000000000000001",
+   "author_id": "1001",
+   "created_at": "2026-10-05T11:00:00.000Z",
+   "text": "text nobody may store",
+   "public_metrics": {
+    "retweet_count": 50,
+    "reply_count": 20,
+    "like_count": 300,
+    "quote_count": 0,
+    "bookmark_count": 0,
+    "impression_count": 1000
+   },
+   "entities": {
+    "urls": [
+     {
+      "start": 0,
+      "end": 23,
+      "url": "https://t.co/abc",
+      "expanded_url": "https://github.com/fresh/social-thing",
+      "unwound_url": "https://github.com/fresh/social-thing",
+      "display_url": "github.com/fresh/social-thing"
+     }
+    ]
+   }
+  },
+  {
+   "id": "1900000000000000002",
+   "author_id": "1002",
+   "created_at": "2026-10-05T13:00:00.000Z",
+   "text": "text nobody may store",
+   "public_metrics": {
+    "retweet_count": 3,
+    "reply_count": 2,
+    "like_count": 45,
+    "quote_count": 0,
+    "bookmark_count": 0,
+    "impression_count": 1000
+   },
+   "entities": {
+    "urls": [
+     {
+      "start": 0,
+      "end": 23,
+      "url": "https://t.co/abc",
+      "expanded_url": "https://github.com/old-org/tool",
+      "unwound_url": "https://github.com/old-org/tool",
+      "display_url": "github.com/old-org/tool"
+     }
+    ]
+   }
+  },
+  {
+   "id": "1900000000000000003",
+   "author_id": "1003",
+   "created_at": "2026-10-05T13:30:00.000Z",
+   "text": "text nobody may store",
+   "public_metrics": {
+    "retweet_count": 0,
+    "reply_count": 0,
+    "like_count": 3,
+    "quote_count": 0,
+    "bookmark_count": 0,
+    "impression_count": 1000
+   },
+   "entities": {
+    "urls": [
+     {
+      "start": 0,
+      "end": 23,
+      "url": "https://t.co/abc",
+      "expanded_url": "https://github.com/fresh/social-thing",
+      "unwound_url": "https://github.com/fresh/social-thing",
+      "display_url": "github.com/fresh/social-thing"
+     }
+    ]
+   }
+  },
+  {
+   "id": "1900000000000000004",
+   "author_id": "1001",
+   "created_at": "2026-10-06T09:00:00.000Z",
+   "text": "text nobody may store",
+   "public_metrics": {
+    "retweet_count": 0,
+    "reply_count": 0,
+    "like_count": 10,
+    "quote_count": 0,
+    "bookmark_count": 0,
+    "impression_count": 1000
+   },
+   "entities": {
+    "urls": [
+     {
+      "start": 0,
+      "end": 23,
+      "url": "https://t.co/abc",
+      "expanded_url": "https://example.com/blog",
+      "unwound_url": "https://example.com/blog",
+      "display_url": "example.com/blog"
+     }
+    ]
+   }
+  }
+ ],
+ "includes": {
+  "users": [
+   {
+    "id": "1001",
+    "name": "Someone Real",
+    "username": "someone"
+   }
+  ]
+ },
+ "meta": {
+  "newest_id": "1900000000000000004",
+  "oldest_id": "1900000000000000001",
+  "result_count": 4
+ }
+}
