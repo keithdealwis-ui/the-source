@@ -77,6 +77,9 @@ def test_bluesky_reads_links_and_opaque_authors_never_text_or_handles(monkeypatc
         assert forbidden not in dumped
     st = got["sources"]["bluesky"]
     assert st["status"] == "ok" and st["host"] == "https://api.bsky.app" and st["listed"] == 8 and st["mentions"] == 5
+    public, api = _bluesky_urls()
+    assert [(u.split("/xrpc")[0], t) for u, t in http.tries if "searchPosts" in u] == [
+        ("https://public.api.bsky.app", 1), ("https://api.bsky.app", 5)]            # one ask, then the usual retries
     assert got["sources"]["x"]["status"] == "unconfigured" and got["sources"]["instagram"]["status"] == "unconfigured"
     assert not any("api.x.com" in u or "graph.facebook.com" in u for u in http.seen)   # asked nothing
 

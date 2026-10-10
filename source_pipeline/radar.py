@@ -363,8 +363,12 @@ def _bluesky(http, src: dict, extract: dict, as_of: datetime, observed: str) -> 
         params = urllib.parse.urlencode({"q": q, "domain": src["domain"], "sort": src.get("sort", "top"),
                                          "since": since, "limit": int(src["limit"])})
         doc, st = None, 0
-        for host in src["hosts"]:  # the documented public AppView first; the next host if it refuses the method
-            st, got = http.call(f"{host.rstrip('/')}/xrpc/app.bsky.feed.searchPosts?{params}")
+        hosts = list(src["hosts"])
+        for i, host in enumerate(hosts):
+            # the documented public AppView first, asked once (a refusal of the method is an answer,
+            # not an outage); the next host gets the client's usual retries
+            st, got = http.call(f"{host.rstrip('/')}/xrpc/app.bsky.feed.searchPosts?{params}",
+                                tries=1 if i < len(hosts) - 1 else 5)
             if st == 200 and isinstance(got, dict):
                 doc, host_used = got, host
                 break

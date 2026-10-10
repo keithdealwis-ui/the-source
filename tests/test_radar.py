@@ -23,6 +23,7 @@ class FakeHttp:
     def call(self, url, data=None, auth=False, tries=5, token=None):
         self.calls += 1
         self.seen.append(url)
+        self.tries = getattr(self, "tries", []) + [(url, tries)]
         if token:
             self.tokens = getattr(self, "tokens", []) + [token]
         return self.responses.get(url, (404, None))
