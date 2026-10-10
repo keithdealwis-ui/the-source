@@ -1,0 +1,303 @@
+{
+  "attempt": 1,
+  "canonical": {
+    "changed": false,
+    "commit_tag": null,
+    "dataset_version_after": "2d71b41e3248c770",
+    "dataset_version_before": "2d71b41e3248c770"
+  },
+  "counts": {},
+  "cycle_key": "manual-20261010T132630Z",
+  "ended_at": "2026-10-10T13:29:26Z",
+  "error": "RuntimeError: 4 host lookups failed during live verification (e.g. ['403 https://gitlab.com/api/v4/projects/baserow%2Fbaserow/repository/commits', '403 https://gitlab.com/api/v4/projects/bramw%2Fbaserow/repository/commits', '403 https://gitlab.com/api/v4/projects/glitchtip%2Fglitchtip-backend/repository/commits']); the snapshot is not trusted. Run verify again.",
+  "failures": [
+    {
+      "key": "gitlab.com/baserow/baserow",
+      "outcome": "kept previous deep observation",
+      "step": "deep_enrichment"
+    },
+    {
+      "key": "gitlab.com/bramw/baserow",
+      "outcome": "kept previous deep observation",
+      "step": "deep_enrichment"
+    },
+    {
+      "key": "gitlab.com/glitchtip/glitchtip-backend",
+      "outcome": "kept previous deep observation",
+      "step": "deep_enrichment"
+    },
+    {
+      "key": "gitlab.com/mayan-edms/mayan-edms",
+      "outcome": "kept previous deep observation",
+      "step": "deep_enrichment"
+    }
+  ],
+  "retries": {
+    "deep_enrichment": 2,
+    "light_refresh": 0
+  },
+  "run_id": "manual-20261010T132630Z-manual-a1",
+  "schedule": {
+    "cadence": "daily",
+    "time": "03:00",
+    "timezone": "Asia/Dubai",
+    "weekday": null,
+    "window_hours": 4
+  },
+  "started_at": "2026-10-10T13:26:30Z",
+  "status": "failed",
+  "strategies": [
+    {
+      "advanced": 2,
+      "detail": [
+        {
+          "from": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+          "source_id": "solvohq",
+          "status": "unchanged"
+        },
+        {
+          "entries": [
+            1353,
+            1353
+          ],
+          "from": "81036e82a6e753083936749b6cb9a83a3b5cb535",
+          "source_id": "awesome-selfhosted",
+          "status": "advanced",
+          "to": "3558dfef4c53c28d0c2848445c7732ffd9f06f4d"
+        },
+        {
+          "from": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+          "source_id": "runacapital",
+          "status": "unchanged"
+        },
+        {
+          "from": "3f29e5943fd9fc9910cd500134d5c6a6836a52ce",
+          "source_id": "opensaasdirectory",
+          "status": "unchanged"
+        },
+        {
+          "from": "c4cc558b7edf50a5efb4e3fd0d867292c2ae6b63",
+          "source_id": "emmraan",
+          "status": "unchanged"
+        },
+        {
+          "from": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+          "source_id": "btwso",
+          "status": "unchanged"
+        },
+        {
+          "from": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+          "source_id": "diegoleme",
+          "status": "unchanged"
+        },
+        {
+          "entries": [
+            64,
+            64
+          ],
+          "from": "3c314f611cf2c2cdbea4ffe7f9be96ba5e690837",
+          "source_id": "altstack",
+          "status": "advanced",
+          "to": "07556427afbb1237617ea35d975eaea9b15029cf"
+        },
+        {
+          "from": "3a69df61b34eea1b314103ff9afa9269cdebfd8a",
+          "source_id": "fossalt",
+          "status": "unchanged"
+        }
+      ],
+      "id": "upstream_lists",
+      "kept": [],
+      "sources": 9,
+      "status": "ok"
+    },
+    {
+      "admitted_entries": 1,
+      "id": "intake_ledger",
+      "ledger_version": "feb7d601b43d46fdbc692e43a3082998c61cc659",
+      "status": "ok"
+    },
+    {
+      "as_of": "2026-10-10T13:26:30Z",
+      "found": 610,
+      "http_calls": 33,
+      "id": "light_refresh",
+      "repositories": 625,
+      "retries": 0,
+      "status": "ok",
+      "still_failing": []
+    },
+    {
+      "errors": [],
+      "id": "discovery_search",
+      "known_in_corpus": 42,
+      "lanes": [
+        {
+          "id": "gh-topic-self-hosted-new",
+          "provider": "github_search",
+          "query": "topic:self-hosted created:>=2026-10-03 stars:>=50",
+          "returned": 7,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-open-source-alternative-new",
+          "provider": "github_search",
+          "query": "topic:open-source-alternative created:>=2026-10-03 stars:>=50",
+          "returned": 0,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-alternative-active",
+          "provider": "github_search",
+          "query": "topic:alternative pushed:>=2026-10-03 stars:>=50 archived:false",
+          "returned": 18,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-saas-alternative",
+          "provider": "github_search",
+          "query": "topic:saas-alternative stars:>=50 archived:false",
+          "returned": 2,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-selfhosted-active",
+          "provider": "github_search",
+          "query": "topic:selfhosted pushed:>=2026-10-03 stars:>=50 archived:false",
+          "returned": 153,
+          "status": "ok"
+        },
+        {
+          "id": "ecosystems-awesome-selfhosted",
+          "provider": "ecosystems_awesome",
+          "query": "https://github.com/awesome-selfhosted/awesome-selfhosted",
+          "returned": 287,
+          "status": "ok"
+        }
+      ],
+      "new_candidates": [
+        "github.com/jameshaworthcs/countinghouse",
+        "github.com/rociiu/talorys"
+      ],
+      "new_count": 2,
+      "pool_size": 482,
+      "returned": 467,
+      "seen_again": 416,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-10",
+      "degraded_providers": [],
+      "id": "corroboration",
+      "providers": {
+        "depsdev": {
+          "agreement": 0.9732,
+          "answered": 120,
+          "asked": 120,
+          "canonical_effect": "none: flags only; the host's own answer stays canonical",
+          "coverage": 0.9333,
+          "disagreeing_keys": {
+            "github.com/linkedin/oncall": [
+              "licence"
+            ],
+            "github.com/selefra/selefra": [
+              "stars",
+              "licence"
+            ],
+            "github.com/sonatype/nexus-public": [
+              "licence"
+            ]
+          },
+          "disagreements_by_field": {
+            "licence": 3,
+            "stars": 1
+          },
+          "errors": 0,
+          "not_covered": [
+            "github.com/aster-privacy/aster-mail",
+            "github.com/crowddotdev/crowd.dev",
+            "github.com/gamestonkterminal/gamestonkterminal",
+            "github.com/metriql/metriql",
+            "github.com/pagure/pagure",
+            "github.com/quackbackio/quackback",
+            "github.com/rodrgds/openpost",
+            "github.com/tracardi/tracardi"
+          ],
+          "reason": null,
+          "status": "ok",
+          "trusted_for": [
+            "existence",
+            "licence (SPDX)",
+            "star order of magnitude"
+          ]
+        },
+        "ecosystems": {
+          "agreement": 1.0,
+          "answered": 120,
+          "asked": 120,
+          "canonical_effect": "none: flags only; the host's own answer stays canonical",
+          "coverage": 1.0,
+          "disagreeing_keys": {},
+          "disagreements_by_field": {},
+          "errors": 0,
+          "not_covered": [],
+          "reason": null,
+          "status": "ok",
+          "trusted_for": [
+            "existence",
+            "archive state",
+            "licence",
+            "repository id (uuid = GitHub databaseId)",
+            "star order of magnitude"
+          ]
+        }
+      },
+      "sample": 120,
+      "status": "ok"
+    },
+    {
+      "by_class": {
+        "changed": 2,
+        "stale": 108,
+        "unchanged": 515
+      },
+      "changed": [
+        {
+          "key": "github.com/ghostfolio/ghostfolio",
+          "reasons": [
+            "release 3.82.0 -> 3.83.0"
+          ]
+        },
+        {
+          "key": "github.com/lightdash/lightdash",
+          "reasons": [
+            "release 2.543.0 -> 2.546.0"
+          ]
+        }
+      ],
+      "deferred_rotation": 0,
+      "http_calls": 379,
+      "id": "deep_enrichment",
+      "kept_previous_after_failure": [
+        "gitlab.com/baserow/baserow",
+        "gitlab.com/bramw/baserow",
+        "gitlab.com/glitchtip/glitchtip-backend",
+        "gitlab.com/mayan-edms/mayan-edms"
+      ],
+      "retries": 2,
+      "selected": 110,
+      "status": "degraded"
+    }
+  ],
+  "timings_s": {
+    "build_validate": 0.1,
+    "corroboration": 9.1,
+    "deep_enrichment": 122.4,
+    "discovery_search": 9.1,
+    "intake_ledger": 2.4,
+    "light_refresh": 19.5,
+    "upstream_lists": 13.0
+  },
+  "transitions": {},
+  "trigger": "manual"
+}
