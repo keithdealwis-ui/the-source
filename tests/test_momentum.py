@@ -4,7 +4,7 @@ from __future__ import annotations
 import copy
 import json
 import shutil
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 import pytest
@@ -301,7 +301,10 @@ def test_cycle_step_on_the_committed_history_plus_a_new_day(tmp_path, monkeypatc
     last = daily.history_days()[-1]
     today = (date.fromisoformat(last) + timedelta(days=1)).isoformat()
     rows = daily.load_day(last)
-    as_of = f"{last}T23:40:00Z"
+    # a full day after the last snapshot, whatever time of day that one ran: a manual cycle
+    # late in the day must not make "tomorrow" fall under the window's min_span_ratio
+    last_as_of = common.read_json(common.DATA / "history" / "INDEX.json")["days"][last]["as_of"]
+    as_of = (datetime.strptime(last_as_of, "%Y-%m-%dT%H:%M:%SZ") + timedelta(days=1)).strftime("%Y-%m-%dT%H:%M:%SZ")
     projects = {k: {**r, "fetched_at": as_of, "stars": (r["stars"] + 7) if r.get("stars") is not None else None}
                 for k, r in rows.items()}
     daily.write_history(today, {"as_of": as_of, "projects": projects}, {}, "next", "run-next")
