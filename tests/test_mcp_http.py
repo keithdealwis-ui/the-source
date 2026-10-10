@@ -96,3 +96,18 @@ def test_telemetry_file_holds_counts_only(endpoint):
     text = path.read_text()
     assert "zz-private-query-77" not in text and "198.51.100.7" not in text
     assert json.loads(text)["schema"] == "the-source.mcp-telemetry/1"
+
+
+def test_background_flush_writes_the_last_window_without_another_request(endpoint, monkeypatch):
+    import time
+    port, app, path = endpoint
+    monkeypatch.setattr(H, "TELEMETRY_EVERY_S", 0.2)
+    app.flusher()
+    _req(port, "POST", "/mcp", {"jsonrpc": "2.0", "id": 1, "method": "tools/call",
+                                "params": {"name": "source_dataset_info", "arguments": {}}},
+         {"MCP-Protocol-Version": "2025-06-18"})
+    for _ in range(50):
+        if path.exists() and "source_dataset_info" in path.read_text():
+            break
+        time.sleep(0.1)
+    assert "source_dataset_info" in path.read_text()

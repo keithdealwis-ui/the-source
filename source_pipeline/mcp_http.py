@@ -29,6 +29,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import signal
 import sys
 import tempfile
 import threading
@@ -72,6 +73,7 @@ class App:
         self.slots = threading.BoundedSemaphore(max_inflight)
         self.engine = threading.Lock()  # the engine holds per-request protocol state; one call at a time
         self.last_flush = 0.0
+        self.dirty = False
 
     def answer(self, msg, protocol):
         """One JSON-RPC message under one protocol version -> response object or None."""
@@ -88,13 +90,24 @@ class App:
                 return M._err(msg.get("id") if isinstance(msg, dict) else None, -32603, "Internal error")
             finally:
                 s.protocol = None
-                self.maybe_flush()
+                self.dirty = True
+
+    def flusher(self):
+        """Write the counters every TELEMETRY_EVERY_S while anything changed, so the last window is never lost."""
+        def run():
+            while True:
+                time.sleep(TELEMETRY_EVERY_S)
+                if self.dirty:
+                    self.maybe_flush(force=True)
+        threading.Thread(target=run, daemon=True, name="telemetry-flush").start()
 
     def maybe_flush(self, force=False):
         if not self.telemetry_path or (not force and time.monotonic() - self.last_flush < TELEMETRY_EVERY_S):
             return
         self.last_flush = time.monotonic()
-        data = json.dumps(self.server.telemetry.snapshot(), sort_keys=True, indent=1)
+        with self.engine:
+            self.dirty = False
+            data = json.dumps(self.server.telemetry.snapshot(), sort_keys=True, indent=1)
         d = self.telemetry_path.parent
         fd, tmp = tempfile.mkstemp(dir=d, prefix=".telemetry-")
         with os.fdopen(fd, "w") as fh:
@@ -207,6 +220,8 @@ def main(argv=None) -> int:
         return 2
     app = App(server, a.allow_origin, a.telemetry, a.rate_per_min)
     httpd = serve(app, a.host, a.port)
+    app.flusher()
+    signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt))
     print(f"the-source-mcp: serving dataset {server.layer.dataset_version} on http://{a.host}:{a.port}/mcp",
           file=sys.stderr)
     try:
