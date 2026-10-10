@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-10T00:41:48Z",
+  "as_of": "2026-10-10T10:22:56Z",
   "counts": {
     "measured_any_window": 610,
     "projects": 625
@@ -8,9 +8,9 @@
     "1": {
       "acceleration": {
         "labels": {
-          "accelerating": 83,
+          "accelerating": 99,
           "decelerating": 142,
-          "steady": 385
+          "steady": 369
         },
         "measurable_from": "2026-10-04",
         "prior_base": {
@@ -38,9 +38,9 @@
       "calendar_days_in_window": 2,
       "measurable_from": "2026-10-03",
       "momentum": {
-        "declining": 13,
-        "flat": 458,
-        "rising": 132,
+        "declining": 10,
+        "flat": 454,
+        "rising": 139,
         "surging": 7
       },
       "projects": {
@@ -113,9 +113,9 @@
       "measurable_from": "2026-10-09",
       "momentum": {
         "declining": 2,
-        "flat": 441,
-        "rising": 161,
-        "surging": 5
+        "flat": 443,
+        "rising": 158,
+        "surging": 6
       },
       "projects": {
         "identity_changed": 0,
@@ -161,10 +161,10 @@
     }
   },
   "files": {
-    "projects.jsonl": "3039e72c7a2bac986e2a72918e96a0cb08c7cee11b57829d8fdfebb987787a97"
+    "projects.jsonl": "3344ab4d3c174d3746ae75ccac3d4c3dada9f6eecd2beb4387785f91133cd764"
   },
   "history": {
-    "dataset_version": "a6e5bef0eaf47a24",
+    "dataset_version": "2d71b41e3248c770",
     "day_sha256": {
       "2026-10-03": "1fa4fbc66dce0baa18d2137ccdf6d402a3ec0908597a199bcfdd5a3caf3267bb",
       "2026-10-04": "7d014f220b9ea1de9db075f9ef04e3369a31690da58b4d9f3b084e90f4fbe69d",
@@ -173,7 +173,7 @@
       "2026-10-07": "5eacab70e9aba853157d171edd1e8f34472ef5b13cb11a54407715191e459265",
       "2026-10-08": "34af132680cde4a0b3cd73bbab419fedef6c44d31bf6aff5456a962b86bba895",
       "2026-10-09": "89e2f50a3c7aa392ede2b92b59da29bb2f02b1203356d5373b87488663dde577",
-      "2026-10-10": "69592241a3ea6e46c4d9cbd310a035eabff25ee07e883d77cfffc0b0687eeb6d"
+      "2026-10-10": "25e1ac39ff64522f988299abf50cb8cb94116d570acd67768857617c13e8df11"
     },
     "days_held": 9,
     "days_read": [
@@ -188,7 +188,7 @@
     ],
     "newest": "2026-10-10",
     "oldest": "2026-10-02",
-    "run_id": "2026-10-10-schedule-a1"
+    "run_id": "manual-20261010T102255Z-manual-a1"
   },
   "methodology": {
     "doc": "docs/MOMENTUM.md",
