@@ -23,12 +23,12 @@ INIT = {"protocolVersion": "2025-06-18", "capabilities": {}, "clientInfo": {"nam
 
 def _layer_copy(tmp_path, signals=True) -> Path:
     """Only the read layer: data/canonical/ and api/v1/, plus the published signal layers data/momentum/ and
-    data/radar/ unless signals is False. Nothing else from the repository."""
+    data/radar/ and the discovery corpus data/corpus/ unless signals is False. Nothing else from the repository."""
     root = tmp_path / "layer"
     shutil.copytree(ROOT / "data" / "canonical", root / "data" / "canonical")
     shutil.copytree(ROOT / "api" / "v1", root / "api" / "v1")
     if signals:
-        for name in ("momentum", "radar"):
+        for name in ("momentum", "radar", "corpus"):
             shutil.copytree(ROOT / "data" / name, root / "data" / name)
     return root
 
@@ -422,7 +422,7 @@ def test_reads_only_the_read_layer_and_never_the_network(tmp_path):
     report = json.loads(p.stderr[p.stderr.index("{"):])
     data_opens = [o for o in report["opened"] if o.startswith(str(root))]
     assert data_opens and report["net"] == []
-    allowed = ("/data/canonical/", "/api/v1/", "/data/momentum/", "/data/radar/")
+    allowed = ("/data/canonical/", "/api/v1/", "/data/momentum/", "/data/radar/", "/data/corpus/")
     assert all(any(a in o[len(str(root)):] for a in allowed) for o in data_opens), data_opens
     assert len([l for l in report["out"].splitlines() if l]) == 10
     assert {p: p.read_bytes() for p in root.rglob("*") if p.is_file()} == before

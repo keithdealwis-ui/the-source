@@ -12,10 +12,18 @@ and licensed CC BY 4.0 (DATA-LICENCE.md), plus the two published signal layers t
 cycle commits beside it: data/momentum/ (Repository Momentum, docs/MOMENTUM.md) and
 data/radar/ (Community Radar, docs/RADAR.md). Each signal layer is verified against its
 own MANIFEST; when one is missing, malformed or stale the canonical tools keep serving
-and every momentum answer says which and why. Nothing else in the repository is read:
-not the discover lane, staging, live snapshots, history or intake. Hybrid retrieval
-applies the KEI-844 semantic model (tfidf-sublinear/1, graph_retrieval.py) and graph
-traversal (SaaS -REPLACES- project edges, shared categories) to the published layer.
+and every momentum answer says which and why. KEI-912 adds the public discovery corpus,
+data/corpus/ (docs/CORPUS.md): every project the Discover lane found, verified against its
+own MANIFEST and served as the `discovery` tier. Every project answer carries a tier derived
+here from the canonical layer: `recommended` (a recommended relationship), `scored` (in the
+canonical layer, scored, not recommended) or `discovery` (discovered, not scored). Discovery
+projects are searchable, inspectable and comparable; they are never recommendations, and the
+recommendation tools answer exactly as before unless a caller asks for a separate, labelled
+`discovery_candidates` list. Nothing else in the repository is read: not the internal
+discover-lane build, staging, live snapshots, history or intake. Hybrid retrieval applies the
+KEI-844 semantic model (tfidf-sublinear/1, graph_retrieval.py) and graph traversal (SaaS
+-REPLACES- project edges, shared categories) to the published layer, and, for search, to the
+full corpus with its host descriptions and topics.
 
 Standard library only, read-only, no network, no wall clock in any answer except
 `freshness` in source_dataset_info (pin it with --now). The layer is verified before it
@@ -44,7 +52,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 SERVER_NAME = "the-source"
-SERVER_VERSION = "1.1.0"
+SERVER_VERSION = "1.2.0"
 PROTOCOL_VERSIONS = ("2025-06-18", "2025-03-26", "2024-11-05")  # newest first
 API_VERSION = "v1"
 CANONICAL_SCHEMA = "the-source.canonical/1"
@@ -80,6 +88,16 @@ _SEM_STOP = set("""a an and are as at be but by for from has have in into is it 
 to was were will with you your we can not all any via using use used based built make makes more most
 new one open source simple fast easy tool tools project projects app apps application""".split())
 HYBRID_WEIGHTS = {"lexical": 0.45, "semantic": 0.35, "graph": 0.20}
+CORPUS_SCHEMA = "the-source.corpus/1"  # KEI-912, docs/CORPUS.md
+CORPUS_FILES = ("live.jsonl", "projects.jsonl")
+CORPUS_STALE_AFTER_DAYS = 10  # used only when the MANIFEST does not state its own
+TIERS = ("recommended", "scored", "discovery")
+DISCOVERY_LABEL = "discovered, not scored \u2014 no Replacement Fit or Project Health"
+TIER_MEANING = {
+    "recommended": "in the canonical layer with at least one recommended relationship",
+    "scored": "in the canonical layer with Replacement Fit / Project Health, but no recommended relationship",
+    "discovery": DISCOVERY_LABEL + "; found by the Discover lane and published in data/corpus",
+}
 
 INSTRUCTIONS = (
     "The Source: evidence-backed open-source alternatives to SaaS products. Answers come from "
@@ -90,7 +108,9 @@ INSTRUCTIONS = (
     "compare projects, source_recommend for requirements (a need in words and/or hard constraints), "
     "source_emerging_projects and source_get_momentum for Repository and Community Momentum. Only "
     "relationships marked recommended are recommendations; Replacement Fit notes are "
-    "machine-derived, not editorial. Show live_checked_at with any live figure."
+    "machine-derived, not editorial. Every project carries a tier: recommended, scored, or discovery "
+    "(discovered, not scored: never present a discovery project as a recommendation). "
+    "Show live_checked_at or observed_as_of with any live figure."
 )
 
 
@@ -169,8 +189,22 @@ def _counts(*texts) -> dict:
     c = {}
     for text in texts:
         for t in _sem_tokens(text):
+            t = sys.intern(t)  # one copy of each term across every document (KEI-912: ~9.4k documents)
             c[t] = c.get(t, 0) + 1
     return c
+
+
+def _interned_pairs(pairs):
+    """object_pairs_hook: share keys and short values (ids, topics, SPDX ids, labels) across ~9.4k rows."""
+    return {sys.intern(k): sys.intern(v) if isinstance(v, str) and len(v) <= 64 else v for k, v in pairs}
+
+
+_INTERNING = json.JSONDecoder(object_pairs_hook=_interned_pairs)
+
+
+def _jsonl_interned(path: Path) -> list:
+    with open(path, encoding="utf-8") as fh:
+        return [_INTERNING.decode(line) for line in fh if line.strip()]
 
 
 def _load_signal(root: Path, name: str, canonical_version: str) -> dict:
@@ -226,6 +260,82 @@ def _load_signal(root: Path, name: str, canonical_version: str) -> dict:
         return state
     state.update(status="ok", rows=rows)
     return state
+
+
+def _load_corpus(root: Path) -> dict:
+    """The public discovery corpus (KEI-912), verified against its own MANIFEST, or a reason it is unavailable."""
+    base = root / "data" / "corpus"
+    state = {"layer": "data/corpus", "methodology": "docs/CORPUS.md", "status": "unavailable", "reason": None,
+             "as_of": None, "manifest_sha256": None, "rows": None}
+    try:
+        raw = (base / "MANIFEST.json").read_bytes()
+        m = json.loads(raw)
+    except (OSError, ValueError) as exc:
+        state["reason"] = f"data/corpus/MANIFEST.json unreadable: {type(exc).__name__}"
+        return state
+    state["manifest_sha256"] = hashlib.sha256(raw).hexdigest()
+    state["as_of"] = m.get("as_of")
+    if m.get("schema") != CORPUS_SCHEMA:
+        state["reason"] = f"schema is {m.get('schema')!r}, want {CORPUS_SCHEMA!r}"
+        return state
+    files = m.get("files") or {}
+    if sorted(files) != sorted(CORPUS_FILES):
+        state["reason"] = f"MANIFEST lists {sorted(files)}, want {sorted(CORPUS_FILES)}"
+        return state
+    for fname in CORPUS_FILES:
+        path = base / fname
+        if not path.is_file() or _sha256(path) != files[fname]:
+            state["reason"] = f"data/corpus/{fname} is missing or does not match its MANIFEST sha256"
+            return state
+    if m.get("corpus_version") != hashlib.sha256(_dumps(files).encode()).hexdigest()[:16]:
+        state["reason"] = "corpus_version is not the hash of the files"
+        return state
+    try:
+        projects, live = _jsonl_interned(base / "projects.jsonl"), _jsonl_interned(base / "live.jsonl")
+        if [p["id"] for p in projects] != [r["id"] for r in live]:
+            raise ValueError("live.jsonl and projects.jsonl name different projects")
+        if (m.get("counts") or {}).get("projects") != len(projects):
+            raise ValueError(f"MANIFEST counts.projects is {(m.get('counts') or {}).get('projects')}, "
+                             f"the files hold {len(projects)}")
+        rows = [{**p, "live": r} for p, r in zip(projects, live)]
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        state["reason"] = f"data/corpus unreadable: {exc}"
+        return state
+    refresh = m.get("refresh") or {}
+    state.update(status="ok", rows=rows, corpus_version=m.get("corpus_version"), counts=m.get("counts"),
+                 membership_as_of=(m.get("membership") or {}).get("as_of"),
+                 live_observed_as_of=m.get("live_observed_as_of"),
+                 last_refresh=(refresh.get("last") or {}).get("at"), cadence=refresh.get("cadence"),
+                 stale_after_days=refresh.get("stale_after_days") or CORPUS_STALE_AFTER_DAYS,
+                 publication=m.get("publication"))
+    return state
+
+
+def _bm25(docs):
+    """BM25F-lite index over (kind, key, {field: (values, weight)}) documents: (docs, avg_len, idf)."""
+    out, df, shared = [], {}, {}
+    for kind, key, fields in docs:
+        tf, matched_in, length = {}, {}, 0
+        for field, (values, weight) in fields.items():
+            for value in values:
+                toks = _tokens(value)
+                length += len(toks)
+                for t in toks:
+                    t = sys.intern(t)
+                    tf[t] = tf.get(t, 0.0) + weight
+                    matched_in.setdefault(t, set()).add(field)
+        # One frozenset per distinct field combination, shared by every token and document that has it.
+        matched_in = {t: shared.setdefault(frozenset(f), frozenset(f)) for t, f in matched_in.items()}
+        exact = {_norm(v) for field in ("name", "aliases") if field in fields for v in fields[field][0]}
+        exact |= {_norm(key)}
+        out.append({"kind": kind, "key": key, "tf": tf, "fields": matched_in, "len": max(length, 1),
+                    "exact": exact})
+        for t in tf:
+            df[t] = df.get(t, 0) + 1
+    n = len(out)
+    avg_len = sum(d["len"] for d in out) / max(n, 1)
+    idf = {t: math.log(1 + (n - c + 0.5) / (c + 0.5)) for t, c in df.items()}
+    return out, avg_len, idf
 
 
 class Layer:
@@ -304,6 +414,7 @@ class Layer:
         self._build_search()
         self._build_semantic()
         self._load_signals()
+        self._load_corpus()
 
     # -- signal layers (Repository Momentum, Community Radar)
 
@@ -338,7 +449,70 @@ class Layer:
                                    key=lambda r: (r.get("rank") or 10 ** 9, r.get("key") or ""))
 
     def signal_manifest_shas(self):
-        return tuple(self.signals[n]["manifest_sha256"] for n in sorted(SIGNALS))
+        return tuple(self.signals[n]["manifest_sha256"] for n in sorted(SIGNALS)) + (self.corpus_state["manifest_sha256"],)
+
+    # -- KEI-912 discovery corpus and tiers
+
+    def _load_corpus(self):
+        self.corpus_state = _load_corpus(self.root)
+        rows = self.corpus_state.pop("rows") or []
+        canon_keys = {_repo_key(pid): pid for pid in self.projects}
+        for pid, p in self.projects.items():
+            for key in (p.get("repo_url"), p.get("github_url")):
+                if key:
+                    canon_keys.setdefault(_repo_key(key), pid)
+        self.corpus, self.corpus_keys, self.corpus_names = {}, {}, {}
+        self.canonical_corpus = {}  # canonical oss_id -> its corpus row, where the corpus holds it too
+        for row in rows:
+            keys = [row["id"], *row["aliases"]]
+            pid = next((canon_keys[_repo_key(k)] for k in keys if _repo_key(k) in canon_keys), None)
+            if pid:
+                self.canonical_corpus.setdefault(pid, row)
+                for k in keys:
+                    self.corpus_keys.setdefault(_repo_key(k), pid)
+                continue
+            self.corpus[row["id"]] = row
+            for k in keys:
+                self.corpus_keys.setdefault(_repo_key(k), row["id"])
+            self.corpus_names.setdefault(_norm(row["name"]), set()).add(row["id"])
+        self.full = _FullIndex(self) if self.corpus_state["status"] == "ok" else None
+        counts = {t: 0 for t in TIERS}
+        for pid in self.projects:
+            counts[self.tier_of(pid)] += 1
+        counts["discovery"] = len(self.corpus)
+        self.tier_counts = counts
+
+    def tier_of(self, key: str):
+        """recommended | scored (canonical layer) | discovery (corpus only) | None (unknown)."""
+        if key in self.projects:
+            return "recommended" if any(r["recommended"] for r in self.rel_by_project.get(key, [])) else "scored"
+        if key in self.corpus:
+            return "discovery"
+        return None
+
+    def resolve_any(self, value: str):
+        """A project in the canonical layer or the discovery corpus -> (key, tier), canonical first."""
+        try:
+            pid = self.resolve_project(value)
+            return pid, self.tier_of(pid)
+        except ToolError as exc:
+            v = str(value or "").strip()
+            if "more than one project" in str(exc) or self.full is None:
+                raise
+        cid = self.corpus_keys.get(_repo_key(v))
+        if cid is None:
+            hit = self.corpus_names.get(_norm(v))
+            if hit and len(hit) == 1:
+                cid = next(iter(hit))
+            elif hit:
+                shown = sorted(hit)
+                raise ToolError(f"{v!r} names more than one discovery project: {shown[:10]}"
+                                + (f" and {len(shown) - 10} more" if len(shown) > 10 else "")
+                                + "; pass the repository URL or id")
+        if cid is None:
+            raise ToolError(f"{v!r} is not a project The Source holds (canonical layer or discovery corpus); "
+                            "try source_search")
+        return cid, self.tier_of(cid)
 
     # -- KEI-844 semantic model over the published layer
 
@@ -455,26 +629,7 @@ class Layer:
                              + [a for r in recs for a in self.saas[r["saas_id"]].get("aliases", [])], 1.5),
                 "category": (sorted({self.saas[r["saas_id"]]["category"] for r in recs}), 1.0),
                 "licence": ([p["licence"]["spdx"] or ""], 0.5)}))
-        self.docs = []
-        df = {}
-        for kind, key, fields in docs:
-            tf, matched_in, length = {}, {}, 0
-            for field, (values, weight) in fields.items():
-                for value in values:
-                    toks = _tokens(value)
-                    length += len(toks)
-                    for t in toks:
-                        tf[t] = tf.get(t, 0.0) + weight
-                        matched_in.setdefault(t, set()).add(field)
-            exact = {_norm(v) for field in ("name", "aliases") if field in fields for v in fields[field][0]}
-            exact |= {_norm(key)}
-            self.docs.append({"kind": kind, "key": key, "tf": tf, "fields": matched_in, "len": max(length, 1),
-                              "exact": exact})
-            for t in tf:
-                df[t] = df.get(t, 0) + 1
-        n = len(self.docs)
-        self.avg_len = sum(d["len"] for d in self.docs) / max(n, 1)
-        self.idf = {t: math.log(1 + (n - c + 0.5) / (c + 0.5)) for t, c in df.items()}
+        self.docs, self.avg_len, self.idf = _bm25(docs)
 
     def search(self, query: str, kind: str):
         q = _tokens(query)
@@ -562,6 +717,53 @@ class Layer:
         return first
 
 
+class _FullIndex:
+    """Retrieval over the full corpus (KEI-912): the SaaS catalogue, every canonical project (with the host
+    description and topics where the corpus holds them) and every discovery project. Ranking is Layer's own
+    BM25F-lite, KEI-844 semantic cosine and graph hybrid, unchanged; only the documents differ. Used by search,
+    emerging and the opt-in discovery candidates, never by a recommendation."""
+
+    search, semantic, hybrid = Layer.search, Layer.semantic, Layer.hybrid
+
+    def __init__(self, layer):
+        self.saas, self.rel_by_saas = layer.saas, layer.rel_by_saas
+        docs, raw = [], {}
+        for sid, s in sorted(layer.saas.items()):
+            docs.append(("saas", sid, {
+                "name": ([s["name"]], 3.0), "aliases": (s.get("aliases", []) + [sid], 2.5),
+                "category": ([s["category"]], 1.5), "domain": ([s["domain"]], 1.0)}))
+            raw[("saas", sid)] = _counts(s["name"], " ".join(s.get("aliases", [])), s["category"], s["category"],
+                                         s["domain"].split(".")[0])
+        for pid, p in sorted(layer.projects.items()):
+            recs = [r for r in layer.rel_by_project.get(pid, []) if r["recommended"]]
+            owner_repo = pid.split("/", 1)[1] if "/" in pid else pid
+            replaced = [layer.saas[r["saas_id"]] for r in recs]
+            c = layer.canonical_corpus.get(pid) or {}
+            topics = [t.replace("-", " ") for t in c.get("topics") or []]
+            docs.append(("project", pid, {
+                "name": ([p["name"]], 3.0), "repository": ([owner_repo], 2.0),
+                "replaces": ([s["name"] for s in replaced] + [a for s in replaced for a in s.get("aliases", [])], 1.5),
+                "category": (sorted({s["category"] for s in replaced}), 1.0),
+                "topics": (topics, 1.2), "description": ([c.get("description") or ""], 1.0),
+                "licence": ([p["licence"]["spdx"] or ""], 0.5)}))
+            raw[("project", pid)] = _counts(
+                p["name"], owner_repo.replace("/", " ").replace("-", " ").replace("_", " "),
+                " ".join(s["name"] for s in replaced), " ".join(a for s in replaced for a in s.get("aliases", [])),
+                " ".join(s["category"] for s in replaced), " ".join(s["category"] for s in replaced),
+                " ".join(topics), c.get("description") or "")
+        for cid, c in sorted(layer.corpus.items()):
+            owner_repo = c["full_name"]
+            topics = [t.replace("-", " ") for t in c["topics"]]
+            docs.append(("project", cid, {
+                "name": ([c["name"]], 3.0), "repository": ([owner_repo], 2.0), "topics": (topics, 1.2),
+                "description": ([c["description"] or ""], 1.0), "languages": (c["languages"], 0.5),
+                "licence": ([c["licence"]["spdx"] or ""], 0.5)}))
+            raw[("project", cid)] = _counts(c["name"], owner_repo.replace("/", " ").replace("-", " ").replace("_", " "),
+                                            " ".join(topics), c["description"] or "")
+        self.docs, self.avg_len, self.idf = _bm25(docs)
+        self.vectors, self.sem_idf = _sublinear_vectors(raw)
+
+
 def _host_path(url: str):
     """The READ-API.md detection inputs: lowercase host without one leading www., and path.
     Only http(s); a bare host gets https://. Never fetched."""
@@ -638,6 +840,67 @@ def _canonical_rec(layer, r):
     }
 
 
+def _corpus_state(layer, server):
+    """The discovery corpus's availability and freshness, for every answer that serves it."""
+    s = dict(layer.corpus_state)
+    for k in ("publication", "counts"):
+        s.pop(k, None)
+    age = None
+    at = s.get("last_refresh") or s.get("as_of")
+    if at:
+        try:
+            age = round((server.now() - datetime.strptime(at, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc))
+                        .total_seconds() / 86400, 2)
+        except ValueError:
+            pass
+    s["age_days"] = age
+    if s["status"] == "ok" and (age is None or age > s["stale_after_days"]):
+        s["status"] = "stale"
+        s["reason"] = (f"last refreshed {at}, more than {s['stale_after_days']} days ago; the scheduled corpus "
+                       "refresh has not run")
+    return s
+
+
+def _licence_view(lic: dict, host_spdx):
+    out = {"spdx": lic["spdx"], "status": lic["status"], "host_reports": host_spdx}
+    if lic["status"] != "recognised":
+        out["issue"] = lic["issue"]
+    return out
+
+
+def _discovery_view(layer, cid, full=False):
+    """A discovery-tier project: facts only, labelled, never a recommendation."""
+    c = layer.corpus[cid]
+    live = c["live"]
+    out = {"id": cid, "tier": "discovery", "label": DISCOVERY_LABEL, "name": c["name"], "full_name": c["full_name"],
+           "repo_url": c["url"], "description": c["description"], "topics": c["topics"],
+           "licence": _licence_view(c["licence"], live["licence_spdx"]),
+           "stars": live["stars"], "archived": live["archived"], "pushed_at": live["pushed_at"],
+           "maintenance_status": c["maintenance"]["status"], "observed_as_of": live["observed_as_of"]}
+    if c["licence"]["status"] != "recognised":
+        out["warning"] = (f"licence issue ({c['licence']['issue']['reason']}): not an open-source licence The Source "
+                          "recognises; check the terms before any use")
+    if not live["found"]:
+        out["host_status"] = f"not found on the host at {live['observed_as_of']} (deleted, made private or moved)"
+    if full:
+        out.update(homepage=c["homepage"], languages=c["languages"], forks=live["forks"],
+                   latest_release=live["latest_release"], aliases=c["aliases"], lanes=c["lanes"],
+                   maintenance={**c["maintenance"], "evaluated_as_of": layer.corpus_state.get("membership_as_of")},
+                   provenance=c["provenance"],
+                   provenance_note="where the Discover lane found it: a licence-cleared curated list (pinned commit "
+                                   "and line), a GitHub topic or search, an owner's other repositories, a README link, "
+                                   "the Replace lane, or a maintainer seed. No list text is republished.")
+    return out
+
+
+def _corpus_extra(layer, pid):
+    """What the corpus adds to a canonical project: host description, topics, provenance."""
+    c = layer.canonical_corpus.get(pid)
+    if not c:
+        return None
+    return {"description": c["description"], "topics": c["topics"], "observed_as_of": c["live"]["observed_as_of"]}
+
+
 def _limit(args, default):
     v = args.get("limit", default)
     if isinstance(v, bool) or not isinstance(v, int) or not 1 <= v <= MAX_LIMIT:
@@ -664,6 +927,13 @@ def tool_dataset_info(layer, args, server):
                       "newest_live_check": newest},
         "snapshot": server.snapshot_status(),
         "signals": {n: _signal_state(layer, server, n) for n in SIGNALS},
+        "corpus": {**_corpus_state(layer, server), "counts": layer.corpus_state.get("counts"),
+                   "publication": layer.corpus_state.get("publication"),
+                   "projects_served": len(layer.corpus) + len(layer.canonical_corpus) if layer.full else 0,
+                   "joined_to_canonical": len(layer.canonical_corpus)},
+        "tiers": {"counts": layer.tier_counts, "meaning": TIER_MEANING,
+                  "rule": "recommendation tools return recommended-tier projects only; search, project, compare, "
+                          "emerging and momentum serve every tier and label each row"},
         "retrieval": {"lexical": "BM25F-lite", "semantic_model": SEMANTIC_MODEL,
                       "semantic_model_origin": "KEI-844 source_pipeline/graph_retrieval.py",
                       "graph": "SaaS -REPLACES-> project edges from data/canonical/relationships.jsonl",
@@ -671,9 +941,11 @@ def tool_dataset_info(layer, args, server):
         "serves": ["data/canonical/" + f for f in ("MANIFEST.json",) + CANONICAL_FILES]
                   + ["api/v1/index.json", "api/v1/domains.json", "api/v1/saas/<saas_id>.json",
                      "data/momentum/MANIFEST.json", "data/momentum/projects.jsonl",
-                     "data/radar/MANIFEST.json", "data/radar/radar.jsonl"],
-        "does_not_serve": "the discover lane and its corpus, staging, live snapshots, history, intake and internal "
-                          "research data; relationships withheld by the export guard. Nothing private to AIQ.",
+                     "data/radar/MANIFEST.json", "data/radar/radar.jsonl",
+                     "data/corpus/MANIFEST.json", "data/corpus/projects.jsonl", "data/corpus/live.jsonl"],
+        "does_not_serve": "the internal Discover lane build (data/discover), staging, live snapshots, history, "
+                          "intake and internal research data; relationships withheld by the export guard. Nothing "
+                          "private to AIQ.",
     }
 
 
@@ -688,9 +960,50 @@ def tool_list_supported(layer, args, server):
                     "recommended relationships in data/canonical; source_get_alternatives serves both and says which."}
 
 
+def _include_discovery(args):
+    v = args.get("include_discovery", False)
+    if not isinstance(v, bool):
+        raise ToolError("include_discovery must be true or false")
+    return v
+
+
+def _discovery_candidates(layer, server, query, limit, licences=None, family=None, status=None, min_stars=None,
+                          max_stars=None):
+    """Discovery-tier projects that match a query: a separate, labelled list, never recommendations. Only
+    projects with a recognised licence that are live on their host and not archived are offered."""
+    state = _corpus_state(layer, server)
+    base = {"label": DISCOVERY_LABEL, "query": query, "corpus": state,
+            "note": "Not recommendations. Discovered by the Discover lane and not scored: no Replacement Fit or "
+                    "Project Health. Listed separately so they are never mistaken for the recommendations above."}
+    if layer.full is None:
+        return {**base, "status": "unavailable", "candidates": []}
+    hits, _ = layer.full.hybrid(query, "project")
+    rows, excluded = [], {}
+    for h in hits:
+        if h["key"] not in layer.corpus or h["score"] < 0.15:
+            continue
+        c = layer.corpus[h["key"]]
+        live = c["live"]
+        why_not = ("licence_issue" if c["licence"]["status"] != "recognised"
+                   else "not_found_on_host" if not live["found"]
+                   else "archived" if live["archived"]
+                   else _licence_ok(c["licence"]["spdx"], licences, family)
+                   or ("maintenance_status" if status and c["maintenance"]["status"] not in status else None)
+                   or ("min_stars" if min_stars is not None and (live["stars"] or 0) < min_stars else None)
+                   or ("max_stars" if max_stars is not None and (live["stars"] or 0) > max_stars else None))
+        if why_not:
+            excluded[why_not] = excluded.get(why_not, 0) + 1
+            continue
+        rows.append({**_discovery_view(layer, h["key"]),
+                     "retrieval": {k: h[k] for k in ("score", "components", "semantic_terms")}})
+    return {**base, "status": "ok" if rows else "no_matching_discovery_projects", "candidates": rows[:limit],
+            "more_available": max(0, len(rows) - limit), "excluded": dict(sorted(excluded.items()))}
+
+
 def tool_get_alternatives(layer, args, server):
     sid, how = layer.resolve_saas(args.get("saas"))
     limit = _limit(args, 5)
+    include_discovery = _include_discovery(args)
     not_rec = [r for r in layer.rel_by_saas.get(sid, []) if not r["recommended"]]
     doc = layer.surface.get(sid)
     recs = sorted((_canonical_rec(layer, r) for r in layer.rel_by_saas.get(sid, []) if r["recommended"]),
@@ -727,6 +1040,9 @@ def tool_get_alternatives(layer, args, server):
         "count": len(not_rec),
         "why": "relationships held in the canonical layer whose Replacement Fit is not publishable or not a "
                "credible alternative; never presented as recommendations (see source_get_relationship)"}
+    if include_discovery:
+        s = layer.saas[sid]
+        out["discovery_candidates"] = _discovery_candidates(layer, server, f"{s['name']} {s['category']}", limit)
     return out
 
 
@@ -767,27 +1083,47 @@ def tool_search(layer, args, server):
     mode = args.get("mode", "lexical")
     if mode not in ("lexical", "hybrid"):
         raise ToolError("mode must be lexical or hybrid")
+    tier = args.get("tier", "any")
+    if tier not in ("any",) + TIERS:
+        raise ToolError("tier must be any, recommended, scored or discovery")
+    if tier != "any" and kind == "saas":
+        raise ToolError("tier filters projects; use kind project or any")
+    index = layer.full or layer  # the full corpus when it verifies; the canonical layer alone otherwise
 
     if mode == "hybrid":
-        hits, seeds = layer.hybrid(query, kind)
+        hits, seeds = index.hybrid(query, kind)
         ranked = [(h["score"], h["kind"], h["key"], h["matched"], h["exact"]) for h in hits]
         extra = {(h["kind"], h["key"]): {"score_components": h["components"], "semantic_terms": h["semantic_terms"],
                                          "graph_path": h["graph_path"]} for h in hits}
     else:
-        ranked, extra, seeds = layer.search(query, kind), {}, None
+        ranked, extra, seeds = index.search(query, kind), {}, None
     results = []
     for score, k, key, why, exact in ranked:
         if k == "saas":
-            if project_filters:
+            if project_filters or tier != "any":
                 continue
             s = layer.saas[key]
             if supported_only and not s["supported"]:
                 continue
             recs = [r for r in layer.rel_by_saas.get(key, []) if r["recommended"]]
-            results.append({"kind": "saas", "id": key, "score": score, "exact_name_match": exact, "matched": why,
+            results.append({"kind": "saas", "id": key, "tier": "catalogue", "score": score,
+                            "exact_name_match": exact, "matched": why,
                             "saas": _saas_view(layer, key), "recommended_alternatives": len(recs)})
+        elif key in layer.corpus:
+            c = layer.corpus[key]
+            if tier not in ("any", "discovery") or min_health is not None:
+                continue
+            if lic is not None and (c["licence"]["spdx"] or "").lower() != str(lic).lower():
+                continue
+            if status is not None and c["maintenance"]["status"] != status:
+                continue
+            results.append({"kind": "project", "id": key, "tier": "discovery", "score": score,
+                            "exact_name_match": exact, "matched": why, "project": _discovery_view(layer, key),
+                            "recommended_for": []})
         else:
             p = layer.projects[key]
+            if tier not in ("any", layer.tier_of(key)):
+                continue
             if lic is not None and (p["licence"]["spdx"] or "").lower() != str(lic).lower():
                 continue
             if status is not None and p["maintenance"]["status"] != status:
@@ -796,19 +1132,24 @@ def tool_search(layer, args, server):
             if min_health is not None and (h is None or h["score"] < min_health):
                 continue
             rels = layer.rel_by_project.get(key, [])
-            results.append({"kind": "project", "id": key, "score": score, "exact_name_match": exact, "matched": why,
+            results.append({"kind": "project", "id": key, "tier": layer.tier_of(key), "score": score,
+                            "exact_name_match": exact, "matched": why,
                             "project": {"oss_id": key, "name": p["name"], "repo_url": p["repo_url"],
                                         "licence_spdx": p["licence"]["spdx"], "stars": p["live"]["stars"],
                                         "maintenance_status": p["maintenance"]["status"],
                                         "project_health": None if h is None else {
                                             k2: h[k2] for k2 in ("score", "band", "trajectory")},
-                                        "live_checked_at": p["live"]["checked_at"]},
+                                        "live_checked_at": p["live"]["checked_at"],
+                                        "description": (_corpus_extra(layer, key) or {}).get("description")},
                             "recommended_for": sorted(r["saas_id"] for r in rels if r["recommended"])})
         if extra:
             results[-1].update(extra[(k, key)])
     total = len(results)
-    out = {"query": query, "kind": kind, "mode": mode, "total": total, "results": results[:limit],
-           "more_available": max(0, total - limit)}
+    out = {"query": query, "kind": kind, "mode": mode, "tier": tier, "total": total, "results": results[:limit],
+           "more_available": max(0, total - limit),
+           "searched": ("full corpus: SaaS catalogue, canonical projects and discovery projects (host descriptions "
+                        "and topics)" if layer.full else "canonical layer only: the discovery corpus is unavailable"),
+           "tiers": {t: TIER_MEANING[t] for t in TIERS}, "corpus": _corpus_state(layer, server)}
     if mode == "hybrid":
         out["graph_seeds"] = seeds
         out["ranking"] = (f"Hybrid: {HYBRID_WEIGHTS['lexical']} x lexical BM25 (normalised to the best hit) + "
@@ -817,15 +1158,25 @@ def tool_search(layer, args, server):
                           "Replacement Fit). Components are returned per result; ties by kind then id.")
     else:
         out["ranking"] = ("BM25 over weighted fields (name, aliases or repository, products replaced, category, "
-                          "licence), +10 for an exact name match; ties by kind then id. Lexical, deterministic.")
+                          "topics, host description, languages, licence), +10 for an exact name match; ties by kind "
+                          "then id. Lexical, deterministic.")
     return out
 
 
 def tool_get_project(layer, args, server):
-    pid = layer.resolve_project(args.get("project"))
+    pid, tier = layer.resolve_any(args.get("project"))
+    if tier == "discovery":
+        return {"project": _discovery_view(layer, pid, full=True), "tier": tier, "relationships": [],
+                "corpus": _corpus_state(layer, server),
+                "note": DISCOVERY_LABEL + ". The Source has not evaluated it as a replacement for any SaaS product; "
+                        "it is not a recommendation."}
     rels = sorted(layer.rel_by_project.get(pid, []), key=lambda r: (not r["recommended"], r["saas_id"]))
-    return {"project": _project_view(layer.projects[pid]),
+    c = layer.canonical_corpus.get(pid)
+    return {"project": {**_project_view(layer.projects[pid]), "tier": tier}, "tier": tier,
             "relationships": [_rel_summary(layer, r) for r in rels],
+            "discovery_record": None if c is None else {
+                "description": c["description"], "topics": c["topics"], "provenance": c["provenance"],
+                "observed_as_of": c["live"]["observed_as_of"]},
             "note": "recommended is the publication gate: only recommended relationships are recommendations."}
 
 
@@ -931,13 +1282,13 @@ MEASURES = {
 def tool_get_momentum(layer, args, server):
     v = args.get("project")
     try:
-        pid = layer.resolve_project(v)
-        key, canonical = pid, True
+        key, tier = layer.resolve_any(v)
+        canonical = key in layer.projects
     except ToolError:
-        key, canonical = _repo_key(v), False
+        key, canonical, tier = _repo_key(v), False, None
         if key not in layer.momentum and key not in layer.radar:
             raise
-    return {"project": key, "in_canonical_layer": canonical,
+    return {"project": key, "in_canonical_layer": canonical, "tier": tier,
             "repository_momentum": _repository_momentum(layer, key),
             "community_momentum": _community_momentum(layer, key, full=True),
             "signals": {n: _signal_state(layer, server, n) for n in SIGNALS},
@@ -951,17 +1302,33 @@ def tool_compare(layer, args, server):
         raise ToolError(f"projects must be a list of 2 to {MAX_COMPARE} project names, oss_ids or repository URLs")
     pids = []
     for n in names:
-        pid = layer.resolve_project(n)
+        pid, _ = layer.resolve_any(n)
         if pid in pids:
             raise ToolError(f"{n!r} is the same project as an earlier entry ({pid})")
         pids.append(pid)
     rows, uncertainty = [], []
     for pid in pids:
+        if pid in layer.corpus:
+            d = _discovery_view(layer, pid, full=True)
+            rows.append({
+                "oss_id": pid, "tier": "discovery", "label": DISCOVERY_LABEL, "name": d["name"],
+                "repo_url": d["repo_url"], "description": d["description"], "licence_spdx": d["licence"]["spdx"],
+                "licence_family": LICENCE_FAMILIES.get(d["licence"]["spdx"] or "", "unknown"),
+                "licence_status": d["licence"]["status"], "stars": d["stars"], "archived": d["archived"],
+                "latest_release": d["latest_release"], "maintenance": d["maintenance"], "project_health": None,
+                "observed_as_of": d["observed_as_of"], "replaces": [],
+                "repository_momentum": _repository_momentum(layer, pid),
+                "community_momentum": _community_momentum(layer, pid)})
+            uncertainty.append(f"{pid}: discovery tier, not scored (no Project Health or Replacement Fit)")
+            if "warning" in d:
+                uncertainty.append(f"{pid}: {d['warning']}")
+            continue
         p = layer.projects[pid]
         h = p["project_health"]
         recs = sorted((r for r in layer.rel_by_project.get(pid, []) if r["recommended"]), key=lambda r: r["saas_id"])
         rows.append({
-            "oss_id": pid, "name": p["name"], "repo_url": p["repo_url"], "licence_spdx": p["licence"]["spdx"],
+            "oss_id": pid, "tier": layer.tier_of(pid), "name": p["name"], "repo_url": p["repo_url"],
+            "licence_spdx": p["licence"]["spdx"],
             "licence_family": LICENCE_FAMILIES.get(p["licence"]["spdx"] or "", "unknown"),
             "stars": p["live"]["stars"], "archived": p["live"]["archived"],
             "latest_release": p["live"]["latest_release"], "maintenance": p["maintenance"],
@@ -1053,6 +1420,7 @@ def tool_recommend(layer, args, server):
     min_stars, max_stars = _num(args, "min_stars", 0, 10 ** 9), _num(args, "max_stars", 0, 10 ** 9)
     max_days = _num(args, "max_days_since_activity", 0, 3650)
     limit = _limit(args, 5)
+    include_discovery = _include_discovery(args)
 
     matched, seeds = [], []
     if saas is not None:
@@ -1141,7 +1509,7 @@ def tool_recommend(layer, args, server):
     constraints = {k: args[k] for k in ("licence", "licence_family", "self_hostable", "maintenance_status", "min_fit",
                                         "min_health", "min_stars", "max_stars", "max_days_since_activity",
                                         "repository_momentum_7d") if k in args}
-    return {"need": need, "saas": saas, "matched_products": matched, "graph_seeds": seeds,
+    out = {"need": need, "saas": saas, "matched_products": matched, "graph_seeds": seeds,
             "constraints_applied": constraints, "candidates_considered": len(cands),
             "excluded_by_constraint": dict(sorted(excluded.items())),
             "recommendations": out[:limit], "more_available": max(0, len(out) - limit),
@@ -1155,6 +1523,15 @@ def tool_recommend(layer, args, server):
                               "why": "The published layer holds no evidence for these; check them yourself. "
                                      "self_hostable is evidenced only on published api/v1 pages."},
             "signals": {n: _signal_state(layer, server, n) for n in SIGNALS}}
+    if include_discovery:
+        query = need or " ".join(f"{layer.saas[m['saas_id']]['name']} {layer.saas[m['saas_id']]['category']}"
+                                 for m in matched)
+        out["discovery_candidates"] = _discovery_candidates(layer, server, query, limit, licences, family, status,
+                                                            min_stars, max_stars)
+        out["discovery_candidates"]["constraints_not_applicable"] = sorted(
+            k for k in ("self_hostable", "min_fit", "min_health", "max_days_since_activity", "repository_momentum_7d")
+            if k in args)
+    return out
 
 
 def tool_emerging(layer, args, server):
@@ -1173,7 +1550,7 @@ def tool_emerging(layer, args, server):
     mom_state, rad_state = _signal_state(layer, server, "momentum"), _signal_state(layer, server, "radar")
     in_scope = None
     if query is not None:
-        hits, _ = layer.hybrid(query, "project")
+        hits, _ = (layer.full or layer).hybrid(query, "project")
         in_scope = {h["key"] for h in hits if h["score"] >= 0.15}
 
     cov = (layer.signals["momentum"].get("coverage") or {}).get(window, {})
@@ -1189,12 +1566,18 @@ def tool_emerging(layer, args, server):
         if min_stars is not None and (stars or 0) < min_stars or max_stars is not None and (stars or 0) > max_stars:
             continue
         pid = row.get("canonical_id")
-        if in_scope is not None and pid not in in_scope:
+        cid = layer.corpus_keys.get(_repo_key(row.get("canonical_id") or row.get("key") or ""))
+        if in_scope is not None and pid not in in_scope and cid not in in_scope:
             continue
         p = layer.projects.get(pid) if pid else None
+        c = layer.corpus.get(cid) if cid and not p else None
         repo_rows.append({
-            "key": row.get("key"), "oss_id": pid if p else None, "name": p["name"] if p else row.get("canonical_name"),
-            "in_canonical_layer": bool(p), "stars": stars, "momentum": win.get("momentum"),
+            "key": row.get("key"), "oss_id": pid if p else None,
+            "name": p["name"] if p else c["name"] if c else row.get("canonical_name"),
+            "tier": layer.tier_of(pid) if p else "discovery" if c else None,
+            "description": (_corpus_extra(layer, pid) or {}).get("description") if p else c["description"] if c else None,
+            "in_canonical_layer": bool(p), "in_corpus": bool(c) or pid in layer.canonical_corpus,
+            "stars": stars, "momentum": win.get("momentum"),
             "growth_pct_per_30d": win.get("growth_pct_per_30d"), "stars_per_day": win.get("stars_per_day"),
             "acceleration": _window_view(win)["acceleration"], "explanation": win.get("explanation"),
             "recommended_for": sorted(r["saas_id"] for r in layer.rel_by_project.get(pid, []) if r["recommended"])
@@ -1232,16 +1615,20 @@ def tool_emerging(layer, args, server):
         degraded.append(f"{unknown_stars} Community Radar repositories have no star count in the momentum layer, so "
                         "a star filter cannot place them; they are left out, not guessed")
     if in_scope is not None:
-        degraded.append("query narrows to projects in the canonical layer; Community Radar rows are not "
-                        "categorised, so the community list is omitted for a query")
+        degraded.append(("query narrows to projects in the canonical layer and the discovery corpus" if layer.full
+                         else "query narrows to projects in the canonical layer (the discovery corpus is "
+                              "unavailable)") + "; Community Radar rows are not categorised, so the community list "
+                                                "is omitted for a query")
     return {"window_days": int(window), "momentum_labels": labels, "accelerating_only": accelerating,
             "repository_momentum": repo_rows[:limit], "repository_momentum_total": len(repo_rows),
             "community_momentum": community[:limit], "community_momentum_total": len(community),
             "both_signals": both, "window_coverage": cov, "degraded": degraded,
             "signals": {"momentum": mom_state, "radar": rad_state}, "measures": {
                 k: MEASURES[k] for k in ("repository_momentum", "community_momentum")},
-            "note": "Momentum is attention and growth, not quality or fit. Rows outside the canonical layer are "
-                    "discovery-pool repositories with no Project Health or Replacement Fit yet."}
+            "corpus": _corpus_state(layer, server),
+            "note": "Momentum is attention and growth, not quality or fit. tier says what The Source knows about each "
+                    "row: discovery rows (and rows with no tier, outside both layers) have no Project Health or "
+                    "Replacement Fit."}
 
 
 def _obj(props, required=()):
@@ -1263,7 +1650,10 @@ TOOLS = [
      "Ranked, evidence-backed open-source alternatives to one SaaS product. 'saas' may be a saas_id, a name, "
      "an alias, a domain or a URL. For supported products this is exactly the published api/v1 page.",
      _obj({"saas": {"type": "string", "description": "saas_id, name, alias, domain or URL, e.g. 'Notion'"},
-           "limit": {**LIMIT, "description": "how many recommendations (default 5)"}}, ["saas"]),
+           "limit": {**LIMIT, "description": "how many recommendations (default 5)"},
+           "include_discovery": {"type": "boolean", "description": "also return a separate, labelled "
+                                 "discovery_candidates list (discovered, not scored; never recommendations)"}},
+          ["saas"]),
      tool_get_alternatives),
     ("source_detect_saas", "Detect the SaaS product of a URL",
      "Which supported SaaS product a URL belongs to, using The Source's published domain rules. Matched "
@@ -1271,21 +1661,27 @@ TOOLS = [
      _obj({"url": {"type": "string", "description": "a page URL or host, e.g. https://acme.atlassian.net/jira/"}},
           ["url"]), tool_detect_saas),
     ("source_search", "Search products and projects",
-     "Search The Source's SaaS catalogue and open-source projects by words (names, aliases, categories, "
-     "products replaced). Projects can be filtered by licence, maintenance status and Project Health.",
+     "Search The Source's SaaS catalogue and every open-source project it knows (about 9,400: the canonical layer "
+     "plus the discovery corpus) by words: names, aliases, categories, products replaced, host descriptions and "
+     "topics. Every project carries a tier (recommended, scored, discovery); filter by tier, licence, maintenance "
+     "status and Project Health. Discovery projects are discovered, not scored, and never recommendations.",
      _obj({"query": {"type": "string", "description": "words to look for, e.g. 'password manager'"},
            "kind": {"type": "string", "enum": ["any", "saas", "project"], "description": "default any"},
            "licence": {"type": "string", "description": "SPDX id, e.g. AGPL-3.0 (projects only)"},
            "maintenance_status": {"type": "string", "enum": ["active", "maintained"]},
            "min_health": {"type": "number", "minimum": 0, "maximum": 100},
            "supported_only": {"type": "boolean", "description": "SaaS results: only products with a page"},
+           "tier": {"type": "string", "enum": ["any"] + list(TIERS),
+                    "description": "projects only: recommended, scored or discovery (default any)"},
            "mode": {"type": "string", "enum": ["lexical", "hybrid"],
                     "description": "lexical (default, BM25) or hybrid (BM25 + KEI-844 semantic + graph, with score "
                                    "components per result)"},
            "limit": {**LIMIT, "description": "default 10"}}, ["query"]), tool_search),
     ("source_get_project", "One open-source project",
-     "One project's live facts (licence, stars, latest release, maintenance, Project Health, when checked) and "
-     "every SaaS relationship it has, recommended or not. 'project' may be an oss_id, a repository URL or a name.",
+     "One project's live facts (licence, stars, latest release, maintenance, Project Health, when checked), its "
+     "tier and every SaaS relationship it has, recommended or not. Any project in the discovery corpus is served "
+     "too, labelled discovery, with where it was found (list + pinned commit) and when it was observed. "
+     "'project' may be an oss_id, a repository URL or a name.",
      _obj({"project": {"type": "string", "description": "e.g. github.com/docmost/docmost or Docmost"}},
           ["project"]), tool_get_project),
     ("source_get_relationship", "Evidence for one SaaS-to-project pairing",
@@ -1296,7 +1692,8 @@ TOOLS = [
     ("source_compare_projects", "Compare open-source projects",
      "Side by side for 2-5 projects: licence, stars, maintenance, Project Health, Replacement Fit for every SaaS "
      "product they replace (head to head where they share one), Repository Momentum and Community Momentum, with "
-     "the uncertainty in each. The four measures are kept separate.",
+     "the uncertainty in each. The four measures are kept separate. Discovery-tier projects can be compared too; "
+     "they have no Project Health or Replacement Fit and say so.",
      _obj({"projects": {"type": "array", "items": {"type": "string"}, "minItems": 2, "maxItems": MAX_COMPARE,
                         "description": "oss_ids, repository URLs or names, e.g. ['Docmost', 'AppFlowy']"}},
           ["projects"]), tool_compare),
@@ -1317,11 +1714,15 @@ TOOLS = [
            "min_stars": {"type": "integer", "minimum": 0}, "max_stars": {"type": "integer", "minimum": 0},
            "max_days_since_activity": {"type": "integer", "minimum": 0},
            "repository_momentum_7d": {"type": "array", "items": {"type": "string", "enum": list(MOMENTUM_LABELS)}},
-           "limit": {**LIMIT, "description": "default 5"}}), tool_recommend),
+           "limit": {**LIMIT, "description": "default 5"},
+           "include_discovery": {"type": "boolean", "description": "also return a separate, labelled "
+                                 "discovery_candidates list (discovered, not scored; never recommendations)"}}),
+     tool_recommend),
     ("source_emerging_projects", "Emerging and accelerating projects",
      "Repositories whose star growth is surging or rising over a window (optionally only those whose growth is "
      "accelerating), and repositories the community is discussing now (Hacker News, DEV), filtered by star range "
-     "and optionally narrowed to a topic. Says plainly when a window cannot be measured yet.",
+     "and optionally narrowed to a topic (searched over the full corpus). Every row carries its tier. Says plainly "
+     "when a window cannot be measured yet.",
      _obj({"window": {"type": "string", "enum": ["1", "7", "30"], "description": "days, default 7"},
            "momentum": {"type": "array", "items": {"type": "string", "enum": list(MOMENTUM_LABELS)},
                         "description": "default ['surging', 'rising']"},
@@ -1426,7 +1827,7 @@ class Server:
         except OSError as exc:
             self.reload_error = f"MANIFEST unreadable: {exc}"
             return
-        signal_shas = tuple(_file_sha(self.root / "data" / n / "MANIFEST.json") for n in sorted(SIGNALS))
+        signal_shas = tuple(_file_sha(self.root / "data" / n / "MANIFEST.json") for n in sorted(SIGNALS) + ["corpus"])
         if sha == self.layer.manifest_sha256 and signal_shas == self.layer.signal_manifest_shas():
             return
         try:
