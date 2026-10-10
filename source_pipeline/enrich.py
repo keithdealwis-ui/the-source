@@ -16,7 +16,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 
 from . import common
-from .activity import Rules, iso
+from .activity import Rules, iso, parse_ts
 from .harvest import _token
 
 UA = "the-source-verify/1.0"
@@ -75,6 +75,10 @@ class Http:
                 status = err.code
                 if err.code in (404, 410, 451, 409, 422):
                     return err.code, None  # a real answer, not a failure
+                if err.headers.get("cf-mitigated") == "challenge":
+                    # A Cloudflare managed challenge wants a browser, not a retry (KEI-914).
+                    # Still a failure: the answer is unknown, not absent.
+                    break
                 if attempt < tries - 1:
                     wait = delay
                     if err.headers.get("X-RateLimit-Remaining") == "0" and err.headers.get("X-RateLimit-Reset"):
@@ -420,6 +424,42 @@ GITLAB_SPDX = {
 }
 
 
+def _gitlab_commits(http: Http, api: str, branch: str | None, since: datetime, n: int, rules: Rules) -> list[dict]:
+    """The newest commits on the default branch, newest first, stopping at the first that
+    qualifies, at `n`, or once older than `since`.
+
+    GitLab's commit *list* endpoint (`/repository/commits?since=`) now sits behind a
+    Cloudflare managed challenge for anonymous callers (KEI-914, observed 2026-10-10);
+    the branch, single-commit and diff endpoints do not. So the branch head is read and
+    the first-parent chain walked one commit at a time — the same observations the list
+    gave, one call per commit instead of one for the page.
+    """
+    out: list[dict] = []
+    if not branch:
+        return out
+    st, head = http.call(f"{api}/repository/branches/{urllib.parse.quote(branch, safe='')}")
+    c = (head or {}).get("commit") if st == 200 else None
+    while c and len(out) < n:
+        at = parse_ts(c.get("committed_date"))
+        if at and at < since:
+            break
+        change = {"ref": c["id"], "at": c.get("committed_date"), "author": c.get("author_name"), "paths": None}
+        if not rules.is_bot(change["author"]):
+            st, diff = http.call(f"{api}/repository/commits/{c['id']}/diff?per_page=100")
+            if st == 200 and diff is not None:
+                change["paths"] = [d["new_path"] for d in diff]
+        out.append(change)
+        if rules.change_qualifies(change)[0]:
+            break
+        parents = c.get("parent_ids") or []
+        if not parents:
+            break
+        st, c = http.call(f"{api}/repository/commits/{parents[0]}")
+        if st != 200:
+            c = None
+    return out
+
+
 def gitlab(http: Http, key: str, since: datetime, rules: Rules, policy: dict, fetched_at: str) -> dict:
     live = _base("gitlab", fetched_at)
     path = key.split("/", 1)[1]
@@ -449,16 +489,7 @@ def gitlab(http: Http, key: str, since: datetime, rules: Rules, policy: dict, fe
     )
     obs = {"commits": [], "merged_prs": [], "releases": [], "tags": []}
     n = int(policy["maintenance"]["commit_lookback"])
-    st, commits = http.call(f"{api}/repository/commits?since={iso(since)}&per_page={n}")
-    for c in commits or []:
-        change = {"ref": c["id"], "at": c["committed_date"], "author": c.get("author_name"), "paths": None}
-        if not rules.is_bot(change["author"]):
-            st, diff = http.call(f"{api}/repository/commits/{c['id']}/diff?per_page=100")
-            if st == 200 and diff is not None:
-                change["paths"] = [d["new_path"] for d in diff]
-        obs["commits"].append(change)
-        if rules.change_qualifies(change)[0]:
-            break
+    obs["commits"] = _gitlab_commits(http, api, repo.get("default_branch"), since, n, rules)
     st, rels = http.call(f"{api}/releases?per_page=3")
     for r in rels or []:
         obs["releases"].append({"ref": r.get("tag_name"), "at": r.get("released_at"), "draft": False,
