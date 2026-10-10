@@ -17,8 +17,11 @@ chown -R root:root /opt/the-source-mcp/app && chmod -R a+rX,go-w /opt/the-source
 if [ ! -d /opt/the-source-mcp/data/.git ]; then
   git clone -q --filter=blob:none --sparse https://github.com/keithdealwis-ui/the-source.git /opt/the-source-mcp/data
 fi
-# Re-applied on every install so an upgrade picks up new published layers (KEI-912: data/corpus).
-git -C /opt/the-source-mcp/data sparse-checkout set data/canonical api/v1 data/momentum data/radar data/corpus
+# Re-applied on every install so an upgrade picks up new published layers (KEI-912: data/corpus). On an upgrade
+# the clone belongs to the-source-mcp, so root names it safe for this one command; the chown below restores
+# ownership of anything it writes.
+git -c safe.directory=/opt/the-source-mcp/data -C /opt/the-source-mcp/data \
+  sparse-checkout set data/canonical api/v1 data/momentum data/radar data/corpus
 chown -R the-source-mcp:the-source-mcp /opt/the-source-mcp/data
 D=$(dirname "$0")
 install -m 0644 "$D/the-source-mcp.service" "$D/the-source-mcp-refresh.service" "$D/the-source-mcp-refresh.timer" /etc/systemd/system/
