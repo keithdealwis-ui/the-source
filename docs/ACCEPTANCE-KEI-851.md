@@ -13,7 +13,8 @@ mapped a reconstruction, because the first dispatch omitted them).
 - **Commits:**
   - `695303b`: the source stage, built by linux-claude and independently verified by Alpha
     (`aiq-pack-generic` PASS, packs `KEI-851-mcp-retrieval` and `-r2`).
-  - `fc7ea58` and `a361712`: the remaining scope, built by attended Claude Code.
+  - `fc7ea58` through this commit: the remaining scope, built by attended Claude Code. The
+    deployed revision is recorded in `/opt/the-source-mcp/app/COMMIT` on Bravo.
 - **Data served:** dataset `a6e5bef0eaf47a24` (cycle `2026-10-10-schedule-a1`), refreshed hourly
   from public `main`.
 - **Evidence:** pack `KEI-851-mcp-v1` holds the commit bundle, the live client transcripts and
@@ -45,5 +46,5 @@ mapped a reconstruction, because the first dispatch omitted them).
   - delete A record `source-mcp` (recordId `fed99011-fd15-425d-9d2b-c4b294359e85`)
 - **CI and merge:** pushing the branch is Keith's action (`engineering.repo.push_to_remote` is
   denied to agents). The push triggers `ci.yml` on the branch, which runs the full test set
-  including the three MCP test files (147 passed locally). `main` then moves only through
+  including the three MCP test files (148 passed locally). `main` then moves only through
   `aiq-merge-verified` after an Alpha PASS of this exact commit.
