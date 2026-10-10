@@ -55,6 +55,10 @@
     python -m source_pipeline graph-validate       run the query suite and the acceptance checks
     python -m source_pipeline graph-query <plan>   run one plan (YAML/JSON file, or a query id from
                                                    config/graph_queries.yaml) and print the evidence
+
+  MCP retrieval server (KEI-851, docs/MCP.md):
+    python -m source_pipeline mcp-serve [--root DIR] [--now TS] [--check]
+                                                   serve the canonical read layer over MCP (stdio)
 """
 from __future__ import annotations
 
@@ -219,6 +223,11 @@ def _radar(args, ap) -> int:
 
 
 def main(argv=None) -> int:
+    argv = sys.argv[1:] if argv is None else list(argv)
+    if argv[:1] == ["mcp-serve"]:
+        from . import mcp_server
+
+        return mcp_server.main(argv[1:])
     ap = argparse.ArgumentParser(prog="source_pipeline", description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("command", choices=["run", "harvest", "verify", "build", "validate", "export-public",

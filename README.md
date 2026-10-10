@@ -50,6 +50,10 @@ strengths/gaps note, its sources, and `live_checked_at`. The files are regenerat
 by the daily cycle, so they can be cached or served from a CDN. Full contract:
 [`docs/READ-API.md`](docs/READ-API.md).
 
+AI clients can ask the same data through an MCP server, which reads only `data/canonical/`
+and `api/v1/` and verifies them before it answers: `python -m source_pipeline mcp-serve`.
+See [`docs/MCP.md`](docs/MCP.md).
+
 ## How it stays current
 
 A scheduled GitHub Actions workflow runs a **daily intelligence cycle** (KEI-848; weekly under
@@ -108,6 +112,7 @@ GITHUB_TOKEN=... .venv/bin/python -m source_pipeline cycle --trigger local   # a
 - [`docs/MOMENTUM.md`](docs/MOMENTUM.md): repository momentum and acceleration (versioned methodology, coverage)
 - [`docs/RADAR.md`](docs/RADAR.md): Community Radar (Hacker News and Forem; sources, terms, ranking, reconciliation)
 - [`docs/READ-API.md`](docs/READ-API.md): the consumer contract
+- [`docs/MCP.md`](docs/MCP.md): the MCP retrieval server over the read layer (tools, gates, protocol)
 - [`docs/OPERATIONS.md`](docs/OPERATIONS.md): the daily cycle, failures, retries, run records and history
 - [`docs/BUILD-VS-INGEST.md`](docs/BUILD-VS-INGEST.md): which upstream services are used, for what, under which terms, and why the rest are not
 - [`docs/INTAKE.md`](docs/INTAKE.md) and [`docs/INTAKE-POLICY.md`](docs/INTAKE-POLICY.md): manual intake
