@@ -1,0 +1,10 @@
+[Unit]
+Description=Hourly data refresh for The Source MCP (KEI-851)
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=1h
+RandomizedDelaySec=5min
+
+[Install]
+WantedBy=timers.target

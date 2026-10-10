@@ -50,9 +50,10 @@ strengths/gaps note, its sources, and `live_checked_at`. The files are regenerat
 by the daily cycle, so they can be cached or served from a CDN. Full contract:
 [`docs/READ-API.md`](docs/READ-API.md).
 
-AI clients can ask the same data through an MCP server, which reads only `data/canonical/`
-and `api/v1/` and verifies them before it answers: `python -m source_pipeline mcp-serve`.
-See [`docs/MCP.md`](docs/MCP.md).
+AI clients can ask the same data, plus Repository and Community Momentum, through an MCP
+server at **`https://source-mcp.de-alwis.com/mcp`** (public, read-only, no account), or run
+it locally with `python -m source_pipeline mcp-serve`. It verifies every layer before it
+answers. See [`docs/MCP.md`](docs/MCP.md).
 
 ## How it stays current
 

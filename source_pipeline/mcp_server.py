@@ -3,13 +3,19 @@
     python -m source_pipeline.mcp_server [--root DIR] [--now TS]
     python -m source_pipeline mcp-serve  [--root DIR] [--now TS]
 
-A Model Context Protocol server on stdio (newline-delimited JSON-RPC 2.0). It answers
-from the canonical Source read layer only: data/canonical/ (MANIFEST.json, NOTICE.md,
+A Model Context Protocol server on stdio (newline-delimited JSON-RPC 2.0); the same
+engine is served over Streamable HTTP by source_pipeline/mcp_http.py. It answers from
+the canonical Source read layer: data/canonical/ (MANIFEST.json, NOTICE.md,
 saas_products.jsonl, oss_projects.jsonl, relationships.jsonl) and api/v1/ (index.json,
-domains.json, saas/<saas_id>.json). These are the files approved for publication under
-gate-KEI-807-bfaf2354 and licensed CC BY 4.0 (DATA-LICENCE.md). Nothing else in the
-repository is read: not the graph, the discover lane, staging, live snapshots, momentum
-or radar.
+domains.json, saas/<saas_id>.json), approved for publication under gate-KEI-807-bfaf2354
+and licensed CC BY 4.0 (DATA-LICENCE.md), plus the two published signal layers the daily
+cycle commits beside it: data/momentum/ (Repository Momentum, docs/MOMENTUM.md) and
+data/radar/ (Community Radar, docs/RADAR.md). Each signal layer is verified against its
+own MANIFEST; when one is missing, malformed or stale the canonical tools keep serving
+and every momentum answer says which and why. Nothing else in the repository is read:
+not the discover lane, staging, live snapshots, history or intake. Hybrid retrieval
+applies the KEI-844 semantic model (tfidf-sublinear/1, graph_retrieval.py) and graph
+traversal (SaaS -REPLACES- project edges, shared categories) to the published layer.
 
 Standard library only, read-only, no network, no wall clock in any answer except
 `freshness` in source_dataset_info (pin it with --now). The layer is verified before it
@@ -20,6 +26,8 @@ new snapshot; if the new files do not verify, the previous snapshot keeps servin
 says so.
 
 stdout carries protocol messages only. Diagnostics go to stderr. Queries are not logged.
+Usage telemetry is aggregate counters only (tool, outcome, latency bucket, per UTC day);
+no arguments, results, client identity or addresses are kept (Telemetry below).
 """
 from __future__ import annotations
 
@@ -29,13 +37,14 @@ import json
 import math
 import re
 import sys
+import time
 import unicodedata
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import urlsplit
 
 SERVER_NAME = "the-source"
-SERVER_VERSION = "1.0.0"
+SERVER_VERSION = "1.1.0"
 PROTOCOL_VERSIONS = ("2025-06-18", "2025-03-26", "2024-11-05")  # newest first
 API_VERSION = "v1"
 CANONICAL_SCHEMA = "the-source.canonical/1"
@@ -46,13 +55,40 @@ CANONICAL_FILES = ("NOTICE.md", "oss_projects.jsonl", "relationships.jsonl", "sa
 STALE_AFTER_DAYS = 14  # docs/READ-API.md: show a staleness hint after about 14 days
 MAX_LIMIT = 50
 MAX_TEXT = 300
+MAX_COMPARE = 5
+SIGNAL_STALE_AFTER_HOURS = 48  # the daily cycle runs once a day; two missed runs is stale
+SIGNALS = {"momentum": ("the-source.momentum/1", "docs/MOMENTUM.md"),
+           "radar": ("the-source.radar/1", "docs/RADAR.md")}
+MOMENTUM_LABELS = ("surging", "rising", "flat", "declining")
+ACCELERATION_LABELS = ("accelerating", "steady", "decelerating")
+LICENCE_FAMILIES = {  # SPDX id -> family; anything unlisted is "unknown" and never matches a family filter
+    **dict.fromkeys(("MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "0BSD", "Unlicense", "Zlib"),
+                    "permissive"),
+    **dict.fromkeys(("MPL-2.0", "LGPL-2.1", "LGPL-3.0", "EPL-1.0", "EPL-2.0"), "weak_copyleft"),
+    **dict.fromkeys(("GPL-2.0", "GPL-3.0", "AGPL-3.0", "OSL-3.0", "EUPL-1.2"), "copyleft"),
+}
+# What the published layer cannot judge. A requirement like these is reported as not evaluated, never guessed.
+NOT_EVALUABLE = ("API quality or coverage", "fit for a given team or company size", "SSO, compliance or support "
+                 "terms", "hosting cost", "user experience")
+
+# KEI-844's semantic model (source_pipeline/graph_retrieval.py, MODEL tfidf-sublinear/1), restated here because
+# that module imports PyYAML and this one is standard library only. tests/test_mcp_server.py asserts the two
+# tokenisers and the model id are identical.
+SEMANTIC_MODEL = "tfidf-sublinear/1"
+_SEM_WORD = re.compile(r"[a-z0-9][a-z0-9+#.]*[a-z0-9+#]|[a-z0-9]")
+_SEM_STOP = set("""a an and are as at be but by for from has have in into is it its of on or our that the this
+to was were will with you your we can not all any via using use used based built make makes more most
+new one open source simple fast easy tool tools project projects app apps application""".split())
+HYBRID_WEIGHTS = {"lexical": 0.45, "semantic": 0.35, "graph": 0.20}
 
 INSTRUCTIONS = (
     "The Source: evidence-backed open-source alternatives to SaaS products. Answers come from "
     "The Source's published read layer (CC BY 4.0; attribute \"" + ATTRIBUTION + "\"). "
     "Use source_get_alternatives for 'what can replace X', source_detect_saas for a URL, "
     "source_search to find products or projects, source_get_project and "
-    "source_get_relationship for the evidence behind one project or pairing. Only "
+    "source_get_relationship for the evidence behind one project or pairing, source_compare_projects to "
+    "compare projects, source_recommend for requirements (a need in words and/or hard constraints), "
+    "source_emerging_projects and source_get_momentum for Repository and Community Momentum. Only "
     "relationships marked recommended are recommendations; Replacement Fit notes are "
     "machine-derived, not editorial. Show live_checked_at with any live figure."
 )
@@ -106,6 +142,90 @@ def _repo_key(value: str) -> str:
     v = v.split("?")[0].split("#")[0].rstrip("/")
     v = v[4:] if v.startswith("www.") else v
     return v[:-4] if v.endswith(".git") else v
+
+
+def _sem_tokens(text) -> list:
+    """graph_retrieval.tokens, verbatim."""
+    return [t for t in _SEM_WORD.findall((text or "").lower()) if t not in _SEM_STOP and len(t) > 1]
+
+
+def _sublinear_vectors(raw: dict):
+    """graph_retrieval.RetrievalIndex.from_entities weighting: idf log((1+n)/(1+df))+1, tf 1+log(tf), L2."""
+    df = {}
+    for terms in raw.values():
+        for t in terms:
+            df[t] = df.get(t, 0) + 1
+    n = len(raw) or 1
+    idf = {t: math.log((1 + n) / (1 + d)) + 1 for t, d in df.items()}
+    vecs = {}
+    for key, terms in raw.items():
+        w = {t: (1 + math.log(tf)) * idf[t] for t, tf in terms.items()}
+        norm = math.sqrt(sum(v * v for v in w.values())) or 1.0
+        vecs[key] = {t: v / norm for t, v in w.items()}
+    return vecs, idf
+
+
+def _counts(*texts) -> dict:
+    c = {}
+    for text in texts:
+        for t in _sem_tokens(text):
+            c[t] = c.get(t, 0) + 1
+    return c
+
+
+def _load_signal(root: Path, name: str, canonical_version: str) -> dict:
+    """One published signal layer, verified against its own MANIFEST, or a reason it is unavailable."""
+    schema, doc = SIGNALS[name]
+    base = root / "data" / name
+    state = {"layer": f"data/{name}", "methodology": doc, "status": "unavailable", "reason": None,
+             "as_of": None, "manifest_sha256": None, "rows": None}
+    try:
+        raw = (base / "MANIFEST.json").read_bytes()
+        m = json.loads(raw)
+    except (OSError, ValueError) as exc:
+        state["reason"] = f"data/{name}/MANIFEST.json unreadable: {type(exc).__name__}"
+        return state
+    state["manifest_sha256"] = hashlib.sha256(raw).hexdigest()
+    state["as_of"] = m.get("as_of")
+    if m.get("schema") != schema:
+        state["reason"] = f"schema is {m.get('schema')!r}, want {schema!r}"
+        return state
+    files = m.get("files") or {}
+    for fname, digest in sorted(files.items()):
+        if "/" in fname or fname.startswith("."):
+            state["reason"] = f"MANIFEST names an unexpected path {fname!r}"
+            return state
+        path = base / fname
+        if not path.is_file() or _sha256(path) != digest:
+            state["reason"] = f"data/{name}/{fname} is missing or does not match its MANIFEST sha256"
+            return state
+    try:
+        if name == "momentum":
+            if "projects.jsonl" not in files:
+                raise ValueError("MANIFEST does not list projects.jsonl")
+            rows = _jsonl(base / "projects.jsonl")
+            state["windows"] = m.get("windows")
+            state["coverage"] = {w: {"status": c.get("status"), "measurable_from": c.get("measurable_from"),
+                                     "acceleration_measurable_from": (c.get("acceleration") or {}).get("measurable_from"),
+                                     "acceleration_status": (c.get("acceleration") or {}).get("status")}
+                                 for w, c in sorted((m.get("coverage") or {}).items())}
+            built_from = (m.get("history") or {}).get("dataset_version")
+            state["built_from_dataset_version"] = built_from
+            state["matches_canonical"] = built_from == canonical_version
+            state["methodology_version"] = (m.get("methodology") or {}).get("version")
+        else:
+            if "radar.jsonl" not in files:
+                raise ValueError("MANIFEST does not list radar.jsonl")
+            rows = _jsonl(base / "radar.jsonl")
+            state["window_days"] = m.get("window_days")
+            state["sources"] = sorted(((m.get("collection") or {}).get("sources") or {}))
+            state["source_status"] = {s: v.get("status") for s, v in
+                                      sorted(((m.get("collection") or {}).get("sources") or {}).items())}
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        state["reason"] = f"data/{name} unreadable: {exc}"
+        return state
+    state.update(status="ok", rows=rows)
+    return state
 
 
 class Layer:
@@ -182,6 +302,112 @@ class Layer:
             self.rel_by_pair[(r["saas_id"], r["oss_id"])] = r
         self._build_names()
         self._build_search()
+        self._build_semantic()
+        self._load_signals()
+
+    # -- signal layers (Repository Momentum, Community Radar)
+
+    def _load_signals(self):
+        self.signals = {name: _load_signal(self.root, name, self.dataset_version) for name in SIGNALS}
+        self.momentum, self.radar = {}, {}
+        mom = self.signals["momentum"]
+        for row in mom.pop("rows") or []:
+            for key in (row.get("key"), row.get("canonical_id")):
+                if key:
+                    self.momentum.setdefault(_repo_key(key), row)
+        rad = self.signals["radar"]
+        for row in rad.pop("rows") or []:
+            for key in [row.get("key"), row.get("oss_id"), *(row.get("link_keys") or [])]:
+                if key:
+                    self.radar.setdefault(_repo_key(key), row)
+        self.radar_ranked = sorted({id(r): r for r in self.radar.values()}.values(),
+                                   key=lambda r: (r.get("rank") or 10 ** 9, r.get("key") or ""))
+
+    def signal_manifest_shas(self):
+        return tuple(self.signals[n]["manifest_sha256"] for n in sorted(SIGNALS))
+
+    # -- KEI-844 semantic model over the published layer
+
+    def _build_semantic(self):
+        raw = {}
+        for sid, s in sorted(self.saas.items()):
+            raw[("saas", sid)] = _counts(s["name"], " ".join(s.get("aliases", [])), s["category"], s["category"],
+                                         s["domain"].split(".")[0])
+        for pid, p in sorted(self.projects.items()):
+            recs = [r for r in self.rel_by_project.get(pid, []) if r["recommended"]]
+            owner_repo = pid.split("/", 1)[1] if "/" in pid else pid
+            replaced = [self.saas[r["saas_id"]] for r in recs]
+            raw[("project", pid)] = _counts(
+                p["name"], owner_repo.replace("/", " ").replace("-", " ").replace("_", " "),
+                " ".join(s["name"] for s in replaced), " ".join(a for s in replaced for a in s.get("aliases", [])),
+                " ".join(s["category"] for s in replaced), " ".join(s["category"] for s in replaced))
+        self.vectors, self.sem_idf = _sublinear_vectors(raw)
+
+    def semantic(self, query: str, kind: str):
+        """Cosine between the query and every document under the KEI-844 weighting; (cos, kind, key, shared)."""
+        q = {}
+        for t in _sem_tokens(query):
+            if t in self.sem_idf:
+                q[t] = q.get(t, 0) + 1
+        if not q:
+            return []
+        w = {t: (1 + math.log(tf)) * self.sem_idf[t] for t, tf in q.items()}
+        norm = math.sqrt(sum(v * v for v in w.values())) or 1.0
+        out = []
+        for (k, key), vec in self.vectors.items():
+            if kind != "any" and k != kind:
+                continue
+            shared = sorted(t for t in w if t in vec)
+            if shared:
+                cos = sum(w[t] / norm * vec[t] for t in shared)
+                out.append((round(cos, 4), k, key, shared))
+        out.sort(key=lambda h: (-h[0], h[1], h[2]))
+        return out
+
+    def hybrid(self, query: str, kind: str):
+        """Lexical BM25 + KEI-844 semantic cosine + graph (REPLACES edges from matched products to projects,
+        weighted by Replacement Fit). Every hit keeps its three components; nothing is ranked by a number the
+        result cannot show."""
+        # Lexical scoring sees the query without KEI-844 stopwords ("open source", "tool", "app" ...), which
+        # otherwise match category names such as "Source control" and pull in unrelated products.
+        content = " ".join(_sem_tokens(query)) or query
+        lex = {(k, key): (s, why, exact) for s, k, key, why, exact in self.search(content, "any")}
+        if _norm(query) != _norm(content):
+            for s, k, key, why, exact in self.search(query, "any"):
+                if exact:
+                    lex[(k, key)] = (lex.get((k, key), (0,))[0] + 10.0, why, True)
+        top_lex = max((v[0] for v in lex.values()), default=0.0) or 1.0
+        sem = {(k, key): (c, shared) for c, k, key, shared in self.semantic(query, "any")}
+        graph, via = {}, {}
+        seeds = sorted(((max(lex.get(("saas", sid), (0,))[0] / top_lex, sem.get(("saas", sid), (0,))[0]), sid)
+                        for sid in self.saas), reverse=True)
+        top_seed = seeds[0][0] if seeds else 0
+        seeds = [(strength, sid) for strength, sid in seeds[:3] if strength >= 0.3 and strength >= 0.8 * top_seed]
+        for strength, sid in seeds:
+            for r in self.rel_by_saas.get(sid, []):
+                if not r["recommended"]:
+                    continue
+                g = round(strength * (r["replacement_fit"]["score"] or 0) / 100, 4)
+                if g > graph.get(("project", r["oss_id"]), 0):
+                    graph[("project", r["oss_id"])] = g
+                    via[("project", r["oss_id"])] = {"saas_id": sid, "edge_id": r["edge_id"], "relation": "REPLACES",
+                                                     "replacement_fit": r["replacement_fit"]["score"]}
+        hits = []
+        for key in set(lex) | set(sem) | set(graph):
+            if kind != "any" and key[0] != kind:
+                continue
+            lx = round(lex[key][0] / top_lex, 4) if key in lex else 0.0
+            sm = sem[key][0] if key in sem else 0.0
+            gr = graph.get(key, 0.0)
+            score = round(HYBRID_WEIGHTS["lexical"] * lx + HYBRID_WEIGHTS["semantic"] * sm
+                          + HYBRID_WEIGHTS["graph"] * gr, 4)
+            hits.append({"kind": key[0], "key": key[1], "score": score,
+                         "components": {"lexical": lx, "semantic": sm, "graph": gr},
+                         "matched": lex[key][1] if key in lex else {},
+                         "semantic_terms": sem[key][1] if key in sem else [],
+                         "graph_path": via.get(key), "exact": bool(lex.get(key, (0, 0, False))[2])})
+        hits.sort(key=lambda h: (-h["score"], h["kind"], h["key"]))
+        return hits, [{"saas_id": sid, "strength": round(st, 4)} for st, sid in seeds]
 
     # -- name resolution
 
@@ -423,10 +649,17 @@ def tool_dataset_info(layer, args, server):
                       "stale": age is not None and age > STALE_AFTER_DAYS, "stale_after_days": STALE_AFTER_DAYS,
                       "newest_live_check": newest},
         "snapshot": server.snapshot_status(),
+        "signals": {n: _signal_state(layer, server, n) for n in SIGNALS},
+        "retrieval": {"lexical": "BM25F-lite", "semantic_model": SEMANTIC_MODEL,
+                      "semantic_model_origin": "KEI-844 source_pipeline/graph_retrieval.py",
+                      "graph": "SaaS -REPLACES-> project edges from data/canonical/relationships.jsonl",
+                      "hybrid_weights": HYBRID_WEIGHTS},
         "serves": ["data/canonical/" + f for f in ("MANIFEST.json",) + CANONICAL_FILES]
-                  + ["api/v1/index.json", "api/v1/domains.json", "api/v1/saas/<saas_id>.json"],
-        "does_not_serve": "the knowledge graph, the discover lane, staging, live snapshots, history, momentum, "
-                          "radar, intake and internal research data; relationships withheld by the export guard",
+                  + ["api/v1/index.json", "api/v1/domains.json", "api/v1/saas/<saas_id>.json",
+                     "data/momentum/MANIFEST.json", "data/momentum/projects.jsonl",
+                     "data/radar/MANIFEST.json", "data/radar/radar.jsonl"],
+        "does_not_serve": "the discover lane and its corpus, staging, live snapshots, history, intake and internal "
+                          "research data; relationships withheld by the export guard. Nothing private to AIQ.",
     }
 
 
@@ -517,9 +750,19 @@ def tool_search(layer, args, server):
     project_filters = lic is not None or status is not None or min_health is not None
     if project_filters and kind == "saas":
         raise ToolError("licence, maintenance_status and min_health filter projects; use kind project or any")
+    mode = args.get("mode", "lexical")
+    if mode not in ("lexical", "hybrid"):
+        raise ToolError("mode must be lexical or hybrid")
 
+    if mode == "hybrid":
+        hits, seeds = layer.hybrid(query, kind)
+        ranked = [(h["score"], h["kind"], h["key"], h["matched"], h["exact"]) for h in hits]
+        extra = {(h["kind"], h["key"]): {"score_components": h["components"], "semantic_terms": h["semantic_terms"],
+                                         "graph_path": h["graph_path"]} for h in hits}
+    else:
+        ranked, extra, seeds = layer.search(query, kind), {}, None
     results = []
-    for score, k, key, why, exact in layer.search(query, kind):
+    for score, k, key, why, exact in ranked:
         if k == "saas":
             if project_filters:
                 continue
@@ -547,11 +790,21 @@ def tool_search(layer, args, server):
                                             k2: h[k2] for k2 in ("score", "band", "trajectory")},
                                         "live_checked_at": p["live"]["checked_at"]},
                             "recommended_for": sorted(r["saas_id"] for r in rels if r["recommended"])})
+        if extra:
+            results[-1].update(extra[(k, key)])
     total = len(results)
-    return {"query": query, "kind": kind, "total": total, "results": results[:limit],
-            "more_available": max(0, total - limit),
-            "ranking": "BM25 over weighted fields (name, aliases or repository, products replaced, category, "
-                       "licence), +10 for an exact name match; ties by kind then id. Lexical, deterministic."}
+    out = {"query": query, "kind": kind, "mode": mode, "total": total, "results": results[:limit],
+           "more_available": max(0, total - limit)}
+    if mode == "hybrid":
+        out["graph_seeds"] = seeds
+        out["ranking"] = (f"Hybrid: {HYBRID_WEIGHTS['lexical']} x lexical BM25 (normalised to the best hit) + "
+                          f"{HYBRID_WEIGHTS['semantic']} x KEI-844 semantic cosine ({SEMANTIC_MODEL}) + "
+                          f"{HYBRID_WEIGHTS['graph']} x graph (matched product -REPLACES-> project, weighted by "
+                          "Replacement Fit). Components are returned per result; ties by kind then id.")
+    else:
+        out["ranking"] = ("BM25 over weighted fields (name, aliases or repository, products replaced, category, "
+                          "licence), +10 for an exact name match; ties by kind then id. Lexical, deterministic.")
+    return out
 
 
 def tool_get_project(layer, args, server):
@@ -585,6 +838,399 @@ def tool_get_relationship(layer, args, server):
             "verdict": verdict,
             "evidence_note": "provenance names each upstream list, the pinned commit and the line the claim was read "
                              "from; licence, archive and maintenance were verified against the repository host."}
+
+
+# -- signals: Repository Momentum and Community Radar
+
+
+def _signal_state(layer, server, name):
+    """The signal layer's availability and freshness, for every answer that uses it."""
+    s = dict(layer.signals[name])
+    s.pop("coverage", None)
+    age_h = None
+    if s.get("as_of"):
+        try:
+            then = datetime.strptime(s["as_of"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+            age_h = round((server.now() - then).total_seconds() / 3600, 2)
+        except ValueError:
+            pass
+    s["age_hours"] = age_h
+    s["stale"] = s["status"] == "ok" and (age_h is None or age_h > SIGNAL_STALE_AFTER_HOURS)
+    if s["status"] == "ok" and s["stale"]:
+        s["status"] = "stale"
+        s["reason"] = f"as_of {s.get('as_of')} is more than {SIGNAL_STALE_AFTER_HOURS} h old; the daily cycle has not refreshed it"
+    s["stale_after_hours"] = SIGNAL_STALE_AFTER_HOURS
+    return s
+
+
+def _window_view(win: dict):
+    if not win:
+        return {"status": "not_published"}
+    if win.get("status") != "measured":
+        return {"status": win.get("status"), "reason": win.get("reason")}
+    acc = win.get("acceleration") or {}
+    return {"status": "measured", "momentum": win.get("momentum"), "stars_now": win.get("stars_now"),
+            "stars_delta": win.get("stars_delta"), "stars_per_day": win.get("stars_per_day"),
+            "growth_pct_per_30d": win.get("growth_pct_per_30d"), "base_day": win.get("base_day"),
+            "acceleration": ({"status": "measured", "label": acc.get("label"),
+                              "stars_per_day_change": acc.get("stars_per_day_change"),
+                              "explanation": acc.get("explanation")}
+                             if acc.get("status") == "measured" else
+                             {"status": acc.get("status") or "not_measured", "reason": acc.get("reason")}),
+            "activity": win.get("activity"), "explanation": win.get("explanation")}
+
+
+def _repository_momentum(layer, key):
+    row = layer.momentum.get(_repo_key(key))
+    if row is None:
+        return {"status": "not_tracked", "reason": "this repository is not in data/momentum/projects.jsonl"}
+    return {"status": "tracked", "key": row.get("key"), "on": row.get("on"), "stars": row.get("stars"),
+            "windows": {w: _window_view((row.get("windows") or {}).get(w)) for w in ("1", "7", "30", "90")}}
+
+
+def _community_momentum(layer, key, full=False):
+    row = layer.radar.get(_repo_key(key))
+    if row is None:
+        return {"status": "no_mentions_in_window",
+                "reason": "no counted mention of this repository in the Community Radar window"}
+    out = {"status": "ranked", "rank": row.get("rank"), "score": row.get("score"), "key": row.get("key"),
+           "sources": row.get("sources"), "first_mentioned_at": row.get("first_mentioned_at"),
+           "last_mentioned_at": row.get("last_mentioned_at"), "explanation": row.get("explanation"),
+           "radar_status": row.get("status"), "radar_status_reason": row.get("status_reason")}
+    if full:
+        out["mentions"] = [{k: m.get(k) for k in ("source", "permalink", "published_at", "points", "comments",
+                                                    "contribution", "counted")} for m in row.get("mentions") or []]
+    return out
+
+
+MEASURES = {
+    "project_health": "Is the project itself healthy (maintenance, releases, community, security posture)? "
+                      "Scored per project, independent of any SaaS.",
+    "replacement_fit": "How well does the project replace one specific SaaS product? Scored per pairing.",
+    "repository_momentum": "Is the repository's star growth rising or falling, and accelerating, over 1/7/30/90 "
+                           "days (data/momentum)? Measured from daily snapshots, not opinion.",
+    "community_momentum": "Is the project being discussed now (Hacker News, DEV/Forem mentions in the Radar "
+                          "window, data/radar)? Attention, not quality.",
+}
+
+
+def tool_get_momentum(layer, args, server):
+    v = args.get("project")
+    try:
+        pid = layer.resolve_project(v)
+        key, canonical = pid, True
+    except ToolError:
+        key, canonical = _repo_key(v), False
+        if key not in layer.momentum and key not in layer.radar:
+            raise
+    return {"project": key, "in_canonical_layer": canonical,
+            "repository_momentum": _repository_momentum(layer, key),
+            "community_momentum": _community_momentum(layer, key, full=True),
+            "signals": {n: _signal_state(layer, server, n) for n in SIGNALS},
+            "measures": {k: MEASURES[k] for k in ("repository_momentum", "community_momentum")}}
+
+
+def tool_compare(layer, args, server):
+    names = args.get("projects")
+    if not isinstance(names, list) or not 2 <= len(names) <= MAX_COMPARE or \
+            not all(isinstance(n, str) and n.strip() for n in names):
+        raise ToolError(f"projects must be a list of 2 to {MAX_COMPARE} project names, oss_ids or repository URLs")
+    pids = []
+    for n in names:
+        pid = layer.resolve_project(n)
+        if pid in pids:
+            raise ToolError(f"{n!r} is the same project as an earlier entry ({pid})")
+        pids.append(pid)
+    rows, uncertainty = [], []
+    for pid in pids:
+        p = layer.projects[pid]
+        h = p["project_health"]
+        recs = sorted((r for r in layer.rel_by_project.get(pid, []) if r["recommended"]), key=lambda r: r["saas_id"])
+        rows.append({
+            "oss_id": pid, "name": p["name"], "repo_url": p["repo_url"], "licence_spdx": p["licence"]["spdx"],
+            "licence_family": LICENCE_FAMILIES.get(p["licence"]["spdx"] or "", "unknown"),
+            "stars": p["live"]["stars"], "archived": p["live"]["archived"],
+            "latest_release": p["live"]["latest_release"], "maintenance": p["maintenance"],
+            "project_health": h, "live_checked_at": p["live"]["checked_at"],
+            "replaces": [{"saas_id": r["saas_id"], "saas_name": layer.saas[r["saas_id"]]["name"],
+                          "replacement_fit": r["replacement_fit"]["score"],
+                          "confidence": r["replacement_fit"]["confidence"]} for r in recs],
+            "repository_momentum": _repository_momentum(layer, pid),
+            "community_momentum": _community_momentum(layer, pid)})
+        if h is None:
+            uncertainty.append(f"{pid}: no Project Health score")
+        elif h.get("evidence_insufficient"):
+            uncertainty.append(f"{pid}: Project Health marked evidence_insufficient (confidence {h.get('confidence')})")
+        w7 = rows[-1]["repository_momentum"].get("windows", {}).get("7", {})
+        if w7.get("status") != "measured":
+            uncertainty.append(f"{pid}: 7-day repository momentum {w7.get('status')}")
+    shared = sorted(set.intersection(*[{r["saas_id"] for r in layer.rel_by_project.get(pid, [])} for pid in pids]))
+    head_to_head = []
+    for sid in shared:
+        entry = {"saas_id": sid, "saas_name": layer.saas[sid]["name"], "by_project": {}}
+        for pid in pids:
+            r = layer.rel_by_pair[(sid, pid)]
+            entry["by_project"][pid] = {"recommended": r["recommended"],
+                                        "replacement_fit": r["replacement_fit"]["score"],
+                                        "confidence": r["replacement_fit"]["confidence"]}
+        best = max(pids, key=lambda pid: (entry["by_project"][pid]["recommended"],
+                                          entry["by_project"][pid]["replacement_fit"] or 0))
+        entry["higher_fit"] = best
+        head_to_head.append(entry)
+    def lead(field):
+        vals = [(r["project_health"] or {}).get("score") if field == "health" else r["stars"] for r in rows]
+        known = [(v, r["oss_id"]) for v, r in zip(vals, rows) if v is not None]
+        return max(known)[1] if known else None
+    return {"projects": rows, "shared_saas": head_to_head,
+            "summary": {"higher_project_health": lead("health"), "more_stars": lead("stars"),
+                        "shared_saas_products": len(shared)},
+            "measures": MEASURES, "uncertainty": uncertainty,
+            "signals": {n: _signal_state(layer, server, n) for n in SIGNALS},
+            "note": "Each measure answers a different question; none is folded into another. A project can be "
+                    "healthy and a poor replacement for one product, or trending and unproven."}
+
+
+def _licence_ok(spdx, licences, family):
+    if licences and (spdx or "").lower() not in {x.lower() for x in licences}:
+        return "licence"
+    if family and LICENCE_FAMILIES.get(spdx or "") != family:
+        return "licence_family"
+    return None
+
+
+def _str_list(args, key, allowed=None):
+    v = args.get(key)
+    if v is None:
+        return []
+    if isinstance(v, str):
+        v = [v]
+    if not isinstance(v, list) or not all(isinstance(x, str) and x for x in v) or len(v) > 20:
+        raise ToolError(f"{key} must be a string or a list of up to 20 strings")
+    if allowed and not set(v) <= set(allowed):
+        raise ToolError(f"{key} values must be among {', '.join(allowed)}")
+    return v
+
+
+def _num(args, key, lo, hi):
+    v = args.get(key)
+    if v is None:
+        return None
+    if isinstance(v, bool) or not isinstance(v, (int, float)) or not lo <= v <= hi:
+        raise ToolError(f"{key} must be a number from {lo} to {hi}")
+    return v
+
+
+def tool_recommend(layer, args, server):
+    need, saas = args.get("need"), args.get("saas")
+    if need is None and saas is None:
+        raise ToolError("give need (what the tool must do, in words) or saas (a product to replace), or both")
+    if need is not None and (not isinstance(need, str) or not _tokens(need) or len(need) > MAX_TEXT):
+        raise ToolError(f"need must contain words and be at most {MAX_TEXT} characters")
+    licences = _str_list(args, "licence")
+    family = args.get("licence_family")
+    if family is not None and family not in ("permissive", "weak_copyleft", "copyleft"):
+        raise ToolError("licence_family must be permissive, weak_copyleft or copyleft")
+    self_host = args.get("self_hostable")
+    if self_host is not None and not isinstance(self_host, bool):
+        raise ToolError("self_hostable must be true or false")
+    status = _str_list(args, "maintenance_status", ("active", "maintained"))
+    momentum = _str_list(args, "repository_momentum_7d", MOMENTUM_LABELS)
+    min_fit, min_health = _num(args, "min_fit", 0, 100), _num(args, "min_health", 0, 100)
+    min_stars, max_stars = _num(args, "min_stars", 0, 10 ** 9), _num(args, "max_stars", 0, 10 ** 9)
+    max_days = _num(args, "max_days_since_activity", 0, 3650)
+    limit = _limit(args, 5)
+
+    matched, seeds = [], []
+    if saas is not None:
+        sid, how = layer.resolve_saas(saas)
+        matched.append({"saas_id": sid, "name": layer.saas[sid]["name"], "matched_by": how, "strength": 1.0})
+    if need is not None:
+        hits, seeds = layer.hybrid(need, "any")
+        # A product named outright in the need ("... like Notion") is the product meant; retrieval only fills in
+        # when none is named.
+        padded = f" {_norm(need)} "
+        named = sorted({sid for key, sids in layer.saas_names.items() if len(key) > 2 and f" {key} " in padded
+                        for sid in sids} - {m["saas_id"] for m in matched})
+        for sid in named[:3]:
+            matched.append({"saas_id": sid, "name": layer.saas[sid]["name"], "matched_by": "named_in_need",
+                            "strength": 1.0})
+        top_saas = max((h["score"] for h in hits if h["kind"] == "saas"), default=0)
+        for h in ([] if named else hits):
+            if h["kind"] == "saas" and h["score"] >= max(0.25, 0.8 * top_saas) and len(matched) < 3 and \
+                    h["key"] not in {m["saas_id"] for m in matched}:
+                matched.append({"saas_id": h["key"], "name": layer.saas[h["key"]]["name"],
+                                "matched_by": "hybrid", "strength": h["score"], "components": h["components"]})
+    proj_hits = {}
+    if need is not None:
+        for h in hits:
+            if h["kind"] == "project" and h["score"] >= 0.15:
+                proj_hits[h["key"]] = h
+        if matched:  # a matched product's own alternatives come first; a direct hit must be strong to join them
+            proj_hits = {k: h for k, h in proj_hits.items() if h["score"] >= 0.45}
+    cands = {}
+    for m in matched:
+        for r in layer.rel_by_saas.get(m["saas_id"], []):
+            if r["recommended"]:
+                cur = cands.get(r["oss_id"])
+                if cur is None or (r["replacement_fit"]["score"] or 0) > (cur["rel"]["replacement_fit"]["score"] or 0):
+                    cands[r["oss_id"]] = {"rel": r, "via": "replaces " + m["saas_id"], "group": 0}
+    for pid, h in proj_hits.items():
+        if pid not in cands:
+            recs = sorted((r for r in layer.rel_by_project.get(pid, []) if r["recommended"]),
+                          key=lambda r: -(r["replacement_fit"]["score"] or 0))
+            if recs:
+                cands[pid] = {"rel": recs[0], "via": "matched the need directly", "group": 1 if matched else 0}
+    excluded, out = {}, []
+    page_rows = {(sid, r["oss_id"]): r for sid, doc in layer.surface.items() for r in doc["recommendations"]}
+    for pid, c in cands.items():
+        p, r = layer.projects[pid], c["rel"]
+        h = p["project_health"]
+        sh = (page_rows.get((r["saas_id"], pid)) or {}).get("self_hosting")
+        mom = _repository_momentum(layer, pid)
+        m7 = mom.get("windows", {}).get("7", {}) if mom["status"] == "tracked" else {}
+        why_not = (_licence_ok(p["licence"]["spdx"], licences, family)
+                   or ("maintenance_status" if status and p["maintenance"]["status"] not in status else None)
+                   or ("min_fit" if min_fit is not None and (r["replacement_fit"]["score"] or 0) < min_fit else None)
+                   or ("min_health" if min_health is not None and (h is None or h["score"] < min_health) else None)
+                   or ("min_stars" if min_stars is not None and (p["live"]["stars"] or 0) < min_stars else None)
+                   or ("max_stars" if max_stars is not None and (p["live"]["stars"] or 0) > max_stars else None)
+                   or ("max_days_since_activity" if max_days is not None and
+                       (p["maintenance"]["days_since_meaningful_activity"] is None or
+                        p["maintenance"]["days_since_meaningful_activity"] > max_days) else None)
+                   or ("self_hosting_unknown" if self_host is True and sh is None else None)
+                   or ("not_self_hostable" if self_host is True and sh and not sh.get("self_hostable") else None)
+                   or ("repository_momentum_7d" if momentum and m7.get("momentum") not in momentum else None))
+        if why_not:
+            excluded[why_not] = excluded.get(why_not, 0) + 1
+            continue
+        out.append({
+            "oss_id": pid, "name": p["name"], "repo_url": p["repo_url"], "licence_spdx": p["licence"]["spdx"],
+            "licence_family": LICENCE_FAMILIES.get(p["licence"]["spdx"] or "", "unknown"),
+            "stars": p["live"]["stars"], "maintenance_status": p["maintenance"]["status"],
+            "days_since_meaningful_activity": p["maintenance"]["days_since_meaningful_activity"],
+            "for_saas": r["saas_id"], "via": c["via"], "edge_id": r["edge_id"], "_group": c["group"],
+            "replacement_fit": {k: r["replacement_fit"].get(k) for k in ("score", "confidence", "score_version")},
+            "project_health": None if h is None else {k: h.get(k) for k in ("score", "band", "trajectory",
+                                                                             "confidence", "evidence_insufficient")},
+            "self_hosting": sh if sh else {"self_hostable": None,
+                                           "basis": "not evidenced in the published layer for this pairing"},
+            "repository_momentum_7d": m7 or {"status": mom["status"]},
+            "community_momentum": _community_momentum(layer, pid),
+            "retrieval": ({k: proj_hits[pid][k] for k in ("score", "components", "semantic_terms")}
+                          if pid in proj_hits else None),
+            "sources": r["sources"], "live_checked_at": p["live"]["checked_at"]})
+    out.sort(key=lambda x: (x["_group"], -(x["replacement_fit"]["score"] or 0),
+                            -((x["project_health"] or {}).get("score") or 0), -(x["stars"] or 0), x["oss_id"]))
+    for i, row in enumerate(out, 1):
+        row["rank"] = i
+        del row["_group"]
+    constraints = {k: args[k] for k in ("licence", "licence_family", "self_hostable", "maintenance_status", "min_fit",
+                                        "min_health", "min_stars", "max_stars", "max_days_since_activity",
+                                        "repository_momentum_7d") if k in args}
+    return {"need": need, "saas": saas, "matched_products": matched, "graph_seeds": seeds,
+            "constraints_applied": constraints, "candidates_considered": len(cands),
+            "excluded_by_constraint": dict(sorted(excluded.items())),
+            "recommendations": out[:limit], "more_available": max(0, len(out) - limit),
+            "status": "ok" if out else ("no_products_matched" if not matched and not proj_hits
+                                        else "no_recommended_alternatives" if not cands
+                                        else "no_candidate_meets_constraints"),
+            "ranking": "Alternatives to the matched products first, then strong direct matches of the need; within "
+                       "each, Replacement Fit, then Project Health, then stars. Only recommended "
+                       "relationships are candidates. Constraints are hard filters, applied exactly.",
+            "not_evaluated": {"requirements": list(NOT_EVALUABLE),
+                              "why": "The published layer holds no evidence for these; check them yourself. "
+                                     "self_hostable is evidenced only on published api/v1 pages."},
+            "signals": {n: _signal_state(layer, server, n) for n in SIGNALS}}
+
+
+def tool_emerging(layer, args, server):
+    window = args.get("window", "7")
+    if window not in ("1", "7", "30"):
+        raise ToolError("window must be 1, 7 or 30 (days)")
+    labels = _str_list(args, "momentum", MOMENTUM_LABELS) or ["surging", "rising"]
+    accelerating = args.get("accelerating_only", False)
+    if not isinstance(accelerating, bool):
+        raise ToolError("accelerating_only must be true or false")
+    min_stars, max_stars = _num(args, "min_stars", 0, 10 ** 9), _num(args, "max_stars", 0, 10 ** 9)
+    query = args.get("query")
+    if query is not None and (not isinstance(query, str) or not _tokens(query) or len(query) > MAX_TEXT):
+        raise ToolError(f"query must contain words and be at most {MAX_TEXT} characters")
+    limit = _limit(args, 10)
+    mom_state, rad_state = _signal_state(layer, server, "momentum"), _signal_state(layer, server, "radar")
+    in_scope = None
+    if query is not None:
+        hits, _ = layer.hybrid(query, "project")
+        in_scope = {h["key"] for h in hits if h["score"] >= 0.15}
+
+    cov = (layer.signals["momentum"].get("coverage") or {}).get(window, {})
+    repo_rows, seen = [], set()
+    for key, row in layer.momentum.items():
+        if id(row) in seen:
+            continue
+        seen.add(id(row))
+        win = (row.get("windows") or {}).get(window) or {}
+        if win.get("status") != "measured" or win.get("momentum") not in labels:
+            continue
+        acc = win.get("acceleration") or {}
+        if accelerating and not (acc.get("status") == "measured" and acc.get("label") == "accelerating"):
+            continue
+        stars = win.get("stars_now")
+        if min_stars is not None and (stars or 0) < min_stars or max_stars is not None and (stars or 0) > max_stars:
+            continue
+        pid = row.get("canonical_id")
+        if in_scope is not None and pid not in in_scope:
+            continue
+        p = layer.projects.get(pid) if pid else None
+        repo_rows.append({
+            "key": row.get("key"), "oss_id": pid if p else None, "name": p["name"] if p else row.get("canonical_name"),
+            "in_canonical_layer": bool(p), "stars": stars, "momentum": win.get("momentum"),
+            "growth_pct_per_30d": win.get("growth_pct_per_30d"), "stars_per_day": win.get("stars_per_day"),
+            "acceleration": _window_view(win)["acceleration"], "explanation": win.get("explanation"),
+            "recommended_for": sorted(r["saas_id"] for r in layer.rel_by_project.get(pid, []) if r["recommended"])
+            if p else [],
+            "community_momentum": _community_momentum(layer, row.get("key"))})
+    repo_rows.sort(key=lambda x: (-(x["growth_pct_per_30d"] or 0), -(x["stars_per_day"] or 0), x["key"] or ""))
+    community, unknown_stars = [], 0
+    if in_scope is None:
+        for r in layer.radar_ranked:
+            mrow = layer.momentum.get(_repo_key(r.get("key") or ""))
+            mwin = ((mrow or {}).get("windows") or {}).get(window) or {}
+            stars = mwin.get("stars_now")
+            if (min_stars is not None or max_stars is not None) and stars is None:
+                unknown_stars += 1
+                continue
+            if min_stars is not None and stars < min_stars or max_stars is not None and stars > max_stars:
+                continue
+            community.append({"key": r.get("key"), "rank": r.get("rank"), "score": r.get("score"),
+                              "sources": r.get("sources"), "last_mentioned_at": r.get("last_mentioned_at"),
+                              "stars": stars, "repository_momentum": mwin.get("momentum") if mwin else None,
+                              "explanation": r.get("explanation"), "radar_status": r.get("status")})
+    both = sorted({x["key"] for x in repo_rows} & {x["key"] for x in community})
+    degraded = []
+    if mom_state["status"] != "ok":
+        degraded.append(f"repository momentum {mom_state['status']}: {mom_state.get('reason')}")
+    if rad_state["status"] != "ok":
+        degraded.append(f"community momentum {rad_state['status']}: {rad_state.get('reason')}")
+    if cov.get("status") not in (None, "measured"):
+        degraded.append(f"{window}-day repository momentum is {cov.get('status')}; measurable from "
+                        f"{cov.get('measurable_from')}")
+    if cov.get("acceleration_status") not in (None, "measured"):
+        degraded.append(f"{window}-day acceleration is {cov.get('acceleration_status')}; measurable from "
+                        f"{cov.get('acceleration_measurable_from')}")
+    if unknown_stars:
+        degraded.append(f"{unknown_stars} Community Radar repositories have no star count in the momentum layer, so "
+                        "a star filter cannot place them; they are left out, not guessed")
+    if in_scope is not None:
+        degraded.append("query narrows to projects in the canonical layer; Community Radar rows are not "
+                        "categorised, so the community list is omitted for a query")
+    return {"window_days": int(window), "momentum_labels": labels, "accelerating_only": accelerating,
+            "repository_momentum": repo_rows[:limit], "repository_momentum_total": len(repo_rows),
+            "community_momentum": community[:limit], "community_momentum_total": len(community),
+            "both_signals": both, "window_coverage": cov, "degraded": degraded,
+            "signals": {"momentum": mom_state, "radar": rad_state}, "measures": {
+                k: MEASURES[k] for k in ("repository_momentum", "community_momentum")},
+            "note": "Momentum is attention and growth, not quality or fit. Rows outside the canonical layer are "
+                    "discovery-pool repositories with no Project Health or Replacement Fit yet."}
 
 
 def _obj(props, required=()):
@@ -622,6 +1268,9 @@ TOOLS = [
            "maintenance_status": {"type": "string", "enum": ["active", "maintained"]},
            "min_health": {"type": "number", "minimum": 0, "maximum": 100},
            "supported_only": {"type": "boolean", "description": "SaaS results: only products with a page"},
+           "mode": {"type": "string", "enum": ["lexical", "hybrid"],
+                    "description": "lexical (default, BM25) or hybrid (BM25 + KEI-844 semantic + graph, with score "
+                                   "components per result)"},
            "limit": {**LIMIT, "description": "default 10"}}, ["query"]), tool_search),
     ("source_get_project", "One open-source project",
      "One project's live facts (licence, stars, latest release, maintenance, Project Health, when checked) and "
@@ -633,6 +1282,48 @@ TOOLS = [
      "line), Replacement Fit with its dimensions, and why it is or is not recommended.",
      _obj({"saas": {"type": "string"}, "project": {"type": "string"}}, ["saas", "project"]),
      tool_get_relationship),
+    ("source_compare_projects", "Compare open-source projects",
+     "Side by side for 2-5 projects: licence, stars, maintenance, Project Health, Replacement Fit for every SaaS "
+     "product they replace (head to head where they share one), Repository Momentum and Community Momentum, with "
+     "the uncertainty in each. The four measures are kept separate.",
+     _obj({"projects": {"type": "array", "items": {"type": "string"}, "minItems": 2, "maxItems": MAX_COMPARE,
+                        "description": "oss_ids, repository URLs or names, e.g. ['Docmost', 'AppFlowy']"}},
+          ["projects"]), tool_compare),
+    ("source_recommend", "Recommend projects against explicit requirements",
+     "Recommended open-source projects for a need in words and/or a SaaS product to replace, filtered exactly by "
+     "hard constraints (licence or licence family, self-hostable, maintenance, minimum Replacement Fit or Project "
+     "Health, star range, days since activity, 7-day repository momentum). Says which products the need matched "
+     "and how (lexical, KEI-844 semantic, graph), what each constraint excluded, and which requirements the data "
+     "cannot judge.",
+     _obj({"need": {"type": "string", "description": "e.g. 'team wiki and notes like Notion'"},
+           "saas": {"type": "string", "description": "a product to replace: saas_id, name, alias, domain or URL"},
+           "licence": {"type": "array", "items": {"type": "string"}, "description": "allowed SPDX ids"},
+           "licence_family": {"type": "string", "enum": ["permissive", "weak_copyleft", "copyleft"]},
+           "self_hostable": {"type": "boolean", "description": "true: only pairings with self-hosting evidence"},
+           "maintenance_status": {"type": "array", "items": {"type": "string", "enum": ["active", "maintained"]}},
+           "min_fit": {"type": "number", "minimum": 0, "maximum": 100},
+           "min_health": {"type": "number", "minimum": 0, "maximum": 100},
+           "min_stars": {"type": "integer", "minimum": 0}, "max_stars": {"type": "integer", "minimum": 0},
+           "max_days_since_activity": {"type": "integer", "minimum": 0},
+           "repository_momentum_7d": {"type": "array", "items": {"type": "string", "enum": list(MOMENTUM_LABELS)}},
+           "limit": {**LIMIT, "description": "default 5"}}), tool_recommend),
+    ("source_emerging_projects", "Emerging and accelerating projects",
+     "Repositories whose star growth is surging or rising over a window (optionally only those whose growth is "
+     "accelerating), and repositories the community is discussing now (Hacker News, DEV), filtered by star range "
+     "and optionally narrowed to a topic. Says plainly when a window cannot be measured yet.",
+     _obj({"window": {"type": "string", "enum": ["1", "7", "30"], "description": "days, default 7"},
+           "momentum": {"type": "array", "items": {"type": "string", "enum": list(MOMENTUM_LABELS)},
+                        "description": "default ['surging', 'rising']"},
+           "accelerating_only": {"type": "boolean"},
+           "min_stars": {"type": "integer", "minimum": 0}, "max_stars": {"type": "integer", "minimum": 0},
+           "query": {"type": "string", "description": "narrow to a topic, e.g. 'developer tools'"},
+           "limit": {**LIMIT, "description": "default 10"}}), tool_emerging),
+    ("source_get_momentum", "Repository and community momentum for one project",
+     "Repository Momentum (stars per day, growth, acceleration over 1/7/30/90 days, with the explanation) and "
+     "Community Momentum (Radar rank and every counted mention with its permalink) for one repository, canonical "
+     "or not, with the freshness of each signal.",
+     _obj({"project": {"type": "string", "description": "oss_id, repository URL or name"}}, ["project"]),
+     tool_get_momentum),
 ]
 TOOL_BY_NAME = {t[0]: t for t in TOOLS}
 
@@ -647,12 +1338,56 @@ def _check_args(schema, args):
     if missing:
         raise ToolError(f"missing argument(s): {', '.join(missing)}")
     for k, v in args.items():
-        want = schema["properties"][k].get("type")
+        prop = schema["properties"][k]
+        want = prop.get("type")
         if want == "string" and (not isinstance(v, str) or len(v) > 2048):
             raise ToolError(f"{k} must be a string")
+        if want == "string" and "enum" in prop and v not in prop["enum"]:
+            raise ToolError(f"{k} must be one of {', '.join(prop['enum'])}")
+        if want == "array" and (not isinstance(v, list) or len(v) > prop.get("maxItems", 20)
+                                or not all(isinstance(x, str) and len(x) <= 2048 for x in v)):
+            raise ToolError(f"{k} must be a list of at most {prop.get('maxItems', 20)} strings")
+        if want == "boolean" and not isinstance(v, bool):
+            raise ToolError(f"{k} must be true or false")
 
 
 # --------------------------------------------------------------------------- server
+
+
+def _file_sha(path: Path):
+    try:
+        return hashlib.sha256(path.read_bytes()).hexdigest()
+    except OSError:
+        return None
+
+
+class Telemetry:
+    """Privacy-safe aggregate usage: per UTC day, per tool, per outcome, a count and a latency histogram.
+    Nothing about the caller or the call is kept: no arguments, results, client name, session or address.
+    The HTTP transport writes snapshot() to a file; stdio keeps it in memory only."""
+
+    BUCKETS_MS = (10, 50, 200, 1000)
+
+    def __init__(self, retain_days: int = 90):
+        self.days, self.retain_days = {}, retain_days
+
+    def count(self, tool: str, outcome: str, seconds: float, now: datetime):
+        ms = seconds * 1000
+        bucket = next((f"<{b}ms" for b in self.BUCKETS_MS if ms < b), f">={self.BUCKETS_MS[-1]}ms")
+        day = self.days.setdefault(now.strftime("%Y-%m-%d"), {})
+        row = day.setdefault(tool if tool in TOOL_BY_NAME else "unknown", {})
+        cell = row.setdefault(outcome, {"count": 0, "latency": {}})
+        cell["count"] += 1
+        cell["latency"][bucket] = cell["latency"].get(bucket, 0) + 1
+        cutoff = (now - timedelta(days=self.retain_days)).strftime("%Y-%m-%d")
+        for d in [d for d in self.days if d < cutoff]:
+            del self.days[d]
+
+    def snapshot(self):
+        return {"schema": "the-source.mcp-telemetry/1", "server_version": SERVER_VERSION,
+                "fields": "per UTC day -> tool -> outcome (ok | tool_error | internal_error) -> count and latency "
+                          "histogram. No arguments, results, client identity, sessions or addresses are recorded.",
+                "retain_days": self.retain_days, "days": self.days}
 
 
 class Server:
@@ -663,6 +1398,7 @@ class Server:
         self.reload_error = None
         self.initialized = False
         self.protocol = None
+        self.telemetry = Telemetry()
 
     def now(self):
         return self._now or datetime.now(timezone.utc).replace(microsecond=0)
@@ -679,7 +1415,8 @@ class Server:
         except OSError as exc:
             self.reload_error = f"MANIFEST unreadable: {exc}"
             return
-        if sha == self.layer.manifest_sha256:
+        signal_shas = tuple(_file_sha(self.root / "data" / n / "MANIFEST.json") for n in sorted(SIGNALS))
+        if sha == self.layer.manifest_sha256 and signal_shas == self.layer.signal_manifest_shas():
             return
         try:
             self.layer = Layer(self.root)
@@ -752,11 +1489,17 @@ class Server:
         self.refresh()
         _, _, _, schema, fn = TOOL_BY_NAME[name]
         args = {} if args is None else args
+        started = time.monotonic()
         try:
             _check_args(schema, args)
             payload = {"result": fn(self.layer, args, self), "meta": self.meta()}
         except ToolError as exc:
+            self.telemetry.count(name, "tool_error", time.monotonic() - started, self.now())
             return _ok(mid, {"content": [{"type": "text", "text": f"{name}: {exc}"}], "isError": True})
+        except Exception:
+            self.telemetry.count(name, "internal_error", time.monotonic() - started, self.now())
+            raise
+        self.telemetry.count(name, "ok", time.monotonic() - started, self.now())
         text = json.dumps(payload, sort_keys=True, ensure_ascii=False, indent=1)
         result = {"content": [{"type": "text", "text": text}], "isError": False}
         if self.protocol >= "2025-06-18":

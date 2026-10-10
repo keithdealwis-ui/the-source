@@ -1,0 +1,34 @@
+# The Source MCP server (KEI-851), Streamable HTTP on loopback behind nginx.
+# Code: /opt/the-source-mcp/app (the verified commit, read-only). Data: /opt/the-source-mcp/data, a sparse
+# clone of public main holding only data/canonical, api/v1, data/momentum and data/radar, refreshed hourly
+# by the-source-mcp-refresh.timer. The server re-verifies every snapshot before serving it.
+[Unit]
+Description=The Source MCP server (KEI-851)
+After=network-online.target
+
+[Service]
+User=the-source-mcp
+Group=the-source-mcp
+Environment=PYTHONPATH=/opt/the-source-mcp/app
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 -S -m source_pipeline.mcp_http --root /opt/the-source-mcp/data --host 127.0.0.1 --port 8851 --telemetry /var/lib/the-source-mcp/telemetry.json
+Restart=on-failure
+RestartSec=5
+StateDirectory=the-source-mcp
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryMax=512M
+TasksMax=64
+ReadOnlyPaths=/opt/the-source-mcp
+
+[Install]
+WantedBy=multi-user.target

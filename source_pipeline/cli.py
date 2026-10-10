@@ -59,6 +59,8 @@
   MCP retrieval server (KEI-851, docs/MCP.md):
     python -m source_pipeline mcp-serve [--root DIR] [--now TS] [--check]
                                                    serve the canonical read layer over MCP (stdio)
+    python -m source_pipeline mcp-http [--host H] [--port P] [--telemetry FILE]
+                                                   the same server over Streamable HTTP (POST /mcp)
 """
 from __future__ import annotations
 
@@ -228,6 +230,10 @@ def main(argv=None) -> int:
         from . import mcp_server
 
         return mcp_server.main(argv[1:])
+    if argv[:1] == ["mcp-http"]:
+        from . import mcp_http
+
+        return mcp_http.main(argv[1:])
     ap = argparse.ArgumentParser(prog="source_pipeline", description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("command", choices=["run", "harvest", "verify", "build", "validate", "export-public",

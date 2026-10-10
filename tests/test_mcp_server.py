@@ -21,11 +21,15 @@ NOW = "2026-10-10T12:00:00Z"
 INIT = {"protocolVersion": "2025-06-18", "capabilities": {}, "clientInfo": {"name": "test", "version": "0"}}
 
 
-def _layer_copy(tmp_path) -> Path:
-    """Only the read layer: data/canonical/ and api/v1/. Nothing else from the repository."""
+def _layer_copy(tmp_path, signals=True) -> Path:
+    """Only the read layer: data/canonical/ and api/v1/, plus the published signal layers data/momentum/ and
+    data/radar/ unless signals is False. Nothing else from the repository."""
     root = tmp_path / "layer"
     shutil.copytree(ROOT / "data" / "canonical", root / "data" / "canonical")
     shutil.copytree(ROOT / "api" / "v1", root / "api" / "v1")
+    if signals:
+        for name in ("momentum", "radar"):
+            shutil.copytree(ROOT / "data" / name, root / "data" / name)
     return root
 
 
@@ -83,7 +87,8 @@ def test_tools_list_is_read_only_and_strict():
     tools = s.handle({"jsonrpc": "2.0", "id": 1, "method": "tools/list"})["result"]["tools"]
     assert [t["name"] for t in tools] == ["source_dataset_info", "source_list_supported_saas",
                                          "source_get_alternatives", "source_detect_saas", "source_search",
-                                         "source_get_project", "source_get_relationship"]
+                                         "source_get_project", "source_get_relationship", "source_compare_projects",
+                                         "source_recommend", "source_emerging_projects", "source_get_momentum"]
     for t in tools:
         assert t["annotations"]["readOnlyHint"] is True and t["annotations"]["openWorldHint"] is False
         assert t["annotations"]["destructiveHint"] is False
@@ -417,7 +422,7 @@ def test_reads_only_the_read_layer_and_never_the_network(tmp_path):
     report = json.loads(p.stderr[p.stderr.index("{"):])
     data_opens = [o for o in report["opened"] if o.startswith(str(root))]
     assert data_opens and report["net"] == []
-    allowed = ("/data/canonical/", "/api/v1/")
+    allowed = ("/data/canonical/", "/api/v1/", "/data/momentum/", "/data/radar/")
     assert all(any(a in o[len(str(root)):] for a in allowed) for o in data_opens), data_opens
     assert len([l for l in report["out"].splitlines() if l]) == 10
     assert {p: p.read_bytes() for p in root.rglob("*") if p.is_file()} == before
@@ -444,6 +449,6 @@ def test_module_is_standard_library_only():
             imports |= {a.name.split(".")[0] for a in node.names}
         elif isinstance(node, ast.ImportFrom):
             imports.add(node.module.split(".")[0])
-    assert imports <= {"__future__", "argparse", "hashlib", "json", "math", "re", "sys", "unicodedata",
+    assert imports <= {"__future__", "argparse", "hashlib", "json", "math", "re", "sys", "time", "unicodedata",
                        "datetime", "pathlib", "urllib"}
     assert "urlopen" not in src and "socket" not in src and "subprocess" not in src

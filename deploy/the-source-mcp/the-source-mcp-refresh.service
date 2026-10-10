@@ -1,0 +1,11 @@
+[Unit]
+Description=Refresh The Source MCP data from public main (KEI-851)
+
+[Service]
+Type=oneshot
+User=the-source-mcp
+Group=the-source-mcp
+ExecStart=/usr/bin/git -C /opt/the-source-mcp/data pull --ff-only --quiet
+NoNewPrivileges=yes
+ProtectHome=yes
+PrivateTmp=yes
