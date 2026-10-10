@@ -1,22 +1,22 @@
 {
-  "as_of": "2026-10-10T10:22:56Z",
+  "as_of": "2026-10-10T14:28:36Z",
   "collection": {
-    "as_of": "2026-10-10T10:22:56Z",
+    "as_of": "2026-10-10T14:28:36Z",
     "resolve": {
-      "asked": 2,
+      "asked": 0,
       "deferred": 0,
       "pool_added": [],
-      "resolved": 2,
+      "resolved": 0,
       "transient_failures": []
     },
     "sources": {
       "forem": {
         "errors": [],
         "gone": 1,
-        "http_calls": 43,
-        "items_read": 39,
-        "listed": 39,
-        "mentions": 29,
+        "http_calls": 41,
+        "items_read": 37,
+        "listed": 37,
+        "mentions": 28,
         "status": "ok"
       },
       "hn": {
@@ -24,42 +24,42 @@
         "gone": 0,
         "http_calls": 303,
         "items_read": 300,
-        "listed": 349,
+        "listed": 352,
         "mentions": 22,
         "status": "ok"
       }
     }
   },
   "counts": {
-    "mentions_held": 102,
-    "mentions_in_window": 86,
+    "mentions_held": 103,
+    "mentions_in_window": 84,
     "mentions_in_window_by_source": {
-      "forem": 31,
+      "forem": 29,
       "hn": 55
     },
     "ranked": 50,
     "ranked_by_status": {
-      "candidate": 26,
+      "candidate": 27,
       "canonical": 0,
       "corpus": 0,
       "not_found": 0,
-      "unresolved": 24
+      "unresolved": 23
     },
-    "repositories_mentioned": 95,
+    "repositories_mentioned": 93,
     "resolutions_held": 93,
-    "truncated": 45
+    "truncated": 43
   },
   "files": {
-    "collection.json": "1d352920cc45563e0ef905e1fa428ea7a302557617f737610e5884b94d370920",
-    "mentions.jsonl": "d73c0ec6436bdd00355aef65013c55cdb487c028579d4b0e121b68eb908d3011",
-    "radar.jsonl": "d1881c9e89b4c8a40063b98d209f69654e3c0e3efe238312a2ed5b12ff909a88",
+    "collection.json": "31cd319dfdf54cba17b1954bcacf128ac7bb9e8137746ff8945e4edd68328118",
+    "mentions.jsonl": "6f8b8df8ac038275950f04a8800aa1ccf957f93f1d99de24c32510ebda0f36ea",
+    "radar.jsonl": "1fae9e70f0193a480a1bcf3b4a36984667550dca24cc0a780b7e5cbc7563b49a",
     "resolved.jsonl": "9a83a119f5d197bfb2ce1f9f406a0d8ccd46be06fffc10979b860738c47168f7"
   },
   "inputs": {
-    "data/canonical/oss_projects.jsonl": "4f0c716b755b0a57081d3bb498b7bbbb4aea107d687bb0f55559e480018f4f9b",
-    "data/dataset/oss_projects.jsonl": "daaaeda37b004244ccabf6296849977b8cc58a47f1467b3cb2d6933e014090ac",
-    "data/discovery/candidates.jsonl": "72c5e3abf0d47c5be1731b6e57bb053979c3124e2038e8b3a6fc87cdf76995bb",
-    "data/live/snapshot.json": "3a8088b33e2992268b93742903c1b976ef50bbf367a1c8468ac8ecdbfd58c6bd"
+    "data/canonical/oss_projects.jsonl": "d3e9d7a7cda8e37ad1f72129ee2f80e636b31330f2411514f4c17acc5e63a981",
+    "data/dataset/oss_projects.jsonl": "2e1e1db251abeca28a18c1e10c45f5d16bd0b7eec929abf4a2bfa89558177c2e",
+    "data/discovery/candidates.jsonl": "c6b08df3c503eae7739f3c5b956b56ba24d48bbcdd77033523a969604d08d495",
+    "data/live/snapshot.json": "52758511c1ba186604beffe5d73d0bc16f062142a42df136122e470f775fde9d"
   },
   "methodology": {
     "doc": "docs/RADAR.md",

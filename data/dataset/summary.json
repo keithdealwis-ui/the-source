@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-10T10:22:56Z",
+  "as_of": "2026-10-10T14:28:36Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -13,7 +13,7 @@
         "entries_with_saas_claim": 64,
         "harvested": true,
         "licence_file_sha256": "c76f488fd52bf3c9bac423df8456156f997835d1bc012f4786d07c1208aad409",
-        "pinned_commit": "3c314f611cf2c2cdbea4ffe7f9be96ba5e690837",
+        "pinned_commit": "07556427afbb1237617ea35d975eaea9b15029cf",
         "relationship_claims": 71,
         "unparseable_files": 0
       },
@@ -23,7 +23,7 @@
         "entries_with_saas_claim": 86,
         "harvested": true,
         "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
-        "pinned_commit": "81036e82a6e753083936749b6cb9a83a3b5cb535",
+        "pinned_commit": "dda428e4c3f4030f6bdf3e3289075ed7a97d0c0b",
         "relationship_claims": 147,
         "unparseable_files": 0
       },
@@ -114,25 +114,25 @@
   "lanes": {
     "oss_projects": {
       "licence_exception": 121,
-      "recommendable": 381,
-      "rejected": 104
+      "recommendable": 382,
+      "rejected": 103
     },
     "relationships": {
       "licence_exception": 206,
-      "recommendable": 495,
-      "rejected": 158
+      "recommendable": 497,
+      "rejected": 156
     }
   },
   "launch": {
     "cap_per_saas": 10,
-    "oss_distinct_products": 252,
-    "oss_projects": 253,
-    "relationships": 374,
-    "relationships_corroborated_by_2plus_sources": 136,
+    "oss_distinct_products": 250,
+    "oss_projects": 251,
+    "relationships": 373,
+    "relationships_corroborated_by_2plus_sources": 137,
     "relationships_share_alike_only": 25,
-    "saas_added_beyond_floor": 19,
-    "saas_named_by_a_single_source": 5,
-    "saas_products": 119,
+    "saas_added_beyond_floor": 18,
+    "saas_named_by_a_single_source": 4,
+    "saas_products": 118,
     "saas_target_decision_ref": "dr-KEI-805-507e4f70",
     "saas_target_is": "floor",
     "targets": {
@@ -190,7 +190,7 @@
       "eligibility:no_recognised_open_source_licence;stale_no_meaningful_activity_12_months;repository_identity_changed_since_listed": 1,
       "eligibility:repository_identity_changed_since_listed": 3,
       "eligibility:repository_not_found": 12,
-      "eligibility:stale_no_meaningful_activity_12_months": 51,
+      "eligibility:stale_no_meaningful_activity_12_months": 50,
       "normalise:repo_url_not_a_repository": 21,
       "normalise:saas_not_in_catalogue": 191,
       "plausibility_review:CRM; not a help desk": 1,
@@ -227,21 +227,21 @@
       "plausibility_review:whiteboard; not an interface design tool": 1,
       "plausibility_review:workflow engine programmed in code; not a no-code automation product": 1
     },
-    "total": 476
+    "total": 475
   },
   "schema_version": "1.0.0",
   "verified": {
     "maintenance_status": {
-      "active": 466,
+      "active": 467,
       "maintained": 46,
-      "stale": 79,
+      "stale": 78,
       "unverified": 15
     },
-    "oss_recommendable": 381,
-    "oss_rejected": 225,
+    "oss_recommendable": 382,
+    "oss_rejected": 224,
     "relationships_flagged_licence_exception": 206,
-    "relationships_rejected": 158,
-    "relationships_validated": 495,
+    "relationships_rejected": 156,
+    "relationships_validated": 497,
     "saas_with_validated_alternatives": 215
   }
 }

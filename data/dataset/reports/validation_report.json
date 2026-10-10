@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-10T10:22:56Z",
+  "as_of": "2026-10-10T14:28:36Z",
   "checks": [
     {
       "criterion": 1,
@@ -176,7 +176,7 @@
       "failures": 0,
       "id": "activity.recommended_within_12_months",
       "kind": "assertion",
-      "observed": 381,
+      "observed": 382,
       "ok": true
     },
     {
@@ -186,7 +186,7 @@
       "failures": 0,
       "id": "activity.evidence_is_not_docs_only",
       "kind": "assertion",
-      "observed": 1413,
+      "observed": 1414,
       "ok": true
     },
     {
@@ -216,7 +216,7 @@
       "failures": 0,
       "id": "licence.recommended_have_recognised_licence",
       "kind": "assertion",
-      "observed": 381,
+      "observed": 382,
       "ok": true
     },
     {
@@ -272,13 +272,13 @@
       "observed": {
         "oss_projects": {
           "licence_exception": 121,
-          "recommendable": 381,
-          "rejected": 104
+          "recommendable": 382,
+          "rejected": 103
         },
         "relationships": {
           "licence_exception": 206,
-          "recommendable": 495,
-          "rejected": 158
+          "recommendable": 497,
+          "rejected": 156
         }
       },
       "ok": true
@@ -301,9 +301,9 @@
       "id": "maintenance.classification_matches_definition",
       "kind": "assertion",
       "observed": {
-        "active": 466,
+        "active": 467,
         "maintained": 46,
-        "stale": 79,
+        "stale": 78,
         "unverified": 15
       },
       "ok": true
@@ -335,7 +335,7 @@
       "failures": 0,
       "id": "strategy.every_rejection_is_recorded",
       "kind": "assertion",
-      "observed": 225,
+      "observed": 224,
       "ok": true
     },
     {
@@ -401,7 +401,7 @@
       "failures": 0,
       "id": "dedupe.one_repository_per_product_per_saas",
       "kind": "assertion",
-      "observed": 374,
+      "observed": 373,
       "ok": true
     },
     {
@@ -411,7 +411,7 @@
       "failures": 0,
       "id": "launch.only_validated_edges",
       "kind": "assertion",
-      "observed": 374,
+      "observed": 373,
       "ok": true
     },
     {
@@ -433,7 +433,7 @@
       "kind": "assertion",
       "observed": {
         "floor": 100,
-        "launch_saas": 119,
+        "launch_saas": 118,
         "mode": "floor"
       },
       "ok": true
@@ -446,10 +446,10 @@
       "id": "launch.targets",
       "kind": "assertion",
       "observed": {
-        "oss_distinct_products": 252,
-        "oss_projects": 253,
-        "relationships": 374,
-        "saas_products": 119
+        "oss_distinct_products": 250,
+        "oss_projects": 251,
+        "relationships": 373,
+        "saas_products": 118
       },
       "ok": true
     }
@@ -472,14 +472,14 @@
       "kind": "observation",
       "observed": {
         "examples": [
-          "github.com/n8n-io/n8n (206879 stars: no_recognised_open_source_licence)",
-          "github.com/langgenius/dify (158069 stars: no_recognised_open_source_licence)",
-          "github.com/open-webui/open-webui (154179 stars: no_recognised_open_source_licence)",
+          "github.com/n8n-io/n8n (206897 stars: no_recognised_open_source_licence)",
+          "github.com/langgenius/dify (158078 stars: no_recognised_open_source_licence)",
+          "github.com/open-webui/open-webui (154185 stars: no_recognised_open_source_licence)",
           "github.com/lobehub/lobehub (83105 stars: no_recognised_open_source_licence)",
           "github.com/elastic/elasticsearch (78223 stars: no_recognised_open_source_licence)"
         ],
         "launch_projects_under_500_stars": 16,
-        "rejected_with_10k_plus_stars": 92
+        "rejected_with_10k_plus_stars": 91
       }
     },
     {
@@ -490,10 +490,10 @@
       "observed": {
         "entries_read": 2419,
         "oss_candidates": 606,
-        "oss_recommendable": 381,
-        "rejections_recorded": 476,
+        "oss_recommendable": 382,
+        "rejections_recorded": 475,
         "relationship_claims_read": 1549,
-        "relationships_validated": 495
+        "relationships_validated": 497
       }
     }
   ],
