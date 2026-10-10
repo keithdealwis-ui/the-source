@@ -70,6 +70,25 @@ applied.
 | A refused source contributes nothing | harvest skips it; export refuses if one appears |
 | Nothing is published by the pipeline | `export.py` writes to a local directory and records `published: false` |
 
+## Discovery corpus (KEI-912)
+
+`data/corpus/` publishes the Discover lane's corpus as facts ([CORPUS.md](CORPUS.md)). Keith
+approved it on 2026-10-10, gate `gate-KEI-912-dba84c8b`, option A:
+
+- **Curated lists.** Only lists with a recognised licence (MIT, Apache-2.0, CC0-1.0, CC-BY-4.0,
+  BSD-3-Clause, Unlicense; `config/discover.yaml`) are read, and from them only the fact that a
+  repository URL appears, at a pinned commit and line. No list text is kept or republished.
+  Lists without a recognised licence are refused at harvest.
+- **Host metadata.** Names, descriptions (truncated), homepages, topics, languages, licence
+  identifiers, stars, forks, dates and release tags, as GitHub reports them for public
+  repositories. Facts and short identifying metadata, signed off as such.
+- **Licence-issue projects.** About 1,400 projects whose licence The Source does not recognise
+  are published only as `discovery`, with the issue and a warning, and are never recommended or
+  offered as discovery candidates. This widens Keith's 2026-09-27 retention decision (KEI-805,
+  comment 258b38dd: "schema inclusion and flagged retention only; not recommendation, publication
+  or redistribution") to publication of the facts above, under the same no-recommendation rule.
+- **Private seed list.** Not published. Routes from it appear only as `maintainer_seed`.
+
 ## Open questions for Keith before any publication
 
 These do not affect the internal dataset. Each needs a decision before the data is

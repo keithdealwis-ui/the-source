@@ -84,15 +84,18 @@ CC BY 4.0, see `DATA-LICENCE.md`), and the two published signal layers beside it
 | `api/v1/index.json`, `api/v1/domains.json`, `api/v1/saas/<saas_id>.json` | the published pages and domain rules |
 | `data/momentum/MANIFEST.json`, `projects.jsonl` | Repository Momentum: star growth and acceleration over 1/7/30/90 days ([MOMENTUM.md](MOMENTUM.md)) |
 | `data/radar/MANIFEST.json`, `radar.jsonl` | Community Momentum: ranked Hacker News / DEV mentions in the Radar window ([RADAR.md](RADAR.md)) |
+| `data/corpus/MANIFEST.json`, `projects.jsonl`, `live.jsonl` | the discovery corpus: every project the Discover lane found, served as the `discovery` tier ([CORPUS.md](CORPUS.md), KEI-912, gate-KEI-912-dba84c8b) |
 
-It reads nothing else: not the discover lane or its corpus, staging, `data/live/`, history or
-intake, and nothing private to AIQ. A test runs the server against a directory holding only
+It reads nothing else: not the internal Discover lane build (`data/discover/`), staging,
+`data/live/`, history or intake, and nothing private to AIQ. A test runs the server against a directory holding only
 these folders, with an audit hook recording every file it opens and every socket event.
 
 Each signal layer is verified against its own MANIFEST sha256s. A signal layer that is
 missing, fails verification, or is older than 48 hours is reported in every answer that uses
 it (`signals.<name>.status`: `ok`, `stale` or `unavailable`, with the reason), and the
-canonical tools keep serving. A window that cannot be measured yet (for example 7-day
+canonical tools keep serving. The discovery corpus is verified the same way and reported as
+`corpus.status` (`ok`, `stale` after 10 days without a refresh, or `unavailable` with the
+reason); without it, search covers the canonical layer only and says so. A window that cannot be measured yet (for example 7-day
 acceleration before 14 days of history exist) is reported with the date it becomes
 measurable, never filled in.
 
@@ -106,6 +109,10 @@ measurable, never filled in.
   new layer that verifies is switched to; one that does not (for example, a half-written
   update) is ignored, the previous snapshot keeps serving, and every answer says
   `snapshot_current: false`, with the reason in `source_dataset_info`.
+- **Tiers.** Every project in an answer carries `tier`: `recommended`, `scored` or `discovery`
+  ([CORPUS.md](CORPUS.md)). Discovery projects are labelled "discovered, not scored" and are
+  never recommendations. `source_get_alternatives` and `source_recommend` answer byte for byte
+  as before; `include_discovery: true` adds a separate, labelled `discovery_candidates` list.
 - **Publication gate.** Only relationships with `recommended: true` are returned as
   recommendations. For a supported product the first rows are exactly its published
   `api/v1` page, byte for byte. Further rows continue the same ranking over the canonical
@@ -134,13 +141,13 @@ set `additionalProperties: false`.
 |---|---|
 | `source_dataset_info` | which snapshot is served, when repositories were last checked (stale after 14 days), counts, sources, licence |
 | `source_list_supported_saas` | the products with a published page |
-| `source_get_alternatives` | `saas` (id, name, alias, domain or URL), `limit` 1-50 (default 5): ranked recommendations with status, last checked, scoring version and provenance |
+| `source_get_alternatives` | `saas` (id, name, alias, domain or URL), `limit` 1-50 (default 5), `include_discovery`: ranked recommendations with status, last checked, scoring version and provenance; optionally a separate `discovery_candidates` list |
 | `source_detect_saas` | `url`: the supported product it belongs to, by the READ-API.md rules |
-| `source_search` | `query`, `kind` (any, saas, project), `licence`, `maintenance_status`, `min_health`, `supported_only`, `limit`: lexical retrieval over the catalogue and projects |
-| `source_get_project` | `project` (oss_id, repository URL or name): live facts and every relationship, recommended or not |
+| `source_search` | `query`, `kind` (any, saas, project), `tier` (any, recommended, scored, discovery), `licence`, `maintenance_status`, `min_health`, `supported_only`, `mode`, `limit`: retrieval over the catalogue and every project in the canonical layer and the discovery corpus, each result with its `tier` |
+| `source_get_project` | `project` (oss_id, repository URL or name, canonical or discovery): live facts, tier and every relationship, recommended or not; a discovery project with its provenance (list + pinned commit + line) and `observed_as_of` |
 | `source_get_relationship` | `saas`, `project`: the full relationship with upstream provenance (list, pinned commit, line), Replacement Fit dimensions and the reason it is or is not recommended |
-| `source_compare_projects` | `projects` (2-5): licence and family, stars, maintenance, Project Health, Replacement Fit per product replaced (head to head on shared products), Repository and Community Momentum, and the uncertainty in each |
-| `source_recommend` | `need` (words) and/or `saas`, plus hard constraints: `licence`, `licence_family` (permissive, weak_copyleft, copyleft), `self_hostable`, `maintenance_status`, `min_fit`, `min_health`, `min_stars`, `max_stars`, `max_days_since_activity`, `repository_momentum_7d`, `limit`. Returns the products matched and how, every constraint applied, counts excluded per constraint, and `not_evaluated`: requirements the data cannot judge |
+| `source_compare_projects` | `projects` (2-5, any tier): licence and family, stars, maintenance, Project Health, Replacement Fit per product replaced (head to head on shared products), Repository and Community Momentum, and the uncertainty in each |
+| `source_recommend` | `need` (words) and/or `saas`, plus hard constraints: `licence`, `licence_family` (permissive, weak_copyleft, copyleft), `self_hostable`, `maintenance_status`, `min_fit`, `min_health`, `min_stars`, `max_stars`, `max_days_since_activity`, `repository_momentum_7d`, `limit`, `include_discovery`. Returns the products matched and how, every constraint applied, counts excluded per constraint, and `not_evaluated`: requirements the data cannot judge |
 | `source_emerging_projects` | `window` (1, 7, 30 days), `momentum` labels, `accelerating_only`, `min_stars`, `max_stars`, `query`, `limit`: repositories by star growth, and the Community Radar ranking, with window coverage and every degradation stated |
 | `source_get_momentum` | `project` (canonical or any tracked repository): every momentum window with its explanation, and each counted community mention with its permalink |
 
@@ -157,7 +164,10 @@ Resources: `source://data/canonical/MANIFEST.json`, `source://data/canonical/NOT
 `source_search` ranks with BM25 over weighted fields. For a SaaS product the fields are
 name ×3, aliases and id ×2.5, category ×1.5 and domain ×1. For a project they are name ×3,
 owner/repository ×2, the names and aliases of the products it is recommended for ×1.5,
-their categories ×1 and licence ×0.5. An exact name match adds 10. Ties sort by kind, then
+their categories ×1, topics ×1.2, host description ×1, languages ×0.5 and licence ×0.5
+(topics, description and languages come from the discovery corpus, KEI-912). With the corpus
+available, search ranks over the full corpus; recommendations always rank over the canonical
+layer alone, so the corpus cannot move them. An exact name match adds 10. Ties sort by kind, then
 id. Every hit reports which query terms matched which fields. This is `mode: "lexical"`, the default.
 
 `mode: "hybrid"` (and `source_recommend`, `source_emerging_projects` with `query`) combine
@@ -172,9 +182,9 @@ three signals, each returned per result as `score_components`:
   weighted by Replacement Fit, reported as `graph_path`.
 
 Score = 0.45 lexical + 0.35 semantic + 0.20 graph. A product named outright in a `need`
-("... like Notion") is taken as the product meant. The full KEI-844 graph is built from the
-discover corpus, which is not published; the server applies the same model and the published
-relationship graph to the published layer.
+("... like Notion") is taken as the product meant. For search, the semantic
+model is fitted over the full corpus, including host descriptions and topics; for
+recommendations, over the canonical layer, exactly as before.
 
 ### Errors
 

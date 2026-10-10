@@ -53,7 +53,9 @@ by the daily cycle, so they can be cached or served from a CDN. Full contract:
 AI clients can ask the same data, plus Repository and Community Momentum, through an MCP
 server at **`https://source-mcp.de-alwis.com/mcp`** (public, read-only, no account), or run
 it locally with `python -m source_pipeline mcp-serve`. It verifies every layer before it
-answers. See [`docs/MCP.md`](docs/MCP.md).
+answers. Beyond the scored layer it serves every project the Discover lane found (about
+9,400) as a clearly labelled discovery tier: searchable and inspectable, never presented as a
+recommendation. See [`docs/MCP.md`](docs/MCP.md) and [`docs/CORPUS.md`](docs/CORPUS.md).
 
 ## How it stays current
 
@@ -114,6 +116,7 @@ GITHUB_TOKEN=... .venv/bin/python -m source_pipeline cycle --trigger local   # a
 - [`docs/RADAR.md`](docs/RADAR.md): Community Radar (Hacker News and Forem; sources, terms, ranking, reconciliation)
 - [`docs/READ-API.md`](docs/READ-API.md): the consumer contract
 - [`docs/MCP.md`](docs/MCP.md): the MCP retrieval server over the read layer (tools, gates, protocol)
+- [`docs/CORPUS.md`](docs/CORPUS.md): the public discovery corpus and its tiers (KEI-912)
 - [`docs/OPERATIONS.md`](docs/OPERATIONS.md): the daily cycle, failures, retries, run records and history
 - [`docs/BUILD-VS-INGEST.md`](docs/BUILD-VS-INGEST.md): which upstream services are used, for what, under which terms, and why the rest are not
 - [`docs/INTAKE.md`](docs/INTAKE.md) and [`docs/INTAKE-POLICY.md`](docs/INTAKE-POLICY.md): manual intake

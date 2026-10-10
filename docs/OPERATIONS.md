@@ -164,3 +164,16 @@ To prove the failure path on the real system, run the workflow manually with
 `drill_fail_at: light_refresh`, `canonical` or `history` (the last step before promotion). The cycle stops at that step.
 Nothing is promoted, the run record says `failed`, and the `cycle-failure` issue is opened.
 The next successful run closes the issue. Scheduled runs ignore the drill setting.
+
+## Discovery corpus refresh (KEI-912)
+
+`.github/workflows/corpus-refresh.yml` keeps `data/corpus/` fresh, separately from the daily
+cycle and in the same `canonical-writer` concurrency group. It wakes daily at 04:41 UTC and
+refreshes when `python -m source_pipeline corpus-due` says a refresh is due (weekly; due after 6
+days). A refresh re-reads every published project from GitHub in batches of 50 (about 190
+GraphQL requests, about 8 minutes), validates, and commits `data/corpus/` as
+`corpus: refresh live facts (corpus <version>)`. A refresh that fails, or that cannot read more
+than 2% of the corpus, commits nothing, opens or comments on a `corpus-refresh-failure` issue,
+and is retried the next day; the MCP server keeps serving the previous layer and reports it
+stale after 10 days. Run one by hand with *Actions → Discovery corpus refresh → Run workflow*.
+See [`CORPUS.md`](CORPUS.md).
