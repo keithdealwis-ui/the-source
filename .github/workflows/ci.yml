@@ -43,10 +43,15 @@ jobs:
           THE_SOURCE_NO_NETWORK: "1"
         run: python -m source_pipeline radar-validate
 
+      - name: Discovery corpus MANIFEST, schema and publication rules (KEI-912)
+        env:
+          THE_SOURCE_NO_NETWORK: "1"
+        run: python -m source_pipeline corpus-validate
+
       - name: Tests
         env:
           THE_SOURCE_NO_NETWORK: "1"
-        run: python -m pytest tests/test_canonical.py tests/test_daily.py tests/test_momentum.py tests/test_radar.py tests/test_momentum_radar.py tests/test_mcp_server.py tests/test_mcp_v1_tools.py tests/test_mcp_http.py -q
+        run: python -m pytest tests/test_canonical.py tests/test_daily.py tests/test_momentum.py tests/test_radar.py tests/test_momentum_radar.py tests/test_mcp_server.py tests/test_mcp_v1_tools.py tests/test_mcp_http.py tests/test_corpus.py -q
 
       - name: Committed data equals the rebuild
         run: |

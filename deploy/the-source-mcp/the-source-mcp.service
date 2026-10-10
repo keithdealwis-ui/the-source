@@ -1,6 +1,6 @@
 # The Source MCP server (KEI-851), Streamable HTTP on loopback behind nginx.
 # Code: /opt/the-source-mcp/app (the verified commit, read-only). Data: /opt/the-source-mcp/data, a sparse
-# clone of public main holding only data/canonical, api/v1, data/momentum and data/radar, refreshed hourly
+# clone of public main holding only data/canonical, api/v1, data/momentum, data/radar and data/corpus, refreshed hourly
 # by the-source-mcp-refresh.timer. The server re-verifies every snapshot before serving it.
 [Unit]
 Description=The Source MCP server (KEI-851)

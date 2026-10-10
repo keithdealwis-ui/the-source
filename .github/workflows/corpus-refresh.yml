@@ -1,0 +1,102 @@
+name: Discovery corpus refresh
+
+# KEI-912. Re-reads every published discovery project's live facts (stars, forks, pushed_at,
+# archived, latest release, the licence the host reports, description, topics, languages)
+# from GitHub and commits data/corpus/ if the result validates. The cron is a daily wake-up;
+# `corpus-due` decides whether a refresh is due (config/corpus.yaml: weekly, due after 6
+# days), so a missed or failed run is retried the next day without hammering the API.
+#
+# Cost: ~190 GraphQL requests of 50 repositories each (plus REST only to follow a rename),
+# well inside the job token's hourly budget; Actions minutes on a public repository are free.
+# A refresh that would exceed config/corpus.yaml max_graphql_points, or that cannot read
+# more than max_unresolved_share of the corpus, stops and keeps the previous layer.
+
+on:
+  schedule:
+    - cron: "41 4 * * *"
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: "Why refresh now (recorded in the job summary)"
+        required: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    concurrency:
+      group: canonical-writer
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Is a refresh due?
+        id: due
+        env:
+          EVENT: ${{ github.event_name }}
+        run: |
+          python -m source_pipeline corpus-due | tee due.json
+          if [ "$EVENT" = "schedule" ]; then
+            echo "due=$(python -c 'import json;print(str(json.load(open("due.json"))["due"]).lower())')" >> "$GITHUB_OUTPUT"
+          else
+            echo "due=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Refresh live facts
+        id: refresh
+        if: steps.due.outputs.due == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.SOURCE_GITHUB_TOKEN || github.token }}
+        run: |
+          python -m source_pipeline corpus-refresh | tee refresh.json
+          python -m source_pipeline corpus-validate
+
+      - name: Commit data/corpus
+        if: steps.due.outputs.due == 'true'
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name "the-source-cycle"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/corpus
+          VERSION=$(python -c "import json;print(json.load(open('data/corpus/MANIFEST.json'))['corpus_version'])")
+          git commit -m "corpus: refresh live facts (corpus $VERSION)" || { echo "nothing to commit"; exit 0; }
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin "$BRANCH" && git push origin "HEAD:$BRANCH" && break
+            sleep $((i * 10))
+          done
+          git fetch origin "$BRANCH" && git merge-base --is-ancestor HEAD "origin/$BRANCH" || { echo "push failed"; exit 1; }
+          {
+            echo "## Corpus refresh: corpus $VERSION"
+            echo
+            echo '```json'
+            cat refresh.json
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Surface the outcome durably
+        if: always() && steps.due.outputs.due == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OUTCOME: ${{ job.status }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh label create corpus-refresh-failure --color B60205 --description "Discovery corpus refresh failed" 2>/dev/null || true
+          OPEN=$(gh issue list --label corpus-refresh-failure --state open --json number --jq '.[0].number')
+          if [ "$OUTCOME" != "success" ]; then
+            BODY="The discovery corpus refresh failed ($RUN_URL). data/corpus is unchanged; the MCP server keeps serving it and reports it stale after config/corpus.yaml stale_after_days. The next daily wake-up retries."
+            if [ -n "$OPEN" ]; then gh issue comment "$OPEN" --body "$BODY"
+            else gh issue create --title "Discovery corpus refresh failing" --label corpus-refresh-failure --body "$BODY"; fi
+            exit 1
+          elif [ -n "$OPEN" ]; then
+            gh issue close "$OPEN" --comment "Recovered: $RUN_URL"
+          fi
