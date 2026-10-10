@@ -1,27 +1,27 @@
 {
-  "as_of": "2026-10-09T01:58:15Z",
+  "as_of": "2026-10-10T00:41:48Z",
   "collection": {
-    "as_of": "2026-10-09T01:58:15Z",
+    "as_of": "2026-10-10T00:41:48Z",
     "resolve": {
-      "asked": 11,
+      "asked": 7,
       "deferred": 0,
       "pool_added": [
-        "github.com/duckdb/ducklake",
-        "github.com/p10node/k10s",
-        "github.com/samsunglabs/littlebit",
-        "github.com/zerobrewhq/zerobrew"
+        "github.com/alex0ptr/once",
+        "github.com/edrisranjbar/lifeos",
+        "github.com/franzenzenhofer/big-arrow-on-the-screen",
+        "github.com/microsoft/mxc"
       ],
-      "resolved": 11,
+      "resolved": 7,
       "transient_failures": []
     },
     "sources": {
       "forem": {
         "errors": [],
-        "gone": 1,
-        "http_calls": 42,
-        "items_read": 37,
-        "listed": 37,
-        "mentions": 27,
+        "gone": 2,
+        "http_calls": 45,
+        "items_read": 40,
+        "listed": 40,
+        "mentions": 28,
         "status": "ok"
       },
       "hn": {
@@ -29,42 +29,42 @@
         "gone": 0,
         "http_calls": 303,
         "items_read": 300,
-        "listed": 346,
-        "mentions": 36,
+        "listed": 353,
+        "mentions": 30,
         "status": "ok"
       }
     }
   },
   "counts": {
-    "mentions_held": 89,
-    "mentions_in_window": 81,
+    "mentions_held": 99,
+    "mentions_in_window": 83,
     "mentions_in_window_by_source": {
       "forem": 29,
-      "hn": 52
+      "hn": 54
     },
     "ranked": 50,
     "ranked_by_status": {
-      "candidate": 22,
+      "candidate": 26,
       "canonical": 0,
       "corpus": 0,
       "not_found": 0,
-      "unresolved": 28
+      "unresolved": 24
     },
-    "repositories_mentioned": 87,
-    "resolutions_held": 84,
-    "truncated": 37
+    "repositories_mentioned": 91,
+    "resolutions_held": 91,
+    "truncated": 41
   },
   "files": {
-    "collection.json": "a05827c4801b7952b1f2f2c7cbe2c790cf93c5cf77be9abf8abaacb7a82cc579",
-    "mentions.jsonl": "785c513c37ca587aea0fe03ee3cdfb2b1a89ace13933d095458c66a88601dc38",
-    "radar.jsonl": "bd5a58600d551ac43dd268c385a69e779e2c6bc67c46545a85e9ea3d8ae2b090",
-    "resolved.jsonl": "704f74c38c5b9532821edf71aa4a15e19a2343d4ea66cc31cb313d0b1814319c"
+    "collection.json": "d633f3e1c0babb33d5b3cc7f81c62c99a1ec48f775743c8b14aa54230aa8d518",
+    "mentions.jsonl": "eb13fa895db362616ecc69efcec13d3fab1021a2117efebde2e1c83b740e6ce3",
+    "radar.jsonl": "0eaa453d334c88ed5b43645fed5e2017cdd421551e1485848d6d42470219736d",
+    "resolved.jsonl": "9d409eab7f82415d76903f143c2eea9e4624be7bd206f0e89c2b2df5dac0737b"
   },
   "inputs": {
-    "data/canonical/oss_projects.jsonl": "2034a9dc1a8246d8c9d5259dec261e344af63b7ea92e5b0fd8f046bcdff20521",
-    "data/dataset/oss_projects.jsonl": "1102462dcc415ec82379113b7f76849d386973c44b82602c9c960b7bb8b83b66",
-    "data/discovery/candidates.jsonl": "9ff06bbe080fcb15e41db6a3c7814379b5d3e4dba82597785d9322453102b7fd",
-    "data/live/snapshot.json": "c27ec1f821f6be026171fcb73a35259176c02f7c65ef249302586d3e059dda7f"
+    "data/canonical/oss_projects.jsonl": "d6a5e72783693bb70cb2fad9c4461669aeb7bc97dd7e65b355a279dfbbcbc432",
+    "data/dataset/oss_projects.jsonl": "056913ad07fbdf18c06ae05c1d1c6ba17387f0b9ca2a36270d49b3a1b2717ee7",
+    "data/discovery/candidates.jsonl": "2ceb2073bedb0653ddfef6c61fcd05d569b22b4c1a742baadf347e64b52f8117",
+    "data/live/snapshot.json": "fc9e80c448179702b8bb8f5c8da29de76e339458a64cb67c5e4fae22098f492a"
   },
   "methodology": {
     "doc": "docs/RADAR.md",
