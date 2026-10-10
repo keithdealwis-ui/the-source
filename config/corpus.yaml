@@ -1,0 +1,41 @@
+# The Source — public discovery corpus (KEI-912).
+#
+# What of the Discover lane corpus (KEI-811, data/discover/corpus/, internal) is published,
+# and how it is kept fresh. The export is data/corpus/; the MCP server serves it as the
+# `discovery` tier beside the canonical layer. Nothing here changes a recommendation:
+# recommendations come only from data/canonical, exactly as before.
+
+schema: the-source.corpus/1
+
+publication:
+  # Corpus outcomes that are published. `retained` is the licence-issue population: published
+  # as discovery with the issue shown, never recommended (Keith's publication gate decides).
+  outcomes: [recommendation_eligible, retained]
+  # Host-reported short descriptions (GitHub API `description`), truncated. Factual metadata
+  # owned by each repository's authors; see docs/LICENCE-REVIEW.md (KEI-912 section).
+  include_descriptions: true
+  description_max_chars: 300
+  max_topics: 20
+  max_languages: 5
+  # Routes from Keith's private seed corpus (config/discover_seeds.md, never public) are
+  # published without their file or line: only the fact that a maintainer seeded the project.
+  private_seed_strategies: [keith_seed]
+  private_seed_label: maintainer_seed
+
+refresh:
+  # Live repository facts (stars, forks, pushed_at, archived, latest release, licence as the
+  # host reports it, description, topics, languages) for every published project, re-read
+  # from the host on this cadence by .github/workflows/corpus-refresh.yml. No Mac involved.
+  cadence: weekly
+  # The MCP server reports the tier stale after this many days without a refresh, and the
+  # refresh job reports itself due after `due_after_days`.
+  stale_after_days: 10
+  due_after_days: 6
+  # One GraphQL request carries this many repositories (the conditional/incremental pattern
+  # GitHub offers for metadata: batch, never one request per repository).
+  batch_size: 50
+  # Hard ceiling on GraphQL rate-limit points a refresh may spend; it stops and keeps the
+  # previous layer rather than exceed it. A full refresh of ~9.4k repositories costs ~190.
+  max_graphql_points: 1500
+  # A refresh that cannot read more than this share of the corpus is not promoted.
+  max_unresolved_share: 0.02

@@ -12,6 +12,12 @@
     python -m source_pipeline discover-build       build the corpus from the records; no network
     python -m source_pipeline discover-validate
 
+  Public discovery corpus (KEI-912, docs/CORPUS.md):
+    python -m source_pipeline corpus-export        data/corpus/ from the Discover lane corpus; no network
+    python -m source_pipeline corpus-refresh       re-read every published project's live facts (network)
+    python -m source_pipeline corpus-validate      MANIFEST, schema and publication-rule checks
+    python -m source_pipeline corpus-due           is a scheduled refresh due
+
   Scoring (KEI-806):
     python -m source_pipeline score-harvest        observe the scoring evidence on GitHub (network)
                               [--refresh]          re-observe everything under a new as_of
@@ -245,7 +251,8 @@ def main(argv=None) -> int:
                                         "runs-latest",
                                         "history-days", "history-delta", "discovery-pool",
                                         "momentum-build", "momentum-validate", "momentum",
-                                        "radar-collect", "radar-build", "radar-validate", "radar"])
+                                        "radar-collect", "radar-build", "radar-validate", "radar",
+                                        "corpus-export", "corpus-refresh", "corpus-validate", "corpus-due"])
     ap.add_argument("target", nargs="?", help="graph-query: a plan file or a query id")
     ap.add_argument("--only-failed", action="store_true", help="discover-verify: retry only failed lookups")
     ap.add_argument("--refresh", action="store_true", help="score-harvest: re-observe everything")
@@ -276,6 +283,10 @@ def main(argv=None) -> int:
     args = ap.parse_args(argv)
 
     out = {}
+    if args.command.startswith("corpus-"):
+        from . import corpus
+
+        return corpus.main(args.command)
     if args.command.startswith("radar"):
         return _radar(args, ap)
     if args.command.startswith("momentum"):

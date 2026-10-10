@@ -1,0 +1,61 @@
+{
+  "as_of": "2026-10-10T11:49:36Z",
+  "attribution": "The Source (github.com/keithdealwis-ui/the-source), by Keith de Alwis",
+  "corpus_version": "ea0e40ffd99d49aa",
+  "counts": {
+    "archived": 15,
+    "by_lane": {
+      "discover": 9062,
+      "replace": 486
+    },
+    "host_not_found": 28,
+    "licence_issue": 1393,
+    "maintainer_seeded": 68,
+    "projects": 9364,
+    "with_description": 9003
+  },
+  "files": {
+    "live.jsonl": "a544387499ad88828782397bb3128473601e5c3980b92ebcca77362723d65755",
+    "projects.jsonl": "eb424b8151987029f32660a58283747dbdb10fbf0685897d6e7ce2e27b970441"
+  },
+  "licence": "CC BY 4.0",
+  "live_observed_as_of": {
+    "newest": "2026-10-10T11:49:36Z",
+    "oldest": "2026-09-29T10:34:38Z"
+  },
+  "membership": {
+    "as_of": "2026-09-29T10:34:38Z",
+    "maintenance_evaluated_as_of": "per the Discover lane build at membership.as_of (docs/DISCOVER.md); live facts are refreshed, evaluations are not",
+    "outcomes_published": [
+      "recommendation_eligible",
+      "retained"
+    ],
+    "rebuilt_by": "corpus-export from the Discover lane corpus (KEI-811)",
+    "skipped": {},
+    "source_manifest_sha256": "d39f186b1059e268ebe13041f07dbc497a75708c03d294f4ba9c45511e4c0d2a",
+    "source_schema": "the-source.discover/1"
+  },
+  "publication": {
+    "descriptions": "host-reported, truncated",
+    "gate": null,
+    "private_seed_routes": "published as 'maintainer_seed' without file or line",
+    "rules": "config/corpus.yaml publication"
+  },
+  "refresh": {
+    "cadence": "weekly",
+    "last": {
+      "at": "2026-10-10T11:49:36Z",
+      "batches": 188,
+      "changed_metadata": 3733,
+      "method": "GitHub GraphQL, 50 repositories per request; REST only to follow a rename",
+      "not_found": 28,
+      "not_on_github": 5,
+      "renamed": 45,
+      "requests": 224,
+      "resolved": 9331,
+      "unresolved": 0
+    },
+    "stale_after_days": 10
+  },
+  "schema": "the-source.corpus/1"
+}
