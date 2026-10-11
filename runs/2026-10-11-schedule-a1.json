@@ -1,0 +1,644 @@
+{
+  "attempt": 1,
+  "canonical": {
+    "changed": true,
+    "commit_tag": "cycle/2026-10-11-schedule-a1",
+    "dataset_version_after": "662adc52e6713e41",
+    "dataset_version_before": "02138adc09d8ca9b"
+  },
+  "counts": {
+    "added": 0,
+    "candidates": 625,
+    "canonical_checks": 27,
+    "canonical_projects": 235,
+    "canonical_projects_removed": 0,
+    "canonical_relationships": 348,
+    "canonical_relationships_added": 0,
+    "canonical_relationships_removed": 0,
+    "canonical_warnings": 0,
+    "changed": 10,
+    "deep_enriched": 16,
+    "deferred": 0,
+    "discovered": 1,
+    "discovered_in_corpus": 0,
+    "discovered_pool": 1,
+    "failed": 0,
+    "intake_pending": 0,
+    "intake_promoted": 0,
+    "momentum_measured": 609,
+    "radar_pool_added": 0,
+    "radar_ranked": 50,
+    "refreshed_records": 610,
+    "rejected": 0,
+    "rescored": 6,
+    "retained": 0,
+    "stale_or_abandoned_detected": 0,
+    "supported_saas_ok": 20,
+    "unchanged": 615
+  },
+  "cycle_key": "2026-10-11",
+  "ended_at": "2026-10-11T01:52:01Z",
+  "error": null,
+  "failures": [],
+  "history_day": "2026-10-11",
+  "retries": {
+    "deep_enrichment": 0,
+    "light_refresh": 0
+  },
+  "run_id": "2026-10-11-schedule-a1",
+  "schedule": {
+    "cadence": "daily",
+    "time": "03:00",
+    "timezone": "Asia/Dubai",
+    "weekday": null,
+    "window_hours": 4
+  },
+  "started_at": "2026-10-11T01:47:35Z",
+  "status": "succeeded",
+  "strategies": [
+    {
+      "advanced": 1,
+      "detail": [
+        {
+          "from": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+          "source_id": "solvohq",
+          "status": "unchanged"
+        },
+        {
+          "from": "dda428e4c3f4030f6bdf3e3289075ed7a97d0c0b",
+          "source_id": "awesome-selfhosted",
+          "status": "unchanged"
+        },
+        {
+          "from": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+          "source_id": "runacapital",
+          "status": "unchanged"
+        },
+        {
+          "from": "3f29e5943fd9fc9910cd500134d5c6a6836a52ce",
+          "source_id": "opensaasdirectory",
+          "status": "unchanged"
+        },
+        {
+          "from": "c4cc558b7edf50a5efb4e3fd0d867292c2ae6b63",
+          "source_id": "emmraan",
+          "status": "unchanged"
+        },
+        {
+          "from": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+          "source_id": "btwso",
+          "status": "unchanged"
+        },
+        {
+          "from": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+          "source_id": "diegoleme",
+          "status": "unchanged"
+        },
+        {
+          "entries": [
+            64,
+            64
+          ],
+          "from": "07556427afbb1237617ea35d975eaea9b15029cf",
+          "source_id": "altstack",
+          "status": "advanced",
+          "to": "8c80f274354a6275c53b4d49fe1cc1594e63ad59"
+        },
+        {
+          "from": "3a69df61b34eea1b314103ff9afa9269cdebfd8a",
+          "source_id": "fossalt",
+          "status": "unchanged"
+        }
+      ],
+      "id": "upstream_lists",
+      "kept": [],
+      "sources": 9,
+      "status": "ok"
+    },
+    {
+      "admitted_entries": 1,
+      "id": "intake_ledger",
+      "ledger_version": "feb7d601b43d46fdbc692e43a3082998c61cc659",
+      "status": "ok"
+    },
+    {
+      "as_of": "2026-10-11T01:47:35Z",
+      "found": 610,
+      "http_calls": 34,
+      "id": "light_refresh",
+      "repositories": 625,
+      "retries": 0,
+      "status": "ok",
+      "still_failing": []
+    },
+    {
+      "errors": [],
+      "id": "discovery_search",
+      "known_in_corpus": 42,
+      "lanes": [
+        {
+          "id": "gh-topic-self-hosted-new",
+          "provider": "github_search",
+          "query": "topic:self-hosted created:>=2026-10-04 stars:>=50",
+          "returned": 6,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-open-source-alternative-new",
+          "provider": "github_search",
+          "query": "topic:open-source-alternative created:>=2026-10-04 stars:>=50",
+          "returned": 0,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-alternative-active",
+          "provider": "github_search",
+          "query": "topic:alternative pushed:>=2026-10-04 stars:>=50 archived:false",
+          "returned": 17,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-saas-alternative",
+          "provider": "github_search",
+          "query": "topic:saas-alternative stars:>=50 archived:false",
+          "returned": 2,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-selfhosted-active",
+          "provider": "github_search",
+          "query": "topic:selfhosted pushed:>=2026-10-04 stars:>=50 archived:false",
+          "returned": 148,
+          "status": "ok"
+        },
+        {
+          "id": "ecosystems-awesome-selfhosted",
+          "provider": "ecosystems_awesome",
+          "query": "https://github.com/awesome-selfhosted/awesome-selfhosted",
+          "returned": 287,
+          "status": "ok"
+        }
+      ],
+      "new_candidates": [
+        "github.com/z1xus/ihateborders"
+      ],
+      "new_count": 1,
+      "pool_size": 483,
+      "returned": 460,
+      "seen_again": 411,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-11",
+      "degraded_providers": [],
+      "id": "corroboration",
+      "providers": {
+        "depsdev": {
+          "agreement": 0.9515,
+          "answered": 120,
+          "asked": 120,
+          "canonical_effect": "none: flags only; the host's own answer stays canonical",
+          "coverage": 0.8583,
+          "disagreeing_keys": {
+            "github.com/bugzilla/bugzilla": [
+              "licence"
+            ],
+            "github.com/caronc/apprise": [
+              "licence"
+            ],
+            "github.com/formio/formio": [
+              "licence"
+            ],
+            "github.com/syncthing/syncthing": [
+              "licence"
+            ],
+            "github.com/valeriansaliou/sonic": [
+              "licence"
+            ]
+          },
+          "disagreements_by_field": {
+            "licence": 5
+          },
+          "errors": 0,
+          "not_covered": [
+            "github.com/btw-so/btw",
+            "github.com/crowddotdev/crowd.dev",
+            "github.com/danny-avila/librechat",
+            "github.com/gamestonkterminal/gamestonkterminal",
+            "github.com/gamosoft/notediscovery",
+            "github.com/itswadesh/svelte-commerce",
+            "github.com/juliusbrussee/revu-swift",
+            "github.com/pagure/pagure",
+            "github.com/popeen/booksonic-air",
+            "github.com/rikhuijzer/fx",
+            "github.com/sortlist/overloop-cli",
+            "github.com/spacebarchat/spacebarchat",
+            "github.com/telemetry-tracker/telemetry-tracker",
+            "github.com/tldraw/tldraw",
+            "github.com/totumonline/totum-mit",
+            "github.com/tracardi/tracardi",
+            "github.com/triliumnext/notes"
+          ],
+          "reason": null,
+          "status": "ok",
+          "trusted_for": [
+            "existence",
+            "licence (SPDX)",
+            "star order of magnitude"
+          ]
+        },
+        "ecosystems": {
+          "agreement": 1.0,
+          "answered": 120,
+          "asked": 120,
+          "canonical_effect": "none: flags only; the host's own answer stays canonical",
+          "coverage": 1.0,
+          "disagreeing_keys": {},
+          "disagreements_by_field": {},
+          "errors": 0,
+          "not_covered": [],
+          "reason": null,
+          "status": "ok",
+          "trusted_for": [
+            "existence",
+            "archive state",
+            "licence",
+            "repository id (uuid = GitHub databaseId)",
+            "star order of magnitude"
+          ]
+        }
+      },
+      "sample": 120,
+      "status": "ok"
+    },
+    {
+      "by_class": {
+        "changed": 10,
+        "stale": 6,
+        "unchanged": 609
+      },
+      "changed": [
+        {
+          "key": "github.com/bewcloud/bewcloud",
+          "reasons": [
+            "release v4.16.0 -> v4.17.0"
+          ]
+        },
+        {
+          "key": "github.com/erxes/erxes",
+          "reasons": [
+            "release 3.2.17 -> 3.2.19"
+          ]
+        },
+        {
+          "key": "github.com/fluxerapp/fluxer",
+          "reasons": [
+            "release fluxer-gateway@2026.1010.150258 -> fluxer-media-proxy@2026.1011.938"
+          ]
+        },
+        {
+          "key": "github.com/forwardemail/forwardemail.net",
+          "reasons": [
+            "release v2.18.3 -> v2.18.5"
+          ]
+        },
+        {
+          "key": "github.com/home-assistant/core",
+          "reasons": [
+            "release 2026.10.0 -> 2026.10.1"
+          ]
+        },
+        {
+          "key": "github.com/lightdash/lightdash",
+          "reasons": [
+            "release 2.547.1 -> 2.556.0"
+          ]
+        },
+        {
+          "key": "github.com/open-webui/open-webui",
+          "reasons": [
+            "release v0.11.4 -> v0.12.0"
+          ]
+        },
+        {
+          "key": "github.com/ralex91/razzia",
+          "reasons": [
+            "release 3.1.0 -> 4.0.0"
+          ]
+        },
+        {
+          "key": "github.com/rodrgds/openpost",
+          "reasons": [
+            "release v7.15.7 -> v7.16.4"
+          ]
+        },
+        {
+          "key": "github.com/wekan/wekan",
+          "reasons": [
+            "release v12.26 -> v12.27"
+          ]
+        }
+      ],
+      "deferred_rotation": 0,
+      "http_calls": 60,
+      "id": "deep_enrichment",
+      "kept_previous_after_failure": [],
+      "retries": 0,
+      "selected": 16,
+      "status": "ok"
+    },
+    {
+      "deferred_to_next_cycle": 0,
+      "errors": [],
+      "id": "new_pair_scoring",
+      "pairs_scored": 0,
+      "projects_scored": 0,
+      "status": "ok"
+    },
+    {
+      "candidates": 6,
+      "deferred_to_next_cycle": 0,
+      "errors": [],
+      "id": "rescoring",
+      "projects": [
+        "github.com/bewcloud/bewcloud",
+        "github.com/fluxerapp/fluxer",
+        "github.com/getopenpost/openpost",
+        "github.com/home-assistant/core",
+        "github.com/ralex91/razzia",
+        "github.com/wekan/wekan"
+      ],
+      "rescored": 6,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-11",
+      "days_held": 10,
+      "id": "history",
+      "pruned": [],
+      "rows": 625,
+      "sha256": "b1c756c420e09ffa6400e1dfd0ed2f90441146ffbc3349147c9ccbe24fbbb944",
+      "status": "ok"
+    },
+    {
+      "id": "momentum",
+      "methodology_version": "1.0.0",
+      "on": "2026-10-11",
+      "status": "ok",
+      "windows": {
+        "1": {
+          "acceleration": "insufficient_history",
+          "acceleration_measurable_from": "2026-10-04",
+          "measurable_from": "2026-10-03",
+          "measured": 0,
+          "status": "insufficient_history"
+        },
+        "30": {
+          "acceleration": "insufficient_history",
+          "acceleration_measurable_from": "2026-12-01",
+          "measurable_from": "2026-11-01",
+          "measured": 0,
+          "status": "insufficient_history"
+        },
+        "7": {
+          "acceleration": "insufficient_history",
+          "acceleration_measurable_from": "2026-10-16",
+          "measurable_from": "2026-10-09",
+          "measured": 609,
+          "status": "measured"
+        },
+        "90": {
+          "acceleration": "insufficient_history",
+          "acceleration_measurable_from": "2027-03-31",
+          "measurable_from": "2026-12-31",
+          "measured": 0,
+          "status": "insufficient_history"
+        }
+      }
+    },
+    {
+      "candidates": [
+        {
+          "key": "github.com/openai/math",
+          "rank": 1,
+          "score": 21.3895,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/rociiu/talorys",
+          "rank": 2,
+          "score": 9.0756,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/franzenzenhofer/big-arrow-on-the-screen",
+          "rank": 3,
+          "score": 6.7797,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/storytold/photocraft",
+          "rank": 4,
+          "score": 5.5074,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/microsoft/mxc",
+          "rank": 5,
+          "score": 5.4367,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/alex0ptr/once",
+          "rank": 6,
+          "score": 4.6105,
+          "status": "candidate"
+        },
+        {
+          "key": "codeberg.org/ethical-foss/open-slopware",
+          "rank": 7,
+          "score": 4.1595,
+          "status": "unresolved"
+        },
+        {
+          "key": "github.com/p10node/k10s",
+          "rank": 8,
+          "score": 3.9882,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/nyaomaru/changelog-bot",
+          "rank": 9,
+          "score": 3.9229,
+          "status": "unresolved"
+        },
+        {
+          "key": "github.com/docker/docker-agent",
+          "rank": 10,
+          "score": 3.777,
+          "status": "candidate"
+        }
+      ],
+      "counts": {
+        "candidates": 30,
+        "mentions_held": 183,
+        "mentions_in_window": 161,
+        "mentions_in_window_by_source": {
+          "bluesky": 75,
+          "forem": 29,
+          "hn": 57,
+          "instagram": 0,
+          "x": 0
+        },
+        "ranked": 50,
+        "ranked_by_status": {
+          "candidate": 26,
+          "canonical": 0,
+          "corpus": 0,
+          "not_found": 0,
+          "unresolved": 24
+        },
+        "repositories_mentioned": 147,
+        "resolutions_held": 107,
+        "truncated": 97
+      },
+      "id": "community_radar",
+      "methodology_version": "1.1.0",
+      "pool_added": [],
+      "resolve": {
+        "asked": 8,
+        "deferred": 0,
+        "resolved": 8,
+        "transient_failures": []
+      },
+      "sources": {
+        "bluesky": {
+          "errors": [],
+          "gone": 0,
+          "http_calls": 2,
+          "items_read": 98,
+          "mentions": 73,
+          "status": "ok"
+        },
+        "forem": {
+          "errors": [],
+          "gone": 1,
+          "http_calls": 40,
+          "items_read": 36,
+          "mentions": 27,
+          "status": "ok"
+        },
+        "hn": {
+          "errors": [],
+          "gone": 0,
+          "http_calls": 303,
+          "items_read": 300,
+          "mentions": 22,
+          "status": "ok"
+        },
+        "instagram": {
+          "errors": [
+            "INSTAGRAM_ACCESS_TOKEN or INSTAGRAM_USER_ID is not set: Instagram is not asked"
+          ],
+          "gone": 0,
+          "http_calls": 0,
+          "items_read": 0,
+          "mentions": 0,
+          "status": "unconfigured"
+        },
+        "x": {
+          "errors": [
+            "X_BEARER_TOKEN is not set: X is not asked"
+          ],
+          "gone": 0,
+          "http_calls": 0,
+          "items_read": 0,
+          "mentions": 0,
+          "status": "unconfigured"
+        }
+      },
+      "status": "ok",
+      "top": [
+        {
+          "key": "github.com/openai/math",
+          "rank": 1,
+          "score": 21.3895,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/rociiu/talorys",
+          "rank": 2,
+          "score": 9.0756,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/franzenzenhofer/big-arrow-on-the-screen",
+          "rank": 3,
+          "score": 6.7797,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/storytold/photocraft",
+          "rank": 4,
+          "score": 5.5074,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/microsoft/mxc",
+          "rank": 5,
+          "score": 5.4367,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/alex0ptr/once",
+          "rank": 6,
+          "score": 4.6105,
+          "status": "candidate"
+        },
+        {
+          "key": "codeberg.org/ethical-foss/open-slopware",
+          "rank": 7,
+          "score": 4.1595,
+          "status": "unresolved"
+        },
+        {
+          "key": "github.com/p10node/k10s",
+          "rank": 8,
+          "score": 3.9882,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/nyaomaru/changelog-bot",
+          "rank": 9,
+          "score": 3.9229,
+          "status": "unresolved"
+        },
+        {
+          "key": "github.com/docker/docker-agent",
+          "rank": 10,
+          "score": 3.777,
+          "status": "candidate"
+        }
+      ]
+    }
+  ],
+  "timings_s": {
+    "build_validate": 44.0,
+    "canonical": 65.5,
+    "community_radar": 19.9,
+    "corroboration": 14.6,
+    "deep_enrichment": 6.7,
+    "discovery_search": 13.3,
+    "history": 0.0,
+    "intake_ledger": 1.3,
+    "light_refresh": 77.7,
+    "momentum": 0.5,
+    "scoring": 14.8,
+    "upstream_lists": 7.0
+  },
+  "transitions": {
+    "became_recommendable": [],
+    "no_longer_recommendable": []
+  },
+  "trigger": "schedule"
+}
