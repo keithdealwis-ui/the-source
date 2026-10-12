@@ -1,10 +1,16 @@
 {
-  "as_of": "2026-10-11T01:47:35Z",
+  "as_of": "2026-10-12T00:26:24Z",
   "resolve": {
-    "asked": 8,
+    "asked": 10,
     "deferred": 0,
-    "pool_added": [],
-    "resolved": 8,
+    "pool_added": [
+      "github.com/morluto/rea",
+      "github.com/nyaomaru/changelog-bot",
+      "github.com/othermod/pspi-version-6",
+      "github.com/rogerbinns/apsw",
+      "github.com/vahmoh25/veda"
+    ],
+    "resolved": 10,
     "transient_failures": []
   },
   "sources": {
@@ -13,18 +19,18 @@
       "gone": 0,
       "host": "https://api.bsky.app",
       "http_calls": 2,
-      "items_read": 98,
-      "listed": 98,
-      "mentions": 73,
+      "items_read": 99,
+      "listed": 99,
+      "mentions": 72,
       "status": "ok"
     },
     "forem": {
       "errors": [],
       "gone": 1,
-      "http_calls": 40,
-      "items_read": 36,
-      "listed": 36,
-      "mentions": 27,
+      "http_calls": 37,
+      "items_read": 33,
+      "listed": 33,
+      "mentions": 26,
       "status": "ok"
     },
     "hn": {
@@ -32,7 +38,7 @@
       "gone": 0,
       "http_calls": 303,
       "items_read": 300,
-      "listed": 366,
+      "listed": 362,
       "mentions": 22,
       "status": "ok"
     },

@@ -1,12 +1,18 @@
 {
-  "as_of": "2026-10-11T01:47:35Z",
+  "as_of": "2026-10-12T00:26:24Z",
   "collection": {
-    "as_of": "2026-10-11T01:47:35Z",
+    "as_of": "2026-10-12T00:26:24Z",
     "resolve": {
-      "asked": 8,
+      "asked": 10,
       "deferred": 0,
-      "pool_added": [],
-      "resolved": 8,
+      "pool_added": [
+        "github.com/morluto/rea",
+        "github.com/nyaomaru/changelog-bot",
+        "github.com/othermod/pspi-version-6",
+        "github.com/rogerbinns/apsw",
+        "github.com/vahmoh25/veda"
+      ],
+      "resolved": 10,
       "transient_failures": []
     },
     "sources": {
@@ -15,18 +21,18 @@
         "gone": 0,
         "host": "https://api.bsky.app",
         "http_calls": 2,
-        "items_read": 98,
-        "listed": 98,
-        "mentions": 73,
+        "items_read": 99,
+        "listed": 99,
+        "mentions": 72,
         "status": "ok"
       },
       "forem": {
         "errors": [],
         "gone": 1,
-        "http_calls": 40,
-        "items_read": 36,
-        "listed": 36,
-        "mentions": 27,
+        "http_calls": 37,
+        "items_read": 33,
+        "listed": 33,
+        "mentions": 26,
         "status": "ok"
       },
       "hn": {
@@ -34,7 +40,7 @@
         "gone": 0,
         "http_calls": 303,
         "items_read": 300,
-        "listed": 366,
+        "listed": 362,
         "mentions": 22,
         "status": "ok"
       },
@@ -64,39 +70,39 @@
   },
   "counts": {
     "candidates": 30,
-    "mentions_held": 183,
-    "mentions_in_window": 161,
+    "mentions_held": 200,
+    "mentions_in_window": 162,
     "mentions_in_window_by_source": {
-      "bluesky": 75,
-      "forem": 29,
-      "hn": 57,
+      "bluesky": 80,
+      "forem": 26,
+      "hn": 56,
       "instagram": 0,
       "x": 0
     },
     "ranked": 50,
     "ranked_by_status": {
-      "candidate": 26,
+      "candidate": 28,
       "canonical": 0,
       "corpus": 0,
       "not_found": 0,
-      "unresolved": 24
+      "unresolved": 22
     },
-    "repositories_mentioned": 147,
-    "resolutions_held": 107,
-    "truncated": 97
+    "repositories_mentioned": 141,
+    "resolutions_held": 117,
+    "truncated": 91
   },
   "files": {
-    "candidates.jsonl": "82e07db53cd5bcb42c5db0003690ec3ac2250693ede3dcfce0a52d6cc255812a",
-    "collection.json": "daff54898a87e33c8ca5ac4b4e97b48cf835605e3534fd2e1e638b4a0be1cbd4",
-    "mentions.jsonl": "54d8b452e99eb4297c739ec6dda068e04b7b2787ea408c78b2acdf24a91d29bc",
-    "radar.jsonl": "cc130ac5c0b6d1950d204aeee2dd80fc17a18da5f85b19bb916b062072b8b287",
-    "resolved.jsonl": "af7297e604da4978a71309e1067cc0ecdf20572e7f6d80c595c07d1205d2f7e2"
+    "candidates.jsonl": "efd2fe25a7dd41c9c705257a4208074ed5381cc1e44842d4327f746735e05041",
+    "collection.json": "9efc25bc539b5072dc234e4beeb86dbdee595ff998f05b71b9134760164debad",
+    "mentions.jsonl": "4dbd1d8f1846bf445f08a4d53ff0002f71add37f659d834b53f6f464d3bde4c6",
+    "radar.jsonl": "4b1c61428d54b5d78d15c28315fd5ac809c9fa37f4326c1ead5f98a3a8a81e23",
+    "resolved.jsonl": "5d24e04608ea004ed016e2c4b7e070642fb26802b54fb2f3dd60d06caa5eb6bd"
   },
   "inputs": {
-    "data/canonical/oss_projects.jsonl": "bb62867dd0673e5f145c75d7e73215b4e8c969720a0067822d708e5159b87ea0",
-    "data/dataset/oss_projects.jsonl": "460bd6fd00ff308566439542c859ac8142785e240ac9ddc88482cd7004d83723",
-    "data/discovery/candidates.jsonl": "f537089a68e72e38d58570248e508cda027015522ff4f832050fc1d173a9e795",
-    "data/live/snapshot.json": "4e492846b75824afe7e1c85fcf5c2446f2a262c5b456134ae525c0e18201085b"
+    "data/canonical/oss_projects.jsonl": "26ec52035531e1b9a10284bfbd12f7a85585bf73d9db6db092419533143ef8a9",
+    "data/dataset/oss_projects.jsonl": "e180b8a24d189dc4609763ed987d9d2d5ee4a06caa8080b6d19c940000ec52bb",
+    "data/discovery/candidates.jsonl": "5b5558e46d22c85ffe1e6e2855eaa2e5b1eee7db3a576386097be5c8573d2817",
+    "data/live/snapshot.json": "e54706e8693781ce6c8b50d3a4abec0375a957a9c69014ca7aa4b1f3f34bca20"
   },
   "methodology": {
     "doc": "docs/RADAR.md",
