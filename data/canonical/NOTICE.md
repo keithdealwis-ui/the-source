@@ -40,7 +40,7 @@ SOFTWARE.
 
 ## open-saas-directory/awesome-saas-directory
 
-- Source: https://github.com/open-saas-directory/awesome-saas-directory at commit 3f29e5943fd9fc9910cd500134d5c6a6836a52ce
+- Source: https://github.com/open-saas-directory/awesome-saas-directory at commit cea5ec13fcc35e32334cc99b7c2771176ee8ead4
 - Licence: MIT
 - Attribution: open-saas-directory/awesome-saas-directory, Copyright (c) 2026 Open SaaS Directory, MIT License
 
@@ -68,7 +68,7 @@ SOFTWARE.
 
 ## Emmraan/awesome-saas-alternatives
 
-- Source: https://github.com/Emmraan/awesome-saas-alternatives at commit c4cc558b7edf50a5efb4e3fd0d867292c2ae6b63
+- Source: https://github.com/Emmraan/awesome-saas-alternatives at commit faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d
 - Licence: MIT
 - Attribution: Emmraan/awesome-saas-alternatives, Copyright (c) 2026 awesome-saas-alternatives contributors, MIT License
 
@@ -152,7 +152,7 @@ SOFTWARE.
 
 ## altstackHQ/altstack-data
 
-- Source: https://github.com/altstackHQ/altstack-data at commit 2905240ef1a628040c99ddc067a7f132e0f5054d
+- Source: https://github.com/altstackHQ/altstack-data at commit 6ab50ca0d4fbc30b7e45cd49bfbe7d5d28c75bce
 - Licence: Apache-2.0 (LICENSE file) / CC-BY-4.0 (README statement)
 - Attribution: The AltStack data (altstackHQ/altstack-data), https://github.com/altstackHQ/altstack-data, licensed CC BY 4.0 per its README and Apache-2.0 per its LICENSE file; facts extracted, no text reproduced
 

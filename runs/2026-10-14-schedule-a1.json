@@ -1,0 +1,929 @@
+{
+  "attempt": 1,
+  "canonical": {
+    "changed": true,
+    "commit_tag": "cycle/2026-10-14-schedule-a1",
+    "dataset_version_after": "7ab1a1662972e2e0",
+    "dataset_version_before": "b8526ab02aba485d"
+  },
+  "counts": {
+    "added": 5,
+    "candidates": 631,
+    "canonical_checks": 27,
+    "canonical_projects": 235,
+    "canonical_projects_removed": 5,
+    "canonical_relationships": 337,
+    "canonical_relationships_added": 8,
+    "canonical_relationships_removed": 19,
+    "canonical_warnings": 0,
+    "changed": 49,
+    "deep_enriched": 70,
+    "deferred": 0,
+    "discovered": 12,
+    "discovered_in_corpus": 6,
+    "discovered_pool": 6,
+    "failed": 0,
+    "intake_pending": 0,
+    "intake_promoted": 0,
+    "momentum_measured": 610,
+    "radar_pool_added": 10,
+    "radar_ranked": 50,
+    "refreshed_records": 616,
+    "rejected": 0,
+    "rescored": 29,
+    "retained": 6,
+    "stale_or_abandoned_detected": 0,
+    "supported_saas_ok": 20,
+    "unchanged": 576
+  },
+  "cycle_key": "2026-10-14",
+  "ended_at": "2026-10-14T01:13:00Z",
+  "error": null,
+  "failures": [],
+  "history_day": "2026-10-14",
+  "retries": {
+    "deep_enrichment": 0,
+    "light_refresh": 0
+  },
+  "run_id": "2026-10-14-schedule-a1",
+  "schedule": {
+    "cadence": "daily",
+    "time": "03:00",
+    "timezone": "Asia/Dubai",
+    "weekday": null,
+    "window_hours": 4
+  },
+  "started_at": "2026-10-14T01:06:00Z",
+  "status": "succeeded",
+  "strategies": [
+    {
+      "advanced": 4,
+      "detail": [
+        {
+          "from": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+          "source_id": "solvohq",
+          "status": "unchanged"
+        },
+        {
+          "entries": [
+            1353,
+            1353
+          ],
+          "from": "337be61ae6158c2c6915fd775bac57635c9f016b",
+          "source_id": "awesome-selfhosted",
+          "status": "advanced",
+          "to": "28f4c6a0033cc9a9e27503170d0dbe89129fe59c"
+        },
+        {
+          "from": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+          "source_id": "runacapital",
+          "status": "unchanged"
+        },
+        {
+          "entries": [
+            98,
+            99
+          ],
+          "from": "3f29e5943fd9fc9910cd500134d5c6a6836a52ce",
+          "source_id": "opensaasdirectory",
+          "status": "advanced",
+          "to": "cea5ec13fcc35e32334cc99b7c2771176ee8ead4"
+        },
+        {
+          "entries": [
+            63,
+            63
+          ],
+          "from": "c4cc558b7edf50a5efb4e3fd0d867292c2ae6b63",
+          "source_id": "emmraan",
+          "status": "advanced",
+          "to": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d"
+        },
+        {
+          "from": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+          "source_id": "btwso",
+          "status": "unchanged"
+        },
+        {
+          "from": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+          "source_id": "diegoleme",
+          "status": "unchanged"
+        },
+        {
+          "entries": [
+            64,
+            71
+          ],
+          "from": "2905240ef1a628040c99ddc067a7f132e0f5054d",
+          "source_id": "altstack",
+          "status": "advanced",
+          "to": "6ab50ca0d4fbc30b7e45cd49bfbe7d5d28c75bce"
+        },
+        {
+          "from": "3a69df61b34eea1b314103ff9afa9269cdebfd8a",
+          "source_id": "fossalt",
+          "status": "unchanged"
+        }
+      ],
+      "id": "upstream_lists",
+      "kept": [],
+      "sources": 9,
+      "status": "ok"
+    },
+    {
+      "admitted_entries": 1,
+      "id": "intake_ledger",
+      "ledger_version": "feb7d601b43d46fdbc692e43a3082998c61cc659",
+      "status": "ok"
+    },
+    {
+      "as_of": "2026-10-14T01:06:00Z",
+      "found": 616,
+      "http_calls": 34,
+      "id": "light_refresh",
+      "repositories": 631,
+      "retries": 0,
+      "status": "ok",
+      "still_failing": []
+    },
+    {
+      "errors": [],
+      "id": "discovery_search",
+      "known_in_corpus": 42,
+      "lanes": [
+        {
+          "id": "gh-topic-self-hosted-new",
+          "provider": "github_search",
+          "query": "topic:self-hosted created:>=2026-10-07 stars:>=50",
+          "returned": 7,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-open-source-alternative-new",
+          "provider": "github_search",
+          "query": "topic:open-source-alternative created:>=2026-10-07 stars:>=50",
+          "returned": 0,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-alternative-active",
+          "provider": "github_search",
+          "query": "topic:alternative pushed:>=2026-10-07 stars:>=50 archived:false",
+          "returned": 18,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-saas-alternative",
+          "provider": "github_search",
+          "query": "topic:saas-alternative stars:>=50 archived:false",
+          "returned": 2,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-selfhosted-active",
+          "provider": "github_search",
+          "query": "topic:selfhosted pushed:>=2026-10-07 stars:>=50 archived:false",
+          "returned": 138,
+          "status": "ok"
+        },
+        {
+          "id": "ecosystems-awesome-selfhosted",
+          "provider": "ecosystems_awesome",
+          "query": "https://github.com/awesome-selfhosted/awesome-selfhosted",
+          "returned": 287,
+          "status": "ok"
+        }
+      ],
+      "new_candidates": [
+        "github.com/ajnart/dcm",
+        "github.com/brorlandi/miscale-dashboard",
+        "github.com/honwee/mynah",
+        "github.com/huzefdev/pocket-cloud",
+        "github.com/smaug6739/alexandrie",
+        "github.com/souravberaakaspeed/xiryn"
+      ],
+      "new_count": 6,
+      "pool_size": 513,
+      "returned": 452,
+      "seen_again": 395,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-14",
+      "degraded_providers": [],
+      "id": "corroboration",
+      "providers": {
+        "depsdev": {
+          "agreement": 0.9464,
+          "answered": 120,
+          "asked": 120,
+          "canonical_effect": "none: flags only; the host's own answer stays canonical",
+          "coverage": 0.9333,
+          "disagreeing_keys": {
+            "github.com/cloudquery/cloudquery": [
+              "licence"
+            ],
+            "github.com/encoredev/encore": [
+              "licence"
+            ],
+            "github.com/hcengineering/platform": [
+              "licence"
+            ],
+            "github.com/logto-io/logto": [
+              "licence"
+            ],
+            "github.com/selefra/selefra": [
+              "stars",
+              "licence"
+            ],
+            "github.com/valeriansaliou/sonic": [
+              "licence"
+            ]
+          },
+          "disagreements_by_field": {
+            "licence": 6,
+            "stars": 1
+          },
+          "errors": 0,
+          "not_covered": [
+            "github.com/dani-garcia/vaultwarden",
+            "github.com/getbeton/inspector",
+            "github.com/metriql/metriql",
+            "github.com/openedx/edx-platform",
+            "github.com/osohq/oso",
+            "github.com/sneg55/warpdrive",
+            "github.com/tracardi/tracardi",
+            "github.com/traceapps/nutritrace"
+          ],
+          "reason": null,
+          "status": "ok",
+          "trusted_for": [
+            "existence",
+            "licence (SPDX)",
+            "star order of magnitude"
+          ]
+        },
+        "ecosystems": {
+          "agreement": 1.0,
+          "answered": 120,
+          "asked": 120,
+          "canonical_effect": "none: flags only; the host's own answer stays canonical",
+          "coverage": 1.0,
+          "disagreeing_keys": {},
+          "disagreements_by_field": {},
+          "errors": 0,
+          "not_covered": [],
+          "reason": null,
+          "status": "ok",
+          "trusted_for": [
+            "existence",
+            "archive state",
+            "licence",
+            "repository id (uuid = GitHub databaseId)",
+            "star order of magnitude"
+          ]
+        }
+      },
+      "sample": 120,
+      "status": "ok"
+    },
+    {
+      "by_class": {
+        "changed": 49,
+        "new": 6,
+        "stale": 15,
+        "unchanged": 561
+      },
+      "changed": [
+        {
+          "key": "github.com/appwrite/appwrite",
+          "reasons": [
+            "release 2.4.0 -> 2.5.0"
+          ]
+        },
+        {
+          "key": "github.com/baserow/baserow",
+          "reasons": [
+            "release 2.4.0 -> 2.4.1"
+          ]
+        },
+        {
+          "key": "github.com/bitwarden/clients",
+          "reasons": [
+            "release desktop-v2026.9.1 -> web-v2026.10.0"
+          ]
+        },
+        {
+          "key": "github.com/bitwarden/server",
+          "reasons": [
+            "release v2026.9.2 -> v2026.10.0"
+          ]
+        },
+        {
+          "key": "github.com/bram2w/baserow",
+          "reasons": [
+            "release 2.4.0 -> 2.4.1"
+          ]
+        },
+        {
+          "key": "github.com/bruin-data/bruin",
+          "reasons": [
+            "release v0.11.776 -> v0.11.777"
+          ]
+        },
+        {
+          "key": "github.com/claperco/claper",
+          "reasons": [
+            "release v3.1.0 -> v3.1.1"
+          ]
+        },
+        {
+          "key": "github.com/cloudquery/cloudquery",
+          "reasons": [
+            "release plugins-destination-kafka-v5.8.1 -> cli-v6.48.0"
+          ]
+        },
+        {
+          "key": "github.com/cube-js/cube.js",
+          "reasons": [
+            "release v1.8.4 -> v1.8.6"
+          ]
+        },
+        {
+          "key": "github.com/erxes/erxes",
+          "reasons": [
+            "release 3.2.20 -> 3.2.22"
+          ]
+        },
+        {
+          "key": "github.com/firezone/firezone",
+          "reasons": [
+            "release android-client-1.5.15 -> gateway-1.6.3"
+          ]
+        },
+        {
+          "key": "github.com/flagsmith/flagsmith",
+          "reasons": [
+            "release v2.282.0 -> v2.284.0"
+          ]
+        },
+        {
+          "key": "github.com/fluxerapp/fluxer",
+          "reasons": [
+            "release fluxer-users@2026.1012.111317 -> fluxer-api@2026.1014.3120"
+          ]
+        },
+        {
+          "key": "github.com/forwardemail/forwardemail.net",
+          "reasons": [
+            "release v2.18.5 -> v2.18.6"
+          ]
+        },
+        {
+          "key": "github.com/gamosoft/notediscovery",
+          "reasons": [
+            "release v0.31.7 -> v0.32.0"
+          ]
+        },
+        {
+          "key": "github.com/ghostfolio/ghostfolio",
+          "reasons": [
+            "release 3.85.0 -> 3.86.0"
+          ]
+        },
+        {
+          "key": "github.com/gohugoio/hugo",
+          "reasons": [
+            "release v0.167.0 -> v0.168.0"
+          ]
+        },
+        {
+          "key": "github.com/grafana/grafana",
+          "reasons": [
+            "release v13.2.3 -> v13.2.4"
+          ]
+        },
+        {
+          "key": "github.com/huginn/huginn",
+          "reasons": [
+            "release v2026.10.04 -> v2026.10.14"
+          ]
+        },
+        {
+          "key": "github.com/hyperdxio/hyperdx",
+          "reasons": [
+            "release cli-v0.6.4 -> cli-v0.7.0"
+          ]
+        },
+        {
+          "key": "github.com/infisical/infisical",
+          "reasons": [
+            "release v0.166.5 -> v0.166.6"
+          ]
+        },
+        {
+          "key": "github.com/jenkinsci/jenkins",
+          "reasons": [
+            "release jenkins-2.585 -> jenkins-2.586"
+          ]
+        },
+        {
+          "key": "github.com/juanfont/headscale",
+          "reasons": [
+            "release v0.29.4 -> v0.29.5"
+          ]
+        },
+        {
+          "key": "github.com/keploy/keploy",
+          "reasons": [
+            "release v3.6.118 -> v3.6.122"
+          ]
+        },
+        {
+          "key": "github.com/kestra-io/kestra",
+          "reasons": [
+            "release v2.0.5 -> v2.0.6"
+          ]
+        },
+        {
+          "key": "github.com/keycloak/keycloak",
+          "reasons": [
+            "release 26.8.0 -> 26.8.1"
+          ]
+        },
+        {
+          "key": "github.com/lightdash/lightdash",
+          "reasons": [
+            "release 2.573.2 -> 2.578.1"
+          ]
+        },
+        {
+          "key": "github.com/logto-io/logto",
+          "reasons": [
+            "release v1.44.0 -> v1.45.0"
+          ]
+        },
+        {
+          "key": "github.com/mezonai/mezon",
+          "reasons": [
+            "release 2.0.2 -> 2.0.3"
+          ]
+        },
+        {
+          "key": "github.com/mintplex-labs/anything-llm",
+          "reasons": [
+            "release v1.17.0 -> v1.18.0"
+          ]
+        },
+        {
+          "key": "github.com/n8n-io/n8n",
+          "reasons": [
+            "release n8n@2.42.7 -> n8n@2.43.4"
+          ]
+        },
+        {
+          "key": "github.com/posthog/posthog",
+          "reasons": [
+            "release desktop-v0.61.675 -> desktop-v0.61.686"
+          ]
+        },
+        {
+          "key": "github.com/redkubes/otomi-core",
+          "reasons": [
+            "release v6.4.1 -> v6.4.2"
+          ]
+        },
+        {
+          "key": "github.com/requarks/wiki",
+          "reasons": [
+            "release 3.0.0-beta.651 -> 3.0.0-beta.661"
+          ]
+        },
+        {
+          "key": "github.com/rodrgds/openpost",
+          "reasons": [
+            "release v7.17.5 -> v7.19.1"
+          ]
+        },
+        {
+          "key": "github.com/rudderlabs/rudder-server",
+          "reasons": [
+            "release v1.89.2 -> v1.90.0"
+          ]
+        },
+        {
+          "key": "github.com/semi-technologies/weaviate",
+          "reasons": [
+            "release v1.40.0 -> v1.40.1"
+          ]
+        },
+        {
+          "key": "github.com/teableio/teable",
+          "reasons": [
+            "release release.2026-10-10T06-11-53Z.3314 -> release.2026-10-13T10-15-34Z.3346"
+          ]
+        },
+        {
+          "key": "github.com/tolgee/tolgee-platform",
+          "reasons": [
+            "release v3.230.0 -> v3.234.0"
+          ]
+        },
+        {
+          "key": "github.com/tooljet/tooljet",
+          "reasons": [
+            "release v3.20.243-lts -> v3.20.244-lts"
+          ]
+        },
+        {
+          "key": "github.com/tryghost/ghost",
+          "reasons": [
+            "release v6.69.0 -> v6.70.0"
+          ]
+        },
+        {
+          "key": "github.com/tymeslot/tymeslot",
+          "reasons": [
+            "release v1.23.0 -> v1.24.0"
+          ]
+        },
+        {
+          "key": "github.com/vector-im/element-call",
+          "reasons": [
+            "release v0.26.1 -> v0.28.0"
+          ]
+        },
+        {
+          "key": "github.com/vector-im/element-web",
+          "reasons": [
+            "release v1.12.30 -> v1.12.31"
+          ]
+        },
+        {
+          "key": "github.com/vector-im/riot-web",
+          "reasons": [
+            "release v1.12.30 -> v1.12.31"
+          ]
+        },
+        {
+          "key": "github.com/wallabag/wallabag",
+          "reasons": [
+            "maintenance boundary: last meaningful activity 371 d ago, pushed since"
+          ]
+        },
+        {
+          "key": "github.com/weaviate/weaviate",
+          "reasons": [
+            "release v1.40.0 -> v1.40.1"
+          ]
+        },
+        {
+          "key": "github.com/wekan/wekan",
+          "reasons": [
+            "release v12.38 -> v12.39"
+          ]
+        },
+        {
+          "key": "github.com/windmill-labs/windmill",
+          "reasons": [
+            "release v1.830.0 -> v1.833.0"
+          ]
+        }
+      ],
+      "deferred_rotation": 0,
+      "http_calls": 284,
+      "id": "deep_enrichment",
+      "kept_previous_after_failure": [],
+      "retries": 0,
+      "selected": 70,
+      "status": "ok"
+    },
+    {
+      "deferred_to_next_cycle": 0,
+      "errors": [],
+      "id": "new_pair_scoring",
+      "pairs_scored": 8,
+      "projects_scored": 7,
+      "status": "ok"
+    },
+    {
+      "candidates": 29,
+      "deferred_to_next_cycle": 0,
+      "errors": [],
+      "id": "rescoring",
+      "projects": [
+        "github.com/appwrite/appwrite",
+        "github.com/bruin-data/bruin",
+        "github.com/claperco/claper",
+        "github.com/cloudquery/cloudquery",
+        "github.com/element-hq/element-call",
+        "github.com/element-hq/element-web",
+        "github.com/firezone/firezone",
+        "github.com/flagsmith/flagsmith",
+        "github.com/fluxerapp/fluxer",
+        "github.com/gamosoft/notediscovery",
+        "github.com/getopenpost/openpost",
+        "github.com/ghostfolio/ghostfolio",
+        "github.com/gohugoio/hugo",
+        "github.com/grafana/grafana",
+        "github.com/huginn/huginn",
+        "github.com/hyperdxio/hyperdx",
+        "github.com/jenkinsci/jenkins",
+        "github.com/juanfont/headscale",
+        "github.com/keploy/keploy",
+        "github.com/kestra-io/kestra",
+        "github.com/keycloak/keycloak",
+        "github.com/linode/apl-core",
+        "github.com/logto-io/logto",
+        "github.com/mintplex-labs/anything-llm",
+        "github.com/requarks/wiki",
+        "github.com/tooljet/tooljet",
+        "github.com/tryghost/ghost",
+        "github.com/tymeslot/tymeslot",
+        "github.com/wekan/wekan"
+      ],
+      "rescored": 29,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-14",
+      "days_held": 13,
+      "id": "history",
+      "pruned": [],
+      "rows": 631,
+      "sha256": "2e115a1a24fdd9b15013cfb47887205e813673e0464ab76932f74256424f9b0f",
+      "status": "ok"
+    },
+    {
+      "id": "momentum",
+      "methodology_version": "1.0.0",
+      "on": "2026-10-14",
+      "status": "ok",
+      "windows": {
+        "1": {
+          "acceleration": "measured",
+          "acceleration_measurable_from": "2026-10-04",
+          "measurable_from": "2026-10-03",
+          "measured": 610,
+          "status": "measured"
+        },
+        "30": {
+          "acceleration": "insufficient_history",
+          "acceleration_measurable_from": "2026-12-01",
+          "measurable_from": "2026-11-01",
+          "measured": 0,
+          "status": "insufficient_history"
+        },
+        "7": {
+          "acceleration": "insufficient_history",
+          "acceleration_measurable_from": "2026-10-16",
+          "measurable_from": "2026-10-09",
+          "measured": 610,
+          "status": "measured"
+        },
+        "90": {
+          "acceleration": "insufficient_history",
+          "acceleration_measurable_from": "2027-03-31",
+          "measurable_from": "2026-12-31",
+          "measured": 0,
+          "status": "insufficient_history"
+        }
+      }
+    },
+    {
+      "candidates": [
+        {
+          "key": "github.com/morluto/rea",
+          "rank": 1,
+          "score": 11.5206,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/openai/codex",
+          "rank": 2,
+          "score": 8.7717,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/rust-lang/rust",
+          "rank": 3,
+          "score": 8.2277,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/prabanta-dev/janas",
+          "rank": 4,
+          "score": 7.9005,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/h0m3us3r/w1700k-sdr",
+          "rank": 5,
+          "score": 7.7203,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/openai/math",
+          "rank": 6,
+          "score": 7.7054,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/storytold/wordcraft",
+          "rank": 7,
+          "score": 7.5597,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/qgis/qgis-enhancement-proposals",
+          "rank": 8,
+          "score": 7.3148,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/snuri00/ps2-web-recomp",
+          "rank": 9,
+          "score": 6.7483,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/shaongitbd/doory",
+          "rank": 10,
+          "score": 5.7143,
+          "status": "candidate"
+        }
+      ],
+      "counts": {
+        "candidates": 30,
+        "mentions_held": 264,
+        "mentions_in_window": 174,
+        "mentions_in_window_by_source": {
+          "bluesky": 82,
+          "forem": 25,
+          "hn": 67,
+          "instagram": 0,
+          "x": 0
+        },
+        "ranked": 50,
+        "ranked_by_status": {
+          "candidate": 33,
+          "canonical": 0,
+          "corpus": 0,
+          "not_found": 0,
+          "unresolved": 17
+        },
+        "repositories_mentioned": 160,
+        "resolutions_held": 155,
+        "truncated": 110
+      },
+      "id": "community_radar",
+      "methodology_version": "1.1.0",
+      "pool_added": [
+        "github.com/andrewfader/blokkily",
+        "github.com/bherbruck/solidcraft",
+        "github.com/composo-ai/dishwasherbench",
+        "github.com/corvidae-coding-projects/aaron-block-analytics",
+        "github.com/jeff87654/busy-beaver",
+        "github.com/la5u/parsimony",
+        "github.com/largemodgames/spotatui",
+        "github.com/opengeos/rustgis",
+        "github.com/prabanta-dev/janas",
+        "github.com/rust-lang/rust"
+      ],
+      "resolve": {
+        "asked": 18,
+        "deferred": 0,
+        "resolved": 18,
+        "transient_failures": []
+      },
+      "sources": {
+        "bluesky": {
+          "errors": [],
+          "gone": 0,
+          "http_calls": 2,
+          "items_read": 100,
+          "mentions": 52,
+          "status": "ok"
+        },
+        "forem": {
+          "errors": [],
+          "gone": 0,
+          "http_calls": 38,
+          "items_read": 34,
+          "mentions": 24,
+          "status": "ok"
+        },
+        "hn": {
+          "errors": [],
+          "gone": 0,
+          "http_calls": 303,
+          "items_read": 300,
+          "mentions": 34,
+          "status": "ok"
+        },
+        "instagram": {
+          "errors": [
+            "INSTAGRAM_ACCESS_TOKEN or INSTAGRAM_USER_ID is not set: Instagram is not asked"
+          ],
+          "gone": 0,
+          "http_calls": 0,
+          "items_read": 0,
+          "mentions": 0,
+          "status": "unconfigured"
+        },
+        "x": {
+          "errors": [
+            "X_BEARER_TOKEN is not set: X is not asked"
+          ],
+          "gone": 0,
+          "http_calls": 0,
+          "items_read": 0,
+          "mentions": 0,
+          "status": "unconfigured"
+        }
+      },
+      "status": "ok",
+      "top": [
+        {
+          "key": "github.com/morluto/rea",
+          "rank": 1,
+          "score": 11.5206,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/openai/codex",
+          "rank": 2,
+          "score": 8.7717,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/rust-lang/rust",
+          "rank": 3,
+          "score": 8.2277,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/prabanta-dev/janas",
+          "rank": 4,
+          "score": 7.9005,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/h0m3us3r/w1700k-sdr",
+          "rank": 5,
+          "score": 7.7203,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/openai/math",
+          "rank": 6,
+          "score": 7.7054,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/storytold/wordcraft",
+          "rank": 7,
+          "score": 7.5597,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/qgis/qgis-enhancement-proposals",
+          "rank": 8,
+          "score": 7.3148,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/snuri00/ps2-web-recomp",
+          "rank": 9,
+          "score": 6.7483,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/shaongitbd/doory",
+          "rank": 10,
+          "score": 5.7143,
+          "status": "candidate"
+        }
+      ]
+    }
+  ],
+  "timings_s": {
+    "build_validate": 51.1,
+    "canonical": 77.3,
+    "community_radar": 24.1,
+    "corroboration": 20.6,
+    "deep_enrichment": 26.3,
+    "discovery_search": 18.6,
+    "history": 0.0,
+    "intake_ledger": 1.6,
+    "light_refresh": 82.5,
+    "momentum": 0.7,
+    "scoring": 102.2,
+    "upstream_lists": 14.8
+  },
+  "transitions": {
+    "became_recommendable": [],
+    "no_longer_recommendable": []
+  },
+  "trigger": "schedule"
+}

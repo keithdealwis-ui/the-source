@@ -1,25 +1,23 @@
 {
-  "as_of": "2026-10-13T00:32:08Z",
+  "as_of": "2026-10-14T01:06:00Z",
   "collection": {
-    "as_of": "2026-10-13T00:32:08Z",
+    "as_of": "2026-10-14T01:06:00Z",
     "resolve": {
-      "asked": 20,
+      "asked": 18,
       "deferred": 0,
       "pool_added": [
-        "github.com/akhouri-anmol-kumar/atlock",
-        "github.com/colinhacks/zod",
-        "github.com/geramy/lemonseed-studio",
-        "github.com/h0m3us3r/w1700k-sdr",
-        "github.com/hibanaworks/hibana",
-        "github.com/openai/codex",
-        "github.com/qgis/qgis-enhancement-proposals",
-        "github.com/saarthurr/atticus-mac",
-        "github.com/shaongitbd/doory",
-        "github.com/shubhrapokhariya/garden-trials",
-        "github.com/snuri00/ps2-web-recomp",
-        "github.com/storytold/wordcraft"
+        "github.com/andrewfader/blokkily",
+        "github.com/bherbruck/solidcraft",
+        "github.com/composo-ai/dishwasherbench",
+        "github.com/corvidae-coding-projects/aaron-block-analytics",
+        "github.com/jeff87654/busy-beaver",
+        "github.com/la5u/parsimony",
+        "github.com/largemodgames/spotatui",
+        "github.com/opengeos/rustgis",
+        "github.com/prabanta-dev/janas",
+        "github.com/rust-lang/rust"
       ],
-      "resolved": 20,
+      "resolved": 18,
       "transient_failures": []
     },
     "sources": {
@@ -30,16 +28,16 @@
         "http_calls": 2,
         "items_read": 100,
         "listed": 100,
-        "mentions": 57,
+        "mentions": 52,
         "status": "ok"
       },
       "forem": {
         "errors": [],
         "gone": 0,
-        "http_calls": 43,
-        "items_read": 36,
-        "listed": 36,
-        "mentions": 29,
+        "http_calls": 38,
+        "items_read": 34,
+        "listed": 34,
+        "mentions": 24,
         "status": "ok"
       },
       "hn": {
@@ -47,8 +45,8 @@
         "gone": 0,
         "http_calls": 303,
         "items_read": 300,
-        "listed": 350,
-        "mentions": 36,
+        "listed": 343,
+        "mentions": 34,
         "status": "ok"
       },
       "instagram": {
@@ -77,39 +75,39 @@
   },
   "counts": {
     "candidates": 30,
-    "mentions_held": 237,
-    "mentions_in_window": 183,
+    "mentions_held": 264,
+    "mentions_in_window": 174,
     "mentions_in_window_by_source": {
-      "bluesky": 85,
-      "forem": 30,
-      "hn": 68,
+      "bluesky": 82,
+      "forem": 25,
+      "hn": 67,
       "instagram": 0,
       "x": 0
     },
     "ranked": 50,
     "ranked_by_status": {
-      "candidate": 31,
+      "candidate": 33,
       "canonical": 0,
       "corpus": 0,
       "not_found": 0,
-      "unresolved": 19
+      "unresolved": 17
     },
-    "repositories_mentioned": 154,
-    "resolutions_held": 137,
-    "truncated": 104
+    "repositories_mentioned": 160,
+    "resolutions_held": 155,
+    "truncated": 110
   },
   "files": {
-    "candidates.jsonl": "85ebcd8ce8fbbd8019f6f5666b048bda40f12b0cabc2d717958612431a1b880f",
-    "collection.json": "169952ccc677cecd3d6f0874eb3cc72b187fe6a5e86dbdf5d57a6e6a8907c415",
-    "mentions.jsonl": "02c63e1897146a2263e67314d0be401fd0ce46cf04ad77139766b4f9d1f71b1c",
-    "radar.jsonl": "74e34503017275d49dafb712d6f6e94b1be93c211a2a97c80d011334c65e022e",
-    "resolved.jsonl": "eae34bcac40d975c795ed175ab92fe7c7e1a1004391b7dd5835165583973a609"
+    "candidates.jsonl": "bec6302f8e3f7ec108c82da6d2342df624011f25b759c24c9bcee423517755d4",
+    "collection.json": "f642e69d5ead3455d23a1370e8bd016afdf46c6d75f20101ad7a105dbb2daeef",
+    "mentions.jsonl": "bdf311f83720bd6cd56807ab7490ce012f2de5a33854314cf04b5caf964a2ed4",
+    "radar.jsonl": "5674a83ab4609ec7da8d217b15bf93cdb72ae2530f65104cf4023dfe02787fb6",
+    "resolved.jsonl": "fa614ac1d97ada84aabad3348fb35328c012ab2f5ca01761cb150cddb913faff"
   },
   "inputs": {
-    "data/canonical/oss_projects.jsonl": "4001edbdebfcb57c2eb6963b487449c24d319c997dfec247806ac5cb3a6d9df9",
-    "data/dataset/oss_projects.jsonl": "0bc81d8625f81b0e1d8cf9415a9c975249afa987088c2df85208d427f18e0f3f",
-    "data/discovery/candidates.jsonl": "3ccfea1ed2ff9108c9b85d97223b063766c48b8d400262eca59f7fe64c97fcca",
-    "data/live/snapshot.json": "fdb6ba41f4f587d3503359dda0a4d4db2aa15a4958a4105848fe1ad114b25c41"
+    "data/canonical/oss_projects.jsonl": "4e1dacef3ef64ec3941fd2cc6165828c186dd0ec81795b3de107711402d91200",
+    "data/dataset/oss_projects.jsonl": "fbcf48df081a7ff607077777c6450b1c87556599cc201f6beef6bbd2b5901b11",
+    "data/discovery/candidates.jsonl": "0d900f5de09bb11a08553bebff82929bf20c431cca7f27b1a5a238c2fefe4089",
+    "data/live/snapshot.json": "d6c65f07d80af19389facb115cb50b14b5f72d175d25d733b621a31641fd49f8"
   },
   "methodology": {
     "doc": "docs/RADAR.md",

@@ -1,9 +1,9 @@
 {
   "api_version": "v1",
-  "dataset_version": "b8526ab02aba485d",
+  "dataset_version": "7ab1a1662972e2e0",
   "last_checked": {
-    "newest": "2026-10-13T00:32:08Z",
-    "oldest": "2026-10-13T00:32:08Z"
+    "newest": "2026-10-14T01:06:00Z",
+    "oldest": "2026-10-14T01:06:00Z"
   },
   "more_available": 0,
   "provenance": {
@@ -19,6 +19,50 @@
   },
   "recommendations": [
     {
+      "github_url": "https://github.com/Noveum/orbit",
+      "last_meaningful_activity_at": "2026-10-11T00:26:26Z",
+      "latest_release": {
+        "published_at": "2026-10-11T00:26:26Z",
+        "tag": "2026.10.11"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-14T01:06:00Z",
+      "maintenance_status": "active",
+      "name": "Orbit by Noveum",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/noveum/orbit",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 93.7,
+        "score": 85.6,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-10-14T01:06:00Z",
+        "score": 92.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Noveum/orbit",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "altstack"
+      ],
+      "stars": 65
+    },
+    {
       "github_url": "https://github.com/Leantime/leantime",
       "last_meaningful_activity_at": "2026-10-09T19:40:48Z",
       "latest_release": {
@@ -26,7 +70,7 @@
         "tag": "v3.11.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-13T00:32:08Z",
+      "live_checked_at": "2026-10-14T01:06:00Z",
       "maintenance_status": "active",
       "name": "Leantime",
       "note": {
@@ -45,7 +89,7 @@
         "score": 89.5,
         "trajectory": "Stable"
       },
-      "rank": 1,
+      "rank": 2,
       "replacement_fit": {
         "confidence": 86.5,
         "evaluated_at": "2026-10-10T00:41:48Z",
@@ -60,7 +104,7 @@
       "sources": [
         "btwso"
       ],
-      "stars": 11819
+      "stars": 11828
     },
     {
       "github_url": "https://github.com/makeplane/plane",
@@ -70,7 +114,7 @@
         "tag": "v1.4.3-rc1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-13T00:32:08Z",
+      "live_checked_at": "2026-10-14T01:06:00Z",
       "maintenance_status": "active",
       "name": "Plane",
       "note": {
@@ -89,7 +133,7 @@
         "score": 88.0,
         "trajectory": "Declining"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "confidence": 95.0,
         "evaluated_at": "2026-09-29T18:28:27Z",
@@ -109,7 +153,7 @@
         "btwso",
         "altstack"
       ],
-      "stars": 60725
+      "stars": 60791
     },
     {
       "github_url": "https://github.com/opf/openproject",
@@ -119,7 +163,7 @@
         "tag": "v17.9.1"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-13T00:32:08Z",
+      "live_checked_at": "2026-10-14T01:06:00Z",
       "maintenance_status": "active",
       "name": "OpenProject",
       "note": {
@@ -141,7 +185,7 @@
         "score": 96.2,
         "trajectory": "Rising"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "confidence": 92.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
@@ -157,14 +201,14 @@
         "solvohq",
         "emmraan"
       ],
-      "stars": 16399
+      "stars": 16409
     },
     {
       "github_url": "https://github.com/taigaio/taiga-back",
       "last_meaningful_activity_at": "2026-09-28T17:26:50Z",
       "latest_release": null,
       "licence_spdx": "MPL-2.0",
-      "live_checked_at": "2026-10-13T00:32:08Z",
+      "live_checked_at": "2026-10-14T01:06:00Z",
       "maintenance_status": "active",
       "name": "Taiga",
       "note": {
@@ -185,7 +229,7 @@
         "score": 78.9,
         "trajectory": "Rising"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-09-29T18:28:27Z",

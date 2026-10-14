@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-13T00:32:08Z",
+  "as_of": "2026-10-14T01:06:00Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -9,12 +9,12 @@
     "by_source": {
       "altstack": {
         "decision": "allow_with_conditions",
-        "entries": 64,
-        "entries_with_saas_claim": 64,
+        "entries": 71,
+        "entries_with_saas_claim": 71,
         "harvested": true,
         "licence_file_sha256": "c76f488fd52bf3c9bac423df8456156f997835d1bc012f4786d07c1208aad409",
-        "pinned_commit": "2905240ef1a628040c99ddc067a7f132e0f5054d",
-        "relationship_claims": 71,
+        "pinned_commit": "6ab50ca0d4fbc30b7e45cd49bfbe7d5d28c75bce",
+        "relationship_claims": 78,
         "unparseable_files": 0
       },
       "awesome-selfhosted": {
@@ -23,7 +23,7 @@
         "entries_with_saas_claim": 86,
         "harvested": true,
         "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
-        "pinned_commit": "337be61ae6158c2c6915fd775bac57635c9f016b",
+        "pinned_commit": "28f4c6a0033cc9a9e27503170d0dbe89129fe59c",
         "relationship_claims": 147,
         "unparseable_files": 0
       },
@@ -53,7 +53,7 @@
         "entries_with_saas_claim": 63,
         "harvested": true,
         "licence_file_sha256": "cc749dffc88eef1456b2e57eb350ef42d82f8a92d7ab8f32a4427cbf11f3d6cf",
-        "pinned_commit": "c4cc558b7edf50a5efb4e3fd0d867292c2ae6b63",
+        "pinned_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
         "relationship_claims": 130,
         "unparseable_files": 0
       },
@@ -79,12 +79,12 @@
       },
       "opensaasdirectory": {
         "decision": "allow",
-        "entries": 98,
-        "entries_with_saas_claim": 98,
+        "entries": 99,
+        "entries_with_saas_claim": 99,
         "harvested": true,
         "licence_file_sha256": "cdfd14ebf0763fce15d9fe27398b6138e1d92186b7be997aa64e9eccaa2c13c8",
-        "pinned_commit": "3f29e5943fd9fc9910cd500134d5c6a6836a52ce",
-        "relationship_claims": 172,
+        "pinned_commit": "cea5ec13fcc35e32334cc99b7c2771176ee8ead4",
+        "relationship_claims": 175,
         "unparseable_files": 0
       },
       "runacapital": {
@@ -108,18 +108,18 @@
         "unparseable_files": 0
       }
     },
-    "entries_read": 2419,
-    "relationship_claims_read": 1549
+    "entries_read": 2427,
+    "relationship_claims_read": 1559
   },
   "lanes": {
     "oss_projects": {
       "licence_exception": 121,
-      "recommendable": 382,
+      "recommendable": 388,
       "rejected": 103
     },
     "relationships": {
       "licence_exception": 206,
-      "recommendable": 497,
+      "recommendable": 505,
       "rejected": 156
     }
   },
@@ -127,12 +127,12 @@
     "cap_per_saas": 10,
     "oss_distinct_products": 250,
     "oss_projects": 251,
-    "relationships": 373,
-    "relationships_corroborated_by_2plus_sources": 137,
+    "relationships": 362,
+    "relationships_corroborated_by_2plus_sources": 136,
     "relationships_share_alike_only": 25,
-    "saas_added_beyond_floor": 18,
-    "saas_named_by_a_single_source": 4,
-    "saas_products": 118,
+    "saas_added_beyond_floor": 8,
+    "saas_named_by_a_single_source": 0,
+    "saas_products": 108,
     "saas_target_decision_ref": "dr-KEI-805-507e4f70",
     "saas_target_is": "floor",
     "targets": {
@@ -172,9 +172,9 @@
   },
   "publication_status": "public",
   "reconciled": {
-    "oss_candidates": 606,
-    "oss_candidates_before_identity_merge": 625,
-    "relationship_candidates": 859,
+    "oss_candidates": 612,
+    "oss_candidates_before_identity_merge": 631,
+    "relationship_candidates": 867,
     "renamed_or_duplicate_repositories_merged": 19,
     "saas_products_named": 268
   },
@@ -192,7 +192,7 @@
       "eligibility:repository_not_found": 12,
       "eligibility:stale_no_meaningful_activity_12_months": 50,
       "normalise:repo_url_not_a_repository": 21,
-      "normalise:saas_not_in_catalogue": 191,
+      "normalise:saas_not_in_catalogue": 193,
       "plausibility_review:CRM; not a help desk": 1,
       "plausibility_review:UI component library; not a design tool": 1,
       "plausibility_review:UI component library; not a search backend": 1,
@@ -227,21 +227,21 @@
       "plausibility_review:whiteboard; not an interface design tool": 1,
       "plausibility_review:workflow engine programmed in code; not a no-code automation product": 1
     },
-    "total": 475
+    "total": 477
   },
   "schema_version": "1.0.0",
   "verified": {
     "maintenance_status": {
-      "active": 468,
-      "maintained": 45,
+      "active": 473,
+      "maintained": 46,
       "stale": 78,
       "unverified": 15
     },
-    "oss_recommendable": 382,
+    "oss_recommendable": 388,
     "oss_rejected": 224,
     "relationships_flagged_licence_exception": 206,
     "relationships_rejected": 156,
-    "relationships_validated": 497,
+    "relationships_validated": 505,
     "saas_with_validated_alternatives": 215
   }
 }
