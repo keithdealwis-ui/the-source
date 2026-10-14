@@ -1,0 +1,965 @@
+{
+  "attempt": 1,
+  "canonical": {
+    "changed": true,
+    "commit_tag": "cycle/2026-10-15-schedule-a1",
+    "dataset_version_after": "e3f786f3e5e8f2e1",
+    "dataset_version_before": "7ab1a1662972e2e0"
+  },
+  "counts": {
+    "added": 4,
+    "candidates": 636,
+    "canonical_checks": 27,
+    "canonical_projects": 234,
+    "canonical_projects_removed": 5,
+    "canonical_relationships": 330,
+    "canonical_relationships_added": 5,
+    "canonical_relationships_removed": 12,
+    "canonical_warnings": 0,
+    "changed": 54,
+    "deep_enriched": 83,
+    "deferred": 0,
+    "discovered": 10,
+    "discovered_in_corpus": 5,
+    "discovered_pool": 5,
+    "failed": 0,
+    "intake_pending": 0,
+    "intake_promoted": 0,
+    "momentum_measured": 615,
+    "radar_pool_added": 8,
+    "radar_ranked": 50,
+    "refreshed_records": 620,
+    "rejected": 0,
+    "rescored": 34,
+    "retained": 5,
+    "stale_or_abandoned_detected": 1,
+    "supported_saas_ok": 20,
+    "unchanged": 577
+  },
+  "cycle_key": "2026-10-15",
+  "ended_at": "2026-10-14T23:58:09Z",
+  "error": null,
+  "failures": [],
+  "history_day": "2026-10-15",
+  "retries": {
+    "deep_enrichment": 0,
+    "light_refresh": 0
+  },
+  "run_id": "2026-10-15-schedule-a1",
+  "schedule": {
+    "cadence": "daily",
+    "time": "03:00",
+    "timezone": "Asia/Dubai",
+    "weekday": null,
+    "window_hours": 4
+  },
+  "started_at": "2026-10-14T23:51:42Z",
+  "status": "succeeded",
+  "strategies": [
+    {
+      "advanced": 3,
+      "detail": [
+        {
+          "from": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+          "source_id": "solvohq",
+          "status": "unchanged"
+        },
+        {
+          "entries": [
+            1353,
+            1353
+          ],
+          "from": "28f4c6a0033cc9a9e27503170d0dbe89129fe59c",
+          "source_id": "awesome-selfhosted",
+          "status": "advanced",
+          "to": "fdd1a1e46f8f72df955f7dc3f4fd0aeea93d6973"
+        },
+        {
+          "from": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+          "source_id": "runacapital",
+          "status": "unchanged"
+        },
+        {
+          "from": "cea5ec13fcc35e32334cc99b7c2771176ee8ead4",
+          "source_id": "opensaasdirectory",
+          "status": "unchanged"
+        },
+        {
+          "from": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
+          "source_id": "emmraan",
+          "status": "unchanged"
+        },
+        {
+          "from": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+          "source_id": "btwso",
+          "status": "unchanged"
+        },
+        {
+          "from": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+          "source_id": "diegoleme",
+          "status": "unchanged"
+        },
+        {
+          "entries": [
+            71,
+            73
+          ],
+          "from": "6ab50ca0d4fbc30b7e45cd49bfbe7d5d28c75bce",
+          "source_id": "altstack",
+          "status": "advanced",
+          "to": "0b9dacd632f128922862f70e1e09011c8611b48c"
+        },
+        {
+          "entries": [
+            107,
+            111
+          ],
+          "from": "3a69df61b34eea1b314103ff9afa9269cdebfd8a",
+          "source_id": "fossalt",
+          "status": "advanced",
+          "to": "34df100643acb67cd646d56a92a06cbe3f5b5102"
+        }
+      ],
+      "id": "upstream_lists",
+      "kept": [],
+      "sources": 9,
+      "status": "ok"
+    },
+    {
+      "admitted_entries": 1,
+      "id": "intake_ledger",
+      "ledger_version": "feb7d601b43d46fdbc692e43a3082998c61cc659",
+      "status": "ok"
+    },
+    {
+      "as_of": "2026-10-14T23:51:42Z",
+      "found": 620,
+      "http_calls": 34,
+      "id": "light_refresh",
+      "repositories": 636,
+      "retries": 0,
+      "status": "ok",
+      "still_failing": []
+    },
+    {
+      "errors": [],
+      "id": "discovery_search",
+      "known_in_corpus": 42,
+      "lanes": [
+        {
+          "id": "gh-topic-self-hosted-new",
+          "provider": "github_search",
+          "query": "topic:self-hosted created:>=2026-10-07 stars:>=50",
+          "returned": 9,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-open-source-alternative-new",
+          "provider": "github_search",
+          "query": "topic:open-source-alternative created:>=2026-10-07 stars:>=50",
+          "returned": 0,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-alternative-active",
+          "provider": "github_search",
+          "query": "topic:alternative pushed:>=2026-10-07 stars:>=50 archived:false",
+          "returned": 18,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-saas-alternative",
+          "provider": "github_search",
+          "query": "topic:saas-alternative stars:>=50 archived:false",
+          "returned": 2,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-selfhosted-active",
+          "provider": "github_search",
+          "query": "topic:selfhosted pushed:>=2026-10-07 stars:>=50 archived:false",
+          "returned": 146,
+          "status": "ok"
+        },
+        {
+          "id": "ecosystems-awesome-selfhosted",
+          "provider": "ecosystems_awesome",
+          "query": "https://github.com/awesome-selfhosted/awesome-selfhosted",
+          "returned": 287,
+          "status": "ok"
+        }
+      ],
+      "new_candidates": [
+        "github.com/deeeeone/gitdrive",
+        "github.com/dwot/isley",
+        "github.com/kirovair/muxarr",
+        "github.com/manuel-rw/jellyfin-discord-music-bot",
+        "github.com/marclou/mailcheap"
+      ],
+      "new_count": 5,
+      "pool_size": 528,
+      "returned": 462,
+      "seen_again": 406,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-14",
+      "degraded_providers": [],
+      "id": "corroboration",
+      "providers": {
+        "depsdev": {
+          "agreement": 0.9459,
+          "answered": 120,
+          "asked": 120,
+          "canonical_effect": "none: flags only; the host's own answer stays canonical",
+          "coverage": 0.925,
+          "disagreeing_keys": {
+            "github.com/cloudquery/cloudquery": [
+              "licence"
+            ],
+            "github.com/encoredev/encore": [
+              "licence"
+            ],
+            "github.com/hcengineering/platform": [
+              "licence"
+            ],
+            "github.com/logto-io/logto": [
+              "licence"
+            ],
+            "github.com/selefra/selefra": [
+              "stars",
+              "licence"
+            ],
+            "github.com/valeriansaliou/sonic": [
+              "licence"
+            ]
+          },
+          "disagreements_by_field": {
+            "licence": 6,
+            "stars": 1
+          },
+          "errors": 0,
+          "not_covered": [
+            "github.com/braedonsaunders/bidwright",
+            "github.com/dani-garcia/vaultwarden",
+            "github.com/getbeton/inspector",
+            "github.com/metriql/metriql",
+            "github.com/openedx/edx-platform",
+            "github.com/osohq/oso",
+            "github.com/sneg55/warpdrive",
+            "github.com/tracardi/tracardi",
+            "github.com/traceapps/nutritrace"
+          ],
+          "reason": null,
+          "status": "ok",
+          "trusted_for": [
+            "existence",
+            "licence (SPDX)",
+            "star order of magnitude"
+          ]
+        },
+        "ecosystems": {
+          "agreement": 1.0,
+          "answered": 120,
+          "asked": 120,
+          "canonical_effect": "none: flags only; the host's own answer stays canonical",
+          "coverage": 1.0,
+          "disagreeing_keys": {},
+          "disagreements_by_field": {},
+          "errors": 0,
+          "not_covered": [],
+          "reason": null,
+          "status": "ok",
+          "trusted_for": [
+            "existence",
+            "archive state",
+            "licence",
+            "repository id (uuid = GitHub databaseId)",
+            "star order of magnitude"
+          ]
+        }
+      },
+      "sample": 120,
+      "status": "ok"
+    },
+    {
+      "by_class": {
+        "changed": 54,
+        "new": 5,
+        "stale": 24,
+        "unchanged": 553
+      },
+      "changed": [
+        {
+          "key": "github.com/benthosdev/benthos",
+          "reasons": [
+            "release v4.113.0 -> v4.113.1"
+          ]
+        },
+        {
+          "key": "github.com/berriai/litellm",
+          "reasons": [
+            "release v1.105.0 -> v1.105.1"
+          ]
+        },
+        {
+          "key": "github.com/bigbluebutton/bigbluebutton",
+          "reasons": [
+            "release v3.0.39 -> v4.0.0"
+          ]
+        },
+        {
+          "key": "github.com/bruin-data/bruin",
+          "reasons": [
+            "release v0.11.777 -> v0.11.780"
+          ]
+        },
+        {
+          "key": "github.com/bruin-data/dac",
+          "reasons": [
+            "release v0.25.2 -> v0.26.0"
+          ]
+        },
+        {
+          "key": "github.com/casejs/case",
+          "reasons": [
+            "release manifest@6.28.6 -> manifest@6.28.7"
+          ]
+        },
+        {
+          "key": "github.com/cloudquery/cloudquery",
+          "reasons": [
+            "release cli-v6.48.0 -> plugins-destination-postgresql-v8.18.0"
+          ]
+        },
+        {
+          "key": "github.com/coder/coder",
+          "reasons": [
+            "release v2.36.7 -> v2.37.4"
+          ]
+        },
+        {
+          "key": "github.com/decaporg/decap-cms",
+          "reasons": [
+            "release decap-cms@3.16.3 -> decap-cms@3.17.1"
+          ]
+        },
+        {
+          "key": "github.com/element-hq/synapse",
+          "reasons": [
+            "release v1.162.0 -> v1.163.0"
+          ]
+        },
+        {
+          "key": "github.com/erxes/erxes",
+          "reasons": [
+            "release 3.2.22 -> 3.2.24"
+          ]
+        },
+        {
+          "key": "github.com/espocrm/espocrm",
+          "reasons": [
+            "release 10.0.9 -> 10.0.10"
+          ]
+        },
+        {
+          "key": "github.com/fclairamb/solidping",
+          "reasons": [
+            "release v0.38.3 -> v0.38.5"
+          ]
+        },
+        {
+          "key": "github.com/firezone/firezone",
+          "reasons": [
+            "release gateway-1.6.3 -> apple-client-1.5.22"
+          ]
+        },
+        {
+          "key": "github.com/flarum/framework",
+          "reasons": [
+            "release v2.0.0 -> v2.0.1"
+          ]
+        },
+        {
+          "key": "github.com/fluxerapp/fluxer",
+          "reasons": [
+            "release fluxer-api@2026.1014.3120 -> fluxer-docs@2026.1014.220029"
+          ]
+        },
+        {
+          "key": "github.com/frappe/erpnext",
+          "reasons": [
+            "release v15.122.0 -> v16.51.0"
+          ]
+        },
+        {
+          "key": "github.com/gamosoft/notediscovery",
+          "reasons": [
+            "release v0.32.0 -> v0.32.1"
+          ]
+        },
+        {
+          "key": "github.com/goauthentik/authentik",
+          "reasons": [
+            "release version/2026.8.3 -> version/2026.8.4"
+          ]
+        },
+        {
+          "key": "github.com/grapesjs/grapesjs",
+          "reasons": [
+            "release v0.23.6 -> v0.23.7"
+          ]
+        },
+        {
+          "key": "github.com/imagemagick/imagemagick",
+          "reasons": [
+            "release 7.1.2-33 -> 7.1.2-34"
+          ]
+        },
+        {
+          "key": "github.com/imgproxy/imgproxy",
+          "reasons": [
+            "release v4.0.17 -> v4.0.18"
+          ]
+        },
+        {
+          "key": "github.com/immich-app/immich",
+          "reasons": [
+            "release v3.3.1 -> v3.3.3"
+          ]
+        },
+        {
+          "key": "github.com/infisical/infisical",
+          "reasons": [
+            "release v0.166.6 -> v0.166.7"
+          ]
+        },
+        {
+          "key": "github.com/keploy/keploy",
+          "reasons": [
+            "release v3.6.122 -> v3.6.126"
+          ]
+        },
+        {
+          "key": "github.com/lightdash/lightdash",
+          "reasons": [
+            "release 2.578.1 -> 2.582.0"
+          ]
+        },
+        {
+          "key": "github.com/livekit/livekit-server",
+          "reasons": [
+            "release v1.13.9 -> v1.13.10"
+          ]
+        },
+        {
+          "key": "github.com/mezonai/mezon",
+          "reasons": [
+            "release 2.0.3 -> 2.0.4"
+          ]
+        },
+        {
+          "key": "github.com/mnfst/manifest",
+          "reasons": [
+            "release manifest@6.28.6 -> manifest@6.28.7"
+          ]
+        },
+        {
+          "key": "github.com/n8n-io/n8n",
+          "reasons": [
+            "release n8n@2.43.4 -> n8n@2.43.5"
+          ]
+        },
+        {
+          "key": "github.com/netlify/netlify-cms",
+          "reasons": [
+            "release decap-cms@3.16.3 -> decap-cms@3.17.1"
+          ]
+        },
+        {
+          "key": "github.com/nhost/nhost",
+          "reasons": [
+            "release cli@1.51.2 -> @nhost/dashboard@3.7.1"
+          ]
+        },
+        {
+          "key": "github.com/nlnetlabs/nsd",
+          "reasons": [
+            "release NSD_4_15_2_REL -> NSD_4_15_3_REL"
+          ]
+        },
+        {
+          "key": "github.com/nodebb/nodebb",
+          "reasons": [
+            "release v4.16.2 -> v4.16.3"
+          ]
+        },
+        {
+          "key": "github.com/ollama/ollama",
+          "reasons": [
+            "release v0.40.3 -> v0.40.4"
+          ]
+        },
+        {
+          "key": "github.com/omibranch/qnote",
+          "reasons": [
+            "found True -> False"
+          ]
+        },
+        {
+          "key": "github.com/open-webui/open-webui",
+          "reasons": [
+            "release v0.12.0 -> v0.12.2"
+          ]
+        },
+        {
+          "key": "github.com/openobserve/openobserve",
+          "reasons": [
+            "release v1.1.0-rc2 -> v1.1.0"
+          ]
+        },
+        {
+          "key": "github.com/posthog/posthog",
+          "reasons": [
+            "release desktop-v0.61.686 -> desktop-v0.61.694"
+          ]
+        },
+        {
+          "key": "github.com/pulumi/pulumi",
+          "reasons": [
+            "release v3.268.0 -> v3.269.0"
+          ]
+        },
+        {
+          "key": "github.com/rodrgds/openpost",
+          "reasons": [
+            "release v7.19.1 -> v7.21.1"
+          ]
+        },
+        {
+          "key": "github.com/signoz/signoz",
+          "reasons": [
+            "release v0.145.0 -> v0.146.0"
+          ]
+        },
+        {
+          "key": "github.com/siyuan-note/siyuan",
+          "reasons": [
+            "release v3.8.6 -> v3.8.7"
+          ]
+        },
+        {
+          "key": "github.com/sonatype/nexus-public",
+          "reasons": [
+            "release release-3.96.4-01 -> release-3.97.0-13"
+          ]
+        },
+        {
+          "key": "github.com/strapi/strapi",
+          "reasons": [
+            "release v5.57.0 -> v5.58.0"
+          ]
+        },
+        {
+          "key": "github.com/sylius/sylius",
+          "reasons": [
+            "release v2.3.0 -> v2.3.1"
+          ]
+        },
+        {
+          "key": "github.com/teableio/teable",
+          "reasons": [
+            "release release.2026-10-13T10-15-34Z.3346 -> release.2026-10-14T12-10-48Z.3400"
+          ]
+        },
+        {
+          "key": "github.com/theonedev/onedev",
+          "reasons": [
+            "release v16.8.8 -> v16.9.0"
+          ]
+        },
+        {
+          "key": "github.com/tolgee/tolgee-platform",
+          "reasons": [
+            "release v3.234.0 -> v3.234.2"
+          ]
+        },
+        {
+          "key": "github.com/tooljet/tooljet",
+          "reasons": [
+            "release v3.20.244-lts -> v3.20.245-lts"
+          ]
+        },
+        {
+          "key": "github.com/tymeslot/tymeslot",
+          "reasons": [
+            "release v1.24.0 -> v1.25.0"
+          ]
+        },
+        {
+          "key": "github.com/webstudio-is/webstudio",
+          "reasons": [
+            "release 0.305.0 -> 0.306.0"
+          ]
+        },
+        {
+          "key": "github.com/wekan/wekan",
+          "reasons": [
+            "release v12.39 -> v12.46"
+          ]
+        },
+        {
+          "key": "github.com/windmill-labs/windmill",
+          "reasons": [
+            "release v1.833.0 -> v1.835.0"
+          ]
+        }
+      ],
+      "deferred_rotation": 0,
+      "http_calls": 288,
+      "id": "deep_enrichment",
+      "kept_previous_after_failure": [],
+      "retries": 0,
+      "selected": 83,
+      "status": "ok"
+    },
+    {
+      "deferred_to_next_cycle": 0,
+      "errors": [],
+      "id": "new_pair_scoring",
+      "pairs_scored": 5,
+      "projects_scored": 6,
+      "status": "ok"
+    },
+    {
+      "candidates": 34,
+      "deferred_to_next_cycle": 0,
+      "errors": [],
+      "id": "rescoring",
+      "projects": [
+        "github.com/bigbluebutton/bigbluebutton",
+        "github.com/bruin-data/bruin",
+        "github.com/bruin-data/dac",
+        "github.com/cloudquery/cloudquery",
+        "github.com/coder/coder",
+        "github.com/decaporg/decap-cms",
+        "github.com/element-hq/synapse",
+        "github.com/espocrm/espocrm",
+        "github.com/fclairamb/solidping",
+        "github.com/firezone/firezone",
+        "github.com/flarum/framework",
+        "github.com/fluxerapp/fluxer",
+        "github.com/frappe/erpnext",
+        "github.com/gamosoft/notediscovery",
+        "github.com/getopenpost/openpost",
+        "github.com/grapesjs/grapesjs",
+        "github.com/imgproxy/imgproxy",
+        "github.com/immich-app/immich",
+        "github.com/keploy/keploy",
+        "github.com/livekit/livekit",
+        "github.com/nhost/nhost",
+        "github.com/nlnetlabs/nsd",
+        "github.com/nodebb/nodebb",
+        "github.com/ollama/ollama",
+        "github.com/openobserve/openobserve",
+        "github.com/pulumi/pulumi",
+        "github.com/siyuan-note/siyuan",
+        "github.com/sonatype/nexus-public",
+        "github.com/sylius/sylius",
+        "github.com/theonedev/onedev",
+        "github.com/tooljet/tooljet",
+        "github.com/tymeslot/tymeslot",
+        "github.com/webstudio-is/webstudio",
+        "github.com/wekan/wekan"
+      ],
+      "rescored": 34,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-15",
+      "days_held": 14,
+      "id": "history",
+      "pruned": [],
+      "rows": 636,
+      "sha256": "d2df51c372c62dd3a9ab86ea3642f0db30f9452984e129a209ae063ca50dd9a6",
+      "status": "ok"
+    },
+    {
+      "id": "momentum",
+      "methodology_version": "1.0.0",
+      "on": "2026-10-15",
+      "status": "ok",
+      "windows": {
+        "1": {
+          "acceleration": "measured",
+          "acceleration_measurable_from": "2026-10-04",
+          "measurable_from": "2026-10-03",
+          "measured": 615,
+          "status": "measured"
+        },
+        "30": {
+          "acceleration": "insufficient_history",
+          "acceleration_measurable_from": "2026-12-01",
+          "measurable_from": "2026-11-01",
+          "measured": 0,
+          "status": "insufficient_history"
+        },
+        "7": {
+          "acceleration": "insufficient_history",
+          "acceleration_measurable_from": "2026-10-16",
+          "measurable_from": "2026-10-09",
+          "measured": 609,
+          "status": "measured"
+        },
+        "90": {
+          "acceleration": "insufficient_history",
+          "acceleration_measurable_from": "2027-03-31",
+          "measurable_from": "2026-12-31",
+          "measured": 0,
+          "status": "insufficient_history"
+        }
+      }
+    },
+    {
+      "candidates": [
+        {
+          "key": "github.com/morluto/rea",
+          "rank": 1,
+          "score": 9.2336,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/rust-lang/rust",
+          "rank": 2,
+          "score": 8.2031,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/android/ndk",
+          "rank": 3,
+          "score": 7.5204,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/openai/codex",
+          "rank": 4,
+          "score": 7.0456,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/timescale/pg_vectorsearch",
+          "rank": 5,
+          "score": 6.3713,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/prabanta-dev/janas",
+          "rank": 6,
+          "score": 6.3458,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/akhouri-anmol-kumar/atlock",
+          "rank": 7,
+          "score": 6.2109,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/h0m3us3r/w1700k-sdr",
+          "rank": 8,
+          "score": 6.2011,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/storytold/wordcraft",
+          "rank": 9,
+          "score": 6.0721,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/kiruna-labs/petal",
+          "rank": 10,
+          "score": 5.9422,
+          "status": "candidate"
+        }
+      ],
+      "counts": {
+        "candidates": 30,
+        "mentions_held": 299,
+        "mentions_in_window": 174,
+        "mentions_in_window_by_source": {
+          "bluesky": 85,
+          "forem": 27,
+          "hn": 62,
+          "instagram": 0,
+          "x": 0
+        },
+        "ranked": 50,
+        "ranked_by_status": {
+          "candidate": 37,
+          "canonical": 0,
+          "corpus": 0,
+          "not_found": 0,
+          "unresolved": 13
+        },
+        "repositories_mentioned": 164,
+        "resolutions_held": 166,
+        "truncated": 114
+      },
+      "id": "community_radar",
+      "methodology_version": "1.1.0",
+      "pool_added": [
+        "github.com/android/ndk",
+        "github.com/bealesh/neckbeard",
+        "github.com/chipmates/museumofages",
+        "github.com/graphicle-ai/graphicle",
+        "github.com/kiruna-labs/petal",
+        "github.com/maharshi365/deslop",
+        "github.com/timescale/pg_vectorsearch",
+        "github.com/watzon/sayso"
+      ],
+      "resolve": {
+        "asked": 11,
+        "deferred": 0,
+        "resolved": 11,
+        "transient_failures": []
+      },
+      "sources": {
+        "bluesky": {
+          "errors": [],
+          "gone": 0,
+          "http_calls": 2,
+          "items_read": 100,
+          "mentions": 59,
+          "status": "ok"
+        },
+        "forem": {
+          "errors": [],
+          "gone": 0,
+          "http_calls": 40,
+          "items_read": 36,
+          "mentions": 26,
+          "status": "ok"
+        },
+        "hn": {
+          "errors": [],
+          "gone": 0,
+          "http_calls": 303,
+          "items_read": 300,
+          "mentions": 30,
+          "status": "ok"
+        },
+        "instagram": {
+          "errors": [
+            "INSTAGRAM_ACCESS_TOKEN or INSTAGRAM_USER_ID is not set: Instagram is not asked"
+          ],
+          "gone": 0,
+          "http_calls": 0,
+          "items_read": 0,
+          "mentions": 0,
+          "status": "unconfigured"
+        },
+        "x": {
+          "errors": [
+            "X_BEARER_TOKEN is not set: X is not asked"
+          ],
+          "gone": 0,
+          "http_calls": 0,
+          "items_read": 0,
+          "mentions": 0,
+          "status": "unconfigured"
+        }
+      },
+      "status": "ok",
+      "top": [
+        {
+          "key": "github.com/morluto/rea",
+          "rank": 1,
+          "score": 9.2336,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/rust-lang/rust",
+          "rank": 2,
+          "score": 8.2031,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/android/ndk",
+          "rank": 3,
+          "score": 7.5204,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/openai/codex",
+          "rank": 4,
+          "score": 7.0456,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/timescale/pg_vectorsearch",
+          "rank": 5,
+          "score": 6.3713,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/prabanta-dev/janas",
+          "rank": 6,
+          "score": 6.3458,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/akhouri-anmol-kumar/atlock",
+          "rank": 7,
+          "score": 6.2109,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/h0m3us3r/w1700k-sdr",
+          "rank": 8,
+          "score": 6.2011,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/storytold/wordcraft",
+          "rank": 9,
+          "score": 6.0721,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/kiruna-labs/petal",
+          "rank": 10,
+          "score": 5.9422,
+          "status": "candidate"
+        }
+      ]
+    }
+  ],
+  "timings_s": {
+    "build_validate": 70.0,
+    "canonical": 105.9,
+    "community_radar": 14.2,
+    "corroboration": 17.8,
+    "deep_enrichment": 20.6,
+    "discovery_search": 11.7,
+    "history": 0.0,
+    "intake_ledger": 2.5,
+    "light_refresh": 19.7,
+    "momentum": 1.0,
+    "scoring": 109.7,
+    "upstream_lists": 13.7
+  },
+  "transitions": {
+    "became_recommendable": [],
+    "no_longer_recommendable": [
+      {
+        "lane": "rejected",
+        "oss_id": "github.com/taigaio/taiga-docker",
+        "reasons": [
+          "stale_no_meaningful_activity_12_months"
+        ]
+      }
+    ]
+  },
+  "trigger": "schedule"
+}

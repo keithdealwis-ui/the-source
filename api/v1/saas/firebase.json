@@ -1,9 +1,9 @@
 {
   "api_version": "v1",
-  "dataset_version": "7ab1a1662972e2e0",
+  "dataset_version": "e3f786f3e5e8f2e1",
   "last_checked": {
-    "newest": "2026-10-14T01:06:00Z",
-    "oldest": "2026-10-14T01:06:00Z"
+    "newest": "2026-10-14T23:51:42Z",
+    "oldest": "2026-10-14T23:51:42Z"
   },
   "more_available": 0,
   "provenance": {
@@ -27,7 +27,7 @@
         "tag": "v2.59.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-14T01:06:00Z",
+      "live_checked_at": "2026-10-14T23:51:42Z",
       "maintenance_status": "active",
       "name": "Kuzzle",
       "note": {
@@ -64,52 +64,6 @@
       "stars": 1668
     },
     {
-      "github_url": "https://github.com/nhost/nhost",
-      "last_meaningful_activity_at": "2026-10-09T14:13:51Z",
-      "latest_release": {
-        "published_at": "2026-09-30T09:52:20Z",
-        "tag": "cli@1.51.2"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-14T01:06:00Z",
-      "maintenance_status": "active",
-      "name": "Nhost",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "self-hosting and data ownership"
-        ],
-        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
-      },
-      "oss_id": "github.com/nhost/nhost",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 95.0,
-        "score": 89.5,
-        "trajectory": "Rising"
-      },
-      "rank": 2,
-      "replacement_fit": {
-        "confidence": 95.0,
-        "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 82.8,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/nhost/nhost",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "runacapital",
-        "btwso",
-        "fossalt"
-      ],
-      "stars": 9356
-    },
-    {
       "github_url": "https://github.com/supabase/supabase",
       "last_meaningful_activity_at": "2026-10-09T19:41:09Z",
       "latest_release": {
@@ -117,7 +71,7 @@
         "tag": "v1.26.08"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-14T01:06:00Z",
+      "live_checked_at": "2026-10-14T23:51:42Z",
       "maintenance_status": "active",
       "name": "Supabase",
       "note": {
@@ -136,7 +90,7 @@
         "score": 97.9,
         "trajectory": "Rising"
       },
-      "rank": 3,
+      "rank": 2,
       "replacement_fit": {
         "confidence": 95.0,
         "evaluated_at": "2026-09-29T18:28:27Z",
@@ -157,7 +111,7 @@
         "altstack",
         "fossalt"
       ],
-      "stars": 111495
+      "stars": 111556
     },
     {
       "github_url": "https://github.com/appwrite/appwrite",
@@ -167,7 +121,7 @@
         "tag": "2.5.0"
       },
       "licence_spdx": "BSD-3-Clause",
-      "live_checked_at": "2026-10-14T01:06:00Z",
+      "live_checked_at": "2026-10-14T23:51:42Z",
       "maintenance_status": "active",
       "name": "Appwrite",
       "note": {
@@ -186,7 +140,7 @@
         "score": 95.9,
         "trajectory": "Rising"
       },
-      "rank": 4,
+      "rank": 3,
       "replacement_fit": {
         "confidence": 95.0,
         "evaluated_at": "2026-10-14T01:06:00Z",
@@ -206,7 +160,7 @@
         "altstack",
         "fossalt"
       ],
-      "stars": 57678
+      "stars": 57686
     },
     {
       "github_url": "https://github.com/appy-one/acebase",
@@ -216,7 +170,7 @@
         "tag": "v1.29.13"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-14T01:06:00Z",
+      "live_checked_at": "2026-10-14T23:51:42Z",
       "maintenance_status": "maintained",
       "name": "AceBase",
       "note": {
@@ -235,7 +189,7 @@
         "score": 75.7,
         "trajectory": "Rising"
       },
-      "rank": 5,
+      "rank": 4,
       "replacement_fit": {
         "confidence": 86.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
@@ -251,6 +205,54 @@
         "runacapital"
       ],
       "stars": 524
+    },
+    {
+      "github_url": "https://github.com/nhost/nhost",
+      "last_meaningful_activity_at": "2026-10-14T17:34:22Z",
+      "latest_release": {
+        "published_at": "2026-10-14T17:34:22Z",
+        "tag": "@nhost/dashboard@3.7.1"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-14T23:51:42Z",
+      "maintenance_status": "active",
+      "name": "Nhost",
+      "note": {
+        "gaps": [
+          "integrations and extensibility"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "migration path"
+        ],
+        "text": "Strongest on core use-case coverage and migration path; weakest on integrations and extensibility."
+      },
+      "oss_id": "github.com/nhost/nhost",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 93.6,
+        "trajectory": "Rising"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-10-14T23:51:42Z",
+        "score": 67.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/nhost/nhost",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital",
+        "btwso",
+        "fossalt"
+      ],
+      "stars": 9356
     }
   ],
   "saas": {

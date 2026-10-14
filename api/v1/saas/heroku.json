@@ -1,11 +1,11 @@
 {
   "api_version": "v1",
-  "dataset_version": "7ab1a1662972e2e0",
+  "dataset_version": "e3f786f3e5e8f2e1",
   "last_checked": {
-    "newest": "2026-10-14T01:06:00Z",
-    "oldest": "2026-10-14T01:06:00Z"
+    "newest": "2026-10-14T23:51:42Z",
+    "oldest": "2026-10-14T23:51:42Z"
   },
-  "more_available": 0,
+  "more_available": 1,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -19,6 +19,50 @@
   },
   "recommendations": [
     {
+      "github_url": "https://github.com/Peon-sh/Peon",
+      "last_meaningful_activity_at": "2026-10-14T10:51:12Z",
+      "latest_release": {
+        "published_at": "2026-10-01T12:39:28Z",
+        "tag": "v1.1.1"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-14T23:51:42Z",
+      "maintenance_status": "active",
+      "name": "Peon",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/peon-sh/peon",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 93.7,
+        "score": 86.1,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-10-14T23:51:42Z",
+        "score": 93.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Peon-sh/Peon",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "altstack"
+      ],
+      "stars": 100
+    },
+    {
       "github_url": "https://github.com/tsuru/tsuru",
       "last_meaningful_activity_at": "2026-10-08T15:33:38Z",
       "latest_release": {
@@ -26,7 +70,7 @@
         "tag": "v1.33.0"
       },
       "licence_spdx": "BSD-3-Clause",
-      "live_checked_at": "2026-10-14T01:06:00Z",
+      "live_checked_at": "2026-10-14T23:51:42Z",
       "maintenance_status": "active",
       "name": "Tsuru",
       "note": {
@@ -45,7 +89,7 @@
         "score": 89.7,
         "trajectory": "Rising"
       },
-      "rank": 1,
+      "rank": 2,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-09T01:58:15Z",
@@ -70,7 +114,7 @@
         "tag": "v4.4.6"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-14T01:06:00Z",
+      "live_checked_at": "2026-10-14T23:51:42Z",
       "maintenance_status": "active",
       "name": "Coolify",
       "note": {
@@ -89,7 +133,7 @@
         "score": 91.7,
         "trajectory": "Stable"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "confidence": 95.0,
         "evaluated_at": "2026-10-10T00:41:48Z",
@@ -108,7 +152,7 @@
         "btwso",
         "altstack"
       ],
-      "stars": 62951
+      "stars": 62983
     },
     {
       "github_url": "https://github.com/kubero-dev/kubero",
@@ -118,7 +162,7 @@
         "tag": "v3.1.1"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-14T01:06:00Z",
+      "live_checked_at": "2026-10-14T23:51:42Z",
       "maintenance_status": "maintained",
       "name": "Kubero",
       "note": {
@@ -137,7 +181,7 @@
         "score": 68.7,
         "trajectory": "Declining"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "confidence": 86.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
@@ -162,7 +206,7 @@
         "tag": "0.15.4"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-14T01:06:00Z",
+      "live_checked_at": "2026-10-14T23:51:42Z",
       "maintenance_status": "active",
       "name": "dyrector.io",
       "note": {
@@ -183,7 +227,7 @@
         "score": 82.4,
         "trajectory": "Declining"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
@@ -199,49 +243,6 @@
         "runacapital"
       ],
       "stars": 1847
-    },
-    {
-      "github_url": "https://github.com/Qovery/engine",
-      "last_meaningful_activity_at": "2026-10-10T07:34:36Z",
-      "latest_release": null,
-      "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-14T01:06:00Z",
-      "maintenance_status": "active",
-      "name": "Qovery",
-      "note": {
-        "gaps": [
-          "production readiness",
-          "migration path"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage"
-        ],
-        "text": "Strongest on core use-case coverage; weakest on production readiness and migration path."
-      },
-      "oss_id": "github.com/qovery/engine",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 94.2,
-        "score": 76.0,
-        "trajectory": "Stable"
-      },
-      "rank": 5,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 64.2,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/Qovery/engine",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "runacapital"
-      ],
-      "stars": 2469
     }
   ],
   "saas": {
