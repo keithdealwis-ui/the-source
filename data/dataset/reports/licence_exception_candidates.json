@@ -4019,6 +4019,42 @@
     "detected": {
       "closest_standard_licences": [],
       "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "commercial",
+        "licensed under something that is not a recognised open licence",
+        "may not",
+        "non commercial",
+        "only",
+        "portions of",
+        "revenue",
+        "unless"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "SparkyFitness",
+    "oss_id": "github.com/codewithcj/sparkyfitness",
+    "reason": "licence text contains source-available or use-restricted terms: non commercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://github.com/CodeWithCJ/SparkyFitness",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": [
+      {
+        "source_id": "awesome-selfhosted",
+        "value": "Proprietary"
+      }
+    ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
       "host_licence_name": null,
       "host_spdx": null,
       "licence_files": [],

@@ -1,17 +1,18 @@
 {
-  "as_of": "2026-10-16T01:10:28Z",
+  "as_of": "2026-10-16T23:27:37Z",
   "collection": {
-    "as_of": "2026-10-16T01:10:28Z",
+    "as_of": "2026-10-16T23:27:37Z",
     "resolve": {
-      "asked": 11,
+      "asked": 8,
       "deferred": 0,
       "pool_added": [
-        "github.com/andunieee/flipflop",
-        "github.com/fyzugx/desk",
-        "github.com/konieczkow/gridsnap",
-        "github.com/proa-labs/proa-benchmarks"
+        "github.com/cobanov/ps5lm",
+        "github.com/home-assistant/home-assistant.io",
+        "github.com/johnrash/bebox",
+        "github.com/mbadolato/iterm2-color-schemes",
+        "github.com/saffsanity/sill"
       ],
-      "resolved": 11,
+      "resolved": 8,
       "transient_failures": []
     },
     "sources": {
@@ -22,16 +23,16 @@
         "http_calls": 2,
         "items_read": 100,
         "listed": 100,
-        "mentions": 62,
+        "mentions": 65,
         "status": "ok"
       },
       "forem": {
         "errors": [],
         "gone": 0,
-        "http_calls": 42,
+        "http_calls": 41,
         "items_read": 37,
         "listed": 37,
-        "mentions": 28,
+        "mentions": 26,
         "status": "ok"
       },
       "hn": {
@@ -39,8 +40,8 @@
         "gone": 0,
         "http_calls": 303,
         "items_read": 300,
-        "listed": 356,
-        "mentions": 30,
+        "listed": 350,
+        "mentions": 26,
         "status": "ok"
       },
       "instagram": {
@@ -69,39 +70,39 @@
   },
   "counts": {
     "candidates": 30,
-    "mentions_held": 333,
-    "mentions_in_window": 181,
+    "mentions_held": 349,
+    "mentions_in_window": 178,
     "mentions_in_window_by_source": {
-      "bluesky": 95,
-      "forem": 29,
-      "hn": 57,
+      "bluesky": 97,
+      "forem": 26,
+      "hn": 55,
       "instagram": 0,
       "x": 0
     },
     "ranked": 50,
     "ranked_by_status": {
-      "candidate": 35,
+      "candidate": 39,
       "canonical": 0,
       "corpus": 0,
-      "not_found": 0,
-      "unresolved": 15
+      "not_found": 1,
+      "unresolved": 10
     },
-    "repositories_mentioned": 172,
-    "resolutions_held": 177,
-    "truncated": 122
+    "repositories_mentioned": 168,
+    "resolutions_held": 185,
+    "truncated": 118
   },
   "files": {
-    "candidates.jsonl": "06282033806db2250f676a66f748c13601c80166893d5ac19fc21f5a527a571e",
-    "collection.json": "bdd2b99fbcbd76ccb747cf3902a568bd950d79c4602efdf14a7fb08f673caec6",
-    "mentions.jsonl": "a33849ef9cdf7629e8aff4d1c2f8e6dd935f701e0321280cac2317735e2c4c4c",
-    "radar.jsonl": "200f9e00be8a3d0d6db786436183a68e248bd519ae1dac3afa7f9f0360030ac5",
-    "resolved.jsonl": "16d74dbad1af970eed35948615b1def7705a40ce79f3583f27bc07b0b33f9089"
+    "candidates.jsonl": "d9a03230cca9549cefd1e30c87b7ee79fbe5eed95a5fa4cdb237ff400973f442",
+    "collection.json": "f593b6b28821c48c1f3a796c6aba1b40e33e4f58bd71359d2630309b7161628f",
+    "mentions.jsonl": "bc41cf8a42878e1d0d64408205e74dd172804a86a83bd280cac5e6091ec2b8d4",
+    "radar.jsonl": "2bed573139fdced613ec623d8d6ec6dbc89493f94cbb84885473a75f0199a9f6",
+    "resolved.jsonl": "b1ea7016766f72c63e8eac64438930b8d62dbe1165a31c8433df05b03ff7674c"
   },
   "inputs": {
-    "data/canonical/oss_projects.jsonl": "ee79a4a4698feaae7bb8efc64ca878d61e602ee9bc11b2298cddbf0ef8f4ca0c",
-    "data/dataset/oss_projects.jsonl": "2c620aa7f125ff321ea282cc954b9725a9fcfd91430e01b30a8d240f3c8318ce",
-    "data/discovery/candidates.jsonl": "15b7130c435debb9ada460700d8c2a5d5888ffe83ff57a97ecad57c209ec0219",
-    "data/live/snapshot.json": "2281c90b62f6ec64b3ef2a624a3134a0caebbaad34dff00e1763b219cbb33b39"
+    "data/canonical/oss_projects.jsonl": "ad35600c744aecf3a9198d92a2646cdb75189c78ee5495d00f359caf40da4548",
+    "data/dataset/oss_projects.jsonl": "e43b9cd0d7d3db40a4b19c992fc1ca0f6168da2b6e06cf2c444c9a6477454432",
+    "data/discovery/candidates.jsonl": "05dee1c9ee67cdbabf2c58cb50127f544f3f245410aaa91b251eca0b4757df1c",
+    "data/live/snapshot.json": "aedc7f80a0f23d46f778a301e36e07286bddc7c423364a62dba660cec809e464"
   },
   "methodology": {
     "doc": "docs/RADAR.md",
