@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-14T23:51:42Z",
+  "as_of": "2026-10-16T01:10:28Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -23,7 +23,7 @@
         "entries_with_saas_claim": 86,
         "harvested": true,
         "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
-        "pinned_commit": "fdd1a1e46f8f72df955f7dc3f4fd0aeea93d6973",
+        "pinned_commit": "8ec8521ea6a0dcf36e9ad658dac0898bf5f28760",
         "relationship_claims": 147,
         "unparseable_files": 0
       },
@@ -79,12 +79,12 @@
       },
       "opensaasdirectory": {
         "decision": "allow",
-        "entries": 99,
-        "entries_with_saas_claim": 99,
+        "entries": 100,
+        "entries_with_saas_claim": 100,
         "harvested": true,
         "licence_file_sha256": "cdfd14ebf0763fce15d9fe27398b6138e1d92186b7be997aa64e9eccaa2c13c8",
-        "pinned_commit": "cea5ec13fcc35e32334cc99b7c2771176ee8ead4",
-        "relationship_claims": 175,
+        "pinned_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+        "relationship_claims": 178,
         "unparseable_files": 0
       },
       "runacapital": {
@@ -108,8 +108,8 @@
         "unparseable_files": 0
       }
     },
-    "entries_read": 2433,
-    "relationship_claims_read": 1566
+    "entries_read": 2434,
+    "relationship_claims_read": 1569
   },
   "lanes": {
     "oss_projects": {
@@ -119,20 +119,20 @@
     },
     "relationships": {
       "licence_exception": 206,
-      "recommendable": 507,
+      "recommendable": 509,
       "rejected": 159
     }
   },
   "launch": {
-    "cap_per_saas": 12,
+    "cap_per_saas": 11,
     "oss_distinct_products": 250,
     "oss_projects": 250,
-    "relationships": 355,
-    "relationships_corroborated_by_2plus_sources": 133,
+    "relationships": 358,
+    "relationships_corroborated_by_2plus_sources": 134,
     "relationships_share_alike_only": 25,
-    "saas_added_beyond_floor": 1,
+    "saas_added_beyond_floor": 3,
     "saas_named_by_a_single_source": 0,
-    "saas_products": 101,
+    "saas_products": 103,
     "saas_target_decision_ref": "dr-KEI-805-507e4f70",
     "saas_target_is": "floor",
     "targets": {
@@ -150,10 +150,10 @@
   "licence_exception_lane": {
     "by_issue_category": {
       "conflicting": 2,
-      "missing": 8,
+      "missing": 9,
       "open_core": 64,
       "restricted": 8,
-      "source_available": 36,
+      "source_available": 35,
       "undetermined": 1,
       "unrecognised": 2
     },
@@ -168,13 +168,13 @@
       "decision_ref": "Linear KEI-805 comment 258b38dd-a288-4b6e-bbe6-9fae7220d4fd",
       "scope": "schema inclusion and flagged retention only; not recommendation, publication or redistribution"
     },
-    "saas_products_touched": 128
+    "saas_products_touched": 127
   },
   "publication_status": "public",
   "reconciled": {
     "oss_candidates": 617,
     "oss_candidates_before_identity_merge": 636,
-    "relationship_candidates": 872,
+    "relationship_candidates": 874,
     "renamed_or_duplicate_repositories_merged": 19,
     "saas_products_named": 268
   },
@@ -192,7 +192,7 @@
       "eligibility:repository_not_found": 13,
       "eligibility:stale_no_meaningful_activity_12_months": 51,
       "normalise:repo_url_not_a_repository": 21,
-      "normalise:saas_not_in_catalogue": 195,
+      "normalise:saas_not_in_catalogue": 196,
       "plausibility_review:CRM; not a help desk": 1,
       "plausibility_review:UI component library; not a design tool": 1,
       "plausibility_review:UI component library; not a search backend": 1,
@@ -227,7 +227,7 @@
       "plausibility_review:whiteboard; not an interface design tool": 1,
       "plausibility_review:workflow engine programmed in code; not a no-code automation product": 1
     },
-    "total": 480
+    "total": 481
   },
   "schema_version": "1.0.0",
   "verified": {
@@ -241,7 +241,7 @@
     "oss_rejected": 225,
     "relationships_flagged_licence_exception": 206,
     "relationships_rejected": 159,
-    "relationships_validated": 507,
-    "saas_with_validated_alternatives": 215
+    "relationships_validated": 509,
+    "saas_with_validated_alternatives": 216
   }
 }

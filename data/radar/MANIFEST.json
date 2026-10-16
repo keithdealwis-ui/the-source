@@ -1,19 +1,15 @@
 {
-  "as_of": "2026-10-14T23:51:42Z",
+  "as_of": "2026-10-16T01:10:28Z",
   "collection": {
-    "as_of": "2026-10-14T23:51:42Z",
+    "as_of": "2026-10-16T01:10:28Z",
     "resolve": {
       "asked": 11,
       "deferred": 0,
       "pool_added": [
-        "github.com/android/ndk",
-        "github.com/bealesh/neckbeard",
-        "github.com/chipmates/museumofages",
-        "github.com/graphicle-ai/graphicle",
-        "github.com/kiruna-labs/petal",
-        "github.com/maharshi365/deslop",
-        "github.com/timescale/pg_vectorsearch",
-        "github.com/watzon/sayso"
+        "github.com/andunieee/flipflop",
+        "github.com/fyzugx/desk",
+        "github.com/konieczkow/gridsnap",
+        "github.com/proa-labs/proa-benchmarks"
       ],
       "resolved": 11,
       "transient_failures": []
@@ -26,16 +22,16 @@
         "http_calls": 2,
         "items_read": 100,
         "listed": 100,
-        "mentions": 59,
+        "mentions": 62,
         "status": "ok"
       },
       "forem": {
         "errors": [],
         "gone": 0,
-        "http_calls": 40,
-        "items_read": 36,
-        "listed": 36,
-        "mentions": 26,
+        "http_calls": 42,
+        "items_read": 37,
+        "listed": 37,
+        "mentions": 28,
         "status": "ok"
       },
       "hn": {
@@ -43,7 +39,7 @@
         "gone": 0,
         "http_calls": 303,
         "items_read": 300,
-        "listed": 340,
+        "listed": 356,
         "mentions": 30,
         "status": "ok"
       },
@@ -73,39 +69,39 @@
   },
   "counts": {
     "candidates": 30,
-    "mentions_held": 299,
-    "mentions_in_window": 174,
+    "mentions_held": 333,
+    "mentions_in_window": 181,
     "mentions_in_window_by_source": {
-      "bluesky": 85,
-      "forem": 27,
-      "hn": 62,
+      "bluesky": 95,
+      "forem": 29,
+      "hn": 57,
       "instagram": 0,
       "x": 0
     },
     "ranked": 50,
     "ranked_by_status": {
-      "candidate": 37,
+      "candidate": 35,
       "canonical": 0,
       "corpus": 0,
       "not_found": 0,
-      "unresolved": 13
+      "unresolved": 15
     },
-    "repositories_mentioned": 164,
-    "resolutions_held": 166,
-    "truncated": 114
+    "repositories_mentioned": 172,
+    "resolutions_held": 177,
+    "truncated": 122
   },
   "files": {
-    "candidates.jsonl": "67f08e4e0a4da9218aa7184b8ac9d0da409f53e661ed73f8e769498a0fe14975",
-    "collection.json": "9008c62803027e081553b68031b91edc74aac757a9fcf0515dd894b75993fb7a",
-    "mentions.jsonl": "19c765847a8597b1d832f78425a6d27cc2c7eacb056536c0fd6c6154af0a76cb",
-    "radar.jsonl": "71751452f3d33b5fcb5aeaeb928f6d37bff1fc2d999350986ac1b4d8772de4d4",
-    "resolved.jsonl": "ac3969ee5b51893e12e3ceececc5c4aa9ef99fbcdfd845fb92af0cccb199d0bf"
+    "candidates.jsonl": "06282033806db2250f676a66f748c13601c80166893d5ac19fc21f5a527a571e",
+    "collection.json": "bdd2b99fbcbd76ccb747cf3902a568bd950d79c4602efdf14a7fb08f673caec6",
+    "mentions.jsonl": "a33849ef9cdf7629e8aff4d1c2f8e6dd935f701e0321280cac2317735e2c4c4c",
+    "radar.jsonl": "200f9e00be8a3d0d6db786436183a68e248bd519ae1dac3afa7f9f0360030ac5",
+    "resolved.jsonl": "16d74dbad1af970eed35948615b1def7705a40ce79f3583f27bc07b0b33f9089"
   },
   "inputs": {
-    "data/canonical/oss_projects.jsonl": "2a8f5ca15766c9f3eb5103732450107b98efa9f83c51c7f50868545ce3ae4f44",
-    "data/dataset/oss_projects.jsonl": "32962c523d79f10a7dc622a3cac131bfce679e530ac10550ad405f9f31369e24",
-    "data/discovery/candidates.jsonl": "ae6af7be315c0822347001af17174c07a90b995a753cb4156cde868b12ea8426",
-    "data/live/snapshot.json": "3ca08fb7fda05b0ed1974becdb75dde24f5c92e2b31c0700437fea26c119a633"
+    "data/canonical/oss_projects.jsonl": "ee79a4a4698feaae7bb8efc64ca878d61e602ee9bc11b2298cddbf0ef8f4ca0c",
+    "data/dataset/oss_projects.jsonl": "2c620aa7f125ff321ea282cc954b9725a9fcfd91430e01b30a8d240f3c8318ce",
+    "data/discovery/candidates.jsonl": "15b7130c435debb9ada460700d8c2a5d5888ffe83ff57a97ecad57c209ec0219",
+    "data/live/snapshot.json": "2281c90b62f6ec64b3ef2a624a3134a0caebbaad34dff00e1763b219cbb33b39"
   },
   "methodology": {
     "doc": "docs/RADAR.md",

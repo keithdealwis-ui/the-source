@@ -2,28 +2,28 @@
   "canonical_schema": "the-source.canonical/1",
   "counts": {
     "oss_projects": 234,
-    "recommended_relationships": 291,
-    "relationships": 330,
-    "saas_products": 100,
+    "recommended_relationships": 294,
+    "relationships": 333,
+    "saas_products": 102,
     "supported_saas": 20,
     "supported_saas_ok": 20
   },
-  "data_as_of": "2026-10-14T23:51:42Z",
-  "dataset_version": "e3f786f3e5e8f2e1",
+  "data_as_of": "2026-10-16T01:10:28Z",
+  "dataset_version": "b9e184781760e100",
   "export_guard": {
     "export_licence_constraint": "none beyond attribution notices",
-    "relationships_exported": 330,
+    "relationships_exported": 333,
     "relationships_withheld_share_alike_only": 25
   },
   "files": {
-    "NOTICE.md": "bed836503eab3817ed57d7a45fd4dac327d8e62c7a2bd65aacae3bc93f568d12",
-    "oss_projects.jsonl": "2a8f5ca15766c9f3eb5103732450107b98efa9f83c51c7f50868545ce3ae4f44",
-    "relationships.jsonl": "29046819eb07368d6a91c3963fd038effabf727cacebd526d318096362080fe2",
-    "saas_products.jsonl": "dd7a0a5390c1edc31139a0e0fe18a957e68fa249f7f8e29416e760271d95360c"
+    "NOTICE.md": "7c974b467b0c249fd69e88f8fd3fee40060d8b605bbaa0fbadb53b60c4721be0",
+    "oss_projects.jsonl": "ee79a4a4698feaae7bb8efc64ca878d61e602ee9bc11b2298cddbf0ef8f4ca0c",
+    "relationships.jsonl": "e8fb0c5977b79f0c1b44f6f98d0e79d752e62328faf11f165afa3adbd12c2b89",
+    "saas_products.jsonl": "423bfafc3bcfb91417f9706ec2c32da9f5158f27a44db3bc8929c67a7db3c2b9"
   },
   "live_checked_at": {
-    "newest": "2026-10-14T23:51:42Z",
-    "oldest": "2026-10-14T23:51:42Z"
+    "newest": "2026-10-16T01:10:28Z",
+    "oldest": "2026-10-16T01:10:28Z"
   },
   "sources": {
     "altstack": {
@@ -52,7 +52,7 @@
     },
     "opensaasdirectory": {
       "decision": "allow",
-      "pinned_commit": "cea5ec13fcc35e32334cc99b7c2771176ee8ead4"
+      "pinned_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382"
     },
     "runacapital": {
       "decision": "allow",
