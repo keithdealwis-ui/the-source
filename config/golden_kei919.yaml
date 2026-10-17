@@ -1,0 +1,84 @@
+# KEI-919 (The Source V2.1 WP2) correctness golden set.
+#
+# Regression queries for the MCP read surface. Scored by scripts/kei919_golden.py:
+#   - need queries:       precision@5 and recall@5 of source_recommend against the published recommendations of
+#                         every supported product in the intended product's category (the relevant set)
+#   - constraint queries: hard-constraint violations among returned rows (must be zero)
+#   - nonsense queries:   anything returned is padding (must be zero, recommendations and discovery alike)
+#   - lookups:            every form must resolve to the expected project (S1.2)
+#   - integrations:       top five discovery candidates for every supported product, audited for MCP servers,
+#                         SDKs, bots, API clients and plugins (must be zero)
+# Targets are calibrated against the baseline run of the same script on the pre-WP2 code (see
+# docs/ACCEPTANCE-KEI-919.md): relevance must not regress; violations, padding and integrations must be zero.
+# WP1 (KEI-918 S0.4) owns the broader 40-50 query golden set; this file is WP2's correctness regression set.
+
+need_named:            # the product is named in the need
+  - {need: "web analytics like Google Analytics", saas: google-analytics}
+  - {need: "monitoring and observability like Datadog", saas: datadog}
+  - {need: "team wiki and notes like Notion", saas: notion}
+  - {need: "login and identity like Auth0", saas: auth0}
+  - {need: "kanban boards like Trello", saas: trello}
+  - {need: "backend for my app like Firebase", saas: firebase}
+  - {need: "API testing client like Postman", saas: postman}
+  - {need: "headless CMS like Contentful", saas: contentful}
+  - {need: "deploy apps like Heroku", saas: heroku}
+  - {need: "online store like Shopify", saas: shopify}
+  - {need: "object storage like Amazon S3", saas: amazon-s3}
+  - {need: "application monitoring like New Relic", saas: new-relic}
+  - {need: "note taking like Evernote", saas: evernote}
+  - {need: "issue tracking like Jira", saas: jira}
+  - {need: "team task management like Asana", saas: asana}
+  - {need: "video meetings like Zoom", saas: zoom}
+  - {need: "file sync like Dropbox", saas: dropbox}
+  - {need: "cloud file storage like Google Drive", saas: google-drive}
+  - {need: "work management like Monday.com", saas: monday-com}
+  - {need: "AI chat assistant like ChatGPT", saas: chatgpt}
+
+need_unnamed:          # the product is NOT named; retrieval must find it
+  - {need: "privacy friendly website analytics", saas: google-analytics}
+  - {need: "metrics logs and traces observability platform", saas: datadog}
+  - {need: "knowledge base wiki for teams", saas: notion}
+  - {need: "single sign-on identity provider", saas: auth0}
+  - {need: "kanban board", saas: trello}
+  - {need: "backend as a service with database and auth", saas: firebase}
+  - {need: "api client for testing http requests", saas: postman}
+  - {need: "headless content management system", saas: contentful}
+  - {need: "self hosted platform as a service for deploying apps", saas: heroku}
+  - {need: "e-commerce platform", saas: shopify}
+  - {need: "s3 compatible object storage", saas: amazon-s3}
+  - {need: "personal note taking app", saas: evernote}
+  - {need: "project management and issue tracking", saas: jira}
+  - {need: "video conferencing", saas: zoom}
+  - {need: "file sync and share", saas: dropbox}
+  - {need: "chat interface for large language models", saas: chatgpt}
+
+constraints:           # every returned row must satisfy every constraint
+  - {saas: notion, licence_family: permissive}
+  - {saas: jira, licence_family: copyleft}
+  - {saas: dropbox, self_hostable: true}
+  - {saas: google-analytics, min_stars: 5000}
+  - {saas: datadog, maintenance_status: [active]}
+  - {need: "kanban board", min_health: 70}
+  - {saas: postman, licence: [MIT]}
+  - {saas: shopify, max_stars: 5000}
+
+nonsense:              # nothing should come back
+  - "zzqx frobnicate widget"
+  - "blue"
+  - "qwertyuiop asdfgh"
+  - "the and of"
+  - "purple elephant teleporter"
+
+lookups:               # value -> expected project id
+  - {value: "docmost/docmost", expect: github.com/docmost/docmost}
+  - {value: "Docmost", expect: github.com/docmost/docmost}
+  - {value: "https://github.com/docmost/docmost", expect: github.com/docmost/docmost}
+  - {value: "github.com/docmost/docmost.git", expect: github.com/docmost/docmost}
+  - {value: "makeplane/plane", expect: github.com/makeplane/plane}
+  - {value: "https://github.com/makeplane/plane/", expect: github.com/makeplane/plane}
+  - {value: "bitwarden/server", expect: github.com/bitwarden/server}
+  - {value: "twentyhq/twenty", expect: github.com/twentyhq/twenty}
+  - {value: "mattermost/mattermost", expect: github.com/mattermost/mattermost}
+  - {value: "RocketChat/Rocket.Chat", expect: github.com/rocketchat/rocket.chat}
+  - {value: "plausible/analytics", expect: github.com/plausible/analytics}
+  - {value: "keycloak", expect: github.com/keycloak/keycloak}

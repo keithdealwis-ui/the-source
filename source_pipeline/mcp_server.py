@@ -510,7 +510,7 @@ class Layer:
             v = str(value or "").strip()
             if "more than one project" in str(exc) or self.full is None:
                 raise
-        cid = self.corpus_keys.get(_repo_key(v))
+        cid = self.corpus_keys.get(_repo_key(v)) or self._by_owner_repo(v, self.corpus_keys, "discovery project")
         if cid is None:
             hit = self.corpus_names.get(_norm(v))
             if hit and len(hit) == 1:
@@ -521,9 +521,31 @@ class Layer:
                                 + (f" and {len(shown) - 10} more" if len(shown) > 10 else "")
                                 + "; pass the repository URL or id")
         if cid is None:
+            cid = self._by_owner(v)
+        if cid is None:
             raise ToolError(f"{v!r} is not a project The Source holds (canonical layer or discovery corpus); "
                             "try source_search")
         return cid, self.tier_of(cid)
+
+    def _by_owner(self, value: str):
+        """KEI-919 S1.2: a bare organisation name ('bitwarden') -> its one repository, or the repository named
+        after it (owner/owner); several -> ToolError naming them, so the caller can pick instead of being told
+        the project is unknown."""
+        n = _norm(value).replace(" ", "")
+        if not n or "/" in str(value):
+            return None
+        keys = sorted(set(self.projects) | set(self.corpus))
+        mine = [k for k in keys if k.count("/") >= 2 and _norm(k.split("/")[1]).replace(" ", "") == n]
+        if len(mine) == 1:
+            return mine[0]
+        same = [k for k in mine if _norm(k.split("/")[2]).replace(" ", "") == n]
+        if len(same) == 1:
+            return same[0]
+        if mine:
+            raise ToolError(f"{value!r} is an organisation with {len(mine)} repositories here: {mine[:10]}"
+                            + (f" and {len(mine) - 10} more" if len(mine) > 10 else "")
+                            + "; pass owner/repo or the URL")
+        return None
 
     # -- KEI-844 semantic model over the published layer
 
@@ -691,11 +713,28 @@ class Layer:
                 raise ToolError(f"{host!r} is the domain of more than one product: {by_domain}")
         raise ToolError(f"{v!r} is not a product in The Source catalogue; try source_search")
 
+    def _by_owner_repo(self, value: str, keys: dict, what: str):
+        """KEI-919 S1.2: 'owner/repo' with no host -> the one project at <host>/owner/repo for any host the layer
+        holds; None when nothing matches; ToolError when two hosts both hold it."""
+        v = _repo_key(value)
+        parts = v.split("/")
+        if len(parts) != 2 or not all(parts) or "." in parts[0] or " " in v:
+            return None
+        hosts = getattr(self, "_hosts", None)
+        if hosts is None:
+            hosts = sorted({k.split("/", 1)[0] for k in list(self.repo_keys) + list(getattr(self, "corpus_keys", {}))
+                            if "." in k.split("/", 1)[0]})
+            self._hosts = hosts
+        found = sorted({keys[f"{h}/{v}"] for h in hosts if f"{h}/{v}" in keys})
+        if len(found) > 1:
+            raise ToolError(f"{value!r} names more than one {what} on different hosts: {found}; pass the full URL")
+        return found[0] if found else None
+
     def resolve_project(self, value: str):
         v = str(value or "").strip()
         if not v:
             raise ToolError("project is empty")
-        pid = self.repo_keys.get(_repo_key(v))
+        pid = self.repo_keys.get(_repo_key(v)) or self._by_owner_repo(v, self.repo_keys, "project")
         if pid:
             return pid
         hit = self.project_names.get(_norm(v))
@@ -790,6 +829,141 @@ def _host_path(url: str):
         return None, ""
     host = host[4:] if host.startswith("www.") else host
     return host, parts.path or "/"
+
+
+# --------------------------------------------------------------------------- KEI-919 correctness guards
+
+# Fields that say what a project IS. A query word found only in a long host description is a weak signal.
+_PRIMARY_FIELDS = frozenset(("name", "aliases", "repository", "replaces", "category", "topics"))
+MIN_TERM_COVERAGE = 0.5
+
+
+def _query_terms(query: str) -> list:
+    """The content words a candidate is judged against: KEI-844 stopwords removed, then the lexical stemming."""
+    # A query of nothing but stopwords ("the and of") has no content to match: nothing is strong against it.
+    return list(dict.fromkeys(_tokens(" ".join(_sem_tokens(query)))))
+
+
+def _category_terms(saas: dict) -> list:
+    """A product's category as content words, keeping 'project' and the like ('Project management')."""
+    return list(dict.fromkeys(t for t in _tokens(saas.get("category") or "") if t not in ("a", "an", "and", "as",
+                                                                                            "of", "the", "for")))
+
+
+def match_strength(hit: dict, terms: list, anchors=None):
+    """(strong, coverage, matched_terms) for one hybrid hit. A hit is strong when it is an exact name match, is
+    reached through a matched product's REPLACES edge, or matches at least half of the query's content words with
+    at least one of them in a field that says what the project is. Anything else is a weak word match, and a weak
+    match never fills a result list (KEI-919 S1.3): an empty answer is truthful, a padded one is not."""
+    if hit.get("exact") or (hit.get("components") or {}).get("graph", 0) > 0:
+        return True, 1.0, sorted(terms)
+    why = hit.get("matched") or {}
+    lexical = {t for ts in why.values() for t in ts}
+    semantic = {u for t in hit.get("semantic_terms") or [] for u in _tokens(t)}
+    matched = sorted((lexical | semantic) & set(terms))
+    coverage = round(len(matched) / len(terms), 4) if terms else 0.0
+    primary = any(field in _PRIMARY_FIELDS for field in why)
+    if anchors is not None:
+        # Product-driven: on topic when it claims to stand in for the product (claims_alternative, decided by the
+        # caller and passed as anchors=True) or matches every category word; a generic category word alone
+        # ("management") is a weak match.
+        if anchors is True:
+            return True, coverage, matched
+        return (len(matched) == len(terms) and bool(terms) and primary), coverage, matched
+    need = max(min(2, len(terms)), -(-len(terms) // 2))
+    return (coverage >= MIN_TERM_COVERAGE and len(matched) >= need and primary), coverage, matched
+
+
+# An integration works WITH a product; it does not replace it (KEI-919 S1.4). Name/topic/description patterns,
+# deliberately specific: "client" or "bot" alone are not enough, they must read as a connector to something.
+_INTEGRATION_TOPICS = {
+    "mcp_server": {"mcp", "mcp-server", "mcp-servers", "model-context-protocol", "modelcontextprotocol", "mcp-tools"},
+    "sdk": {"sdk", "api-sdk", "client-sdk"},
+    "bot": {"bot", "chatbot-integration", "slack-bot", "discord-bot", "telegram-bot", "slackbot", "teams-bot"},
+    "api_client": {"api-client", "api-wrapper", "client-library", "rest-client", "api-wrapper-library"},
+}
+_INTEGRATION_NAME = [
+    ("mcp_server", re.compile(r"(^|[-_.])mcp($|[-_.])|mcp[-_]?server|server[-_]?mcp")),
+    ("sdk", re.compile(r"(^|[-_.])sdk($|[-_.])")),
+    ("bot", re.compile(r"(^|[-_.])(bot|slackbot)($|[-_.])")),
+    ("api_client", re.compile(r"(^|[-_.])(api[-_]?client|client[-_]?api|api[-_]?wrapper)($|[-_.])")),
+]
+_INTEGRATION_DESC = [
+    ("mcp_server", re.compile(r"\b(mcp server|mcp tool|model context protocol)\b")),
+    ("sdk", re.compile(r"\b(sdk|software development kit) for\b|\bofficial [a-z0-9 .-]{0,30}sdk\b")),
+    ("bot", re.compile(r"\bbot (for|that|which|to)\b")),
+    ("api_client", re.compile(r"\b(wrapper|client|client library|sdk|bindings) (for|around|to) the "
+                              r"[a-z0-9 .-]{1,30} (rest |graphql )?api\b")),
+]
+
+
+_NOT_PRODUCT_TOPICS = {"awesome", "awesome-list", "awesome-lists", "list", "curated-list", "templates", "template",
+                       "boilerplate", "starter", "starter-kit", "examples", "example", "tutorial", "cheatsheet",
+                       "dotfiles", "prompts", "prompt-engineering"}
+_NOT_PRODUCT_NAME = re.compile(r"^(awesome[-_.]|.*[-_.](templates?|boilerplate|starter|examples?|tutorials?|"
+                               r"cheat[-_]?sheets?|prompts?|dotfiles)$)")
+
+
+def not_a_product(name, full_name, topics):
+    """True for a curated list, template collection, boilerplate, tutorial or prompt pack: material about a kind
+    of software, not software that replaces a product (KEI-919 S1.4)."""
+    repo = str(full_name or "").split("/")[-1].lower()
+    return bool(_NOT_PRODUCT_NAME.match(repo) or _NOT_PRODUCT_NAME.match(str(name or "").lower())
+                or {str(t).lower() for t in topics or []} & _NOT_PRODUCT_TOPICS)
+
+
+def claims_alternative(description, topics, product: str) -> bool:
+    """The project says it stands in for `product`: "an open-source Trello alternative", "alternative to Jira",
+    topic postman-alternative, "Notion clone", "replacement for Heroku"."""
+    n = _norm(product)
+    if len(n) < 3:
+        return False
+    text = " ".join([_norm(description), " ".join(_norm(t) for t in topics or [])])
+    p = re.escape(n)
+    return bool(re.search(rf"\b{p} (alternative|clone|replacement|substitute)s?\b|"
+                          rf"\b(alternative|replacement|substitute)s? (to|for|of) (\w+ ){{0,4}}?{p}\b|"
+                          rf"\b(open source|self hosted|selfhosted|free|foss|libre) {p}\b|\binstead of {p}\b", text))
+
+
+def integration_kind(name, full_name, description, topics, products=(), claims_alt=False):
+    """'mcp_server' | 'sdk' | 'bot' | 'api_client' | 'plugin' when a project is an integration with another product rather
+    than a replacement for one; None otherwise. `products` are SaaS names whose appearance in the repository name
+    alongside an agent/connector word also marks an integration (e.g. agent-slack, notion-sync)."""
+    repo = str(full_name or "").split("/")[-1].lower()
+    nm = str(name or "").lower()
+    tops = {str(t).lower() for t in topics or []}
+    desc = " ".join(str(description or "").lower().split())
+    # A project that says it is an alternative to a product is judged on its name and description, not on a tag:
+    # many real replacements also ship an MCP server or a bot (topic "mcp").
+    for kind, wanted in ({} if claims_alt else _INTEGRATION_TOPICS).items():
+        if tops & wanted:
+            return kind
+    # A plugin, skill or add-on is part of a host product by definition, whatever it claims to replace.
+    if any(t.endswith(("-plugin", "-skill", "-skills", "-addon", "-add-on")) or t in ("agent-skills", "plugin", "skill", "skills")
+           for t in tops):
+        return "plugin"
+    for kind, rx in _INTEGRATION_NAME:
+        if rx.search(repo) or rx.search(nm):
+            return kind
+    for kind, rx in _INTEGRATION_DESC:
+        if rx.search(desc):
+            return kind
+    # "an API client / CLI / connector for <a catalogue product>" is an integration; "an API client" alone is a
+    # Postman alternative and is not.
+    for p in products:
+        pn = _norm(p)
+        if len(pn) > 2 and re.search(r"\b(api client|api wrapper|client|cli|connector|integration|sync|bridge|"
+                                     r"exporter|importer|bot|plugin|extension|server) (for|with|to) " + re.escape(pn)
+                                     + r"\b", desc):
+            return "api_client"
+    words = set(re.split(r"[-_.]", repo))
+    connector = {"agent", "sync", "connector", "integration", "plugin", "exporter", "importer", "cli", "client",
+                 "api", "webhook", "notifier", "bridge", "toolkit"}
+    if words & connector:
+        for p in products:
+            if _norm(p).replace(" ", "") in words or _norm(p).replace(" ", "-") in repo:
+                return "api_client"
+    return None
 
 
 # --------------------------------------------------------------------------- tools
@@ -1035,7 +1209,7 @@ def _include_discovery(args):
 
 
 def _discovery_candidates(layer, server, query, limit, licences=None, family=None, status=None, min_stars=None,
-                          max_stars=None):
+                          max_stars=None, terms=None, anchors=None):
     """Discovery-tier projects that match a query: a separate, labelled list, never recommendations. Only
     projects with a recognised licence that are live on their host and not archived are offered."""
     state = _corpus_state(layer, server)
@@ -1045,13 +1219,26 @@ def _discovery_candidates(layer, server, query, limit, licences=None, family=Non
     if layer.full is None:
         return {**base, "status": "unavailable", "candidates": []}
     hits, _ = layer.full.hybrid(query, "project")
+    # For a product-driven query the words that say what a replacement must BE are the category's; the product's
+    # own name in a repository mostly marks an integration with it, so it is not required.
+    terms = list(terms) if terms is not None else _query_terms(query)
+    products = [s["name"] for s in layer.saas.values()]
     rows, excluded = [], {}
     for h in hits:
         if h["key"] not in layer.corpus or h["score"] < 0.15:
             continue
         c = layer.corpus[h["key"]]
         live = c["live"]
-        why_not = ("licence_issue" if c["licence"]["status"] != "recognised"
+        alt = bool(anchors) and claims_alternative(c["description"], c["topics"], anchors)
+        # "Integrates with PagerDuty, Datadog, ..." consumes the product; for that product it is not a replacement.
+        uses = bool(anchors) and not alt and bool(re.search(
+            r"\bintegrat\w* with [^.]{0,120}\b" + re.escape(_norm(anchors)) + r"\b", _norm(c["description"])))
+        strong, coverage, matched = match_strength(h, terms, (True if alt else False) if anchors else None)
+        why_not = ("weak_match" if not strong
+                   else "integration_not_replacement"
+                   if uses or integration_kind(c["name"], c["full_name"], c["description"], c["topics"], products, alt)
+                   else "not_a_product" if not_a_product(c["name"], c["full_name"], c["topics"])
+                   else "licence_issue" if c["licence"]["status"] != "recognised"
                    else "not_found_on_host" if not live["found"]
                    else "archived" if live["archived"]
                    else _licence_ok(c["licence"]["spdx"], licences, family)
@@ -1062,9 +1249,20 @@ def _discovery_candidates(layer, server, query, limit, licences=None, family=Non
             excluded[why_not] = excluded.get(why_not, 0) + 1
             continue
         rows.append({**_discovery_view(layer, h["key"]),
-                     "retrieval": {k: h[k] for k in ("score", "components", "semantic_terms")}})
-    return {**base, "status": "ok" if rows else "no_matching_discovery_projects", "candidates": rows[:limit],
-            "more_available": max(0, len(rows) - limit), "excluded": dict(sorted(excluded.items()))}
+                     "retrieval": {**{k: h[k] for k in ("score", "components", "semantic_terms")},
+                                   "term_coverage": coverage, "matched_terms": matched}})
+    out = {**base, "status": "ok" if rows else "no_matching_discovery_projects", "candidates": rows[:limit],
+           "more_available": max(0, len(rows) - limit), "excluded": dict(sorted(excluded.items())),
+           "match_rule": ((f"a candidate must say it is an alternative to {anchors} or match every category word "
+                           f"{terms}; " if anchors else
+                           f"a candidate must match at least {MIN_TERM_COVERAGE:.0%} of the query's content words "
+                           f"{terms} with one in its name, repository or topics; ") + "weak word matches are excluded, "
+                          "never used to fill the list. Integrations (MCP servers, SDKs, bots, API clients) work "
+                          "with a product rather than replace it, and are excluded.")}
+    if len(rows) < limit:
+        out["shortfall"] = (f"{len(rows)} of the {limit} requested: no further discovery project matched strongly "
+                            "enough and passed the filters (see excluded). The list is not padded.")
+    return out
 
 
 def tool_get_alternatives(layer, args, server):
@@ -1109,7 +1307,8 @@ def tool_get_alternatives(layer, args, server):
                "credible alternative; never presented as recommendations (see source_get_relationship)"}
     if include_discovery:
         s = layer.saas[sid]
-        out["discovery_candidates"] = _discovery_candidates(layer, server, f"{s['name']} {s['category']}", limit)
+        out["discovery_candidates"] = _discovery_candidates(layer, server, f"{s['name']} {s['category']}", limit,
+                                                            terms=_category_terms(s), anchors=s["name"])
     return out
 
 
@@ -1509,10 +1708,14 @@ def tool_recommend(layer, args, server):
                     h["key"] not in {m["saas_id"] for m in matched}:
                 matched.append({"saas_id": h["key"], "name": layer.saas[h["key"]]["name"],
                                 "matched_by": "hybrid", "strength": h["score"], "components": h["components"]})
-    proj_hits = {}
+    proj_hits, weak = {}, 0
     if need is not None:
+        terms = _query_terms(need)
         for h in hits:
             if h["kind"] == "project" and h["score"] >= 0.15:
+                if not match_strength(h, terms)[0]:  # KEI-919 S1.3: a weak word match never joins the list
+                    weak += 1
+                    continue
                 proj_hits[h["key"]] = h
         if matched:  # a matched product's own alternatives come first; a direct hit must be strong to join them
             proj_hits = {k: h for k, h in proj_hits.items() if h["score"] >= 0.45}
@@ -1590,11 +1793,30 @@ def tool_recommend(layer, args, server):
                               "why": "The published layer holds no evidence for these; check them yourself. "
                                      "self_hostable is evidenced only on published api/v1 pages."},
             "signals": {n: _signal_state(layer, server, n) for n in SIGNALS}}
+    # KEI-919 S1.3: say plainly why the list is short instead of padding it.
+    out["weak_matches_excluded"] = weak
+    shown = len(out["recommendations"])
+    if shown < limit:
+        reasons = []
+        if excluded:
+            reasons.append(f"{sum(excluded.values())} candidate(s) failed a hard constraint "
+                           f"({', '.join(f'{k}: {v}' for k, v in sorted(excluded.items()))})")
+        if weak:
+            reasons.append(f"{weak} project(s) matched only weakly and were left out")
+        if not cands:
+            reasons.append("no recommended relationship matched the need or product")
+        out["shortfall"] = (f"{shown} of the {limit} requested. " + ("; ".join(reasons) or
+                            "no further recommended alternative exists") + ". The list is never padded.")
+    if constraints:
+        out["constraint_filtered"] = {"before_constraints": len(cands), "after_constraints": len(cands) - sum(
+            excluded.values()), "excluded": dict(sorted(excluded.items()))}
     if include_discovery:
         query = need or " ".join(f"{layer.saas[m['saas_id']]['name']} {layer.saas[m['saas_id']]['category']}"
                                  for m in matched)
-        out["discovery_candidates"] = _discovery_candidates(layer, server, query, limit, licences, family, status,
-                                                            min_stars, max_stars)
+        out["discovery_candidates"] = _discovery_candidates(
+            layer, server, query, limit, licences, family, status, min_stars, max_stars,
+            terms=None if need else _category_terms(layer.saas[matched[0]["saas_id"]]),
+            anchors=None if need else layer.saas[matched[0]["saas_id"]]["name"])
         out["discovery_candidates"]["constraints_not_applicable"] = sorted(
             k for k in ("self_hostable", "min_fit", "min_health", "max_days_since_activity", "repository_momentum_7d")
             if k in args)

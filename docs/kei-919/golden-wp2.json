@@ -1,0 +1,918 @@
+{
+ "constraints": [
+  {
+   "explicit": true,
+   "query": {
+    "licence_family": "permissive",
+    "saas": "notion"
+   },
+   "returned": 2,
+   "shortfall": "2 of the 5 requested. 6 candidate(s) failed a hard constraint (licence_family: 6). The list is never padded.",
+   "violations": []
+  },
+  {
+   "explicit": true,
+   "query": {
+    "licence_family": "copyleft",
+    "saas": "jira"
+   },
+   "returned": 3,
+   "shortfall": "3 of the 5 requested. 2 candidate(s) failed a hard constraint (licence_family: 2). The list is never padded.",
+   "violations": []
+  },
+  {
+   "explicit": true,
+   "query": {
+    "saas": "dropbox",
+    "self_hostable": true
+   },
+   "returned": 3,
+   "shortfall": "3 of the 5 requested. 1 candidate(s) failed a hard constraint (not_self_hostable: 1). The list is never padded.",
+   "violations": []
+  },
+  {
+   "explicit": true,
+   "query": {
+    "min_stars": 5000,
+    "saas": "google-analytics"
+   },
+   "returned": 3,
+   "shortfall": "3 of the 5 requested. 5 candidate(s) failed a hard constraint (min_stars: 5). The list is never padded.",
+   "violations": []
+  },
+  {
+   "explicit": true,
+   "query": {
+    "maintenance_status": [
+     "active"
+    ],
+    "saas": "datadog"
+   },
+   "returned": 5,
+   "shortfall": null,
+   "violations": []
+  },
+  {
+   "explicit": true,
+   "query": {
+    "min_health": 70,
+    "need": "kanban board"
+   },
+   "returned": 0,
+   "shortfall": "0 of the 5 requested. no recommended relationship matched the need or product. The list is never padded.",
+   "violations": []
+  },
+  {
+   "explicit": true,
+   "query": {
+    "licence": [
+     "MIT"
+    ],
+    "saas": "postman"
+   },
+   "returned": 3,
+   "shortfall": "3 of the 5 requested. 3 candidate(s) failed a hard constraint (licence: 3). The list is never padded.",
+   "violations": []
+  },
+  {
+   "explicit": true,
+   "query": {
+    "max_stars": 5000,
+    "saas": "shopify"
+   },
+   "returned": 1,
+   "shortfall": "1 of the 5 requested. 4 candidate(s) failed a hard constraint (max_stars: 4). The list is never padded.",
+   "violations": []
+  }
+ ],
+ "integrations": [
+  {
+   "flagged": [],
+   "saas": "amazon-s3",
+   "top5": [
+    "github.com/juicedata/juicefs",
+    "github.com/greptimeteam/greptimedb",
+    "github.com/sjqzhang/go-fastdfs"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "asana",
+   "top5": []
+  },
+  {
+   "flagged": [],
+   "saas": "auth0",
+   "top5": [
+    "github.com/cerbos/cerbos"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "chatgpt",
+   "top5": [
+    "github.com/wwbin2017/bailing",
+    "github.com/akshayaggarwal99/jarvis-ai-assistant",
+    "github.com/1186258278/openclawchinesetranslation",
+    "github.com/gptme/gptme",
+    "github.com/redleaves/context-keeper"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "contentful",
+   "top5": [
+    "github.com/sveltia/sveltia-cms",
+    "github.com/terminusdb/terminusdb"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "datadog",
+   "top5": [
+    "github.com/latitude-dev/latitude-llm",
+    "github.com/greptimeteam/greptimedb",
+    "github.com/memodb-io/acontext",
+    "github.com/spanlens/spanlens",
+    "github.com/openlit/openlit"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "dropbox",
+   "top5": [
+    "github.com/rclone/rclone",
+    "github.com/sjqzhang/go-fastdfs"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "evernote",
+   "top5": [
+    "github.com/gamosoft/notediscovery",
+    "github.com/tianma-if/edgeever",
+    "github.com/nuttyartist/notes",
+    "github.com/team-reflect/reflect-open",
+    "github.com/tiddly-gittly/tidgi-desktop"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "firebase",
+   "top5": [
+    "github.com/openedx/openedx-platform",
+    "github.com/ryware/nona-config"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "google-analytics",
+   "top5": [
+    "github.com/rybbit-io/rybbit",
+    "github.com/talivia-group/talivia",
+    "github.com/pascalebeier/hitkeep",
+    "github.com/allinurl/goaccess",
+    "github.com/ianalloway/ian-web-forge"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "google-drive",
+   "top5": [
+    "github.com/rclone/rclone",
+    "github.com/sjqzhang/go-fastdfs"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "heroku",
+   "top5": [
+    "github.com/openedx/openedx-platform",
+    "github.com/saifyxpro/headlessx",
+    "github.com/onionshare/onionshare",
+    "github.com/rodyherrera/quantum",
+    "github.com/biersoeckli/quickstack"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "jira",
+   "top5": [
+    "github.com/paca-ai/paca"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "monday-com",
+   "top5": []
+  },
+  {
+   "flagged": [],
+   "saas": "new-relic",
+   "top5": [
+    "github.com/latitude-dev/latitude-llm",
+    "github.com/greptimeteam/greptimedb",
+    "github.com/memodb-io/acontext",
+    "github.com/spanlens/spanlens",
+    "github.com/openlit/openlit"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "notion",
+   "top5": [
+    "github.com/colanode/colanode",
+    "github.com/tiddly-gittly/tidgi-desktop",
+    "github.com/syntax-syndicate/knowledge",
+    "github.com/cblgh/monotome",
+    "github.com/andrelyl/memkin"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "postman",
+   "top5": [
+    "github.com/mountain-loop/yaak"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "shopify",
+   "top5": []
+  },
+  {
+   "flagged": [],
+   "saas": "trello",
+   "top5": [
+    "github.com/paca-ai/paca",
+    "github.com/kanbn/kan"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "zoom",
+   "top5": [
+    "github.com/tinode/chat",
+    "github.com/ossrs/srs"
+   ]
+  }
+ ],
+ "k": 5,
+ "lookups": [
+  {
+   "error": null,
+   "expect": "github.com/docmost/docmost",
+   "got": "github.com/docmost/docmost",
+   "ok": true,
+   "value": "docmost/docmost"
+  },
+  {
+   "error": null,
+   "expect": "github.com/docmost/docmost",
+   "got": "github.com/docmost/docmost",
+   "ok": true,
+   "value": "Docmost"
+  },
+  {
+   "error": null,
+   "expect": "github.com/docmost/docmost",
+   "got": "github.com/docmost/docmost",
+   "ok": true,
+   "value": "https://github.com/docmost/docmost"
+  },
+  {
+   "error": null,
+   "expect": "github.com/docmost/docmost",
+   "got": "github.com/docmost/docmost",
+   "ok": true,
+   "value": "github.com/docmost/docmost.git"
+  },
+  {
+   "error": null,
+   "expect": "github.com/makeplane/plane",
+   "got": "github.com/makeplane/plane",
+   "ok": true,
+   "value": "makeplane/plane"
+  },
+  {
+   "error": null,
+   "expect": "github.com/makeplane/plane",
+   "got": "github.com/makeplane/plane",
+   "ok": true,
+   "value": "https://github.com/makeplane/plane/"
+  },
+  {
+   "error": null,
+   "expect": "github.com/bitwarden/server",
+   "got": "github.com/bitwarden/server",
+   "ok": true,
+   "value": "bitwarden/server"
+  },
+  {
+   "error": null,
+   "expect": "github.com/twentyhq/twenty",
+   "got": "github.com/twentyhq/twenty",
+   "ok": true,
+   "value": "twentyhq/twenty"
+  },
+  {
+   "error": null,
+   "expect": "github.com/mattermost/mattermost",
+   "got": "github.com/mattermost/mattermost",
+   "ok": true,
+   "value": "mattermost/mattermost"
+  },
+  {
+   "error": null,
+   "expect": "github.com/rocketchat/rocket.chat",
+   "got": "github.com/rocketchat/rocket.chat",
+   "ok": true,
+   "value": "RocketChat/Rocket.Chat"
+  },
+  {
+   "error": null,
+   "expect": "github.com/plausible/analytics",
+   "got": "github.com/plausible/analytics",
+   "ok": true,
+   "value": "plausible/analytics"
+  },
+  {
+   "error": null,
+   "expect": "github.com/keycloak/keycloak",
+   "got": "github.com/keycloak/keycloak",
+   "ok": true,
+   "value": "keycloak"
+  }
+ ],
+ "need": [
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "web analytics like Google Analytics",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/plausible/analytics",
+    "github.com/umami-software/umami",
+    "github.com/open-web-analytics/open-web-analytics",
+    "github.com/frigadehq/trench",
+    "github.com/prismelabs/analytics"
+   ],
+   "saas": "google-analytics"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "monitoring and observability like Datadog",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/coroot/coroot",
+    "github.com/grafana/grafana",
+    "github.com/netdata/netdata",
+    "github.com/uptrace/uptrace",
+    "github.com/telemetry-tracker/telemetry-tracker"
+   ],
+   "saas": "datadog"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "team wiki and notes like Notion",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/evergreen-it-dev/folio",
+    "github.com/docmost/docmost",
+    "github.com/dexio-wiki/dexio",
+    "github.com/churichard/notabase",
+    "github.com/xwiki/xwiki-platform"
+   ],
+   "saas": "notion"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "login and identity like Auth0",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/authgear/authgear-server",
+    "github.com/keycloak/keycloak",
+    "github.com/ory/kratos",
+    "github.com/logto-io/logto",
+    "github.com/zitadel/zitadel"
+   ],
+   "saas": "auth0"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "kanban boards like Trello",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/wekan/wekan",
+    "github.com/go-vikunja/vikunja",
+    "github.com/tehnika-mk/monomap",
+    "github.com/makeplane/plane",
+    "github.com/super-productivity/super-productivity"
+   ],
+   "saas": "trello"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "backend for my app like Firebase",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/kuzzleio/kuzzle",
+    "github.com/supabase/supabase",
+    "github.com/appwrite/appwrite",
+    "github.com/appy-one/acebase",
+    "github.com/nhost/nhost"
+   ],
+   "saas": "firebase"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "API testing client like Postman",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/kong/insomnia",
+    "github.com/hoppscotch/hoppscotch",
+    "github.com/scalar/scalar",
+    "github.com/voidenhq/voiden",
+    "github.com/usebruno/bruno"
+   ],
+   "saas": "postman"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "headless CMS like Contentful",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/tinacms/tinacms",
+    "github.com/payloadcms/payload",
+    "github.com/decaporg/decap-cms",
+    "github.com/sulu/sulu",
+    "github.com/builderio/builder"
+   ],
+   "saas": "contentful"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "deploy apps like Heroku",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/peon-sh/peon",
+    "github.com/tsuru/tsuru",
+    "github.com/coollabsio/coolify",
+    "github.com/kubero-dev/kubero",
+    "github.com/dyrector-io/dyrectorio"
+   ],
+   "saas": "heroku"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "online store like Shopify",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/itswadesh/svelte-commerce",
+    "github.com/saleor/saleor",
+    "github.com/bagisto/bagisto",
+    "github.com/sylius/sylius",
+    "github.com/woocommerce/woocommerce"
+   ],
+   "saas": "shopify"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "object storage like Amazon S3",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/rustfs/rustfs",
+    "github.com/seaweedfs/seaweedfs",
+    "github.com/openstack/swift",
+    "github.com/storj/storj",
+    "github.com/deuxfleurs-org/garage"
+   ],
+   "saas": "amazon-s3"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "application monitoring like New Relic",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/grafana/grafana",
+    "github.com/netdata/netdata",
+    "github.com/uptrace/uptrace",
+    "github.com/openobserve/openobserve",
+    "github.com/victoriametrics/victoriametrics"
+   ],
+   "saas": "new-relic"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "note taking like Evernote",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/siyuan-note/siyuan",
+    "github.com/triliumnext/trilium",
+    "github.com/logseq/logseq",
+    "github.com/streetwriters/notesnook",
+    "github.com/codexu/note-gen"
+   ],
+   "saas": "evernote"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "issue tracking like Jira",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/noveum/orbit",
+    "github.com/leantime/leantime",
+    "github.com/makeplane/plane",
+    "github.com/opf/openproject",
+    "github.com/taigaio/taiga-back"
+   ],
+   "saas": "jira"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "team task management like Asana",
+   "precision": 1.0,
+   "recall": 0.8,
+   "returned": [
+    "github.com/leantime/leantime",
+    "github.com/go-vikunja/vikunja",
+    "github.com/makeplane/plane",
+    "github.com/opf/openproject"
+   ],
+   "saas": "asana"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "video meetings like Zoom",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/jitsi/jitsi-meet",
+    "github.com/bigbluebutton/bigbluebutton",
+    "github.com/jech/galene",
+    "github.com/element-hq/element-call"
+   ],
+   "saas": "zoom"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "file sync like Dropbox",
+   "precision": 1.0,
+   "recall": 0.8,
+   "returned": [
+    "github.com/owncloud/core",
+    "github.com/syncthing/syncthing",
+    "github.com/nextcloud/server",
+    "github.com/mickael-kerjean/filestash"
+   ],
+   "saas": "dropbox"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "cloud file storage like Google Drive",
+   "precision": 1.0,
+   "recall": 0.8,
+   "returned": [
+    "github.com/owncloud/ocis",
+    "github.com/owncloud/core",
+    "github.com/nextcloud/server",
+    "github.com/mickael-kerjean/filestash"
+   ],
+   "saas": "google-drive"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "work management like Monday.com",
+   "precision": 1.0,
+   "recall": 0.8,
+   "returned": [
+    "github.com/go-vikunja/vikunja",
+    "github.com/makeplane/plane",
+    "github.com/opf/openproject",
+    "github.com/hcengineering/platform"
+   ],
+   "saas": "monday-com"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "AI chat assistant like ChatGPT",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/librechat-ai/librechat",
+    "github.com/mintplex-labs/anything-llm",
+    "github.com/chatboxai/chatbox",
+    "github.com/leon-ai/leon"
+   ],
+   "saas": "chatgpt"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "privacy friendly website analytics",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/plausible/analytics",
+    "github.com/umami-software/umami",
+    "github.com/open-web-analytics/open-web-analytics",
+    "github.com/frigadehq/trench",
+    "github.com/prismelabs/analytics"
+   ],
+   "saas": "google-analytics"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "metrics logs and traces observability platform",
+   "precision": 0.6,
+   "recall": 0.6,
+   "returned": [
+    "github.com/coroot/coroot",
+    "github.com/peon-sh/peon",
+    "github.com/grafana/grafana",
+    "github.com/tsuru/tsuru",
+    "github.com/netdata/netdata"
+   ],
+   "saas": "datadog"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "knowledge base wiki for teams",
+   "precision": 0.5,
+   "recall": 0.4,
+   "returned": [
+    "github.com/jitsi/jitsi-meet",
+    "github.com/zulip/zulip",
+    "github.com/evergreen-it-dev/folio",
+    "github.com/dexio-wiki/dexio"
+   ],
+   "saas": "notion"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "single sign-on identity provider",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/authgear/authgear-server",
+    "github.com/keycloak/keycloak",
+    "github.com/ory/kratos",
+    "github.com/logto-io/logto",
+    "github.com/zitadel/zitadel"
+   ],
+   "saas": "auth0"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "kanban board",
+   "precision": 0.0,
+   "recall": 0.0,
+   "returned": [],
+   "saas": "trello"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "backend as a service with database and auth",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/kuzzleio/kuzzle",
+    "github.com/supabase/supabase",
+    "github.com/appwrite/appwrite",
+    "github.com/appy-one/acebase",
+    "github.com/nhost/nhost"
+   ],
+   "saas": "firebase"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "api client for testing http requests",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/kong/insomnia",
+    "github.com/hoppscotch/hoppscotch",
+    "github.com/scalar/scalar",
+    "github.com/voidenhq/voiden",
+    "github.com/usebruno/bruno"
+   ],
+   "saas": "postman"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "headless content management system",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/tinacms/tinacms",
+    "github.com/payloadcms/payload",
+    "github.com/decaporg/decap-cms",
+    "github.com/sulu/sulu",
+    "github.com/builderio/builder"
+   ],
+   "saas": "contentful"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "self hosted platform as a service for deploying apps",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/peon-sh/peon",
+    "github.com/tsuru/tsuru",
+    "github.com/coollabsio/coolify",
+    "github.com/kubero-dev/kubero",
+    "github.com/dyrector-io/dyrectorio"
+   ],
+   "saas": "heroku"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "e-commerce platform",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/itswadesh/svelte-commerce",
+    "github.com/saleor/saleor",
+    "github.com/bagisto/bagisto",
+    "github.com/sylius/sylius",
+    "github.com/woocommerce/woocommerce"
+   ],
+   "saas": "shopify"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "s3 compatible object storage",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/rustfs/rustfs",
+    "github.com/seaweedfs/seaweedfs",
+    "github.com/openstack/swift",
+    "github.com/storj/storj",
+    "github.com/deuxfleurs-org/garage"
+   ],
+   "saas": "amazon-s3"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "personal note taking app",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/siyuan-note/siyuan",
+    "github.com/triliumnext/trilium",
+    "github.com/logseq/logseq",
+    "github.com/streetwriters/notesnook",
+    "github.com/codexu/note-gen"
+   ],
+   "saas": "evernote"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "project management and issue tracking",
+   "precision": 0.0,
+   "recall": 0.0,
+   "returned": [
+    "github.com/kimai/kimai",
+    "github.com/telemetry-tracker/telemetry-tracker",
+    "github.com/solidtime-io/solidtime",
+    "github.com/almarklein/timetagger"
+   ],
+   "saas": "jira"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "video conferencing",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/jitsi/jitsi-meet",
+    "github.com/bigbluebutton/bigbluebutton",
+    "github.com/jech/galene",
+    "github.com/element-hq/element-call"
+   ],
+   "saas": "zoom"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "file sync and share",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/owncloud/ocis",
+    "github.com/owncloud/core",
+    "github.com/syncthing/syncthing",
+    "github.com/nextcloud/server",
+    "github.com/mickael-kerjean/filestash"
+   ],
+   "saas": "dropbox"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "chat interface for large language models",
+   "precision": 0.0,
+   "recall": 0.0,
+   "returned": [
+    "github.com/jitsi/jitsi-meet",
+    "github.com/zulip/zulip"
+   ],
+   "saas": "chatgpt"
+  }
+ ],
+ "nonsense": [
+  {
+   "discovery": [],
+   "need": "zzqx frobnicate widget",
+   "recommendations": 0
+  },
+  {
+   "discovery": [],
+   "need": "blue",
+   "recommendations": 0
+  },
+  {
+   "discovery": [],
+   "need": "qwertyuiop asdfgh",
+   "recommendations": 0
+  },
+  {
+   "discovery": [],
+   "need": "the and of",
+   "recommendations": 0
+  },
+  {
+   "discovery": [],
+   "need": "purple elephant teleporter",
+   "recommendations": 0
+  }
+ ],
+ "summary": {
+  "constraint_queries": 8,
+  "constraint_violations": 0,
+  "integrations_in_top5": 0,
+  "lookups_ok": "12/12",
+  "need_named": {
+   "empty": 0,
+   "precision_at_5": 1.0,
+   "queries": 20,
+   "recall_at_5": 0.96
+  },
+  "need_unnamed": {
+   "empty": 1,
+   "precision_at_5": 0.7562,
+   "queries": 16,
+   "recall_at_5": 0.75
+  },
+  "padding_rows": 0,
+  "supported_products_audited": 20
+ }
+}

@@ -1,0 +1,1036 @@
+{
+ "constraints": [
+  {
+   "explicit": true,
+   "query": {
+    "licence_family": "permissive",
+    "saas": "notion"
+   },
+   "returned": 2,
+   "shortfall": null,
+   "violations": []
+  },
+  {
+   "explicit": true,
+   "query": {
+    "licence_family": "copyleft",
+    "saas": "jira"
+   },
+   "returned": 3,
+   "shortfall": null,
+   "violations": []
+  },
+  {
+   "explicit": true,
+   "query": {
+    "saas": "dropbox",
+    "self_hostable": true
+   },
+   "returned": 3,
+   "shortfall": null,
+   "violations": []
+  },
+  {
+   "explicit": true,
+   "query": {
+    "min_stars": 5000,
+    "saas": "google-analytics"
+   },
+   "returned": 3,
+   "shortfall": null,
+   "violations": []
+  },
+  {
+   "explicit": true,
+   "query": {
+    "maintenance_status": [
+     "active"
+    ],
+    "saas": "datadog"
+   },
+   "returned": 5,
+   "shortfall": null,
+   "violations": []
+  },
+  {
+   "explicit": true,
+   "query": {
+    "min_health": 70,
+    "need": "kanban board"
+   },
+   "returned": 0,
+   "shortfall": null,
+   "violations": []
+  },
+  {
+   "explicit": true,
+   "query": {
+    "licence": [
+     "MIT"
+    ],
+    "saas": "postman"
+   },
+   "returned": 3,
+   "shortfall": null,
+   "violations": []
+  },
+  {
+   "explicit": true,
+   "query": {
+    "max_stars": 5000,
+    "saas": "shopify"
+   },
+   "returned": 1,
+   "shortfall": null,
+   "violations": []
+  }
+ ],
+ "integrations": [
+  {
+   "flagged": [
+    "github.com/ofershap/mcp-server-s3",
+    "github.com/haydenbleasel/files-sdk"
+   ],
+   "saas": "amazon-s3",
+   "top5": [
+    "github.com/ofershap/mcp-server-s3",
+    "github.com/juicedata/juicefs",
+    "github.com/haydenbleasel/files-sdk",
+    "github.com/saltbo/zpan",
+    "github.com/apache/opendal"
+   ]
+  },
+  {
+   "flagged": [
+    "github.com/roychri/mcp-server-asana"
+   ],
+   "saas": "asana",
+   "top5": [
+    "github.com/roychri/mcp-server-asana",
+    "github.com/disin7c9/asset-management",
+    "github.com/apolloconfig/apollo"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "auth0",
+   "top5": [
+    "github.com/aiops-tools/identity-aiops",
+    "github.com/ookyet/web3-identity-seo",
+    "github.com/cerbos/cerbos",
+    "github.com/true-alter/cli",
+    "github.com/ascending-llc/jarvis-registry"
+   ]
+  },
+  {
+   "flagged": [
+    "github.com/foundrole/jobs-mcp-proxy",
+    "github.com/srbhptl39/mcp-superassistant"
+   ],
+   "saas": "chatgpt",
+   "top5": [
+    "github.com/andraxdev/speak-gpt",
+    "github.com/skythinker616/gpt-assistant-android",
+    "github.com/thinkinaixyz/deepchat",
+    "github.com/foundrole/jobs-mcp-proxy",
+    "github.com/srbhptl39/mcp-superassistant"
+   ]
+  },
+  {
+   "flagged": [
+    "github.com/ivo-toby/contentful-mcp",
+    "github.com/hypescale/storyblok-mcp-server",
+    "github.com/luno-cms/mcp"
+   ],
+   "saas": "contentful",
+   "top5": [
+    "github.com/ivo-toby/contentful-mcp",
+    "github.com/sveltia/sveltia-cms",
+    "github.com/hypescale/storyblok-mcp-server",
+    "github.com/terminusdb/terminusdb",
+    "github.com/luno-cms/mcp"
+   ]
+  },
+  {
+   "flagged": [
+    "github.com/tantiope/datadog-mcp-server",
+    "github.com/us-all/datadog-mcp-server",
+    "github.com/arvo-ai/aurora",
+    "github.com/alimuratkuslu/byok-observability-mcp",
+    "github.com/rust-works/omni-dev"
+   ],
+   "saas": "datadog",
+   "top5": [
+    "github.com/tantiope/datadog-mcp-server",
+    "github.com/us-all/datadog-mcp-server",
+    "github.com/arvo-ai/aurora",
+    "github.com/alimuratkuslu/byok-observability-mcp",
+    "github.com/rust-works/omni-dev"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "dropbox",
+   "top5": [
+    "github.com/rclone/rclone",
+    "github.com/sjqzhang/go-fastdfs",
+    "github.com/cloudreve/cloudreve",
+    "github.com/heyputer/puter",
+    "github.com/transloadit/uppy"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "evernote",
+   "top5": [
+    "github.com/gamosoft/notediscovery",
+    "github.com/tianma-if/edgeever",
+    "github.com/nuttyartist/notes",
+    "github.com/team-reflect/reflect-open",
+    "github.com/nico2sh/kimun"
+   ]
+  },
+  {
+   "flagged": [
+    "github.com/junobuild/juno"
+   ],
+   "saas": "firebase",
+   "top5": [
+    "github.com/butterbase-ai/butterbase",
+    "github.com/openedx/openedx-platform",
+    "github.com/ahmedabdoelhawary/flutter-clean-architecture-instagram",
+    "github.com/pubkey/rxdb",
+    "github.com/junobuild/juno"
+   ]
+  },
+  {
+   "flagged": [
+    "github.com/googleanalytics/google-analytics-mcp",
+    "github.com/surendranb/google-analytics-mcp"
+   ],
+   "saas": "google-analytics",
+   "top5": [
+    "github.com/googleanalytics/google-analytics-mcp",
+    "github.com/rybbit-io/rybbit",
+    "github.com/surendranb/google-analytics-mcp",
+    "github.com/talivia-group/talivia",
+    "github.com/pascalebeier/hitkeep"
+   ]
+  },
+  {
+   "flagged": [
+    "github.com/haydenbleasel/files-sdk",
+    "github.com/adelaidasofia/google-workspace-mcp"
+   ],
+   "saas": "google-drive",
+   "top5": [
+    "github.com/rclone/rclone",
+    "github.com/sjqzhang/go-fastdfs",
+    "github.com/haydenbleasel/files-sdk",
+    "github.com/adelaidasofia/google-workspace-mcp",
+    "github.com/cloudreve/cloudreve"
+   ]
+  },
+  {
+   "flagged": [
+    "github.com/gregm711/agent-domain-service-mcp",
+    "github.com/openmf/mcp-mifosx-self-service"
+   ],
+   "saas": "heroku",
+   "top5": [
+    "github.com/openedx/openedx-platform",
+    "github.com/gregm711/agent-domain-service-mcp",
+    "github.com/openmf/mcp-mifosx-self-service",
+    "github.com/saifyxpro/headlessx",
+    "github.com/onionshare/onionshare"
+   ]
+  },
+  {
+   "flagged": [
+    "github.com/raalarcon9705/jira-mcp",
+    "github.com/nguyenvanduocit/jira-mcp",
+    "github.com/ks-gen-ai/jira-mcp-server",
+    "github.com/atlassian/atlassian-mcp-server",
+    "github.com/sooperset/mcp-atlassian"
+   ],
+   "saas": "jira",
+   "top5": [
+    "github.com/raalarcon9705/jira-mcp",
+    "github.com/nguyenvanduocit/jira-mcp",
+    "github.com/ks-gen-ai/jira-mcp-server",
+    "github.com/atlassian/atlassian-mcp-server",
+    "github.com/sooperset/mcp-atlassian"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "monday-com",
+   "top5": [
+    "github.com/logicaldoc/community"
+   ]
+  },
+  {
+   "flagged": [
+    "github.com/alimuratkuslu/byok-observability-mcp",
+    "github.com/greptimeteam/greptimedb-mcp-server"
+   ],
+   "saas": "new-relic",
+   "top5": [
+    "github.com/alimuratkuslu/byok-observability-mcp",
+    "github.com/ejcho623/agent-breadcrumbs",
+    "github.com/latitude-dev/latitude-llm",
+    "github.com/agentkitai/agentlens",
+    "github.com/greptimeteam/greptimedb-mcp-server"
+   ]
+  },
+  {
+   "flagged": [
+    "github.com/adelaidasofia/notion-mcp",
+    "github.com/makenotion/notion-mcp-server",
+    "github.com/suekou/mcp-notion-server"
+   ],
+   "saas": "notion",
+   "top5": [
+    "github.com/adelaidasofia/notion-mcp",
+    "github.com/makenotion/notion-mcp-server",
+    "github.com/agricidaniel/claude-obsidian",
+    "github.com/suekou/mcp-notion-server",
+    "github.com/renezander030/agentic-task-system"
+   ]
+  },
+  {
+   "flagged": [
+    "github.com/postmanlabs/postman-mcp-server",
+    "github.com/mambalabsdev/mcp-ai-tooling-detector",
+    "github.com/cocaxcode/api-testing-mcp",
+    "github.com/acedatacloud/shorturlmcp"
+   ],
+   "saas": "postman",
+   "top5": [
+    "github.com/postmanlabs/postman-mcp-server",
+    "github.com/mambalabsdev/mcp-ai-tooling-detector",
+    "github.com/cocaxcode/api-testing-mcp",
+    "github.com/acedatacloud/shorturlmcp",
+    "github.com/mountain-loop/yaak"
+   ]
+  },
+  {
+   "flagged": [
+    "github.com/replenishradar/mcp",
+    "github.com/patchistry/patchistry-mcp-server"
+   ],
+   "saas": "shopify",
+   "top5": [
+    "github.com/vercel/commerce",
+    "github.com/blazity/enterprise-commerce",
+    "github.com/replenishradar/mcp",
+    "github.com/patchistry/patchistry-mcp-server",
+    "github.com/nexscope-ai/ecommerce-skills"
+   ]
+  },
+  {
+   "flagged": [
+    "github.com/kocakli/trello-desktop-mcp"
+   ],
+   "saas": "trello",
+   "top5": [
+    "github.com/kocakli/trello-desktop-mcp",
+    "github.com/paca-ai/paca",
+    "github.com/kanbn/kan",
+    "github.com/disin7c9/asset-management",
+    "github.com/apolloconfig/apollo"
+   ]
+  },
+  {
+   "flagged": [],
+   "saas": "zoom",
+   "top5": [
+    "github.com/goofrey/zoom-search",
+    "github.com/tinode/chat",
+    "github.com/pattern-ai-labs/agentcall",
+    "github.com/ossrs/srs",
+    "github.com/tamnguyenvan/screenarc"
+   ]
+  }
+ ],
+ "k": 5,
+ "lookups": [
+  {
+   "error": "'docmost/docmost' is not a project The Source holds (canonical layer or discovery corpus); try source_search",
+   "expect": "github.com/docmost/docmost",
+   "got": null,
+   "ok": false,
+   "value": "docmost/docmost"
+  },
+  {
+   "error": null,
+   "expect": "github.com/docmost/docmost",
+   "got": "github.com/docmost/docmost",
+   "ok": true,
+   "value": "Docmost"
+  },
+  {
+   "error": null,
+   "expect": "github.com/docmost/docmost",
+   "got": "github.com/docmost/docmost",
+   "ok": true,
+   "value": "https://github.com/docmost/docmost"
+  },
+  {
+   "error": null,
+   "expect": "github.com/docmost/docmost",
+   "got": "github.com/docmost/docmost",
+   "ok": true,
+   "value": "github.com/docmost/docmost.git"
+  },
+  {
+   "error": "'makeplane/plane' is not a project The Source holds (canonical layer or discovery corpus); try source_search",
+   "expect": "github.com/makeplane/plane",
+   "got": null,
+   "ok": false,
+   "value": "makeplane/plane"
+  },
+  {
+   "error": null,
+   "expect": "github.com/makeplane/plane",
+   "got": "github.com/makeplane/plane",
+   "ok": true,
+   "value": "https://github.com/makeplane/plane/"
+  },
+  {
+   "error": "'bitwarden/server' is not a project The Source holds (canonical layer or discovery corpus); try source_search",
+   "expect": "github.com/bitwarden/server",
+   "got": null,
+   "ok": false,
+   "value": "bitwarden/server"
+  },
+  {
+   "error": "'twentyhq/twenty' is not a project The Source holds (canonical layer or discovery corpus); try source_search",
+   "expect": "github.com/twentyhq/twenty",
+   "got": null,
+   "ok": false,
+   "value": "twentyhq/twenty"
+  },
+  {
+   "error": "'mattermost/mattermost' is not a project The Source holds (canonical layer or discovery corpus); try source_search",
+   "expect": "github.com/mattermost/mattermost",
+   "got": null,
+   "ok": false,
+   "value": "mattermost/mattermost"
+  },
+  {
+   "error": "'RocketChat/Rocket.Chat' is not a project The Source holds (canonical layer or discovery corpus); try source_search",
+   "expect": "github.com/rocketchat/rocket.chat",
+   "got": null,
+   "ok": false,
+   "value": "RocketChat/Rocket.Chat"
+  },
+  {
+   "error": "'plausible/analytics' is not a project The Source holds (canonical layer or discovery corpus); try source_search",
+   "expect": "github.com/plausible/analytics",
+   "got": null,
+   "ok": false,
+   "value": "plausible/analytics"
+  },
+  {
+   "error": null,
+   "expect": "github.com/keycloak/keycloak",
+   "got": "github.com/keycloak/keycloak",
+   "ok": true,
+   "value": "keycloak"
+  }
+ ],
+ "need": [
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "web analytics like Google Analytics",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/plausible/analytics",
+    "github.com/umami-software/umami",
+    "github.com/open-web-analytics/open-web-analytics",
+    "github.com/frigadehq/trench",
+    "github.com/prismelabs/analytics"
+   ],
+   "saas": "google-analytics"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "monitoring and observability like Datadog",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/coroot/coroot",
+    "github.com/grafana/grafana",
+    "github.com/netdata/netdata",
+    "github.com/uptrace/uptrace",
+    "github.com/telemetry-tracker/telemetry-tracker"
+   ],
+   "saas": "datadog"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "team wiki and notes like Notion",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/evergreen-it-dev/folio",
+    "github.com/docmost/docmost",
+    "github.com/dexio-wiki/dexio",
+    "github.com/churichard/notabase",
+    "github.com/xwiki/xwiki-platform"
+   ],
+   "saas": "notion"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "login and identity like Auth0",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/authgear/authgear-server",
+    "github.com/keycloak/keycloak",
+    "github.com/ory/kratos",
+    "github.com/logto-io/logto",
+    "github.com/zitadel/zitadel"
+   ],
+   "saas": "auth0"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "kanban boards like Trello",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/wekan/wekan",
+    "github.com/go-vikunja/vikunja",
+    "github.com/tehnika-mk/monomap",
+    "github.com/makeplane/plane",
+    "github.com/super-productivity/super-productivity"
+   ],
+   "saas": "trello"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "backend for my app like Firebase",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/kuzzleio/kuzzle",
+    "github.com/supabase/supabase",
+    "github.com/appwrite/appwrite",
+    "github.com/appy-one/acebase",
+    "github.com/nhost/nhost"
+   ],
+   "saas": "firebase"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "API testing client like Postman",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/kong/insomnia",
+    "github.com/hoppscotch/hoppscotch",
+    "github.com/scalar/scalar",
+    "github.com/voidenhq/voiden",
+    "github.com/usebruno/bruno"
+   ],
+   "saas": "postman"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "headless CMS like Contentful",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/tinacms/tinacms",
+    "github.com/payloadcms/payload",
+    "github.com/decaporg/decap-cms",
+    "github.com/sulu/sulu",
+    "github.com/builderio/builder"
+   ],
+   "saas": "contentful"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "deploy apps like Heroku",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/peon-sh/peon",
+    "github.com/tsuru/tsuru",
+    "github.com/coollabsio/coolify",
+    "github.com/kubero-dev/kubero",
+    "github.com/dyrector-io/dyrectorio"
+   ],
+   "saas": "heroku"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "online store like Shopify",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/itswadesh/svelte-commerce",
+    "github.com/saleor/saleor",
+    "github.com/bagisto/bagisto",
+    "github.com/sylius/sylius",
+    "github.com/woocommerce/woocommerce"
+   ],
+   "saas": "shopify"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "object storage like Amazon S3",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/rustfs/rustfs",
+    "github.com/seaweedfs/seaweedfs",
+    "github.com/openstack/swift",
+    "github.com/storj/storj",
+    "github.com/deuxfleurs-org/garage"
+   ],
+   "saas": "amazon-s3"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "application monitoring like New Relic",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/grafana/grafana",
+    "github.com/netdata/netdata",
+    "github.com/uptrace/uptrace",
+    "github.com/openobserve/openobserve",
+    "github.com/victoriametrics/victoriametrics"
+   ],
+   "saas": "new-relic"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "note taking like Evernote",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/siyuan-note/siyuan",
+    "github.com/triliumnext/trilium",
+    "github.com/logseq/logseq",
+    "github.com/streetwriters/notesnook",
+    "github.com/codexu/note-gen"
+   ],
+   "saas": "evernote"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "issue tracking like Jira",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/noveum/orbit",
+    "github.com/leantime/leantime",
+    "github.com/makeplane/plane",
+    "github.com/opf/openproject",
+    "github.com/taigaio/taiga-back"
+   ],
+   "saas": "jira"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "team task management like Asana",
+   "precision": 1.0,
+   "recall": 0.8,
+   "returned": [
+    "github.com/leantime/leantime",
+    "github.com/go-vikunja/vikunja",
+    "github.com/makeplane/plane",
+    "github.com/opf/openproject"
+   ],
+   "saas": "asana"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "video meetings like Zoom",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/jitsi/jitsi-meet",
+    "github.com/bigbluebutton/bigbluebutton",
+    "github.com/jech/galene",
+    "github.com/element-hq/element-call"
+   ],
+   "saas": "zoom"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "file sync like Dropbox",
+   "precision": 1.0,
+   "recall": 0.8,
+   "returned": [
+    "github.com/owncloud/core",
+    "github.com/syncthing/syncthing",
+    "github.com/nextcloud/server",
+    "github.com/mickael-kerjean/filestash"
+   ],
+   "saas": "dropbox"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "cloud file storage like Google Drive",
+   "precision": 1.0,
+   "recall": 0.8,
+   "returned": [
+    "github.com/owncloud/ocis",
+    "github.com/owncloud/core",
+    "github.com/nextcloud/server",
+    "github.com/mickael-kerjean/filestash"
+   ],
+   "saas": "google-drive"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "work management like Monday.com",
+   "precision": 1.0,
+   "recall": 0.8,
+   "returned": [
+    "github.com/go-vikunja/vikunja",
+    "github.com/makeplane/plane",
+    "github.com/opf/openproject",
+    "github.com/hcengineering/platform"
+   ],
+   "saas": "monday-com"
+  },
+  {
+   "error": null,
+   "group": "need_named",
+   "need": "AI chat assistant like ChatGPT",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/librechat-ai/librechat",
+    "github.com/mintplex-labs/anything-llm",
+    "github.com/chatboxai/chatbox",
+    "github.com/leon-ai/leon"
+   ],
+   "saas": "chatgpt"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "privacy friendly website analytics",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/plausible/analytics",
+    "github.com/umami-software/umami",
+    "github.com/open-web-analytics/open-web-analytics",
+    "github.com/frigadehq/trench",
+    "github.com/prismelabs/analytics"
+   ],
+   "saas": "google-analytics"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "metrics logs and traces observability platform",
+   "precision": 0.6,
+   "recall": 0.6,
+   "returned": [
+    "github.com/coroot/coroot",
+    "github.com/peon-sh/peon",
+    "github.com/grafana/grafana",
+    "github.com/tsuru/tsuru",
+    "github.com/netdata/netdata"
+   ],
+   "saas": "datadog"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "knowledge base wiki for teams",
+   "precision": 0.5,
+   "recall": 0.4,
+   "returned": [
+    "github.com/jitsi/jitsi-meet",
+    "github.com/zulip/zulip",
+    "github.com/evergreen-it-dev/folio",
+    "github.com/dexio-wiki/dexio"
+   ],
+   "saas": "notion"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "single sign-on identity provider",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/authgear/authgear-server",
+    "github.com/keycloak/keycloak",
+    "github.com/ory/kratos",
+    "github.com/logto-io/logto",
+    "github.com/zitadel/zitadel"
+   ],
+   "saas": "auth0"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "kanban board",
+   "precision": 0.0,
+   "recall": 0.0,
+   "returned": [],
+   "saas": "trello"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "backend as a service with database and auth",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/kuzzleio/kuzzle",
+    "github.com/supabase/supabase",
+    "github.com/appwrite/appwrite",
+    "github.com/appy-one/acebase",
+    "github.com/nhost/nhost"
+   ],
+   "saas": "firebase"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "api client for testing http requests",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/kong/insomnia",
+    "github.com/hoppscotch/hoppscotch",
+    "github.com/scalar/scalar",
+    "github.com/voidenhq/voiden",
+    "github.com/usebruno/bruno"
+   ],
+   "saas": "postman"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "headless content management system",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/tinacms/tinacms",
+    "github.com/payloadcms/payload",
+    "github.com/decaporg/decap-cms",
+    "github.com/sulu/sulu",
+    "github.com/builderio/builder"
+   ],
+   "saas": "contentful"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "self hosted platform as a service for deploying apps",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/peon-sh/peon",
+    "github.com/tsuru/tsuru",
+    "github.com/coollabsio/coolify",
+    "github.com/kubero-dev/kubero",
+    "github.com/dyrector-io/dyrectorio"
+   ],
+   "saas": "heroku"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "e-commerce platform",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/itswadesh/svelte-commerce",
+    "github.com/saleor/saleor",
+    "github.com/bagisto/bagisto",
+    "github.com/sylius/sylius",
+    "github.com/woocommerce/woocommerce"
+   ],
+   "saas": "shopify"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "s3 compatible object storage",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/rustfs/rustfs",
+    "github.com/seaweedfs/seaweedfs",
+    "github.com/openstack/swift",
+    "github.com/storj/storj",
+    "github.com/deuxfleurs-org/garage"
+   ],
+   "saas": "amazon-s3"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "personal note taking app",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/siyuan-note/siyuan",
+    "github.com/triliumnext/trilium",
+    "github.com/logseq/logseq",
+    "github.com/streetwriters/notesnook",
+    "github.com/codexu/note-gen"
+   ],
+   "saas": "evernote"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "project management and issue tracking",
+   "precision": 0.0,
+   "recall": 0.0,
+   "returned": [
+    "github.com/kimai/kimai",
+    "github.com/telemetry-tracker/telemetry-tracker",
+    "github.com/solidtime-io/solidtime",
+    "github.com/almarklein/timetagger"
+   ],
+   "saas": "jira"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "video conferencing",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/jitsi/jitsi-meet",
+    "github.com/bigbluebutton/bigbluebutton",
+    "github.com/jech/galene",
+    "github.com/element-hq/element-call"
+   ],
+   "saas": "zoom"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "file sync and share",
+   "precision": 1.0,
+   "recall": 1.0,
+   "returned": [
+    "github.com/owncloud/ocis",
+    "github.com/owncloud/core",
+    "github.com/syncthing/syncthing",
+    "github.com/nextcloud/server",
+    "github.com/mickael-kerjean/filestash"
+   ],
+   "saas": "dropbox"
+  },
+  {
+   "error": null,
+   "group": "need_unnamed",
+   "need": "chat interface for large language models",
+   "precision": 0.0,
+   "recall": 0.0,
+   "returned": [
+    "github.com/jitsi/jitsi-meet",
+    "github.com/zulip/zulip"
+   ],
+   "saas": "chatgpt"
+  }
+ ],
+ "nonsense": [
+  {
+   "discovery": [
+    "github.com/meteornox/deepseek-balance-whale-widget",
+    "github.com/tangtiancheng/douyincomment",
+    "github.com/giscus/giscus",
+    "github.com/iced-rs/iced",
+    "github.com/n00bvn/canvasmcpclient"
+   ],
+   "need": "zzqx frobnicate widget",
+   "recommendations": 0
+  },
+  {
+   "discovery": [
+    "github.com/dan1d/dolar-mcp",
+    "github.com/ihebski/defaultcreds-cheat-sheet",
+    "github.com/nagametw/mcp-server-malcolm",
+    "github.com/wrg-11/wrg-sigma-rules",
+    "github.com/beenuar/aisoc"
+   ],
+   "need": "blue",
+   "recommendations": 0
+  },
+  {
+   "discovery": [],
+   "need": "qwertyuiop asdfgh",
+   "recommendations": 0
+  },
+  {
+   "discovery": [
+    "github.com/embassy-of-the-free-mind/sourcelibrary-v2",
+    "github.com/huggingface/sentence-transformers",
+    "github.com/pipipi-pikachu/pptist",
+    "github.com/floorp-projects/floorp",
+    "github.com/microsoft/windowsdeveloperconfig"
+   ],
+   "need": "the and of",
+   "recommendations": 0
+  },
+  {
+   "discovery": [
+    "github.com/renhuai123/ziwei-doushu",
+    "github.com/atlas-cowork/openclaw-reference-setup",
+    "github.com/beenuar/aisoc"
+   ],
+   "need": "purple elephant teleporter",
+   "recommendations": 0
+  }
+ ],
+ "summary": {
+  "constraint_queries": 8,
+  "constraint_violations": 0,
+  "integrations_in_top5": 37,
+  "lookups_ok": "5/12",
+  "need_named": {
+   "empty": 0,
+   "precision_at_5": 1.0,
+   "queries": 20,
+   "recall_at_5": 0.96
+  },
+  "need_unnamed": {
+   "empty": 1,
+   "precision_at_5": 0.7562,
+   "queries": 16,
+   "recall_at_5": 0.75
+  },
+  "padding_rows": 18,
+  "supported_products_audited": 20
+ }
+}
