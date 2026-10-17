@@ -134,7 +134,8 @@ def _scratch(tmp_path) -> Path:
 
 
 def _run(root, *args):
-    env = dict(os.environ, THE_SOURCE_ROOT=str(root), PYTHONPATH=str(ROOT), THE_SOURCE_NO_NETWORK="1")
+    env = dict(os.environ, THE_SOURCE_ROOT=str(root), THE_SOURCE_NO_NETWORK="1",
+               PYTHONPATH=os.pathsep.join(filter(None, [str(ROOT), os.environ.get("PYTHONPATH")])))
     p = subprocess.run([sys.executable, "-m", "source_pipeline", *args], cwd=ROOT, env=env, capture_output=True,
                        text=True, timeout=300)
     return p
