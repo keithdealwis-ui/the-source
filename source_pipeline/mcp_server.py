@@ -327,6 +327,52 @@ def _load_corpus(root: Path) -> dict:
     return state
 
 
+QUICK_SCHEMA = "the-source.quick/1"
+QUICK_FILES = ("health.jsonl", "pairings.jsonl")
+QUICK_NOTE = ("quick score (KEI-921): programmatic over published repository facts and detected pairings, "
+              "uncalibrated, never a recommendation. Only the full evaluation (Project Health and Replacement Fit "
+              "in the canonical layer) recommends. Method: docs/QUICK-SCORING.md")
+
+
+def _load_quick(root: Path) -> dict:
+    """Quick Health and quick Fit for the discovery corpus (KEI-921), verified against their MANIFEST."""
+    base = root / "data" / "quick"
+    state = {"layer": "data/quick", "methodology": "docs/QUICK-SCORING.md", "status": "unavailable", "reason": None,
+             "as_of": None, "manifest_sha256": None, "health": {}, "pairings": {}}
+    try:
+        raw = (base / "MANIFEST.json").read_bytes()
+        m = json.loads(raw)
+    except (OSError, ValueError) as exc:
+        state["reason"] = f"data/quick/MANIFEST.json unreadable: {type(exc).__name__}"
+        return state
+    state["manifest_sha256"] = hashlib.sha256(raw).hexdigest()
+    if m.get("schema") != QUICK_SCHEMA:
+        state["reason"] = f"schema is {m.get('schema')!r}, want {QUICK_SCHEMA!r}"
+        return state
+    for fname in QUICK_FILES:
+        path = base / fname
+        if not path.is_file() or _sha256(path) != (m.get("files") or {}).get(fname):
+            state["reason"] = f"data/quick/{fname} is missing or does not match its MANIFEST sha256"
+            return state
+    try:
+        health = {r["oss_id"]: r for r in _jsonl_interned(base / "health.jsonl")}
+        pairings = {}
+        for r in _jsonl_interned(base / "pairings.jsonl"):
+            pairings.setdefault(r["oss_id"], []).append(r)
+        if any(r.get("recommendation_eligible") is not False for r in health.values()) or \
+                any(r.get("recommendation_eligible") is not False for rs in pairings.values() for r in rs):
+            raise ValueError("a quick row claims recommendation eligibility")
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        state["reason"] = f"data/quick unreadable: {exc}"
+        return state
+    state.update(status="ok", as_of=m.get("as_of"), quick_version=m.get("quick_version"),
+                 corpus_version=m.get("corpus_version"), coverage=m.get("coverage"), health=health,
+                 pairings=pairings, last_run={k: (m.get("last_run") or {}).get(k) for k in
+                                              ("at", "mode", "runtime_s", "api_calls", "health_rescored",
+                                               "pairings_rescored", "deferred", "failure_count")})
+    return state
+
+
 def _bm25(docs):
     """BM25F-lite index over (kind, key, {field: (values, weight)}) documents: (docs, avg_len, idf)."""
     out, df, shared = [], {}, {}
@@ -465,7 +511,8 @@ class Layer:
                                    key=lambda r: (r.get("rank") or 10 ** 9, r.get("key") or ""))
 
     def signal_manifest_shas(self):
-        return tuple(self.signals[n]["manifest_sha256"] for n in sorted(SIGNALS)) + (self.corpus_state["manifest_sha256"],)
+        return tuple(self.signals[n]["manifest_sha256"] for n in sorted(SIGNALS)) + (
+            self.corpus_state["manifest_sha256"], self.quick_state["manifest_sha256"])
 
     # -- KEI-912 discovery corpus and tiers
 
@@ -497,6 +544,14 @@ class Layer:
             counts[self.tier_of(pid)] += 1
         counts["discovery"] = len(self.corpus)
         self.tier_counts = counts
+        self.quick_state = _load_quick(self.root)  # KEI-921
+        self.quick_health = self.quick_state.pop("health")
+        self.quick_pairings = self.quick_state.pop("pairings")
+        self.quick_by_saas = {}
+        for pid, rows in self.quick_pairings.items():
+            if pid in self.corpus:  # served for discovery-tier projects only; the canonical layer has full scores
+                for r in rows:
+                    self.quick_by_saas.setdefault(r["saas_id"], []).append(r)
 
     def tier_of(self, key: str):
         """recommended | scored (canonical layer) | discovery (corpus only) | None (unknown)."""
@@ -1042,6 +1097,12 @@ def _canonical_rec(layer, r):
     }
 
 
+def _quick_state(layer):
+    s = dict(layer.quick_state)
+    s["rule"] = QUICK_NOTE
+    return s
+
+
 def _corpus_state(layer, server):
     """The discovery corpus's availability and freshness, for every answer that serves it."""
     s = dict(layer.corpus_state)
@@ -1116,6 +1177,7 @@ def _discovery_view(layer, cid, full=False):
                           "recognises; check the terms before any use")
     if not live["found"]:
         out["host_status"] = f"not found on the host at {live['observed_as_of']} (deleted, made private or moved)"
+    out["quick_scores"] = _quick_view(layer, cid, full)
     if full:
         out.update(homepage=c["homepage"], languages=c["languages"], forks=live["forks"],
                    latest_release=live["latest_release"], aliases=c["aliases"], lanes=c["lanes"],
@@ -1125,6 +1187,27 @@ def _discovery_view(layer, cid, full=False):
                                    "and line), a GitHub topic or search, an owner's other repositories, a README link, "
                                    "the Replace lane, or a maintainer seed. No list text is republished.")
     return out
+
+
+def _quick_view(layer, cid, full=False):
+    """A discovery project's quick Health and quick Fit (KEI-921): labelled quick, never a recommendation."""
+    h = layer.quick_health.get(cid)
+    pairs = layer.quick_pairings.get(cid, [])
+    if h is None and not pairs:
+        return None
+    health = None if h is None else {k: h[k] for k in ("score", "band", "confidence", "watch_outs", "evaluated_at")}
+    if full and h is not None:
+        health.update(components=h["components"], confidence_meaning=h["confidence_meaning"])
+    fits = []
+    for r in sorted(pairs, key=lambda r: (-r["quick_fit"]["score"], r["saas_id"])):
+        row = {"saas_id": r["saas_id"], "saas_name": r["saas_name"], "quick_fit": r["quick_fit"]["score"],
+               "band": r["quick_fit"]["band"], "confidence": r["quick_fit"]["confidence"],
+               "detected_by": sorted({e["source"] for e in r["evidence"]})}
+        if full:
+            row.update(components=r["quick_fit"]["components"], evidence=r["evidence"], evaluated_at=r["evaluated_at"])
+        fits.append(row)
+    return {"label": "quick", "recommendation": False, "quick_health": health, "quick_fit": fits,
+            "note": QUICK_NOTE}
 
 
 def _corpus_extra(layer, pid):
@@ -1364,6 +1447,14 @@ def tool_get_alternatives(layer, args, server):
         s = layer.saas[sid]
         out["discovery_candidates"] = _discovery_candidates(layer, server, f"{s['name']} {s['category']}", limit,
                                                             terms=_category_terms(s), anchors=s["name"])
+        paired = sorted(layer.quick_by_saas.get(sid, []), key=lambda r: (-r["quick_fit"]["score"], r["oss_id"]))
+        out["quick_paired_candidates"] = {
+            "label": "quick", "recommendation": False, "note": QUICK_NOTE,
+            "status": "ok" if paired else "no_quick_paired_discovery_projects", "total": len(paired),
+            "candidates": [{**_discovery_view(layer, r["oss_id"]), "quick_fit": r["quick_fit"]["score"],
+                            "quick_fit_band": r["quick_fit"]["band"], "quick_fit_confidence": r["quick_fit"]["confidence"],
+                            "detected_by": sorted({e["source"] for e in r["evidence"]})} for r in paired[:limit]],
+            "quick_scores": _quick_state(layer)}
     return out
 
 
@@ -1398,7 +1489,11 @@ def tool_search(layer, args, server):
     supported_only = args.get("supported_only", False)
     if not isinstance(supported_only, bool):
         raise ToolError("supported_only must be true or false")
-    project_filters = lic is not None or status is not None or min_health is not None
+    min_quick = args.get("min_quick_health")
+    if min_quick is not None and (isinstance(min_quick, bool) or not isinstance(min_quick, (int, float))
+                                  or not 0 <= min_quick <= 100):
+        raise ToolError("min_quick_health must be a number from 0 to 100")
+    project_filters = lic is not None or status is not None or min_health is not None or min_quick is not None
     if project_filters and kind == "saas":
         raise ToolError("licence, maintenance_status and min_health filter projects; use kind project or any")
     mode = args.get("mode", "lexical")
@@ -1438,6 +1533,9 @@ def tool_search(layer, args, server):
                 continue
             if status is not None and c["maintenance"]["status"] != status:
                 continue
+            qh = layer.quick_health.get(key)
+            if min_quick is not None and (qh is None or qh["score"] < min_quick):
+                continue
             results.append({"kind": "project", "id": key, "tier": "discovery", "score": score,
                             "exact_name_match": exact, "matched": why, "project": _discovery_view(layer, key),
                             "recommended_for": []})
@@ -1452,6 +1550,8 @@ def tool_search(layer, args, server):
             h = p["project_health"]
             if min_health is not None and (h is None or h["score"] < min_health):
                 continue
+            if min_quick is not None and min_health is None and (h is None or h["score"] < min_quick):
+                continue  # a canonical project's full Project Health answers a quick floor
             rels = layer.rel_by_project.get(key, [])
             results.append({"kind": "project", "id": key, "tier": layer.tier_of(key), "score": score,
                             "exact_name_match": exact, "matched": why,
@@ -1470,7 +1570,8 @@ def tool_search(layer, args, server):
            "more_available": max(0, total - limit),
            "searched": ("full corpus: SaaS catalogue, canonical projects and discovery projects (host descriptions "
                         "and topics)" if layer.full else "canonical layer only: the discovery corpus is unavailable"),
-           "tiers": {t: TIER_MEANING[t] for t in TIERS}, "corpus": _corpus_state(layer, server)}
+           "tiers": {t: TIER_MEANING[t] for t in TIERS}, "corpus": _corpus_state(layer, server),
+           "quick_scores": _quick_state(layer)}
     if mode == "hybrid":
         out["graph_seeds"] = seeds
         out["ranking"] = (f"Hybrid: {HYBRID_WEIGHTS['lexical']} x lexical BM25 (normalised to the best hit) + "
@@ -1639,10 +1740,13 @@ def tool_compare(layer, args, server):
                 "licence_family": LICENCE_FAMILIES.get(d["licence"]["spdx"] or "", "unknown"),
                 "licence_status": d["licence"]["status"], "stars": d["stars"], "archived": d["archived"],
                 "latest_release": d["latest_release"], "maintenance": d["maintenance"], "project_health": None,
+                "quick_scores": d["quick_scores"],
                 "observed_as_of": d["observed_as_of"], "replaces": [],
                 "repository_momentum": _repository_momentum(layer, pid),
                 "community_momentum": _community_momentum(layer, pid)})
-            uncertainty.append(f"{pid}: discovery tier, not scored (no Project Health or Replacement Fit)")
+            uncertainty.append(f"{pid}: discovery tier, not scored (no Project Health or Replacement Fit)"
+                               + ("; quick scores only: uncalibrated, never a recommendation"
+                                  if d["quick_scores"] else ""))
             if "warning" in d:
                 uncertainty.append(f"{pid}: {d['warning']}")
             continue
@@ -2016,12 +2120,16 @@ TOOLS = [
      "Search The Source's SaaS catalogue and every open-source project it knows (about 9,400: the canonical layer "
      "plus the discovery corpus) by words: names, aliases, categories, products replaced, host descriptions and "
      "topics. Every project carries a tier (recommended, scored, discovery); filter by tier, licence, maintenance "
-     "status and Project Health. Discovery projects are discovered, not scored, and never recommendations.",
+     "status and Project Health (or quick Health). Discovery projects are not fully scored and never "
+     "recommendations; they carry labelled quick Health and quick Fit (KEI-921).",
      _obj({"query": {"type": "string", "description": "words to look for, e.g. 'password manager'"},
            "kind": {"type": "string", "enum": ["any", "saas", "project"], "description": "default any"},
            "licence": {"type": "string", "description": "SPDX id, e.g. AGPL-3.0 (projects only)"},
            "maintenance_status": {"type": "string", "enum": ["active", "maintained"]},
            "min_health": {"type": "number", "minimum": 0, "maximum": 100},
+           "min_quick_health": {"type": "number", "minimum": 0, "maximum": 100,
+                                "description": "projects: discovery rows by quick Health; canonical rows by their "
+                                               "full Project Health (quick scores are never recommendations)"},
            "supported_only": {"type": "boolean", "description": "SaaS results: only products with a page"},
            "tier": {"type": "string", "enum": ["any"] + list(TIERS),
                     "description": "projects only: recommended, scored or discovery (default any)"},
@@ -2195,7 +2303,8 @@ class Server:
         except OSError as exc:
             self.reload_error = f"MANIFEST unreadable: {exc}"
             return
-        signal_shas = tuple(_file_sha(self.root / "data" / n / "MANIFEST.json") for n in sorted(SIGNALS) + ["corpus"])
+        signal_shas = tuple(_file_sha(self.root / "data" / n / "MANIFEST.json")
+                            for n in sorted(SIGNALS) + ["corpus", "quick"])
         if sha == self.layer.manifest_sha256 and signal_shas == self.layer.signal_manifest_shas():
             return
         try:

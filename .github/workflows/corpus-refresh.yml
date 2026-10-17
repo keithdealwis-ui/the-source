@@ -60,6 +60,14 @@ jobs:
           python -m source_pipeline corpus-refresh | tee refresh.json
           python -m source_pipeline corpus-validate
 
+      - name: Quick scores, incremental (KEI-921; no network, never a recommendation)
+        if: steps.due.outputs.due == 'true'
+        env:
+          THE_SOURCE_NO_NETWORK: "1"
+        run: |
+          python -m source_pipeline quick-score | tee quick.json
+          python -m source_pipeline quick-validate > /dev/null
+
       - name: Commit data/corpus
         if: steps.due.outputs.due == 'true'
         env:
@@ -67,7 +75,7 @@ jobs:
         run: |
           git config user.name "the-source-cycle"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/corpus
+          git add data/corpus data/quick
           VERSION=$(python -c "import json;print(json.load(open('data/corpus/MANIFEST.json'))['corpus_version'])")
           git commit -m "corpus: refresh live facts (corpus $VERSION)" || { echo "nothing to commit"; exit 0; }
           for i in 1 2 3 4 5; do
@@ -80,6 +88,11 @@ jobs:
             echo
             echo '```json'
             cat refresh.json
+            echo '```'
+            echo
+            echo "### Quick scores (runtime, API calls, rescored, deferred, failures)"
+            echo '```json'
+            python -c "import json;print(json.dumps(json.load(open('quick.json'))['last_run'], indent=2))"
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 

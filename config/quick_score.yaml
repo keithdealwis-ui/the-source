@@ -1,0 +1,41 @@
+# The Source — quick scoring (KEI-921, V2.1 WP4). Method: docs/QUICK-SCORING.md.
+#
+# Quick Health and quick Fit are cheap programmatic scores over the facts already
+# published in data/corpus/. They make the discovery corpus searchable and comparable.
+# They are NEVER a recommendation. Only the full evaluation (data/scores/, the canonical
+# layer) can recommend or publish. Quick confidence is a data-completeness measure and is
+# not calibrated (calibration is V3).
+#
+# Changing a weight or a bucket changes config_digest, and the next run rescores
+# everything. That is deliberate.
+
+health:
+  # days since the last push -> points (first bucket whose limit >= age wins)
+  activity: {weight: 40, buckets: [[30, 1.0], [90, 0.8], [180, 0.6], [365, 0.35], [730, 0.15]]}
+  # log-scaled stars, full marks at `full`
+  adoption: {weight: 25, full: 10000}
+  # log-scaled forks, full marks at `full`
+  community: {weight: 10, full: 1000}
+  # days since the latest release -> points; no release at all scores 0
+  releases: {weight: 15, buckets: [[180, 1.0], [365, 0.65], [730, 0.3]]}
+  # the Discover lane's maintenance evaluation
+  maintenance: {weight: 10, status: {active: 1.0, maintained: 0.7}}
+  archived_cap: 10            # an archived repository never scores above this
+  stale_facts_days: 21        # facts older than this lower confidence
+  bands: [[75, Strong], [55, Moderate], [35, Weak], [0, Poor]]
+
+fit:
+  # pairing evidence: how the pairing was detected
+  evidence: {replace_lane: 1.0, topic: 0.85, description: 0.8}
+  weights: {evidence: 40, category: 20, health: 30, licence: 10}
+  licence: {eligible: 1.0, conditional: 0.5}
+  bands: [[75, Strong], [55, Moderate], [35, Weak], [0, Poor]]
+
+caps:
+  # Cost bounds for one run. Quick scoring makes no network calls; it reads facts that
+  # corpus-refresh already fetched. These caps bound runtime and work per run. Work past a cap is
+  # deferred: the previous score is kept and flagged, and the run reports it.
+  max_rescore_per_run: 20000
+  max_runtime_s: 600
+  api_calls_allowed: 0
+  history_runs_kept: 60

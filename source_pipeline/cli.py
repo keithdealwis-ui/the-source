@@ -22,6 +22,10 @@
                                                    (--refresh re-reads GitHub's identity facts first; network)
     python -m source_pipeline corpus-licence-classify  classify every flagged row's licence (network; KEI-919)
 
+  Quick scoring of the whole corpus (KEI-921, docs/QUICK-SCORING.md; never a recommendation):
+    python -m source_pipeline quick-score [--full] quick Health, inferred pairings, quick Fit; incremental; no network
+    python -m source_pipeline quick-validate       labels, coverage, recompute, zero quick-only recommendations
+
   Scoring (KEI-806):
     python -m source_pipeline score-harvest        observe the scoring evidence on GitHub (network)
                               [--refresh]          re-observe everything under a new as_of
@@ -272,6 +276,10 @@ def main(argv=None) -> int:
         from . import lineage
 
         return lineage.main(argv)
+    if argv[:1] and argv[0] in ("quick-score", "quick-validate"):
+        from . import quick_score
+
+        return quick_score.main(argv)
     if argv[:1] and argv[0] in ("obs-telemetry-report",):
         from . import telemetry_report
 

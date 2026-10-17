@@ -1,0 +1,73 @@
+{
+  "schema": "the-source.quick/1",
+  "checks": [
+    {
+      "id": "schema",
+      "ok": true,
+      "detail": "the-source.quick/1"
+    },
+    {
+      "id": "sha256:health.jsonl",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "sha256:pairings.jsonl",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "quick_version",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "id": "corpus_version",
+      "ok": true,
+      "detail": "scored against 43c58bea3a8a3226, corpus is 43c58bea3a8a3226"
+    },
+    {
+      "id": "every_row_labelled_quick_and_never_recommendation_eligible",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "id": "health_recomputes_from_its_facts",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "id": "eligible_health_coverage_ge_95pct",
+      "ok": true,
+      "detail": "7990/8027 = 99.54%"
+    },
+    {
+      "id": "every_detectable_pairing_has_quick_fit",
+      "ok": true,
+      "detail": "0 detectable pairings without quick Fit; 803 detectable"
+    },
+    {
+      "id": "zero_quick_only_recommendations_canonical",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "id": "read_api_v1_carries_no_quick_scores",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "id": "last_run_cost_visible",
+      "ok": true,
+      "detail": {
+        "api_calls": 0,
+        "runtime_s": 8.06,
+        "failure_count": 0,
+        "health_rescored": 0,
+        "pairings_rescored": 0
+      }
+    }
+  ],
+  "failed_checks": 0,
+  "coverage_pct": 99.54
+}
