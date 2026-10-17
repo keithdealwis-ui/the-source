@@ -658,14 +658,14 @@
    "error": null,
    "group": "need_unnamed",
    "need": "metrics logs and traces observability platform",
-   "precision": 0.6,
-   "recall": 0.6,
+   "precision": 1.0,
+   "recall": 1.0,
    "returned": [
     "github.com/coroot/coroot",
-    "github.com/peon-sh/peon",
     "github.com/grafana/grafana",
-    "github.com/tsuru/tsuru",
-    "github.com/netdata/netdata"
+    "github.com/netdata/netdata",
+    "github.com/openobserve/openobserve",
+    "github.com/uptrace/uptrace"
    ],
    "saas": "datadog"
   },
@@ -908,9 +908,9 @@
   },
   "need_unnamed": {
    "empty": 1,
-   "precision_at_5": 0.7562,
+   "precision_at_5": 0.7812,
    "queries": 16,
-   "recall_at_5": 0.75
+   "recall_at_5": 0.775
   },
   "padding_rows": 0,
   "supported_products_audited": 20

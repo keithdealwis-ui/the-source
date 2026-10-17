@@ -120,10 +120,9 @@ class TestLiveLayer(unittest.TestCase):
         r = self.call("source_get_relationship", {"saas": unscored[0], "project": unscored[1]})
         self.assertIn("not yet scored", r["verdict"])
 
-    def test_bare_organisation_lists_its_repositories(self):
-        with self.assertRaises(M.ToolError) as ctx:
-            self.call("source_get_project", {"project": "bitwarden"})
-        self.assertIn("github.com/bitwarden/server", str(ctx.exception))
+    def test_bare_organisation_resolves_to_its_primary_repository(self):
+        r = self.call("source_get_project", {"project": "bitwarden"})
+        self.assertEqual(r["project"]["id"], "github.com/bitwarden/server")  # siblings: server + clients (S1.8)
 
     def test_nonsense_is_not_padded(self):
         for need in ("zzqx frobnicate widget", "blue", "the and of"):

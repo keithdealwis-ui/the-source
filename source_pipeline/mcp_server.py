@@ -516,6 +516,10 @@ class Layer:
             if hit and len(hit) == 1:
                 cid = next(iter(hit))
             elif hit:
+                primaries = {(self.corpus[h].get("identity") or {}).get("sibling_primary") for h in hit}
+                if len(primaries) == 1 and None not in primaries and next(iter(primaries)) in (
+                        set(self.corpus) | set(self.projects)):
+                    return next(iter(primaries)), self.tier_of(next(iter(primaries)))
                 shown = sorted(hit)
                 raise ToolError(f"{v!r} names more than one discovery project: {shown[:10]}"
                                 + (f" and {len(shown) - 10} more" if len(shown) > 10 else "")
@@ -541,6 +545,10 @@ class Layer:
         same = [k for k in mine if _norm(k.split("/")[2]).replace(" ", "") == n]
         if len(same) == 1:
             return same[0]
+        # KEI-919 S1.8: sibling repositories of one project (bitwarden/server + clients) land on its primary
+        prim = {((self.corpus.get(k) or {}).get("identity") or {}).get("sibling_primary") for k in mine}
+        if len(prim) == 1 and None not in prim and next(iter(prim)) in mine:
+            return next(iter(prim))
         if mine:
             raise ToolError(f"{value!r} is an organisation with {len(mine)} repositories here: {mine[:10]}"
                             + (f" and {len(mine) - 10} more" if len(mine) > 10 else "")
@@ -1062,6 +1070,8 @@ def _discovery_view(layer, cid, full=False):
            "licence": _licence_view(c["licence"], live["licence_spdx"]),
            "stars": live["stars"], "archived": live["archived"], "pushed_at": live["pushed_at"],
            "maintenance_status": c["maintenance"]["status"], "observed_as_of": live["observed_as_of"]}
+    if c.get("identity"):  # KEI-919 S1.8: renamed, merged, fork, mirror, siblings
+        out["identity"] = c["identity"]
     if c["licence"]["status"] != "recognised":
         out["warning"] = (f"licence issue ({c['licence']['issue']['reason']}): not an open-source licence The Source "
                           "recognises; check the terms before any use")
@@ -1238,6 +1248,8 @@ def _discovery_candidates(layer, server, query, limit, licences=None, family=Non
                    else "integration_not_replacement"
                    if uses or integration_kind(c["name"], c["full_name"], c["description"], c["topics"], products, alt)
                    else "not_a_product" if not_a_product(c["name"], c["full_name"], c["topics"])
+                   else "fork_of_corpus_project" if (c.get("identity") or {}).get("fork_parent_in_corpus")
+                   else "mirror" if (c.get("identity") or {}).get("mirror")
                    else "licence_issue" if c["licence"]["status"] != "recognised"
                    else "not_found_on_host" if not live["found"]
                    else "archived" if live["archived"]
@@ -1881,6 +1893,9 @@ def tool_emerging(layer, args, server):
             mrow = layer.momentum.get(_repo_key(r.get("key") or ""))
             mwin = ((mrow or {}).get("windows") or {}).get(window) or {}
             stars = mwin.get("stars_now")
+            stars_from = "momentum" if stars is not None else None
+            if stars is None and r.get("stars") is not None:  # KEI-919 S1.6: the radar's own dated reading
+                stars, stars_from = r["stars"], "radar"
             if (min_stars is not None or max_stars is not None) and stars is None:
                 unknown_stars += 1
                 continue
@@ -1888,7 +1903,9 @@ def tool_emerging(layer, args, server):
                 continue
             community.append({"key": r.get("key"), "rank": r.get("rank"), "score": r.get("score"),
                               "sources": r.get("sources"), "last_mentioned_at": r.get("last_mentioned_at"),
-                              "stars": stars, "repository_momentum": mwin.get("momentum") if mwin else None,
+                              "stars": stars, "stars_source": stars_from,
+                              "stars_observed_at": (r.get("stars_observed_at") if stars_from == "radar" else None),
+                              "repository_momentum": mwin.get("momentum") if mwin else None,
                               "explanation": r.get("explanation"), "radar_status": r.get("status")})
     both = sorted({x["key"] for x in repo_rows} & {x["key"] for x in community})
     degraded = []
@@ -1903,7 +1920,8 @@ def tool_emerging(layer, args, server):
         degraded.append(f"{window}-day acceleration is {cov.get('acceleration_status')}; measurable from "
                         f"{cov.get('acceleration_measurable_from')}")
     if unknown_stars:
-        degraded.append(f"{unknown_stars} Community Radar repositories have no star count in the momentum layer, so "
+        degraded.append(f"{unknown_stars} Community Radar repositories have no star count (momentum layer or radar "
+                        "reading), so "
                         "a star filter cannot place them; they are left out, not guessed")
     if in_scope is not None:
         degraded.append(("query narrows to projects in the canonical layer and the discovery corpus" if layer.full
