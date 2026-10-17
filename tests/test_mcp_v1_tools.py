@@ -195,7 +195,8 @@ def test_old_signal_is_reported_stale():
 # -- privacy-safe telemetry
 
 def test_telemetry_is_aggregate_only():
-    s = _server()
+    s = M.Server(ROOT, NOW, telemetry=True)
+    s.handle({"jsonrpc": "2.0", "id": 0, "method": "initialize", "params": {"protocolVersion": "2025-06-18"}})
     _ok(s, "source_recommend", need="secret-project-name-1234 wiki")
     _call(s, "source_compare_projects", projects=["only-one"])
     snap = s.telemetry.snapshot()
@@ -204,7 +205,7 @@ def test_telemetry_is_aggregate_only():
     day = snap["days"]["2026-10-10"]
     assert day["source_recommend"]["ok"]["count"] == 1
     assert day["source_compare_projects"]["tool_error"]["count"] == 1
-    assert set(day["source_recommend"]["ok"]) == {"count", "latency"}
+    assert set(day["source_recommend"]["ok"]) == {"count", "latency", "empty"}
 
 
 def test_renamed_repositories_are_one_project_and_never_shadowed():

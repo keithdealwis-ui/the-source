@@ -34,8 +34,14 @@ new snapshot; if the new files do not verify, the previous snapshot keeps servin
 says so.
 
 stdout carries protocol messages only. Diagnostics go to stderr. Queries are not logged.
-Usage telemetry is aggregate counters only (tool, outcome, latency bucket, per UTC day);
-no arguments, results, client identity or addresses are kept (Telemetry below).
+Usage telemetry is off unless a transport gives it somewhere to go (mcp_http.py --telemetry);
+on stdio nothing is counted. When on, it is aggregate counters only (tool, outcome, latency
+bucket, empty answers, per UTC day); no arguments, results, client identity or addresses are
+kept (Telemetry below; weekly reports in telemetry_report.py, KEI-918).
+
+source_dataset_info also reports the newest daily-cycle run record (runs/*.json, public in
+the same repository, KEI-918) as `last_run`, so a client can see whether the cycle behind the
+snapshot succeeded, when, and whether the snapshot served is the last good one.
 """
 from __future__ import annotations
 
@@ -92,6 +98,11 @@ CORPUS_SCHEMA = "the-source.corpus/1"  # KEI-912, docs/CORPUS.md
 CORPUS_FILES = ("live.jsonl", "projects.jsonl")
 CORPUS_STALE_AFTER_DAYS = 10  # used only when the MANIFEST does not state its own
 TIERS = ("recommended", "scored", "discovery")
+RUN_STALE_AFTER_HOURS = 48  # the cycle runs daily; two days without a run record is stale (KEI-918)
+RUN_FIELDS = ("run_id", "trigger", "status", "started_at", "ended_at", "history_day")
+RUN_COUNTS = ("candidates", "refreshed_records", "changed", "added", "canonical_projects", "canonical_relationships",
+              "canonical_relationships_added", "canonical_relationships_removed", "canonical_projects_removed",
+              "supported_saas_ok", "failed", "deferred", "intake_promoted", "intake_pending")
 DISCOVERY_LABEL = "discovered, not scored \u2014 no Replacement Fit or Project Health"
 TIER_MEANING = {
     "recommended": "in the canonical layer with at least one recommended relationship",
@@ -926,6 +937,7 @@ def tool_dataset_info(layer, args, server):
                       "stale": age is not None and age > STALE_AFTER_DAYS, "stale_after_days": STALE_AFTER_DAYS,
                       "newest_live_check": newest},
         "snapshot": server.snapshot_status(),
+        "last_run": last_run(layer.root, now, layer.dataset_version),
         "signals": {n: _signal_state(layer, server, n) for n in SIGNALS},
         "corpus": {**_corpus_state(layer, server), "counts": layer.corpus_state.get("counts"),
                    "publication": layer.corpus_state.get("publication"),
@@ -942,11 +954,66 @@ def tool_dataset_info(layer, args, server):
                   + ["api/v1/index.json", "api/v1/domains.json", "api/v1/saas/<saas_id>.json",
                      "data/momentum/MANIFEST.json", "data/momentum/projects.jsonl",
                      "data/radar/MANIFEST.json", "data/radar/radar.jsonl",
-                     "data/corpus/MANIFEST.json", "data/corpus/projects.jsonl", "data/corpus/live.jsonl"],
+                     "data/corpus/MANIFEST.json", "data/corpus/projects.jsonl", "data/corpus/live.jsonl",
+                     "runs/<run_id>.json (last_run only)"],
         "does_not_serve": "the internal Discover lane build (data/discover), staging, live snapshots, history, "
                           "intake and internal research data; relationships withheld by the export guard. Nothing "
                           "private to AIQ.",
     }
+
+
+def _ts(value):
+    try:
+        return datetime.strptime(value, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    except (TypeError, ValueError):
+        return None
+
+
+def _run_view(rec):
+    canon = rec.get("canonical") or {}
+    counts = rec.get("counts") or {}
+    error = rec.get("error")
+    return {**{k: rec.get(k) for k in RUN_FIELDS},
+            "dataset_version_before": canon.get("dataset_version_before"),
+            "dataset_version_after": canon.get("dataset_version_after"),
+            "dataset_changed": canon.get("changed"), "commit_tag": canon.get("commit_tag"),
+            "error": error[:MAX_TEXT] if isinstance(error, str) else None,
+            "failures_survived": len(rec.get("failures") or []),
+            "degraded_strategies": sorted(s.get("id") for s in rec.get("strategies") or []
+                                          if isinstance(s, dict) and s.get("status") not in ("ok", None)),
+            "counts": {k: counts[k] for k in RUN_COUNTS if k in counts}}
+
+
+def last_run(root: Path, now: datetime, serving_version: str) -> dict:
+    """The newest daily-cycle record in runs/ (the KEI-887 rule: the record that ended last, a running record by
+    its start, ties by file name) and the newest successful one. Read only here, never cached: runs/ is small and
+    this is the only tool that reads it. A checkout without runs/ (a bare read layer) says so; nothing fails."""
+    d = root / "runs"
+    recs = []
+    for path in sorted(d.glob("*.json")) if d.is_dir() else []:
+        try:
+            rec = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        if isinstance(rec, dict) and isinstance(rec.get("run_id"), str):
+            recs.append((rec.get("ended_at") or rec.get("started_at") or "", path.name, rec))
+    if not recs:
+        return {"status": "unavailable", "reason": "no cycle run records (runs/*.json) beside this read layer",
+                "stale_after_hours": RUN_STALE_AFTER_HOURS}
+    newest = max(recs, key=lambda r: (r[0], r[1]))[2]
+    good = [r for r in recs if r[2].get("status") == "succeeded"]
+    last_good = max(good, key=lambda r: (r[0], r[1]))[2] if good else None
+    at = _ts(newest.get("ended_at") or newest.get("started_at"))
+    age = round((now - at).total_seconds() / 3600, 1) if at else None
+    good_version = ((last_good or {}).get("canonical") or {}).get("dataset_version_after")
+    stale = age is None or age > RUN_STALE_AFTER_HOURS
+    return {"status": "stale" if stale else "ok", "run": _run_view(newest),
+            "age_hours": age, "stale_after_hours": RUN_STALE_AFTER_HOURS,
+            "last_success": None if last_good is None else {k: _run_view(last_good)[k] for k in (
+                "run_id", "ended_at", "dataset_version_after")},
+            "serving_last_success": good_version == serving_version,
+            "note": "From runs/*.json, the public cycle records. A failed run promotes nothing, so the snapshot "
+                    "served stays the last successful run's output; serving_last_success says whether it is."}
 
 
 def tool_list_supported(layer, args, server):
@@ -1773,17 +1840,30 @@ def _file_sha(path: Path):
         return None
 
 
+# The list an answer is "empty" by, per tool (KEI-918: the zero-result rate, the one quality signal telemetry keeps).
+EMPTY_BY = {"source_get_alternatives": ("recommendations",), "source_search": ("results",),
+            "source_recommend": ("recommendations",),
+            "source_emerging_projects": ("repository_momentum", "community_momentum")}
+TELEMETRY_SCHEMA = "the-source.mcp-telemetry/2"
+
+
+def answer_is_empty(tool: str, result) -> bool:
+    keys = EMPTY_BY.get(tool)
+    return bool(keys) and isinstance(result, dict) and not any(result.get(k) for k in keys)
+
+
 class Telemetry:
-    """Privacy-safe aggregate usage: per UTC day, per tool, per outcome, a count and a latency histogram.
-    Nothing about the caller or the call is kept: no arguments, results, client name, session or address.
-    The HTTP transport writes snapshot() to a file; stdio keeps it in memory only."""
+    """Privacy-safe aggregate usage: per UTC day, per tool, per outcome, a count, a latency histogram and, for the
+    list tools, how many answers were empty. Nothing about the caller or the call is kept: no arguments, results,
+    client name, session or address. Off by default: Server only counts when a transport gives the counters
+    somewhere to go (mcp_http.py --telemetry); a stdio server counts nothing (KEI-918)."""
 
     BUCKETS_MS = (10, 50, 200, 1000)
 
     def __init__(self, retain_days: int = 90):
         self.days, self.retain_days = {}, retain_days
 
-    def count(self, tool: str, outcome: str, seconds: float, now: datetime):
+    def count(self, tool: str, outcome: str, seconds: float, now: datetime, empty: bool = False):
         ms = seconds * 1000
         bucket = next((f"<{b}ms" for b in self.BUCKETS_MS if ms < b), f">={self.BUCKETS_MS[-1]}ms")
         day = self.days.setdefault(now.strftime("%Y-%m-%d"), {})
@@ -1791,26 +1871,29 @@ class Telemetry:
         cell = row.setdefault(outcome, {"count": 0, "latency": {}})
         cell["count"] += 1
         cell["latency"][bucket] = cell["latency"].get(bucket, 0) + 1
+        if tool in EMPTY_BY and outcome == "ok":
+            cell["empty"] = cell.get("empty", 0) + (1 if empty else 0)
         cutoff = (now - timedelta(days=self.retain_days)).strftime("%Y-%m-%d")
         for d in [d for d in self.days if d < cutoff]:
             del self.days[d]
 
     def snapshot(self):
-        return {"schema": "the-source.mcp-telemetry/1", "server_version": SERVER_VERSION,
+        return {"schema": TELEMETRY_SCHEMA, "server_version": SERVER_VERSION,
                 "fields": "per UTC day -> tool -> outcome (ok | tool_error | internal_error) -> count and latency "
-                          "histogram. No arguments, results, client identity, sessions or addresses are recorded.",
+                          "histogram, and for list tools' ok answers the number that were empty. No arguments, "
+                          "results, client identity, sessions or addresses are recorded.",
                 "retain_days": self.retain_days, "days": self.days}
 
 
 class Server:
-    def __init__(self, root: Path, now: datetime | None = None):
+    def __init__(self, root: Path, now: datetime | None = None, telemetry: bool = False):
         self.root = Path(root)
         self._now = now
         self.layer = Layer(self.root)  # refuse to start on a layer that does not verify
         self.reload_error = None
         self.initialized = False
         self.protocol = None
-        self.telemetry = Telemetry()
+        self.telemetry = Telemetry() if telemetry else None  # off unless a transport has a sink for it
 
     def now(self):
         return self._now or datetime.now(timezone.utc).replace(microsecond=0)
@@ -1906,17 +1989,21 @@ class Server:
             _check_args(schema, args)
             payload = {"result": fn(self.layer, args, self), "meta": self.meta()}
         except ToolError as exc:
-            self.telemetry.count(name, "tool_error", time.monotonic() - started, self.now())
+            self._count(name, "tool_error", started)
             return _ok(mid, {"content": [{"type": "text", "text": f"{name}: {exc}"}], "isError": True})
         except Exception:
-            self.telemetry.count(name, "internal_error", time.monotonic() - started, self.now())
+            self._count(name, "internal_error", started)
             raise
-        self.telemetry.count(name, "ok", time.monotonic() - started, self.now())
+        self._count(name, "ok", started, answer_is_empty(name, payload["result"]))
         text = json.dumps(payload, sort_keys=True, ensure_ascii=False, indent=1)
         result = {"content": [{"type": "text", "text": text}], "isError": False}
         if self.protocol >= "2025-06-18":
             result["structuredContent"] = payload
         return _ok(mid, result)
+
+    def _count(self, name, outcome, started, empty=False):
+        if self.telemetry is not None:
+            self.telemetry.count(name, outcome, time.monotonic() - started, self.now(), empty)
 
     def _resources(self):
         out = [

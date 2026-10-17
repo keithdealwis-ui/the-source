@@ -19,8 +19,10 @@ and network-free. This module adds the socket and nothing else:
   never written or logged.
 * An Origin header, when a browser sends one, must be in --allow-origin (DNS-rebinding
   protection, as the transport specification requires); non-browser clients send none.
-* No request logging. --telemetry writes the engine's aggregate counters (mcp_server.Telemetry:
-  tool, outcome, latency bucket per UTC day; no arguments, results, identities or addresses).
+* No request logging. Without --telemetry nothing is counted. With it, the engine's aggregate
+  counters are written there (mcp_server.Telemetry: tool, outcome, latency bucket and empty
+  answers per UTC day; no arguments, results, identities or addresses). Weekly reports:
+  telemetry_report.py (KEI-918).
 
 Intended to run behind a TLS reverse proxy on 127.0.0.1 (deploy/the-source-mcp/).
 """
@@ -69,6 +71,8 @@ class App:
         self.server = server
         self.allow_origins = set(allow_origins)
         self.telemetry_path = Path(telemetry_path) if telemetry_path else None
+        if self.telemetry_path and server.telemetry is None:  # counters exist only where they are written
+            server.telemetry = M.Telemetry()
         self.rate = RateLimiter(rate_per_min)
         self.slots = threading.BoundedSemaphore(max_inflight)
         self.engine = threading.Lock()  # the engine holds per-request protocol state; one call at a time

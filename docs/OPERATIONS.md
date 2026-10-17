@@ -45,6 +45,7 @@ To run one now, use Actions, then *Daily intelligence cycle*, then *Run workflow
 | 11 | `history` | Write the day's light observations to `data/history/daily/<day>.jsonl.gz` (deterministic gzip) and `data/history/INDEX.json` (hash, rows, run, dataset version). Kept `history.retain_days` (400). |
 | 12 | `momentum` | Measure every repository's momentum and acceleration over 1/7/30/90 days from the history, including today's snapshot (KEI-849, [`MOMENTUM.md`](MOMENTUM.md)). Write `data/momentum/` and validate it (released methodology version, schema, byte-identical rebuild). A window without enough history says so per repository. A failure fails the cycle. |
 | 13 | `community_radar` | Ask Hacker News (official API), Forem (public API), Bluesky (public search) and, where a credential is configured, X and Instagram which repositories are being discussed, rank them (capped, deterministic), reconcile each with the corpus and pool by name and GitHub repository id, and admit new ones to the discovery pool (KEI-850, [`RADAR.md`](RADAR.md)). A source outage degrades the strategy. A radar that fails its own validation is rolled back to the previous one, and the cycle carries on. |
+| 14 | `golden_queries` | Run the 48 golden queries against the layer just built: recall@5, precision@5 and constraint violations, compared with `observability/golden-baseline.json` (KEI-918, [`OBSERVABILITY.md`](OBSERVABILITY.md)). A violation, a must-fail query that answers, or a drop of more than 0.05 below the baseline degrades the strategy and raises an alert. It never blocks the canonical data. |
 
 Typical cost: a steady-state day with nothing changed made ~33 light calls plus discovery
 and corroboration, no deep calls, and took about 4 minutes; the first daily run, which
@@ -106,9 +107,10 @@ Methodology, sources and their terms: [`RADAR.md`](RADAR.md).
 - **Work happens in a scratch copy.** Nothing in the live checkout changes until every
   step has passed. Promotion replaces the produced directories whole.
 - **Failure leaves the last known-good data intact.** The run record is committed with
-  `status: failed` and the error. A GitHub issue labelled `cycle-failure` is opened, or
-  commented on if already open, and the workflow run is marked failed. The next hourly
-  wake-up inside the window (or catch-up) retries. A later success closes the issue.
+  `status: failed` and the error. A GitHub issue labelled `cycle-failure` and titled with the
+  failure's fingerprint is opened, or commented on if that fault already has one, and the
+  workflow run is marked failed. The next hourly wake-up inside the window (or catch-up)
+  retries. A run without that fault closes the issue (KEI-918).
 - **History and the discovery pool are promoted with everything else.** A failed day
   writes no snapshot and changes no pool; the next success writes its own day.
 - **Retries are safe.** Every output is a deterministic function of its inputs. Keys are
@@ -141,7 +143,12 @@ Methodology, sources and their terms: [`RADAR.md`](RADAR.md).
 - `canonical`: `dataset_version_before` and `dataset_version_after`, `changed`, and
   `commit_tag` (`cycle/<run_id>`, the resulting canonical commit)
 - `history_day`: the snapshot this run wrote
-- `error`: set when the run failed
+- `error`: set when the run failed; `failed_step`: the step that was running (KEI-918)
+
+Beside each record, `runs/reports/<run_id>.intake.json` is the run's intake report: the
+funnel from upstream lists to the canonical layer, with what stopped at each stage and why
+(KEI-918 S0.1). After each cycle, `obs-alerts` fingerprints its failures and keeps one
+GitHub issue per fingerprint (S0.2). See [`OBSERVABILITY.md`](OBSERVABILITY.md).
 
 The schema requires the KEI-848 counts and `history_day` on every successful daily record.
 

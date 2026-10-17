@@ -1,0 +1,1053 @@
+{
+  "data_as_of": "2026-10-16T23:27:37Z",
+  "dataset_version": "02568a5dd656e3a8",
+  "k": 5,
+  "queries": [
+    {
+      "hits": [
+        "github.com/docmost/docmost"
+      ],
+      "id": "alt-notion",
+      "kind": "positive",
+      "precision": 0.2,
+      "reachable": 6,
+      "recall": 0.2,
+      "relevant": 6,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/evergreen-it-dev/folio",
+        "github.com/docmost/docmost",
+        "github.com/dexio-wiki/dexio",
+        "github.com/churichard/notabase",
+        "github.com/xwiki/xwiki-platform"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/passbolt/passbolt_api"
+      ],
+      "id": "alt-1password",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 2,
+      "recall": 0.5,
+      "relevant": 2,
+      "status": "insufficient_recommendations",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/passbolt/passbolt_api"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/zulip/zulip"
+      ],
+      "id": "alt-slack",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 3,
+      "recall": 0.3333,
+      "relevant": 3,
+      "status": "insufficient_recommendations",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/zulip/zulip"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/leantime/leantime",
+        "github.com/makeplane/plane",
+        "github.com/opf/openproject",
+        "github.com/taigaio/taiga-back"
+      ],
+      "id": "alt-jira",
+      "kind": "positive",
+      "precision": 0.8,
+      "reachable": 5,
+      "recall": 0.8,
+      "relevant": 5,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/noveum/orbit",
+        "github.com/leantime/leantime",
+        "github.com/makeplane/plane",
+        "github.com/opf/openproject",
+        "github.com/taigaio/taiga-back"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/wekan/wekan",
+        "github.com/go-vikunja/vikunja",
+        "github.com/makeplane/plane"
+      ],
+      "id": "alt-trello",
+      "kind": "positive",
+      "precision": 0.6,
+      "reachable": 5,
+      "recall": 0.6,
+      "relevant": 5,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/wekan/wekan",
+        "github.com/go-vikunja/vikunja",
+        "github.com/tehnika-mk/monomap",
+        "github.com/makeplane/plane",
+        "github.com/super-productivity/super-productivity"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/leantime/leantime",
+        "github.com/go-vikunja/vikunja",
+        "github.com/makeplane/plane",
+        "github.com/opf/openproject"
+      ],
+      "id": "alt-asana",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 6,
+      "recall": 0.8,
+      "relevant": 6,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/leantime/leantime",
+        "github.com/go-vikunja/vikunja",
+        "github.com/makeplane/plane",
+        "github.com/opf/openproject"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/plausible/analytics",
+        "github.com/umami-software/umami",
+        "github.com/open-web-analytics/open-web-analytics"
+      ],
+      "id": "alt-google-analytics",
+      "kind": "positive",
+      "precision": 0.6,
+      "reachable": 7,
+      "recall": 0.6,
+      "relevant": 7,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/plausible/analytics",
+        "github.com/umami-software/umami",
+        "github.com/open-web-analytics/open-web-analytics",
+        "github.com/frigadehq/trench",
+        "github.com/prismelabs/analytics"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/jitsi/jitsi-meet",
+        "github.com/bigbluebutton/bigbluebutton",
+        "github.com/jech/galene",
+        "github.com/element-hq/element-call"
+      ],
+      "id": "alt-zoom",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 6,
+      "recall": 0.8,
+      "relevant": 6,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/jitsi/jitsi-meet",
+        "github.com/bigbluebutton/bigbluebutton",
+        "github.com/jech/galene",
+        "github.com/element-hq/element-call"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/owncloud/core",
+        "github.com/syncthing/syncthing",
+        "github.com/nextcloud/server",
+        "github.com/mickael-kerjean/filestash"
+      ],
+      "id": "alt-dropbox",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 5,
+      "recall": 0.8,
+      "relevant": 5,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/owncloud/core",
+        "github.com/syncthing/syncthing",
+        "github.com/nextcloud/server",
+        "github.com/mickael-kerjean/filestash"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/coroot/coroot",
+        "github.com/grafana/grafana",
+        "github.com/netdata/netdata",
+        "github.com/uptrace/uptrace"
+      ],
+      "id": "alt-datadog",
+      "kind": "positive",
+      "precision": 0.8,
+      "reachable": 8,
+      "recall": 0.8,
+      "relevant": 8,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/coroot/coroot",
+        "github.com/grafana/grafana",
+        "github.com/netdata/netdata",
+        "github.com/uptrace/uptrace",
+        "github.com/telemetry-tracker/telemetry-tracker"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/tsuru/tsuru",
+        "github.com/coollabsio/coolify",
+        "github.com/kubero-dev/kubero"
+      ],
+      "id": "alt-heroku",
+      "kind": "positive",
+      "precision": 0.6,
+      "reachable": 5,
+      "recall": 0.6,
+      "relevant": 5,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/peon-sh/peon",
+        "github.com/tsuru/tsuru",
+        "github.com/coollabsio/coolify",
+        "github.com/kubero-dev/kubero",
+        "github.com/dyrector-io/dyrectorio"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/kuzzleio/kuzzle",
+        "github.com/supabase/supabase",
+        "github.com/appwrite/appwrite",
+        "github.com/nhost/nhost"
+      ],
+      "id": "alt-firebase",
+      "kind": "positive",
+      "precision": 0.8,
+      "reachable": 5,
+      "recall": 0.8,
+      "relevant": 5,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/kuzzleio/kuzzle",
+        "github.com/supabase/supabase",
+        "github.com/appwrite/appwrite",
+        "github.com/appy-one/acebase",
+        "github.com/nhost/nhost"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/authgear/authgear-server",
+        "github.com/keycloak/keycloak",
+        "github.com/ory/kratos",
+        "github.com/logto-io/logto",
+        "github.com/zitadel/zitadel"
+      ],
+      "id": "alt-auth0",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 6,
+      "recall": 1.0,
+      "relevant": 6,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/authgear/authgear-server",
+        "github.com/keycloak/keycloak",
+        "github.com/ory/kratos",
+        "github.com/logto-io/logto",
+        "github.com/zitadel/zitadel"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/tinacms/tinacms",
+        "github.com/payloadcms/payload",
+        "github.com/decaporg/decap-cms",
+        "github.com/builderio/builder"
+      ],
+      "id": "alt-contentful",
+      "kind": "positive",
+      "precision": 0.8,
+      "reachable": 4,
+      "recall": 1.0,
+      "relevant": 4,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/tinacms/tinacms",
+        "github.com/payloadcms/payload",
+        "github.com/decaporg/decap-cms",
+        "github.com/sulu/sulu",
+        "github.com/builderio/builder"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/kong/insomnia",
+        "github.com/hoppscotch/hoppscotch",
+        "github.com/scalar/scalar",
+        "github.com/voidenhq/voiden",
+        "github.com/usebruno/bruno"
+      ],
+      "id": "alt-postman",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 5,
+      "recall": 1.0,
+      "relevant": 5,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/kong/insomnia",
+        "github.com/hoppscotch/hoppscotch",
+        "github.com/scalar/scalar",
+        "github.com/voidenhq/voiden",
+        "github.com/usebruno/bruno"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/saleor/saleor",
+        "github.com/bagisto/bagisto",
+        "github.com/sylius/sylius",
+        "github.com/woocommerce/woocommerce"
+      ],
+      "id": "alt-shopify",
+      "kind": "positive",
+      "precision": 0.8,
+      "reachable": 4,
+      "recall": 1.0,
+      "relevant": 4,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/itswadesh/svelte-commerce",
+        "github.com/saleor/saleor",
+        "github.com/bagisto/bagisto",
+        "github.com/sylius/sylius",
+        "github.com/woocommerce/woocommerce"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/rustfs/rustfs",
+        "github.com/seaweedfs/seaweedfs",
+        "github.com/openstack/swift",
+        "github.com/storj/storj",
+        "github.com/deuxfleurs-org/garage"
+      ],
+      "id": "alt-amazon-s3",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 5,
+      "recall": 1.0,
+      "relevant": 5,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/rustfs/rustfs",
+        "github.com/seaweedfs/seaweedfs",
+        "github.com/openstack/swift",
+        "github.com/storj/storj",
+        "github.com/deuxfleurs-org/garage"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/siyuan-note/siyuan",
+        "github.com/triliumnext/trilium",
+        "github.com/logseq/logseq",
+        "github.com/streetwriters/notesnook"
+      ],
+      "id": "alt-evernote",
+      "kind": "positive",
+      "precision": 0.8,
+      "reachable": 4,
+      "recall": 1.0,
+      "relevant": 4,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/siyuan-note/siyuan",
+        "github.com/triliumnext/trilium",
+        "github.com/logseq/logseq",
+        "github.com/streetwriters/notesnook",
+        "github.com/codexu/note-gen"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/librechat-ai/librechat",
+        "github.com/mintplex-labs/anything-llm",
+        "github.com/chatboxai/chatbox"
+      ],
+      "id": "alt-chatgpt",
+      "kind": "positive",
+      "precision": 0.75,
+      "reachable": 4,
+      "recall": 0.75,
+      "relevant": 4,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/librechat-ai/librechat",
+        "github.com/mintplex-labs/anything-llm",
+        "github.com/chatboxai/chatbox",
+        "github.com/leon-ai/leon"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/gogs/gogs",
+        "github.com/go-gitea/gitea",
+        "codeberg.org/forgejo/forgejo"
+      ],
+      "id": "alt-github",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 4,
+      "recall": 0.75,
+      "relevant": 4,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/gogs/gogs",
+        "github.com/go-gitea/gitea",
+        "codeberg.org/forgejo/forgejo"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/zammad/zammad",
+        "github.com/freescout-help-desk/freescout",
+        "github.com/osticket/osticket",
+        "github.com/uvdesk/community-skeleton"
+      ],
+      "id": "alt-zendesk",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 5,
+      "recall": 0.8,
+      "relevant": 5,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/zammad/zammad",
+        "github.com/freescout-help-desk/freescout",
+        "github.com/osticket/osticket",
+        "github.com/uvdesk/community-skeleton"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/pentacent/keila",
+        "github.com/knadh/listmonk",
+        "github.com/mautic/mautic"
+      ],
+      "id": "alt-mailchimp",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 3,
+      "recall": 1.0,
+      "relevant": 3,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/pentacent/keila",
+        "github.com/knadh/listmonk",
+        "github.com/mautic/mautic"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/docusealco/docuseal",
+        "github.com/libresign/libresign",
+        "github.com/documenso/documenso"
+      ],
+      "id": "alt-docusign",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 3,
+      "recall": 1.0,
+      "relevant": 3,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/docusealco/docuseal",
+        "github.com/libresign/libresign",
+        "github.com/documenso/documenso"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/gristlabs/grist-core",
+        "github.com/apitable/apitable"
+      ],
+      "id": "alt-airtable",
+      "kind": "positive",
+      "precision": 0.6667,
+      "reachable": 3,
+      "recall": 0.6667,
+      "relevant": 3,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/gristlabs/grist-core",
+        "github.com/apitable/apitable",
+        "github.com/totumonline/totum-mit"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/ylianst/meshcentral",
+        "github.com/rustdesk/rustdesk"
+      ],
+      "id": "alt-teamviewer",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 3,
+      "recall": 0.6667,
+      "relevant": 3,
+      "status": "insufficient_recommendations",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/ylianst/meshcentral",
+        "github.com/rustdesk/rustdesk"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/bookstackapp/bookstack"
+      ],
+      "id": "alt-confluence",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 5,
+      "recall": 0.2,
+      "relevant": 5,
+      "status": "insufficient_recommendations",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/bookstackapp/bookstack"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/tymeslot/tymeslot",
+        "github.com/alextselegidis/easyappointments",
+        "github.com/calcom/cal.diy"
+      ],
+      "id": "alt-calendly",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 3,
+      "recall": 1.0,
+      "relevant": 3,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/tymeslot/tymeslot",
+        "github.com/alextselegidis/easyappointments",
+        "github.com/calcom/cal.diy"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/docmost/docmost"
+      ],
+      "id": "alt-by-url",
+      "kind": "positive",
+      "precision": 0.2,
+      "reachable": 6,
+      "recall": 0.2,
+      "relevant": 6,
+      "status": "ok",
+      "tool": "source_get_alternatives",
+      "top": [
+        "github.com/evergreen-it-dev/folio",
+        "github.com/docmost/docmost",
+        "github.com/dexio-wiki/dexio",
+        "github.com/churichard/notabase",
+        "github.com/xwiki/xwiki-platform"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/passbolt/passbolt_api"
+      ],
+      "id": "need-password-manager",
+      "kind": "positive",
+      "precision": 0.25,
+      "reachable": 2,
+      "recall": 0.5,
+      "relevant": 2,
+      "status": "ok",
+      "tool": "source_recommend",
+      "top": [
+        "github.com/jitsi/jitsi-meet",
+        "github.com/zulip/zulip",
+        "github.com/passbolt/passbolt_api",
+        "github.com/healthchecks/healthchecks"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/jitsi/jitsi-meet",
+        "github.com/bigbluebutton/bigbluebutton",
+        "github.com/jech/galene",
+        "github.com/element-hq/element-call"
+      ],
+      "id": "need-video-meetings",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 6,
+      "recall": 0.8,
+      "relevant": 6,
+      "status": "ok",
+      "tool": "source_recommend",
+      "top": [
+        "github.com/jitsi/jitsi-meet",
+        "github.com/bigbluebutton/bigbluebutton",
+        "github.com/jech/galene",
+        "github.com/element-hq/element-call"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/plausible/analytics",
+        "github.com/umami-software/umami",
+        "github.com/open-web-analytics/open-web-analytics"
+      ],
+      "id": "need-web-analytics",
+      "kind": "positive",
+      "precision": 0.6,
+      "reachable": 7,
+      "recall": 0.6,
+      "relevant": 7,
+      "status": "ok",
+      "tool": "source_recommend",
+      "top": [
+        "github.com/plausible/analytics",
+        "github.com/umami-software/umami",
+        "github.com/open-web-analytics/open-web-analytics",
+        "github.com/frigadehq/trench",
+        "github.com/prismelabs/analytics"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/zammad/zammad",
+        "github.com/freescout-help-desk/freescout",
+        "github.com/osticket/osticket",
+        "github.com/uvdesk/community-skeleton"
+      ],
+      "id": "need-helpdesk",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 5,
+      "recall": 0.8,
+      "relevant": 5,
+      "status": "ok",
+      "tool": "source_recommend",
+      "top": [
+        "github.com/zammad/zammad",
+        "github.com/freescout-help-desk/freescout",
+        "github.com/osticket/osticket",
+        "github.com/uvdesk/community-skeleton"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/unleash/unleash",
+        "github.com/flagsmith/flagsmith"
+      ],
+      "id": "need-feature-flags",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 2,
+      "recall": 1.0,
+      "relevant": 2,
+      "status": "ok",
+      "tool": "source_recommend",
+      "top": [
+        "github.com/unleash/unleash",
+        "github.com/flagsmith/flagsmith"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/kong/insomnia",
+        "github.com/hoppscotch/hoppscotch",
+        "github.com/scalar/scalar",
+        "github.com/voidenhq/voiden",
+        "github.com/usebruno/bruno"
+      ],
+      "id": "need-api-client",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 5,
+      "recall": 1.0,
+      "relevant": 5,
+      "status": "ok",
+      "tool": "source_recommend",
+      "top": [
+        "github.com/kong/insomnia",
+        "github.com/hoppscotch/hoppscotch",
+        "github.com/scalar/scalar",
+        "github.com/voidenhq/voiden",
+        "github.com/usebruno/bruno"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/healthchecks/healthchecks",
+        "github.com/twin/gatus",
+        "github.com/bluewave-labs/checkmate",
+        "github.com/openstatushq/openstatus"
+      ],
+      "id": "need-status-page",
+      "kind": "positive",
+      "precision": 0.8,
+      "reachable": 5,
+      "recall": 0.8,
+      "relevant": 5,
+      "status": "ok",
+      "tool": "source_recommend",
+      "top": [
+        "github.com/healthchecks/healthchecks",
+        "github.com/fclairamb/solidping",
+        "github.com/twin/gatus",
+        "github.com/bluewave-labs/checkmate",
+        "github.com/openstatushq/openstatus"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/docmost/docmost"
+      ],
+      "id": "need-like-notion",
+      "kind": "positive",
+      "precision": 0.2,
+      "reachable": 6,
+      "recall": 0.2,
+      "relevant": 6,
+      "status": "ok",
+      "tool": "source_recommend",
+      "top": [
+        "github.com/evergreen-it-dev/folio",
+        "github.com/docmost/docmost",
+        "github.com/dexio-wiki/dexio",
+        "github.com/churichard/notabase",
+        "github.com/xwiki/xwiki-platform"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/docmost/docmost"
+      ],
+      "id": "con-notion-copyleft-active",
+      "kind": "positive",
+      "precision": 0.3333,
+      "reachable": 4,
+      "recall": 0.25,
+      "relevant": 6,
+      "status": "ok",
+      "tool": "source_recommend",
+      "top": [
+        "github.com/docmost/docmost",
+        "github.com/dexio-wiki/dexio",
+        "github.com/wikimedia/mediawiki"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/zulip/zulip"
+      ],
+      "id": "con-slack-10k-stars",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 2,
+      "recall": 0.5,
+      "relevant": 3,
+      "status": "ok",
+      "tool": "source_recommend",
+      "top": [
+        "github.com/zulip/zulip"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [],
+      "id": "con-jira-permissive",
+      "kind": "positive",
+      "precision": 0.0,
+      "reachable": 0,
+      "recall": null,
+      "relevant": 5,
+      "status": "ok",
+      "tool": "source_recommend",
+      "top": [
+        "github.com/noveum/orbit"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/plausible/analytics",
+        "github.com/umami-software/umami"
+      ],
+      "id": "con-ga-selfhost-90d",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 2,
+      "recall": 1.0,
+      "relevant": 7,
+      "status": "ok",
+      "tool": "source_recommend",
+      "top": [
+        "github.com/plausible/analytics",
+        "github.com/umami-software/umami"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/passbolt/passbolt_api"
+      ],
+      "id": "con-pm-agpl",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 2,
+      "recall": 0.5,
+      "relevant": 2,
+      "status": "ok",
+      "tool": "source_recommend",
+      "top": [
+        "github.com/passbolt/passbolt_api"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/tsuru/tsuru",
+        "github.com/coollabsio/coolify",
+        "github.com/kubero-dev/kubero"
+      ],
+      "id": "con-heroku-health-fit",
+      "kind": "positive",
+      "precision": 0.6,
+      "reachable": 5,
+      "recall": 0.6,
+      "relevant": 5,
+      "status": "ok",
+      "tool": "source_recommend",
+      "top": [
+        "github.com/peon-sh/peon",
+        "github.com/tsuru/tsuru",
+        "github.com/coollabsio/coolify",
+        "github.com/kubero-dev/kubero",
+        "github.com/dyrector-io/dyrectorio"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/bigbluebutton/bigbluebutton",
+        "github.com/jech/galene",
+        "github.com/element-hq/element-call"
+      ],
+      "id": "con-zoom-under-20k",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 4,
+      "recall": 0.75,
+      "relevant": 6,
+      "status": "ok",
+      "tool": "source_recommend",
+      "top": [
+        "github.com/bigbluebutton/bigbluebutton",
+        "github.com/jech/galene",
+        "github.com/element-hq/element-call"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/passbolt/passbolt_api"
+      ],
+      "id": "search-password-manager",
+      "kind": "positive",
+      "precision": 0.2,
+      "reachable": 2,
+      "recall": 0.5,
+      "relevant": 2,
+      "status": null,
+      "tool": "source_search",
+      "top": [
+        "github.com/passbolt/passbolt_api",
+        "github.com/marucie/authbox",
+        "github.com/keepassxreboot/keepassxc",
+        "github.com/icoretech/warden-mcp",
+        "github.com/forest6511/secretctl"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/rustfs/rustfs",
+        "github.com/deuxfleurs-org/garage",
+        "github.com/storj/storj",
+        "github.com/openstack/swift",
+        "github.com/seaweedfs/seaweedfs"
+      ],
+      "id": "search-object-storage",
+      "kind": "positive",
+      "precision": 1.0,
+      "reachable": 5,
+      "recall": 1.0,
+      "relevant": 5,
+      "status": null,
+      "tool": "source_search",
+      "top": [
+        "github.com/rustfs/rustfs",
+        "github.com/deuxfleurs-org/garage",
+        "github.com/storj/storj",
+        "github.com/openstack/swift",
+        "github.com/seaweedfs/seaweedfs"
+      ],
+      "violations": []
+    },
+    {
+      "hits": [
+        "github.com/ylianst/meshcentral",
+        "github.com/rustdesk/rustdesk"
+      ],
+      "id": "search-remote-desktop",
+      "kind": "positive",
+      "precision": 0.4,
+      "reachable": 3,
+      "recall": 0.6667,
+      "relevant": 3,
+      "status": null,
+      "tool": "source_search",
+      "top": [
+        "github.com/ylianst/meshcentral",
+        "github.com/rustdesk/rustdesk",
+        "github.com/rustdesk/rustdesk-server",
+        "github.com/jsdelivr/globalping-mcp-server",
+        "github.com/junnnnnw00/obsidian-everywhere"
+      ],
+      "violations": []
+    },
+    {
+      "error": "source_get_alternatives: 'NotARealProduct123' is not a product in The Source catalogue; try source_search",
+      "expect": "tool_error",
+      "id": "neg-unknown-product",
+      "kind": "negative",
+      "passed": true,
+      "tool": "source_get_alternatives",
+      "violations": []
+    },
+    {
+      "error": null,
+      "expect": "empty",
+      "id": "neg-impossible-constraint",
+      "kind": "negative",
+      "passed": true,
+      "tool": "source_recommend",
+      "violations": []
+    }
+  ],
+  "queries_file_sha256": "52b5ef74177a5d22c8c7c6d5603e2cd7f6f62b5e64b512fb9ca64b6041f04697",
+  "schema": "the-source.golden-eval/1",
+  "server_version": "1.2.0",
+  "summary": {
+    "by_tool": {
+      "source_get_alternatives": {
+        "precision@5": 0.8363,
+        "queries": 28,
+        "recall@5": 0.7381
+      },
+      "source_recommend": {
+        "precision@5": 0.7189,
+        "queries": 15,
+        "recall@5": 0.6643
+      },
+      "source_search": {
+        "precision@5": 0.5333,
+        "queries": 3,
+        "recall@5": 0.7222
+      }
+    },
+    "constraint_violations": 0,
+    "negative": 2,
+    "negative_passed": 2,
+    "no_rows": [],
+    "positive": 46,
+    "precision@5": 0.7783,
+    "precision_measured_on": 46,
+    "queries": 48,
+    "queries_with_violations": [],
+    "recall@5": 0.7141,
+    "recall_measured_on": 45
+  }
+}

@@ -17,15 +17,18 @@ chown -R root:root /opt/the-source-mcp/app && chmod -R a+rX,go-w /opt/the-source
 if [ ! -d /opt/the-source-mcp/data/.git ]; then
   git clone -q --filter=blob:none --sparse https://github.com/keithdealwis-ui/the-source.git /opt/the-source-mcp/data
 fi
-# Re-applied on every install so an upgrade picks up new published layers (KEI-912: data/corpus). On an upgrade
+# Re-applied on every install so an upgrade picks up new published layers (KEI-912: data/corpus; KEI-918: runs,
+# the public cycle records source_dataset_info reads for last_run). On an upgrade
 # the clone belongs to the-source-mcp, so root names it safe for this one command; the chown below restores
 # ownership of anything it writes.
 git -c safe.directory=/opt/the-source-mcp/data -C /opt/the-source-mcp/data \
-  sparse-checkout set data/canonical api/v1 data/momentum data/radar data/corpus
+  sparse-checkout set data/canonical api/v1 data/momentum data/radar data/corpus runs
 chown -R the-source-mcp:the-source-mcp /opt/the-source-mcp/data
 D=$(dirname "$0")
-install -m 0644 "$D/the-source-mcp.service" "$D/the-source-mcp-refresh.service" "$D/the-source-mcp-refresh.timer" /etc/systemd/system/
+install -m 0644 "$D/the-source-mcp.service" "$D/the-source-mcp-refresh.service" "$D/the-source-mcp-refresh.timer" \
+  "$D/the-source-mcp-report.service" "$D/the-source-mcp-report.timer" /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable --now the-source-mcp-refresh.timer
+systemctl enable --now the-source-mcp-report.timer  # weekly usage report, kept on the host (KEI-918)
 systemctl restart the-source-mcp
 systemctl enable the-source-mcp

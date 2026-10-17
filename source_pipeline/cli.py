@@ -62,6 +62,18 @@
     python -m source_pipeline graph-query <plan>   run one plan (YAML/JSON file, or a query id from
                                                    config/graph_queries.yaml) and print the evidence
 
+  Observability (KEI-918, docs/OBSERVABILITY.md):
+    python -m source_pipeline obs-intake-report [--run ID] [--write]   S0.1 the intake funnel of a run
+    python -m source_pipeline obs-alerts [--run ID] [--now TS] [--fail-on warning|critical]
+                                                   S0.2 fingerprinted failures and alerts for a run
+    python -m source_pipeline obs-fingerprints     every failure fingerprint across runs/
+    python -m source_pipeline obs-golden [--baseline FILE] [--write-baseline FILE] [--check]
+                                                   S0.4 golden queries: recall@5, precision@5, violations
+    python -m source_pipeline obs-telemetry-report --telemetry FILE [--week YYYY-Www] [--out DIR]
+                                                   S0.5 weekly MCP usage report, small counts suppressed
+    python -m source_pipeline obs-lineage history|reconcile|verify [--from REV] [--to REV]
+                                                   S0.6 dataset lineage from git, catalogue reconciliation
+
   MCP retrieval server (KEI-851, docs/MCP.md):
     python -m source_pipeline mcp-serve [--root DIR] [--now TS] [--check]
                                                    serve the canonical read layer over MCP (stdio)
@@ -240,6 +252,22 @@ def main(argv=None) -> int:
         from . import mcp_http
 
         return mcp_http.main(argv[1:])
+    if argv[:1] and argv[0] in ("obs-intake-report", "obs-alerts", "obs-fingerprints"):
+        from . import observability
+
+        return observability.main(argv)
+    if argv[:1] and argv[0] in ("obs-golden",):
+        from . import golden
+
+        return golden.main(argv)
+    if argv[:1] and argv[0] in ("obs-lineage",):
+        from . import lineage
+
+        return lineage.main(argv)
+    if argv[:1] and argv[0] in ("obs-telemetry-report",):
+        from . import telemetry_report
+
+        return telemetry_report.main(argv[1:])
     ap = argparse.ArgumentParser(prog="source_pipeline", description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("command", choices=["run", "harvest", "verify", "build", "validate", "export-public",

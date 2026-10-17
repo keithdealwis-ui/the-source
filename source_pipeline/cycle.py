@@ -183,7 +183,7 @@ def run(trigger: str) -> dict:
                                "--result", str(result_file)], cwd=common.ROOT, env=env)
         result = common.read_json(result_file) if result_file.exists() else {}
         record.update({k: result[k] for k in ("strategies", "counts", "transitions", "timings_s", "retries",
-                                               "failures", "history_day") if k in result})
+                                               "failures", "history_day", "failed_step") if k in result})
         if proc.returncode != 0 or not result.get("ok"):
             raise CycleError(result.get("error") or f"cycle worker exited {proc.returncode} without a result")
         _promote(work)
@@ -198,8 +198,48 @@ def run(trigger: str) -> dict:
         record["ended_at"] = _iso(datetime.now(timezone.utc))
         common.write_json(path, record)
         shutil.rmtree(workdir, ignore_errors=True)
+    _intake_report(record)
     print(json.dumps({k: record[k] for k in ("run_id", "status", "counts", "canonical", "error")}, indent=2))
     return record
+
+
+GOLDEN_BASELINE = common.ROOT / "observability" / "golden-baseline.json"
+
+
+def _golden_step() -> dict:
+    from . import golden
+
+    try:
+        cur = golden.evaluate()
+        summ = cur["summary"]
+        out = {"id": "golden_queries", "queries": summ["queries"], "recall@5": summ["recall@5"],
+               "precision@5": summ["precision@5"], "constraint_violations": summ["constraint_violations"],
+               "negative_passed": summ["negative_passed"], "errors": []}
+        if summ["constraint_violations"]:
+            out["errors"].append(f"constraint violations in {summ['queries_with_violations']}")
+        if summ["negative_passed"] != summ["negative"]:
+            out["errors"].append("a must-fail query did not fail safely")
+        if GOLDEN_BASELINE.exists():
+            cfg = common.load_yaml(common.CONFIG / "observability.yaml")["golden"]
+            cmp = golden.compare(cur, common.read_json(GOLDEN_BASELINE), float(cfg["max_recall_drop"]),
+                                 float(cfg["max_precision_drop"]))
+            out["baseline_dataset_version"] = cmp["baseline_dataset_version"]
+            out["errors"] += [p for p in cmp["problems"] if p not in out["errors"] and "violations" not in p]
+        out["status"] = "ok" if not out["errors"] else "degraded"
+        return out
+    except Exception as exc:  # observability never fails the cycle
+        return {"id": "golden_queries", "status": "failed", "errors": [f"{type(exc).__name__}: {exc}"[:300]]}
+
+
+def _intake_report(record: dict) -> None:
+    """runs/reports/<run_id>.intake.json (KEI-918 S0.1), from the live copy after promotion. A report that cannot
+    be written is noted on stderr and never changes the run's outcome: observability must not fail the cycle."""
+    from . import observability
+
+    try:
+        observability.write_intake_report(record)
+    except Exception as exc:
+        print(f"cycle: intake report not written: {type(exc).__name__}: {exc}", file=sys.stderr)
 
 
 # ---------------------------------------------------------------- the work (scratch copy)
@@ -300,6 +340,10 @@ class _Timer:
         if self.t is not None:
             self.res["timings_s"][self.t[0]] = round(now - self.t[1], 1)
         self.t = (step, now) if step else None
+
+    @property
+    def current(self):
+        return self.t[0] if self.t else None
 
 
 def work(run_id: str, result_path: Path) -> int:
@@ -499,6 +543,11 @@ def work(run_id: str, result_path: Path) -> int:
                                     "outcome": f"kept the previous radar and pool: {rad['failed_checks']}"})
         res["counts"].update({"radar_ranked": rad["ranked"], "radar_pool_added": rad["pool_added"]})
         _drill("community_radar")
+
+        # 14. golden queries (KEI-918): retrieval quality of the layer just built, against the baseline.
+        # Measured and reported, never blocking: a regression degrades the strategy and raises an alert.
+        step("golden_queries")
+        res["strategies"].append(_golden_step())
         step(None)
 
         canon_now = {p["oss_id"] for p in common.read_jsonl(common.DATA / "canonical" / "oss_projects.jsonl")}
@@ -510,12 +559,14 @@ def work(run_id: str, result_path: Path) -> int:
             "canonical_relationships_added": len(rel_now - prev_rel),
             "canonical_relationships_removed": len(prev_rel - rel_now),
             "canonical_projects": manifest["counts"]["oss_projects"],
+            "canonical_saas_products": manifest["counts"]["saas_products"],
             "supported_saas_ok": manifest["counts"]["supported_saas_ok"],
             "intake_promoted": promo["promoted"], "intake_pending": promo["pending"],
             "canonical_checks": len(crep["checks"]), "canonical_warnings": len(crep["warnings"]),
         })
         res.update(ok=True, dataset_version=manifest["dataset_version"], history_day=day)
     except Exception as exc:
+        res["failed_step"] = step.current or "cycle"  # for failure fingerprints (KEI-918)
         step(None)
         res["error"] = f"{type(exc).__name__}: {exc}"[:2000]
     common.write_json(result_path, res)

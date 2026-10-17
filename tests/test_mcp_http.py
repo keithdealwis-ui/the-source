@@ -95,7 +95,7 @@ def test_telemetry_file_holds_counts_only(endpoint):
     app.maybe_flush(force=True)
     text = path.read_text()
     assert "zz-private-query-77" not in text and "198.51.100.7" not in text
-    assert json.loads(text)["schema"] == "the-source.mcp-telemetry/1"
+    assert json.loads(text)["schema"] == "the-source.mcp-telemetry/2"
 
 
 def test_background_flush_writes_the_last_window_without_another_request(endpoint, monkeypatch):

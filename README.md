@@ -119,6 +119,7 @@ GITHUB_TOKEN=... .venv/bin/python -m source_pipeline cycle --trigger local   # a
 - [`docs/MCP.md`](docs/MCP.md): the MCP retrieval server over the read layer (tools, gates, protocol)
 - [`docs/CORPUS.md`](docs/CORPUS.md): the public discovery corpus and its tiers (KEI-912)
 - [`docs/OPERATIONS.md`](docs/OPERATIONS.md): the daily cycle, failures, retries, run records and history
+- [`docs/OBSERVABILITY.md`](docs/OBSERVABILITY.md): intake reports, failure fingerprints and alerts, golden queries, MCP telemetry and weekly reports, dataset lineage (KEI-918)
 - [`docs/BUILD-VS-INGEST.md`](docs/BUILD-VS-INGEST.md): which upstream services are used, for what, under which terms, and why the rest are not
 - [`docs/INTAKE.md`](docs/INTAKE.md) and [`docs/INTAKE-POLICY.md`](docs/INTAKE-POLICY.md): manual intake
 - [`PROVENANCE.md`](PROVENANCE.md): where every fact comes from, and how to trace it

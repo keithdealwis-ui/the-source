@@ -138,7 +138,7 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Surface the outcome durably
+      - name: Surface the outcome durably (one issue per failure fingerprint, KEI-918)
         if: always()
         env:
           GH_TOKEN: ${{ github.token }}
@@ -146,13 +146,20 @@ jobs:
           STATUS: ${{ steps.commit.outputs.status }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          gh label create cycle-failure --color B60205 --description "Daily cycle failed" 2>/dev/null || true
-          OPEN=$(gh issue list --label cycle-failure --state open --json number --jq '.[0].number')
-          if [ "$STATUS" != "succeeded" ]; then
-            BODY="Run \`${RUN:-unknown}\` ended ${STATUS:-without a run record}. The last known-good dataset is unchanged. Record: runs/$RUN.json. Log: $RUN_URL. The next wake-up inside the window retries automatically."
+          if [ -z "$RUN" ]; then
+            # no run record at all: the cycle could not even start
+            gh label create cycle-failure --color B60205 --description "Daily cycle failed" 2>/dev/null || true
+            BODY="The cycle ended without a run record. The last known-good dataset is unchanged. Log: $RUN_URL."
+            OPEN=$(gh issue list --label cycle-failure --state open --search "without a run record in:title" --json number --jq '.[0].number')
             if [ -n "$OPEN" ]; then gh issue comment "$OPEN" --body "$BODY"
-            else gh issue create --title "Daily cycle failing" --label cycle-failure --body "$BODY"; fi
+            else gh issue create --title "Daily cycle failed without a run record" --label cycle-failure --body "$BODY"; fi
             exit 1
-          elif [ -n "$OPEN" ]; then
-            gh issue close "$OPEN" --comment "Recovered: run \`$RUN\` succeeded ($RUN_URL)."
           fi
+          python -m source_pipeline obs-alerts --run "$RUN" --now "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > alerts.json
+          {
+            echo "### Alerts"
+            echo
+            python -c "import json;d=json.load(open('alerts.json'));[print(f\"- {a['severity']}: {a['title']} (fp {a['fingerprint']})\") for a in d['alerts']] or print('none')"
+          } >> "$GITHUB_STEP_SUMMARY"
+          python scripts/surface_alerts.py alerts.json --run-url "$RUN_URL" || CRIT=1
+          if [ "$STATUS" != "succeeded" ] || [ -n "${CRIT:-}" ]; then exit 1; fi

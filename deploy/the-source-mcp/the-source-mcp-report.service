@@ -1,0 +1,21 @@
+# Weekly usage report from The Source MCP's aggregate telemetry (KEI-918 S0.5, docs/OBSERVABILITY.md).
+# Reads /var/lib/the-source-mcp/telemetry.json (counts only) and writes the last complete ISO week to
+# /var/lib/the-source-mcp/reports/<week>.json and .md, with counts under 5 suppressed. Stays on the host.
+[Unit]
+Description=Weekly usage report for The Source MCP (KEI-918)
+
+[Service]
+Type=oneshot
+User=the-source-mcp
+Group=the-source-mcp
+Environment=PYTHONPATH=/opt/the-source-mcp/app
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 -S -m source_pipeline.telemetry_report --telemetry /var/lib/the-source-mcp/telemetry.json --out /var/lib/the-source-mcp/reports
+StateDirectory=the-source-mcp
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+PrivateNetwork=yes
+ReadOnlyPaths=/opt/the-source-mcp

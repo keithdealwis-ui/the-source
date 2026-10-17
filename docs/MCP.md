@@ -85,6 +85,7 @@ CC BY 4.0, see `DATA-LICENCE.md`), and the two published signal layers beside it
 | `data/momentum/MANIFEST.json`, `projects.jsonl` | Repository Momentum: star growth and acceleration over 1/7/30/90 days ([MOMENTUM.md](MOMENTUM.md)) |
 | `data/radar/MANIFEST.json`, `radar.jsonl` | Community Momentum: ranked Hacker News / DEV / Bluesky (and, where configured, X and Instagram) mentions in the Radar window ([RADAR.md](RADAR.md)) |
 | `data/corpus/MANIFEST.json`, `projects.jsonl`, `live.jsonl` | the discovery corpus: every project the Discover lane found, served as the `discovery` tier ([CORPUS.md](CORPUS.md), KEI-912, gate-KEI-912-dba84c8b) |
+| `runs/*.json` | the public daily-cycle records, read only by `source_dataset_info` for `last_run` ([OBSERVABILITY.md](OBSERVABILITY.md), KEI-918) |
 
 It reads nothing else: not the internal Discover lane build (`data/discover/`), staging,
 `data/live/`, history or intake, and nothing private to AIQ. A test runs the server against a directory holding only
@@ -124,10 +125,15 @@ measurable, never filled in.
 - **Read-only and private.** Standard library only. The engine opens no sockets and writes
   nothing; the HTTP transport adds only the listener. Queries, URLs and client addresses are
   never logged or stored.
-- **Aggregate telemetry only.** Per UTC day, per tool, per outcome (`ok`, `tool_error`,
-  `internal_error`): a count and a latency histogram (`<10ms` ... `>=1000ms`), kept 90 days.
-  No arguments, results, client names, sessions or addresses. The hosted server writes it to
-  `/var/lib/the-source-mcp/telemetry.json` (schema `the-source.mcp-telemetry/1`). `source_detect_saas` matches a URL against
+- **Telemetry is optional and aggregate.** A stdio server counts nothing and has no telemetry
+  option. The HTTP transport counts only when given `--telemetry FILE`, as the hosted server
+  is. What it counts, per UTC day, per tool and per outcome (`ok`, `tool_error`,
+  `internal_error`), is a count, a latency histogram (`<10ms` ... `>=1000ms`) and, for the list
+  tools, how many answers were empty. It is kept 90 days. No arguments, results, client
+  names, sessions or addresses are recorded. The hosted server writes it to
+  `/var/lib/the-source-mcp/telemetry.json` (schema `the-source.mcp-telemetry/2`). A weekly
+  report adds up whole weeks only and suppresses counts under 5; it stays on the host
+  ([OBSERVABILITY.md](OBSERVABILITY.md), KEI-918). `source_detect_saas` matches a URL against
   `domains.json` and never fetches it. stdout carries only protocol messages.
 - **Deterministic.** The same layer and the same `--now` give byte-identical responses.
   The clock is used only for `freshness` in `source_dataset_info`.
@@ -139,7 +145,7 @@ set `additionalProperties: false`.
 
 | Tool | Answers |
 |---|---|
-| `source_dataset_info` | which snapshot is served, when repositories were last checked (stale after 14 days), counts, sources, licence |
+| `source_dataset_info` | which snapshot is served, when repositories were last checked (stale after 14 days), counts, sources, licence, and `last_run`: the newest daily-cycle run (status, times, error, degraded strategies, counts), the last success, and whether the snapshot served is its output (KEI-918) |
 | `source_list_supported_saas` | the products with a published page |
 | `source_get_alternatives` | `saas` (id, name, alias, domain or URL), `limit` 1-50 (default 5), `include_discovery`: ranked recommendations with status, last checked, scoring version and provenance; optionally a separate `discovery_candidates` list |
 | `source_detect_saas` | `url`: the supported product it belongs to, by the READ-API.md rules |

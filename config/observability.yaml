@@ -1,0 +1,23 @@
+# Cycle observability (KEI-918, docs/OBSERVABILITY.md). Edit thresholds here, not in code.
+alerts:
+  # A fault (same fingerprint) present in this many consecutive runs is raised again as recurring.
+  recurring_after_runs: 3
+  # The cycle is daily; no successful run for this long is critical.
+  no_success_after_hours: 36
+  # A successful run that shrinks the canonical layer by at least min_items AND min_fraction
+  # against the previous successful run raises canonical_shrink.
+  shrink:
+    counts: [canonical_saas_products, canonical_projects, canonical_relationships]
+    min_items: 5
+    min_fraction: 0.05
+
+golden:
+  # Golden-query evaluation (S0.4). k for recall@k / precision@k.
+  k: 5
+  # CI fails when any constraint is violated, or when mean recall@k falls more than this below the baseline.
+  max_recall_drop: 0.05
+  max_precision_drop: 0.05
+
+telemetry_report:
+  # Weekly MCP telemetry reports (S0.5): any count from 1 to k_min - 1 is published as "<k_min".
+  k_min: 5
