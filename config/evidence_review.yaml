@@ -1,0 +1,18 @@
+# Contradictory-evidence review (KEI-919 S1.5).
+#
+# The build writes data/dataset/review_queue.jsonl: claims that three or more independent
+# sources contradict (today: a project's licence, asserted by upstream lists, the host API
+# and The Source's own reading of the licence files). While an item is open, every
+# relationship of that project is held out of recommendations (fail closed).
+#
+# A human closes an item by adding it below. An executor (claude, draper, archie, ...)
+# cannot: the build refuses a resolution without a human reviewer and an approval_ref.
+# Resolving an item records the decision; it changes no score, confidence or threshold.
+#
+#   - queue_id: licence--github.com/owner/repo
+#     resolution: "host and licence files say AGPL-3.0; the MIT claim in lists is stale"
+#     reviewed_by: keith
+#     reviewed_at: "2026-10-17"
+#     approval_ref: KEI-919
+
+resolved: []

@@ -5,9 +5,11 @@ report states what was checked and what was found; it does not decide acceptance
 """
 from __future__ import annotations
 
+from collections import Counter
+
 import jsonschema
 
-from . import build, common
+from . import build, common, reasons
 from .activity import Rules, evaluate, parse_ts
 
 
@@ -64,6 +66,24 @@ def run() -> dict:
           schema_errors(oss, "oss_project", "oss_id"), len(oss))
     check("schema.edge", 1, "every relationship record conforms to the schema",
           schema_errors(edges, "relationship", "edge_id"), len(edges))
+
+    # KEI-919 S1.5: every rejection carries exactly one enumerated code; contradictions are
+    # queued, and nothing an open queue item touches is recommendation-eligible.
+    rejection_rows = common.read_jsonl(common.DATASET / "rejections.jsonl")
+    check("schema.rejection", 1, "every rejection record carries exactly one enumerated reason code and a detail",
+          schema_errors(rejection_rows, "rejection", "oss_id")
+          + [f"{r.get('oss_id') or r.get('repo_url')}: code {r['code']} does not match reason {r['reason']!r}"
+             for r in rejection_rows if r.get("code") and reasons.code_for(r)[0] != r["code"]],
+          dict(sorted(Counter(str(r.get("code")) for r in rejection_rows).items())))
+    queue_path = common.DATASET / "review_queue.jsonl"
+    queue = common.read_jsonl(queue_path) if queue_path.exists() else []
+    open_oss = {q["claim"]["oss_id"] for q in queue if q["status"] == "open"}
+    check("review_queue.fail_closed", 1,
+          "every review-queue item conforms to the schema and no relationship of an open item is recommendation-eligible",
+          schema_errors(queue, "review_queue_item", "queue_id")
+          + [e["edge_id"] for e in edges if e["oss_id"] in open_oss and e["recommendation_eligible"]]
+          + ([] if queue_path.exists() else ["data/dataset/review_queue.jsonl is missing"]),
+          {"items": len(queue), "open": len(open_oss)})
 
     src_by_id = {s["source_id"]: s for s in sources}
     oss_by_id = {p["oss_id"]: p for p in oss}

@@ -171,7 +171,8 @@ inputs produce the same bytes regardless of input order.
 
 | File | Content |
 |---|---|
-| `rejections.jsonl` | every rejected claim or project, with stage and reason |
+| `rejections.jsonl` | every rejected claim or project, with stage, reason, exactly one enumerated `code` and a `detail` (schema `rejection`; codes in [REJECTIONS.md](REJECTIONS.md)) |
+| `review_queue.jsonl` | claims 3+ independent sources contradict (code `contradictory_evidence`); their relationships are held out of recommendations until a human resolves them in `config/evidence_review.yaml` (schema `review_queue_item`) |
 | `summary.json` | counts, launch figures, targets |
 | `MANIFEST.json` | SHA-256 of every dataset file |
 | `reports/validation_report.json` | each check, tied to its acceptance criterion |
