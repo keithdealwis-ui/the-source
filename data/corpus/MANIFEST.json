@@ -1,14 +1,14 @@
 {
-  "as_of": "2026-10-10T11:49:36Z",
+  "as_of": "2026-10-17T08:51:32Z",
   "attribution": "The Source (github.com/keithdealwis-ui/the-source), by Keith de Alwis",
-  "corpus_version": "a041a3db9d4c296e",
+  "corpus_version": "43c58bea3a8a3226",
   "counts": {
-    "archived": 15,
+    "archived": 23,
     "by_lane": {
       "discover": 9062,
       "replace": 485
     },
-    "host_not_found": 28,
+    "host_not_found": 44,
     "identity": {
       "collapsed": 1,
       "collapsed_by_reason": {
@@ -39,11 +39,11 @@
     "licence_issue": 1392,
     "maintainer_seeded": 68,
     "projects": 9363,
-    "with_description": 9002
+    "with_description": 9004
   },
   "files": {
-    "live.jsonl": "9a7244d09e19358c3cdf01df9b486b96262af407aafac39c71b1a5adb1c2c898",
-    "projects.jsonl": "e7c5c7af2190bfde0f06c138d94e75a1a851bbe583ec7e1d0b5d1620f607b7f5"
+    "live.jsonl": "8978a2d7a9171c1a690d60f186aed0b7fce19d647ac2aae659637558bd7cba5e",
+    "projects.jsonl": "09b3fb79fa110229acd9c0486edee0bfdd378c97badf9200ecd70d11d857bc4b"
   },
   "identity": {
     "facts": {
@@ -63,7 +63,7 @@
     "scope": "rows with licence.status == 'issue'"
   },
   "live_observed_as_of": {
-    "newest": "2026-10-10T11:49:36Z",
+    "newest": "2026-10-17T08:51:32Z",
     "oldest": "2026-09-29T10:34:38Z"
   },
   "membership": {
@@ -87,15 +87,15 @@
   "refresh": {
     "cadence": "weekly",
     "last": {
-      "at": "2026-10-10T11:49:36Z",
+      "at": "2026-10-17T08:51:32Z",
       "batches": 188,
-      "changed_metadata": 3733,
+      "changed_metadata": 622,
       "method": "GitHub GraphQL, 50 repositories per request; REST only to follow a rename",
-      "not_found": 28,
+      "not_found": 44,
       "not_on_github": 5,
-      "renamed": 45,
-      "requests": 224,
-      "resolved": 9331,
+      "renamed": 22,
+      "requests": 260,
+      "resolved": 9314,
       "unresolved": 0
     },
     "stale_after_days": 10
