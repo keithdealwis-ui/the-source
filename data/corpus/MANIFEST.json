@@ -1,7 +1,7 @@
 {
   "as_of": "2026-10-10T11:49:36Z",
   "attribution": "The Source (github.com/keithdealwis-ui/the-source), by Keith de Alwis",
-  "corpus_version": "ea0e40ffd99d49aa",
+  "corpus_version": "5b525ee988b39d58",
   "counts": {
     "archived": 15,
     "by_lane": {
@@ -9,6 +9,19 @@
       "replace": 486
     },
     "host_not_found": 28,
+    "licence_classification": {
+      "missing": 554,
+      "open": 18,
+      "open_core": 39,
+      "restricted": 25,
+      "source_available": 304,
+      "unclear": 453
+    },
+    "licence_eligibility": {
+      "conditional": 39,
+      "eligible": 18,
+      "not_eligible": 1336
+    },
     "licence_issue": 1393,
     "maintainer_seeded": 68,
     "projects": 9364,
@@ -16,9 +29,16 @@
   },
   "files": {
     "live.jsonl": "a544387499ad88828782397bb3128473601e5c3980b92ebcca77362723d65755",
-    "projects.jsonl": "eb424b8151987029f32660a58283747dbdb10fbf0685897d6e7ce2e27b970441"
+    "projects.jsonl": "a49c98a970da732d7c4d868fa47b340476a14f75f2d855930090dcf7383687eb"
   },
   "licence": "CC BY 4.0",
+  "licence_classification": {
+    "method": "the-source.licence-classify/1",
+    "recommendation_gate": "unchanged",
+    "rules": "source_pipeline/licence_classify.py; docs/ACCEPTANCE-KEI-919-S1.1.md",
+    "run_at": "2026-10-17T07:07:53Z",
+    "scope": "rows with licence.status == 'issue'"
+  },
   "live_observed_as_of": {
     "newest": "2026-10-10T11:49:36Z",
     "oldest": "2026-09-29T10:34:38Z"

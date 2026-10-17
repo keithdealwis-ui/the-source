@@ -77,7 +77,14 @@ OSI_NAMES = [
     (re.compile(r"\b(epl\w*|eclipse public)\b"), "EPL"),
     (re.compile(r"\b(eupl\w*|european union public)\b"), "EUPL"),
     (re.compile(r"\bpostgresql licen[sc]e\b"), "PostgreSQL"),
+    # Open content / permissive terms that commonly cover docs, fonts or vendored code: naming one
+    # makes a path an open component, never an excluded commercial part.
+    (re.compile(r"\b(creative commons|cc by\w*|cc0)\b"), "CC"),
+    (re.compile(r"\b(zlib|boost software|unlicense|public domain|psf|python software foundation)\b"), "Permissive"),
+    (re.compile(r"\b(ofl|open font licen[sc]e)\b"), "OFL"),
 ]
+COMMERCIAL_TERMS = re.compile(r"\b(enterprise|commercial|proprietary|source available|subscription|"
+                              r"licen[sc]e defined in|licensed code|edition)\b")
 # A notice that says the open licence is the default / covers the rest.
 CORE_PHRASES = ("default", "rest of", "outside of", "outside the", "mostly licensed", "released under",
                 "all other", "remainder", "everything else", "unless otherwise", "except for", "except as",
@@ -89,20 +96,32 @@ SOURCE_AVAILABLE_EXTRA = ("polyform", "confluent community", "redis source avail
                           "non commercial", "noncommercial", "source available")
 PROHIBITIVE = ("may not", "shall not", "must not", "not permitted", "not allowed", "prohibited", "forbidden",
                "additional restriction", "additional restrictions", "you agree not to", "is not allowed")
+STANDARD_BOILERPLATE = ("may not use this file except in compliance",)
+RESTRICTED_MAX_NOTICE_CHARS = 2500  # beyond this the extra text is another licence, not an added term
 HEADER_MARKER = re.compile(r"(/\*\s*@licen[sc]e[^*]*\*/|//\s*@licen[sc]e[^\n]*|@licen[sc]e\s+[A-Za-z][\w.-]*)")
 PATH_TOKEN = re.compile(r"(?P<pre>[/\"'`]?)(?P<tok>[A-Za-z0-9_.\-]+(?:/[A-Za-z0-9_.\-]+)*)(?P<post>/?)")
 URL = re.compile(r"https?://\S+")
-SPLIT = re.compile(r"(?<=[.;!?])\s+|\n\s*\n|\n\s*[-*•]\s+|\n\s*\(?(?:\d+|[ivx]+)[.)]\s+")
+SPLIT = re.compile(r"(?<=[.;!?])\s+|\n\s*[-*•]\s+|\n\s*\(?(?:\d+|[ivx]+)[.)]\s+")
+PARAGRAPH = re.compile(r"\n\s*\n")
+CODE_FENCE = re.compile(r":?\s*\n\s*```[^\n]*\n(.*?)```", re.S)
 
 
 CODE_EXT = re.compile(r"\.(ts|tsx|js|jsx|mjs|cjs|go|py|rs|java|kt|cs|rb|php|c|h|cc|cpp|hpp|swift|scala|ex|exs|"
                       r"dart|lua|json|ya?ml|toml|svg|png|jpe?g|gif|html?|css|scss|snap|tmpl|sh)$", re.I)
+LICENSING_FILE = re.compile(r"^licen[sc]ing([.\-_ ].*)?$", re.I)
+LICENCES_DIR = re.compile(r"^licen[sc]es$", re.I)
 NON_RUNTIME_DIRS = {"test", "tests", "e2e", "e2e-tests", "scripts", "examples", "example", "fixtures", "testdata"}
 
 
 def _is_licence_file(name: str) -> bool:
     """A licence file by name; source files named license.ts or a LICENSE_FAQ.md are not."""
-    return bool(ld.LICENCE_FILE.match(name)) and not CODE_EXT.search(name) and "faq" not in name.lower()
+    return bool(ld.LICENCE_FILE.match(name) or LICENSING_FILE.match(name)) and not CODE_EXT.search(name) \
+        and "faq" not in name.lower()
+
+
+def _in_licences_dir(path: str) -> bool:
+    parts = path.split("/")
+    return len(parts) == 2 and LICENCES_DIR.match(parts[0]) is not None and not CODE_EXT.search(parts[1])
 
 
 def _sa_markers() -> tuple[str, ...]:
@@ -155,20 +174,25 @@ def _sentences(text: str, refs: list[str]) -> list[dict]:
     """Notice sentences: the parts of a licence file that are not standard licence text."""
     ref_flats = [" " + " ".join(ld.references()[s]["words"]) + " " for s in refs]
     out = []
-    for raw in SPLIT.split(text.replace("\r\n", "\n")):
-        if not raw or not raw.strip():
-            continue
-        clean = URL.sub(" ", raw)
-        norm = ld._norm(clean)
-        if len(norm.split()) < 3:
-            continue
-        if any(f" {norm} " in rf for rf in ref_flats):
-            continue
-        out.append({"raw": raw.strip(), "clean": clean, "norm": norm})
+    # A fenced list of paths belongs to the sentence that introduces it.
+    text = CODE_FENCE.sub(lambda m: ": " + " ".join(m.group(1).split()) + "\n", text.replace("\r\n", "\n"))
+    for para_raw in PARAGRAPH.split(text):
+        para = {"clean": URL.sub(" ", para_raw)}
+        para["norm"] = ld._norm(para["clean"])
+        for raw in SPLIT.split(para_raw):
+            if not raw or not raw.strip():
+                continue
+            clean = URL.sub(" ", raw)
+            norm = ld._norm(clean)
+            if len(norm.split()) < 3:
+                continue
+            if any(f" {norm} " in rf for rf in ref_flats):
+                continue
+            out.append({"raw": raw.strip(), "clean": clean, "norm": norm, "para": para})
     return out
 
 
-def _path_tokens(clean: str, dirs: set[str]) -> tuple[list[str], bool]:
+def _path_tokens(clean: str, dirs: set[str], list_depth: int = 99) -> tuple[list[str], bool]:
     """(existing directories named in a sentence, whether it names any path at all)."""
     named, pathy = [], False
     for m in PATH_TOKEN.finditer(clean):
@@ -178,7 +202,11 @@ def _path_tokens(clean: str, dirs: set[str]) -> tuple[list[str], bool]:
         slashy = bool(m.group("pre") in ("/", '"', "'", "`") or m.group("post") or "/" in tok)
         if not (slashy or NESTED_ENTERPRISE_DIR.match(tok.split("/")[-1])):
             continue
-        if tok in dirs:
+        parts = tok.split("/")
+        # A directory deeper than the tree was read counts when its ancestor at the read depth exists.
+        beyond = len(parts) > list_depth and "/".join(parts[:list_depth]) in dirs and not re.search(r"\.\w{1,4}$", tok) \
+            and not _is_licence_file(parts[-1])
+        if tok in dirs or beyond:
             named.append(tok)
             pathy = True
         elif "/" in tok and not re.search(r"\.\w{1,4}$", tok):
@@ -232,14 +260,16 @@ def _supporting(texts: dict[str, str]) -> dict:
 
 
 def classify(paths: list[tuple[str, str]], texts: dict[str, str], *, commit: str | None,
-             checked_at: str, source: str = "github", found: bool = True, error: str | None = None) -> dict:
+             checked_at: str, source: str = "github", found: bool = True, error: str | None = None,
+             list_depth: int = 3) -> dict:
     """Classify one repository.
 
     paths: [(path, "blob"|"tree")] for the tree at `commit`, as far as it was read
     texts: path -> text for the licence files (and supporting manifests) that were read
     """
     files_read = sorted(p for p in texts if p not in SUPPORTING_FILES)
-    prov = {"source": {"api": f"{source}: GraphQL tree at commit (3 levels; enterprise-style directories 4) + Blob.text",
+    prov = {"source": {"api": f"{source}: GraphQL tree at commit ({list_depth} levels; enterprise-style "
+                              f"directories one more) + Blob.text",
                        "files": files_read},
             "commit": commit, "checked_at": checked_at}
 
@@ -254,8 +284,8 @@ def classify(paths: list[tuple[str, str]], texts: dict[str, str], *, commit: str
     selfhost = self_hosting_evidence(paths)
     dirs = {p for p, k in paths if k == "tree"}
     root = [{"name": p, "type": "file" if k == "blob" else "dir"} for p, k in paths if "/" not in p]
-    root_lic = sorted(e["name"] for e in root if e["type"] == "file" and _is_licence_file(e["name"])
-                      and "faq" not in e["name"].lower())
+    root_lic = sorted([e["name"] for e in root if e["type"] == "file" and _is_licence_file(e["name"])]
+                      + [p for p, k in paths if k == "blob" and _in_licences_dir(p)])
     base = {"self_hosting": selfhost, "supporting": supporting}
     if not root_lic:
         if any(e["type"] == "dir" and e["name"].lower() in ("licenses", "licences", "license", "licence")
@@ -279,7 +309,11 @@ def classify(paths: list[tuple[str, str]], texts: dict[str, str], *, commit: str
         t = texts.get(p)
         if t is None or not ld.match_text(t)["matched"]:
             nested_non_open[p.rsplit("/", 1)[0]] = p
-    if det["recognised"] and not nested_non_open:
+    nested_ent_dirs = sorted(p for p, k in paths if k == "tree" and "/" in p
+                             and (NESTED_ENTERPRISE_DIR.match(p.split("/")[-1]) or ld.ENTERPRISE_DIR.match(p.split("/")[-1]))
+                             and not any(a.split("/")[-1].lower() in NON_RUNTIME_DIRS or a.split("/")[-1].startswith(".")
+                                         for a in ["/".join(p.split("/")[:i]) for i in range(1, p.count("/") + 1)]))
+    if det["recognised"] and not nested_non_open and not nested_ent_dirs:
         return done("open", f"root licence recognised as {det['spdx']} over the whole repository",
                     spdx=det["spdx"], **base)
 
@@ -288,30 +322,43 @@ def classify(paths: list[tuple[str, str]], texts: dict[str, str], *, commit: str
     info = {}
     for n in root_lic:
         found_refs, leftover = open_texts(texts[n])
-        info[n] = {"open": found_refs, "sentences": _sentences(texts[n], [f["spdx"] for f in found_refs])}
+        info[n] = {"open": found_refs, "leftover": leftover,
+                   "sentences": _sentences(texts[n], [f["spdx"] for f in found_refs])}
     all_raw = "\n".join(texts[n] for n in root_lic)
     enterprise_files = []
     for n in root_lic:
         if info[n]["open"]:
             continue
         others = "\n".join(texts[m] for m in root_lic if m != n)
-        if ENTERPRISE_FILE_NAME.search(n.split(".", 1)[-1] if "." in n else "") or ENTERPRISE_FILE_NAME.search(n) \
-                or n in others:
+        base_name = n.split("/")[-1]
+        stem = base_name.rsplit(".", 1)[0]
+        generic = stem.lower() in ("license", "licence", "licensing", "licencing", "copying", "copyright", "unlicense")
+        if ENTERPRISE_FILE_NAME.search(base_name) or (not generic and (
+                base_name in others or (len(stem) >= 4 and re.search(rf"\b{re.escape(stem)}\b", others, re.I)))):
             enterprise_files.append(n)
     core_side = [n for n in root_lic if n not in enterprise_files]
     core_texts = sorted({f["spdx"] for n in core_side for f in info[n]["open"]})
     core_sents = [s for n in core_side for s in info[n]["sentences"]]
 
-    excluded, markers = {}, []
+    excluded, markers, other_terms = {}, [], {}
     for d, lic in nested_non_open.items():
         excluded[d] = f"directory carries its own non-open licence file {lic}"
     statements, sa_hits, prohibitive = [], [], []
     for s in core_sents:
-        named, pathy = _path_tokens(s["clean"], dirs)
+        named, pathy = _path_tokens(s["clean"], dirs, list_depth)
         fams = _osi_families(s["norm"])
-        if named and not fams and re.search(r"\b(licen[sc]\w*|enterprise|commercial|proprietary)\b", s["norm"]):
+        p_named, p_pathy = _path_tokens(s["para"]["clean"], dirs, list_depth)
+        p_fams = _osi_families(s["para"]["norm"])
+        if p_named and not p_fams and (COMMERCIAL_TERMS.search(s["para"]["norm"]) or _has(s["para"]["norm"], sa)):
+            for d in p_named:
+                excluded.setdefault(d, f"named under other terms in the root licence: \"{s['para']['clean'][:160].strip()}\"")
+        if named and not fams and re.search(r"\blicen[sc]\w*|enterprise|commercial|proprietary", s["norm"]):
             for d in named:
-                excluded.setdefault(d, f"named under other terms in the root licence: \"{s['raw'][:160]}\"")
+                if COMMERCIAL_TERMS.search(s["norm"]) or NESTED_ENTERPRISE_DIR.match(d.split("/")[-1]) \
+                        or ld.ENTERPRISE_DIR.match(d.split("/")[-1]):
+                    excluded.setdefault(d, f"named under other terms in the root licence: \"{s['raw'][:160]}\"")
+                else:
+                    other_terms.setdefault(d, s["raw"][:160])
         for m in HEADER_MARKER.findall(s["raw"]):
             if re.search(r"\b(marked|header|comment)\b", s["norm"]):
                 markers.append(m.strip())
@@ -319,9 +366,10 @@ def classify(paths: list[tuple[str, str]], texts: dict[str, str], *, commit: str
         if fams & core_fams and not pathy and _has(s["norm"], CORE_PHRASES):
             statements.append(s["raw"][:240])
         hits = _has(s["norm"], sa)
-        if hits and not pathy and not HEADER_MARKER.search(s["raw"]):
+        para_scoped = p_pathy and not p_fams and bool(p_named)
+        if hits and not pathy and not para_scoped and not HEADER_MARKER.search(s["raw"]):
             sa_hits.append({"markers": hits, "text": s["raw"][:200]})
-        if _has(s["norm"], PROHIBITIVE):
+        if _has(s["norm"], PROHIBITIVE) and not _has(s["norm"], STANDARD_BOILERPLATE):
             prohibitive.append(s["raw"][:200])
     # Root enterprise directories must be accounted for: named in the text or carrying a licence.
     root_ent = [e["name"] for e in root if e["type"] == "dir" and ld.ENTERPRISE_DIR.match(e["name"])]
@@ -329,6 +377,11 @@ def classify(paths: list[tuple[str, str]], texts: dict[str, str], *, commit: str
         if d not in excluded and re.search(rf"(^|[\s\"'`(/]){re.escape(d)}(/|[\s\"'`).,;:]|$)", all_raw):
             excluded[d] = "enterprise directory named in the root licence"
     unaccounted_ent = [d for d in root_ent if d not in excluded]
+
+    def covered(d):
+        return any(d == x or d.startswith(x + "/") for x in excluded)
+    if not statements:  # with no "the rest is <open licence>" notice, an unlicensed ee/ dir is unknown terms
+        unaccounted_ent += [d for d in nested_ent_dirs if not covered(d)]
     unaccounted_files = [n for n in core_side if not info[n]["open"] and not info[n]["sentences"]]
     # A core-side file that is neither open text nor a notice wrapper around one: a foreign licence.
     foreign = [n for n in core_side if not info[n]["open"]
@@ -338,10 +391,11 @@ def classify(paths: list[tuple[str, str]], texts: dict[str, str], *, commit: str
     evidence = {"core_texts": core_texts, "core_statements": statements[:3],
                 "enterprise_licence_files": enterprise_files,
                 "excluded_paths": [{"path": p, "why": excluded[p]} for p in sorted(excluded)],
-                "header_markers": sorted(set(markers))}
+                "header_markers": sorted(set(markers)),
+                "other_terms_paths": sorted(other_terms)}
 
     if (core_texts and (excluded or markers) and (statements or implicit) and not sa_hits
-            and not unaccounted_ent and not foreign and not unaccounted_files):
+            and not unaccounted_ent and not foreign and not unaccounted_files and not other_terms):
         stmt_fams = set().union(*(_osi_families(ld._norm(t)) for t in statements)) if statements else \
             {_family(x) for x in core_texts}
         core = sorted(x for x in core_texts if _family(x) in stmt_fams) or core_texts
@@ -357,7 +411,9 @@ def classify(paths: list[tuple[str, str]], texts: dict[str, str], *, commit: str
                     + "; ".join(sorted({m for h in sa_hits for m in h["markers"]}
                                        | {f"{n} carries source-available terms" for n in non_open_sa})),
                     evidence={**evidence, "source_available": sa_hits[:3]}, **base)
-    if core_texts and prohibitive and not (excluded or markers):
+    notice_chars = sum(len(info[n]["leftover"]) for n in core_side)
+    if core_texts and prohibitive and not (excluded or markers or other_terms) \
+            and notice_chars <= RESTRICTED_MAX_NOTICE_CHARS:
         return done("restricted", "a standard open licence with prohibitive terms added",
                     evidence={**evidence, "prohibitive": prohibitive[:3]}, **base)
     why = []
@@ -365,6 +421,8 @@ def classify(paths: list[tuple[str, str]], texts: dict[str, str], *, commit: str
         why.append("no root licence file carries a recognised open licence text")
     if core_texts and (excluded or markers) and not (statements or implicit):
         why.append("parts are licensed separately but no notice names the open licence as the default")
+    if other_terms:
+        why.append(f"{sorted(other_terms)} named under terms that are neither open nor a delimited commercial edition")
     if unaccounted_ent:
         why.append(f"enterprise directory {unaccounted_ent} has no stated licence")
     if foreign:
@@ -438,9 +496,11 @@ class Fetcher:
     def _path(self, slug):
         return self.cache / (slug.replace("/", "__") + ".json")
 
-    def _repo(self, slug: str, body: str):
+    def _repo(self, slug: str, body: str, tries: int = 3):
         owner, name = slug.split("/", 1)
-        st, doc = self.api.gql(f"query{{repository(owner:{json.dumps(owner)}, name:{json.dumps(name)}){{{body}}}}}")
+        q = f"query{{repository(owner:{json.dumps(owner)}, name:{json.dumps(name)}){{{body}}}}}"
+        st, doc = self.api.http.call("https://api.github.com/graphql", {"query": q, "variables": {}},
+                                     auth=True, tries=tries)
         if st != 200 or not isinstance(doc, dict):
             return st, None, f"graphql_http_{st}"
         if doc.get("data") is None or (doc.get("data") or {}).get("repository") is None:
@@ -451,12 +511,22 @@ class Fetcher:
     def one(self, slug: str, use_cache: bool = True) -> dict:
         cp = self._path(slug)
         if use_cache and cp.exists():
-            return common.read_json(cp)
+            cached = common.read_json(cp)
+            need = [p for p, k in cached.get("paths") or [] if k == "blob"
+                    and (("/" not in p and _is_licence_file(p)) or _in_licences_dir(p))]
+            if all(p in cached.get("texts", {}) for p in need):
+                return cached  # otherwise an earlier, narrower read: read it again
         now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         rec = {"slug": slug, "found": False, "commit": None, "error": None, "fetched_at": now,
                "paths": [], "texts": {}, "list_depth": LIST_DEPTH}
-        _, repo, err = self._repo(slug, "nameWithOwner defaultBranchRef{target{oid}} "
-                                        f"object(expression:\"HEAD:\"){{{_entries(LIST_DEPTH)}}}")
+        # A very large repository can time out at LIST_DEPTH; read it shallower rather than not at all.
+        for depth in range(LIST_DEPTH, 0, -1):
+            _, repo, err = self._repo(slug, "nameWithOwner defaultBranchRef{target{oid}} "
+                                            f"object(expression:\"HEAD:\"){{{_entries(depth)}}}",
+                                      tries=2 if depth > 1 else 4)
+            if not (err and err.startswith(("graphql_http", "graphql_error"))):
+                break
+        rec["list_depth"] = depth
         if err:
             rec["error"] = err  # found stays False: classify() then says unclear, never open
             return self._save(cp, rec, err)
@@ -468,10 +538,10 @@ class Fetcher:
         rec["commit"] = commit
         paths = _flatten((repo.get("object") or {}).get("entries"))
         # Open enterprise-style directories at the deepest listed level one level more.
-        deep = [p for p, k in paths if k == "tree" and p.count("/") == LIST_DEPTH - 1
+        deep = [p for p, k in paths if k == "tree" and p.count("/") == depth - 1
                 and NESTED_ENTERPRISE_DIR.match(p.split("/")[-1])][:10]
         want = [p for p, k in paths if k == "blob" and (
-            ("/" not in p and (_is_licence_file(p) or p in SUPPORTING_FILES))
+            ("/" not in p and (_is_licence_file(p) or p in SUPPORTING_FILES)) or _in_licences_dir(p)
             or ("/" in p and _is_licence_file(p.split("/")[-1])
                 and any(NESTED_ENTERPRISE_DIR.match(d) for d in p.split("/")[:-1])))][:25]
         fields = [f"d{i}: object(expression:{json.dumps(commit + ':' + d)}){{... on Tree{{entries{{name type}}}}}}"
@@ -532,7 +602,7 @@ def classify_record(rec: dict) -> dict:
     texts = rec.get("texts") or {}
     return classify([tuple(p) for p in rec.get("paths") or []], texts, commit=rec.get("commit"),
                     checked_at=rec["fetched_at"], found=bool(rec.get("found")) and bool(rec.get("paths")),
-                    error=rec.get("error"))
+                    error=rec.get("error"), list_depth=rec.get("list_depth") or LIST_DEPTH)
 
 
 def run(out: Path | None = None, workers: int = 8, api=None) -> dict:

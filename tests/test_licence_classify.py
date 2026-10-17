@@ -92,6 +92,27 @@ def test_open_core_delimited_by_an_exact_file_header_marker():
     assert c["excluded"]["markers"] == ["/* @license Enterprise */"]
 
 
+def test_open_core_from_a_licensing_file_with_a_fenced_path_list():
+    """Databend-style: LICENSE is a standard text, LICENSING.md lists the enterprise paths."""
+    licensing = ("# Licensing\n\nExample is an open-source project licensed under the Apache License 2.0.\n\n"
+                 "A small set of enterprise features is licensed under the Elastic License 2.0 "
+                 "(licenses/Elastic.txt). Only the following directories are covered by it:\n\n"
+                 "```\nsrc/query/ee/\nsrc/meta/ee/\n```\n\n"
+                 "Everything else in this repository is Apache-2.0.\n")
+    paths = tree("LICENSE", "LICENSING.md", "licenses/Elastic.txt", "src/query/ee/", "src/meta/ee/", "src/x.rs")
+    texts = {"LICENSE": APACHE, "LICENSING.md": licensing,
+             "licenses/Elastic.txt": "Elastic License 2.0\n\nYou may not provide the software to third parties "
+                                     "as a hosted or managed service. " * 5}
+    c = run(paths, texts)
+    assert c["class"] == "open_core", c["reason"]
+    assert c["core_spdx"] == "Apache-2.0" and c["excluded"]["paths"] == ["src/meta/ee", "src/query/ee"]
+
+
+def test_a_standard_root_text_does_not_make_an_unlicensed_nested_ee_directory_open():
+    c = run(tree("LICENSE", "app/ee/feature.ts", "app/core.ts"), {"LICENSE": MIT})
+    assert c["class"] == "unclear", c["reason"]
+
+
 def test_source_available_business_source_licence():
     c = run(tree("LICENSE", "src/x.go"), {"LICENSE": BSL})
     assert c["class"] == "source_available"

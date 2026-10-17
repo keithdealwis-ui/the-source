@@ -41,7 +41,7 @@ also in the canonical layer takes its tier from the canonical layer.
 | `host_repo_id` | the host's numeric repository id |
 | `name`, `full_name`, `url`, `aliases` | as the host reports them now; `aliases` holds earlier keys (renames, transfers) |
 | `description`, `homepage`, `topics`, `languages` | host-reported metadata; descriptions truncated to 300 characters |
-| `licence` | `spdx`, `status` (`recognised` or `issue`), `issue` (`category`, `reason`) when there is one |
+| `licence` | `spdx`, `status` (`recognised` or `issue`), `issue` (`category`, `reason`) when there is one; on `issue` rows also `classification` and `eligibility` (KEI-919, below) |
 | `maintenance` | `status` (`active` or `maintained`) and `last_meaningful_activity_at`, as the Discover lane evaluated them at `MANIFEST.membership.as_of` |
 | `lanes` | `discover` and/or `replace` |
 | `provenance` | every route that found it: `strategy`, `source`, `commit`, `locator`, `depth`, `via` |
@@ -51,6 +51,19 @@ Provenance names a curated list with its pinned commit and line (`list:owner/rep
 repositories (`github-owner:x`), a README link (`readme:owner/repo`), or the Replace lane.
 Routes from the maintainer's private seed list are published as `maintainer_seed` with no file,
 line or other detail.
+
+**Licence classification (KEI-919).** Every `issue` row also carries a project-level class read
+from the repository itself at a pinned commit (`python -m source_pipeline corpus-licence-classify`,
+network): `licence.classification` = `class` (`open`, `open_core`, `source_available`,
+`restricted`, `missing`, `unclear`), `reason`, `method`, for `open` the `spdx`, for `open_core`
+the `core_spdx` and the `excluded` `paths`/`markers`, any `supporting` manifest licence fields
+(evidence only), and `provenance` (`source`, `commit`, `checked_at`). `licence.eligibility` =
+`status` (`eligible` for `open`, `conditional` for `open_core`, otherwise `not_eligible`),
+`condition` and `follow_up` (open_core: "core only; edition check required before
+recommendation"), and `self_hostable` (`true` with `self_hosting_evidence`, or `null`).
+`status` stays `issue` and `issue` is kept for back-compatibility. The classification labels
+discovery eligibility only; the recommendation gate is unchanged. Rules and proof:
+`docs/ACCEPTANCE-KEI-919-S1.1.md`.
 
 `live.jsonl` row: `found`, `full_name`, `stars`, `forks`, `pushed_at`, `archived`,
 `latest_release`, `licence_spdx` (as the host reports it now), `observed_as_of`, and
@@ -63,6 +76,7 @@ python -m source_pipeline corpus-export     # data/corpus/ from data/discover/co
 python -m source_pipeline corpus-refresh    # re-read every project's live facts from the host (network)
 python -m source_pipeline corpus-validate   # MANIFEST, schema and publication-rule checks
 python -m source_pipeline corpus-due        # is a scheduled refresh due
+python -m source_pipeline corpus-licence-classify  # classify every licence-issue row (network; KEI-919)
 ```
 
 **Membership** changes only when the Discover lane is rebuilt and `corpus-export` is run again.
