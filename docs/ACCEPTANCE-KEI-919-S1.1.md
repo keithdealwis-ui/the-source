@@ -2,6 +2,8 @@
 
 Status: **complete**. Machine-readable proof: `docs/kei-919/s1.1-completion.json`.
 
+**Integrated (supersedes the per-branch figures below):** branch `kei-919-wp2-correctness`, corpus `a041a3db9d4c296e`, 9,363 projects; open 18, open_core 38 (conditional), source_available 304, missing 554, restricted 25, unclear 453. The one-row difference is S1.8 collapsing `github.com/baserow/baserow` into canonical `gitlab.com/baserow/baserow`. WP2 acceptance: `docs/ACCEPTANCE-KEI-919.md`.
+
 | | |
 |---|---|
 | Classifier commit | `d2dd35206c89ce80afdc2d94eea5b6a93d61f470` (module, validator, tests) |
