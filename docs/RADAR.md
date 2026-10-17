@@ -112,10 +112,26 @@ it counted, its own `points_per_day` when it has been observed more than once, a
    sources, signals and explanation. Repositories already canonical or in the corpus are
    observations, never candidates; `not_found` addresses are left out.
 
+6. **Stars for radar-only repositories (KEI-919).** A repository that is neither canonical
+   nor in the corpus has no live facts anywhere else in The Source, so the radar reads its
+   star count itself: after reconciliation, ONE batched GitHub GraphQL request per run
+   (`repository(owner, name)`, which follows renames) for the radar-only github.com rows,
+   ranked or candidate, with no reading newer than `stars.max_age_days` (1), at most
+   `stars.max_lookups` (100). Readings land in `data/radar/stars.jsonl` with
+   `observed_at`. Every entry and candidate carries `stars`, `stars_observed_at`,
+   `stars_source` (`github_graphql`, or `github_rest_resolution` for the count GitHub gave
+   when the address was resolved) and, when there is no count, `stars_reason`. The newest
+   held reading wins. A failed or refused request (offline, `THE_SOURCE_NO_NETWORK`)
+   changes nothing held: rows keep their dated older reading or stay `null` with the reason,
+   never an estimate (`radar-validate` checks every count against a held reading).
+   `radar-stars` runs the backfill alone against what is held, then rebuilds. Canonical and
+   corpus rows are not asked: their stars are in the project's live facts. Stars never
+   change a rank.
+
 ## Determinism and versioning
 
 Collection is the only step that needs the network. Ranking, reconciliation and the
-candidate list are a pure function of `data/radar/{collection.json,mentions.jsonl,resolved.jsonl}`, the corpus
+candidate list are a pure function of `data/radar/{collection.json,mentions.jsonl,resolved.jsonl,stars.jsonl}`, the corpus
 files (`data/dataset/oss_projects.jsonl`, `data/live/snapshot.json`,
 `data/canonical/oss_projects.jsonl`, `data/discovery/candidates.jsonl`) and
 `config/radar.yaml`, evaluated at the collection's `as_of`. The manifest records the

@@ -442,3 +442,102 @@ def test_a_failing_radar_puts_the_last_good_radar_and_pool_back(tmp_path, monkey
     crashed = radar.guarded_cycle_step(AS_OF, "2026-10-06", light, world2)
     assert not crashed["ok"] and "ZeroDivisionError" in crashed["failed_checks"][0]
     assert {p: p.read_bytes() for p in files} == files
+
+
+# ---------------------------------------------------------------- star backfill (KEI-919 S1.6)
+
+GQL = "https://api.github.com/graphql"
+
+
+class GqlHttp(FakeHttp):
+    """Answers the one GraphQL star request from {slug: (stars, id)}; an absent slug is NOT_FOUND."""
+
+    def __init__(self, repos, status=200):
+        super().__init__({})
+        self.repos, self.status, self.queries = repos, status, []
+
+    def call(self, url, data=None, auth=False, tries=5, token=None):
+        import re
+
+        self.calls += 1
+        self.seen.append(url)
+        if url != GQL:
+            return 404, None
+        self.queries.append(data["query"])
+        if self.status != 200:
+            return self.status, None
+        out, errors = {}, []
+        for alias, owner, name in re.findall(r'(r\d+): repository\(owner:"([^"]+)", name:"([^"]+)"\)', data["query"]):
+            got = self.repos.get(f"{owner}/{name}")
+            if got is None:
+                out[alias] = None
+                errors.append({"type": "NOT_FOUND", "path": [alias]})
+            else:
+                out[alias] = {"nameWithOwner": f"{owner}/{name}", "databaseId": got[1], "stargazerCount": got[0]}
+        return 200, {"data": out, "errors": errors}
+
+
+def _star_world(tmp_path, monkeypatch):
+    data = _root(tmp_path, monkeypatch, corpus=[("github.com/in/corpus", ["github.com/in/corpus"], None, 5)])
+    ms = [_mention("hn", 1, ["github.com/a/one"], points=500, age=0.5),
+          _mention("hn", 2, ["github.com/b/two"], points=300, age=0.5),
+          _mention("hn", 3, ["github.com/in/corpus"], points=200, age=0.5),
+          _mention("hn", 4, ["gitlab.com/c/three"], points=100, age=0.5)]
+    _hold(data, ms, resolved=[{"key": "github.com/b/two", "found": True, "resolved_at": "2026-09-20T00:00:00Z",
+                               "host_repo_id": 2, "canonical_name": "b/two", "archived": False, "fork": False,
+                               "stars": 7, "created_at": None, "pushed_at": None, "licence_spdx": None}])
+    return data
+
+
+def test_star_backfill_is_one_batched_request_for_radar_only_rows(tmp_path, monkeypatch):
+    _star_world(tmp_path, monkeypatch)
+    before = {r["key"]: r for r in radar.compute("2026-10-06T00:00:00Z")["rows"]}
+    assert before["github.com/a/one"]["stars"] is None and before["github.com/a/one"]["stars_reason"]
+    assert before["github.com/b/two"]["stars"] == 7                       # the count GitHub gave at resolution
+    assert before["github.com/b/two"]["stars_source"] == "github_rest_resolution"
+    http = GqlHttp({"a/one": (1234, 1), "b/two": (9, 2)})
+    stats = radar.stars_step(AS_OF, http, radar.load_config())
+    assert http.calls == 1 and len(http.queries) == 1                     # one request, every target in it
+    assert stats["status"] == "ok" and stats["found"] == 2 and stats["missing_before"] == 2
+    assert "corpus" not in http.queries[0] and "three" not in http.queries[0]   # corpus rows, other hosts: not asked
+    rows = {r["key"]: r for r in radar.compute("2026-10-06T00:00:00Z")["rows"]}
+    assert rows["github.com/a/one"]["stars"] == 1234
+    assert rows["github.com/a/one"]["stars_observed_at"] == "2026-10-06T00:00:00Z"
+    assert rows["github.com/b/two"]["stars"] == 9 and rows["github.com/b/two"]["stars_source"] == "github_graphql"
+    assert rows["github.com/in/corpus"]["stars"] is None
+    assert "in The Source" in rows["github.com/in/corpus"]["stars_reason"]
+    assert rows["gitlab.com/c/three"]["stars"] is None and "gitlab.com" in rows["gitlab.com/c/three"]["stars_reason"]
+    again = GqlHttp({"a/one": (1, 1)})                                    # a fresh reading is not asked again
+    assert radar.stars_step(AS_OF, again, radar.load_config())["asked"] == 0 and again.calls == 0
+
+
+def test_star_backfill_offline_keeps_what_is_held_and_never_guesses(tmp_path, monkeypatch):
+    data = _star_world(tmp_path, monkeypatch)
+    for http in (GqlHttp({}, status=502), GqlHttp({}, status=0)):
+        stats = radar.stars_step(AS_OF, http, radar.load_config())
+        assert stats["status"] == "failed" and stats["found"] == 0
+        coll = common.read_json(data / "radar" / "collection.json")
+        common.write_json(data / "radar" / "collection.json", {**coll, "stars": stats})
+        rows = {r["key"]: r for r in radar.compute("2026-10-06T00:00:00Z")["rows"]}
+        assert rows["github.com/a/one"]["stars"] is None
+        assert "last star lookup failed" in rows["github.com/a/one"]["stars_reason"]
+        assert rows["github.com/b/two"]["stars"] == 7                     # the older held reading stays, dated
+        assert rows["github.com/b/two"]["stars_observed_at"] == "2026-09-20T00:00:00Z"
+    assert common.read_jsonl(data / "radar" / "stars.jsonl") == []
+
+
+def test_star_backfill_with_the_network_refused_is_a_recorded_failure(tmp_path, monkeypatch):
+    from source_pipeline.enrich import Http
+
+    _star_world(tmp_path, monkeypatch)
+    monkeypatch.setenv("THE_SOURCE_NO_NETWORK", "1")
+    stats = radar.stars_step(AS_OF, Http(), radar.load_config())
+    assert stats["status"] == "failed" and "NetworkRefused" in stats["error"]
+
+
+def test_star_backfill_records_a_repository_github_does_not_know(tmp_path, monkeypatch):
+    data = _star_world(tmp_path, monkeypatch)
+    radar.stars_step(AS_OF, GqlHttp({"b/two": (9, 2)}), radar.load_config())
+    held = {r["key"]: r for r in common.read_jsonl(data / "radar" / "stars.jsonl")}
+    assert held["github.com/a/one"]["found"] is False and held["github.com/a/one"]["stars"] is None
+    assert radar.compute("2026-10-06T00:00:00Z")["rows"][0]["stars"] is None

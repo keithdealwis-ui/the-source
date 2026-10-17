@@ -65,7 +65,8 @@
       "type": "object",
       "additionalProperties": false,
       "required": ["rank", "key", "score", "status", "status_reason", "oss_id", "pool_key", "host_repo_id", "canonical_name",
-                   "link_keys", "sources", "signals", "first_mentioned_at", "last_mentioned_at", "mentions", "explanation"],
+                   "link_keys", "sources", "signals", "first_mentioned_at", "last_mentioned_at", "mentions", "explanation",
+                   "stars", "stars_observed_at", "stars_source", "stars_reason"],
       "properties": {
         "rank": {"type": "integer", "minimum": 1},
         "key": {"type": "string"},
@@ -100,7 +101,11 @@
             }
           }
         },
-        "explanation": {"type": "string", "minLength": 1}
+        "explanation": {"type": "string", "minLength": 1},
+        "stars": {"type": ["integer", "null"], "minimum": 0, "description": "GitHub stargazer count as observed at stars_observed_at; null when no reading is held (see stars_reason), never estimated"},
+        "stars_observed_at": {"anyOf": [{"$ref": "#/$defs/ts"}, {"type": "null"}]},
+        "stars_source": {"enum": ["github_graphql", "github_rest_resolution", null]},
+        "stars_reason": {"type": ["string", "null"], "description": "why stars is null; null when a count is held"}
       },
       "allOf": [
         {"if": {"properties": {"status": {"enum": ["canonical", "corpus"]}}}, "then": {"properties": {"oss_id": {"type": "string"}}}},
@@ -112,7 +117,8 @@
       "type": "object",
       "additionalProperties": false,
       "required": ["rank", "radar_rank", "key", "score", "status", "status_reason", "pool_key", "host_repo_id", "canonical_name",
-                   "sources", "signals", "first_mentioned_at", "last_mentioned_at", "explanation"],
+                   "sources", "signals", "first_mentioned_at", "last_mentioned_at", "explanation",
+                   "stars", "stars_observed_at", "stars_source", "stars_reason"],
       "properties": {
         "rank": {"type": "integer", "minimum": 1},
         "radar_rank": {"type": ["integer", "null"], "minimum": 1, "description": "its rank on radar.jsonl, or null when it is below max_ranked there"},
@@ -128,7 +134,25 @@
         "signals": {"$ref": "#/$defs/signals"},
         "first_mentioned_at": {"$ref": "#/$defs/ts"},
         "last_mentioned_at": {"$ref": "#/$defs/ts"},
-        "explanation": {"type": "string", "minLength": 1}
+        "explanation": {"type": "string", "minLength": 1},
+        "stars": {"type": ["integer", "null"], "minimum": 0, "description": "GitHub stargazer count as observed at stars_observed_at; null when no reading is held (see stars_reason), never estimated"},
+        "stars_observed_at": {"anyOf": [{"$ref": "#/$defs/ts"}, {"type": "null"}]},
+        "stars_source": {"enum": ["github_graphql", "github_rest_resolution", null]},
+        "stars_reason": {"type": ["string", "null"], "description": "why stars is null; null when a count is held"}
+      }
+    },
+    "star_reading": {
+      "description": "One line of data/radar/stars.jsonl (KEI-919): GitHub's star count for a radar-only repository, read in one batched GraphQL request per run, with the moment it was observed.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "found", "stars", "observed_at", "host_repo_id", "canonical_name"],
+      "properties": {
+        "key": {"$ref": "#/$defs/repo_key"},
+        "found": {"type": "boolean"},
+        "stars": {"type": ["integer", "null"], "minimum": 0},
+        "observed_at": {"$ref": "#/$defs/ts"},
+        "host_repo_id": {"type": ["integer", "null"]},
+        "canonical_name": {"type": ["string", "null"]}
       }
     },
     "source_collection": {
@@ -162,7 +186,9 @@
             "as_of": {"$ref": "#/$defs/ts"},
             "sources": {"type": "object", "required": ["hn", "forem"],
                         "additionalProperties": {"$ref": "#/$defs/source_collection"}},
-            "resolve": {"type": "object", "required": ["asked", "resolved", "transient_failures", "deferred", "pool_added"]}
+            "resolve": {"type": "object", "required": ["asked", "resolved", "transient_failures", "deferred", "pool_added"]},
+            "stars": {"type": "object", "required": ["asked", "found", "not_found", "status", "error", "http_calls"],
+                      "properties": {"status": {"enum": ["ok", "failed"]}}}
           }
         },
         "inputs": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},

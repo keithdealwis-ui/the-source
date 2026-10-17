@@ -87,6 +87,14 @@ resolve:
   max_lookups: 60                               # per cycle, highest-ranked unresolved first
   max_age_days: 30                              # a resolution older than this is asked again
 
+stars:
+  # KEI-919: a radar-only repository (not canonical, not in the corpus) has no live facts
+  # elsewhere, so its star count is read here, in ONE batched GitHub GraphQL request per run,
+  # and stored with the moment it was observed (data/radar/stars.jsonl). No reading: stars is
+  # null with a reason, never estimated. A collection budget, not part of the method.
+  max_lookups: 100                              # repositories per request (one request per run)
+  max_age_days: 1                               # a reading older than this is asked again
+
 retain_days: 30                                 # mentions older than this are dropped
 
 extract:
