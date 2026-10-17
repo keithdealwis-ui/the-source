@@ -112,6 +112,14 @@ class TestLiveLayer(unittest.TestCase):
         rel = self.call("source_get_relationship", {"saas": "Notion", "project": "docmost/docmost"})
         self.assertEqual(rel["relationship"]["edge_id"], "notion--github.com/docmost/docmost")
 
+    def test_relationship_without_replacement_fit_does_not_crash(self):
+        unscored = next(((r["saas_id"], r["oss_id"]) for rs in self.s.layer.rel_by_saas.values() for r in rs
+                         if not r["replacement_fit"]), None)
+        if unscored is None:
+            self.skipTest("every relationship in this layer is scored")
+        r = self.call("source_get_relationship", {"saas": unscored[0], "project": unscored[1]})
+        self.assertIn("not yet scored", r["verdict"])
+
     def test_bare_organisation_lists_its_repositories(self):
         with self.assertRaises(M.ToolError) as ctx:
             self.call("source_get_project", {"project": "bitwarden"})

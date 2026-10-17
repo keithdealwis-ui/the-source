@@ -1453,11 +1453,13 @@ def tool_get_relationship(layer, args, server):
     if r is None:
         raise ToolError(f"The Source holds no relationship between {sid} and {pid} in its published layer "
                         "(none was claimed, or it was rejected or withheld)")
-    fit = r["replacement_fit"]
+    fit = r["replacement_fit"] or {}  # an unscored pairing has no Replacement Fit yet (KEI-919)
     if r["recommended"]:
         verdict = "recommended: passes the export guard and its Replacement Fit is publishable and credible"
     else:
         reasons = []
+        if not r["replacement_fit"]:
+            reasons.append("not yet scored: no Replacement Fit")
         if fit.get("core_gate") == "failed":
             reasons.append("core use-case gate failed")
         if not fit.get("publish"):
