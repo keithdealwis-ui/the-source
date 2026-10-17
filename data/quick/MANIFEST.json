@@ -1,12 +1,12 @@
 {
-  "as_of": "2026-10-17T11:48:58Z",
+  "as_of": "2026-10-17T14:04:40Z",
   "calibration": "none (V3)",
   "catalogue_digest": "61e66a3572718196",
   "config_digest": "aa4a9cd8489c553b",
-  "corpus_version": "0d04d98b3bd62f86",
+  "corpus_version": "ca4eb455a4e16415",
   "counts": {
-    "eligible": 8427,
-    "eligible_with_health": 8390,
+    "eligible": 8437,
+    "eligible_with_health": 8400,
     "fit_bands": {
       "Moderate": 129,
       "Strong": 695,
@@ -14,8 +14,8 @@
     },
     "health_bands": {
       "Moderate": 2829,
-      "Poor": 457,
-      "Strong": 5111,
+      "Poor": 458,
+      "Strong": 5110,
       "Weak": 1406
     },
     "health_rows": 9803,
@@ -35,14 +35,14 @@
     "target_pct": 95.0
   },
   "files": {
-    "health.jsonl": "2c0a9555495522f959b2e8f5fafbc9c98cd4279794f2fca091545d6945b291f1",
+    "health.jsonl": "db022d54951f534cacefcf094afaa1e2f2a76326c39d7d8841c0f13afb59d204",
     "pairings.jsonl": "a46eca26390f90e91afa3ed2cc5d4607df8bcd6966544c39e506aec5ef008fc6"
   },
   "label": "quick",
   "last_run": {
     "api_calls": 0,
     "api_calls_allowed": 0,
-    "at": "2026-10-17T11:48:58Z",
+    "at": "2026-10-17T14:04:40Z",
     "caps": {
       "max_rescore_per_run": 20000,
       "max_runtime_s": 600
@@ -50,17 +50,17 @@
     "deferred": 0,
     "failure_count": 0,
     "failures": [],
-    "health_rescored": 0,
-    "health_unchanged": 9803,
+    "health_rescored": 9,
+    "health_unchanged": 9794,
     "mode": "incremental",
     "not_scored": {
       "host_not_found": 44
     },
     "pairings_removed": 0,
-    "pairings_rescored": 2,
-    "pairings_unchanged": 824,
+    "pairings_rescored": 0,
+    "pairings_unchanged": 826,
     "projects": 9847,
-    "runtime_s": 9.0
+    "runtime_s": 9.96
   },
   "methodology": "docs/QUICK-SCORING.md",
   "methods": {
@@ -68,7 +68,7 @@
     "health": "the-source.quick-health/1",
     "pairing": "source_pipeline/intake.find_evidence on description and topics, plus Replace lane pairings (data/dataset/relationships.jsonl)"
   },
-  "quick_version": "ccf2b7672dddaf93",
+  "quick_version": "9e5deb211befe2c1",
   "rule": "quick score: programmatic and uncalibrated; never a recommendation. Only the full evaluation (Project Health and Replacement Fit in the canonical layer) recommends",
   "schema": "the-source.quick/1"
 }

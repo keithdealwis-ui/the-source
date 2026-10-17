@@ -166,7 +166,7 @@ exceptions:
   kind: edition_check
   licence_as_found: 'MIT core; excluded: enterprise'
   approved_by: edition-check
-  approval_ref: the-source.edition-check/1@d346d769f02811d5e325a2ac5f45ac54ff5593de
+  approval_ref: the-source.edition-check/1@caad4d62045e76c1a8428ab8f316d351ca9a0a7e
   reviewed_at: '2026-10-17'
   rationale: helm/litellm (helm chart) runs the project without the excluded parts
   disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (enterprise/): cloudformation
@@ -194,7 +194,7 @@ exceptions:
     readme_summary: LiteLLM Enterprise
   edition_check:
     method: the-source.edition-check/1
-    commit: d346d769f02811d5e325a2ac5f45ac54ff5593de
+    commit: caad4d62045e76c1a8428ab8f316d351ca9a0a7e
     files:
     - Dockerfile
     - docker-compose.hardened.yml
@@ -209,7 +209,7 @@ exceptions:
     - helm/litellm-helm/values.yaml
     - helm/litellm/Chart.yaml
     - helm/litellm/values.yaml
-    checked_at: '2026-10-17T10:07:29Z'
+    checked_at: '2026-10-17T14:04:02Z'
     core_deployment: helm/litellm
 - oss_id: github.com/betterdb-inc/monitor
   kind: edition_check
@@ -312,6 +312,40 @@ exceptions:
     - docker/dockerfiles/vite.Dockerfile
     checked_at: '2026-10-17T10:07:35Z'
     core_deployment: docker-compose.production.yaml
+- oss_id: github.com/cubeplexai/cubeplex
+  kind: edition_check
+  licence_as_found: 'Apache-2.0 core; excluded: backend/ee'
+  approved_by: edition-check
+  approval_ref: the-source.edition-check/1@607174760e794d12eda092ae6c1706d4359d9478
+  reviewed_at: '2026-10-17'
+  rationale: deploy/docker-compose/compose.yaml (docker compose) runs the project without the excluded parts
+  disclosure: 'open core: recommendation covers the Apache-2.0 core; enterprise features excluded (backend/ee/):
+    cubeplex ee'
+  core_spdx: Apache-2.0
+  excluded_scope:
+  - path: backend/ee
+    why: named by the licence classification as under other terms
+    contains:
+    - LICENSE
+    - README.md
+    - pyproject.toml
+    - src
+    features:
+    - cubeplex ee
+    readme_summary: CubePlex Enterprise (`backend/ee/`)
+  edition_check:
+    method: the-source.edition-check/1
+    commit: 607174760e794d12eda092ae6c1706d4359d9478
+    files:
+    - backend/ee/README.md
+    - deploy/docker-compose/compose.docling.yaml
+    - deploy/docker-compose/compose.tempo.publish.yaml
+    - deploy/docker-compose/compose.tempo.yaml
+    - deploy/docker-compose/compose.yaml
+    - deploy/kubernetes/charts/cubeplex/Chart.yaml
+    - deploy/kubernetes/charts/cubeplex/values.yaml
+    checked_at: '2026-10-17T14:04:02Z'
+    core_deployment: deploy/docker-compose/compose.yaml
 - oss_id: github.com/elie222/inbox-zero
   kind: edition_check
   licence_as_found: 'AGPL-3.0 core; excluded: apps/web/ee'
@@ -525,7 +559,7 @@ exceptions:
   reviewed_at: '2026-10-17'
   rationale: docker/compose.hobby.yml (docker compose) runs the project without the excluded parts
   disclosure: 'open core: recommendation covers the Apache-2.0 core; enterprise features excluded (enterprise/,
-    highlight.io/): app, content, instrumentation, shared'
+    highlight.io): app, content, instrumentation, shared'
   core_spdx: Apache-2.0
   excluded_scope:
   - path: enterprise
@@ -753,7 +787,7 @@ exceptions:
   kind: edition_check
   licence_as_found: 'MIT core; excluded: packages/backend/src/ee'
   approved_by: edition-check
-  approval_ref: the-source.edition-check/1@5a5ff16b7f910057b9a539f6234ecc0dfd910228
+  approval_ref: the-source.edition-check/1@a407af4bc5a1a6e12adb4cc18dde6cb91b1c33bd
   reviewed_at: '2026-10-17'
   rationale: docker-compose.yml (docker compose) runs the project without the excluded parts
   disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (packages/backend/src/ee/)'
@@ -766,7 +800,7 @@ exceptions:
     readme_summary: null
   edition_check:
     method: the-source.edition-check/1
-    commit: 5a5ff16b7f910057b9a539f6234ecc0dfd910228
+    commit: a407af4bc5a1a6e12adb4cc18dde6cb91b1c33bd
     files:
     - agent-harness/docker-compose.agent.yml
     - docker-compose.yml
@@ -780,7 +814,7 @@ exceptions:
     - docker/docker-compose.preview.yml
     - dockerfile
     - dockerfile-prs
-    checked_at: '2026-10-17T10:07:48Z'
+    checked_at: '2026-10-17T14:04:02Z'
     core_deployment: docker-compose.yml
 - oss_id: github.com/onyx-dot-app/onyx
   kind: edition_check
@@ -913,7 +947,7 @@ exceptions:
   kind: edition_check
   licence_as_found: 'MIT core; excluded: ee'
   approved_by: edition-check
-  approval_ref: the-source.edition-check/1@aa0fc2ef19349ce1de23f730c0a013d4673452fb
+  approval_ref: the-source.edition-check/1@a3b9101c398f2cb794bf5abf1ca888a5170d61cc
   reviewed_at: '2026-10-17'
   rationale: docker-compose.hobby.yml (docker compose) runs the project without the excluded parts
   disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (ee/): billing, clickhouse,
@@ -954,7 +988,7 @@ exceptions:
     readme_summary: null
   edition_check:
     method: the-source.edition-check/1
-    commit: aa0fc2ef19349ce1de23f730c0a013d4673452fb
+    commit: a3b9101c398f2cb794bf5abf1ca888a5170d61cc
     files:
     - Dockerfile
     - Dockerfile.dagster-ml
@@ -979,13 +1013,13 @@ exceptions:
     - rust/Dockerfile
     - rust/Dockerfile.sqlx-migrate
     - rust/docker-compose.yml
-    checked_at: '2026-10-17T10:07:58Z'
+    checked_at: '2026-10-17T14:04:07Z'
     core_deployment: docker-compose.hobby.yml
 - oss_id: github.com/twentyhq/twenty
   kind: edition_check
   licence_as_found: 'AGPL-3.0 core; excluded: /* @license Enterprise */'
   approved_by: edition-check
-  approval_ref: the-source.edition-check/1@e7743ba77003f3eab957cfcca8e760d383cde550
+  approval_ref: the-source.edition-check/1@289976eaeeb78fda1b85ff9f3c92fa6ab6f93eb6
   reviewed_at: '2026-10-17'
   rationale: packages/twenty-docker/docker-compose.yml (docker compose) runs the project without the excluded parts
   disclosure: 'open core: recommendation covers the AGPL-3.0 core; enterprise features excluded (/* @license Enterprise
@@ -1628,11 +1662,42 @@ exceptions:
     readme_summary: null
   edition_check:
     method: the-source.edition-check/1
-    commit: e7743ba77003f3eab957cfcca8e760d383cde550
+    commit: 289976eaeeb78fda1b85ff9f3c92fa6ab6f93eb6
     files:
     - packages/twenty-docker/docker-compose.dev.yml
     - packages/twenty-docker/docker-compose.yml
     - packages/twenty-docker/helm/twenty/Chart.yaml
     - packages/twenty-docker/helm/twenty/values.yaml
-    checked_at: '2026-10-17T10:08:06Z'
+    checked_at: '2026-10-17T14:04:07Z'
     core_deployment: packages/twenty-docker/docker-compose.yml
+- oss_id: github.com/zane-ops/zane-ops
+  kind: edition_check
+  licence_as_found: 'MIT core; excluded: backend/ee'
+  approved_by: edition-check
+  approval_ref: the-source.edition-check/1@6db66939d5ea2da378d45122a7d94e3cdfa3dfd0
+  reviewed_at: '2026-10-17'
+  rationale: docker/docker-compose.yaml (docker compose) runs the project without the excluded parts
+  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (backend/ee/): licensing,
+    notes'
+  core_spdx: MIT
+  excluded_scope:
+  - path: backend/ee
+    why: named by the licence classification as under other terms
+    contains:
+    - LICENSE
+    - __init__.py
+    - licensing
+    - notes
+    features:
+    - licensing
+    - notes
+    readme_summary: null
+  edition_check:
+    method: the-source.edition-check/1
+    commit: 6db66939d5ea2da378d45122a7d94e3cdfa3dfd0
+    files:
+    - Dockerfile.front
+    - backend/Dockerfile
+    - docker/docker-compose.yaml
+    checked_at: '2026-10-17T14:04:07Z'
+    core_deployment: docker/docker-compose.yaml
