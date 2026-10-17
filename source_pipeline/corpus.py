@@ -6,6 +6,8 @@
                       and promote the result only if it validates (network; runs weekly in CI)
     corpus-validate   check data/corpus/ against its MANIFEST and the publication rules
     corpus-due        is a refresh due (config/corpus.yaml refresh.due_after_days)?
+    corpus-identity   re-resolve renames, forks, mirrors and sibling repositories (source_pipeline/identity.py);
+                      with --refresh, first re-read GitHub's identity facts in bounded GraphQL batches (network)
 
 The export carries facts only: identity, host-reported metadata, licence and maintenance status as
 the Discover lane evaluated them, and where each project was found (list + pinned commit + line).
@@ -31,7 +33,7 @@ ATTRIBUTION = "The Source (github.com/keithdealwis-ui/the-source), by Keith de A
 # Never in a published route: the private seed corpus or an internal lane's paths.
 FORBIDDEN_IN_PROVENANCE = ("discover_seeds", "config/discover", "data/discover", "keith_seed")
 PROJECT_KEYS = {"id", "host_repo_id", "name", "full_name", "url", "aliases", "description", "homepage", "topics",
-                "languages", "licence", "maintenance", "lanes", "provenance"}
+                "languages", "licence", "maintenance", "lanes", "provenance", "identity"}
 LIVE_KEYS = {"id", "found", "full_name", "stars", "forks", "pushed_at", "archived", "latest_release",
              "licence_spdx", "observed_as_of", "unresolved"}
 
@@ -149,6 +151,8 @@ def _release(rel):
 
 
 def _counts(projects: list, live: list) -> dict:
+    from . import identity
+
     lanes = {}
     for p in projects:
         for lane in p["lanes"]:
@@ -160,10 +164,23 @@ def _counts(projects: list, live: list) -> dict:
             "by_lane": dict(sorted(lanes.items())),
             "host_not_found": sum(1 for r in live if not r["found"]),
             "archived": sum(1 for r in live if r["archived"]),
-            "with_description": sum(1 for p in projects if p["description"])}
+            "with_description": sum(1 for p in projects if p["description"]),
+            "identity": identity.counts(projects)}
 
 
 def write_layer(out: Path, projects: list, live: list, manifest_extra: dict) -> dict:
+    from . import identity
+
+    facts_path = identity.data_dir(out) / "identity" / identity.FACTS_NAME
+    facts = identity.load_facts(facts_path)
+    canonical = identity.load_canonical(identity.data_dir(out) / "canonical" / "oss_projects.jsonl")
+    projects, live, _ = identity.resolve(projects, live, facts, canonical)
+    observed = sorted({f["observed_at"] for f in facts.values() if f.get("observed_at")})
+    manifest_extra = {**manifest_extra, "identity": {
+        "method": "source_pipeline/identity.py: renames, forks, mirrors, sibling repositories (docs/CORPUS.md)",
+        "facts": {"path": "data/identity/" + identity.FACTS_NAME,
+                  "sha256": common.sha256_file(facts_path) if facts_path.is_file() else None,
+                  "repositories": len(facts), "observed_as_of": observed[-1] if observed else None}}}
     projects = sorted(projects, key=lambda p: p["id"])
     live = sorted(live, key=lambda r: r["id"])
     tmp = out.with_name(out.name + ".new")
@@ -367,6 +384,17 @@ def validate(root: Path = OUT) -> dict:
         for word in FORBIDDEN_IN_PROVENANCE:
             check(word not in routes, f"{p['id']}: provenance carries {word!r}")
         check("discover_seeds" not in common.dumps(p), f"{p['id']}: names the private seed file")
+    from jsonschema import Draft202012Validator
+
+    from . import identity
+
+    schema = common.read_json(common.SCHEMA / "the-source.corpus.schema.json")
+    v = Draft202012Validator({**schema, "$ref": "#/$defs/identity"})
+    bad = [f"{p.get('id')}: identity {e.message}" for p in projects if isinstance(p, dict) and "identity" in p
+           for e in v.iter_errors(p["identity"])]
+    check(not bad, "; ".join(bad[:5]))
+    for msg in (identity.check([p for p in projects if isinstance(p, dict) and "identity" in p]) if not bad else []):
+        check(False, msg)
     for r in live:
         check(set(r) == LIVE_KEYS, f"{r.get('id')}: live fields {sorted(set(r) ^ LIVE_KEYS)}")
     counts = _counts(projects, live) if not failed else {}

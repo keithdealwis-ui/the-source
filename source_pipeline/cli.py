@@ -17,6 +17,8 @@
     python -m source_pipeline corpus-refresh       re-read every published project's live facts (network)
     python -m source_pipeline corpus-validate      MANIFEST, schema and publication-rule checks
     python -m source_pipeline corpus-due           is a scheduled refresh due
+    python -m source_pipeline corpus-identity [--refresh]   renames, forks, mirrors, sibling repositories
+                                                   (--refresh re-reads GitHub's identity facts first; network)
 
   Scoring (KEI-806):
     python -m source_pipeline score-harvest        observe the scoring evidence on GitHub (network)
@@ -256,7 +258,8 @@ def main(argv=None) -> int:
                                         "history-days", "history-delta", "discovery-pool",
                                         "momentum-build", "momentum-validate", "momentum",
                                         "radar-collect", "radar-build", "radar-stars", "radar-validate", "radar",
-                                        "corpus-export", "corpus-refresh", "corpus-validate", "corpus-due"])
+                                        "corpus-export", "corpus-refresh", "corpus-validate", "corpus-due",
+                                        "corpus-identity"])
     ap.add_argument("target", nargs="?", help="graph-query: a plan file or a query id")
     ap.add_argument("--only-failed", action="store_true", help="discover-verify: retry only failed lookups")
     ap.add_argument("--refresh", action="store_true", help="score-harvest: re-observe everything")
@@ -288,6 +291,10 @@ def main(argv=None) -> int:
     args = ap.parse_args(argv)
 
     out = {}
+    if args.command == "corpus-identity":
+        from . import identity
+
+        return identity.main(["--refresh"] if args.refresh else [])
     if args.command.startswith("corpus-"):
         from . import corpus
 

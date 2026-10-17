@@ -45,6 +45,7 @@ also in the canonical layer takes its tier from the canonical layer.
 | `maintenance` | `status` (`active` or `maintained`) and `last_meaningful_activity_at`, as the Discover lane evaluated them at `MANIFEST.membership.as_of` |
 | `lanes` | `discover` and/or `replace` |
 | `provenance` | every route that found it: `strategy`, `source`, `commit`, `locator`, `depth`, `via` |
+| `identity` | KEI-919, `null` when there is nothing to say; see [Identity](#identity-renames-forks-mirrors-siblings) |
 
 Provenance names a curated list with its pinned commit and line (`list:owner/repo`, `commit`,
 `line N`), a GitHub topic (`github-topic:x`), a recorded search (`search:id`), an owner's other
@@ -79,6 +80,38 @@ cannot read more than 2% of the corpus. A repository that has gone (deleted, mad
 listed with `found: false` and its last known facts. A renamed one keeps its `id`; the new key
 is added to `aliases`, so both resolve. Failures open a `corpus-refresh-failure` issue, as the
 daily cycle does.
+
+## Identity: renames, forks, mirrors, siblings
+
+One real project is one row (KEI-919). Every write of the layer (`corpus-export`,
+`corpus-refresh`, `corpus-identity`) runs `source_pipeline/identity.py`, a deterministic,
+idempotent step over the rows, the canonical project keys (`data/canonical/oss_projects.jsonl`:
+`oss_id`, `repo_url`, `github_url`) and GitHub's own identity facts in
+`data/identity/github.jsonl` (current name, repository id, `isFork` and `parent`, `isMirror` and
+`mirrorUrl`). Those facts are re-read by `corpus-identity --refresh`: GraphQL batches of 100
+(about 94 requests for the corpus), REST only to follow a transfer GraphQL does not, refused
+above 150 batches. A repository GitHub cannot answer keeps its previous facts.
+
+```bash
+python -m source_pipeline corpus-identity            # re-resolve from the facts held; no network
+python -m source_pipeline corpus-identity --refresh  # re-read GitHub's identity facts first (network)
+```
+
+| `identity` field | |
+|---|---|
+| `renamed_to` | the current address when `id` is an earlier name; also an alias, so both resolve |
+| `merged` | rows collapsed into this one, each with a `reason`: `renamed` (a shared address), `same_repository` (same host repository id), `same_canonical_project`, `mirror`; each id is now an alias |
+| `fork_of`, `fork_parent_in_corpus` | a fork's parent (its corpus id when held). Forks are marked, not collapsed (a fork can be the maintained successor), but a fork whose parent is held must never be offered as a separate replacement candidate for it |
+| `mirror`, `mirror_of` | GitHub flags it a mirror, or its own description says so ("Mirror of …", "read-only mirror", "(MIRROR)"; "mirroring" and "a mirror service" do not count). `mirror_of` is the upstream it names (a bare `owner/name` only when held here). A mirror of a held upstream, including the same owner/name on another host or a canonical project's other address, is collapsed into it; a mirror of an upstream The Source does not hold (postgres/postgres) stays, as the only copy |
+| `siblings`, `sibling_primary` | one owner, one project split across repositories: `owner/server` + `owner/clients`, `owner/x` + `owner/x-docs` / `-cli` / `-desktop` / `-mobile` / ... A name lookup should land on `sibling_primary`: the repository named after the project, else the most-starred |
+
+The primary of a collapsed group is the canonical project's own row, else the one that is not
+a mirror, else the one under its current name, else github.com, else the smallest id. Lanes,
+aliases and provenance are unioned. `MANIFEST.counts.identity` counts every kind and
+`MANIFEST.identity.facts` names the facts file, its sha256 and when it was observed.
+`corpus-validate` checks `identity` against `schema/the-source.corpus.schema.json` and
+referentially: a merged id is an alias and no longer a row, a held fork parent is a row, a
+sibling group closes on one primary of the same owner, and no address names two rows.
 
 ## How the MCP server uses it
 
