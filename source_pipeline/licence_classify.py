@@ -633,9 +633,11 @@ def run(out: Path | None = None, workers: int = 8, api=None) -> dict:
             host = p["id"].split("/", 1)[0]
             cls = classify([], {}, commit=None, checked_at=stamp, source=host, found=False,
                            error=f"host {host} is not read by the classifier")
+        for k in ("edition_check", "listed_alternative_to"):  # a new classification needs a new edition check
+            p["licence"].pop(k, None)
         p["licence"].update(row_fields(cls))
         after[cls["class"]] = after.get(cls["class"], 0) + 1
-    extra = {k: m[k] for k in ("membership", "publication", "refresh") if k in m}
+    extra = {k: m[k] for k in ("membership", "publication", "refresh", "edition_check") if k in m}
     extra["licence_classification"] = {
         "method": METHOD, "run_at": stamp, "scope": "rows with licence.status == 'issue'",
         "rules": "source_pipeline/licence_classify.py; docs/ACCEPTANCE-KEI-919-S1.1.md",

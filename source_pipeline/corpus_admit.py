@@ -213,7 +213,7 @@ def admit(pool: dict, as_of: datetime, out: Path | None = None, api=None, max_lo
         "method": f"{METHOD}: source_pipeline/corpus_admit.py; the Discover lane prefilter and licence bar, "
                   "maintenance read from pushed_at",
         "last": {"at": result["at"], "admitted": len(admitted_p)}}
-    extra = {k: m[k] for k in ("publication", "licence_classification", "refresh") if k in m}
+    extra = {k: m[k] for k in ("publication", "licence_classification", "edition_check", "refresh") if k in m}
     extra["membership"] = membership
     manifest = corpus.write_layer(out, projects + list(admitted_p.values()), live + list(admitted_l.values()), extra)
 

@@ -37,6 +37,13 @@ def _schema_errors(defn: str, docs: list[tuple[str, dict]], limit: int = 5) -> l
     return out
 
 
+def _edition_checked(root: Path, oss_id: str) -> bool:
+    path = root / "config" / "licence_exceptions.generated.yaml"
+    if not path.is_file():
+        return False
+    return any(e.get("oss_id", "").lower() == oss_id for e in (common.load_yaml(path) or {}).get("exceptions") or [])
+
+
 def run(root: Path | None = None, determinism: bool = True) -> dict:
     root = Path(root) if root else common.ROOT
     canon = root / "data" / "canonical"
@@ -116,6 +123,17 @@ def run(root: Path | None = None, determinism: bool = True) -> dict:
             if rec["stars"] != p["live"]["stars"] or rec["live_checked_at"] != p["live"]["checked_at"]:
                 bad_live.append(f"{sid}:{rec['oss_id']} (drift from canonical record)")
     check("recommendations_are_recommended_relationships", 6, not bad_rec, f"{len(bad_rec)} bad, e.g. {bad_rec[:3]}")
+    # An open-core project (licence exception from the automated edition check) is never recommended without the
+    # disclosure of what the recommendation covers: on its project record and on every api/v1 recommendation row.
+    undisclosed = [p["oss_id"] for p in oss if p["licence"]["status"] == "exception_approved"
+                   and not (p["licence"].get("open_core") or {}).get("disclosure")
+                   and any(r["recommended"] for r in rels if r["oss_id"] == p["oss_id"])
+                   and _edition_checked(root, p["oss_id"])]
+    undisclosed += [f"{sid}:{rec['oss_id']}" for sid, d in docs.items() for rec in d["recommendations"]
+                    if (proj_by.get(rec["oss_id"]) or {}).get("licence", {}).get("open_core")
+                    and rec.get("licence_disclosure") != proj_by[rec["oss_id"]]["licence"]["open_core"]["disclosure"]]
+    check("open_core_recommendations_disclosed", 10, not undisclosed,
+          f"{len(undisclosed)} open-core recommendations without the disclosure, e.g. {undisclosed[:3]}")
     check("live_fields_present", 4, not bad_live, f"{len(bad_live)} bad, e.g. {bad_live[:3]}")
     missing_live = [p["oss_id"] for p in oss if p["host"] == "github.com" and
                     (p["live"]["stars"] is None or p["live"]["licence_spdx"] is None or p["live"]["pushed_at"] is None)]

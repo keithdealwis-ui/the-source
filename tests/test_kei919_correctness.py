@@ -124,21 +124,34 @@ class TestLiveLayer(unittest.TestCase):
         r = self.call("source_get_project", {"project": "bitwarden"})
         self.assertEqual(r["project"]["id"], "github.com/bitwarden/server")  # siblings: server + clients (S1.8)
 
-    def test_named_open_core_projects_are_conditionally_eligible(self):
-        for value, core in (("twentyhq/twenty", "AGPL-3.0"), ("mattermost/mattermost", "AGPL-3.0"),
-                            ("RocketChat/Rocket.Chat", "MIT"), ("bitwarden/server", "AGPL-3.0")):
+    def test_named_open_core_projects_carry_their_edition_check(self):
+        # Twenty passed the automated edition check (edition_check.py): eligible, core only, with the disclosure.
+        # The others stay conditional with a reason code: their only in-repository deployments are dev stacks.
+        for value, core, want in (("twentyhq/twenty", "AGPL-3.0", "eligible"),
+                                  ("mattermost/mattermost", "AGPL-3.0", "conditional"),
+                                  ("RocketChat/Rocket.Chat", "MIT", "conditional"),
+                                  ("bitwarden/server", "AGPL-3.0", "conditional")):
             p = self.call("source_get_project", {"project": value})["project"]
-            self.assertEqual(p["licence_eligibility"], "conditional", value)
+            self.assertEqual(p["licence_eligibility"], want, value)
+            self.assertEqual(p["licence_label"], "open_core", value)
             cl = p["licence"]["classification"]
             self.assertEqual((cl["class"], cl["core_spdx"]), ("open_core", core), value)
-            self.assertIn("edition check", p["warning"])
+            self.assertIn(f"open core: recommendation covers the {core} core", p["open_core"]["disclosure"])
+            ec = p["licence"]["edition_check"]
+            self.assertTrue(ec["provenance"]["checked_at"] and ec["provenance"]["commit"] == cl["provenance"]["commit"])
+            if want == "eligible":
+                self.assertEqual(ec["result"], "pass")
+                self.assertIn("open core", p["warning"])
+            else:
+                self.assertEqual(p["licence"]["eligibility"]["reason_code"], ec["reason_code"], value)
+                self.assertIn("edition check", p["warning"])
             prov = cl.get("provenance") or cl
             self.assertTrue(prov.get("checked_at") and prov.get("commit"), value)  # S1.7
 
     def test_conditional_rows_reach_discovery_but_never_recommendations(self):
         r = self.call("source_get_alternatives", {"saas": "salesforce", "include_discovery": True, "limit": 10})
-        disc = {c["id"]: c["licence_eligibility"] for c in r["discovery_candidates"]["candidates"]}
-        self.assertEqual(disc.get("github.com/twentyhq/twenty"), "conditional")
+        disc = {c["id"]: c for c in r["discovery_candidates"]["candidates"]}
+        self.assertEqual(disc["github.com/twentyhq/twenty"]["licence_label"], "open_core")
         self.assertNotIn("github.com/twentyhq/twenty", {x["oss_id"] for x in r["recommendations"]})
         for c in self.s.layer.corpus.values():
             self.assertIn(M.corpus_licence_eligibility(c), ("eligible", "conditional", "not_eligible"))

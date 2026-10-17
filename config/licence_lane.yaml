@@ -64,3 +64,16 @@ open_core_markers:
   - files under
   - tree
   - reference to an ee/ or enterprise/ path
+
+# Automated edition check for open-core projects (source_pipeline/edition_check.py).
+# `corpus-edition-check` writes config/licence_exceptions.generated.yaml: one entry, with its
+# provenance and disclosure, per open-core project whose edition check passed. While this switch
+# is false the dataset build does not read that file, so no recommendation changes; the corpus
+# rows, discovery labels and disclosures work either way. Turning it on admits the passing
+# projects to the Replace lane exactly as a hand-approved exception would. Note: under the launch
+# policy (policy.yaml launch, dr-KEI-805-507e4f70: 100 SaaS is a floor, extended only to reach
+# oss_minimum) more recommendable projects reach oss_minimum with fewer SaaS products, so the
+# 2026-10-17 run would add 20 relationships (unscored until the next cycle) and drop 23
+# recommended ones across 16 products. Keith decides.
+edition_check:
+  generated_exceptions_feed_the_build: false

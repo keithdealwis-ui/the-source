@@ -37,6 +37,10 @@ PROJECT_KEYS = {"id", "host_repo_id", "name", "full_name", "url", "aliases", "de
 LICENCE_KEYS = {"spdx", "status", "issue"}
 # Added by licence-classify (KEI-919) to flagged rows; optional so an export of new rows still validates.
 LICENCE_CLASSIFIED_KEYS = LICENCE_KEYS | {"classification", "eligibility"}
+# Added by licence-edition-check (edition_check.py) to open_core rows; listed_alternative_to only where the
+# KEI-805 dataset lists the project as replacing a product.
+LICENCE_EDITION_KEYS = ("edition_check", "listed_alternative_to")
+EDITION_RESULTS = ("pass", "fail", "ambiguous")
 LICENCE_CLASSES = ("open", "open_core", "source_available", "restricted", "missing", "unclear")
 ELIGIBILITY_BY_CLASS = {"open": "eligible", "open_core": "conditional"}
 LIVE_KEYS = {"id", "found", "full_name", "stars", "forks", "pushed_at", "archived", "latest_release",
@@ -253,7 +257,8 @@ def export(src: Path = CORPUS_SRC, out: Path = OUT) -> dict:
         p, l = public_record(rec, cfg)
         prev = carried.get(p["id"])
         if prev and p["licence"]["status"] == "issue" and all(prev[k] == p["licence"][k] for k in LICENCE_KEYS):
-            p["licence"].update(classification=prev["classification"], eligibility=prev["eligibility"])
+            p["licence"].update(classification=prev["classification"], eligibility=prev["eligibility"],
+                                **{k: prev[k] for k in LICENCE_EDITION_KEYS if k in prev})
         projects.append(p)
         live.append(l)
     # Rows admitted by corpus-admit (corpus_admit.py) since the Discover lane build stay members: a
@@ -288,8 +293,9 @@ def export(src: Path = CORPUS_SRC, out: Path = OUT) -> dict:
             prev_m = common.read_json(out / "MANIFEST.json")
         except (OSError, ValueError):
             prev_m = {}
-        if prev_m.get("licence_classification"):
-            extra["licence_classification"] = prev_m["licence_classification"]
+        for k in ("licence_classification", "edition_check"):
+            if prev_m.get(k):
+                extra[k] = prev_m[k]
     return write_layer(out, projects, live, extra)
 
 
@@ -374,7 +380,7 @@ def refresh(now: datetime | None = None, out: Path = OUT, api=None) -> dict:
                           f"the previous layer is kept")
     if api.http.failures:
         log(f"corpus-refresh: {len(api.http.failures)} transient failures were retried")
-    extra = {k: m[k] for k in ("membership", "publication", "licence_classification") if k in m}
+    extra = {k: m[k] for k in ("membership", "publication", "licence_classification", "edition_check") if k in m}
     extra["refresh"] = {"cadence": cfg["cadence"], "stale_after_days": cfg["stale_after_days"],
                         "last": {"at": stamp, "method": f"GitHub GraphQL, {cfg['batch_size']} repositories per "
                                                         "request; REST only to follow a rename",
@@ -420,7 +426,8 @@ def validate(root: Path = OUT) -> dict:
             continue
         for k in [p["id"], *p["aliases"]]:
             check(keys.setdefault(k, p["id"]) == p["id"], f"{k} names two projects")
-        check(set(p["licence"]) in (LICENCE_KEYS, LICENCE_CLASSIFIED_KEYS),
+        check(set(p["licence"]) in (LICENCE_KEYS, LICENCE_CLASSIFIED_KEYS)
+              or (set(p["licence"]) - set(LICENCE_EDITION_KEYS)) == LICENCE_CLASSIFIED_KEYS,
               f"{p['id']}: licence fields {sorted(p['licence'])}")
         check(p["licence"]["status"] in ("recognised", "issue"), f"{p['id']}: licence status")
         if "classification" in p["licence"]:
@@ -469,15 +476,41 @@ def _check_classification(p: dict, check) -> None:
     check(prov.get("commit") is not None or c.get("class") == "unclear", f"{pid}: a class other than unclear "
                                                                          "without the commit it was read at")
     want = ELIGIBILITY_BY_CLASS.get(c.get("class"), "not_eligible")
-    check(e.get("status") == want, f"{pid}: eligibility {e.get('status')!r} for class {c.get('class')!r}")
+    ec = p["licence"].get("edition_check")
+    passed = c.get("class") == "open_core" and isinstance(ec, dict) and ec.get("result") == "pass"
+    check(e.get("status") == ("eligible" if passed else want),
+          f"{pid}: eligibility {e.get('status')!r} for class {c.get('class')!r}")
+    if ec is not None:
+        _check_edition(pid, c, e, ec, check)
     if c.get("class") == "open_core":
         ex = c.get("excluded") or {}
         check(bool(c.get("core_spdx")) and bool(ex.get("paths") or ex.get("markers")),
               f"{pid}: open_core without a core SPDX and the excluded paths")
-        check(bool(e.get("condition")) and bool(e.get("follow_up")), f"{pid}: open_core without its condition")
+        check(bool(e.get("condition")) and (passed or bool(e.get("follow_up"))),
+              f"{pid}: open_core without its condition")
     else:
         check(e.get("condition") is None and e.get("follow_up") is None, f"{pid}: condition on {c.get('class')}")
     check(e.get("self_hostable") in (True, None), f"{pid}: self_hostable must be true or null")
+
+
+def _check_edition(pid: str, c: dict, e: dict, ec: dict, check) -> None:
+    """An edition check (edition_check.py) is well formed and fails closed: only `pass` makes an open-core row
+    eligible, and only with the disclosure as its condition and the provenance of the classification's commit."""
+    check(c.get("class") == "open_core", f"{pid}: edition check on a row that is not open_core")
+    check(ec.get("result") in EDITION_RESULTS and bool(ec.get("reason_code")) and bool(ec.get("reason")),
+          f"{pid}: edition check without a result and reason code")
+    prov = ec.get("provenance") or {}
+    check(set(prov) == {"source", "commit", "checked_at"} and bool(prov.get("checked_at")),
+          f"{pid}: edition check provenance {sorted(prov)}")
+    if ec.get("result") == "pass":
+        check(prov.get("commit") == (c.get("provenance") or {}).get("commit") and bool(prov.get("commit")),
+              f"{pid}: edition check passed at a commit other than the classification's")
+        check(bool(ec.get("disclosure")) and e.get("condition") == ec.get("disclosure") and not e.get("follow_up"),
+              f"{pid}: a passed edition check without its disclosure")
+        check(bool(ec.get("excluded_scope")), f"{pid}: a passed edition check that does not say what is excluded")
+    else:
+        check(e.get("status") == "conditional" and e.get("reason_code") == ec.get("reason_code"),
+              f"{pid}: a {ec.get('result')} edition check must stay conditional with its reason code")
 
 
 def main(command: str) -> int:
@@ -496,6 +529,10 @@ def main(command: str) -> int:
 
             print(json.dumps(corpus_admit.admit(daily.load_pool(), datetime.now(timezone.utc).replace(microsecond=0)),
                              indent=2))
+        elif command == "corpus-edition-check":
+            from . import edition_check
+
+            return edition_check.main()
         elif command == "corpus-due":
             print(json.dumps(due()))
         else:

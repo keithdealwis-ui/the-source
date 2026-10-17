@@ -477,6 +477,35 @@ class Layer:
         self._build_semantic()
         self._load_signals()
         self._load_corpus()
+        self._apply_disclosures()
+
+    # -- open core (edition check): no recommendation without its disclosure
+
+    def _apply_disclosures(self):
+        """licence_disclosure for every canonical project that is open core: from the canonical record (an
+        edition-check licence exception), else from its corpus row's edition check or classification. A
+        relationship to an open-core project that cannot be disclosed is not served as a recommendation."""
+        self.disclosures, self.undisclosed = {}, []
+        for pid, p in self.projects.items():
+            oc = p["licence"].get("open_core") or {}
+            row = self.canonical_corpus.get(pid) or {}
+            cl = (row.get("licence") or {}).get("classification") or {}
+            open_core = bool(oc) or cl.get("class") == "open_core"
+            if not open_core:
+                continue
+            text = oc.get("disclosure") or (((row.get("licence") or {}).get("edition_check") or {}).get("disclosure")) or \
+                (open_core_disclosure(cl) if cl.get("core_spdx") else None)
+            if text:
+                self.disclosures[pid] = text
+                continue
+            for r in self.rel_by_project.get(pid, []):
+                if r["recommended"]:
+                    r["recommended"] = False
+                    self.undisclosed.append(r["edge_id"])
+        self.listed_by_saas = {}
+        for cid, c in self.corpus.items():
+            for sid in c["licence"].get("listed_alternative_to") or []:
+                self.listed_by_saas.setdefault(sid, []).append(cid)
 
     # -- signal layers (Repository Momentum, Community Radar)
 
@@ -1129,7 +1158,7 @@ def _licence_view(lic: dict, host_spdx):
     if lic["status"] != "recognised":
         out["issue"] = lic["issue"]
     # KEI-919 S1.1/S1.7: the project-level classification and its provenance (source, commit, checked_at)
-    for k in ("classification", "eligibility"):
+    for k in ("classification", "eligibility", "edition_check"):  # edition_check: edition_check.py
         if lic.get(k):
             out[k] = lic[k]
     return out
@@ -1142,6 +1171,29 @@ def _corpus_spdx(c: dict):
     if c["licence"]["status"] == "recognised":
         return c["licence"]["spdx"]
     return cl.get("core_spdx") or cl.get("spdx") or c["licence"]["spdx"]
+
+
+def open_core_disclosure(cl: dict) -> str:
+    """The disclosure for an open-core project, from its licence classification (edition_check.disclosure's form)."""
+    ex = cl.get("excluded") or {}
+    parts = [p + "/" for p in ex.get("paths") or []] + list(ex.get("markers") or [])
+    return (f"open core: recommendation covers the {cl.get('core_spdx')} core; enterprise features excluded"
+            + (f" ({', '.join(parts)})" if parts else ""))
+
+
+def disclose(layer, node):
+    """Every row that names a canonical open-core project carries its licence_disclosure, wherever a tool puts it:
+    recommendations, comparisons, project and relationship views. Discovery rows are labelled separately."""
+    if isinstance(node, dict):
+        pid = node.get("oss_id")
+        if isinstance(pid, str) and pid in layer.disclosures and node.get("tier") != "discovery":
+            node.setdefault("licence_disclosure", layer.disclosures[pid])
+        for v in node.values():
+            disclose(layer, v)
+    elif isinstance(node, list):
+        for v in node:
+            disclose(layer, v)
+    return node
 
 
 def corpus_licence_eligibility(c: dict) -> str:
@@ -1167,7 +1219,22 @@ def _discovery_view(layer, cid, full=False):
         out["identity"] = c["identity"]
     elig = corpus_licence_eligibility(c)
     out["licence_eligibility"] = elig
-    if elig == "conditional":
+    cl = c["licence"].get("classification") or {}
+    if cl.get("class") == "open_core":
+        ec = c["licence"].get("edition_check") or {}
+        out["licence_label"] = "open_core"
+        out["open_core"] = {"core_spdx": cl.get("core_spdx"),
+                            "disclosure": ec.get("disclosure") or open_core_disclosure(cl),
+                            "edition_check": ({k: ec.get(k) for k in ("result", "reason_code", "reason")}
+                                              | {"commit": (ec.get("provenance") or {}).get("commit"),
+                                                 "checked_at": (ec.get("provenance") or {}).get("checked_at")})
+                            if ec else None}
+        if c["licence"].get("listed_alternative_to"):
+            out["listed_alternative_to"] = c["licence"]["listed_alternative_to"]
+    if elig == "eligible" and cl.get("class") == "open_core":
+        out["warning"] = out["open_core"]["disclosure"] + (
+            " (edition check passed; discovery only: not scored, not a recommendation)")
+    elif elig == "conditional":
         cl = c["licence"]["classification"]
         out["warning"] = (f"open core: the core is {cl.get('core_spdx')}; separately licensed parts "
                           f"({', '.join(((cl.get('excluded') or {}).get('paths') or []) + ((cl.get('excluded') or {}).get('markers') or [])) or 'see classification'}) are "
@@ -1344,7 +1411,7 @@ def _include_discovery(args):
 
 
 def _discovery_candidates(layer, server, query, limit, licences=None, family=None, status=None, min_stars=None,
-                          max_stars=None, terms=None, anchors=None):
+                          max_stars=None, terms=None, anchors=None, saas_id=None):
     """Discovery-tier projects that match a query: a separate, labelled list, never recommendations. Only
     projects with a recognised licence that are live on their host and not archived are offered."""
     state = _corpus_state(layer, server)
@@ -1359,12 +1426,19 @@ def _discovery_candidates(layer, server, query, limit, licences=None, family=Non
     terms = list(terms) if terms is not None else _query_terms(query)
     products = [s["name"] for s in layer.saas.values()]
     rows, excluded = [], {}
+    # An open-core project the KEI-805 dataset lists as replacing this product (licence-cleared upstream lists;
+    # withheld from the canonical layer for its licence) is a candidate on that evidence, labelled open core.
+    listed = sorted(layer.listed_by_saas.get(saas_id, []) if saas_id else [],
+                    key=lambda cid: (-(layer.corpus[cid]["live"]["stars"] or 0), cid))
+    hits = [{"key": cid, "score": 1.0, "components": {"lexical": 0.0, "semantic": 0.0, "graph": 1.0},
+             "semantic_terms": [], "matched": {}, "listed": True} for cid in listed] + \
+        [h for h in hits if h["key"] not in set(listed)]
     for h in hits:
         if h["key"] not in layer.corpus or h["score"] < 0.15:
             continue
         c = layer.corpus[h["key"]]
         live = c["live"]
-        alt = bool(anchors) and claims_alternative(c["description"], c["topics"], anchors)
+        alt = bool(anchors) and (h.get("listed") or claims_alternative(c["description"], c["topics"], anchors))
         # "Integrates with PagerDuty, Datadog, ..." consumes the product; for that product it is not a replacement.
         uses = bool(anchors) and not alt and bool(re.search(
             r"\bintegrat\w* with [^.]{0,120}\b" + re.escape(_norm(anchors)) + r"\b", _norm(c["description"])))
@@ -1388,7 +1462,10 @@ def _discovery_candidates(layer, server, query, limit, licences=None, family=Non
             continue
         rows.append({**_discovery_view(layer, h["key"]),
                      "retrieval": {**{k: h[k] for k in ("score", "components", "semantic_terms")},
-                                   "term_coverage": coverage, "matched_terms": matched}})
+                                   "term_coverage": coverage, "matched_terms": matched,
+                                   **({"basis": "listed as an alternative by licence-cleared upstream lists "
+                                                "(KEI-805 dataset); withheld from recommendations for its licence"}
+                                      if h.get("listed") else {})}})
     out = {**base, "status": "ok" if rows else "no_matching_discovery_projects", "candidates": rows[:limit],
            "more_available": max(0, len(rows) - limit), "excluded": dict(sorted(excluded.items())),
            "match_rule": ((f"a candidate must say it is an alternative to {anchors} or match every category word "
@@ -1446,7 +1523,7 @@ def tool_get_alternatives(layer, args, server):
     if include_discovery:
         s = layer.saas[sid]
         out["discovery_candidates"] = _discovery_candidates(layer, server, f"{s['name']} {s['category']}", limit,
-                                                            terms=_category_terms(s), anchors=s["name"])
+                                                            terms=_category_terms(s), anchors=s["name"], saas_id=sid)
         paired = sorted(layer.quick_by_saas.get(sid, []), key=lambda r: (-r["quick_fit"]["score"], r["oss_id"]))
         out["quick_paired_candidates"] = {
             "label": "quick", "recommendation": False, "note": QUICK_NOTE,
@@ -1977,7 +2054,8 @@ def tool_recommend(layer, args, server):
         out["discovery_candidates"] = _discovery_candidates(
             layer, server, query, limit, licences, family, status, min_stars, max_stars,
             terms=None if need else _category_terms(layer.saas[matched[0]["saas_id"]]),
-            anchors=None if need else layer.saas[matched[0]["saas_id"]]["name"])
+            anchors=None if need else layer.saas[matched[0]["saas_id"]]["name"],
+            saas_id=None if need else matched[0]["saas_id"])
         out["discovery_candidates"]["constraints_not_applicable"] = sorted(
             k for k in ("self_hostable", "min_fit", "min_health", "max_days_since_activity", "repository_momentum_7d")
             if k in args)
@@ -2381,7 +2459,7 @@ class Server:
         started = time.monotonic()
         try:
             _check_args(schema, args)
-            payload = {"result": fn(self.layer, args, self), "meta": self.meta()}
+            payload = {"result": disclose(self.layer, fn(self.layer, args, self)), "meta": self.meta()}
         except ToolError as exc:
             self._count(name, "tool_error", started)
             return _ok(mid, {"content": [{"type": "text", "text": f"{name}: {exc}"}], "isError": True})
