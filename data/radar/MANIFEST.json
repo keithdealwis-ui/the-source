@@ -1,12 +1,12 @@
 {
-  "as_of": "2026-10-17T07:17:11Z",
+  "as_of": "2026-10-17T08:46:47Z",
   "collection": {
-    "as_of": "2026-10-17T07:17:11Z",
+    "as_of": "2026-10-17T08:46:47Z",
     "resolve": {
-      "asked": 2,
+      "asked": 0,
       "deferred": 0,
       "pool_added": [],
-      "resolved": 2,
+      "resolved": 0,
       "transient_failures": []
     },
     "sources": {
@@ -17,7 +17,7 @@
         "http_calls": 2,
         "items_read": 100,
         "listed": 100,
-        "mentions": 66,
+        "mentions": 64,
         "status": "ok"
       },
       "forem": {
@@ -34,8 +34,8 @@
         "gone": 0,
         "http_calls": 303,
         "items_read": 300,
-        "listed": 355,
-        "mentions": 23,
+        "listed": 354,
+        "mentions": 22,
         "status": "ok"
       },
       "instagram": {
@@ -73,10 +73,10 @@
   },
   "counts": {
     "candidates": 30,
-    "mentions_held": 353,
-    "mentions_in_window": 179,
+    "mentions_held": 354,
+    "mentions_in_window": 180,
     "mentions_in_window_by_source": {
-      "bluesky": 99,
+      "bluesky": 100,
       "forem": 25,
       "hn": 55,
       "instagram": 0,
@@ -90,7 +90,7 @@
       "not_found": 1,
       "unresolved": 10
     },
-    "repositories_mentioned": 169,
+    "repositories_mentioned": 170,
     "resolutions_held": 187,
     "stars": {
       "radar_only_without_stars": 1,
@@ -98,21 +98,21 @@
       "ranked_without_stars": 1,
       "readings_held": 42
     },
-    "truncated": 119
+    "truncated": 120
   },
   "files": {
-    "candidates.jsonl": "0d8770c170cc0ebbc0cc04b8b925c7a612edbdb27feeb7d43bd9e7b356fa29d6",
-    "collection.json": "ac832de261e5f4b869a7983193549895601b9623d71c17e5ad04e293f7bae8cb",
-    "mentions.jsonl": "9cdc17972e2d1f997b3c8dedf619a0d95afb964f842e7b9735b88141af5091e3",
-    "radar.jsonl": "f7e9f3df583b360fa56aa150dddb6eeb5e59e690f2e7d1ff79b75862dd05937f",
+    "candidates.jsonl": "2a0316584cb87a52c4a8f1a4806b2dc865ff8ddd8a26167ef0e9507a08f37209",
+    "collection.json": "02b986648bb1db4dbd3a4b10adf9d984794e598329b03accc5109efba37abd45",
+    "mentions.jsonl": "a5d236f01d06c3edf359a780dfcf8f1eda7c26e15c484468f4ccef53c794d407",
+    "radar.jsonl": "d943f7bfa604be07570776af504278a838828c86cd6d696b2ec0b387371508b3",
     "resolved.jsonl": "af181db3908074282f2aac3c4aedd738eee3ef3ec377981a15746aaeacc4a96e",
     "stars.jsonl": "89375f5605280f722a91f5968c6a28f871811ff58a698c48db1c37ca950296c6"
   },
   "inputs": {
-    "data/canonical/oss_projects.jsonl": "bb7fdcd7ab4e43c80fb91d6f80838e4873acdf27e6d6a0d302a0bdb708a939ac",
-    "data/dataset/oss_projects.jsonl": "e0de474daca16d046b0d93375a876544a7a83b0338801bcd8bf829a40338638b",
-    "data/discovery/candidates.jsonl": "d2cb310472b871303bc5dc00fcb9bc5cb804fd7708fc276500c4a171669a2e89",
-    "data/live/snapshot.json": "a58fdd0c25301349aecb3ed677e6d9b7381526f5a5155efca87e827ffe514658"
+    "data/canonical/oss_projects.jsonl": "6740dc4152df328c3dcc992727a316f8c60e72e0c507098c3d07189d50c13bc0",
+    "data/dataset/oss_projects.jsonl": "710b5d11087a589e4cab00df0a09c042094daf63f55adfa5c28a28fe711cade8",
+    "data/discovery/candidates.jsonl": "41e612f4d825a1609d7452b6bb556291fcb46399fbaecf5b9cc04b14e6c59f89",
+    "data/live/snapshot.json": "20385d161aa9fdc5d592d856a301f8e322d4930fbfe7a4edb29cec3b8fa6bbb4"
   },
   "methodology": {
     "doc": "docs/RADAR.md",
