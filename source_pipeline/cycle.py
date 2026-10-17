@@ -39,7 +39,7 @@ RUNS = common.ROOT / "runs"
 SCHEDULE = common.CONFIG / "schedule.yaml"
 WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 PROMOTE = ["data/staging", "data/live", "data/dataset", "data/state", "data/scores", "data/canonical",
-           "data/intake/outcomes", "data/history", "data/momentum", "data/discovery", "data/radar", "data/corpus", "api/v1"]
+           "data/intake/outcomes", "data/history", "data/momentum", "data/discovery", "data/radar", "data/corpus", "data/quick", "api/v1"]
 
 
 class CycleError(RuntimeError):
@@ -346,16 +346,37 @@ CORPUS_COUNTS = ("corpus_added", "corpus_removed", "corpus_collapsed", "membersh
 
 
 def _corpus_step(as_of_dt: datetime, res: dict) -> dict:
-    from . import corpus, corpus_admit, daily
+    """Admission, then (when membership changed) the quick scores that are pinned to the corpus version
+    (KEI-921, quick_score.py; no network). Both or neither: if quick scoring cannot follow, the previous corpus
+    and quick layers are put back, so data/quick never describes a corpus that is not the one served."""
+    from . import corpus, corpus_admit, daily, quick_score
 
+    keep = Path(tempfile.mkdtemp(prefix="the-source-corpus-keep-"))
+    for name, d in (("corpus", corpus.OUT), ("quick", quick_score.OUT)):
+        if d.exists():
+            shutil.copytree(d, keep / name)
     try:
         out = corpus_admit.admit(daily.load_pool(), as_of_dt)
-    except Exception as exc:  # the previous layer is kept (write_layer promotes only a valid layer)
+        if out["corpus_version_after"] != out["corpus_version_before"] and quick_score.OUT.exists():
+            q = quick_score.run(as_of_dt)
+            check = quick_score.validate()
+            if check["failed_checks"]:
+                raise CycleError("quick scores do not validate after admission: "
+                                 f"{[c['id'] for c in check['checks'] if not c['ok']]}")
+            out["quick"] = {k: q["last_run"].get(k) for k in ("health_rescored", "pairings_rescored", "runtime_s")} \
+                if isinstance(q, dict) and isinstance(q.get("last_run"), dict) else None
+    except Exception as exc:  # put back the previous layers
+        for name, d in (("corpus", corpus.OUT), ("quick", quick_score.OUT)):
+            if (keep / name).exists():
+                shutil.rmtree(d, ignore_errors=True)
+                shutil.copytree(keep / name, d)
+        shutil.rmtree(keep, ignore_errors=True)
         res["failures"].append({"step": "corpus_admission", "key": "data/corpus",
                                 "outcome": f"kept the previous corpus: {type(exc).__name__}: {exc}"[:300]})
         sha = corpus_admit.manifest_sha(corpus.OUT)
         res["corpus"] = {"manifest_sha256_before": sha, "manifest_sha256_after": sha, "error": str(exc)[:300]}
         return {"id": "corpus_admission", "status": "failed", "errors": [f"{type(exc).__name__}: {exc}"[:300]]}
+    shutil.rmtree(keep, ignore_errors=True)
     res["corpus"] = out
     res["counts"].update({k: out[k] for k in CORPUS_COUNTS})
     return {"id": "corpus_admission", "status": "ok", "pool_candidates": out["pool_candidates"],

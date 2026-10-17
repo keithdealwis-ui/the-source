@@ -169,3 +169,26 @@ def test_last_run_view_carries_corpus_counts_and_anomalies():
     assert "manifest_sha256_before" not in view["corpus"]
     assert view["anomalies"][0]["code"] == "scheduled_run_missing"
     assert M._run_view({"run_id": "old"})["corpus"] is None and M._run_view({"run_id": "old"})["anomalies"] == []
+
+
+
+def test_cycle_step_puts_the_corpus_back_when_quick_scores_cannot_follow(layer, monkeypatch, tmp_path):
+    from source_pipeline import cycle, daily, quick_score
+
+    quick = tmp_path / "data" / "quick"
+    quick.mkdir(parents=True)
+    (quick / "MANIFEST.json").write_text("{}")
+    real = A.admit
+    monkeypatch.setattr(C, "OUT", layer)
+    monkeypatch.setattr(quick_score, "OUT", quick)
+    monkeypatch.setattr(daily, "load_pool", lambda: _pool(_entry("github.com/new/one")))
+    monkeypatch.setattr(A, "admit", lambda pool, at: real(pool, at, layer, FakeApi({"new/one": _m("new/one", 9, 41)})))
+    monkeypatch.setattr(quick_score, "run", lambda at: {"last_run": {}})
+    monkeypatch.setattr(quick_score, "validate",
+                        lambda: {"failed_checks": 1, "checks": [{"id": "corpus_version", "ok": False}]})
+    before = {p.name: p.read_bytes() for p in layer.iterdir()}
+    res = {"failures": [], "counts": {}}
+    step = cycle._corpus_step(NOW, res)
+    assert step["status"] == "failed" and "quick scores" in step["errors"][0]
+    assert {p.name: p.read_bytes() for p in layer.iterdir()} == before
+    assert (quick / "MANIFEST.json").read_text() == "{}"
