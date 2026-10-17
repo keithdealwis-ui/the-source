@@ -1,0 +1,136 @@
+{
+  "corpus_version": "43c58bea3a8a3226",
+  "counts": {
+    "eligible": 8027,
+    "eligible_with_health": 7990,
+    "fit_bands": {
+      "Moderate": 117,
+      "Strong": 685,
+      "Weak": 1
+    },
+    "health_bands": {
+      "Moderate": 2732,
+      "Poor": 457,
+      "Strong": 4737,
+      "Weak": 1393
+    },
+    "health_rows": 9319,
+    "paired_projects": 467,
+    "paired_projects_with_fit": 467,
+    "pairings": 803,
+    "pairings_by_evidence": {
+      "description": 88,
+      "replace_lane": 733,
+      "topic": 51
+    },
+    "projects": 9363,
+    "recommendation_eligible": 0
+  },
+  "coverage": {
+    "eligible_health_pct": 99.54,
+    "target_pct": 95.0
+  },
+  "quick_version": "62299c79497852dc",
+  "runs": [
+    {
+      "api_calls": 0,
+      "api_calls_allowed": 0,
+      "at": "2026-10-17T09:45:48Z",
+      "caps": {
+        "max_rescore_per_run": 20000,
+        "max_runtime_s": 600
+      },
+      "deferred": 0,
+      "failure_count": 0,
+      "failures": [],
+      "health_rescored": 9319,
+      "health_unchanged": 0,
+      "mode": "full",
+      "not_scored": {
+        "host_not_found": 44
+      },
+      "pairings_removed": 0,
+      "pairings_rescored": 803,
+      "pairings_unchanged": 0,
+      "projects": 9363,
+      "runtime_s": 8.42
+    },
+    {
+      "api_calls": 0,
+      "api_calls_allowed": 0,
+      "at": "2026-10-17T09:46:11Z",
+      "caps": {
+        "max_rescore_per_run": 20000,
+        "max_runtime_s": 600
+      },
+      "deferred": 0,
+      "failure_count": 0,
+      "failures": [],
+      "health_rescored": 0,
+      "health_unchanged": 9319,
+      "mode": "incremental",
+      "not_scored": {
+        "host_not_found": 44
+      },
+      "pairings_removed": 0,
+      "pairings_rescored": 0,
+      "pairings_unchanged": 803,
+      "projects": 9363,
+      "runtime_s": 8.06
+    }
+  ],
+  "ticket": "KEI-921",
+  "validate": {
+    "checks": [
+      [
+        "schema",
+        true
+      ],
+      [
+        "sha256:health.jsonl",
+        true
+      ],
+      [
+        "sha256:pairings.jsonl",
+        true
+      ],
+      [
+        "quick_version",
+        true
+      ],
+      [
+        "corpus_version",
+        true
+      ],
+      [
+        "every_row_labelled_quick_and_never_recommendation_eligible",
+        true
+      ],
+      [
+        "health_recomputes_from_its_facts",
+        true
+      ],
+      [
+        "eligible_health_coverage_ge_95pct",
+        true
+      ],
+      [
+        "every_detectable_pairing_has_quick_fit",
+        true
+      ],
+      [
+        "zero_quick_only_recommendations_canonical",
+        true
+      ],
+      [
+        "read_api_v1_carries_no_quick_scores",
+        true
+      ],
+      [
+        "last_run_cost_visible",
+        true
+      ]
+    ],
+    "failed_checks": 0
+  }
+}

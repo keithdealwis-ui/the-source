@@ -48,6 +48,11 @@ jobs:
           THE_SOURCE_NO_NETWORK: "1"
         run: python -m source_pipeline corpus-validate
 
+      - name: Quick scores labelled, covered, recomputable; zero quick-only recommendations (KEI-921)
+        env:
+          THE_SOURCE_NO_NETWORK: "1"
+        run: python -m source_pipeline quick-validate
+
       - name: Golden queries, no constraint violations, no regression past the baseline (KEI-918)
         env:
           THE_SOURCE_NO_NETWORK: "1"
