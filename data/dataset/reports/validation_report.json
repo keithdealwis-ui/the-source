@@ -42,6 +42,39 @@
       "ok": true
     },
     {
+      "criterion": 1,
+      "description": "every rejection record carries exactly one enumerated reason code and a detail",
+      "examples": [],
+      "failures": 0,
+      "id": "schema.rejection",
+      "kind": "assertion",
+      "observed": {
+        "archived": 18,
+        "host_unverifiable": 3,
+        "identity_unverified": 5,
+        "licence_not_open": 136,
+        "not_a_replacement": 39,
+        "not_a_repository": 21,
+        "not_found": 13,
+        "saas_not_in_catalogue": 197,
+        "unmaintained": 51
+      },
+      "ok": true
+    },
+    {
+      "criterion": 1,
+      "description": "every review-queue item conforms to the schema and no relationship of an open item is recommendation-eligible",
+      "examples": [],
+      "failures": 0,
+      "id": "review_queue.fail_closed",
+      "kind": "assertion",
+      "observed": {
+        "items": 9,
+        "open": 9
+      },
+      "ok": true
+    },
+    {
       "criterion": 2,
       "description": "every relationship carries provenance naming a registered source, its pinned commit and a locator",
       "examples": [],
@@ -277,8 +310,8 @@
         },
         "relationships": {
           "licence_exception": 206,
-          "recommendable": 509,
-          "rejected": 159
+          "recommendable": 496,
+          "rejected": 172
         }
       },
       "ok": true
@@ -389,7 +422,7 @@
         "publication_status": "public",
         "share_alike_only_relationships_all_lanes": 62,
         "share_alike_only_relationships_in_launch": 25,
-        "share_alike_only_relationships_validated": 48,
+        "share_alike_only_relationships_validated": 47,
         "withheld_from_default_export": 25
       },
       "ok": true
@@ -401,7 +434,7 @@
       "failures": 0,
       "id": "dedupe.one_repository_per_product_per_saas",
       "kind": "assertion",
-      "observed": 358,
+      "observed": 360,
       "ok": true
     },
     {
@@ -411,7 +444,7 @@
       "failures": 0,
       "id": "launch.only_validated_edges",
       "kind": "assertion",
-      "observed": 358,
+      "observed": 360,
       "ok": true
     },
     {
@@ -433,7 +466,7 @@
       "kind": "assertion",
       "observed": {
         "floor": 100,
-        "launch_saas": 103,
+        "launch_saas": 111,
         "mode": "floor"
       },
       "ok": true
@@ -448,8 +481,8 @@
       "observed": {
         "oss_distinct_products": 250,
         "oss_projects": 250,
-        "relationships": 358,
-        "saas_products": 103
+        "relationships": 360,
+        "saas_products": 111
       },
       "ok": true
     }
@@ -478,7 +511,7 @@
           "github.com/lobehub/lobehub (83275 stars: no_recognised_open_source_licence)",
           "github.com/elastic/elasticsearch (78293 stars: no_recognised_open_source_licence)"
         ],
-        "launch_projects_under_500_stars": 23,
+        "launch_projects_under_500_stars": 24,
         "rejected_with_10k_plus_stars": 91
       }
     },
@@ -493,7 +526,7 @@
         "oss_recommendable": 392,
         "rejections_recorded": 483,
         "relationship_claims_read": 1570,
-        "relationships_validated": 509
+        "relationships_validated": 496
       }
     }
   ],
