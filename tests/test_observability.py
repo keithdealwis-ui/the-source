@@ -143,7 +143,9 @@ def test_surface_alerts_files_one_issue_per_fingerprint(tmp_path, monkeypatch):
 # ------------------------------------------------------------------ S0.1 intake report
 
 def test_intake_report_follows_the_funnel_of_the_live_run():
-    rec = common.read_json(RUNS / "2026-10-17-schedule-a1.json")
+    # The newest successful run, whichever it is: a fixed run id breaks on the next cycle (KEI-919).
+    rec = max((r for r in O.records(RUNS) if r.get("status") == "succeeded"),
+              key=lambda r: (r.get("ended_at") or r.get("started_at") or "", r["run_id"]))
     rep = O.intake_report(rec, ROOT)
     assert rep == O.intake_report(rec, ROOT)  # deterministic
     st = {s["id"]: s for s in rep["stages"]}
@@ -158,7 +160,7 @@ def test_intake_report_follows_the_funnel_of_the_live_run():
     reasons = st["eligibility"]["stopped_by_reason"]
     assert [r["count"] for r in reasons] == sorted((r["count"] for r in reasons), reverse=True)
     assert rep["manual_intake"]["submissions"] == len(list((ROOT / "data" / "intake" / "outcomes").glob("*.json")))
-    committed = common.read_json(RUNS / "reports" / "2026-10-17-schedule-a1.intake.json")
+    committed = common.read_json(RUNS / "reports" / f"{rec['run_id']}.intake.json")
     assert {k: v for k, v in committed.items() if k != "change_from_previous"} == rep
 
 
