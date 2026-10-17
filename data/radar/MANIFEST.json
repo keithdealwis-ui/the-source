@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-10-17T10:44:52Z",
+  "as_of": "2026-10-17T14:13:20Z",
   "collection": {
-    "as_of": "2026-10-17T10:44:52Z",
+    "as_of": "2026-10-17T14:13:20Z",
     "resolve": {
       "asked": 0,
       "deferred": 0,
@@ -17,16 +17,16 @@
         "http_calls": 2,
         "items_read": 100,
         "listed": 100,
-        "mentions": 63,
+        "mentions": 66,
         "status": "ok"
       },
       "forem": {
         "errors": [],
         "gone": 0,
-        "http_calls": 41,
-        "items_read": 37,
-        "listed": 37,
-        "mentions": 26,
+        "http_calls": 40,
+        "items_read": 36,
+        "listed": 36,
+        "mentions": 25,
         "status": "ok"
       },
       "hn": {
@@ -34,7 +34,7 @@
         "gone": 0,
         "http_calls": 303,
         "items_read": 300,
-        "listed": 354,
+        "listed": 359,
         "mentions": 22,
         "status": "ok"
       },
@@ -73,24 +73,24 @@
   },
   "counts": {
     "candidates": 30,
-    "mentions_held": 355,
-    "mentions_in_window": 181,
+    "mentions_held": 359,
+    "mentions_in_window": 182,
     "mentions_in_window_by_source": {
-      "bluesky": 100,
-      "forem": 26,
-      "hn": 55,
+      "bluesky": 103,
+      "forem": 25,
+      "hn": 54,
       "instagram": 0,
       "x": 0
     },
     "ranked": 50,
     "ranked_by_status": {
-      "candidate": 39,
+      "candidate": 38,
       "canonical": 0,
       "corpus": 0,
       "not_found": 1,
-      "unresolved": 10
+      "unresolved": 11
     },
-    "repositories_mentioned": 171,
+    "repositories_mentioned": 172,
     "resolutions_held": 187,
     "stars": {
       "radar_only_without_stars": 1,
@@ -98,21 +98,21 @@
       "ranked_without_stars": 1,
       "readings_held": 42
     },
-    "truncated": 121
+    "truncated": 122
   },
   "files": {
-    "candidates.jsonl": "99dd457d3a5e780778cfd12da90e649eeaba36cdcfc4030d0824d76d088bea7d",
-    "collection.json": "c53f20050c775c5f04cddaee723cbb8d1e6ecfc87b858230e2e6d132d9db4e8b",
-    "mentions.jsonl": "4bad924b54eaca094ffda955cc24585cf9f43037e76b8e517bb4ccf66002463a",
-    "radar.jsonl": "ed409c2d7b672d87fbade9026f1f3f69864e9f30ad40ecedb6a9474c2cec5906",
+    "candidates.jsonl": "c5a5ccce682a68ca5edc69e60fa678cda065dc0a51a0a4c0f59c90eaf1f5364b",
+    "collection.json": "0499dd92780a906a26d99dfec9c5d6f50b3d1a99ccd41ae77ddfdd39e3b561ef",
+    "mentions.jsonl": "df5371906f812159b540b2fd1876dbdb9b582a1688ba5aba89ca87d6bf0537a8",
+    "radar.jsonl": "ed77782a6cc9242ac31c0c1a616919f33c731977223630948c67c1129159948b",
     "resolved.jsonl": "af181db3908074282f2aac3c4aedd738eee3ef3ec377981a15746aaeacc4a96e",
     "stars.jsonl": "89375f5605280f722a91f5968c6a28f871811ff58a698c48db1c37ca950296c6"
   },
   "inputs": {
-    "data/canonical/oss_projects.jsonl": "85f73ca21b70e1dae529865e6ebfe2e54bd62aafb8e991fa5255de8b2c7dd922",
-    "data/dataset/oss_projects.jsonl": "6141793ea240d4e4815314a84135e8f05482672ba5a0a6956b0c47736462ef3a",
-    "data/discovery/candidates.jsonl": "5cdf292ce524e317e359af11ec34e611c9c098761302f9881f1165955c9bca25",
-    "data/live/snapshot.json": "6c14916c965f2b6552629548797ea95e6a20a441ecd4c6a0914df7d2c8d23f0c"
+    "data/canonical/oss_projects.jsonl": "ed200b86a6b3c26882c5a6c070adbfced8ae68ebbe7c929723e9d19e65cd05b9",
+    "data/dataset/oss_projects.jsonl": "94faf2ac72ca0f25cfeb9ccd3de572648a17cf56576a2b992a38a70b04e273b6",
+    "data/discovery/candidates.jsonl": "9e3dac289ce0fd0d67358dd0103e81f29549667e7b3bef2496819b5729a6b949",
+    "data/live/snapshot.json": "e58c48b797723fb928437c14442a59dd27d6ed4fd6854bb63c65755b3569c73f"
   },
   "methodology": {
     "doc": "docs/RADAR.md",

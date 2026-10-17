@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-10-17T09:49:21Z",
+  "as_of": "2026-10-17T14:13:20Z",
   "attribution": "The Source (github.com/keithdealwis-ui/the-source), by Keith de Alwis",
-  "corpus_version": "ca4eb455a4e16415",
+  "corpus_version": "2751fd656252d17d",
   "counts": {
     "archived": 23,
     "by_lane": {
-      "discover": 9546,
+      "discover": 9547,
       "replace": 485
     },
     "host_not_found": 44,
@@ -38,8 +38,8 @@
     },
     "licence_issue": 1476,
     "maintainer_seeded": 68,
-    "projects": 9847,
-    "with_description": 9476
+    "projects": 9848,
+    "with_description": 9477
   },
   "edition_check": {
     "generated_exceptions": "config/licence_exceptions.generated.yaml",
@@ -54,8 +54,8 @@
     "scope": "rows classified open_core"
   },
   "files": {
-    "live.jsonl": "9261e1374a20a9b2248e74c5dffe3ddbe417dccd89d28e6660d70ac5163f1356",
-    "projects.jsonl": "00981803390ffdfc9ceaeb25babf9d8293ccfcfb5f59014ad2c6cd82d1082fc1"
+    "live.jsonl": "88440f613af0239929c82dd000171b5d3df280fccec64282b589ddb614e0c03a",
+    "projects.jsonl": "70b4436219b4fb92dcce7f046740c21d8f481b7577f9076e0b1bd9eac2b97073"
   },
   "identity": {
     "facts": {
@@ -75,18 +75,18 @@
     "scope": "rows with licence.status == 'issue'"
   },
   "live_observed_as_of": {
-    "newest": "2026-10-17T09:49:21Z",
+    "newest": "2026-10-17T14:13:20Z",
     "oldest": "2026-09-29T10:34:38Z"
   },
   "membership": {
     "admission": {
       "last": {
-        "admitted": 484,
-        "at": "2026-10-17T09:49:21Z"
+        "admitted": 1,
+        "at": "2026-10-17T14:13:20Z"
       },
       "method": "the-source.corpus-admit/1: source_pipeline/corpus_admit.py; the Discover lane prefilter and licence bar, maintenance read from pushed_at"
     },
-    "as_of": "2026-10-17T09:49:21Z",
+    "as_of": "2026-10-17T14:13:20Z",
     "maintenance_evaluated_as_of": "per the Discover lane build at membership.as_of (docs/DISCOVER.md); live facts are refreshed, evaluations are not",
     "outcomes_published": [
       "recommendation_eligible",
