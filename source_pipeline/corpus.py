@@ -34,6 +34,11 @@ ATTRIBUTION = "The Source (github.com/keithdealwis-ui/the-source), by Keith de A
 FORBIDDEN_IN_PROVENANCE = ("discover_seeds", "config/discover", "data/discover", "keith_seed")
 PROJECT_KEYS = {"id", "host_repo_id", "name", "full_name", "url", "aliases", "description", "homepage", "topics",
                 "languages", "licence", "maintenance", "lanes", "provenance", "identity"}
+LICENCE_KEYS = {"spdx", "status", "issue"}
+# Added by licence-classify (KEI-919) to flagged rows; optional so an export of new rows still validates.
+LICENCE_CLASSIFIED_KEYS = LICENCE_KEYS | {"classification", "eligibility"}
+LICENCE_CLASSES = ("open", "open_core", "source_available", "restricted", "missing", "unclear")
+ELIGIBILITY_BY_CLASS = {"open": "eligible", "open_core": "conditional"}
 LIVE_KEYS = {"id", "found", "full_name", "stars", "forks", "pushed_at", "archived", "latest_release",
              "licence_spdx", "observed_as_of", "unresolved"}
 
@@ -157,6 +162,10 @@ def _counts(projects: list, live: list) -> dict:
     for p in projects:
         for lane in p["lanes"]:
             lanes[lane] = lanes.get(lane, 0) + 1
+    classified = _tally(p["licence"]["classification"]["class"] for p in projects
+                        if p["licence"].get("classification"))
+    eligible = _tally(p["licence"]["eligibility"]["status"] for p in projects if p["licence"].get("eligibility"))
+    extra = {"licence_classification": classified, "licence_eligibility": eligible} if classified else {}
     return {"projects": len(projects),
             "licence_issue": sum(1 for p in projects if p["licence"]["status"] != "recognised"),
             "maintainer_seeded": sum(1 for p in projects
@@ -165,7 +174,14 @@ def _counts(projects: list, live: list) -> dict:
             "host_not_found": sum(1 for r in live if not r["found"]),
             "archived": sum(1 for r in live if r["archived"]),
             "with_description": sum(1 for p in projects if p["description"]),
-            "identity": identity.counts(projects)}
+            "identity": identity.counts(projects), **extra}
+
+
+def _tally(values) -> dict:
+    out = {}
+    for v in values:
+        out[v] = out.get(v, 0) + 1
+    return dict(sorted(out.items()))
 
 
 def write_layer(out: Path, projects: list, live: list, manifest_extra: dict) -> dict:
@@ -223,11 +239,21 @@ def export(src: Path = CORPUS_SRC, out: Path = OUT) -> dict:
         if name == "projects.jsonl" and common.sha256_file(src / name) != digest:
             raise CorpusError(f"{src}/{name} does not match its MANIFEST sha256")
     projects, live, skipped = [], [], {}
+    # Licence classifications (KEI-919) are made by licence-classify against this layer, not by the
+    # Discover lane; keep them across a re-export while the row's licence evaluation is unchanged.
+    carried = {}
+    if (out / "projects.jsonl").is_file():
+        for p in common.read_jsonl(out / "projects.jsonl"):
+            if p["licence"].get("classification"):
+                carried[p["id"]] = p["licence"]
     for rec in common.read_jsonl(src / "projects.jsonl"):
         if rec.get("outcome") not in pub["outcomes"]:
             skipped[rec.get("outcome")] = skipped.get(rec.get("outcome"), 0) + 1
             continue
         p, l = public_record(rec, cfg)
+        prev = carried.get(p["id"])
+        if prev and p["licence"]["status"] == "issue" and all(prev[k] == p["licence"][k] for k in LICENCE_KEYS):
+            p["licence"].update(classification=prev["classification"], eligibility=prev["eligibility"])
         projects.append(p)
         live.append(l)
     extra = {
@@ -242,6 +268,13 @@ def export(src: Path = CORPUS_SRC, out: Path = OUT) -> dict:
         "refresh": {"cadence": cfg["refresh"]["cadence"], "stale_after_days": cfg["refresh"]["stale_after_days"],
                     "last": None},
     }
+    if carried:
+        try:
+            prev_m = common.read_json(out / "MANIFEST.json")
+        except (OSError, ValueError):
+            prev_m = {}
+        if prev_m.get("licence_classification"):
+            extra["licence_classification"] = prev_m["licence_classification"]
     return write_layer(out, projects, live, extra)
 
 
@@ -326,7 +359,7 @@ def refresh(now: datetime | None = None, out: Path = OUT, api=None) -> dict:
                           f"the previous layer is kept")
     if api.http.failures:
         log(f"corpus-refresh: {len(api.http.failures)} transient failures were retried")
-    extra = {k: m[k] for k in ("membership", "publication") if k in m}
+    extra = {k: m[k] for k in ("membership", "publication", "licence_classification") if k in m}
     extra["refresh"] = {"cadence": cfg["cadence"], "stale_after_days": cfg["stale_after_days"],
                         "last": {"at": stamp, "method": f"GitHub GraphQL, {cfg['batch_size']} repositories per "
                                                         "request; REST only to follow a rename",
@@ -372,7 +405,11 @@ def validate(root: Path = OUT) -> dict:
             continue
         for k in [p["id"], *p["aliases"]]:
             check(keys.setdefault(k, p["id"]) == p["id"], f"{k} names two projects")
+        check(set(p["licence"]) in (LICENCE_KEYS, LICENCE_CLASSIFIED_KEYS),
+              f"{p['id']}: licence fields {sorted(p['licence'])}")
         check(p["licence"]["status"] in ("recognised", "issue"), f"{p['id']}: licence status")
+        if "classification" in p["licence"]:
+            _check_classification(p, check)
         issue = p["licence"]["issue"]
         check((p["licence"]["status"] == "recognised") == (issue is None), f"{p['id']}: licence issue mismatch")
         check(issue is None or (isinstance(issue, dict) and bool(issue.get("reason"))), f"{p['id']}: issue unnamed")
@@ -404,6 +441,30 @@ def validate(root: Path = OUT) -> dict:
             "projects": len(projects), "corpus_version": m.get("corpus_version")}
 
 
+def _check_classification(p: dict, check) -> None:
+    """A licence classification (KEI-919) is well formed, carries its provenance (S1.7), and its
+    eligibility follows from its class and nothing else. It never applies to a recognised row."""
+    pid, c, e = p["id"], p["licence"]["classification"] or {}, p["licence"]["eligibility"] or {}
+    check(p["licence"]["status"] == "issue", f"{pid}: classification on a row without a licence issue")
+    check(c.get("class") in LICENCE_CLASSES, f"{pid}: licence class {c.get('class')!r}")
+    check(bool(c.get("reason")), f"{pid}: classification without a reason")
+    prov = c.get("provenance") or {}
+    check(set(prov) == {"source", "commit", "checked_at"}, f"{pid}: classification provenance {sorted(prov)}")
+    check(bool(prov.get("source")) and bool(prov.get("checked_at")), f"{pid}: provenance source/checked_at")
+    check(prov.get("commit") is not None or c.get("class") == "unclear", f"{pid}: a class other than unclear "
+                                                                         "without the commit it was read at")
+    want = ELIGIBILITY_BY_CLASS.get(c.get("class"), "not_eligible")
+    check(e.get("status") == want, f"{pid}: eligibility {e.get('status')!r} for class {c.get('class')!r}")
+    if c.get("class") == "open_core":
+        ex = c.get("excluded") or {}
+        check(bool(c.get("core_spdx")) and bool(ex.get("paths") or ex.get("markers")),
+              f"{pid}: open_core without a core SPDX and the excluded paths")
+        check(bool(e.get("condition")) and bool(e.get("follow_up")), f"{pid}: open_core without its condition")
+    else:
+        check(e.get("condition") is None and e.get("follow_up") is None, f"{pid}: condition on {c.get('class')}")
+    check(e.get("self_hostable") in (True, None), f"{pid}: self_hostable must be true or null")
+
+
 def main(command: str) -> int:
     try:
         if command == "corpus-export":
@@ -411,6 +472,10 @@ def main(command: str) -> int:
             print(json.dumps({"corpus_version": out["corpus_version"], "counts": out["counts"]}, indent=2))
         elif command == "corpus-refresh":
             print(json.dumps(refresh(), indent=2))
+        elif command == "corpus-licence-classify":
+            from . import licence_classify
+
+            return licence_classify.main()
         elif command == "corpus-due":
             print(json.dumps(due()))
         else:

@@ -19,6 +19,7 @@
     python -m source_pipeline corpus-due           is a scheduled refresh due
     python -m source_pipeline corpus-identity [--refresh]   renames, forks, mirrors, sibling repositories
                                                    (--refresh re-reads GitHub's identity facts first; network)
+    python -m source_pipeline corpus-licence-classify  classify every flagged row's licence (network; KEI-919)
 
   Scoring (KEI-806):
     python -m source_pipeline score-harvest        observe the scoring evidence on GitHub (network)
@@ -287,7 +288,7 @@ def main(argv=None) -> int:
                                         "momentum-build", "momentum-validate", "momentum",
                                         "radar-collect", "radar-build", "radar-stars", "radar-validate", "radar",
                                         "corpus-export", "corpus-refresh", "corpus-validate", "corpus-due",
-                                        "corpus-identity"])
+                                        "corpus-identity", "corpus-licence-classify"])
     ap.add_argument("target", nargs="?", help="graph-query: a plan file or a query id")
     ap.add_argument("--only-failed", action="store_true", help="discover-verify: retry only failed lookups")
     ap.add_argument("--refresh", action="store_true", help="score-harvest: re-observe everything")

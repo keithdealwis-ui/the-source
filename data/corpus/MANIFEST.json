@@ -1,7 +1,7 @@
 {
   "as_of": "2026-10-10T11:49:36Z",
   "attribution": "The Source (github.com/keithdealwis-ui/the-source), by Keith de Alwis",
-  "corpus_version": "c11d89e2379a6b3f",
+  "corpus_version": "a041a3db9d4c296e",
   "counts": {
     "archived": 15,
     "by_lane": {
@@ -23,6 +23,19 @@
       "sibling_repositories": 46,
       "with_identity": 130
     },
+    "licence_classification": {
+      "missing": 554,
+      "open": 18,
+      "open_core": 38,
+      "restricted": 25,
+      "source_available": 304,
+      "unclear": 453
+    },
+    "licence_eligibility": {
+      "conditional": 38,
+      "eligible": 18,
+      "not_eligible": 1336
+    },
     "licence_issue": 1392,
     "maintainer_seeded": 68,
     "projects": 9363,
@@ -30,7 +43,7 @@
   },
   "files": {
     "live.jsonl": "9a7244d09e19358c3cdf01df9b486b96262af407aafac39c71b1a5adb1c2c898",
-    "projects.jsonl": "4edc7d8a511c64a51cb799ff6adfffa9086aaaee2ea1c710e2284a7ecdca6729"
+    "projects.jsonl": "e7c5c7af2190bfde0f06c138d94e75a1a851bbe583ec7e1d0b5d1620f607b7f5"
   },
   "identity": {
     "facts": {
@@ -42,6 +55,13 @@
     "method": "source_pipeline/identity.py: renames, forks, mirrors, sibling repositories (docs/CORPUS.md)"
   },
   "licence": "CC BY 4.0",
+  "licence_classification": {
+    "method": "the-source.licence-classify/1",
+    "recommendation_gate": "unchanged",
+    "rules": "source_pipeline/licence_classify.py; docs/ACCEPTANCE-KEI-919-S1.1.md",
+    "run_at": "2026-10-17T07:14:10Z",
+    "scope": "rows with licence.status == 'issue'"
+  },
   "live_observed_as_of": {
     "newest": "2026-10-10T11:49:36Z",
     "oldest": "2026-09-29T10:34:38Z"

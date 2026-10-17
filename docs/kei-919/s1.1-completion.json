@@ -1,0 +1,243 @@
+{
+  "after_by_class": {
+    "missing": 554,
+    "open": 18,
+    "open_core": 39,
+    "restricted": 25,
+    "source_available": 304,
+    "unclear": 453
+  },
+  "before_by_issue_category": {
+    "missing": 560,
+    "non_osi": 3,
+    "open_core": 232,
+    "restricted": 124,
+    "source_available": 272,
+    "unrecognised": 202
+  },
+  "branch": "worktree-agent-a93d884a7e388e835",
+  "classified": 1393,
+  "commits": {
+    "classified_data": "482204ad79ec68c21b77630ec74492707c9e3fdc",
+    "classifier": "d2dd35206c89ce80afdc2d94eea5b6a93d61f470"
+  },
+  "dataset": {
+    "corpus_schema": "the-source.corpus/1",
+    "corpus_version": "5b525ee988b39d58",
+    "licence_issue_rows": 1393,
+    "previous_corpus_version": "ea0e40ffd99d49aa",
+    "projects": 9364,
+    "projects_jsonl_sha256": "a49c98a970da732d7c4d868fa47b340476a14f75f2d855930090dcf7383687eb"
+  },
+  "eligibility": {
+    "conditional": 39,
+    "eligible": 18,
+    "not_eligible": 1336
+  },
+  "method": "the-source.licence-classify/1",
+  "named_projects": {
+    "github.com/bitwarden/server": {
+      "before": "unrecognised",
+      "checked_at": "2026-10-17T06:31:30Z",
+      "class": "open_core",
+      "commit": "9129efbd1531d5d8472345638efad7ef25a7337a",
+      "core_spdx": "AGPL-3.0",
+      "eligibility": "conditional",
+      "excluded": {
+        "markers": [],
+        "paths": [
+          "bitwarden_license"
+        ]
+      },
+      "files": [
+        "LICENSE.txt",
+        "LICENSE_AGPL.txt",
+        "LICENSE_BITWARDEN.txt"
+      ]
+    },
+    "github.com/mattermost/mattermost": {
+      "before": "unrecognised",
+      "checked_at": "2026-10-17T06:31:30Z",
+      "class": "open_core",
+      "commit": "d11343f03a07c9d41250fa95753c938f6dc89a9a",
+      "core_spdx": "AGPL-3.0",
+      "eligibility": "conditional",
+      "excluded": {
+        "markers": [],
+        "paths": [
+          "server/enterprise"
+        ]
+      },
+      "files": [
+        "LICENSE.enterprise",
+        "LICENSE.txt",
+        "server/enterprise/LICENSE"
+      ]
+    },
+    "github.com/rocketchat/rocket.chat": {
+      "before": "unrecognised",
+      "checked_at": "2026-10-17T06:31:30Z",
+      "class": "open_core",
+      "commit": "99bef710be44b1f24590e747318f505971583348",
+      "core_spdx": "MIT",
+      "eligibility": "conditional",
+      "excluded": {
+        "markers": [],
+        "paths": [
+          "apps/meteor/ee",
+          "ee"
+        ]
+      },
+      "files": [
+        "LICENSE",
+        "apps/meteor/ee/LICENSE"
+      ]
+    },
+    "github.com/twentyhq/twenty": {
+      "before": "unrecognised",
+      "checked_at": "2026-10-17T06:31:30Z",
+      "class": "open_core",
+      "commit": "e7743ba77003f3eab957cfcca8e760d383cde550",
+      "core_spdx": "AGPL-3.0",
+      "eligibility": "conditional",
+      "excluded": {
+        "markers": [
+          "/* @license Enterprise */"
+        ],
+        "paths": []
+      },
+      "files": [
+        "LICENSE"
+      ]
+    }
+  },
+  "open_core_projects": [
+    "github.com/activepieces/activepieces",
+    "github.com/agenta-ai/agenta",
+    "github.com/amplication/amplication",
+    "github.com/baserow/baserow",
+    "github.com/berriai/litellm",
+    "github.com/betterdb-inc/monitor",
+    "github.com/bitwarden/clients",
+    "github.com/bitwarden/server",
+    "github.com/chatbotxio/chatbotx",
+    "github.com/chatwoot/chatwoot",
+    "github.com/darrylmorley/whatcable",
+    "github.com/databendlabs/databend",
+    "github.com/dyad-sh/dyad",
+    "github.com/elie222/inbox-zero",
+    "github.com/formbricks/formbricks",
+    "github.com/goauthentik/authentik",
+    "github.com/gravitl/netmaker",
+    "github.com/growthbook/growthbook",
+    "github.com/highlight/highlight",
+    "github.com/infisical/infisical",
+    "github.com/keephq/keep",
+    "github.com/kensaurus/mushi-mushi",
+    "github.com/langfuse/langfuse",
+    "github.com/lightdash/lightdash",
+    "github.com/mattermost/mattermost",
+    "github.com/onyx-dot-app/onyx",
+    "github.com/openreplay/openreplay",
+    "github.com/opensignlabs/opensign",
+    "github.com/papermark/papermark",
+    "github.com/phasehq/console",
+    "github.com/posthog/posthog",
+    "github.com/rocketchat/rocket.chat",
+    "github.com/signoz/signoz",
+    "github.com/stirling-tools/stirling-pdf",
+    "github.com/supertokens/supertokens-core",
+    "github.com/toeverything/affine",
+    "github.com/tolgee/tolgee-platform",
+    "github.com/twentyhq/twenty",
+    "github.com/webiny/webiny-js"
+  ],
+  "open_projects": [
+    "github.com/aishwaryshrivastav/vibe-testing",
+    "github.com/fuellabs/fuel-core",
+    "github.com/katrielmoses/mailaccess",
+    "github.com/lewisdonovan/google-news-scraper",
+    "github.com/marcelmarais/spotify-mcp-server",
+    "github.com/mohamed-ashraf-elsaed/loupe",
+    "github.com/neofreebird/app",
+    "github.com/nishant-chaudhary5338/mcp-toolkit",
+    "github.com/nvm-windows/nvm",
+    "github.com/ojuschugh1/sqz",
+    "github.com/om-tajne/pkgdiet",
+    "github.com/openbmb/minicpm-v-apps",
+    "github.com/sebastienrousseau/camt053-mcp",
+    "github.com/sebastienrousseau/pacs008-mcp",
+    "github.com/sentelabsai/openexecutive",
+    "github.com/spacedriveapp/spacedrive",
+    "github.com/thedaviddias/front-end-checklist",
+    "github.com/vigil-soc/vigil"
+  ],
+  "recommendation_gate": "unchanged",
+  "reproduce": [
+    "export GITHUB_TOKEN=$(gh auth token)",
+    "python -m source_pipeline corpus-licence-classify",
+    "python -m source_pipeline corpus-validate",
+    "python -m pytest tests/test_licence_classify.py tests/test_corpus.py -q"
+  ],
+  "run": {
+    "checked_at_range": [
+      "2026-10-17T06:31:30Z",
+      "2026-10-17T07:07:53Z"
+    ],
+    "not_read": {
+      "github_not_found": 7,
+      "non_github_host": 1
+    },
+    "repositories_read": 1392,
+    "rows_with_commit": 1385
+  },
+  "schema": "the-source.kei-919.s1.1-completion/1",
+  "scope": [
+    "S1.1",
+    "S1.7"
+  ],
+  "self_hostable_evidenced": 454,
+  "served_view_field": "licence.eligibility.status == 'conditional' (always with licence.classification.class == 'open_core')",
+  "status": "complete",
+  "ticket": "KEI-919",
+  "transitions_issue_category_to_class": {
+    "missing": {
+      "missing": 545,
+      "open": 9,
+      "unclear": 6
+    },
+    "non_osi": {
+      "missing": 1,
+      "unclear": 2
+    },
+    "open_core": {
+      "open": 3,
+      "open_core": 11,
+      "restricted": 8,
+      "source_available": 7,
+      "unclear": 203
+    },
+    "restricted": {
+      "open": 2,
+      "restricted": 11,
+      "source_available": 6,
+      "unclear": 105
+    },
+    "source_available": {
+      "missing": 1,
+      "open": 2,
+      "open_core": 1,
+      "restricted": 2,
+      "source_available": 258,
+      "unclear": 8
+    },
+    "unrecognised": {
+      "missing": 7,
+      "open": 2,
+      "open_core": 27,
+      "restricted": 4,
+      "source_available": 33,
+      "unclear": 129
+    }
+  }
+}
