@@ -78,11 +78,33 @@ python -m source_pipeline corpus-refresh    # re-read every project's live facts
 python -m source_pipeline corpus-validate   # MANIFEST, schema and publication-rule checks
 python -m source_pipeline corpus-due        # is a scheduled refresh due
 python -m source_pipeline corpus-licence-classify  # classify every licence-issue row (network; KEI-919)
+python -m source_pipeline corpus-admit      # admit new discovery-pool candidates (network; also a cycle step)
 ```
 
-**Membership** changes only when the Discover lane is rebuilt and `corpus-export` is run again.
-The lane's harvest reads the maintainer's private seed list, so it runs where that list lives;
-everything after it is public and reproducible.
+**Membership** changes two ways. A rebuild of the Discover lane followed by `corpus-export` (the
+lane's harvest reads the maintainer's private seed list, so it runs where that list lives); and,
+every daily cycle, **admission** (`source_pipeline/corpus_admit.py`, the `corpus_admission`
+strategy). Admission takes the discovery pool (`data/discovery/candidates.jsonl`: the daily search
+lanes, the awesome-selfhosted seed and Community Radar), drops whatever the corpus already holds
+by id, alias or host repository id (before and after asking the host, so a rename is caught),
+reads the rest from GitHub in GraphQL batches and applies the Discover lane's bar unchanged: the
+`discover.prefilter` checks (found, public, not archived, disabled, empty, a fork or a mirror;
+pushed within `policy.yaml` `maintained_days`) and the recognised-licence list. A row whose licence
+is not recognised is admitted as `retained`, with its issue named, exactly as the export does.
+Maintenance status is read from `pushed_at`, not from commits, tags and releases as the Discover
+lane does; `MANIFEST.membership.admission` says so. A re-export keeps admitted rows.
+
+Until admission existed, nothing in CI could add a member: `corpus-refresh` only re-reads the
+live facts of existing rows, and the daily lanes reconciled their finds against the canonical
+corpus only. Membership stood at its 2026-09-29 build while every job ran green.
+
+Each cycle's run record (`runs/<run_id>.json`) carries a `corpus` block (`corpus_added`,
+`corpus_removed`, `corpus_collapsed`, `membership_before`, `membership_after`,
+`candidates_found_by_strategy`, `top_new_by_stars`, what was dropped and why) and `anomalies`:
+`zero_corpus_additions_consecutive` (this and the previous scheduled run admitted nothing),
+`corpus_manifest_unchanged` (the run left `data/corpus/MANIFEST.json` byte-identical) and
+`scheduled_run_missing` (a cycle key in the cadence has no scheduled record). The MCP server's
+`last_run` serves both.
 
 **Live facts** are refreshed without the Mac by `.github/workflows/corpus-refresh.yml`: a daily
 wake-up that refreshes when `corpus-due` says so (weekly: due after 6 days,

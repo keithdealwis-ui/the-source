@@ -39,3 +39,10 @@ refresh:
   max_graphql_points: 1500
   # A refresh that cannot read more than this share of the corpus is not promoted.
   max_unresolved_share: 0.02
+
+admission:
+  # New members (source_pipeline/corpus_admit.py), every daily cycle: discovery-pool candidates
+  # the corpus does not hold are read from the host and admitted under the Discover lane's
+  # prefilter and licence bar (config/policy.yaml, unchanged). Lookups are GraphQL batches of
+  # refresh.batch_size; candidates past this budget wait for the next cycle.
+  max_lookups_per_cycle: 2000
