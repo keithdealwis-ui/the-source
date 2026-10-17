@@ -60,7 +60,7 @@ def test_pass_a_core_only_compose_makes_the_row_eligible_with_its_disclosure():
     res = E.check(row, rec, "2026-10-17T10:00:00Z")
     assert (res["result"], res["reason_code"], res["core_deployment"]) == ("pass", "core_only_deployment",
                                                                             "docker-compose.yml")
-    assert res["disclosure"] == "open core: recommendation covers the AGPL-3.0 core; enterprise features excluded (ee/)"
+    assert res["disclosure"] == "open core: recommendation covers the AGPL-3.0 core; enterprise features excluded (ee/): audit, sso"
     scope = res["excluded_scope"][0]
     assert scope["path"] == "ee" and scope["contains"] == ["README.md", "audit", "sso"]
     assert scope["readme_summary"] == "Enterprise"
@@ -267,3 +267,66 @@ def test_an_open_core_project_that_cannot_be_disclosed_is_not_recommended(srv):
         for r, was in zip(rels, saved[2]):
             r["recommended"] = was
         layer.disclosures, layer.undisclosed = saved[3], saved[4]
+
+
+# ---------------------------------------------------------------- launch-policy amendment (proposal)
+
+
+def test_an_excluded_runtime_component_is_ambiguous():
+    row = _row(paths=("packages/backend",))
+    res = E.check(row, _rec({"docker-compose.yml": CORE_COMPOSE}, extra_paths=["packages/backend/x.ts"]), "t")
+    assert (res["result"], res["reason_code"]) == ("ambiguous", "excluded_part_is_a_runtime_component")
+
+
+def test_the_disclosure_names_the_excluded_features():
+    row = _row()
+    rec = _rec({"docker-compose.yml": CORE_COMPOSE}, extra_paths=["ee/src/data_mask/a.rs", "ee/src/stream.rs",
+                                                                  "ee/src/lib.rs", "ee/src/test_kits/t.rs"])
+    res = E.check(row, rec, "t")
+    assert res["excluded_scope"][0]["features"] == ["data mask", "stream"]
+    assert res["disclosure"].endswith("enterprise features excluded (ee/): data mask, stream")
+
+
+JOB = {"core": [["session recording", "heatmap"], ["record", "replay"]], "features": ["funnel", "survey"]}
+
+
+def test_pair_rights_fail_closed_when_the_job_is_enterprise_only():
+    scope = [{"path": "ee", "contains": ["session_recordings"], "features": ["session recording", "survey"]}]
+    pr = E.pair_rights(scope, JOB)
+    assert pr["status"] == "enterprise_job" and pr["core_hits"] == ["session recording"]
+    assert E.pair_rights([{"path": "ee", "features": ["survey", "billing"]}], JOB) == {
+        "status": "covered", "reason": "the excluded parts name none of the product's defining job; "
+                                      "enterprise-only features: survey", "core_hits": [], "feature_hits": ["survey"]}
+    assert E.pair_rights([{"marker": "@license Enterprise", "files_listed": False}], JOB)["status"] == "unknown"
+    assert E.pair_rights(None, JOB)["status"] == "unknown"
+    assert E.pair_rights(scope, None)["status"] == "unknown"
+
+
+def _launch_fixture():
+    saas = {s: {"source_ids": ["a"] * n, "name": s} for s, n in (("s1", 3), ("s2", 2), ("s3", 1))}
+    projects = {f"p{i}": {"product_group": f"g{i}", "derived": {"maintenance": {
+        "last_meaningful_activity_at": "2026-10-01T00:00:00Z"}}} for i in range(1, 6)}
+
+    def edge(sid, pid):
+        return {"edge_id": f"{sid}--{pid}", "saas_id": sid, "oss_id": pid, "source_count": 1,
+                "validation": {"status": "validated", "reasons": []}}
+    edges = [edge("s1", "p1"), edge("s1", "p4"), edge("s1", "p5"), edge("s2", "p2"), edge("s3", "p3")]
+    policy = {"launch": {"saas_target": 2, "saas_target_is": "floor", "oss_minimum": 2, "edges_min": 1,
+                         "edges_max": 4}}
+    return saas, edges, projects, policy
+
+
+def test_preserve_served_keeps_every_served_product_and_relationship():
+    saas, edges, projects, policy = _launch_fixture()
+    plain = build.select_launch(saas, edges, projects, policy)
+    assert plain["saas_ranked"] == ["s1", "s2"]  # the floor already reaches oss_minimum: s3 is dropped
+    served = {("s1", "p1"), ("s3", "p3"), ("s2", "p2")}
+    kept = build.select_launch(saas, edges, projects, policy, served)
+    assert kept["saas_ranked"] == ["s1", "s2", "s3"]
+    assert served <= {tuple(k.split("--")) for k in kept["edge_picks"]}
+    assert kept["preserve_served"] == {"served_before": 3, "kept": 3, "not_kept": []}
+    # a served relationship that stops validating is the only thing that can leave, and says why
+    edges[4]["validation"] = {"status": "rejected", "reasons": ["archived"]}
+    out = build.select_launch(saas, edges, projects, policy, served)
+    assert out["preserve_served"]["not_kept"] == [{"saas_id": "s3", "oss_id": "p3",
+                                                   "reason": "no longer validated: archived"}]

@@ -1,7 +1,7 @@
 {
   "as_of": "2026-10-17T09:49:21Z",
   "attribution": "The Source (github.com/keithdealwis-ui/the-source), by Keith de Alwis",
-  "corpus_version": "b70c8036930bbb1a",
+  "corpus_version": "0d04d98b3bd62f86",
   "counts": {
     "archived": 23,
     "by_lane": {
@@ -32,8 +32,8 @@
       "unclear": 453
     },
     "licence_eligibility": {
-      "conditional": 15,
-      "eligible": 41,
+      "conditional": 17,
+      "eligible": 39,
       "not_eligible": 1336
     },
     "licence_issue": 1476,
@@ -45,17 +45,17 @@
     "generated_exceptions": "config/licence_exceptions.generated.yaml",
     "method": "the-source.edition-check/1",
     "results": {
-      "ambiguous": 15,
+      "ambiguous": 17,
       "fail": 0,
-      "pass": 23
+      "pass": 21
     },
     "rules": "source_pipeline/edition_check.py; docs/LICENCE-EDITION-CHECK.md",
-    "run_at": "2026-10-17T11:33:18Z",
+    "run_at": "2026-10-17T11:47:58Z",
     "scope": "rows classified open_core"
   },
   "files": {
     "live.jsonl": "9261e1374a20a9b2248e74c5dffe3ddbe417dccd89d28e6660d70ac5163f1356",
-    "projects.jsonl": "21972266a5a750d57f75354e981205912e395df60c1aff52545aebf67129cd50"
+    "projects.jsonl": "62b70e8dc56bf9e79f6d9238996118f7a68495023b5015507f4bb96f3ece4e9b"
   },
   "identity": {
     "facts": {

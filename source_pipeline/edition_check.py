@@ -62,6 +62,8 @@ MARKER = re.compile(r"(enterprise|commercial|premium|proprietary|(^|[-_./:])(ee|
 PRIMARY = re.compile(r"^((docker-)?compose(\.(prod|production|selfhost|self-host|hobby|oss))?\.ya?ml|chart\.yaml)$", re.I)
 FALSY = {"", "false", "0", "no", "off", "none", "null"}
 MAX_FILES = 30
+# An excluded directory with one of these names (at the root or one level down) is the program itself, not an add-on.
+RUNTIME_PART = re.compile(r"^(backend|server|api|engine|core|app|apps|service|services|worker|web|frontend)$", re.I)
 # Where Reader.at keeps the files that carry each excluded-edition header marker (GitHub code search).
 MARKER_FILES_KEY = "__marker_files__"
 
@@ -288,20 +290,57 @@ def excluded_scope(cls: dict, paths: list[tuple[str, str]], texts: dict) -> list
             line = next((ln.strip("# ").strip() for ln in readme.splitlines() if ln.strip().strip("#").strip()), None)
             summary = (line or "")[:200] or None
         out.append({"path": x, "why": why.get(x) or "named by the licence classification as under other terms",
-                    "contains": children[:15], "readme_summary": summary})
+                    "contains": children[:15], "features": _features(x, paths), "readme_summary": summary})
     for mk in (cls.get("excluded") or {}).get("markers") or []:
         found = (texts.get(MARKER_FILES_KEY) or {}).get(mk) if isinstance(texts.get(MARKER_FILES_KEY), dict) else None
         out.append({"marker": mk, "why": "files carrying this header are under the enterprise terms",
                     "contains": sorted({f.split("/")[-2] if "/" in f else f for f in found or []})[:40],
+                    "features": sorted({n for n in (_feature_name(f.split("/")[-2]) for f in found or []
+                                                    if "/" in f) if n})[:20],
                     "files": (found or [])[:1000], "files_listed": found is not None,
                     "readme_summary": None})
     return out
 
 
+GENERIC_MODULES = {"lib", "mod", "main", "index", "init", "__init__", "src", "test", "tests", "test_kits", "testing",
+                   "license", "licence", "licenses", "utils", "util", "common", "types", "constants", "readme",
+                   "cargo", "package", "setup", "build", "enterprise_services", "storages", "storage", "migrations",
+                   "__tests__", "__mocks__", "dto", "dtos", "entities", "enums", "components", "controllers",
+                   "commands", "command", "constants", "services", "service", "hooks", "helpers", "interfaces",
+                   "models", "modules", "module", "resolvers", "decorators", "exceptions", "guards", "jobs", "crons",
+                   "domains", "pages", "views", "states", "graphql", "queries", "mutations", "fixtures", "mocks",
+                   "core", "api", "apps", "bin", "middleware", "management", "admin", "conftest", "benchmarks",
+                   "certs", "scripts", "docs", "assets", "styles", "public", "enterprise", "ee", "pro"}
+
+
+def _feature_name(name: str) -> str | None:
+    name = name.lower()
+    if name in GENERIC_MODULES or not re.fullmatch(r"[a-z][a-z0-9_-]{2,40}", name):
+        return None
+    return name.replace("_", " ").replace("-", " ")
+
+
+def _features(x: str, paths: list[tuple[str, str]]) -> list[str]:
+    """The modules an excluded directory implements, read from the tree (its own entries, or src/ under it):
+    the feature names a disclosure can state. Generic module names are left out."""
+    out = set()
+    for base in (x + "/src/", x + "/"):
+        for p, k in paths:
+            if p.startswith(base) and "/" not in p[len(base):]:
+                name = _feature_name(re.sub(r"\.(rs|go|py|ts|tsx|js|java|kt|rb|ex)$", "", p[len(base):]))
+                if name:
+                    out.add(name)
+        if out:
+            break
+    return sorted(out)[:20]
+
+
 def disclosure(core_spdx: str, scope: list[dict]) -> str:
     parts = [s["path"] + "/" for s in scope if s.get("path")] + [s["marker"] for s in scope if s.get("marker")]
+    feats = sorted({f for s in scope for f in s.get("features") or []})
     return (f"open core: recommendation covers the {core_spdx} core; enterprise features excluded"
-            + (f" ({', '.join(parts)})" if parts else ""))
+            + (f" ({', '.join(parts)})" if parts else "")
+            + (f": {', '.join(feats[:12])}" + (" and more" if len(feats) > 12 else "") if feats else ""))
 
 
 def check(row: dict, rec: dict | None, checked_at: str) -> dict:
@@ -353,6 +392,11 @@ def check(row: dict, rec: dict | None, checked_at: str) -> dict:
     if rec.get("list_depth", LIST_DEPTH) < LIST_DEPTH:
         return done("ambiguous", "tree_truncated", "the repository tree could only be read "
                                                    f"{rec.get('list_depth')} level(s) deep")
+    runtime = [x for x in excluded if x.count("/") <= 1 and RUNTIME_PART.match(x.split("/")[-1])]
+    if runtime:
+        return done("ambiguous", "excluded_part_is_a_runtime_component",
+                    f"{', '.join(r + '/' for r in runtime)} is excluded and is the project's own runtime: a deployment "
+                    "can run it through an image without naming it, so a core-only path cannot be confirmed")
     runners = [u for u in units if u["runs_project"] and not u.get("error") and not u["development"]]
     clean = [u for u in runners if not u["hits"]]
     if clean:
@@ -522,7 +566,8 @@ class Reader(lc.Fetcher):
 def _scope_text(scope: list[dict]) -> str:
     bits = []
     for x in scope:
-        bits += [x.get("path") or "", *(x.get("contains") or []), *(x.get("files") or []), x.get("readme_summary") or ""]
+        bits += [x.get("path") or "", *(x.get("contains") or []), *(x.get("features") or []), *(x.get("files") or []),
+                 x.get("readme_summary") or ""]
     return " " + re.sub(r"[^a-z0-9]+", " ", " ".join(bits).lower()) + " "
 
 

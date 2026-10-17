@@ -13,7 +13,7 @@ exceptions:
   reviewed_at: '2026-10-17'
   rationale: docker-compose.yml (docker compose) runs the project without the excluded parts
   disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (brain/knowledge/platform-editions-ee/,
-    packages/ee/, packages/server/api/src/app/ee/)'
+    packages/ee/, packages/server/api/src/app/ee/): embed sdk'
   core_spdx: MIT
   excluded_scope:
   - path: brain/knowledge/platform-editions-ee
@@ -31,16 +31,20 @@ exceptions:
     - projects.md
     - user-invitations.md
     - users.md
+    features: []
     readme_summary: null
   - path: packages/ee
     why: named by the licence classification as under other terms
     contains:
     - LICENSE
     - embed-sdk
+    features:
+    - embed sdk
     readme_summary: null
   - path: packages/server/api/src/app/ee
     why: named by the licence classification as under other terms
     contains: []
+    features: []
     readme_summary: null
   edition_check:
     method: the-source.edition-check/1
@@ -66,7 +70,7 @@ exceptions:
   reviewed_at: '2026-10-17'
   rationale: hosting/kubernetes/helm (helm chart) runs the project without the excluded parts
   disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (api/ee/, ee/, hosting/docker-compose/ee/,
-    services/ee/, web/ee/)'
+    services/ee/, web/ee/): apis, dbs, docker, middlewares, state, tasks'
   core_spdx: MIT
   excluded_scope:
   - path: api/ee
@@ -78,11 +82,17 @@ exceptions:
     - docker
     - src
     - tests
+    features:
+    - apis
+    - dbs
+    - middlewares
+    - tasks
     readme_summary: null
   - path: ee
     why: named by the licence classification as under other terms
     contains:
     - LICENSE
+    features: []
     readme_summary: null
   - path: hosting/docker-compose/ee
     why: named by the licence classification as under other terms
@@ -95,6 +105,7 @@ exceptions:
     - docker-compose.gh.yml
     - env.ee.dev.example
     - env.ee.gh.example
+    features: []
     readme_summary: Deploying Agenta Enterprise Edition
   - path: services/ee
     why: named by the licence classification as under other terms
@@ -103,6 +114,8 @@ exceptions:
     - __init__.py
     - docker
     - tests
+    features:
+    - docker
     readme_summary: null
   - path: web/ee
     why: named by the licence classification as under other terms
@@ -119,6 +132,8 @@ exceptions:
     - tailwind.config.ts
     - tests
     - tsconfig.json
+    features:
+    - state
     readme_summary: null
   edition_check:
     method: the-source.edition-check/1
@@ -154,7 +169,8 @@ exceptions:
   approval_ref: the-source.edition-check/1@d346d769f02811d5e325a2ac5f45ac54ff5593de
   reviewed_at: '2026-10-17'
   rationale: helm/litellm (helm chart) runs the project without the excluded parts
-  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (enterprise/)'
+  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (enterprise/): cloudformation
+    stack, dist, enterprise hooks, enterprise ui, litellm enterprise'
   core_spdx: MIT
   excluded_scope:
   - path: enterprise
@@ -169,6 +185,12 @@ exceptions:
     - enterprise_ui
     - litellm_enterprise
     - pyproject.toml
+    features:
+    - cloudformation stack
+    - dist
+    - enterprise hooks
+    - enterprise ui
+    - litellm enterprise
     readme_summary: LiteLLM Enterprise
   edition_check:
     method: the-source.edition-check/1
@@ -196,7 +218,9 @@ exceptions:
   approval_ref: the-source.edition-check/1@a206795db425ba3eb52d393ebd55110d5e90029c
   reviewed_at: '2026-10-17'
   rationale: charts/betterdb-monitor (helm chart) runs the project without the excluded parts
-  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (proprietary/)'
+  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (proprietary/): agent,
+    anomaly detection, bulk delete, cache proposals, cache simulator, cloud auth, data retention, entitlement, inference
+    latency pro, infra, key analytics, latency regression and more'
   core_spdx: MIT
   excluded_scope:
   - path: proprietary
@@ -217,6 +241,23 @@ exceptions:
     - infra
     - key-analytics
     - latency-regression
+    features:
+    - agent
+    - anomaly detection
+    - bulk delete
+    - cache proposals
+    - cache simulator
+    - cloud auth
+    - data retention
+    - entitlement
+    - inference latency pro
+    - infra
+    - key analytics
+    - latency regression
+    - memory proposals
+    - node modules
+    - scaling readiness pro
+    - webhook pro
     readme_summary: BetterDB Proprietary Features
   edition_check:
     method: the-source.edition-check/1
@@ -243,7 +284,8 @@ exceptions:
   approval_ref: the-source.edition-check/1@4e6a4d3ad446f49fb4f10e02849fa8cc81f09c08
   reviewed_at: '2026-10-17'
   rationale: docker-compose.production.yaml (docker compose) runs the project without the excluded parts
-  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (enterprise/)'
+  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (enterprise/): app, config,
+    tasks railtie'
   core_spdx: MIT
   excluded_scope:
   - path: enterprise
@@ -254,6 +296,10 @@ exceptions:
     - config
     - lib
     - tasks_railtie.rb
+    features:
+    - app
+    - config
+    - tasks railtie
     readme_summary: null
   edition_check:
     method: the-source.edition-check/1
@@ -273,13 +319,16 @@ exceptions:
   approval_ref: the-source.edition-check/1@a281a644ea4c4cc91fbf327adfd91dc7755a6405
   reviewed_at: '2026-10-17'
   rationale: docker-compose.yml (docker compose) runs the project without the excluded parts
-  disclosure: 'open core: recommendation covers the AGPL-3.0 core; enterprise features excluded (apps/web/ee/)'
+  disclosure: 'open core: recommendation covers the AGPL-3.0 core; enterprise features excluded (apps/web/ee/):
+    billing'
   core_spdx: AGPL-3.0
   excluded_scope:
   - path: apps/web/ee
     why: named by the licence classification as under other terms
     contains:
     - LICENSE.md
+    - billing
+    features:
     - billing
     readme_summary: null
   edition_check:
@@ -309,6 +358,7 @@ exceptions:
   - path: apps/web/modules/ee
     why: named by the licence classification as under other terms
     contains: []
+    features: []
     readme_summary: null
   edition_check:
     method: the-source.edition-check/1
@@ -329,7 +379,9 @@ exceptions:
   approval_ref: the-source.edition-check/1@a24ae91a24767a8ef90a6f2d04a52da4d1ef6b7c
   reviewed_at: '2026-10-17'
   rationale: lifecycle/container/compose.yml (docker compose) runs the project without the excluded parts
-  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (authentik/enterprise/)'
+  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (authentik/enterprise/):
+    agents, audit, endpoints, lifecycle, policies, policy, providers, reports, requests, settings, signals, stages
+    and more'
   core_spdx: MIT
   excluded_scope:
   - path: authentik/enterprise
@@ -350,6 +402,21 @@ exceptions:
     - models.py
     - policies
     - policy.py
+    features:
+    - agents
+    - audit
+    - endpoints
+    - lifecycle
+    - policies
+    - policy
+    - providers
+    - reports
+    - requests
+    - settings
+    - signals
+    - stages
+    - tasks
+    - urls
     readme_summary: null
   edition_check:
     method: the-source.edition-check/1
@@ -369,7 +436,8 @@ exceptions:
   approval_ref: the-source.edition-check/1@c5b3ecc3bd1211d1d4c6f771f859e80f9da81627
   reviewed_at: '2026-10-17'
   rationale: compose/docker-compose.yml (docker compose) runs the project without the excluded parts
-  disclosure: 'open core: recommendation covers the Apache-2.0 core; enterprise features excluded (pro/)'
+  disclosure: 'open core: recommendation covers the Apache-2.0 core; enterprise features excluded (pro/): auth,
+    email, idp, initialize, integration, logic, orchestrator, pro license'
   core_spdx: Apache-2.0
   excluded_scope:
   - path: pro
@@ -385,6 +453,15 @@ exceptions:
     - license
     - logic
     - orchestrator
+    features:
+    - auth
+    - email
+    - idp
+    - initialize
+    - integration
+    - logic
+    - orchestrator
+    - pro license
     readme_summary: null
   edition_check:
     method: the-source.edition-check/1
@@ -412,6 +489,7 @@ exceptions:
   - path: packages/back-end/src/enterprise
     why: named by the licence classification as under other terms
     contains: []
+    features: []
     readme_summary: null
   - path: packages/front-end/enterprise
     why: named by the licence classification as under other terms
@@ -419,10 +497,12 @@ exceptions:
     - LICENSE
     - components
     - hooks
+    features: []
     readme_summary: null
   - path: packages/shared/src/enterprise
     why: named by the licence classification as under other terms
     contains: []
+    features: []
     readme_summary: null
   edition_check:
     method: the-source.edition-check/1
@@ -445,13 +525,14 @@ exceptions:
   reviewed_at: '2026-10-17'
   rationale: docker/compose.hobby.yml (docker compose) runs the project without the excluded parts
   disclosure: 'open core: recommendation covers the Apache-2.0 core; enterprise features excluded (enterprise/,
-    highlight.io/)'
+    highlight.io/): app, content, instrumentation, shared'
   core_spdx: Apache-2.0
   excluded_scope:
   - path: enterprise
     why: named by the licence classification as under other terms
     contains:
     - LICENSE
+    features: []
     readme_summary: null
   - path: highlight.io
     why: named by the licence classification as under other terms
@@ -471,6 +552,11 @@ exceptions:
     - hooks
     - index.ts
     - instrumentation.ts
+    features:
+    - app
+    - content
+    - instrumentation
+    - shared
     readme_summary: <img width="2051" alt="Docs Thumbnail" src="https://user-images.githubusercontent.com/20292680/214512508-04cc1ca5-5c26-45c6-839e-7aa9b5280c90.png">
   edition_check:
     method: the-source.edition-check/1
@@ -492,7 +578,7 @@ exceptions:
   approval_ref: the-source.edition-check/1@d9b98e8d70684730c76858b955f14ecbd77a85ac
   reviewed_at: '2026-10-17'
   rationale: docker-compose.prod.yml (docker compose) runs the project without the excluded parts
-  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (backend/src/ee/)'
+  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (backend/src/ee/): routes'
   core_spdx: MIT
   excluded_scope:
   - path: backend/src/ee
@@ -501,6 +587,8 @@ exceptions:
     - LICENSE.md
     - routes
     - services
+    features:
+    - routes
     readme_summary: null
   edition_check:
     method: the-source.edition-check/1
@@ -535,13 +623,15 @@ exceptions:
   approval_ref: the-source.edition-check/1@465e99152e7586fcbe4c2732213d31c5c28def4b
   reviewed_at: '2026-10-17'
   rationale: docker-compose.yml (docker compose) runs the project without the excluded parts
-  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (ee/)'
+  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (ee/): identitymanager'
   core_spdx: MIT
   excluded_scope:
   - path: ee
     why: named by the licence classification as under other terms
     contains:
     - LICENSE
+    - identitymanager
+    features:
     - identitymanager
     readme_summary: null
   edition_check:
@@ -578,6 +668,7 @@ exceptions:
     contains:
     - LICENSE
     - README.md
+    features: []
     readme_summary: <!--
   edition_check:
     method: the-source.edition-check/1
@@ -599,7 +690,9 @@ exceptions:
   approval_ref: the-source.edition-check/1@e3a2bee2a2c048adf29b8d8a18b29bd4a8bf8ac3
   reviewed_at: '2026-10-17'
   rationale: docker-compose.yml (docker compose) runs the project without the excluded parts
-  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (ee/, web/src/ee/, worker/src/ee/)'
+  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (ee/, web/src/ee/, worker/src/ee/):
+    cloudspendalerts, cloudusagemetering, dataretention, ee license check, env, features, fipsmode, meteringdatapostgresexport,
+    usagethresholds'
   core_spdx: MIT
   excluded_scope:
   - path: ee
@@ -612,11 +705,16 @@ exceptions:
     - package.json
     - src
     - tsconfig.json
+    features:
+    - ee license check
+    - env
     readme_summary: Enterprise Edition
   - path: web/src/ee
     why: named by the licence classification as under other terms
     contains:
     - README.md
+    - features
+    features:
     - features
     readme_summary: Enterprise Edition
   - path: worker/src/ee
@@ -628,6 +726,13 @@ exceptions:
     - fipsMode.ts
     - meteringDataPostgresExport
     - usageThresholds
+    features:
+    - cloudspendalerts
+    - cloudusagemetering
+    - dataretention
+    - fipsmode
+    - meteringdatapostgresexport
+    - usagethresholds
     readme_summary: null
   edition_check:
     method: the-source.edition-check/1
@@ -657,6 +762,7 @@ exceptions:
   - path: packages/backend/src/ee
     why: named by the licence classification as under other terms
     contains: []
+    features: []
     readme_summary: null
   edition_check:
     method: the-source.edition-check/1
@@ -683,7 +789,8 @@ exceptions:
   approval_ref: the-source.edition-check/1@f778b97d4b9401700e88f5ba1167f9580b58a545
   reviewed_at: '2026-10-17'
   rationale: deployment/helm/charts/onyx (helm chart) runs the project without the excluded parts
-  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (backend/ee/, web/src/ee/)'
+  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (backend/ee/, web/src/ee/):
+    onyx, providers, sections'
   core_spdx: MIT
   excluded_scope:
   - path: backend/ee
@@ -691,6 +798,8 @@ exceptions:
     contains:
     - LICENSE
     - __init__.py
+    - onyx
+    features:
     - onyx
     readme_summary: null
   - path: web/src/ee
@@ -702,6 +811,9 @@ exceptions:
     - providers
     - sections
     - views
+    features:
+    - providers
+    - sections
     readme_summary: null
   edition_check:
     method: the-source.edition-check/1
@@ -739,6 +851,7 @@ exceptions:
   - path: apps/OpenSignServer/cloud/customRoute
     why: named by the licence classification as under other terms
     contains: []
+    features: []
     readme_summary: null
   edition_check:
     method: the-source.edition-check/1
@@ -754,7 +867,8 @@ exceptions:
   approval_ref: the-source.edition-check/1@c99ea21252ac6587b45460a2ae6d8a3c1a9761ad
   reviewed_at: '2026-10-17'
   rationale: docker-compose.yml (docker compose) runs the project without the excluded parts
-  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (backend/ee/, frontend/ee/)'
+  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (backend/ee/, frontend/ee/):
+    access, authentication, billing, integrations, licensing, settings'
   core_spdx: MIT
   excluded_scope:
   - path: backend/ee
@@ -769,6 +883,13 @@ exceptions:
     - licensing
     - scripts
     - settings.py
+    features:
+    - access
+    - authentication
+    - billing
+    - integrations
+    - licensing
+    - settings
     readme_summary: null
   - path: frontend/ee
     why: named by the licence classification as under other terms
@@ -777,6 +898,8 @@ exceptions:
     - billing
     - components
     - utils
+    features:
+    - billing
     readme_summary: null
   edition_check:
     method: the-source.edition-check/1
@@ -793,7 +916,8 @@ exceptions:
   approval_ref: the-source.edition-check/1@aa0fc2ef19349ce1de23f730c0a013d4673452fb
   reviewed_at: '2026-10-17'
   rationale: docker-compose.hobby.yml (docker compose) runs the project without the excluded parts
-  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (ee/)'
+  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (ee/): billing, clickhouse,
+    hogai, partners, session recordings, settings, sqs, support sidebar max, surveys, tasks, urls, vercel'
   core_spdx: MIT
   excluded_scope:
   - path: ee
@@ -814,6 +938,19 @@ exceptions:
     - management
     - middleware.py
     - migrations
+    features:
+    - billing
+    - clickhouse
+    - hogai
+    - partners
+    - session recordings
+    - settings
+    - sqs
+    - support sidebar max
+    - surveys
+    - tasks
+    - urls
+    - vercel
     readme_summary: null
   edition_check:
     method: the-source.edition-check/1
@@ -844,124 +981,6 @@ exceptions:
     - rust/docker-compose.yml
     checked_at: '2026-10-17T10:07:58Z'
     core_deployment: docker-compose.hobby.yml
-- oss_id: github.com/stirling-tools/stirling-pdf
-  kind: edition_check
-  licence_as_found: 'MIT core; excluded: app/proprietary, app/saas, engine, frontend/editor/src/cloud, frontend/editor/src/desktop,
-    frontend/editor/src/portal, frontend/editor/src/portal-saas, frontend/editor/src/proprietary, frontend/editor/src/saas'
-  approved_by: edition-check
-  approval_ref: the-source.edition-check/1@a7e593728dd9aa81e75318a949789d3c2e9ee754
-  reviewed_at: '2026-10-17'
-  rationale: docker/compose/docker-compose-unified-backend.yml (docker compose) runs the project without the excluded
-    parts
-  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (app/proprietary/, app/saas/,
-    engine/, frontend/editor/src/cloud/, frontend/editor/src/desktop/, frontend/editor/src/portal/, frontend/editor/src/portal-saas/,
-    frontend/editor/src/proprietary/, frontend/editor/src/saas/)'
-  core_spdx: MIT
-  excluded_scope:
-  - path: app/proprietary
-    why: named by the licence classification as under other terms
-    contains:
-    - .gitignore
-    - LICENSE
-    - build.gradle
-    - src
-    readme_summary: null
-  - path: app/saas
-    why: named by the licence classification as under other terms
-    contains:
-    - LICENSE
-    - build.gradle
-    - src
-    readme_summary: null
-  - path: engine
-    why: named by the licence classification as under other terms
-    contains:
-    - .env
-    - .gitignore
-    - .python-version
-    - LICENSE
-    - pyproject.toml
-    - scripts
-    - src
-    - tests
-    - uv.lock
-    readme_summary: null
-  - path: frontend/editor/src/cloud
-    why: named by the licence classification as under other terms
-    contains: []
-    readme_summary: null
-  - path: frontend/editor/src/desktop
-    why: named by the licence classification as under other terms
-    contains: []
-    readme_summary: null
-  - path: frontend/editor/src/portal
-    why: named by the licence classification as under other terms
-    contains: []
-    readme_summary: null
-  - path: frontend/editor/src/portal-saas
-    why: named by the licence classification as under other terms
-    contains: []
-    readme_summary: null
-  - path: frontend/editor/src/proprietary
-    why: named by the licence classification as under other terms
-    contains: []
-    readme_summary: null
-  - path: frontend/editor/src/saas
-    why: named by the licence classification as under other terms
-    contains: []
-    readme_summary: null
-  edition_check:
-    method: the-source.edition-check/1
-    commit: a7e593728dd9aa81e75318a949789d3c2e9ee754
-    files:
-    - docker/compose/docker-compose-unified-backend.yml
-    - docker/compose/docker-compose-unified-both.yml
-    - docker/compose/docker-compose-unified-frontend.yml
-    - docker/compose/docker-compose.fat.yml
-    - docker/compose/docker-compose.ultra-lite.yml
-    - docker/compose/docker-compose.yml
-    - docker/embedded/Dockerfile
-    - docker/embedded/Dockerfile.fat
-    - docker/embedded/Dockerfile.ultra-lite
-    - docker/embedded/compose/docker-compose-latest-fat-endpoints-disabled.yml
-    - docker/embedded/compose/docker-compose-latest-fat-security.yml
-    - docker/embedded/compose/docker-compose-latest-security-remote-uno.yml
-    - docker/embedded/compose/docker-compose-latest-security.yml
-    - docker/embedded/compose/docker-compose-latest-ultra-lite.yml
-    checked_at: '2026-10-17T10:08:02Z'
-    core_deployment: docker/compose/docker-compose-unified-backend.yml
-- oss_id: github.com/toeverything/affine
-  kind: edition_check
-  licence_as_found: 'MIT core; excluded: packages/backend, packages/common/native'
-  approved_by: edition-check
-  approval_ref: the-source.edition-check/1@0b69a6da21e8fd35beb85667bb8496d9b3852238
-  reviewed_at: '2026-10-17'
-  rationale: .docker/selfhost/compose.yml (docker compose) runs the project without the excluded parts
-  disclosure: 'open core: recommendation covers the MIT core; enterprise features excluded (packages/backend/, packages/common/native/)'
-  core_spdx: MIT
-  excluded_scope:
-  - path: packages/backend
-    why: named by the licence classification as under other terms
-    contains:
-    - native
-    - server
-    readme_summary: null
-  - path: packages/common/native
-    why: named by the licence classification as under other terms
-    contains:
-    - Cargo.toml
-    - LICENSE
-    - benches
-    - fixtures
-    - src
-    readme_summary: null
-  edition_check:
-    method: the-source.edition-check/1
-    commit: 0b69a6da21e8fd35beb85667bb8496d9b3852238
-    files:
-    - .docker/selfhost/compose.yml
-    checked_at: '2026-10-17T10:08:03Z'
-    core_deployment: .docker/selfhost/compose.yml
 - oss_id: github.com/twentyhq/twenty
   kind: edition_check
   licence_as_found: 'AGPL-3.0 core; excluded: /* @license Enterprise */'
@@ -970,7 +989,8 @@ exceptions:
   reviewed_at: '2026-10-17'
   rationale: packages/twenty-docker/docker-compose.yml (docker compose) runs the project without the excluded parts
   disclosure: 'open core: recommendation covers the AGPL-3.0 core; enterprise features excluded (/* @license Enterprise
-    */)'
+    */): admin panel, app billing, billing, billing webhook, cleanup, event logs, filters, fragments, inputs, internal,
+    jwt key rotation, listeners and more'
   core_spdx: AGPL-3.0
   excluded_scope:
   - marker: /* @license Enterprise */
@@ -1016,6 +1036,27 @@ exceptions:
     - registry
     - retention
     - row-level-permission-predicate
+    features:
+    - admin panel
+    - app billing
+    - billing
+    - billing webhook
+    - cleanup
+    - event logs
+    - filters
+    - fragments
+    - inputs
+    - internal
+    - jwt key rotation
+    - listeners
+    - middlewares
+    - object records permissions
+    - record share
+    - registry
+    - retention
+    - row level permission predicate
+    - row level permission predicate group
+    - security
     files:
     - LICENSE
     - packages/twenty-front/src/modules/auth/graphql/fragments/availableSsoIdentityProvidersFragment.ts
