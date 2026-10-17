@@ -1058,7 +1058,30 @@ def _licence_view(lic: dict, host_spdx):
     out = {"spdx": lic["spdx"], "status": lic["status"], "host_reports": host_spdx}
     if lic["status"] != "recognised":
         out["issue"] = lic["issue"]
+    # KEI-919 S1.1/S1.7: the project-level classification and its provenance (source, commit, checked_at)
+    for k in ("classification", "eligibility"):
+        if lic.get(k):
+            out[k] = lic[k]
     return out
+
+
+def _corpus_spdx(c: dict):
+    """The licence a constraint is judged on: the row's own, else the classified core (open core) or whole-repo
+    licence (KEI-919 S1.1)."""
+    cl = c["licence"].get("classification") or {}
+    if c["licence"]["status"] == "recognised":
+        return c["licence"]["spdx"]
+    return cl.get("core_spdx") or cl.get("spdx") or c["licence"]["spdx"]
+
+
+def corpus_licence_eligibility(c: dict) -> str:
+    """'eligible' (recognised, or classified open), 'conditional' (open core: core only, edition check required
+    before any recommendation) or 'not_eligible'. Fails closed: anything else is not eligible."""
+    lic = c["licence"]
+    if lic["status"] == "recognised":
+        return "eligible"
+    status = (lic.get("eligibility") or {}).get("status")
+    return status if status in ("eligible", "conditional") else "not_eligible"
 
 
 def _discovery_view(layer, cid, full=False):
@@ -1072,7 +1095,14 @@ def _discovery_view(layer, cid, full=False):
            "maintenance_status": c["maintenance"]["status"], "observed_as_of": live["observed_as_of"]}
     if c.get("identity"):  # KEI-919 S1.8: renamed, merged, fork, mirror, siblings
         out["identity"] = c["identity"]
-    if c["licence"]["status"] != "recognised":
+    elig = corpus_licence_eligibility(c)
+    out["licence_eligibility"] = elig
+    if elig == "conditional":
+        cl = c["licence"]["classification"]
+        out["warning"] = (f"open core: the core is {cl.get('core_spdx')}; separately licensed parts "
+                          f"({', '.join(((cl.get('excluded') or {}).get('paths') or []) + ((cl.get('excluded') or {}).get('markers') or [])) or 'see classification'}) are "
+                          "excluded. Core only; an edition check is required before any recommendation")
+    elif c["licence"]["status"] != "recognised" and elig != "eligible":
         out["warning"] = (f"licence issue ({c['licence']['issue']['reason']}): not an open-source licence The Source "
                           "recognises; check the terms before any use")
     if not live["found"]:
@@ -1250,10 +1280,10 @@ def _discovery_candidates(layer, server, query, limit, licences=None, family=Non
                    else "not_a_product" if not_a_product(c["name"], c["full_name"], c["topics"])
                    else "fork_of_corpus_project" if (c.get("identity") or {}).get("fork_parent_in_corpus")
                    else "mirror" if (c.get("identity") or {}).get("mirror")
-                   else "licence_issue" if c["licence"]["status"] != "recognised"
+                   else "licence_issue" if corpus_licence_eligibility(c) == "not_eligible"
                    else "not_found_on_host" if not live["found"]
                    else "archived" if live["archived"]
-                   else _licence_ok(c["licence"]["spdx"], licences, family)
+                   else _licence_ok(_corpus_spdx(c), licences, family)
                    or ("maintenance_status" if status and c["maintenance"]["status"] not in status else None)
                    or ("min_stars" if min_stars is not None and (live["stars"] or 0) < min_stars else None)
                    or ("max_stars" if max_stars is not None and (live["stars"] or 0) > max_stars else None))

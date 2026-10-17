@@ -124,6 +124,27 @@ class TestLiveLayer(unittest.TestCase):
         r = self.call("source_get_project", {"project": "bitwarden"})
         self.assertEqual(r["project"]["id"], "github.com/bitwarden/server")  # siblings: server + clients (S1.8)
 
+    def test_named_open_core_projects_are_conditionally_eligible(self):
+        for value, core in (("twentyhq/twenty", "AGPL-3.0"), ("mattermost/mattermost", "AGPL-3.0"),
+                            ("RocketChat/Rocket.Chat", "MIT"), ("bitwarden/server", "AGPL-3.0")):
+            p = self.call("source_get_project", {"project": value})["project"]
+            self.assertEqual(p["licence_eligibility"], "conditional", value)
+            cl = p["licence"]["classification"]
+            self.assertEqual((cl["class"], cl["core_spdx"]), ("open_core", core), value)
+            self.assertIn("edition check", p["warning"])
+            prov = cl.get("provenance") or cl
+            self.assertTrue(prov.get("checked_at") and prov.get("commit"), value)  # S1.7
+
+    def test_conditional_rows_reach_discovery_but_never_recommendations(self):
+        r = self.call("source_get_alternatives", {"saas": "salesforce", "include_discovery": True, "limit": 10})
+        disc = {c["id"]: c["licence_eligibility"] for c in r["discovery_candidates"]["candidates"]}
+        self.assertEqual(disc.get("github.com/twentyhq/twenty"), "conditional")
+        self.assertNotIn("github.com/twentyhq/twenty", {x["oss_id"] for x in r["recommendations"]})
+        for c in self.s.layer.corpus.values():
+            self.assertIn(M.corpus_licence_eligibility(c), ("eligible", "conditional", "not_eligible"))
+            if c["licence"]["status"] != "recognised" and not c["licence"].get("eligibility"):
+                self.assertEqual(M.corpus_licence_eligibility(c), "not_eligible")  # fail closed
+
     def test_nonsense_is_not_padded(self):
         for need in ("zzqx frobnicate widget", "blue", "the and of"):
             r = self.call("source_recommend", {"need": need, "include_discovery": True})
