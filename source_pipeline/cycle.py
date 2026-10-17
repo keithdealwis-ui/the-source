@@ -39,7 +39,7 @@ RUNS = common.ROOT / "runs"
 SCHEDULE = common.CONFIG / "schedule.yaml"
 WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 PROMOTE = ["data/staging", "data/live", "data/dataset", "data/state", "data/scores", "data/canonical",
-           "data/intake/outcomes", "data/history", "data/momentum", "data/discovery", "data/radar", "api/v1"]
+           "data/intake/outcomes", "data/history", "data/momentum", "data/discovery", "data/radar", "data/corpus", "api/v1"]
 
 
 class CycleError(RuntimeError):
@@ -183,7 +183,7 @@ def run(trigger: str) -> dict:
                                "--result", str(result_file)], cwd=common.ROOT, env=env)
         result = common.read_json(result_file) if result_file.exists() else {}
         record.update({k: result[k] for k in ("strategies", "counts", "transitions", "timings_s", "retries",
-                                               "failures", "history_day", "failed_step") if k in result})
+                                               "failures", "history_day", "failed_step", "corpus") if k in result})
         if proc.returncode != 0 or not result.get("ok"):
             raise CycleError(result.get("error") or f"cycle worker exited {proc.returncode} without a result")
         _promote(work)
@@ -196,11 +196,24 @@ def run(trigger: str) -> dict:
         record["error"] = (str(exc) if isinstance(exc, CycleError) else f"{type(exc).__name__}: {exc}")[:2000]
     finally:
         record["ended_at"] = _iso(datetime.now(timezone.utc))
+        record["anomalies"] = _anomalies(record)
         common.write_json(path, record)
         shutil.rmtree(workdir, ignore_errors=True)
     _intake_report(record)
     print(json.dumps({k: record[k] for k in ("run_id", "status", "counts", "canonical", "error")}, indent=2))
     return record
+
+
+def _anomalies(record: dict) -> list[dict]:
+    """Corpus intake anomalies (corpus_admit.anomalies) against the earlier records; never fails the run."""
+    from . import corpus_admit
+
+    try:
+        key_now = record["cycle_key"] if record["trigger"] == "schedule" else due()["cycle_key"]
+        return corpus_admit.anomalies(record, [r for r in runs() if r.get("run_id") != record["run_id"]],
+                                      load_schedule(), key_now)
+    except Exception as exc:
+        return [{"code": "anomaly_check_failed", "detail": f"{type(exc).__name__}: {exc}"[:300]}]
 
 
 GOLDEN_BASELINE = common.ROOT / "observability" / "golden-baseline.json"
@@ -327,6 +340,27 @@ def _rescore(keys: list[str], budget: int, res: dict) -> list[str]:
                               "candidates": len(todo), "rescored": len(done), "projects": done[:50],
                               "deferred_to_next_cycle": max(0, len(todo) - budget), "errors": errors[:20]})
     return done
+
+
+CORPUS_COUNTS = ("corpus_added", "corpus_removed", "corpus_collapsed", "membership_before", "membership_after")
+
+
+def _corpus_step(as_of_dt: datetime, res: dict) -> dict:
+    from . import corpus, corpus_admit, daily
+
+    try:
+        out = corpus_admit.admit(daily.load_pool(), as_of_dt)
+    except Exception as exc:  # the previous layer is kept (write_layer promotes only a valid layer)
+        res["failures"].append({"step": "corpus_admission", "key": "data/corpus",
+                                "outcome": f"kept the previous corpus: {type(exc).__name__}: {exc}"[:300]})
+        sha = corpus_admit.manifest_sha(corpus.OUT)
+        res["corpus"] = {"manifest_sha256_before": sha, "manifest_sha256_after": sha, "error": str(exc)[:300]}
+        return {"id": "corpus_admission", "status": "failed", "errors": [f"{type(exc).__name__}: {exc}"[:300]]}
+    res["corpus"] = out
+    res["counts"].update({k: out[k] for k in CORPUS_COUNTS})
+    return {"id": "corpus_admission", "status": "ok", "pool_candidates": out["pool_candidates"],
+            "looked_up": out["looked_up"], "admitted": out["corpus_added"], "dropped": out["dropped"],
+            "membership_as_of": out["membership_as_of"], "corpus_version_after": out["corpus_version_after"]}
 
 
 class _Timer:
@@ -544,7 +578,13 @@ def work(run_id: str, result_path: Path) -> int:
         res["counts"].update({"radar_ranked": rad["ranked"], "radar_pool_added": rad["pool_added"]})
         _drill("community_radar")
 
-        # 14. golden queries (KEI-918): retrieval quality of the layer just built, against the baseline.
+        # 14. corpus admission: pool candidates the public discovery corpus does not hold are read from the
+        # host and admitted under the Discover lane's bar (corpus_admit.py). Never blocks canonical truth: on
+        # failure data/corpus is left exactly as it was and the strategy says why.
+        step("corpus_admission")
+        res["strategies"].append(_corpus_step(as_of_dt, res))
+
+        # 15. golden queries (KEI-918): retrieval quality of the layer just built, against the baseline.
         # Measured and reported, never blocking: a regression degrades the strategy and raises an alert.
         step("golden_queries")
         res["strategies"].append(_golden_step())

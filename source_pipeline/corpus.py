@@ -256,12 +256,27 @@ def export(src: Path = CORPUS_SRC, out: Path = OUT) -> dict:
             p["licence"].update(classification=prev["classification"], eligibility=prev["eligibility"])
         projects.append(p)
         live.append(l)
+    # Rows admitted by corpus-admit (corpus_admit.py) since the Discover lane build stay members: a
+    # re-export from an older build must not undo admissions. The build's own row wins when it has one.
+    admitted = 0
+    if (out / "projects.jsonl").is_file():
+        from .corpus_admit import STRATEGIES
+
+        have = {p["id"] for p in projects} | {a for p in projects for a in p["aliases"]}
+        prev_live = {r["id"]: r for r in common.read_jsonl(out / "live.jsonl")}
+        for p in common.read_jsonl(out / "projects.jsonl"):
+            if (p["provenance"] and all(r["strategy"] in STRATEGIES for r in p["provenance"])
+                    and p["id"] not in have and p["id"] in prev_live):
+                projects.append(p)
+                live.append(prev_live[p["id"]])
+                admitted += 1
     extra = {
         "membership": {"as_of": src_manifest.get("as_of"), "maintenance_evaluated_as_of": "per the Discover lane "
                        "build at membership.as_of (docs/DISCOVER.md); live facts are refreshed, evaluations are not", "source_schema": src_manifest.get("schema"),
                        "source_manifest_sha256": hashlib.sha256(src_manifest_bytes).hexdigest(),
                        "outcomes_published": pub["outcomes"], "skipped": skipped,
-                       "rebuilt_by": "corpus-export from the Discover lane corpus (KEI-811)"},
+                       "rebuilt_by": "corpus-export from the Discover lane corpus (KEI-811)",
+                       "admitted_rows_kept": admitted},
         "publication": {"rules": "config/corpus.yaml publication", "gate": pub.get("gate"),
                         "descriptions": "host-reported, truncated" if pub["include_descriptions"] else "omitted",
                         "private_seed_routes": f"published as {pub['private_seed_label']!r} without file or line"},
@@ -476,6 +491,11 @@ def main(command: str) -> int:
             from . import licence_classify
 
             return licence_classify.main()
+        elif command == "corpus-admit":
+            from . import corpus_admit, daily
+
+            print(json.dumps(corpus_admit.admit(daily.load_pool(), datetime.now(timezone.utc).replace(microsecond=0)),
+                             indent=2))
         elif command == "corpus-due":
             print(json.dumps(due()))
         else:

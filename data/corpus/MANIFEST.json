@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-10-17T08:51:32Z",
+  "as_of": "2026-10-17T09:49:21Z",
   "attribution": "The Source (github.com/keithdealwis-ui/the-source), by Keith de Alwis",
-  "corpus_version": "43c58bea3a8a3226",
+  "corpus_version": "66e0dd085a4d3842",
   "counts": {
     "archived": 23,
     "by_lane": {
-      "discover": 9062,
+      "discover": 9546,
       "replace": 485
     },
     "host_not_found": 44,
@@ -19,9 +19,9 @@
       "mirrors": 23,
       "mirrors_of_corpus_projects": 0,
       "renamed": 61,
-      "sibling_groups": 21,
-      "sibling_repositories": 46,
-      "with_identity": 130
+      "sibling_groups": 22,
+      "sibling_repositories": 48,
+      "with_identity": 132
     },
     "licence_classification": {
       "missing": 554,
@@ -36,14 +36,14 @@
       "eligible": 18,
       "not_eligible": 1336
     },
-    "licence_issue": 1392,
+    "licence_issue": 1476,
     "maintainer_seeded": 68,
-    "projects": 9363,
-    "with_description": 9004
+    "projects": 9847,
+    "with_description": 9476
   },
   "files": {
-    "live.jsonl": "8978a2d7a9171c1a690d60f186aed0b7fce19d647ac2aae659637558bd7cba5e",
-    "projects.jsonl": "09b3fb79fa110229acd9c0486edee0bfdd378c97badf9200ecd70d11d857bc4b"
+    "live.jsonl": "9261e1374a20a9b2248e74c5dffe3ddbe417dccd89d28e6660d70ac5163f1356",
+    "projects.jsonl": "7e3b6a9c78c494c5c2e7650726ad160456f4359419c1ed62216a099f6052eb5f"
   },
   "identity": {
     "facts": {
@@ -63,11 +63,18 @@
     "scope": "rows with licence.status == 'issue'"
   },
   "live_observed_as_of": {
-    "newest": "2026-10-17T08:51:32Z",
+    "newest": "2026-10-17T09:49:21Z",
     "oldest": "2026-09-29T10:34:38Z"
   },
   "membership": {
-    "as_of": "2026-09-29T10:34:38Z",
+    "admission": {
+      "last": {
+        "admitted": 484,
+        "at": "2026-10-17T09:49:21Z"
+      },
+      "method": "the-source.corpus-admit/1: source_pipeline/corpus_admit.py; the Discover lane prefilter and licence bar, maintenance read from pushed_at"
+    },
+    "as_of": "2026-10-17T09:49:21Z",
     "maintenance_evaluated_as_of": "per the Discover lane build at membership.as_of (docs/DISCOVER.md); live facts are refreshed, evaluations are not",
     "outcomes_published": [
       "recommendation_eligible",

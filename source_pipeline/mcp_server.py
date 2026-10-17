@@ -102,7 +102,12 @@ RUN_STALE_AFTER_HOURS = 48  # the cycle runs daily; two days without a run recor
 RUN_FIELDS = ("run_id", "trigger", "status", "started_at", "ended_at", "history_day")
 RUN_COUNTS = ("candidates", "refreshed_records", "changed", "added", "canonical_projects", "canonical_relationships",
               "canonical_relationships_added", "canonical_relationships_removed", "canonical_projects_removed",
-              "supported_saas_ok", "failed", "deferred", "intake_promoted", "intake_pending")
+              "supported_saas_ok", "failed", "deferred", "intake_promoted", "intake_pending",
+              "corpus_added", "corpus_removed", "corpus_collapsed", "membership_before", "membership_after")
+# The corpus admission block of a run record (source_pipeline/corpus_admit.py), as last_run serves it.
+RUN_CORPUS = ("corpus_added", "corpus_removed", "corpus_collapsed", "membership_before", "membership_after",
+              "membership_as_of", "corpus_version_before", "corpus_version_after", "candidates_found_by_strategy",
+              "top_new_by_stars", "dropped", "error")
 DISCOVERY_LABEL = "discovered, not scored \u2014 no Replacement Fit or Project Health"
 TIER_MEANING = {
     "recommended": "in the canonical layer with at least one recommended relationship",
@@ -858,7 +863,7 @@ def _category_terms(saas: dict) -> list:
                                                                                             "of", "the", "for")))
 
 
-def match_strength(hit: dict, terms: list, anchors=None):
+def match_strength(hit: dict, terms: list, anchors=None, topics=None):
     """(strong, coverage, matched_terms) for one hybrid hit. A hit is strong when it is an exact name match, is
     reached through a matched product's REPLACES edge, or matches at least half of the query's content words with
     at least one of them in a field that says what the project is. Anything else is a weak word match, and a weak
@@ -871,6 +876,10 @@ def match_strength(hit: dict, terms: list, anchors=None):
     matched = sorted((lexical | semantic) & set(terms))
     coverage = round(len(matched) / len(terms), 4) if terms else 0.0
     primary = any(field in _PRIMARY_FIELDS for field in why)
+    if topics is not None and anchors is None and len(terms) == 1 and set(why) & _PRIMARY_FIELDS == {"topics"}:
+        # One word that is only a fragment of a compound topic ("blue" in "blue-team") says nothing about what
+        # the project is; the whole topic does.
+        primary = terms[0] in {" ".join(_tokens(t)) for t in topics}
     if anchors is not None:
         # Product-driven: on topic when it claims to stand in for the product (claims_alternative, decided by the
         # caller and passed as anchors=True) or matches every category word; a generic category word alone
@@ -1195,7 +1204,10 @@ def _run_view(rec):
             "failures_survived": len(rec.get("failures") or []),
             "degraded_strategies": sorted(s.get("id") for s in rec.get("strategies") or []
                                           if isinstance(s, dict) and s.get("status") not in ("ok", None)),
-            "counts": {k: counts[k] for k in RUN_COUNTS if k in counts}}
+            "counts": {k: counts[k] for k in RUN_COUNTS if k in counts},
+            "corpus": ({k: corp[k] for k in RUN_CORPUS if k in corp} if isinstance(corp := rec.get("corpus"), dict)
+                       else None),
+            "anomalies": [a for a in rec.get("anomalies") or [] if isinstance(a, dict)][:10]}
 
 
 def last_run(root: Path, now: datetime, serving_version: str) -> dict:
@@ -1273,7 +1285,8 @@ def _discovery_candidates(layer, server, query, limit, licences=None, family=Non
         # "Integrates with PagerDuty, Datadog, ..." consumes the product; for that product it is not a replacement.
         uses = bool(anchors) and not alt and bool(re.search(
             r"\bintegrat\w* with [^.]{0,120}\b" + re.escape(_norm(anchors)) + r"\b", _norm(c["description"])))
-        strong, coverage, matched = match_strength(h, terms, (True if alt else False) if anchors else None)
+        strong, coverage, matched = match_strength(h, terms, (True if alt else False) if anchors else None,
+                                                   c["topics"])
         why_not = ("weak_match" if not strong
                    else "integration_not_replacement"
                    if uses or integration_kind(c["name"], c["full_name"], c["description"], c["topics"], products, alt)
