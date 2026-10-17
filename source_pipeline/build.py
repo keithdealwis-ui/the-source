@@ -5,6 +5,8 @@ the snapshot's `as_of`, never the wall clock, so a rebuild is byte-identical.
 """
 from __future__ import annotations
 
+import re
+
 from . import common, reasons
 from .activity import Rules, evaluate, parse_ts
 from .licence_detect import detect as detect_licence
@@ -18,17 +20,60 @@ LIVE_NOTE = "read from the repository host's API by The Source at live.fetched_a
 DERIVED_NOTE = "computed by The Source from live fields and config/policy.yaml"
 
 
+GENERATED_EXCEPTIONS = "licence_exceptions.generated.yaml"
+EDITION_CHECK_APPROVER = "edition-check"
+GENERATED_SCHEMA = "the-source.licence-exceptions-generated/1"
+
+
+def _generated_exception(e: dict) -> dict:
+    """An entry written by the automated edition check (edition_check.py). Valid only with its provenance
+    (the commit read, the files, when) and the disclosure every recommendation of it must carry."""
+    ec = e.get("edition_check") or {}
+    ok = (e.get("kind") == "edition_check" and str(e.get("approved_by")) == EDITION_CHECK_APPROVER
+          and e.get("approval_ref") and e.get("disclosure") and e.get("core_spdx")
+          and re.fullmatch(r"[0-9a-f]{40}", str(ec.get("commit") or "")) and ec.get("files") and ec.get("checked_at"))
+    if not ok:
+        raise ValueError(f"generated licence exception for {e.get('oss_id')} is not valid: it needs kind "
+                         "edition_check, its disclosure, core SPDX and the check's commit, files and checked_at")
+    return e
+
+
 def load_exceptions() -> dict:
-    doc = common.load_yaml(common.CONFIG / "licence_exceptions.yaml") or {}
+    """Hand-approved exceptions (config/licence_exceptions.yaml, a named human approver) and, when
+    config/licence_lane.yaml edition_check.generated_exceptions_feed_the_build is true, those the automated edition
+    check generated for open-core projects (config/licence_exceptions.generated.yaml). A hand-approved entry wins
+    when both name a project. Generated entries are validated either way (_generated_exception)."""
     out = {}
+    gen = common.CONFIG / GENERATED_EXCEPTIONS
+    lane = common.load_yaml(common.CONFIG / "licence_lane.yaml") or {}
+    feeds = (lane.get("edition_check") or {}).get("generated_exceptions_feed_the_build") is True
+    gdoc = (common.load_yaml(gen) or {}) if gen.is_file() else {}
+    # Only a file that says what it is counts; anything else admits nothing (fail closed).
+    for e in (gdoc.get("exceptions") or []) if gdoc.get("schema") == GENERATED_SCHEMA else []:
+        _generated_exception(e)
+        if feeds:
+            out[e["oss_id"].lower()] = e
+    doc = common.load_yaml(common.CONFIG / "licence_exceptions.yaml") or {}
     for e in doc.get("exceptions") or []:
         approver = str(e.get("approved_by") or "").strip().lower()
-        if approver in EXECUTORS or not e.get("approval_ref"):
+        if approver in EXECUTORS or approver == EDITION_CHECK_APPROVER or not e.get("approval_ref"):
             raise ValueError(
                 f"licence exception for {e.get('oss_id')} is not valid: it needs a human "
                 "approver and an approval_ref"
             )
         out[e["oss_id"].lower()] = e
+    return out
+
+
+def exception_record(exc: dict | None) -> dict | None:
+    """The exception as a project's licence verdict carries it; an edition-check one keeps its disclosure."""
+    if not exc:
+        return None
+    out = {"approved_by": exc["approved_by"], "approval_ref": exc["approval_ref"]}
+    if exc.get("kind") == "edition_check":
+        ec = exc["edition_check"]
+        out.update(kind="edition_check", core_spdx=exc["core_spdx"], disclosure=exc["disclosure"],
+                   edition_check={k: ec[k] for k in ("method", "commit", "checked_at")})
     return out
 
 
@@ -55,9 +100,7 @@ def licence_verdict(live: dict, policy: dict, exceptions: dict, oss_id: str) -> 
         "name_as_reported": live.get("licence_name"),
         "detection": detection,
         "recognised": recognised,
-        "exception": (
-            {"approved_by": exc["approved_by"], "approval_ref": exc["approval_ref"]} if exc else None
-        ),
+        "exception": exception_record(exc),
         "usable": bool(recognised or exc),
     }
 

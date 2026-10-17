@@ -1,9 +1,9 @@
 {
-  "as_of": "2026-10-17T11:04:07Z",
+  "as_of": "2026-10-17T11:19:12Z",
   "calibration": "none (V3)",
   "catalogue_digest": "61e66a3572718196",
   "config_digest": "aa4a9cd8489c553b",
-  "corpus_version": "66e0dd085a4d3842",
+  "corpus_version": "85beda1823e7d14e",
   "counts": {
     "eligible": 8427,
     "eligible_with_health": 8390,
@@ -35,14 +35,14 @@
     "target_pct": 95.0
   },
   "files": {
-    "health.jsonl": "07b30a5c67398eb0af79f814713a5898e494ad8912c092bb51ff7e5245b2098b",
-    "pairings.jsonl": "0c920558317606b5056b8ce19493d9080cdfa889d390a0d7f65a0e16982496e7"
+    "health.jsonl": "bbfc223c5c2cee1125c04ff865f4b53f542ac2ed72b5a38301cfa14061b384e9",
+    "pairings.jsonl": "8095f4b476b89c6ae34b5e57e8b02b1e4cdf2f33a94cdb722dd24c107c8c14e4"
   },
   "label": "quick",
   "last_run": {
     "api_calls": 0,
     "api_calls_allowed": 0,
-    "at": "2026-10-17T11:04:07Z",
+    "at": "2026-10-17T11:19:12Z",
     "caps": {
       "max_rescore_per_run": 20000,
       "max_runtime_s": 600
@@ -50,17 +50,17 @@
     "deferred": 0,
     "failure_count": 0,
     "failures": [],
-    "health_rescored": 488,
-    "health_unchanged": 9315,
+    "health_rescored": 0,
+    "health_unchanged": 9803,
     "mode": "incremental",
     "not_scored": {
       "host_not_found": 44
     },
     "pairings_removed": 0,
-    "pairings_rescored": 23,
-    "pairings_unchanged": 803,
+    "pairings_rescored": 36,
+    "pairings_unchanged": 790,
     "projects": 9847,
-    "runtime_s": 10.11
+    "runtime_s": 8.0
   },
   "methodology": "docs/QUICK-SCORING.md",
   "methods": {
@@ -68,7 +68,7 @@
     "health": "the-source.quick-health/1",
     "pairing": "source_pipeline/intake.find_evidence on description and topics, plus Replace lane pairings (data/dataset/relationships.jsonl)"
   },
-  "quick_version": "9ec0bf4c160a5f88",
+  "quick_version": "1ac3289c5fa23156",
   "rule": "quick score: programmatic and uncalibrated; never a recommendation. Only the full evaluation (Project Health and Replacement Fit in the canonical layer) recommends",
   "schema": "the-source.quick/1"
 }

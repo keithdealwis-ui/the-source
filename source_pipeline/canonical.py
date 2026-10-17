@@ -221,6 +221,17 @@ def _sha(path: Path) -> str:
 
 # ---------------------------------------------------------------- build
 
+def _licence_block(lic: dict) -> dict:
+    """A canonical project's licence. An open-core project admitted by the automated edition check carries the
+    disclosure every recommendation of it shows (what the recommendation covers, what it excludes)."""
+    out = {"spdx": lic["spdx"], "status": lic["status"]}
+    exc = lic.get("exception") or {}
+    if exc.get("kind") == "edition_check":
+        out["open_core"] = {"core_spdx": exc["core_spdx"], "disclosure": exc["disclosure"],
+                            "edition_check": exc["edition_check"]}
+    return out
+
+
 def build(out_root: Path | None = None) -> dict:
     """Build data/canonical/ and api/v1/ under out_root (default: the repository root).
 
@@ -303,7 +314,7 @@ def build(out_root: Path | None = None) -> dict:
                 "days_since_meaningful_activity": m["days_since_meaningful_activity"],
                 "basis": m["basis"],
             },
-            "licence": {"spdx": p["derived"]["licence"]["spdx"], "status": p["derived"]["licence"]["status"]},
+            "licence": _licence_block(p["derived"]["licence"]),
             "project_health": None if h is None else {
                 k: h[k] for k in ("score", "band", "trajectory", "confidence", "watch_outs", "evidence_insufficient",
                                   "score_version", "evaluated_at", "scoring_path")},
@@ -355,6 +366,8 @@ def build(out_root: Path | None = None) -> dict:
                 "note": _note(fit),
                 "sources": r["sources"],
                 "live_checked_at": p["live"]["checked_at"],
+                **({"licence_disclosure": p["licence"]["open_core"]["disclosure"]}
+                   if p["licence"].get("open_core") else {}),
             })
         recs.sort(key=_rank_key)
         for i, rec in enumerate(recs, 1):

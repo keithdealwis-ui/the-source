@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
 from datetime import datetime, timezone
 from pathlib import Path
@@ -240,7 +241,10 @@ def test_the_corpus_cannot_change_a_recommendation(tmp_path, srv):
         shutil.copytree(ROOT / "data" / name, root / "data" / name)
     without = _server(root)
     assert without.layer.corpus_state["status"] == "unavailable"
-    assert _answers(without) == _answers(srv)
+    # The corpus may add one thing to an answer: the open-core disclosure of a recommended project its licence
+    # classification found to be open core. Nothing else may differ.
+    strip = lambda text: re.sub(r'"licence_disclosure": "[^"]*", ', "", text)  # noqa: E731
+    assert strip(_answers(without)) == strip(_answers(srv))
 
 
 @needs_corpus

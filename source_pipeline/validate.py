@@ -233,8 +233,14 @@ def run() -> dict:
     check("lanes.consistent", 10, "lane, recommendation_eligible and the underlying verdict agree on every record", bad,
           summary["lanes"])
 
+    def _approved(exc):  # a named human, or the automated edition check with its disclosure (edition_check.py)
+        if str(exc["approved_by"]).lower() == "keith":
+            return True
+        return exc.get("kind") == "edition_check" and exc["approved_by"] == build.EDITION_CHECK_APPROVER \
+            and bool(exc.get("disclosure")) and bool((exc.get("edition_check") or {}).get("commit"))
+
     bad = [p["oss_id"] for p in oss if p["derived"]["licence"] and p["derived"]["licence"]["exception"]
-           and str(p["derived"]["licence"]["exception"]["approved_by"]).lower() != "keith"]
+           and not _approved(p["derived"]["licence"]["exception"])]
     check("licence.exceptions_are_approved", 10, "every licence exception in use names its approver", bad,
           sum(1 for p in oss if p["derived"]["licence"] and p["derived"]["licence"]["exception"]))
 

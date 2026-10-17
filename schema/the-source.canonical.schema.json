@@ -77,7 +77,12 @@
         },
         "licence": {
           "type": "object", "additionalProperties": false, "required": ["spdx", "status"],
-          "properties": {"spdx": {"type": "string", "minLength": 1}, "status": {"enum": ["recognised", "exception_approved"]}}
+          "properties": {"spdx": {"type": "string", "minLength": 1}, "status": {"enum": ["recognised", "exception_approved"]},
+                         "open_core": {"type": "object", "additionalProperties": false,
+                                       "required": ["core_spdx", "disclosure", "edition_check"],
+                                       "properties": {"core_spdx": {"type": "string", "minLength": 1},
+                                                      "disclosure": {"type": "string", "minLength": 20},
+                                                      "edition_check": {"type": "object", "required": ["method", "commit", "checked_at"]}}}}
         },
         "project_health": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/project_health"}]}
       }
@@ -123,6 +128,7 @@
         "repo_url": {"type": "string", "pattern": "^https://"},
         "github_url": {"type": ["string", "null"]},
         "stars": {"type": ["integer", "null"]}, "licence_spdx": {"type": "string"},
+        "licence_disclosure": {"type": "string", "minLength": 20},
         "maintenance_status": {"$ref": "#/$defs/maintenance_status"},
         "last_meaningful_activity_at": {"$ref": "#/$defs/ts"},
         "latest_release": {"type": ["object", "null"]},
