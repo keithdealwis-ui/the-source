@@ -335,12 +335,50 @@ def _features(x: str, paths: list[tuple[str, str]]) -> list[str]:
     return sorted(out)[:20]
 
 
-def disclosure(core_spdx: str, scope: list[dict]) -> str:
-    parts = [s["path"] + "/" for s in scope if s.get("path")] + [s["marker"] for s in scope if s.get("marker")]
+def part_label(path: str) -> str:
+    """An excluded part as a disclosure names it: a directory with a trailing slash, a file as it is."""
+    return path if re.search(r"\.\w{1,5}$", path) else path + "/"
+
+
+CORE_SUFFIX = re.compile(r"[-_.](oss|community|ce|open[-_]?source)$", re.I)
+
+
+def core_build(cls: dict, texts: dict) -> dict | None:
+    """The core-only build the licence notice names (licence_classify.core_build), and whether the repository's
+    own image is that build: a Dockerfile that ships a core artifact is; one that ships the same binary without
+    the core suffix (`databend-query` for `databend-query-oss`) is not; anything else is not known (None)."""
+    b = cls.get("core_build")
+    if not b or not b.get("artifacts"):
+        return None
+    arts = list(b["artifacts"])
+    stems = {CORE_SUFFIX.sub("", a) for a in arts} - set(arts)
+
+    def names(t, n):
+        return re.search(rf"(?<![\w-]){re.escape(n)}(?![\w-])", t)
+    image, core_only = None, None
+    for p in sorted(texts):
+        if p == MARKER_FILES_KEY or not p.split("/")[-1].lower().startswith("dockerfile") or development(p) \
+                or NOT_DEPLOYMENT.search(p):
+            continue
+        if any(names(texts[p], a) for a in arts):
+            image, core_only = p, True
+            break
+        if any(names(texts[p], n) for n in stems):
+            image, core_only = p, False
+    return {**b, "default_image": image, "default_image_is_core_only": core_only}
+
+
+def disclosure(core_spdx: str, scope: list[dict], build: dict | None = None) -> str:
+    parts = [part_label(s["path"]) for s in scope if s.get("path")] + [s["marker"] for s in scope if s.get("marker")]
     feats = sorted({f for s in scope for f in s.get("features") or []})
-    return (f"open core: recommendation covers the {core_spdx} core; enterprise features excluded"
+    text = (f"open core: recommendation covers the {core_spdx} core; enterprise features excluded"
             + (f" ({', '.join(parts)})" if parts else "")
             + (f": {', '.join(feats[:12])}" + (" and more" if len(feats) > 12 else "") if feats else ""))
+    if build:
+        text += f"; core-only build: {', '.join(build['artifacts'])}"
+        if build.get("default_image_is_core_only") is False:
+            text += f" (the repository's default image, {build['default_image']}, ships the full build)"
+    return text
 
 
 def check(row: dict, rec: dict | None, checked_at: str) -> dict:
@@ -372,7 +410,8 @@ def check(row: dict, rec: dict | None, checked_at: str) -> dict:
     texts = rec.get("texts") or {}
     excluded = list(excl.get("paths") or [])
     out["excluded_scope"] = excluded_scope(cls, paths, texts)
-    out["disclosure"] = disclosure(cls["core_spdx"], out["excluded_scope"])
+    out["core_build"] = core_build(cls, texts)
+    out["disclosure"] = disclosure(cls["core_spdx"], out["excluded_scope"], out["core_build"])
     slug = rec["slug"]
     units = []
     for p in deployment_files(paths):

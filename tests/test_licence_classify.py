@@ -222,3 +222,27 @@ def test_row_fields_validate_in_the_corpus_layer(tmp_path, monkeypatch):
     bad["eligibility"] = {**bad["eligibility"], "status": "eligible"}
     with pytest.raises(C.CorpusError):
         C.write_layer(tmp_path / "corpus2", [row("github.com/a/oc", bad)], [live("github.com/a/oc")], {})
+
+
+def test_a_licensing_file_that_names_files_and_a_core_build():
+    """Databend at 8b1dc207 (correction 1 and 2, 2026-10-17): the path list names files as well as directories, one
+    of them absent from the tree; the notice names the binaries built without the excluded parts."""
+    licensing = ("# Licensing\n\nExample is an open-source project licensed under the Apache License 2.0.\n\n"
+                 "A small set of enterprise features is licensed under the Elastic License 2.0 "
+                 "(licenses/Elastic.txt) and unlocked with a paid license key. Only the following directories and "
+                 "files are covered by it:\n\n"
+                 "```\nsrc/binaries/query/ee_main.rs\nsrc/binaries/meta/ee_main.rs\nsrc/query/ee/\n```\n\n"
+                 "Everything else in this repository is Apache-2.0. The `example-query-oss` binaries are built "
+                 "without the directories above and are Apache-2.0 only.\n")
+    paths = tree("LICENSE", "LICENSING.md", "licenses/Elastic.txt", "src/query/ee/", "src/binaries/query/",
+                 "src/x.rs")
+    texts = {"LICENSE": APACHE, "LICENSING.md": licensing,
+             "licenses/Elastic.txt": "Elastic License 2.0\n\nYou may not provide the software to third parties "
+                                     "as a hosted or managed service. " * 5}
+    c = run(paths, texts)
+    assert c["class"] == "open_core", c["reason"]
+    # the file below a directory the tree has (read 3 levels) counts; the one under a missing directory does not
+    assert c["excluded"]["paths"] == ["src/binaries/query/ee_main.rs", "src/query/ee"]
+    assert c["core_build"]["artifacts"] == ["example-query-oss"]
+    assert "built without the directories above" in c["core_build"]["statement"]
+    assert L.row_fields(c)["classification"]["core_build"] == c["core_build"]

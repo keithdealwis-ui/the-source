@@ -330,3 +330,70 @@ def test_preserve_served_keeps_every_served_product_and_relationship():
     out = build.select_launch(saas, edges, projects, policy, served)
     assert out["preserve_served"]["not_kept"] == [{"saas_id": "s3", "oss_id": "p3",
                                                    "reason": "no longer validated: archived"}]
+
+
+# ---------------------------------------------------------------- Databend corrections (approved 2026-10-17)
+
+
+def test_the_disclosure_names_excluded_files_and_the_core_only_build():
+    row = _row(paths=("src/binaries/query/ee_main.rs", "src/query/ee"))
+    row["licence"]["classification"]["core_build"] = {"artifacts": ["chat-oss"], "statement": "built without"}
+    dockerfile = "FROM debian\nCOPY ./distro/chat /usr/bin/chat\n"
+    rec = _rec({"docker/Dockerfile": dockerfile}, extra_paths=["src/query/ee/stream/a.rs"])
+    res = E.check(row, rec, "2026-10-17T10:00:00Z")
+    assert res["core_build"]["default_image"] == "docker/Dockerfile"
+    assert res["core_build"]["default_image_is_core_only"] is False
+    assert "(src/binaries/query/ee_main.rs, src/query/ee/)" in res["disclosure"]
+    assert res["disclosure"].endswith(": stream; core-only build: chat-oss (the repository's default image, "
+                                      "docker/Dockerfile, ships the full build)")
+    rec["texts"]["docker/Dockerfile"] = "FROM debian\nCOPY ./distro/chat-oss /usr/bin/chat\n"
+    res = E.check(row, rec, "2026-10-17T10:00:00Z")
+    assert res["core_build"]["default_image_is_core_only"] is True
+    assert res["disclosure"].endswith("; core-only build: chat-oss")
+    cl = dict(row["licence"]["classification"])
+    assert M.open_core_disclosure(cl).endswith("(src/binaries/query/ee_main.rs, src/query/ee/); core-only build: "
+                                               "chat-oss")
+
+
+def _carved(scope):
+    """A host-recognised project whose corpus row is classified open core (build.carve_out)."""
+    lic = {"classification": {"class": "open_core", "core_spdx": "Apache-2.0", "method": "m",
+                              "excluded": {"paths": ["ee"], "markers": []},
+                              "provenance": {"commit": COMMIT, "checked_at": "2026-10-17T06:00:00Z"}},
+           "edition_check": None if scope is None else {
+               "method": E.METHOD, "result": "ambiguous", "reason_code": "no_deployment_runs_the_project",
+               "excluded_scope": scope, "disclosure": "open core: recommendation covers the Apache-2.0 core; x",
+               "provenance": {"commit": COMMIT, "checked_at": "2026-10-17T10:00:00Z"}}}
+    block = build.carve_out(lic)
+    return {"derived": {"licence": {"recognised": True, "exception": None, "open_core": block}}}, block
+
+
+def test_a_recognised_project_with_a_carve_out_is_checked_pair_by_pair():
+    saas = {"hotjar": {"category": "Session replay"}, "notes": {"category": "Notes"}}
+    jobs = {"Session replay": JOB, "Notes": {"core": [["note", "notes"]], "features": []}}
+
+    def rights(project, sid):
+        return build._edition_rights({"oss_id": "github.com/acme/chat", "saas_id": sid}, project, saas, {}, jobs)
+    project, block = _carved([{"path": "ee", "features": ["session recording"]}])
+    assert block["disclosure"] and block["edition_check"]["commit"] == COMMIT
+    # an enterprise-only job is never served as an OSS recommendation, served before or not
+    assert rights(project, "hotjar")["status"] == "enterprise_job"
+    assert rights(project, "notes")["status"] == "covered"
+    # without an edition check, what the carve-out covers is unknown: fail closed
+    project, block = _carved(None)
+    assert rights(project, "notes")["status"] == "unknown" and block["disclosure"] is None
+    # a plain recognised project is not checked
+    assert rights({"derived": {"licence": {"recognised": True, "exception": None}}}, "notes") is None
+
+
+def test_the_canonical_licence_carries_a_carve_out_disclosure():
+    from source_pipeline import canonical
+
+    _, block = _carved([{"path": "ee", "features": []}])
+    out = canonical._licence_block({"spdx": "Apache-2.0", "status": "recognised", "exception": None,
+                                    "open_core": block})
+    assert out["status"] == "recognised" and out["open_core"]["disclosure"] == block["disclosure"]
+    assert set(out["open_core"]["edition_check"]) == {"method", "commit", "checked_at"}
+    _, block = _carved(None)  # nothing to disclose: no open_core block, and MCP withholds the recommendation
+    assert "open_core" not in canonical._licence_block({"spdx": "Apache-2.0", "status": "recognised",
+                                                        "exception": None, "open_core": block})

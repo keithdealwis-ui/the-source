@@ -222,13 +222,18 @@ def _sha(path: Path) -> str:
 # ---------------------------------------------------------------- build
 
 def _licence_block(lic: dict) -> dict:
-    """A canonical project's licence. An open-core project admitted by the automated edition check carries the
-    disclosure every recommendation of it shows (what the recommendation covers, what it excludes)."""
+    """A canonical project's licence. An open-core project (admitted by the automated edition check, or recognised
+    with a carve-out) carries the disclosure every recommendation of it shows (what it covers, what it excludes)."""
     out = {"spdx": lic["spdx"], "status": lic["status"]}
     exc = lic.get("exception") or {}
+    oc = lic.get("open_core") or {}
     if exc.get("kind") == "edition_check":
         out["open_core"] = {"core_spdx": exc["core_spdx"], "disclosure": exc["disclosure"],
                             "edition_check": exc["edition_check"]}
+    elif oc.get("disclosure") and oc.get("edition_check"):  # recognised, with a carve-out (build.carve_out)
+        ec = oc["edition_check"]
+        out["open_core"] = {"core_spdx": oc["core_spdx"], "disclosure": oc["disclosure"],
+                            "edition_check": {k: ec[k] for k in ("method", "commit", "checked_at")}}
     return out
 
 

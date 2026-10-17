@@ -65,16 +65,49 @@ def load_exceptions() -> dict:
     return out
 
 
+def corpus_open_core() -> dict:
+    """oss_id -> licence of each data/corpus row the licence classification (KEI-919) calls open core."""
+    path = common.DATA / "corpus" / "projects.jsonl"
+    if not path.exists():
+        return {}
+    return {r["id"].lower(): r["licence"] for r in common.read_jsonl(path)
+            if ((r.get("licence") or {}).get("classification") or {}).get("class") == "open_core"}
+
+
+def carve_out(lic: dict) -> dict:
+    """A host-recognised project whose licence notice carves parts out under other terms (a `LICENSING.md` that puts
+    `ee/` under the Elastic licence, say). It stays recognised for its core, but is open core: every recommendation
+    carries the disclosure, and every pair must pass the edition-rights check (approved 2026-10-17, Databend
+    correction 3). Without an edition check's excluded scope the pair cannot be judged and is not served."""
+    cl = lic.get("classification") or {}
+    ec = lic.get("edition_check") or {}
+    prov = cl.get("provenance") or {}
+    return {"basis": "licence_classification", "core_spdx": cl.get("core_spdx"),
+            "excluded": cl.get("excluded"), "core_build": ec.get("core_build") or cl.get("core_build"),
+            "disclosure": ec.get("disclosure"), "excluded_scope": ec.get("excluded_scope") if ec else None,
+            "classification": {"method": cl.get("method"), "commit": prov.get("commit"),
+                               "checked_at": prov.get("checked_at")},
+            "edition_check": ({"method": ec.get("method"), "commit": (ec.get("provenance") or {}).get("commit"),
+                               "checked_at": (ec.get("provenance") or {}).get("checked_at"),
+                               "result": ec.get("result"), "reason_code": ec.get("reason_code")} if ec else None)}
+
+
 def _edition_rights(e: dict, project: dict, saas: dict, exceptions: dict, jobs: dict) -> dict | None:
-    """Pair-level edition rights (the amendment's rule 3): None unless the project is admitted by an edition-check
-    exception; then whether the product's job relies on the excluded parts (edition_check.pair_rights)."""
+    """Pair-level edition rights (the amendment's rule 3): None unless the project is open core, admitted by an
+    edition-check exception or recognised with a carve-out (carve_out); then whether the product's job relies on
+    the excluded parts (edition_check.pair_rights)."""
     from .edition_check import pair_rights
 
+    lic = project["derived"].get("licence") or {}
     exc = exceptions.get(e["oss_id"])
-    if not exc or exc.get("kind") != "edition_check" or not (project["derived"].get("licence") or {}).get("exception"):
+    if exc and exc.get("kind") == "edition_check" and lic.get("exception"):
+        scope = exc.get("excluded_scope")
+    elif lic.get("recognised") and lic.get("open_core"):
+        scope = lic["open_core"]["excluded_scope"]
+    else:
         return None
     product = saas.get(e["saas_id"]) or {}
-    return pair_rights(exc.get("excluded_scope"), jobs.get(product.get("category")))
+    return pair_rights(scope, jobs.get(product.get("category")))
 
 
 def exception_record(exc: dict | None) -> dict | None:
@@ -423,6 +456,7 @@ def run() -> dict:
     sources_cfg = common.load_sources()
     rules = Rules(policy)
     exceptions = load_exceptions()
+    carve = corpus_open_core()
     jobs = (common.load_yaml(common.CONFIG / "saas_jobs.yaml") or {}).get("categories") or {}
     lane_cfg = common.load_yaml(common.CONFIG / "licence_lane.yaml")
     snapshot = common.read_json(common.LIVE / "snapshot.json")
@@ -474,6 +508,8 @@ def run() -> dict:
                 "exception_approved" if licence["exception"] and not licence["recognised"]
                 else "recognised" if licence["recognised"] else "issue")
             licence["issue"] = issue
+            if licence["recognised"] and oss_id.lower() in carve:
+                licence["open_core"] = carve_out(carve[oss_id.lower()])
         host = oss_id.split("/", 1)[0]
         projects[oss_id] = {
             "schema_version": common.SCHEMA_VERSION,
@@ -536,7 +572,7 @@ def run() -> dict:
             "oss_recommendable": project["derived"]["eligibility"]["recommended"],
             "evidence_not_contradicted": e["oss_id"] not in held,
         }
-        if rights is not None:  # only on a pair whose project is admitted by an edition-check exception
+        if rights is not None:  # only on a pair whose project is open core (edition-check exception or carve-out)
             checks["edition_rights_cover_the_job"] = rights["status"] == "covered"
         ok = all(checks.values())
         failed = sorted(k for k, v in checks.items() if not v)
