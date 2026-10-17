@@ -65,6 +65,18 @@ def load_exceptions() -> dict:
     return out
 
 
+def _edition_rights(e: dict, project: dict, saas: dict, exceptions: dict, jobs: dict) -> dict | None:
+    """Pair-level edition rights (the amendment's rule 3): None unless the project is admitted by an edition-check
+    exception; then whether the product's job relies on the excluded parts (edition_check.pair_rights)."""
+    from .edition_check import pair_rights
+
+    exc = exceptions.get(e["oss_id"])
+    if not exc or exc.get("kind") != "edition_check" or not (project["derived"].get("licence") or {}).get("exception"):
+        return None
+    product = saas.get(e["saas_id"]) or {}
+    return pair_rights(exc.get("excluded_scope"), jobs.get(product.get("category")))
+
+
 def exception_record(exc: dict | None) -> dict | None:
     """The exception as a project's licence verdict carries it; an edition-check one keeps its disclosure."""
     if not exc:
@@ -282,9 +294,26 @@ def live_view(live: dict) -> dict:
     return out
 
 
-def select_launch(saas: dict, edges: list[dict], projects: dict, policy: dict) -> dict:
+def served_baseline(policy: dict) -> set | None:
+    """The relationships the read layer serves now (data/canonical/relationships.jsonl), which a rebuild must keep
+    when policy launch.preserve_served is true. None when the rule is off or there is no canonical layer yet."""
+    if not policy["launch"].get("preserve_served"):
+        return None
+    path = common.DATA / "canonical" / "relationships.jsonl"
+    return {(r["saas_id"], r["oss_id"]) for r in common.read_jsonl(path)} if path.exists() else None
+
+
+def select_launch(saas: dict, edges: list[dict], projects: dict, policy: dict, served: set | None = None) -> dict:
+    """The launch corpus: SaaS products by evidence rank to the floor, extended to oss_minimum, a per-product cap
+    that keeps the corpus under edges_max (KEI-805; dr-KEI-805-507e4f70).
+
+    With `served` (launch.preserve_served, the amendment of 2026-10-17): every product and relationship the read
+    layer already serves stays in, unless the relationship itself is no longer validated; newly eligible projects
+    add coverage, they never displace it. The cap applies only to additions, so oss_minimum stays a minimum and
+    never a reason to drop a served product."""
     launch = policy["launch"]
     valid = [e for e in edges if e["validation"]["status"] == "validated"]
+    served = served or set()
     per_saas: dict[str, list] = {}
     for e in valid:
         per_saas.setdefault(e["saas_id"], []).append(e)
@@ -301,30 +330,49 @@ def select_launch(saas: dict, edges: list[dict], projects: dict, policy: dict) -
         return (-e["source_count"], -parse_ts(last).timestamp(), e["oss_id"])
 
     def distinct_products(sid):
-        """One repository per product per SaaS: later repositories of the same product are skipped."""
+        """One repository per product per SaaS: later repositories of the same product are skipped. A served
+        relationship comes first, so it is never the one skipped."""
         seen, out = set(), []
-        for e in sorted(per_saas[sid], key=edge_rank):
+        for e in sorted(per_saas[sid], key=lambda e: ((e["saas_id"], e["oss_id"]) not in served, edge_rank(e))):
             group = projects[e["oss_id"]]["product_group"]
             if group in seen:
                 continue
             seen.add(group)
             out.append(e)
-        return out
+        return sorted(out, key=edge_rank)
 
     for sid in ranked:
         per_saas[sid] = distinct_products(sid)
+
+    pinned = {sid: sum(1 for e in per_saas[sid] if (e["saas_id"], e["oss_id"]) in served) for sid in ranked}
+
+    def keep_n(sid, cap):
+        return max(min(len(per_saas[sid]), cap), pinned.get(sid, 0))
+
+    def kept(sid, cap):
+        """The relationships kept for one product, in rank order: every served one, then the best of the rest."""
+        room = keep_n(sid, cap) - pinned.get(sid, 0)
+        out = []
+        for e in per_saas[sid]:
+            if (e["saas_id"], e["oss_id"]) in served:
+                out.append(e)
+            elif room > 0:
+                out.append(e)
+                room -= 1
+        return out
 
     def measure(chosen):
         cap = launch.get("max_edges_per_saas")
         if cap is None:
             cap = max((len(per_saas[s]) for s in chosen), default=0)
-            while cap > 1 and sum(min(len(per_saas[s]), cap) for s in chosen) > int(launch["edges_max"]):
+            while cap > 1 and sum(keep_n(s, cap) for s in chosen) > int(launch["edges_max"]):
                 cap -= 1
-        kept = [e for s in chosen for e in per_saas[s][:cap]]
-        products = {projects[e["oss_id"]]["product_group"] for e in kept}
-        return cap, len(kept), len(products)
+        rows = [e for s in chosen for e in kept(s, cap)]
+        products = {projects[e["oss_id"]]["product_group"] for e in rows}
+        return cap, len(rows), len(products)
 
-    chosen = ranked[:floor]
+    served_saas = {sid for sid, n in pinned.items() if n}
+    chosen = [sid for sid in ranked if sid in set(ranked[:floor]) | served_saas]
     extended_by = 0
     if launch.get("saas_target_is", "fixed") == "floor":
         # Continue down the SAME ranking, one product at a time, until the OSS minimum is
@@ -338,11 +386,19 @@ def select_launch(saas: dict, edges: list[dict], projects: dict, policy: dict) -
             chosen = trial
             extended_by += 1
     cap = measure(chosen)[0]
+    extended_by = max(0, len(chosen) - min(floor, len(ranked)))  # beyond the floor, by extension or preservation
     picked = {}
     for rank, sid in enumerate(chosen, 1):
-        for pos, e in enumerate(per_saas[sid][:cap], 1):
+        for pos, e in enumerate(kept(sid, cap), 1):
             picked[e["edge_id"]] = {"saas_rank": rank, "position": pos}
-    return {
+    extra = {}
+    if served:
+        kept_pairs = {(e["saas_id"], e["oss_id"]) for s in chosen for e in kept(s, cap)}
+        lost = sorted(served - kept_pairs)
+        extra["preserve_served"] = {"served_before": len(served), "kept": len(served & kept_pairs),
+                                    "not_kept": [{"saas_id": a, "oss_id": b, "reason": _lost_reason(a, b, edges)}
+                                                 for a, b in lost]}
+    return {**extra,
         "saas_ranked": chosen,
         "edge_picks": picked,
         "cap_per_saas": cap,
@@ -353,11 +409,21 @@ def select_launch(saas: dict, edges: list[dict], projects: dict, policy: dict) -
     }
 
 
+def _lost_reason(sid: str, oid: str, edges: list[dict]) -> str:
+    e = next((e for e in edges if e["saas_id"] == sid and e["oss_id"] == oid), None)
+    if e is None:
+        return "no longer claimed by any source"
+    if e["validation"]["status"] != "validated":
+        return f"no longer validated: {', '.join(e['validation']['reasons'][:4])}"
+    return "another repository of the same product is served for this product"
+
+
 def run() -> dict:
     policy = common.load_policy()
     sources_cfg = common.load_sources()
     rules = Rules(policy)
     exceptions = load_exceptions()
+    jobs = (common.load_yaml(common.CONFIG / "saas_jobs.yaml") or {}).get("categories") or {}
     lane_cfg = common.load_yaml(common.CONFIG / "licence_lane.yaml")
     snapshot = common.read_json(common.LIVE / "snapshot.json")
     from .enrich import policy_fingerprint
@@ -460,6 +526,7 @@ def run() -> dict:
             rejections.append({"stage": "plausibility_review", "reason": refusal, "oss_id": e["oss_id"],
                                "saas_id": e["saas_id"], "reviewed_by": review["reviewed_by"],
                                "reviewed_at": review["reviewed_at"]})
+        rights = _edition_rights(e, project, rec["saas"], exceptions, jobs)
         checks = {
             "passed_plausibility_review": refusal is None,
             "saas_in_reviewed_catalogue": e["saas_id"] in rec["saas"],
@@ -469,10 +536,14 @@ def run() -> dict:
             "oss_recommendable": project["derived"]["eligibility"]["recommended"],
             "evidence_not_contradicted": e["oss_id"] not in held,
         }
+        if rights is not None:  # only on a pair whose project is admitted by an edition-check exception
+            checks["edition_rights_cover_the_job"] = rights["status"] == "covered"
         ok = all(checks.values())
         failed = sorted(k for k, v in checks.items() if not v)
-        # Flagged: nothing is wrong with the relationship except the project's licence.
-        flagged = [f for f in failed if f != "evidence_not_contradicted"] == ["oss_recommendable"] and project["derived"]["lane"] == "licence_exception"
+        # Flagged: nothing is wrong with the relationship except the project's licence (or its edition's reach).
+        licence_only = [f for f in failed if f != "evidence_not_contradicted"]
+        flagged = (licence_only == ["oss_recommendable"] and project["derived"]["lane"] == "licence_exception") or \
+            (licence_only == ["edition_rights_cover_the_job"])
         edges.append(
             {
                 "schema_version": common.SCHEMA_VERSION,
@@ -495,7 +566,9 @@ def run() -> dict:
                     + ([] if ok else project["derived"]["eligibility"]["exclusion_reasons"])
                     + ([f"review: {refusal}"] if refusal else [])
                     + ([f"held_for_review: licence--{e['oss_id']} (contradictory_evidence; see review_queue.jsonl)"]
-                       if e["oss_id"] in held else []),
+                       if e["oss_id"] in held else [])
+                    + ([f"edition_rights: {rights['status']}: {rights['reason']}"]
+                       if rights is not None and rights["status"] != "covered" else []),
                     "plausibility_review": {"reviewed_by": review["reviewed_by"],
                                             "reviewed_at": review["reviewed_at"],
                                             "outcome": ("rejected" if refusal else
@@ -506,7 +579,7 @@ def run() -> dict:
             }
         )
 
-    sel = select_launch(rec["saas"], edges, projects, policy)
+    sel = select_launch(rec["saas"], edges, projects, policy, served_baseline(policy))
     launch_oss = set()
     for e in edges:
         pick = sel["edge_picks"].get(e["edge_id"])
@@ -672,6 +745,8 @@ def run() -> dict:
             "saas_target_is": sel["saas_target_is"],
             "saas_target_decision_ref": policy["launch"].get("saas_target_decision_ref"),
             "saas_added_beyond_floor": sel["saas_added_beyond_floor"],
+            **({"preserve_served": {k: sel["preserve_served"][k] for k in ("served_before", "kept")}
+                | {"not_kept": len(sel["preserve_served"]["not_kept"])}} if "preserve_served" in sel else {}),
             "saas_named_by_a_single_source": count(
                 saas_rows, lambda r: r["derived"]["launch"] and r["derived"]["source_count"] == 1),
         },

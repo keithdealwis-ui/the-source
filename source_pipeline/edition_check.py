@@ -62,6 +62,8 @@ MARKER = re.compile(r"(enterprise|commercial|premium|proprietary|(^|[-_./:])(ee|
 PRIMARY = re.compile(r"^((docker-)?compose(\.(prod|production|selfhost|self-host|hobby|oss))?\.ya?ml|chart\.yaml)$", re.I)
 FALSY = {"", "false", "0", "no", "off", "none", "null"}
 MAX_FILES = 30
+# Where Reader.at keeps the files that carry each excluded-edition header marker (GitHub code search).
+MARKER_FILES_KEY = "__marker_files__"
 
 
 def _rel(base: str, ref: str) -> str | None:
@@ -288,8 +290,11 @@ def excluded_scope(cls: dict, paths: list[tuple[str, str]], texts: dict) -> list
         out.append({"path": x, "why": why.get(x) or "named by the licence classification as under other terms",
                     "contains": children[:15], "readme_summary": summary})
     for mk in (cls.get("excluded") or {}).get("markers") or []:
+        found = (texts.get(MARKER_FILES_KEY) or {}).get(mk) if isinstance(texts.get(MARKER_FILES_KEY), dict) else None
         out.append({"marker": mk, "why": "files carrying this header are under the enterprise terms",
-                    "contains": [], "readme_summary": None})
+                    "contains": sorted({f.split("/")[-2] if "/" in f else f for f in found or []})[:40],
+                    "files": (found or [])[:1000], "files_listed": found is not None,
+                    "readme_summary": None})
     return out
 
 
@@ -303,7 +308,7 @@ def check(row: dict, rec: dict | None, checked_at: str) -> dict:
     """Pure: the edition check for one corpus row, given what was read at the classification commit."""
     cls = row["licence"].get("classification") or {}
     commit = (cls.get("provenance") or {}).get("commit")
-    files_read = sorted((rec or {}).get("texts") or {})
+    files_read = sorted(k for k in ((rec or {}).get("texts") or {}) if k != MARKER_FILES_KEY)
     prov = {"source": {"api": "github: GraphQL tree at the classification commit (3 levels; deployment "
                               "directories two more) + Blob.text", "files": files_read},
             "commit": commit, "checked_at": (rec or {}).get("fetched_at") or checked_at}
@@ -484,8 +489,71 @@ class Reader(lc.Fetcher):
         rec["paths"] = sorted(paths)
         return self._save(cp, rec)
 
+    def marker_files(self, slug: str, markers: list[str], rec: dict) -> dict:
+        """The files carrying each header marker, from GitHub code search (default branch, at checked_at):
+        what a marker-delimited enterprise edition covers. Not cached with the tree; None when search fails."""
+        from urllib.parse import urlencode
+
+        out = {}
+        for mk in markers:
+            words = re.sub(r"[/*]+", " ", mk).strip()
+            files, total = [], None
+            for page in range(1, 11):  # code search serves at most 1,000 results
+                st, doc = self.api.rest("search/code?" + urlencode(
+                    {"q": f'"{words}" repo:{slug}', "per_page": 100, "page": page}))
+                if st != 200 or not isinstance(doc, dict):
+                    files = None
+                    break
+                total = doc.get("total_count")
+                items = doc.get("items") or []
+                files += [i["path"] for i in items]
+                if len(items) < 100 or len(files) >= (total or 0):
+                    break
+            # an incomplete list cannot say what the edition excludes: treated as unlisted (fail closed)
+            out[mk] = sorted(set(files)) if files is not None and not (doc or {}).get("incomplete_results") \
+                and total is not None and len(set(files)) >= total else None
+        rec.setdefault("texts", {})[MARKER_FILES_KEY] = out
+        return out
+
 
 # ---------------------------------------------------------------- the corpus pass
+
+
+def _scope_text(scope: list[dict]) -> str:
+    bits = []
+    for x in scope:
+        bits += [x.get("path") or "", *(x.get("contains") or []), *(x.get("files") or []), x.get("readme_summary") or ""]
+    return " " + re.sub(r"[^a-z0-9]+", " ", " ".join(bits).lower()) + " "
+
+
+def _hit(term: str, text: str) -> bool:
+    t = re.sub(r"[^a-z0-9]+", " ", term.lower()).strip()
+    return bool(t) and f" {t}" in text
+
+
+def pair_rights(scope: list[dict] | None, job: dict | None) -> dict:
+    """Does replacing a product with this open-core project rely on its excluded parts?
+
+    The job is the product category's (config/saas_jobs.yaml): its defining group says what the product IS. If a
+    defining phrase names an excluded part, the recommended functionality is enterprise-only: `enterprise_job`.
+    Matching breadth features are listed (they narrow the disclosure) but do not block. If the excluded parts
+    cannot be read (a marker whose files could not be listed) or the category has no job, `unknown`. Only
+    `covered` lets the pair be served. Fail closed."""
+    if not job or not job.get("core"):
+        return {"status": "unknown", "reason": "the product category has no job definition", "core_hits": [],
+                "feature_hits": []}
+    if scope is None or any(x.get("marker") and not x.get("files_listed") for x in scope):
+        return {"status": "unknown", "reason": "what the excluded parts cover could not be listed", "core_hits": [],
+                "feature_hits": []}
+    text = _scope_text(scope)
+    core = sorted({t for t in job["core"][0] if _hit(t, text)})
+    feats = sorted({t for t in job.get("features") or [] if _hit(t, text)})
+    if core:
+        return {"status": "enterprise_job", "reason": f"the excluded parts name the product's job: {', '.join(core)}",
+                "core_hits": core, "feature_hits": feats}
+    return {"status": "covered", "reason": "the excluded parts name none of the product's defining job"
+            + (f"; enterprise-only features: {', '.join(feats)}" if feats else ""), "core_hits": [],
+            "feature_hits": feats}
 
 
 def generated_entry(row: dict, res: dict) -> dict:
@@ -495,7 +563,7 @@ def generated_entry(row: dict, res: dict) -> dict:
                                 + ", ".join(s.get("path") or s.get("marker") for s in res["excluded_scope"]),
             "approved_by": APPROVER, "approval_ref": f"{METHOD}@{prov['commit']}",
             "reviewed_at": prov["checked_at"][:10], "rationale": res["reason"], "disclosure": res["disclosure"],
-            "core_spdx": res["core_spdx"],
+            "core_spdx": res["core_spdx"], "excluded_scope": res["excluded_scope"],
             "edition_check": {"method": METHOD, "commit": prov["commit"], "files": prov["source"]["files"],
                               "checked_at": prov["checked_at"], "core_deployment": res.get("core_deployment")}}
 
@@ -565,7 +633,12 @@ def run(out: Path | None = None, workers: int = 6, api=None, generated: Path | N
         commit = (cls.get("provenance") or {}).get("commit")
         if not commit or not p["id"].startswith("github.com/"):
             return None
-        return reader.at(full.get(p["id"]) or p["full_name"].lower(), commit, (cls.get("excluded") or {}).get("paths") or [])
+        slug = full.get(p["id"]) or p["full_name"].lower()
+        rec = reader.at(slug, commit, (cls.get("excluded") or {}).get("paths") or [])
+        markers = (cls.get("excluded") or {}).get("markers") or []
+        if markers and rec.get("found") and MARKER_FILES_KEY not in (rec.get("texts") or {}):
+            reader.marker_files(slug, markers, rec)
+        return rec
 
     log(f"edition-check: reading {len(rows)} open-core repositories at their classification commits")
     with ThreadPoolExecutor(workers) as pool:

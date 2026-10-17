@@ -145,6 +145,12 @@ launch:
   saas_target_decision_ref: "dr-KEI-805-507e4f70"
   saas_target: 100
   oss_minimum: 250
+  # Amendment (proposed 2026-10-17, for Keith's approval; needed before edition-check exceptions are
+  # switched on): every product and relationship the read layer already serves stays in the launch
+  # set unless that relationship itself stops validating; newly eligible projects add coverage and
+  # never displace it. oss_minimum stays a minimum, not a reason to replace existing coverage; the
+  # per-product cap applies to additions only. Off: the dr-KEI-805-507e4f70 behaviour, unchanged.
+  preserve_served: true
   edges_min: 300
   edges_max: 400
   # "High value" is decided by evidence, never by stars:
