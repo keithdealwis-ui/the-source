@@ -1176,9 +1176,11 @@ def _corpus_spdx(c: dict):
 def open_core_disclosure(cl: dict) -> str:
     """The disclosure for an open-core project, from its licence classification (edition_check.disclosure's form)."""
     ex = cl.get("excluded") or {}
-    parts = [p + "/" for p in ex.get("paths") or []] + list(ex.get("markers") or [])
+    parts = [p if re.search(r"\.\w{1,5}$", p) else p + "/" for p in ex.get("paths") or []] + list(ex.get("markers") or [])
+    build = cl.get("core_build") or {}
     return (f"open core: recommendation covers the {cl.get('core_spdx')} core; enterprise features excluded"
-            + (f" ({', '.join(parts)})" if parts else ""))
+            + (f" ({', '.join(parts)})" if parts else "")
+            + (f"; core-only build: {', '.join(build['artifacts'])}" if build.get("artifacts") else ""))
 
 
 def disclose(layer, node):

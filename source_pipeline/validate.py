@@ -388,7 +388,17 @@ def run() -> dict:
     by_rank = sorted(saas, key=lambda x: (-x["derived"]["source_count"], -x["derived"]["validated_alternatives"], x["name"].lower()))
     eligible = [x["saas_id"] for x in by_rank if x["derived"]["validated_alternatives"] > 0][: len(ranks)]
     chosen_ids = [x["saas_id"] for x in sorted(launch_saas, key=lambda x: x["derived"]["launch_rank"])]
-    if eligible != chosen_ids:
+    served = build.served_baseline(policy)
+    if served is not None:
+        # launch.preserve_served (amendment): the first `saas_target` of the ranking are all in; every other
+        # launch product is already served or is next in the ranking (extension to oss_minimum).
+        ranked_ids = [x["saas_id"] for x in by_rank if x["derived"]["validated_alternatives"] > 0]
+        top = set(ranked_ids[:targets["saas_target"]])
+        served_saas = {sid for sid, _ in served}
+        if not top <= set(chosen_ids) or any(c not in top and c not in served_saas
+                                             and c not in ranked_ids[:len(chosen_ids)] for c in chosen_ids):
+            bad.append("the launch SaaS are not the top of the ranking plus the products already served")
+    elif eligible != chosen_ids:
         bad.append("the launch SaaS are not the first N of the declared ranking")
     check("launch.ranking_unchanged", 6,
           "the launch SaaS products are exactly the first N of the declared ranking (independent sources, then validated alternatives, then name): nothing was skipped or promoted",

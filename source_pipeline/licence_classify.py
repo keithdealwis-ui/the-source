@@ -101,6 +101,11 @@ RESTRICTED_MAX_NOTICE_CHARS = 2500  # beyond this the extra text is another lice
 HEADER_MARKER = re.compile(r"(/\*\s*@licen[sc]e[^*]*\*/|//\s*@licen[sc]e[^\n]*|@licen[sc]e\s+[A-Za-z][\w.-]*)")
 PATH_TOKEN = re.compile(r"(?P<pre>[/\"'`]?)(?P<tok>[A-Za-z0-9_.\-]+(?:/[A-Za-z0-9_.\-]+)*)(?P<post>/?)")
 URL = re.compile(r"https?://\S+")
+# A notice that names a build of the project without the excluded parts ("`x-oss` binaries are built without the
+# directories above"): the core-only build a self-hoster should run.
+CORE_BUILD = re.compile(r"\b(built without|without the (enterprise|ee|excluded|commercial|proprietary|directories|"
+                        r"files|code|features|parts))\b")
+BACKTICKED = re.compile(r"`([A-Za-z0-9][\w.\-/:]{1,80})`")
 SPLIT = re.compile(r"(?<=[.;!?])\s+|\n\s*[-*•]\s+|\n\s*\(?(?:\d+|[ivx]+)[.)]\s+")
 PARAGRAPH = re.compile(r"\n\s*\n")
 CODE_FENCE = re.compile(r":?\s*\n\s*```[^\n]*\n(.*?)```", re.S)
@@ -212,6 +217,33 @@ def _path_tokens(clean: str, dirs: set[str], list_depth: int = 99) -> tuple[list
         elif "/" in tok and not re.search(r"\.\w{1,4}$", tok):
             pathy = True  # a path the tree does not have: still a path-scoped sentence
     return sorted(set(named)), pathy
+
+
+def _file_tokens(clean: str, paths: list[tuple[str, str]], list_depth: int = 99) -> list[str]:
+    """Files a sentence names by path (`src/binaries/query/ee_main.rs`): in the tree as read, or deeper than it was
+    read below a directory it has. A licence text is not an excluded part."""
+    blobs = {p for p, k in paths if k == "blob"}
+    dirs = {p for p, k in paths if k == "tree"}
+    named = set()
+    for m in PATH_TOKEN.finditer(clean):
+        tok = m.group("tok").strip("/")
+        parts = tok.split("/")
+        if len(parts) < 2 or m.group("post") or not re.search(r"\.\w{1,5}$", tok) or _is_licence_file(parts[-1]) \
+                or _in_licences_dir(tok):
+            continue
+        if tok in blobs or (len(parts) > list_depth and "/".join(parts[:list_depth]) in dirs):
+            named.add(tok)
+    return sorted(named)
+
+
+def core_build(sentences: list[dict], dirs: set[str]) -> dict | None:
+    """The build the licence notice says leaves the excluded parts out, with the sentence that says so."""
+    for s in sentences:
+        if CORE_BUILD.search(s["norm"]):
+            names = [n for n in BACKTICKED.findall(s["raw"]) if n.strip("/") not in dirs and "/" not in n]
+            if names:
+                return {"artifacts": sorted(dict.fromkeys(names)), "statement": " ".join(s["raw"].split())[:240]}
+    return None
 
 
 def _osi_families(norm: str) -> set[str]:
@@ -349,9 +381,15 @@ def classify(paths: list[tuple[str, str]], texts: dict[str, str], *, commit: str
         fams = _osi_families(s["norm"])
         p_named, p_pathy = _path_tokens(s["para"]["clean"], dirs, list_depth)
         p_fams = _osi_families(s["para"]["norm"])
-        if p_named and not p_fams and (COMMERCIAL_TERMS.search(s["para"]["norm"]) or _has(s["para"]["norm"], sa)):
-            for d in p_named:
+        p_files = _file_tokens(s["para"]["clean"], paths, list_depth)
+        if (p_named or p_files) and not p_fams and (COMMERCIAL_TERMS.search(s["para"]["norm"])
+                                                    or _has(s["para"]["norm"], sa)):
+            for d in p_named + p_files:
                 excluded.setdefault(d, f"named under other terms in the root licence: \"{s['para']['clean'][:160].strip()}\"")
+        s_files = _file_tokens(s["clean"], paths, list_depth)
+        if s_files and not fams and COMMERCIAL_TERMS.search(s["norm"]):
+            for d in s_files:
+                excluded.setdefault(d, f"named under other terms in the root licence: \"{s['raw'][:160]}\"")
         if named and not fams and re.search(r"\blicen[sc]\w*|enterprise|commercial|proprietary", s["norm"]):
             for d in named:
                 if COMMERCIAL_TERMS.search(s["norm"]) or NESTED_ENTERPRISE_DIR.match(d.split("/")[-1]) \
@@ -399,10 +437,11 @@ def classify(paths: list[tuple[str, str]], texts: dict[str, str], *, commit: str
         stmt_fams = set().union(*(_osi_families(ld._norm(t)) for t in statements)) if statements else \
             {_family(x) for x in core_texts}
         core = sorted(x for x in core_texts if _family(x) in stmt_fams) or core_texts
+        build = core_build(core_sents, dirs)
         return done("open_core", f"core under {' AND '.join(core)}; other terms confined to "
                                  f"{', '.join(exclusions['paths'] + exclusions['markers'])}",
                     core_spdx=" AND ".join(core), open_components=core_texts, excluded=exclusions,
-                    evidence=evidence, **base)
+                    evidence=evidence, **({"core_build": build} if build else {}), **base)
 
     non_open_sa = [n for n in root_lic if not info[n]["open"] and n not in enterprise_files
                    and _has(ld._norm(texts[n]), sa)]
@@ -449,7 +488,7 @@ def eligibility(cls: dict) -> dict:
 def row_fields(cls: dict) -> dict:
     """The compact form published on a corpus row's `licence` object."""
     c = {k: cls[k] for k in ("class", "reason", "method", "provenance")}
-    for k in ("spdx", "core_spdx", "excluded", "supporting"):
+    for k in ("spdx", "core_spdx", "excluded", "core_build", "supporting"):
         if cls.get(k):
             c[k] = cls[k]
     return {"classification": c, "eligibility": eligibility(cls)}

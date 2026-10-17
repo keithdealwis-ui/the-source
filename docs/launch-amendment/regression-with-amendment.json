@@ -1,0 +1,1334 @@
+{
+  "new_relationships": [
+    {
+      "oss_id": "github.com/posthog/posthog",
+      "reason": "not publishable: project carries a hard disqualifier: licence_unclear",
+      "replacement_fit": 79.0,
+      "saas_id": "amplitude"
+    },
+    {
+      "oss_id": "github.com/goauthentik/authentik",
+      "reason": "not publishable: project carries a hard disqualifier: licence_unclear",
+      "replacement_fit": 78.1,
+      "saas_id": "auth0"
+    },
+    {
+      "oss_id": "github.com/opensignlabs/opensign",
+      "reason": "not publishable: project carries a hard disqualifier: licence_unclear",
+      "replacement_fit": 76.8,
+      "saas_id": "docusign"
+    },
+    {
+      "oss_id": "github.com/highlight/highlight",
+      "reason": "not publishable: project carries a hard disqualifier: licence_unclear",
+      "replacement_fit": 66.3,
+      "saas_id": "fullstory"
+    },
+    {
+      "oss_id": "github.com/posthog/posthog",
+      "reason": "not publishable: project carries a hard disqualifier: licence_unclear",
+      "replacement_fit": 67.9,
+      "saas_id": "google-analytics"
+    },
+    {
+      "oss_id": "github.com/twentyhq/twenty",
+      "reason": "not publishable: project carries a hard disqualifier: licence_unclear",
+      "replacement_fit": 59.3,
+      "saas_id": "hubspot"
+    },
+    {
+      "oss_id": "github.com/growthbook/growthbook",
+      "reason": "not publishable: project carries a hard disqualifier: licence_unclear",
+      "replacement_fit": 77.3,
+      "saas_id": "launchdarkly"
+    },
+    {
+      "oss_id": "github.com/lightdash/lightdash",
+      "reason": "not publishable: project carries a hard disqualifier: licence_unclear",
+      "replacement_fit": 71.4,
+      "saas_id": "looker"
+    },
+    {
+      "oss_id": "github.com/posthog/posthog",
+      "reason": "not publishable: project carries a hard disqualifier: licence_unclear",
+      "replacement_fit": 79.0,
+      "saas_id": "mixpanel"
+    },
+    {
+      "oss_id": "github.com/goauthentik/authentik",
+      "reason": "not publishable: project carries a hard disqualifier: licence_unclear",
+      "replacement_fit": 78.1,
+      "saas_id": "okta"
+    },
+    {
+      "oss_id": "github.com/berriai/litellm",
+      "reason": "not publishable: project carries a hard disqualifier: licence_unclear",
+      "replacement_fit": 72.3,
+      "saas_id": "openai-api"
+    },
+    {
+      "oss_id": "github.com/twentyhq/twenty",
+      "reason": "not publishable: project carries a hard disqualifier: licence_unclear",
+      "replacement_fit": 59.3,
+      "saas_id": "pipedrive"
+    },
+    {
+      "oss_id": "github.com/twentyhq/twenty",
+      "reason": "not publishable: project carries a hard disqualifier: licence_unclear",
+      "replacement_fit": 62.6,
+      "saas_id": "salesforce"
+    },
+    {
+      "oss_id": "github.com/formbricks/formbricks",
+      "reason": "not publishable: project carries a hard disqualifier: licence_unclear",
+      "replacement_fit": 60.6,
+      "saas_id": "surveymonkey"
+    },
+    {
+      "oss_id": "github.com/gravitl/netmaker",
+      "reason": "not publishable: project carries a hard disqualifier: licence_unclear",
+      "replacement_fit": 55.6,
+      "saas_id": "tailscale"
+    },
+    {
+      "oss_id": "github.com/formbricks/formbricks",
+      "reason": "not publishable: project carries a hard disqualifier: licence_unclear",
+      "replacement_fit": 60.6,
+      "saas_id": "typeform"
+    },
+    {
+      "oss_id": "github.com/activepieces/activepieces",
+      "reason": "not publishable: project carries a hard disqualifier: licence_unclear",
+      "replacement_fit": 60.8,
+      "saas_id": "zapier"
+    }
+  ],
+  "recommendations": {
+    "added": [],
+    "changed": [],
+    "removed": [],
+    "retained": [
+      {
+        "oss_id": "github.com/passbolt/passbolt_api",
+        "saas_id": "1password"
+      },
+      {
+        "oss_id": "github.com/apitable/apitable",
+        "saas_id": "airtable"
+      },
+      {
+        "oss_id": "github.com/gristlabs/grist-core",
+        "saas_id": "airtable"
+      },
+      {
+        "oss_id": "github.com/totumonline/totum-mit",
+        "saas_id": "airtable"
+      },
+      {
+        "oss_id": "github.com/opensearch-project/opensearch",
+        "saas_id": "algolia"
+      },
+      {
+        "oss_id": "github.com/typesense/typesense",
+        "saas_id": "algolia"
+      },
+      {
+        "oss_id": "github.com/valeriansaliou/sonic",
+        "saas_id": "algolia"
+      },
+      {
+        "oss_id": "github.com/deuxfleurs-org/garage",
+        "saas_id": "amazon-s3"
+      },
+      {
+        "oss_id": "github.com/openstack/swift",
+        "saas_id": "amazon-s3"
+      },
+      {
+        "oss_id": "github.com/rustfs/rustfs",
+        "saas_id": "amazon-s3"
+      },
+      {
+        "oss_id": "github.com/seaweedfs/seaweedfs",
+        "saas_id": "amazon-s3"
+      },
+      {
+        "oss_id": "github.com/storj/storj",
+        "saas_id": "amazon-s3"
+      },
+      {
+        "oss_id": "github.com/frigadehq/trench",
+        "saas_id": "amplitude"
+      },
+      {
+        "oss_id": "github.com/openpanel-dev/openpanel",
+        "saas_id": "amplitude"
+      },
+      {
+        "oss_id": "github.com/go-vikunja/vikunja",
+        "saas_id": "asana"
+      },
+      {
+        "oss_id": "github.com/leantime/leantime",
+        "saas_id": "asana"
+      },
+      {
+        "oss_id": "github.com/makeplane/plane",
+        "saas_id": "asana"
+      },
+      {
+        "oss_id": "github.com/opf/openproject",
+        "saas_id": "asana"
+      },
+      {
+        "oss_id": "github.com/authgear/authgear-server",
+        "saas_id": "auth0"
+      },
+      {
+        "oss_id": "github.com/janssenproject/jans",
+        "saas_id": "auth0"
+      },
+      {
+        "oss_id": "github.com/keycloak/keycloak",
+        "saas_id": "auth0"
+      },
+      {
+        "oss_id": "github.com/logto-io/logto",
+        "saas_id": "auth0"
+      },
+      {
+        "oss_id": "github.com/ory/kratos",
+        "saas_id": "auth0"
+      },
+      {
+        "oss_id": "github.com/ory/polis",
+        "saas_id": "auth0"
+      },
+      {
+        "oss_id": "github.com/zitadel/zitadel",
+        "saas_id": "auth0"
+      },
+      {
+        "oss_id": "github.com/coollabsio/coolify",
+        "saas_id": "aws-amplify"
+      },
+      {
+        "oss_id": "github.com/fclairamb/solidping",
+        "saas_id": "better-stack"
+      },
+      {
+        "oss_id": "github.com/openstatushq/openstatus",
+        "saas_id": "better-stack"
+      },
+      {
+        "oss_id": "github.com/twin/gatus",
+        "saas_id": "better-stack"
+      },
+      {
+        "oss_id": "github.com/go-gitea/gitea",
+        "saas_id": "bitbucket"
+      },
+      {
+        "oss_id": "github.com/knadh/listmonk",
+        "saas_id": "brevo"
+      },
+      {
+        "oss_id": "github.com/pentacent/keila",
+        "saas_id": "brevo"
+      },
+      {
+        "oss_id": "github.com/getopenpost/openpost",
+        "saas_id": "buffer"
+      },
+      {
+        "oss_id": "github.com/gitroomhq/postiz-app",
+        "saas_id": "buffer"
+      },
+      {
+        "oss_id": "github.com/inovector/mixpost",
+        "saas_id": "buffer"
+      },
+      {
+        "oss_id": "github.com/alextselegidis/easyappointments",
+        "saas_id": "calendly"
+      },
+      {
+        "oss_id": "github.com/tymeslot/tymeslot",
+        "saas_id": "calendly"
+      },
+      {
+        "oss_id": "github.com/getfider/fider",
+        "saas_id": "canny"
+      },
+      {
+        "oss_id": "github.com/quackbackio/quackback",
+        "saas_id": "canny"
+      },
+      {
+        "oss_id": "github.com/getlago/lago",
+        "saas_id": "chargebee"
+      },
+      {
+        "oss_id": "github.com/chatboxai/chatbox",
+        "saas_id": "chatgpt"
+      },
+      {
+        "oss_id": "github.com/leon-ai/leon",
+        "saas_id": "chatgpt"
+      },
+      {
+        "oss_id": "github.com/librechat-ai/librechat",
+        "saas_id": "chatgpt"
+      },
+      {
+        "oss_id": "github.com/mintplex-labs/anything-llm",
+        "saas_id": "chatgpt"
+      },
+      {
+        "oss_id": "github.com/openstatushq/openstatus",
+        "saas_id": "checkly"
+      },
+      {
+        "oss_id": "github.com/twin/gatus",
+        "saas_id": "checkly"
+      },
+      {
+        "oss_id": "github.com/discourse/discourse",
+        "saas_id": "circle"
+      },
+      {
+        "oss_id": "github.com/buildbot/buildbot",
+        "saas_id": "circleci"
+      },
+      {
+        "oss_id": "github.com/concourse/concourse",
+        "saas_id": "circleci"
+      },
+      {
+        "oss_id": "github.com/jenkinsci/jenkins",
+        "saas_id": "circleci"
+      },
+      {
+        "oss_id": "github.com/woodpecker-ci/woodpecker",
+        "saas_id": "circleci"
+      },
+      {
+        "oss_id": "github.com/librechat-ai/librechat",
+        "saas_id": "claude"
+      },
+      {
+        "oss_id": "github.com/keycloak/keycloak",
+        "saas_id": "clerk"
+      },
+      {
+        "oss_id": "github.com/supabase/supabase",
+        "saas_id": "clerk"
+      },
+      {
+        "oss_id": "github.com/hcengineering/platform",
+        "saas_id": "clickup"
+      },
+      {
+        "oss_id": "github.com/opf/openproject",
+        "saas_id": "clickup"
+      },
+      {
+        "oss_id": "github.com/imgproxy/imgproxy",
+        "saas_id": "cloudinary"
+      },
+      {
+        "oss_id": "github.com/linuxfoundation/crowd.dev",
+        "saas_id": "common-room"
+      },
+      {
+        "oss_id": "github.com/bookstackapp/bookstack",
+        "saas_id": "confluence"
+      },
+      {
+        "oss_id": "github.com/builderio/builder",
+        "saas_id": "contentful"
+      },
+      {
+        "oss_id": "github.com/concretecms/concretecms",
+        "saas_id": "contentful"
+      },
+      {
+        "oss_id": "github.com/decaporg/decap-cms",
+        "saas_id": "contentful"
+      },
+      {
+        "oss_id": "github.com/payloadcms/payload",
+        "saas_id": "contentful"
+      },
+      {
+        "oss_id": "github.com/sulu/sulu",
+        "saas_id": "contentful"
+      },
+      {
+        "oss_id": "github.com/tinacms/tinacms",
+        "saas_id": "contentful"
+      },
+      {
+        "oss_id": "github.com/coroot/coroot",
+        "saas_id": "datadog"
+      },
+      {
+        "oss_id": "github.com/fclairamb/solidping",
+        "saas_id": "datadog"
+      },
+      {
+        "oss_id": "github.com/grafana/grafana",
+        "saas_id": "datadog"
+      },
+      {
+        "oss_id": "github.com/hyperdxio/hyperdx",
+        "saas_id": "datadog"
+      },
+      {
+        "oss_id": "github.com/netdata/netdata",
+        "saas_id": "datadog"
+      },
+      {
+        "oss_id": "github.com/prometheus/prometheus",
+        "saas_id": "datadog"
+      },
+      {
+        "oss_id": "github.com/telemetry-tracker/telemetry-tracker",
+        "saas_id": "datadog"
+      },
+      {
+        "oss_id": "github.com/uptrace/uptrace",
+        "saas_id": "datadog"
+      },
+      {
+        "oss_id": "github.com/victoriametrics/victorialogs",
+        "saas_id": "datadog"
+      },
+      {
+        "oss_id": "github.com/victoriametrics/victoriametrics",
+        "saas_id": "datadog"
+      },
+      {
+        "oss_id": "github.com/zulip/zulip",
+        "saas_id": "discord"
+      },
+      {
+        "oss_id": "github.com/distribution/distribution",
+        "saas_id": "docker-hub"
+      },
+      {
+        "oss_id": "github.com/goharbor/harbor",
+        "saas_id": "docker-hub"
+      },
+      {
+        "oss_id": "github.com/sonatype/nexus-public",
+        "saas_id": "docker-hub"
+      },
+      {
+        "oss_id": "github.com/documenso/documenso",
+        "saas_id": "docusign"
+      },
+      {
+        "oss_id": "github.com/docusealco/docuseal",
+        "saas_id": "docusign"
+      },
+      {
+        "oss_id": "github.com/libresign/libresign",
+        "saas_id": "docusign"
+      },
+      {
+        "oss_id": "github.com/mickael-kerjean/filestash",
+        "saas_id": "dropbox"
+      },
+      {
+        "oss_id": "github.com/nextcloud/server",
+        "saas_id": "dropbox"
+      },
+      {
+        "oss_id": "github.com/owncloud/core",
+        "saas_id": "dropbox"
+      },
+      {
+        "oss_id": "github.com/syncthing/syncthing",
+        "saas_id": "dropbox"
+      },
+      {
+        "oss_id": "github.com/manticoresoftware/manticoresearch",
+        "saas_id": "elastic-cloud"
+      },
+      {
+        "oss_id": "github.com/opensearch-project/opensearch",
+        "saas_id": "elastic-cloud"
+      },
+      {
+        "oss_id": "github.com/quickwit-oss/quickwit",
+        "saas_id": "elastic-cloud"
+      },
+      {
+        "oss_id": "github.com/typesense/typesense",
+        "saas_id": "elastic-cloud"
+      },
+      {
+        "oss_id": "github.com/codexu/note-gen",
+        "saas_id": "evernote"
+      },
+      {
+        "oss_id": "github.com/logseq/logseq",
+        "saas_id": "evernote"
+      },
+      {
+        "oss_id": "github.com/siyuan-note/siyuan",
+        "saas_id": "evernote"
+      },
+      {
+        "oss_id": "github.com/streetwriters/notesnook",
+        "saas_id": "evernote"
+      },
+      {
+        "oss_id": "github.com/triliumnext/trilium",
+        "saas_id": "evernote"
+      },
+      {
+        "oss_id": "github.com/klausschaefers/quant-ux",
+        "saas_id": "figma"
+      },
+      {
+        "oss_id": "github.com/penpot/penpot",
+        "saas_id": "figma"
+      },
+      {
+        "oss_id": "github.com/appwrite/appwrite",
+        "saas_id": "firebase"
+      },
+      {
+        "oss_id": "github.com/appy-one/acebase",
+        "saas_id": "firebase"
+      },
+      {
+        "oss_id": "github.com/kuzzleio/kuzzle",
+        "saas_id": "firebase"
+      },
+      {
+        "oss_id": "github.com/nhost/nhost",
+        "saas_id": "firebase"
+      },
+      {
+        "oss_id": "github.com/supabase/supabase",
+        "saas_id": "firebase"
+      },
+      {
+        "oss_id": "github.com/bruin-data/bruin",
+        "saas_id": "fivetran"
+      },
+      {
+        "oss_id": "github.com/rrweb-io/rrweb",
+        "saas_id": "fullstory"
+      },
+      {
+        "oss_id": "github.com/bookstackapp/bookstack",
+        "saas_id": "gitbook"
+      },
+      {
+        "oss_id": "github.com/go-gitea/gitea",
+        "saas_id": "github"
+      },
+      {
+        "oss_id": "github.com/gogs/gogs",
+        "saas_id": "github"
+      },
+      {
+        "oss_id": "github.com/coder/code-server",
+        "saas_id": "github-codespaces"
+      },
+      {
+        "oss_id": "github.com/coder/coder",
+        "saas_id": "github-codespaces"
+      },
+      {
+        "oss_id": "github.com/gitpod-io/gitpod",
+        "saas_id": "github-codespaces"
+      },
+      {
+        "oss_id": "github.com/aider-ai/aider",
+        "saas_id": "github-copilot"
+      },
+      {
+        "oss_id": "github.com/continuedev/continue",
+        "saas_id": "github-copilot"
+      },
+      {
+        "oss_id": "github.com/go-gitea/gitea",
+        "saas_id": "gitlab"
+      },
+      {
+        "oss_id": "github.com/aster-privacy/aster-mail",
+        "saas_id": "gmail"
+      },
+      {
+        "oss_id": "github.com/electerious/ackee",
+        "saas_id": "google-analytics"
+      },
+      {
+        "oss_id": "github.com/frigadehq/trench",
+        "saas_id": "google-analytics"
+      },
+      {
+        "oss_id": "github.com/matomo-org/matomo",
+        "saas_id": "google-analytics"
+      },
+      {
+        "oss_id": "github.com/milesmcc/shynet",
+        "saas_id": "google-analytics"
+      },
+      {
+        "oss_id": "github.com/open-web-analytics/open-web-analytics",
+        "saas_id": "google-analytics"
+      },
+      {
+        "oss_id": "github.com/plausible/analytics",
+        "saas_id": "google-analytics"
+      },
+      {
+        "oss_id": "github.com/prismelabs/analytics",
+        "saas_id": "google-analytics"
+      },
+      {
+        "oss_id": "github.com/umami-software/umami",
+        "saas_id": "google-analytics"
+      },
+      {
+        "oss_id": "github.com/cryptpad/cryptpad",
+        "saas_id": "google-docs"
+      },
+      {
+        "oss_id": "github.com/onlyoffice/documentserver",
+        "saas_id": "google-docs"
+      },
+      {
+        "oss_id": "github.com/mickael-kerjean/filestash",
+        "saas_id": "google-drive"
+      },
+      {
+        "oss_id": "github.com/nextcloud/server",
+        "saas_id": "google-drive"
+      },
+      {
+        "oss_id": "github.com/owncloud/core",
+        "saas_id": "google-drive"
+      },
+      {
+        "oss_id": "github.com/owncloud/ocis",
+        "saas_id": "google-drive"
+      },
+      {
+        "oss_id": "github.com/bigbluebutton/bigbluebutton",
+        "saas_id": "google-meet"
+      },
+      {
+        "oss_id": "github.com/element-hq/element-call",
+        "saas_id": "google-meet"
+      },
+      {
+        "oss_id": "github.com/jech/galene",
+        "saas_id": "google-meet"
+      },
+      {
+        "oss_id": "github.com/jitsi/jitsi-meet",
+        "saas_id": "google-meet"
+      },
+      {
+        "oss_id": "github.com/immich-app/immich",
+        "saas_id": "google-photos"
+      },
+      {
+        "oss_id": "github.com/librephotos/librephotos",
+        "saas_id": "google-photos"
+      },
+      {
+        "oss_id": "github.com/freescout-help-desk/freescout",
+        "saas_id": "help-scout"
+      },
+      {
+        "oss_id": "github.com/uvdesk/community-skeleton",
+        "saas_id": "help-scout"
+      },
+      {
+        "oss_id": "github.com/coollabsio/coolify",
+        "saas_id": "heroku"
+      },
+      {
+        "oss_id": "github.com/dyrector-io/dyrectorio",
+        "saas_id": "heroku"
+      },
+      {
+        "oss_id": "github.com/kubero-dev/kubero",
+        "saas_id": "heroku"
+      },
+      {
+        "oss_id": "github.com/peon-sh/peon",
+        "saas_id": "heroku"
+      },
+      {
+        "oss_id": "github.com/qovery/engine",
+        "saas_id": "heroku"
+      },
+      {
+        "oss_id": "github.com/tsuru/tsuru",
+        "saas_id": "heroku"
+      },
+      {
+        "oss_id": "github.com/getopenpost/openpost",
+        "saas_id": "hootsuite"
+      },
+      {
+        "oss_id": "github.com/gitroomhq/postiz-app",
+        "saas_id": "hootsuite"
+      },
+      {
+        "oss_id": "github.com/inovector/mixpost",
+        "saas_id": "hootsuite"
+      },
+      {
+        "oss_id": "github.com/knadh/listmonk",
+        "saas_id": "hubspot"
+      },
+      {
+        "oss_id": "github.com/leantime/leantime",
+        "saas_id": "jira"
+      },
+      {
+        "oss_id": "github.com/makeplane/plane",
+        "saas_id": "jira"
+      },
+      {
+        "oss_id": "github.com/noveum/orbit",
+        "saas_id": "jira"
+      },
+      {
+        "oss_id": "github.com/opf/openproject",
+        "saas_id": "jira"
+      },
+      {
+        "oss_id": "github.com/taigaio/taiga-back",
+        "saas_id": "jira"
+      },
+      {
+        "oss_id": "github.com/knadh/listmonk",
+        "saas_id": "kit"
+      },
+      {
+        "oss_id": "github.com/mautic/mautic",
+        "saas_id": "kit"
+      },
+      {
+        "oss_id": "github.com/pentacent/keila",
+        "saas_id": "kit"
+      },
+      {
+        "oss_id": "github.com/flagsmith/flagsmith",
+        "saas_id": "launchdarkly"
+      },
+      {
+        "oss_id": "github.com/unleash/unleash",
+        "saas_id": "launchdarkly"
+      },
+      {
+        "oss_id": "github.com/hcengineering/platform",
+        "saas_id": "linear"
+      },
+      {
+        "oss_id": "github.com/makeplane/plane",
+        "saas_id": "linear"
+      },
+      {
+        "oss_id": "github.com/opf/openproject",
+        "saas_id": "linear"
+      },
+      {
+        "oss_id": "github.com/linkstackorg/linkstack",
+        "saas_id": "linktree"
+      },
+      {
+        "oss_id": "github.com/sethcottle/littlelink",
+        "saas_id": "linktree"
+      },
+      {
+        "oss_id": "github.com/grafana/loki",
+        "saas_id": "loggly"
+      },
+      {
+        "oss_id": "github.com/apache/superset",
+        "saas_id": "looker"
+      },
+      {
+        "oss_id": "github.com/evidence-dev/evidence",
+        "saas_id": "looker"
+      },
+      {
+        "oss_id": "github.com/getredash/redash",
+        "saas_id": "looker"
+      },
+      {
+        "oss_id": "github.com/knadh/listmonk",
+        "saas_id": "mailchimp"
+      },
+      {
+        "oss_id": "github.com/mautic/mautic",
+        "saas_id": "mailchimp"
+      },
+      {
+        "oss_id": "github.com/pentacent/keila",
+        "saas_id": "mailchimp"
+      },
+      {
+        "oss_id": "github.com/postalserver/postal",
+        "saas_id": "mailgun"
+      },
+      {
+        "oss_id": "github.com/btw-so/btw",
+        "saas_id": "medium"
+      },
+      {
+        "oss_id": "github.com/tryghost/ghost",
+        "saas_id": "medium"
+      },
+      {
+        "oss_id": "github.com/writefreely/writefreely",
+        "saas_id": "medium"
+      },
+      {
+        "oss_id": "github.com/jitsi/jitsi-meet",
+        "saas_id": "microsoft-teams"
+      },
+      {
+        "oss_id": "github.com/zulip/zulip",
+        "saas_id": "microsoft-teams"
+      },
+      {
+        "oss_id": "github.com/excalidraw/excalidraw",
+        "saas_id": "miro"
+      },
+      {
+        "oss_id": "github.com/jgraph/drawio",
+        "saas_id": "miro"
+      },
+      {
+        "oss_id": "github.com/openpanel-dev/openpanel",
+        "saas_id": "mixpanel"
+      },
+      {
+        "oss_id": "github.com/apache/superset",
+        "saas_id": "mode-analytics"
+      },
+      {
+        "oss_id": "github.com/getredash/redash",
+        "saas_id": "mode-analytics"
+      },
+      {
+        "oss_id": "github.com/go-vikunja/vikunja",
+        "saas_id": "monday-com"
+      },
+      {
+        "oss_id": "github.com/hcengineering/platform",
+        "saas_id": "monday-com"
+      },
+      {
+        "oss_id": "github.com/makeplane/plane",
+        "saas_id": "monday-com"
+      },
+      {
+        "oss_id": "github.com/opf/openproject",
+        "saas_id": "monday-com"
+      },
+      {
+        "oss_id": "github.com/ferretdb/ferretdb",
+        "saas_id": "mongodb-atlas"
+      },
+      {
+        "oss_id": "github.com/coollabsio/coolify",
+        "saas_id": "netlify"
+      },
+      {
+        "oss_id": "github.com/kubero-dev/kubero",
+        "saas_id": "netlify"
+      },
+      {
+        "oss_id": "github.com/grafana/grafana",
+        "saas_id": "new-relic"
+      },
+      {
+        "oss_id": "github.com/netdata/netdata",
+        "saas_id": "new-relic"
+      },
+      {
+        "oss_id": "github.com/openobserve/openobserve",
+        "saas_id": "new-relic"
+      },
+      {
+        "oss_id": "github.com/uptrace/uptrace",
+        "saas_id": "new-relic"
+      },
+      {
+        "oss_id": "github.com/victoriametrics/victoriametrics",
+        "saas_id": "new-relic"
+      },
+      {
+        "oss_id": "github.com/appflowy-io/appflowy",
+        "saas_id": "notion"
+      },
+      {
+        "oss_id": "github.com/bookstackapp/bookstack",
+        "saas_id": "notion"
+      },
+      {
+        "oss_id": "github.com/churichard/notabase",
+        "saas_id": "notion"
+      },
+      {
+        "oss_id": "github.com/dexio-wiki/dexio",
+        "saas_id": "notion"
+      },
+      {
+        "oss_id": "github.com/docmost/docmost",
+        "saas_id": "notion"
+      },
+      {
+        "oss_id": "github.com/evergreen-it-dev/folio",
+        "saas_id": "notion"
+      },
+      {
+        "oss_id": "github.com/wikimedia/mediawiki",
+        "saas_id": "notion"
+      },
+      {
+        "oss_id": "github.com/xwiki/xwiki-platform",
+        "saas_id": "notion"
+      },
+      {
+        "oss_id": "github.com/keycloak/keycloak",
+        "saas_id": "okta"
+      },
+      {
+        "oss_id": "github.com/ory/kratos",
+        "saas_id": "okta"
+      },
+      {
+        "oss_id": "github.com/zitadel/zitadel",
+        "saas_id": "okta"
+      },
+      {
+        "oss_id": "github.com/binwiederhier/ntfy",
+        "saas_id": "onesignal"
+      },
+      {
+        "oss_id": "github.com/caronc/apprise",
+        "saas_id": "onesignal"
+      },
+      {
+        "oss_id": "github.com/vllm-project/vllm",
+        "saas_id": "openai-api"
+      },
+      {
+        "oss_id": "github.com/grafana/loki",
+        "saas_id": "papertrail"
+      },
+      {
+        "oss_id": "github.com/fclairamb/solidping",
+        "saas_id": "pingdom"
+      },
+      {
+        "oss_id": "github.com/louislam/uptime-kuma",
+        "saas_id": "pingdom"
+      },
+      {
+        "oss_id": "github.com/krayin/laravel-crm",
+        "saas_id": "pipedrive"
+      },
+      {
+        "oss_id": "github.com/apioo/fusio",
+        "saas_id": "postman"
+      },
+      {
+        "oss_id": "github.com/hoppscotch/hoppscotch",
+        "saas_id": "postman"
+      },
+      {
+        "oss_id": "github.com/kong/insomnia",
+        "saas_id": "postman"
+      },
+      {
+        "oss_id": "github.com/scalar/scalar",
+        "saas_id": "postman"
+      },
+      {
+        "oss_id": "github.com/usebruno/bruno",
+        "saas_id": "postman"
+      },
+      {
+        "oss_id": "github.com/voidenhq/voiden",
+        "saas_id": "postman"
+      },
+      {
+        "oss_id": "github.com/apache/superset",
+        "saas_id": "power-bi"
+      },
+      {
+        "oss_id": "github.com/frappe/erpnext",
+        "saas_id": "quickbooks"
+      },
+      {
+        "oss_id": "github.com/solidinvoice/solidinvoice",
+        "saas_id": "quickbooks"
+      },
+      {
+        "oss_id": "github.com/discourse/discourse",
+        "saas_id": "reddit"
+      },
+      {
+        "oss_id": "github.com/flarum/framework",
+        "saas_id": "reddit"
+      },
+      {
+        "oss_id": "github.com/lemmynet/lemmy",
+        "saas_id": "reddit"
+      },
+      {
+        "oss_id": "github.com/coollabsio/coolify",
+        "saas_id": "render"
+      },
+      {
+        "oss_id": "github.com/appsmithorg/appsmith",
+        "saas_id": "retool"
+      },
+      {
+        "oss_id": "github.com/lowdefy/lowdefy",
+        "saas_id": "retool"
+      },
+      {
+        "oss_id": "github.com/frappe/erpnext",
+        "saas_id": "salesforce"
+      },
+      {
+        "oss_id": "github.com/idurar/idurar-erp-crm",
+        "saas_id": "salesforce"
+      },
+      {
+        "oss_id": "github.com/sneg55/warpdrive",
+        "saas_id": "salesforce"
+      },
+      {
+        "oss_id": "github.com/braedonsaunders/openbooks",
+        "saas_id": "sap-business-one"
+      },
+      {
+        "oss_id": "github.com/frappe/erpnext",
+        "saas_id": "sap-business-one"
+      },
+      {
+        "oss_id": "github.com/jitsucom/jitsu",
+        "saas_id": "segment"
+      },
+      {
+        "oss_id": "github.com/haraka/haraka",
+        "saas_id": "sendgrid"
+      },
+      {
+        "oss_id": "github.com/postalserver/postal",
+        "saas_id": "sendgrid"
+      },
+      {
+        "oss_id": "github.com/telemetry-tracker/telemetry-tracker",
+        "saas_id": "sentry"
+      },
+      {
+        "oss_id": "github.com/bagisto/bagisto",
+        "saas_id": "shopify"
+      },
+      {
+        "oss_id": "github.com/itswadesh/svelte-commerce",
+        "saas_id": "shopify"
+      },
+      {
+        "oss_id": "github.com/saleor/saleor",
+        "saas_id": "shopify"
+      },
+      {
+        "oss_id": "github.com/sylius/sylius",
+        "saas_id": "shopify"
+      },
+      {
+        "oss_id": "github.com/woocommerce/woocommerce",
+        "saas_id": "shopify"
+      },
+      {
+        "oss_id": "github.com/zulip/zulip",
+        "saas_id": "slack"
+      },
+      {
+        "oss_id": "github.com/databendlabs/databend",
+        "saas_id": "snowflake"
+      },
+      {
+        "oss_id": "github.com/grafana/loki",
+        "saas_id": "splunk"
+      },
+      {
+        "oss_id": "github.com/openobserve/openobserve",
+        "saas_id": "splunk"
+      },
+      {
+        "oss_id": "github.com/gohugoio/hugo",
+        "saas_id": "squarespace"
+      },
+      {
+        "oss_id": "github.com/silexlabs/silex",
+        "saas_id": "squarespace"
+      },
+      {
+        "oss_id": "github.com/tryghost/ghost",
+        "saas_id": "squarespace"
+      },
+      {
+        "oss_id": "github.com/projecthelena/warden",
+        "saas_id": "statuspage"
+      },
+      {
+        "oss_id": "github.com/twin/gatus",
+        "saas_id": "statuspage"
+      },
+      {
+        "oss_id": "github.com/getlago/lago",
+        "saas_id": "stripe-billing"
+      },
+      {
+        "oss_id": "github.com/knadh/listmonk",
+        "saas_id": "substack"
+      },
+      {
+        "oss_id": "github.com/tryghost/ghost",
+        "saas_id": "substack"
+      },
+      {
+        "oss_id": "github.com/writefreely/writefreely",
+        "saas_id": "substack"
+      },
+      {
+        "oss_id": "github.com/apache/superset",
+        "saas_id": "tableau"
+      },
+      {
+        "oss_id": "github.com/bruin-data/dac",
+        "saas_id": "tableau"
+      },
+      {
+        "oss_id": "github.com/getredash/redash",
+        "saas_id": "tableau"
+      },
+      {
+        "oss_id": "github.com/kanaries/graphic-walker",
+        "saas_id": "tableau"
+      },
+      {
+        "oss_id": "github.com/juanfont/headscale",
+        "saas_id": "tailscale"
+      },
+      {
+        "oss_id": "github.com/rustdesk/rustdesk",
+        "saas_id": "teamviewer"
+      },
+      {
+        "oss_id": "github.com/ylianst/meshcentral",
+        "saas_id": "teamviewer"
+      },
+      {
+        "oss_id": "github.com/go-vikunja/vikunja",
+        "saas_id": "todoist"
+      },
+      {
+        "oss_id": "github.com/almarklein/timetagger",
+        "saas_id": "toggl-track"
+      },
+      {
+        "oss_id": "github.com/kimai/kimai",
+        "saas_id": "toggl-track"
+      },
+      {
+        "oss_id": "github.com/solidtime-io/solidtime",
+        "saas_id": "toggl-track"
+      },
+      {
+        "oss_id": "github.com/go-vikunja/vikunja",
+        "saas_id": "trello"
+      },
+      {
+        "oss_id": "github.com/kanboard/kanboard",
+        "saas_id": "trello"
+      },
+      {
+        "oss_id": "github.com/makeplane/plane",
+        "saas_id": "trello"
+      },
+      {
+        "oss_id": "github.com/opf/openproject",
+        "saas_id": "trello"
+      },
+      {
+        "oss_id": "github.com/super-productivity/super-productivity",
+        "saas_id": "trello"
+      },
+      {
+        "oss_id": "github.com/taigaio/taiga-back",
+        "saas_id": "trello"
+      },
+      {
+        "oss_id": "github.com/tehnika-mk/monomap",
+        "saas_id": "trello"
+      },
+      {
+        "oss_id": "github.com/wekan/wekan",
+        "saas_id": "trello"
+      },
+      {
+        "oss_id": "github.com/fonoster/fonoster",
+        "saas_id": "twilio"
+      },
+      {
+        "oss_id": "github.com/livekit/livekit",
+        "saas_id": "twilio"
+      },
+      {
+        "oss_id": "github.com/openvidu/openvidu",
+        "saas_id": "twilio"
+      },
+      {
+        "oss_id": "github.com/ovenmedialabs/ovenmediaengine",
+        "saas_id": "twitch"
+      },
+      {
+        "oss_id": "github.com/owncast/owncast",
+        "saas_id": "twitch"
+      },
+      {
+        "oss_id": "github.com/bluewave-labs/checkmate",
+        "saas_id": "uptimerobot"
+      },
+      {
+        "oss_id": "github.com/fclairamb/solidping",
+        "saas_id": "uptimerobot"
+      },
+      {
+        "oss_id": "github.com/healthchecks/healthchecks",
+        "saas_id": "uptimerobot"
+      },
+      {
+        "oss_id": "github.com/louislam/uptime-kuma",
+        "saas_id": "uptimerobot"
+      },
+      {
+        "oss_id": "github.com/coollabsio/coolify",
+        "saas_id": "vercel"
+      },
+      {
+        "oss_id": "github.com/kubero-dev/kubero",
+        "saas_id": "vercel"
+      },
+      {
+        "oss_id": "github.com/grapesjs/grapesjs",
+        "saas_id": "webflow"
+      },
+      {
+        "oss_id": "github.com/plasmicapp/plasmic",
+        "saas_id": "webflow"
+      },
+      {
+        "oss_id": "github.com/silexlabs/silex",
+        "saas_id": "webflow"
+      },
+      {
+        "oss_id": "github.com/webstudio-is/webstudio",
+        "saas_id": "webflow"
+      },
+      {
+        "oss_id": "github.com/silexlabs/silex",
+        "saas_id": "wix"
+      },
+      {
+        "oss_id": "github.com/webstudio-is/webstudio",
+        "saas_id": "wix"
+      },
+      {
+        "oss_id": "github.com/mastodon/mastodon",
+        "saas_id": "x-twitter"
+      },
+      {
+        "oss_id": "github.com/misskey-dev/misskey",
+        "saas_id": "x-twitter"
+      },
+      {
+        "oss_id": "github.com/chocobozzz/peertube",
+        "saas_id": "youtube"
+      },
+      {
+        "oss_id": "github.com/mediacms-io/mediacms",
+        "saas_id": "youtube"
+      },
+      {
+        "oss_id": "github.com/owncast/owncast",
+        "saas_id": "youtube"
+      },
+      {
+        "oss_id": "github.com/huginn/huginn",
+        "saas_id": "zapier"
+      },
+      {
+        "oss_id": "github.com/freescout-help-desk/freescout",
+        "saas_id": "zendesk"
+      },
+      {
+        "oss_id": "github.com/osticket/osticket",
+        "saas_id": "zendesk"
+      },
+      {
+        "oss_id": "github.com/uvdesk/community-skeleton",
+        "saas_id": "zendesk"
+      },
+      {
+        "oss_id": "github.com/zammad/zammad",
+        "saas_id": "zendesk"
+      },
+      {
+        "oss_id": "github.com/bigbluebutton/bigbluebutton",
+        "saas_id": "zoom"
+      },
+      {
+        "oss_id": "github.com/element-hq/element-call",
+        "saas_id": "zoom"
+      },
+      {
+        "oss_id": "github.com/jech/galene",
+        "saas_id": "zoom"
+      },
+      {
+        "oss_id": "github.com/jitsi/jitsi-meet",
+        "saas_id": "zoom"
+      }
+    ]
+  },
+  "summary": {
+    "added": 0,
+    "changed": 0,
+    "new_relationships_not_recommended": 17,
+    "recommended_after": 301,
+    "recommended_before": 301,
+    "relationships_after": 356,
+    "relationships_before": 339,
+    "removed": 0,
+    "retained": 301,
+    "saas_added": [
+      "surveymonkey"
+    ],
+    "saas_after": 115,
+    "saas_before": 114,
+    "saas_removed": []
+  }
+}

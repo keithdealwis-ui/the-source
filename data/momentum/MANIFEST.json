@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-17T10:44:52Z",
+  "as_of": "2026-10-17T14:13:20Z",
   "counts": {
     "measured_any_window": 620,
     "projects": 637
@@ -8,9 +8,9 @@
     "1": {
       "acceleration": {
         "labels": {
-          "accelerating": 124,
-          "decelerating": 109,
-          "steady": 387
+          "accelerating": 121,
+          "decelerating": 117,
+          "steady": 382
         },
         "measurable_from": "2026-10-04",
         "prior_base": {
@@ -39,9 +39,9 @@
       "measurable_from": "2026-10-03",
       "momentum": {
         "declining": 2,
-        "flat": 440,
-        "rising": 173,
-        "surging": 5
+        "flat": 444,
+        "rising": 166,
+        "surging": 8
       },
       "projects": {
         "identity_changed": 0,
@@ -88,9 +88,9 @@
     "7": {
       "acceleration": {
         "labels": {
-          "accelerating": 194,
-          "decelerating": 80,
-          "steady": 334
+          "accelerating": 193,
+          "decelerating": 84,
+          "steady": 331
         },
         "measurable_from": "2026-10-16",
         "prior_base": {
@@ -118,10 +118,10 @@
       "calendar_days_in_window": 8,
       "measurable_from": "2026-10-09",
       "momentum": {
-        "declining": 5,
+        "declining": 6,
         "flat": 387,
-        "rising": 207,
-        "surging": 10
+        "rising": 205,
+        "surging": 11
       },
       "projects": {
         "identity_changed": 0,
@@ -167,10 +167,10 @@
     }
   },
   "files": {
-    "projects.jsonl": "db542d72e8a571b7eb3d89106e91078d2ea4e6c8b9c59e20156909a7c427540e"
+    "projects.jsonl": "4a2ed652174122ff9d9e82a5c5f96e5a8ff7f69c2aa77353b9a1f6950469ae0e"
   },
   "history": {
-    "dataset_version": "e46bfde738e25145",
+    "dataset_version": "21d18f447ae47bd1",
     "day_sha256": {
       "2026-10-03": "1fa4fbc66dce0baa18d2137ccdf6d402a3ec0908597a199bcfdd5a3caf3267bb",
       "2026-10-04": "7d014f220b9ea1de9db075f9ef04e3369a31690da58b4d9f3b084e90f4fbe69d",
@@ -186,7 +186,7 @@
       "2026-10-14": "2e115a1a24fdd9b15013cfb47887205e813673e0464ab76932f74256424f9b0f",
       "2026-10-15": "d2df51c372c62dd3a9ab86ea3642f0db30f9452984e129a209ae063ca50dd9a6",
       "2026-10-16": "cdfe1b05937b0462573ba5e5a47c16b2bd197261b000fcf97cdf229593e91dbd",
-      "2026-10-17": "c6d36a25f60177b6095e26d25128f864e499030fc912ae61fd0180102d76f90f"
+      "2026-10-17": "f241102c2ab9cf2562f0928580a91fca9615d4520e353059bc719860b64263d0"
     },
     "days_held": 16,
     "days_read": [
@@ -208,7 +208,7 @@
     ],
     "newest": "2026-10-17",
     "oldest": "2026-10-02",
-    "run_id": "manual-20261017T104451Z-manual-a1"
+    "run_id": "manual-20261017T141320Z-manual-a1"
   },
   "methodology": {
     "doc": "docs/MOMENTUM.md",
