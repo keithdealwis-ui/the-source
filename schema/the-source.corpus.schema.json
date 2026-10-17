@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/the-source/schema/the-source.corpus.schema.json",
+  "title": "The Source: public discovery corpus (KEI-912, KEI-919)",
+  "description": "data/corpus/projects.jsonl rows. corpus-validate checks field sets exactly (source_pipeline/corpus.py PROJECT_KEYS, LIVE_KEYS) and validates `identity` against $defs/identity, then checks it referentially (source_pipeline/identity.py check). Methodology: docs/CORPUS.md.",
+  "$defs": {
+    "repo_key": {"type": "string", "minLength": 3, "description": "host/owner/name, lower case; for an upstream outside the three repository hosts, host/path"},
+    "identity": {
+      "description": "KEI-919 identity resolution: null when there is nothing to say. Every mark traces to a held fact (a name, a description, a GitHub flag); nothing is estimated.",
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["renamed_to", "fork_of", "fork_parent_in_corpus", "mirror", "mirror_of", "merged", "siblings", "sibling_primary"],
+          "properties": {
+            "renamed_to": {"oneOf": [{"$ref": "#/$defs/repo_key"}, {"type": "null"}], "description": "the repository's current address when the row's id is an earlier name; it is also an alias"},
+            "fork_of": {"oneOf": [{"$ref": "#/$defs/repo_key"}, {"type": "null"}], "description": "the parent's corpus id when the parent is a project here, else its address"},
+            "fork_parent_in_corpus": {"type": ["boolean", "null"], "description": "true: never present this fork as a separate replacement candidate for its parent"},
+            "mirror": {"type": "boolean", "description": "GitHub flags it a mirror, or its own description says it mirrors another repository"},
+            "mirror_of": {"oneOf": [{"$ref": "#/$defs/repo_key"}, {"type": "null"}], "description": "the upstream it names; a mirror of an upstream held here is collapsed into it (and appears under merged there)"},
+            "merged": {
+              "type": "array",
+              "items": {"type": "object", "additionalProperties": false, "required": ["id", "reason"],
+                        "properties": {"id": {"$ref": "#/$defs/repo_key"},
+                                       "reason": {"enum": ["renamed", "same_repository", "same_canonical_project", "mirror"]}}},
+              "description": "rows collapsed into this one; each id is now an alias of it"
+            },
+            "siblings": {"type": "array", "items": {"$ref": "#/$defs/repo_key"}, "uniqueItems": true, "description": "the same owner's other repositories of one project"},
+            "sibling_primary": {"oneOf": [{"$ref": "#/$defs/repo_key"}, {"type": "null"}], "description": "where a name lookup for the project should land"}
+          }
+        }
+      ]
+    }
+  }
+}

@@ -17,6 +17,8 @@
     python -m source_pipeline corpus-refresh       re-read every published project's live facts (network)
     python -m source_pipeline corpus-validate      MANIFEST, schema and publication-rule checks
     python -m source_pipeline corpus-due           is a scheduled refresh due
+    python -m source_pipeline corpus-identity [--refresh]   renames, forks, mirrors, sibling repositories
+                                                   (--refresh re-reads GitHub's identity facts first; network)
 
   Scoring (KEI-806):
     python -m source_pipeline score-harvest        observe the scoring evidence on GitHub (network)
@@ -51,6 +53,8 @@
   Community Radar (KEI-850, docs/RADAR.md):
     python -m source_pipeline radar-collect        ask Hacker News and Forem, resolve, rank (network)
     python -m source_pipeline radar-build [--as-of TS]   data/radar/radar.jsonl from what is held; no network
+    python -m source_pipeline radar-stars          star counts for radar-only repositories: one batched GitHub
+                                                   request, then rebuild (network; KEI-919)
     python -m source_pipeline radar-validate       rebuild-equals-committed, schema, released methodology
     python -m source_pipeline radar [--key KEY]... [--source hn|forem|x|instagram] [--candidates]
                               [--status canonical|corpus|candidate|not_found|unresolved] [--limit N]
@@ -231,6 +235,8 @@ def _radar(args, ap) -> int:
         except ValueError as exc:
             ap.error(str(exc))
         out = {"ok": True, **{k: m[k] for k in ("as_of", "methodology", "counts", "files")}}
+    elif args.command == "radar-stars":
+        out = radar.refresh_stars()
     elif args.command == "radar-validate":
         out = radar.validate()
     else:
@@ -279,8 +285,9 @@ def main(argv=None) -> int:
                                         "runs-latest",
                                         "history-days", "history-delta", "discovery-pool",
                                         "momentum-build", "momentum-validate", "momentum",
-                                        "radar-collect", "radar-build", "radar-validate", "radar",
-                                        "corpus-export", "corpus-refresh", "corpus-validate", "corpus-due"])
+                                        "radar-collect", "radar-build", "radar-stars", "radar-validate", "radar",
+                                        "corpus-export", "corpus-refresh", "corpus-validate", "corpus-due",
+                                        "corpus-identity"])
     ap.add_argument("target", nargs="?", help="graph-query: a plan file or a query id")
     ap.add_argument("--only-failed", action="store_true", help="discover-verify: retry only failed lookups")
     ap.add_argument("--refresh", action="store_true", help="score-harvest: re-observe everything")
@@ -312,6 +319,10 @@ def main(argv=None) -> int:
     args = ap.parse_args(argv)
 
     out = {}
+    if args.command == "corpus-identity":
+        from . import identity
+
+        return identity.main(["--refresh"] if args.refresh else [])
     if args.command.startswith("corpus-"):
         from . import corpus
 

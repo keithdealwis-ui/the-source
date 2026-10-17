@@ -1,22 +1,45 @@
 {
   "as_of": "2026-10-10T11:49:36Z",
   "attribution": "The Source (github.com/keithdealwis-ui/the-source), by Keith de Alwis",
-  "corpus_version": "ea0e40ffd99d49aa",
+  "corpus_version": "c11d89e2379a6b3f",
   "counts": {
     "archived": 15,
     "by_lane": {
       "discover": 9062,
-      "replace": 486
+      "replace": 485
     },
     "host_not_found": 28,
-    "licence_issue": 1393,
+    "identity": {
+      "collapsed": 1,
+      "collapsed_by_reason": {
+        "mirror": 1
+      },
+      "forks": 0,
+      "forks_of_corpus_projects": 0,
+      "mirrors": 23,
+      "mirrors_of_corpus_projects": 0,
+      "renamed": 61,
+      "sibling_groups": 21,
+      "sibling_repositories": 46,
+      "with_identity": 130
+    },
+    "licence_issue": 1392,
     "maintainer_seeded": 68,
-    "projects": 9364,
-    "with_description": 9003
+    "projects": 9363,
+    "with_description": 9002
   },
   "files": {
-    "live.jsonl": "a544387499ad88828782397bb3128473601e5c3980b92ebcca77362723d65755",
-    "projects.jsonl": "eb424b8151987029f32660a58283747dbdb10fbf0685897d6e7ce2e27b970441"
+    "live.jsonl": "9a7244d09e19358c3cdf01df9b486b96262af407aafac39c71b1a5adb1c2c898",
+    "projects.jsonl": "4edc7d8a511c64a51cb799ff6adfffa9086aaaee2ea1c710e2284a7ecdca6729"
+  },
+  "identity": {
+    "facts": {
+      "observed_as_of": "2026-10-17T06:37:06Z",
+      "path": "data/identity/github.jsonl",
+      "repositories": 9359,
+      "sha256": "7322409c23ebc5a08c4c08cd369e8cf3203f845e6837cf112f42770d8e97e879"
+    },
+    "method": "source_pipeline/identity.py: renames, forks, mirrors, sibling repositories (docs/CORPUS.md)"
   },
   "licence": "CC BY 4.0",
   "live_observed_as_of": {

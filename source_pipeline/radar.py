@@ -53,6 +53,7 @@ It never touches data/canonical/ or api/v1/.
 from __future__ import annotations
 
 import hashlib
+import json
 import html
 import math
 import os
@@ -70,7 +71,7 @@ from .activity import iso, parse_ts
 SCHEMA = "the-source.radar/1"
 SOURCES = ("hn", "forem", "bluesky", "x", "instagram")
 STATUSES = ("canonical", "corpus", "candidate", "not_found", "unresolved")
-FILES = ("collection.json", "mentions.jsonl", "resolved.jsonl", "radar.jsonl", "candidates.jsonl")
+FILES = ("collection.json", "mentions.jsonl", "resolved.jsonl", "stars.jsonl", "radar.jsonl", "candidates.jsonl")
 MENTION_FIELDS = ("source", "item_id", "permalink", "published_at", "observed_at", "points", "comments", "via", "repos",
                   "author", "observations")
 LINK = re.compile(r"https?://(?:www\.)?(github\.com|gitlab\.com|codeberg\.org)/([A-Za-z0-9][A-Za-z0-9_.-]*)/"
@@ -494,6 +495,164 @@ def resolve(keys: list[str], cache: dict, as_of: datetime, http, cfg: dict) -> t
                    "deferred": len(deferred)}
 
 
+# ---------------------------------------------------------------- star backfill (KEI-919 S1.6)
+#
+# A radar-only repository (not canonical, not in the corpus) has no live facts anywhere else
+# in The Source, so its star count is read here: one batched GitHub GraphQL request per run for
+# the radar-only github.com repositories without a reading newer than stars.max_age_days.
+# Readings land in data/radar/stars.jsonl with the moment they were observed; a failed or
+# refused lookup changes nothing held, and a repository with no reading carries stars null
+# and a reason. A count is never estimated.
+
+STAR_QUERY = "nameWithOwner databaseId stargazerCount"
+
+
+def _star_view(link: str, repo: dict | None, at: str) -> dict:
+    if not repo:
+        return {"key": link, "found": False, "stars": None, "observed_at": at, "host_repo_id": None,
+                "canonical_name": None}
+    return {"key": link, "found": True, "stars": repo.get("stargazerCount"), "observed_at": at,
+            "host_repo_id": repo.get("databaseId"), "canonical_name": repo.get("nameWithOwner")}
+
+
+def star_targets(rows: list[dict], held: dict, cache: dict, as_of: datetime, cfg: dict) -> list[str]:
+    """github.com addresses of radar-only rows (ranked and candidates) with no star reading newer
+    than stars.max_age_days, strongest first, at most stars.max_lookups."""
+    sc = cfg.get("stars") or {}
+    max_age = float(sc.get("max_age_days", 1))
+    out = []
+    for r in rows:
+        if r["status"] in ("canonical", "corpus", "not_found"):
+            continue
+        link = _star_link(r, cache)
+        if not link or link in out:
+            continue
+        got = _star_reading(r, held, cache)
+        if got and (_age_days(got["observed_at"], as_of) or 0) <= max_age:
+            continue
+        out.append(link)
+    return out[:int(sc.get("max_lookups", 100))]
+
+
+def _star_link(r: dict, cache: dict) -> str | None:
+    """The github.com address to ask for a row: its current name where GitHub resolved one."""
+    if r.get("canonical_name"):
+        return f"github.com/{r['canonical_name'].lower()}"
+    return next((k for k in [r["key"], *r.get("link_keys", [])] if k.startswith("github.com/")), None)
+
+
+def _star_reading(r: dict, held: dict, cache: dict) -> dict | None:
+    """The newest star reading held for any address of a row: a backfill reading (stars.jsonl)
+    or the count GitHub gave when the address was resolved (resolved.jsonl)."""
+    names = [r["key"], *r.get("link_keys", [])]
+    if r.get("canonical_name"):
+        names.append(f"github.com/{r['canonical_name'].lower()}")
+    best = None
+    for n in sorted(set(names)):
+        for got in ((held.get(n), "github_graphql"), (cache.get(n), "github_rest_resolution")):
+            rec, src = got
+            if not rec or not rec.get("found") or rec.get("stars") is None:
+                continue
+            at = rec.get("observed_at") or rec.get("resolved_at")
+            cand = {"stars": int(rec["stars"]), "observed_at": at, "source": src}
+            if best is None or (at, src) > (best["observed_at"], best["source"]):
+                best = cand
+    return best
+
+
+def backfill_stars(links: list[str], held: dict, as_of: datetime, http) -> tuple[dict, dict]:
+    """One GraphQL request for `links` (repository(owner, name) follows renames). A failed
+    request, or no network, leaves `held` exactly as it was."""
+    at = iso(as_of)
+    stats = {"asked": len(links), "found": 0, "not_found": 0, "status": "ok", "error": None, "http_calls": 0}
+    if not links:
+        return held, stats
+    parts = []
+    for i, k in enumerate(links):
+        _, owner, name = k.split("/", 2)
+        parts.append(f"r{i}: repository(owner:{_gq(owner)}, name:{_gq(name)}){{{STAR_QUERY}}}")
+    before = getattr(http, "calls", 0)
+    try:
+        st, doc = http.call("https://api.github.com/graphql", {"query": "query{" + " ".join(parts) + "}"}, auth=True)
+    except Exception as exc:  # no network, refused, or anything else: nothing held changes
+        st, doc = 0, None
+        stats["error"] = f"{type(exc).__name__}: {exc}"[:200]
+    stats["http_calls"] = getattr(http, "calls", 0) - before
+    data = doc.get("data") if isinstance(doc, dict) else None
+    if st != 200 or not isinstance(data, dict):
+        stats.update(status="failed", error=stats["error"] or f"GitHub GraphQL answered {st}")
+        return held, stats
+    nf = {(e.get("path") or [None])[0] for e in (doc.get("errors") or []) if e.get("type") == "NOT_FOUND"}
+    held = dict(held)
+    for i, k in enumerate(links):
+        repo = data.get(f"r{i}")
+        if repo:
+            held[k] = _star_view(k, repo, at)
+            stats["found"] += 1
+        elif f"r{i}" in nf:
+            held[k] = _star_view(k, None, at)
+            stats["not_found"] += 1
+    return held, stats
+
+
+def _gq(s: str) -> str:
+    return json.dumps(s)
+
+
+def stars_step(as_of: datetime, http, cfg: dict, rank_as_of: str | None = None) -> dict:
+    """Backfill star counts for the radar-only rows the current ranking holds; write stars.jsonl.
+    Readings are observed as of `as_of`; the ranking they are chosen from is as of `rank_as_of`."""
+    d = _dir()
+    pre = compute(rank_as_of or iso(as_of), cfg)
+    held = {r["key"]: r for r in common.read_jsonl(d / "stars.jsonl")} if (d / "stars.jsonl").exists() else {}
+    cache = {r["key"]: r for r in common.read_jsonl(d / "resolved.jsonl")} if (d / "resolved.jsonl").exists() else {}
+    rows = pre["rows"] + [c for c in pre["candidates"] if c["key"] not in {r["key"] for r in pre["rows"]}]
+    links = star_targets(rows, held, cache, as_of, cfg)
+    held, stats = backfill_stars(links, held, as_of, http)
+    stats["missing_before"] = pre["manifest"]["counts"]["stars"]["radar_only_without_stars"]
+    keep = float(cfg.get("retain_days", 30))
+    common.write_jsonl(d / "stars.jsonl", [held[k] for k in sorted(held)
+                                           if (_age_days(held[k]["observed_at"], as_of) or 0) <= keep])
+    return stats
+
+
+def refresh_stars(now: datetime | None = None, http=None) -> dict:
+    """radar-stars: the star backfill alone, against what is held, then a rebuild and validation.
+    Ranks as of the held collection (stars do not change a rank), observes stars as of now."""
+    from .enrich import Http
+
+    d = _dir()
+    cfg = load_config()
+    now = now or datetime.now(timezone.utc).replace(microsecond=0)
+    coll = common.read_json(d / "collection.json")
+    before = compute(coll["as_of"], cfg)["manifest"]["counts"]["stars"]
+    sstats = stars_step(now, http or Http(), cfg, coll["as_of"])
+    common.write_json(d / "collection.json", {**coll, "stars": sstats})
+    manifest = write(compute(coll["as_of"], cfg))
+    report = validate()
+    return {"ok": report["ok"], "failed_checks": [c["id"] for c in report["checks"] if not c["ok"]],
+            "stars": sstats, "before": before, "after": manifest["counts"]["stars"]}
+
+
+def _star_fields(row: dict, held: dict, cache: dict, stars_stats: dict | None) -> dict:
+    """stars, stars_observed_at, stars_source and, when there is no count, stars_reason."""
+    got = _star_reading(row, held, cache)
+    if got:
+        return {"stars": got["stars"], "stars_observed_at": got["observed_at"], "stars_source": got["source"],
+                "stars_reason": None}
+    if row["status"] in ("canonical", "corpus"):
+        why = "in The Source: its star count is in the project's live facts, not on the radar"
+    elif row["status"] == "not_found":
+        why = "GitHub does not know this repository"
+    elif not _star_link(row, cache):
+        why = f"{row['key'].split('/', 1)[0]} repositories are not looked up for stars"
+    elif stars_stats and stars_stats.get("status") == "failed":
+        why = f"no star reading held: the last star lookup failed ({stars_stats.get('error')})"
+    else:
+        why = "no star reading held yet (star lookup budget or not yet run)"
+    return {"stars": None, "stars_observed_at": None, "stars_source": None, "stars_reason": why}
+
+
 # ---------------------------------------------------------------- identity (corpus, pool)
 
 def identity_index() -> dict:
@@ -586,7 +745,8 @@ def _candidates(rows: list[dict], rc: dict) -> list[dict]:
              "status_reason": r["status_reason"], "pool_key": r["pool_key"], "host_repo_id": r["host_repo_id"],
              "canonical_name": r["canonical_name"], "sources": {s: v["mentions"] for s, v in r["sources"].items()},
              "signals": r["signals"], "first_mentioned_at": r["first_mentioned_at"],
-             "last_mentioned_at": r["last_mentioned_at"], "explanation": r["explanation"]}
+             "last_mentioned_at": r["last_mentioned_at"], "explanation": r["explanation"],
+             **{k: r[k] for k in ("stars", "stars_observed_at", "stars_source", "stars_reason")}}
             for i, r in enumerate(picks, 1)]
 
 
@@ -598,6 +758,9 @@ def compute(as_of: str, cfg: dict | None = None) -> dict:
     d = _dir()
     mentions = common.read_jsonl(d / "mentions.jsonl") if (d / "mentions.jsonl").exists() else []
     cache = {r["key"]: r for r in common.read_jsonl(d / "resolved.jsonl")} if (d / "resolved.jsonl").exists() else {}
+    held = {r["key"]: r for r in common.read_jsonl(d / "stars.jsonl")} if (d / "stars.jsonl").exists() else {}
+    collection = common.read_json(d / "collection.json") if (d / "collection.json").exists() else None
+    stars_stats = (collection or {}).get("stars")
     idx = identity_index()
     window = [m for m in mentions if (_age_days(m["published_at"], at) or 0) <= float(rk["window_days"])]
     groups: dict[str, dict] = {}
@@ -641,7 +804,7 @@ def compute(as_of: str, cfg: dict | None = None) -> dict:
         ident = g["ident"]
         res = next((cache[ln] for ln in sorted(g["links"]) if ln in cache and cache[ln].get("found")), None)
         repeats = sum(1 for x in ms if x["repeat"])
-        rows.append({
+        row = {
             "key": key, "score": _r(base * mult), "status": ident["status"], "status_reason": ident["reason"],
             "oss_id": ident.get("oss_id"), "pool_key": ident.get("pool_key"),
             "host_repo_id": ident.get("host_repo_id"),
@@ -663,7 +826,9 @@ def compute(as_of: str, cfg: dict | None = None) -> dict:
                             f"strongest {len(top)} sum {base:.4f}"
                             + (f" x{mult:g} ({corr} sources)" if mult != 1 else "")
                             + f" = {base * mult:.4f}"),
-        })
+        }
+        row.update(_star_fields(row, held, cache, stars_stats))
+        rows.append(row)
     rows.sort(key=lambda r: (-r["score"], r["key"]))
     ranked = rows[:int(rk["max_ranked"])]
     for i, r in enumerate(ranked, 1):
@@ -671,7 +836,6 @@ def compute(as_of: str, cfg: dict | None = None) -> dict:
     candidates = _candidates(rows, cfg["reconcile"])
     by_status = {s: sum(1 for r in ranked if r["status"] == s) for s in STATUSES}
     by_source = {s: sum(1 for m in window if m["source"] == s) for s in SOURCES}
-    collection = common.read_json(d / "collection.json") if (d / "collection.json").exists() else None
     manifest = {
         "schema": SCHEMA, "as_of": as_of,
         "methodology": {"id": cfg["methodology"]["id"], "version": cfg["methodology"]["version"],
@@ -685,7 +849,12 @@ def compute(as_of: str, cfg: dict | None = None) -> dict:
         "counts": {"mentions_held": len(mentions), "mentions_in_window": len(window),
                    "mentions_in_window_by_source": by_source, "repositories_mentioned": len(rows),
                    "ranked": len(ranked), "truncated": len(rows) - len(ranked), "ranked_by_status": by_status,
-                   "resolutions_held": len(cache), "candidates": len(candidates)},
+                   "resolutions_held": len(cache), "candidates": len(candidates),
+                   "stars": {"ranked_with_stars": sum(1 for r in ranked if r["stars"] is not None),
+                             "ranked_without_stars": sum(1 for r in ranked if r["stars"] is None),
+                             "radar_only_without_stars": sum(1 for r in ranked if r["stars"] is None
+                                                             and r["status"] not in ("canonical", "corpus")),
+                             "readings_held": len(held)}},
     }
     return {"manifest": manifest, "rows": ranked, "candidates": candidates}
 
@@ -697,7 +866,7 @@ def write(result: dict, out: Path | None = None) -> dict:
     out = out or _dir()
     out.mkdir(parents=True, exist_ok=True)
     src = _dir()
-    for f in ("collection.json", "mentions.jsonl", "resolved.jsonl"):
+    for f in ("collection.json", "mentions.jsonl", "resolved.jsonl", "stars.jsonl"):
         if out != src and (src / f).exists():
             shutil.copyfile(src / f, out / f)
     common.write_jsonl(out / "radar.jsonl", result["rows"])
@@ -746,6 +915,7 @@ def validate() -> dict:
     cands = common.read_jsonl(d / "candidates.jsonl") if (d / "candidates.jsonl").exists() else []
     mentions = common.read_jsonl(d / "mentions.jsonl") if (d / "mentions.jsonl").exists() else []
     resolved = common.read_jsonl(d / "resolved.jsonl") if (d / "resolved.jsonl").exists() else []
+    readings = common.read_jsonl(d / "stars.jsonl") if (d / "stars.jsonl").exists() else []
     check("manifest_version_is_config_version",
           manifest["methodology"]["version"] == cfg["methodology"]["version"]
           and manifest["methodology"]["parameters_sha256"] == parameters_sha256(cfg), manifest["methodology"])
@@ -753,7 +923,7 @@ def validate() -> dict:
     schema = common.read_json(common.SCHEMA / "the-source.radar.schema.json")
     bad = []
     for kind, objs in (("manifest", [manifest]), ("entry", rows), ("candidate", cands), ("mention", mentions),
-                       ("resolution", resolved)):
+                       ("resolution", resolved), ("star_reading", readings)):
         sub = {**schema, "$ref": f"#/$defs/{kind}"}
         v = Draft202012Validator(sub)
         for o in objs:
@@ -781,6 +951,13 @@ def validate() -> dict:
                                               or r["oss_id"] in idx["canonical"]))
              or (r["status"] == "candidate" and r["pool_key"] not in set(idx["pool_keys"].values()))]
     check("statuses_reconcile_with_corpus_and_pool", not wrong, wrong[:10])
+    held = {r["key"]: r for r in readings}
+    cache = {r["key"]: r for r in resolved}
+    unbacked = [r["key"] for r in rows if r.get("stars") is not None
+                and _star_reading(r, held, cache) != {"stars": r["stars"], "observed_at": r["stars_observed_at"],
+                                                      "source": r["stars_source"]}]
+    check("stars_are_held_readings_never_estimates", not unbacked
+          and all(bool(r.get("stars_reason")) == (r.get("stars") is None) for r in rows + cands), unbacked[:10])
     stored = sorted({k for m in mentions for k in m} - set(MENTION_FIELDS))
     check("mentions_hold_no_personal_or_authored_content", not stored, stored)
     if not errs:
@@ -867,6 +1044,9 @@ def cycle_step(as_of: datetime, day: str, corpus_light: dict, http=None) -> dict
         daily.write_pool(rec["pool"])
     rstats["pool_added"] = rec["new"]
     common.write_json(d / "collection.json", {"as_of": got["as_of"], "sources": got["sources"], "resolve": rstats})
+    sstats = stars_step(as_of, http, cfg)
+    common.write_json(d / "collection.json", {"as_of": got["as_of"], "sources": got["sources"], "resolve": rstats,
+                                              "stars": sstats})
 
     manifest = write(compute(as_of_s, cfg))
     report = validate()
@@ -884,6 +1064,7 @@ def cycle_step(as_of: datetime, day: str, corpus_light: dict, http=None) -> dict
                          "sources": {k: {f: v[f] for f in ("status", "http_calls", "items_read", "gone", "mentions", "errors")}
                                      for k, v in srcs.items()},
                          "resolve": {k: v for k, v in rstats.items() if k != "pool_added"},
+                         "stars": sstats,
                          "pool_added": rec["new"], "counts": manifest["counts"],
                          "top": [{"rank": r["rank"], "key": r["key"], "score": r["score"], "status": r["status"]}
                                  for r in rows[:10]],
