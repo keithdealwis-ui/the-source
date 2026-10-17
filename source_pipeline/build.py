@@ -5,7 +5,7 @@ the snapshot's `as_of`, never the wall clock, so a rebuild is byte-identical.
 """
 from __future__ import annotations
 
-from . import common
+from . import common, reasons
 from .activity import Rules, evaluate, parse_ts
 from .licence_detect import detect as detect_licence
 from .normalise import choose_name_entry, load_catalogue, merge_renamed, product_group, reconcile
@@ -406,6 +406,9 @@ def run() -> dict:
                      if k[0] not in rec["saas"] and k[0] not in load_catalogue()[0])
     if unknown:
         raise ValueError(f"edge_review.yaml names SaaS ids that do not exist: {unknown}")
+    # Contradictory evidence (KEI-919 S1.5): held for human review, never silently decided.
+    queue = reasons.review_queue(projects, merged["edges"], snapshot["as_of"])
+    held = {q["claim"]["oss_id"] for q in queue if q["status"] == "open"}
     edges = []
     for e in merged["edges"]:
         project = projects[e["oss_id"]]
@@ -421,11 +424,12 @@ def run() -> dict:
             "all_sources_licence_allowed": all(p["source_id"] in allowed_sources for p in e["provenance"]),
             "oss_live_verified": bool(project["live"].get("found")),
             "oss_recommendable": project["derived"]["eligibility"]["recommended"],
+            "evidence_not_contradicted": e["oss_id"] not in held,
         }
         ok = all(checks.values())
         failed = sorted(k for k, v in checks.items() if not v)
         # Flagged: nothing is wrong with the relationship except the project's licence.
-        flagged = failed == ["oss_recommendable"] and project["derived"]["lane"] == "licence_exception"
+        flagged = [f for f in failed if f != "evidence_not_contradicted"] == ["oss_recommendable"] and project["derived"]["lane"] == "licence_exception"
         edges.append(
             {
                 "schema_version": common.SCHEMA_VERSION,
@@ -446,7 +450,9 @@ def run() -> dict:
                     "checks": checks,
                     "reasons": sorted(k for k, v in checks.items() if not v)
                     + ([] if ok else project["derived"]["eligibility"]["exclusion_reasons"])
-                    + ([f"review: {refusal}"] if refusal else []),
+                    + ([f"review: {refusal}"] if refusal else [])
+                    + ([f"held_for_review: licence--{e['oss_id']} (contradictory_evidence; see review_queue.jsonl)"]
+                       if e["oss_id"] in held else []),
                     "plausibility_review": {"reviewed_by": review["reviewed_by"],
                                             "reviewed_at": review["reviewed_at"],
                                             "outcome": ("rejected" if refusal else
@@ -523,7 +529,9 @@ def run() -> dict:
     common.write_jsonl(common.DATASET / "saas_products.jsonl", saas_rows)
     common.write_jsonl(common.DATASET / "oss_projects.jsonl", project_rows)
     common.write_jsonl(common.DATASET / "relationships.jsonl", edges)
+    reasons.code_all(rejections)
     common.write_jsonl(common.DATASET / "rejections.jsonl", rejections)
+    common.write_jsonl(common.DATASET / "review_queue.jsonl", queue)
 
     lane_rows = [p for p in project_rows if p["derived"]["lane"] == "licence_exception"]
     candidates = [
@@ -549,9 +557,11 @@ def run() -> dict:
         return sum(1 for r in rows if pred(r))
 
     reason_counts: dict[str, int] = {}
+    code_counts: dict[str, int] = {}
     for r in rejections:
         k = f"{r['stage']}:{r['reason']}"
         reason_counts[k] = reason_counts.get(k, 0) + 1
+        code_counts[r["code"]] = code_counts.get(r["code"], 0) + 1
     status_counts: dict[str, int] = {}
     for p in project_rows:
         m = p["derived"]["maintenance"]
@@ -622,7 +632,11 @@ def run() -> dict:
             "saas_named_by_a_single_source": count(
                 saas_rows, lambda r: r["derived"]["launch"] and r["derived"]["source_count"] == 1),
         },
-        "rejections": {"total": len(rejections), "by_reason": dict(sorted(reason_counts.items()))},
+        "rejections": {"total": len(rejections), "by_reason": dict(sorted(reason_counts.items())),
+                       "by_code": dict(sorted(code_counts.items()))},
+        "review_queue": {"total": len(queue), "open": sum(q["status"] == "open" for q in queue),
+                         "relationships_held": sum(1 for e in edges
+                                                   if not e["validation"]["checks"]["evidence_not_contradicted"])},
     }
     t = summary["launch"]
     summary["launch"]["targets_met"] = {

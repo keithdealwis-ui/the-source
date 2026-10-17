@@ -1042,7 +1042,8 @@
                 "provenance_present",
                 "all_sources_licence_allowed",
                 "oss_live_verified",
-                "oss_recommendable"
+                "oss_recommendable",
+                "evidence_not_contradicted"
               ],
               "additionalProperties": {
                 "type": "boolean"
@@ -1078,6 +1079,168 @@
               "minimum": 1
             }
           }
+        }
+      }
+    },
+    "rejection_code": {
+      "description": "Closed enumeration of rejection reason codes (KEI-919). Defined in source_pipeline/reasons.py CODES; documented in docs/REJECTIONS.md. An unknown code fails validation.",
+      "enum": [
+        "archived",
+        "contradictory_evidence",
+        "disabled",
+        "empty_repository",
+        "host_unverifiable",
+        "identity_unverified",
+        "licence_not_open",
+        "not_a_replacement",
+        "not_a_repository",
+        "not_found",
+        "saas_not_in_catalogue",
+        "unmaintained",
+        "verification_failed"
+      ]
+    },
+    "rejection": {
+      "type": "object",
+      "description": "One record of data/dataset/rejections.jsonl. `code` is the single enumerated reason; `detail` says it in words; `reason` is the original machine reason, kept for compatibility (eligibility rejections may list several, ';'-separated, and are coded by the first in precedence order).",
+      "required": [
+        "stage",
+        "reason",
+        "code",
+        "detail"
+      ],
+      "properties": {
+        "stage": {
+          "enum": [
+            "normalise",
+            "eligibility",
+            "plausibility_review"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "code": {
+          "$ref": "#/$defs/rejection_code"
+        },
+        "detail": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "review_queue_item": {
+      "type": "object",
+      "description": "One record of data/dataset/review_queue.jsonl: a claim that three or more independent sources contradict. While status is open, every affected relationship is held out of recommendations (fail closed).",
+      "required": [
+        "queue_id",
+        "code",
+        "claim",
+        "evidence",
+        "distinct_values",
+        "source_count",
+        "affected_edges",
+        "status",
+        "resolution",
+        "effect",
+        "as_of"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "queue_id": {
+          "type": "string",
+          "pattern": "^licence--"
+        },
+        "code": {
+          "const": "contradictory_evidence"
+        },
+        "claim": {
+          "type": "object",
+          "required": [
+            "kind",
+            "oss_id",
+            "question"
+          ],
+          "properties": {
+            "kind": {
+              "enum": [
+                "licence"
+              ]
+            },
+            "oss_id": {
+              "$ref": "#/$defs/oss_id"
+            },
+            "question": {
+              "type": "string"
+            }
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "required": [
+              "source_id",
+              "kind",
+              "value",
+              "normalised"
+            ],
+            "properties": {
+              "source_id": {
+                "type": "string"
+              },
+              "kind": {
+                "enum": [
+                  "upstream_list",
+                  "repository_host",
+                  "licence_text_detection"
+                ]
+              },
+              "value": {
+                "type": "string"
+              },
+              "normalised": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "distinct_values": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string"
+          }
+        },
+        "source_count": {
+          "type": "integer",
+          "minimum": 3
+        },
+        "affected_edges": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "enum": [
+            "open",
+            "resolved"
+          ]
+        },
+        "resolution": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "effect": {
+          "type": "string"
+        },
+        "as_of": {
+          "$ref": "#/$defs/timestamp"
         }
       }
     }
