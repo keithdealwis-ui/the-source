@@ -1,17 +1,14 @@
 {
-  "as_of": "2026-10-18T00:51:00Z",
+  "as_of": "2026-10-18T02:47:20Z",
   "collection": {
-    "as_of": "2026-10-18T00:51:00Z",
+    "as_of": "2026-10-18T02:47:20Z",
     "resolve": {
-      "asked": 6,
+      "asked": 1,
       "deferred": 0,
       "pool_added": [
-        "github.com/antirez/c64-hw-simulator",
-        "github.com/mikroverk/esp32sim",
-        "github.com/valimised/ivxv",
-        "github.com/vercel-labs/tsc-ts"
+        "github.com/kapendev/parin"
       ],
-      "resolved": 6,
+      "resolved": 1,
       "transient_failures": []
     },
     "sources": {
@@ -22,7 +19,7 @@
         "http_calls": 2,
         "items_read": 100,
         "listed": 100,
-        "mentions": 63,
+        "mentions": 62,
         "status": "ok"
       },
       "forem": {
@@ -39,7 +36,7 @@
         "gone": 0,
         "http_calls": 303,
         "items_read": 300,
-        "listed": 353,
+        "listed": 354,
         "mentions": 26,
         "status": "ok"
       },
@@ -67,10 +64,10 @@
       }
     },
     "stars": {
-      "asked": 6,
+      "asked": 0,
       "error": null,
-      "found": 6,
-      "http_calls": 1,
+      "found": 0,
+      "http_calls": 0,
       "missing_before": 1,
       "not_found": 0,
       "status": "ok"
@@ -78,46 +75,46 @@
   },
   "counts": {
     "candidates": 30,
-    "mentions_held": 372,
-    "mentions_in_window": 181,
+    "mentions_held": 374,
+    "mentions_in_window": 183,
     "mentions_in_window_by_source": {
-      "bluesky": 101,
+      "bluesky": 102,
       "forem": 23,
-      "hn": 57,
+      "hn": 58,
       "instagram": 0,
       "x": 0
     },
     "ranked": 50,
     "ranked_by_status": {
-      "candidate": 38,
+      "candidate": 39,
       "canonical": 0,
       "corpus": 0,
       "not_found": 1,
-      "unresolved": 11
+      "unresolved": 10
     },
-    "repositories_mentioned": 170,
-    "resolutions_held": 193,
+    "repositories_mentioned": 172,
+    "resolutions_held": 194,
     "stars": {
       "radar_only_without_stars": 1,
       "ranked_with_stars": 49,
       "ranked_without_stars": 1,
       "readings_held": 48
     },
-    "truncated": 120
+    "truncated": 122
   },
   "files": {
-    "candidates.jsonl": "c842f281a3c80be09c16142a83eed59ccd2d1a36b427f3fdf47c505fb67e4d7b",
-    "collection.json": "0110fa36a439df30b223a62c30cc6cd60378c7e6a33e988d4ad24713d440893f",
-    "mentions.jsonl": "e1a8f09ba34df2108cfd2cb8f56ab585b01d27abfb6544b7c6e6af23f8a96514",
-    "radar.jsonl": "2b0a744f2b9f7391ea1009ad727f49cb50d7f2738aa0f71cf72bc507a09ec3b7",
-    "resolved.jsonl": "17a6114fe6a71a329ddfaa22e5387e35b1304f119af2d27ec8ad4f76e10d10f1",
+    "candidates.jsonl": "79283e8c03733ff10c747570a5c93f5bbca98b5eced913d507b5d7104997fb25",
+    "collection.json": "a9560934060b7d1d6a680d74d88bf090d1fd7a622ee7aa18bfca2c820c9457c1",
+    "mentions.jsonl": "6746071394555232ed39d1fbb2c485ee9395343a841f3657d353926475883639",
+    "radar.jsonl": "14adf1dcf0e93cb7d036429a41d7160e7b973cf6aa8f67a66d0918f9d1deb00c",
+    "resolved.jsonl": "268eb09cba295ed9803cb8bdcba8604626719d3c799d34d2a13326cd5f9fe0ba",
     "stars.jsonl": "d0a6a0fcdf65cf7a5e39e404d711d283c2c902d8b5804c42f74a1b0da6536d02"
   },
   "inputs": {
-    "data/canonical/oss_projects.jsonl": "907fff357af20ba28c4ba3db9a1efe142cc49c5d555ec139c39a5cfdf8d45e0a",
-    "data/dataset/oss_projects.jsonl": "8dde285a9110ce05e323af37ed2fd81b374311741a58d76d3d25384bbf079342",
-    "data/discovery/candidates.jsonl": "25fc44521ab84c1d208eafd97ea17d558966f0df8d4c6e79dec43c2ad275837b",
-    "data/live/snapshot.json": "4feb2dd265b421ac5e2293b6c87b7802d1e74e5c6db63bc9e85022ca0d4de4b8"
+    "data/canonical/oss_projects.jsonl": "37ba6fa62a00a0a0527ce69dad5093b9e5a9906fa6ffc1f62142b38b04ce9a99",
+    "data/dataset/oss_projects.jsonl": "4a3e5c482755598425d8baf6738f8edc074f946b346676e10274cd59c87d0590",
+    "data/discovery/candidates.jsonl": "cf0ac95dbbbfa8222a9622a1883200a208bb581ad4345afdea9a3a291d14ea21",
+    "data/live/snapshot.json": "a2d82ff050fa7e37334f6fa1b05e367e57305853a532cb3a99183ee0e8283cef"
   },
   "methodology": {
     "doc": "docs/RADAR.md",
