@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-17T14:13:20Z",
+  "as_of": "2026-10-18T00:51:00Z",
   "checks": [
     {
       "criterion": 1,
@@ -57,7 +57,7 @@
         "not_a_repository": 21,
         "not_found": 13,
         "saas_not_in_catalogue": 197,
-        "unmaintained": 51
+        "unmaintained": 50
       },
       "ok": true
     },
@@ -209,7 +209,7 @@
       "failures": 0,
       "id": "activity.recommended_within_12_months",
       "kind": "assertion",
-      "observed": 391,
+      "observed": 392,
       "ok": true
     },
     {
@@ -219,7 +219,7 @@
       "failures": 0,
       "id": "activity.evidence_is_not_docs_only",
       "kind": "assertion",
-      "observed": 1460,
+      "observed": 1462,
       "ok": true
     },
     {
@@ -249,7 +249,7 @@
       "failures": 0,
       "id": "licence.recommended_have_recognised_licence",
       "kind": "assertion",
-      "observed": 391,
+      "observed": 392,
       "ok": true
     },
     {
@@ -305,13 +305,13 @@
       "observed": {
         "oss_projects": {
           "licence_exception": 122,
-          "recommendable": 391,
-          "rejected": 105
+          "recommendable": 392,
+          "rejected": 104
         },
         "relationships": {
           "licence_exception": 206,
-          "recommendable": 495,
-          "rejected": 173
+          "recommendable": 497,
+          "rejected": 171
         }
       },
       "ok": true
@@ -334,9 +334,9 @@
       "id": "maintenance.classification_matches_definition",
       "kind": "assertion",
       "observed": {
-        "active": 479,
+        "active": 480,
         "maintained": 44,
-        "stale": 79,
+        "stale": 78,
         "unverified": 16
       },
       "ok": true
@@ -368,7 +368,7 @@
       "failures": 0,
       "id": "strategy.every_rejection_is_recorded",
       "kind": "assertion",
-      "observed": 227,
+      "observed": 226,
       "ok": true
     },
     {
@@ -434,7 +434,7 @@
       "failures": 0,
       "id": "dedupe.one_repository_per_product_per_saas",
       "kind": "assertion",
-      "observed": 363,
+      "observed": 365,
       "ok": true
     },
     {
@@ -444,7 +444,7 @@
       "failures": 0,
       "id": "launch.only_validated_edges",
       "kind": "assertion",
-      "observed": 363,
+      "observed": 365,
       "ok": true
     },
     {
@@ -479,9 +479,9 @@
       "id": "launch.targets",
       "kind": "assertion",
       "observed": {
-        "oss_distinct_products": 250,
-        "oss_projects": 250,
-        "relationships": 363,
+        "oss_distinct_products": 251,
+        "oss_projects": 251,
+        "relationships": 365,
         "saas_products": 115
       },
       "ok": true
@@ -505,11 +505,11 @@
       "kind": "observation",
       "observed": {
         "examples": [
-          "github.com/n8n-io/n8n (207782 stars: no_recognised_open_source_licence)",
-          "github.com/langgenius/dify (158700 stars: no_recognised_open_source_licence)",
-          "github.com/open-webui/open-webui (155954 stars: no_recognised_open_source_licence)",
-          "github.com/lobehub/lobehub (83287 stars: no_recognised_open_source_licence)",
-          "github.com/elastic/elasticsearch (78294 stars: no_recognised_open_source_licence)"
+          "github.com/n8n-io/n8n (207832 stars: no_recognised_open_source_licence)",
+          "github.com/langgenius/dify (158728 stars: no_recognised_open_source_licence)",
+          "github.com/open-webui/open-webui (155995 stars: no_recognised_open_source_licence)",
+          "github.com/lobehub/lobehub (83295 stars: no_recognised_open_source_licence)",
+          "github.com/elastic/elasticsearch (78299 stars: no_recognised_open_source_licence)"
         ],
         "launch_projects_under_500_stars": 23,
         "rejected_with_10k_plus_stars": 91
@@ -523,10 +523,10 @@
       "observed": {
         "entries_read": 2437,
         "oss_candidates": 618,
-        "oss_recommendable": 391,
-        "rejections_recorded": 484,
+        "oss_recommendable": 392,
+        "rejections_recorded": 483,
         "relationship_claims_read": 1570,
-        "relationships_validated": 495
+        "relationships_validated": 497
       }
     }
   ],

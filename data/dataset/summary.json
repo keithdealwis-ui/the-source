@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-17T14:13:20Z",
+  "as_of": "2026-10-18T00:51:00Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -114,26 +114,26 @@
   "lanes": {
     "oss_projects": {
       "licence_exception": 122,
-      "recommendable": 391,
-      "rejected": 105
+      "recommendable": 392,
+      "rejected": 104
     },
     "relationships": {
       "licence_exception": 206,
-      "recommendable": 495,
-      "rejected": 173
+      "recommendable": 497,
+      "rejected": 171
     }
   },
   "launch": {
     "cap_per_saas": 11,
-    "oss_distinct_products": 250,
-    "oss_projects": 250,
+    "oss_distinct_products": 251,
+    "oss_projects": 251,
     "preserve_served": {
       "kept": 339,
       "not_kept": 0,
       "served_before": 339
     },
-    "relationships": 363,
-    "relationships_corroborated_by_2plus_sources": 129,
+    "relationships": 365,
+    "relationships_corroborated_by_2plus_sources": 131,
     "relationships_share_alike_only": 24,
     "saas_added_beyond_floor": 15,
     "saas_named_by_a_single_source": 0,
@@ -193,7 +193,7 @@
       "not_a_repository": 21,
       "not_found": 13,
       "saas_not_in_catalogue": 197,
-      "unmaintained": 51
+      "unmaintained": 50
     },
     "by_reason": {
       "eligibility:archived": 5,
@@ -206,7 +206,7 @@
       "eligibility:no_recognised_open_source_licence;stale_no_meaningful_activity_12_months;repository_identity_changed_since_listed": 1,
       "eligibility:repository_identity_changed_since_listed": 4,
       "eligibility:repository_not_found": 13,
-      "eligibility:stale_no_meaningful_activity_12_months": 51,
+      "eligibility:stale_no_meaningful_activity_12_months": 50,
       "normalise:repo_url_not_a_repository": 21,
       "normalise:saas_not_in_catalogue": 197,
       "plausibility_review:CRM; not a help desk": 1,
@@ -243,7 +243,7 @@
       "plausibility_review:whiteboard; not an interface design tool": 1,
       "plausibility_review:workflow engine programmed in code; not a no-code automation product": 1
     },
-    "total": 484
+    "total": 483
   },
   "review_queue": {
     "open": 9,
@@ -253,16 +253,16 @@
   "schema_version": "1.0.0",
   "verified": {
     "maintenance_status": {
-      "active": 479,
+      "active": 480,
       "maintained": 44,
-      "stale": 79,
+      "stale": 78,
       "unverified": 16
     },
-    "oss_recommendable": 391,
-    "oss_rejected": 227,
+    "oss_recommendable": 392,
+    "oss_rejected": 226,
     "relationships_flagged_licence_exception": 206,
-    "relationships_rejected": 173,
-    "relationships_validated": 495,
+    "relationships_rejected": 171,
+    "relationships_validated": 497,
     "saas_with_validated_alternatives": 212
   }
 }

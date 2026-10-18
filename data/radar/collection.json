@@ -1,10 +1,15 @@
 {
-  "as_of": "2026-10-17T14:13:20Z",
+  "as_of": "2026-10-18T00:51:00Z",
   "resolve": {
-    "asked": 0,
+    "asked": 6,
     "deferred": 0,
-    "pool_added": [],
-    "resolved": 0,
+    "pool_added": [
+      "github.com/antirez/c64-hw-simulator",
+      "github.com/mikroverk/esp32sim",
+      "github.com/valimised/ivxv",
+      "github.com/vercel-labs/tsc-ts"
+    ],
+    "resolved": 6,
     "transient_failures": []
   },
   "sources": {
@@ -15,16 +20,16 @@
       "http_calls": 2,
       "items_read": 100,
       "listed": 100,
-      "mentions": 66,
+      "mentions": 63,
       "status": "ok"
     },
     "forem": {
       "errors": [],
-      "gone": 0,
-      "http_calls": 40,
-      "items_read": 36,
-      "listed": 36,
-      "mentions": 25,
+      "gone": 1,
+      "http_calls": 39,
+      "items_read": 35,
+      "listed": 35,
+      "mentions": 23,
       "status": "ok"
     },
     "hn": {
@@ -32,8 +37,8 @@
       "gone": 0,
       "http_calls": 303,
       "items_read": 300,
-      "listed": 359,
-      "mentions": 22,
+      "listed": 353,
+      "mentions": 26,
       "status": "ok"
     },
     "instagram": {
@@ -60,10 +65,10 @@
     }
   },
   "stars": {
-    "asked": 0,
+    "asked": 6,
     "error": null,
-    "found": 0,
-    "http_calls": 0,
+    "found": 6,
+    "http_calls": 1,
     "missing_before": 1,
     "not_found": 0,
     "status": "ok"
