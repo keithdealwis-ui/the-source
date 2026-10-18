@@ -213,6 +213,14 @@ to go:
 No arguments, queries, results, client names, sessions or addresses are kept. Retention is
 90 days.
 
+**Restarts keep the counters (KEI-927).** Every flush replaces the file with the in-memory
+counters, so the server resumes an existing `/1` or `/2` file at start before it serves. Before
+this fix a deploy or reboot erased the retained days, and the weeks it touched read as zero use.
+A file that cannot be resumed (unparseable, unknown schema, malformed cells) is moved aside to
+`<file>.unreadable-<UTC>` and counting starts from zero; it is never overwritten. If it cannot
+even be moved aside, that run counts nothing. Days resumed from a `/1` file have no `empty`
+counts, so the report's zero-result rate is understated for those days only.
+
 **Weekly report** (`source_pipeline/telemetry_report.py`, standard library only). A systemd
 timer, `the-source-mcp-report.timer`, runs every Monday at 01:30 UTC. It writes the last
 complete ISO week to `/var/lib/the-source-mcp/reports/<week>.json` and `.md`. The report makes

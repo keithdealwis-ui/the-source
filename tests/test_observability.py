@@ -245,6 +245,103 @@ def test_http_counts_only_with_a_sink_and_counts_empty_answers(tmp_path):
     assert "zzzzqqqq" not in (tmp_path / "t.json").read_text()
 
 
+def _search(s, q="wiki"):
+    s.handle({"jsonrpc": "2.0", "id": 0, "method": "initialize", "params": {"protocolVersion": "2025-06-18"}})
+    s.handle({"jsonrpc": "2.0", "id": 1, "method": "tools/call",
+              "params": {"name": "source_search", "arguments": {"query": q}}})
+
+
+def test_restart_keeps_the_retained_days(tmp_path):
+    """KEI-927: every flush replaces the file with the in-memory counters, so a restart that starts from zero
+    erased the retained days. The next App resumes them and keeps counting on top."""
+    path = tmp_path / "t.json"
+    first = H.App(M.Server(ROOT, NOW), telemetry_path=path)
+    _search(first.server)
+    first.maybe_flush(force=True)
+    later = M.datetime(2026, 10, 18, 6, tzinfo=M.timezone.utc)
+    for _ in range(2):  # two restarts: each resumes what the last one flushed
+        app = H.App(M.Server(ROOT, later), telemetry_path=path)
+        _search(app.server)
+        app.maybe_flush(force=True)
+    days = json.loads(path.read_text())["days"]
+    assert days["2026-10-17"]["source_search"]["ok"]["count"] == 1
+    assert days["2026-10-18"]["source_search"]["ok"]["count"] == 2
+
+
+def test_restart_resumes_a_schema_1_file(tmp_path):
+    path = tmp_path / "t.json"
+    path.write_text(json.dumps({"schema": "the-source.mcp-telemetry/1", "retain_days": 90, "days": {
+        "2026-10-16": {"source_search": {"ok": {"count": 7, "latency": {"<50ms": 7}}}}}}))
+    app = H.App(M.Server(ROOT, NOW), telemetry_path=path)
+    _search(app.server)
+    app.maybe_flush(force=True)
+    snap = json.loads(path.read_text())
+    assert snap["schema"] == M.TELEMETRY_SCHEMA
+    assert snap["days"]["2026-10-16"]["source_search"]["ok"] == {"count": 7, "latency": {"<50ms": 7}}
+    assert snap["days"]["2026-10-17"]["source_search"]["ok"]["count"] == 1
+
+
+@pytest.mark.parametrize("text", ["{not json", json.dumps({"schema": "other/1", "days": {}}),
+                                  json.dumps({"schema": M.TELEMETRY_SCHEMA, "days": {"2026-10-16": {
+                                      "source_search": {"ok": {"count": "7", "latency": {}}}}}})])
+def test_an_unresumable_file_is_kept_aside_never_overwritten(tmp_path, text):
+    path = tmp_path / "t.json"
+    path.write_text(text)
+    app = H.App(M.Server(ROOT, NOW), telemetry_path=path)
+    assert app.server.telemetry.days == {}
+    kept = list(tmp_path.glob("t.json.unreadable-*"))
+    assert len(kept) == 1 and kept[0].read_text() == text
+    _search(app.server)
+    app.maybe_flush(force=True)
+    assert json.loads(path.read_text())["days"]["2026-10-17"]["source_search"]["ok"]["count"] == 1
+
+
+def test_a_stopped_server_resumes_its_counts(tmp_path):
+    """The deployed path end to end: serve, answer a call, SIGTERM (as systemd does), start again, call again."""
+    import http.client
+    import signal
+    import socket
+    import time
+    path = tmp_path / "t.json"
+
+    def run_once():
+        with socket.socket() as sk:
+            sk.bind(("127.0.0.1", 0))
+            port = sk.getsockname()[1]
+        p = subprocess.Popen([sys.executable, "-m", "source_pipeline.mcp_http", "--root", str(ROOT),
+                              "--port", str(port), "--telemetry", str(path)], cwd=ROOT,
+                             stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
+        try:
+            body = json.dumps({"jsonrpc": "2.0", "id": 1, "method": "tools/call",
+                               "params": {"name": "source_search", "arguments": {"query": "wiki"}}})
+            deadline = time.monotonic() + 60
+            while True:
+                try:
+                    c = http.client.HTTPConnection("127.0.0.1", port, timeout=10)
+                    c.request("POST", "/mcp", body, {"Content-Type": "application/json",
+                                                     "Accept": "application/json, text/event-stream",
+                                                     "MCP-Protocol-Version": "2025-06-18"})
+                    r = c.getresponse()
+                    r.read()
+                    assert r.status == 200
+                    break
+                except (ConnectionRefusedError, ConnectionResetError):
+                    assert p.poll() is None and time.monotonic() < deadline, p.stderr.read()
+                    time.sleep(0.2)
+        finally:
+            p.send_signal(signal.SIGTERM)
+            assert p.wait(timeout=30) == 0
+        return json.loads(path.read_text())["days"]
+
+    def calls(days):  # summed over days, so a run that straddles UTC midnight still reads true
+        return sum(row["source_search"]["ok"]["count"] for row in days.values())
+
+    first = run_once()
+    assert calls(first) == 1
+    second = run_once()
+    assert calls(second) == 2
+
+
 def _telemetry(days):
     return {"schema": "the-source.mcp-telemetry/2", "days": days}
 

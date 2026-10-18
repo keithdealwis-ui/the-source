@@ -72,12 +72,35 @@ class App:
         self.allow_origins = set(allow_origins)
         self.telemetry_path = Path(telemetry_path) if telemetry_path else None
         if self.telemetry_path and server.telemetry is None:  # counters exist only where they are written
-            server.telemetry = M.Telemetry()
+            server.telemetry = self.resume_telemetry()
         self.rate = RateLimiter(rate_per_min)
         self.slots = threading.BoundedSemaphore(max_inflight)
         self.engine = threading.Lock()  # the engine holds per-request protocol state; one call at a time
         self.last_flush = 0.0
         self.dirty = False
+
+    def resume_telemetry(self):
+        """Carry the retained days across a restart (KEI-927): every flush replaces the file with the in-memory
+        counters, so starting from zero would erase them. A file that cannot be resumed is moved aside, never
+        overwritten, and counting starts fresh; if it cannot even be moved aside, this run counts nothing."""
+        try:
+            return M.Telemetry.restore(json.loads(self.telemetry_path.read_text()))
+        except FileNotFoundError:
+            return M.Telemetry()
+        except (OSError, ValueError) as exc:  # json.JSONDecodeError is a ValueError
+            why = f"{type(exc).__name__}: {exc}"
+        aside = self.telemetry_path.with_name(
+            f"{self.telemetry_path.name}.unreadable-{time.strftime('%Y%m%dT%H%M%SZ', time.gmtime())}")
+        try:
+            os.replace(self.telemetry_path, aside)
+        except OSError as exc:
+            print(f"the-source-mcp: telemetry not resumed ({why}) and not moved aside ({exc}); "
+                  f"not counting this run", file=sys.stderr)
+            self.telemetry_path = None
+            return None
+        print(f"the-source-mcp: telemetry not resumed ({why}); kept at {aside}, counting from zero",
+              file=sys.stderr)
+        return M.Telemetry()
 
     def answer(self, msg, protocol):
         """One JSON-RPC message under one protocol version -> response object or None."""

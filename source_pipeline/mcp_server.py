@@ -2318,6 +2318,7 @@ EMPTY_BY = {"source_get_alternatives": ("recommendations",), "source_search": ("
             "source_recommend": ("recommendations",),
             "source_emerging_projects": ("repository_momentum", "community_momentum")}
 TELEMETRY_SCHEMA = "the-source.mcp-telemetry/2"
+TELEMETRY_ACCEPTED = ("the-source.mcp-telemetry/1", TELEMETRY_SCHEMA)  # what a restart resumes from
 
 
 def answer_is_empty(tool: str, result) -> bool:
@@ -2349,6 +2350,30 @@ class Telemetry:
         cutoff = (now - timedelta(days=self.retain_days)).strftime("%Y-%m-%d")
         for d in [d for d in self.days if d < cutoff]:
             del self.days[d]
+
+    @classmethod
+    def restore(cls, data, retain_days: int = 90):
+        """Counters resumed from an earlier snapshot (/1 or /2), so a restart keeps the retained days (KEI-927).
+        Anything that is not a well-formed snapshot raises ValueError; nothing is half-loaded."""
+        if not isinstance(data, dict) or data.get("schema") not in TELEMETRY_ACCEPTED:
+            raise ValueError(f"telemetry schema {data.get('schema') if isinstance(data, dict) else None!r} "
+                             f"is not one of {TELEMETRY_ACCEPTED}")
+        days = data.get("days")
+        ok = isinstance(days, dict) and all(
+            isinstance(day, str) and isinstance(row, dict) and all(
+                isinstance(tool, str) and isinstance(cells, dict) and all(
+                    isinstance(cell, dict) and type(cell.get("count")) is int
+                    and isinstance(cell.get("latency"), dict)
+                    and all(type(n) is int for n in cell["latency"].values())
+                    and type(cell.get("empty", 0)) is int
+                    for cell in cells.values())
+                for tool, cells in row.items())
+            for day, row in days.items())
+        if not ok:
+            raise ValueError("telemetry days are not per day -> tool -> outcome -> {count, latency}")
+        t = cls(retain_days)
+        t.days = json.loads(json.dumps(days))  # a private copy; the module stays standard-library-minimal
+        return t
 
     def snapshot(self):
         return {"schema": TELEMETRY_SCHEMA, "server_version": SERVER_VERSION,
