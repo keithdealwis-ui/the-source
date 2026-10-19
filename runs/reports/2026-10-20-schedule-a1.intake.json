@@ -1,0 +1,384 @@
+{
+  "change_from_previous": {
+    "changes": {},
+    "run_id": "2026-10-19-schedule-a1"
+  },
+  "cycle_key": "2026-10-20",
+  "data_as_of": "2026-10-19T23:32:37Z",
+  "dataset_version": "4e4082c51e91f41a",
+  "discovery": {
+    "known_in_corpus": 42,
+    "new_candidates": 8,
+    "note": "candidates join the discovery pool; none becomes canonical without a licence-cleared claim",
+    "pool_size": 584,
+    "radar_pool_added": 9,
+    "radar_ranked": 50,
+    "search_returned": 470
+  },
+  "ended_at": "2026-10-19T23:39:39Z",
+  "manual_intake": {
+    "admitted_to_ledger": 1,
+    "by_canonical_status": {
+      "canonical": 2,
+      "not_admitted": 1,
+      "rejected": 1
+    },
+    "by_outcome": {
+      "accepted": 1,
+      "already_known": 1,
+      "needs_more_evidence": 1,
+      "rejected": 1
+    },
+    "pending_promotion": 0,
+    "promoted_this_run": 0,
+    "submissions": 4
+  },
+  "promoted": true,
+  "reflects": "this run's promoted output",
+  "run_counts": {
+    "added": 0,
+    "candidates": 637,
+    "canonical_checks": 28,
+    "canonical_projects": 236,
+    "canonical_projects_removed": 0,
+    "canonical_relationships": 341,
+    "canonical_relationships_added": 0,
+    "canonical_relationships_removed": 0,
+    "canonical_saas_products": 114,
+    "canonical_warnings": 0,
+    "changed": 36,
+    "corpus_added": 17,
+    "corpus_collapsed": 0,
+    "corpus_removed": 0,
+    "deep_enriched": 36,
+    "deferred": 0,
+    "discovered": 8,
+    "discovered_in_corpus": 0,
+    "discovered_pool": 8,
+    "failed": 0,
+    "intake_pending": 0,
+    "intake_promoted": 0,
+    "membership_after": 9890,
+    "membership_before": 9873,
+    "momentum_measured": 621,
+    "radar_pool_added": 9,
+    "radar_ranked": 50,
+    "refreshed_records": 621,
+    "rejected": 0,
+    "rescored": 25,
+    "retained": 0,
+    "stale_or_abandoned_detected": 0,
+    "supported_saas_ok": 20,
+    "unchanged": 601
+  },
+  "run_id": "2026-10-20-schedule-a1",
+  "schema": "the-source.intake-report/1",
+  "stages": [
+    {
+      "detail": {
+        "entries_read": 2437,
+        "pins_advanced": 1,
+        "pins_kept": [
+          {
+            "detail": null,
+            "source_id": "opensaasdirectory",
+            "status": "parse_regression_kept_pin"
+          }
+        ],
+        "sources": {
+          "altstack": {
+            "decision": "allow_with_conditions",
+            "entries": 73,
+            "entries_with_saas_claim": 73,
+            "pin": "unchanged",
+            "pinned_commit": "0b9dacd632f128922862f70e1e09011c8611b48c",
+            "relationship_claims": 80,
+            "unparseable_files": 0
+          },
+          "awesome-selfhosted": {
+            "decision": "allow_with_conditions",
+            "entries": 1356,
+            "entries_with_saas_claim": 87,
+            "pin": "advanced",
+            "pinned_commit": "9f44f8c5dc819e32eaae15131105236c8ee073a4",
+            "relationship_claims": 148,
+            "unparseable_files": 0
+          },
+          "btwso": {
+            "decision": "allow",
+            "entries": 113,
+            "entries_with_saas_claim": 113,
+            "pin": "unchanged",
+            "pinned_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+            "relationship_claims": 149,
+            "unparseable_files": 0
+          },
+          "diegoleme": {
+            "decision": "allow",
+            "entries": 111,
+            "entries_with_saas_claim": 111,
+            "pin": "unchanged",
+            "pinned_commit": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+            "relationship_claims": 111,
+            "unparseable_files": 0
+          },
+          "emmraan": {
+            "decision": "allow",
+            "entries": 63,
+            "entries_with_saas_claim": 63,
+            "pin": "unchanged",
+            "pinned_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
+            "relationship_claims": 130,
+            "unparseable_files": 0
+          },
+          "fossalt": {
+            "decision": "allow_with_conditions",
+            "entries": 111,
+            "entries_with_saas_claim": 111,
+            "pin": "unchanged",
+            "pinned_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+            "relationship_claims": 150,
+            "unparseable_files": 0
+          },
+          "intake": {
+            "decision": "allow",
+            "entries": 1,
+            "entries_with_saas_claim": 1,
+            "pinned_commit": "feb7d601b43d46fdbc692e43a3082998c61cc659",
+            "relationship_claims": 1,
+            "unparseable_files": 0
+          },
+          "opensaasdirectory": {
+            "decision": "allow",
+            "entries": 100,
+            "entries_with_saas_claim": 100,
+            "pin": "parse_regression_kept_pin",
+            "pinned_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+            "relationship_claims": 178,
+            "unparseable_files": 0
+          },
+          "runacapital": {
+            "decision": "allow",
+            "entries": 215,
+            "entries_with_saas_claim": 215,
+            "pin": "unchanged",
+            "pinned_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+            "relationship_claims": 329,
+            "unparseable_files": 0
+          },
+          "solvohq": {
+            "decision": "allow",
+            "entries": 294,
+            "entries_with_saas_claim": 294,
+            "pin": "unchanged",
+            "pinned_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+            "relationship_claims": 294,
+            "unparseable_files": 0
+          }
+        }
+      },
+      "id": "upstream_lists",
+      "in": 10,
+      "out": 10,
+      "stopped": 0,
+      "title": "Upstream lists harvested at their reviewed pins"
+    },
+    {
+      "detail": {
+        "renamed_or_duplicate_merged": 19,
+        "repositories_before_identity_merge": 637,
+        "saas_products_named": 268
+      },
+      "id": "claims",
+      "in": 1570,
+      "note": "in counts every list's claim; the same pairing claimed by several lists is one relationship candidate, so most of stopped is merging, and stopped_by_reason lists the claims refused",
+      "out": 874,
+      "stopped": 696,
+      "stopped_by_reason": [
+        {
+          "count": 197,
+          "reason": "saas_not_in_catalogue"
+        },
+        {
+          "count": 21,
+          "reason": "repo_url_not_a_repository"
+        }
+      ],
+      "title": "Relationship claims reconciled to products and repositories"
+    },
+    {
+      "detail": {
+        "http_calls": 35,
+        "retries": 0,
+        "still_failing": []
+      },
+      "id": "live_verification",
+      "in": 637,
+      "out": 621,
+      "stopped": 16,
+      "title": "Repositories verified live on their host"
+    },
+    {
+      "detail": {
+        "lanes": {
+          "licence_exception": 122,
+          "recommendable": 393,
+          "rejected": 103
+        },
+        "maintenance": {
+          "active": 479,
+          "maintained": 45,
+          "stale": 78,
+          "unverified": 16
+        }
+      },
+      "id": "eligibility",
+      "in": 618,
+      "out": 393,
+      "stopped": 225,
+      "stopped_by_reason": [
+        {
+          "count": 140,
+          "reason": "no_recognised_open_source_licence"
+        },
+        {
+          "count": 78,
+          "reason": "stale_no_meaningful_activity_12_months"
+        },
+        {
+          "count": 18,
+          "reason": "archived"
+        },
+        {
+          "count": 13,
+          "reason": "repository_not_found"
+        },
+        {
+          "count": 5,
+          "reason": "repository_identity_changed_since_listed"
+        },
+        {
+          "count": 3,
+          "reason": "host_not_independently_verifiable"
+        }
+      ],
+      "title": "Repositories meeting the quality bar (licence, activity, not archived)"
+    },
+    {
+      "detail": {
+        "by_status": {
+          "flagged_licence_exception": 206,
+          "rejected": 170,
+          "validated": 498
+        },
+        "plausibility_rejected": 78,
+        "saas_with_validated_alternatives": 212
+      },
+      "id": "relationship_validation",
+      "in": 874,
+      "note": "a relationship can stop for several reasons, so the reasons add up to more than stopped",
+      "out": 498,
+      "stopped": 376,
+      "stopped_by_reason": [
+        {
+          "count": 324,
+          "reason": "oss_recommendable"
+        },
+        {
+          "count": 231,
+          "reason": "no_recognised_open_source_licence"
+        },
+        {
+          "count": 87,
+          "reason": "stale_no_meaningful_activity_12_months"
+        },
+        {
+          "count": 39,
+          "reason": "passed_plausibility_review"
+        },
+        {
+          "count": 27,
+          "reason": "evidence_not_contradicted"
+        },
+        {
+          "count": 21,
+          "reason": "archived"
+        },
+        {
+          "count": 20,
+          "reason": "oss_live_verified"
+        },
+        {
+          "count": 15,
+          "reason": "repository_not_found"
+        },
+        {
+          "count": 6,
+          "reason": "held_for_review: licence--github.com/chatwoot/chatwoot (contradictory_evidence; see review_queue.jsonl)"
+        },
+        {
+          "count": 5,
+          "reason": "host_not_independently_verifiable"
+        }
+      ],
+      "title": "Relationships validated (provenance, catalogue, live, plausibility)"
+    },
+    {
+      "detail": {
+        "cap_per_saas": 11,
+        "oss_distinct_products": 252,
+        "oss_projects": 252,
+        "saas_added_beyond_floor": 15,
+        "saas_products": 115,
+        "saas_target_is": "floor",
+        "targets": {
+          "edges_max": 400,
+          "edges_min": 300,
+          "oss_minimum": 250,
+          "saas_target": 100
+        }
+      },
+      "id": "launch_selection",
+      "in": 498,
+      "note": "stopped are validated relationships outside the launch set: below the SaaS cut-off, past the per-product cap, or a second repository of the same product (docs/OBSERVABILITY.md, lineage)",
+      "out": 366,
+      "stopped": 132,
+      "title": "Launch selection (SaaS floor, OSS minimum, edges cap)"
+    },
+    {
+      "id": "export_guard",
+      "in": 366,
+      "out": 341,
+      "stopped": 25,
+      "stopped_by_reason": [
+        {
+          "count": 25,
+          "reason": "share_alike_only"
+        }
+      ],
+      "title": "Licence export guard (share-alike-only claims withheld)"
+    },
+    {
+      "detail": {
+        "counts": {
+          "oss_projects": 236,
+          "recommended_relationships": 301,
+          "relationships": 341,
+          "saas_products": 114,
+          "supported_saas": 20,
+          "supported_saas_ok": 20
+        },
+        "dataset_version": "4e4082c51e91f41a",
+        "recommended_relationships": 301
+      },
+      "id": "canonical",
+      "in": 341,
+      "out": 341,
+      "stopped": 0,
+      "title": "Canonical layer and read surface"
+    }
+  ],
+  "started_at": "2026-10-19T23:32:37Z",
+  "status": "succeeded",
+  "trigger": "schedule"
+}
