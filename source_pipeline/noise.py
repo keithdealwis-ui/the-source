@@ -48,7 +48,7 @@ _LEARN = re.compile(r"\b(tutorials?|courses?|coursework|bootcamp|workshop|lesson
                     r"(the )?book|100 days of|30 days of|solutions to)\b")
 _LEARN_NAME = re.compile(r"(^|[-_.])(tutorials?|course|bootcamp|workshop|homework|exercises|leetcode|"
                          r"interview|cheatsheets?|learn|learning|notes)([-_.]|$)")
-_TEMPLATE = re.compile(r"\b(boilerplate|starter kit|starter template|project template|templates? for|"
+_TEMPLATE = re.compile(r"\b((?<!low )(?<!no )(?<!less )boilerplate|starter kit|starter template|project template|templates? for|"
                        r"example (app|project|code|application)|sample (app|project|code|application)|"
                        r"demo (app|project|application)|hello world|proof of concept|playground for)\b")
 _TEMPLATE_NAME = re.compile(r"(^|[-_.])(boilerplate|starter|template|templates|examples?|samples?|demo|"
@@ -59,7 +59,33 @@ _PERSONAL = re.compile(r"^(my|our) (own |personal |private )?(home ?lab|home-lab
 _PERSONAL_NAME = re.compile(r"(^|[-_.])(dotfiles|nixos-config|nix-config|home-ops|homelab-ops|"
                             r"k8s-gitops|infra-config)([-_.]|$)|^(dotfiles|homelab|home-lab|home-ops|infra|"
                             r"infrastructure|config|configs|setup)$")
-_PROMPTS = re.compile(r"\b(prompt (pack|collection|library)|collection of prompts|system prompts? (for|of))\b")
+_PROMPTS = re.compile(r"\b(prompt (pack|collection|library)|collection of prompts|system prompts? (for|of))\b|"
+                      r"\b(agent|claude code|claude|codex|llm) skills?\b|\bskills? (for|from) [a-z0-9 .'-]{0,40}"
+                      r"\b(claude|codex|agents?|llms?|models?|chatgpt|gpt)\b|\bskills for the [a-z0-9 .-]{1,30} models?\b")
+# A registry, app or server for skills is software; only the skills themselves are a pack.
+_SKILL_SOFTWARE = re.compile(r"\b(registry|desktop|app|application|platform|workbench|server|manager|marketplace|"
+                             r"hub|cli|runtime|engine|framework|tool to|ide)\b")
+_PROMPT_TOPICS = {"prompts"}
+_SKILL_NAME = re.compile(r"[-_.](skills|skill-pack|prompts)$")  # a skills tag alone also marks agent tools that use skills
+# Desk review, 2026-10-20 (docs/ACCEPTANCE-KEI-923.md): a reviewer reading the admissions found these kinds the
+# first gate let through.
+_SITE = re.compile(r"\b(my|our) (own )?(portfolio|website|web site|site|homepage|blog)\b|"
+                   r"\bpersonal (portfolio|website|web site)\b|\bdeveloper portfolio\b|\bportfolio (website|site|"
+                   r"template|for (developers|programmers)|example|para|web repo)\b|\b(meu|mon|mi) portf?olio\b|"
+                   r"\bweb ?page for\b|\bcode of the [a-z0-9.-]+ website\b")
+_SITE_NAME = re.compile(r"(^|[-_.])(portfolio|porfolio|personal-website)([-_.]|$)|\.github\.io$")
+# Code that accompanies a paper. A conference tag alone is not enough: many tools people run carry one.
+_RESEARCH = re.compile(r"\b((official |companion )?(code|implementation|pytorch implementation) (for|of) (the |our )?"
+                       r"([a-z0-9 .:-]{0,40} )?paper)\b")
+_DOCS = re.compile(r"^(the |official |community |public )*(manifest and )?(documentation|docs)( repo(sitory)?| site|"
+                   r" website)? (for|of)\b|\bwiki pages\b|\b(rfcs?|proposals|standards) (and|&) (drafts|discussions)\b|"
+                   r"\bepisodes? (for|of) the\b")
+_MORE_TEMPLATE = re.compile(r"\b(admin|dashboard|landing page|website|ui|vault|system|mvp|prototype) templates?\b|"
+                            r"\b(templates?|mvp) (for|with|built|based)\b|\bsample [a-z]+ app\b|\ban example of\b|"
+                            r"\b(rebuilt|recreated|clone) (using|in|with) [a-z]+\b.*\btemplate\b|\bbookshelf made in\b")
+_MORE_LEARN = re.compile(r"\b(study guide|exam objectives|exam prep|course notes|day wise notes|hands on resources|"
+                         r"checklist (helps|for)|comparison of|books (related|about|on))\b")
+_MORE_LEARN_NAME = re.compile(r"(^|[-_.])(cheat-?sheets?|study-guide|books)([-_.]|$)")
 _NOISE_TOPICS = {"awesome", "awesome-list", "awesome-lists", "list", "tutorial", "tutorials", "course",
                  "courses", "learning", "education-material", "interview-questions", "interview-preparation",
                  "leetcode", "cheatsheet", "cheatsheets", "boilerplate", "starter-kit", "starter-template",
@@ -71,7 +97,8 @@ def intake_reasons(name, full_name, description, topics) -> list[str]:
     """Why a repository is not software a person would run, from its own name, description and topics.
 
     Empty when there is no such reason. Codes: curated_list, learning_material, template_or_example,
-    personal_configuration, prompt_pack."""
+    personal_configuration, prompt_pack (prompts and agent skill packs), personal_site, research_code,
+    documentation."""
     repo = str(full_name or "").split("/")[-1].lower()
     nm = str(name or "").lower()
     desc = _norm(description)
@@ -89,8 +116,18 @@ def intake_reasons(name, full_name, description, topics) -> list[str]:
         out.append("template_or_example")
     if _PERSONAL.search(desc) or _PERSONAL_NAME.search(repo) or "dotfiles" in tops:
         out.append("personal_configuration")
-    if _PROMPTS.search(desc) or tops & {"prompts"}:
+    if (_PROMPTS.search(desc) and not _SKILL_SOFTWARE.search(desc)) or _SKILL_NAME.search(repo) or tops & _PROMPT_TOPICS:
         out.append("prompt_pack")
+    if _SITE.search(desc) or _SITE_NAME.search(repo):
+        out.append("personal_site")
+    if _RESEARCH.search(desc):
+        out.append("research_code")
+    if _DOCS.search(desc):  # a repository named docs or *-wiki is as often a document or wiki product
+        out.append("documentation")
+    if "template_or_example" not in out and _MORE_TEMPLATE.search(desc):
+        out.append("template_or_example")
+    if "learning_material" not in out and (_MORE_LEARN.search(desc) or _MORE_LEARN_NAME.search(repo)):
+        out.append("learning_material")
     return out
 
 
@@ -103,7 +140,11 @@ _A_MATERIAL = re.compile(r"(^| )(a |an |the )?(list|collection|compilation|index
                          r"\bguide to\b|\blearn (how|to)\b|\bstep by step\b|\bbootcamp\b|\binterview (questions|prep)|"
                          r"\bleetcode\b|\bmy (home ?lab|dotfiles|setup|config)\b|\bdotfiles\b|\bboilerplate\b|"
                          r"\bstarter( kit| template)?\b|\btemplate for\b|\bexamples? (for|of)\b|\bcheat ?sheets?\b|"
-                         r"\blectures?\b|\bclass project\b|\bassignments?\b|\bhomework\b")
+                         r"\blectures?\b|\bclass project\b|\bassignments?\b|\bhomework\b|"
+                         r"\bportfolio\b(?! (management|tracker|tracking|manager|analytics|optimi))|"
+                         r"\bpersonal (web ?site|blog|page)\b|\bpaper\b|\bconference\b|\bdocs? (site|repo)|"
+                         r"\bwiki pages\b|\b(skills|prompts) for\b|\bstudy\b|\bexam\b|\bsample\b|\bdemo\b|"
+                         r"\btemplate\b|\bnotes\b")
 _A_INTEGRATION = re.compile(r"(mcp server|model context protocol|sdk (for|to)|bot for|plugin for|extension for|"
                             r"integration (for|with)|integrates with|connector (for|to)|client (for|library)|"
                             r"wrapper (for|around)|library for|bindings for|api for)")

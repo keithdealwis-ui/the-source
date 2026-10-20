@@ -988,12 +988,19 @@ _NOT_PRODUCT_NAME = re.compile(r"^(awesome[-_.]|.*[-_.](templates?|boilerplate|s
                                r"cheat[-_]?sheets?|prompts?|dotfiles)$)")
 
 
-def not_a_product(name, full_name, topics):
-    """True for a curated list, template collection, boilerplate, tutorial or prompt pack: material about a kind
-    of software, not software that replaces a product (KEI-919 S1.4)."""
+# KEI-923: the same material, said in the description when the name and topics read like a product.
+_NOT_PRODUCT_DESC = re.compile(r"^(an? )?(curated |awesome )*(list|collection|compilation) of\b|"
+                               r"\b(cheat ?sheets?|study notes|interview questions)\b|"
+                               r"\btactics tech\w* (and )?procedures\b")
+
+
+def not_a_product(name, full_name, topics, description=None):
+    """True for a curated list, template collection, boilerplate, tutorial, notes or prompt pack: material about a
+    kind of software, not software that replaces a product (KEI-919 S1.4)."""
     repo = str(full_name or "").split("/")[-1].lower()
     return bool(_NOT_PRODUCT_NAME.match(repo) or _NOT_PRODUCT_NAME.match(str(name or "").lower())
-                or {str(t).lower() for t in topics or []} & _NOT_PRODUCT_TOPICS)
+                or {str(t).lower() for t in topics or []} & _NOT_PRODUCT_TOPICS
+                or _NOT_PRODUCT_DESC.search(_norm(description)))
 
 
 def claims_alternative(description, topics, product: str) -> bool:
@@ -1011,7 +1018,8 @@ def claims_alternative(description, topics, product: str) -> bool:
 
 # KEI-930: a developer library or a client for another service is not a product that replaces one (the KEI-919
 # audit's definition, scripts/kei919_golden.py AUDIT_DESC): kept out of discovery unless it claims the alternative.
-_LIBRARY_OR_CLIENT = re.compile(r"\b(library|framework|bindings|sdk|client|wrapper|integration) for\b|"
+_LIBRARY_OR_CLIENT = re.compile(r"\b(library|framework|bindings|sdk|client|wrapper|integration|plugin|extension|"
+                                r"add on|addon|connector) for\b|"
                                 r"\b(python|java|jvm|net|php|go|golang|rust|node js|nodejs|javascript|typescript|ruby|"
                                 r"c|cpp|swift|kotlin|dart) library\b|\bintegrates with\b")
 
@@ -1464,7 +1472,7 @@ def _discovery_candidates(layer, server, query, limit, licences=None, family=Non
         why_not = ("weak_match" if not strong
                    else "integration_not_replacement"
                    if uses or integration_kind(c["name"], c["full_name"], c["description"], c["topics"], products, alt)
-                   else "not_a_product" if not_a_product(c["name"], c["full_name"], c["topics"])
+                   else "not_a_product" if not_a_product(c["name"], c["full_name"], c["topics"], c["description"])
                    else "library_or_client" if not alt and _LIBRARY_OR_CLIENT.search(" ".join(_norm(c["description"]).split()))
                    else "fork_of_corpus_project" if (c.get("identity") or {}).get("fork_parent_in_corpus")
                    else "mirror" if (c.get("identity") or {}).get("mirror")

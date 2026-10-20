@@ -167,3 +167,26 @@ def test_harvest_keeps_each_source_and_resume_reuses_it(tmp_path, monkeypatch):
     m = E.harvest(AS_OF, NoHttp(), tmp_path, only=["awesome_lists"], resume=True)
     assert len(calls) == 1 and m["sources"]["awesome_lists"]["resumed"] is True
     assert m["counts"]["addresses"] == 1
+
+
+@pytest.mark.parametrize("args,codes", [
+    (("portfolio", "o/portfolio", "A developer portfolio built with Next.js", []), ["personal_site"]),
+    (("o.github.io", "o/o.github.io", "Personal website", []), ["personal_site"]),
+    (("patch-netvlad", "o/patch-netvlad", 'Code for the CVPR2021 paper "Patch-NetVLAD"', []), ["research_code"]),
+    (("docs", "greenbone/docs", "Documentation for the Greenbone Community Edition", []), ["documentation"]),
+    (("lenny-skills", "o/lenny-skills", "86 product management skills from Lenny's Podcast for Claude Code", []),
+     ["prompt_pack"]),
+    (("sb-admin", "o/sb-admin", "An admin dashboard template with dark mode", []), ["template_or_example"]),
+    (("sec", "o/sec", "CompTIA Security+ study guide with exam objectives", []), ["learning_material"]),
+    # products the desk-review rules must not catch
+    (("skillhub", "iflytek/skillhub", "Self-hosted, open-source agent skill registry for enterprises", []), []),
+    (("homepage", "gethomepage/homepage", "A highly customizable homepage (or startpage / application dashboard)", []),
+     []),
+    (("docs", "sismics/docs", "Lightweight document management system", []), []),
+    (("wiki", "requarks/wiki", "Wiki.js | Next Generation Open Source Wiki", []), []),
+    (("PDFMathTranslate", "o/PDFMathTranslate", "[EMNLP 2025 Demo] PDF scientific paper translation", []), []),
+    (("capnweb", "cloudflare/capnweb", "JavaScript-native, low-boilerplate, object-capability RPC system", []), []),
+    (("ghostfolio", "o/ghostfolio", "Open source wealth management software for portfolio tracking", []), []),
+])
+def test_desk_review_intake_classes(args, codes):
+    assert N.intake_reasons(*args) == codes

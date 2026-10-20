@@ -60,6 +60,17 @@ class TestIntegrationKind(unittest.TestCase):
         self.assertTrue(M.not_a_product("crm-starter", "x/crm-starter", []))
         self.assertTrue(M.not_a_product("thing", "x/thing", ["awesome-list"]))
         self.assertFalse(M.not_a_product("espocrm", "espocrm/espocrm", ["crm"]))
+        # KEI-923: material said in the description; a learning platform is still a product
+        self.assertTrue(M.not_a_product("siem", "x/siem", ["siem", "blue"], "SIEM Tactics, Techiques, and Procedures"))
+        self.assertTrue(M.not_a_product("k8s", "x/k8s", [], "Kubernetes cheat sheet"))
+        self.assertFalse(M.not_a_product("moodle", "moodle/moodle", [], "The world's open source learning platform, "
+                                                                          "for online courses"))
+
+    def test_add_ons_are_not_discovery_candidates(self):
+        for d in ("Tailscale browser extension for Chrome", "Tunneled network connector for Pangolin",
+                  "Mac DSLR webcam plugin for using DSLRs for video conferencing"):
+            self.assertTrue(M._LIBRARY_OR_CLIENT.search(M._norm(d)), d)
+        self.assertFalse(M._LIBRARY_OR_CLIENT.search(M._norm("Open source video conferencing with plugins")))
 
 
 class TestMatchStrength(unittest.TestCase):
