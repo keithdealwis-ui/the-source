@@ -368,6 +368,10 @@ def admit(as_of: datetime | None = None, max_admit: int | None = None) -> dict:
                     shutil.rmtree(d, ignore_errors=True)
                     shutil.copytree(saved[name], d)
             raise
+    # The run's own report is the lineage between the frontier and the corpus: what each route admitted, what
+    # was refused and why, and the caps it ran under.
+    if res.get("corpus_added"):
+        common.write_json(OUT / "runs" / (res["membership_as_of"].replace(":", "") + ".json"), res)
     return res
 
 
