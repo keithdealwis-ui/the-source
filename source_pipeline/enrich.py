@@ -7,6 +7,7 @@ snapshot, so a run can be repeated offline and reproduce the same dataset.
 """
 from __future__ import annotations
 
+import http.client
 import json
 import time
 import urllib.error
@@ -92,7 +93,8 @@ class Http:
                     time.sleep(min(wait, 1800))
                     delay *= 2
                     continue
-            except (urllib.error.URLError, TimeoutError, ConnectionError, json.JSONDecodeError):
+            except (urllib.error.URLError, TimeoutError, ConnectionError, json.JSONDecodeError,
+                    http.client.HTTPException):  # a truncated body (IncompleteRead) is transient too
                 status = 0
                 if attempt < tries - 1:
                     time.sleep(delay)

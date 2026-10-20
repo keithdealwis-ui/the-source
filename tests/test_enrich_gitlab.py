@@ -117,3 +117,34 @@ def test_cloudflare_challenge_is_a_failure_without_retries(monkeypatch):
     assert (st, body) == (403, None)
     assert len(attempts) == 1
     assert http.failures == [f"403 {API}/repository/commits"]
+
+
+def test_a_truncated_body_is_retried(monkeypatch):
+    """IncompleteRead (a connection dropped mid-body) is transient: retried, not raised (KEI-923)."""
+    import http.client
+
+    attempts = []
+
+    class Resp:
+        status = 200
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def read(self):
+            if len(attempts) == 1:
+                raise http.client.IncompleteRead(b"", 10)
+            return b'{"ok": true}'
+
+    def flaky(req, timeout=60):
+        attempts.append(req.full_url)
+        return Resp()
+
+    monkeypatch.setattr(enrich.urllib.request, "urlopen", flaky)
+    monkeypatch.setattr(enrich.common, "refuse_network", lambda url: None)
+    monkeypatch.setattr(enrich.time, "sleep", lambda s: None)
+    assert enrich.Http().call("https://api.github.com/graphql") == (200, {"ok": True})
+    assert len(attempts) == 2
