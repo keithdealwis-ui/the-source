@@ -29,3 +29,6 @@ config/discover_seeds.md
 
 # KEI-922 f2: raw Google Ads Keyword Planner volumes are held privately, never committed
 data/catalogue/demand/
+# KEI-923: per-source harvest checkpoints; data/expansion/frontier.jsonl is the record
+data/expansion/sources/
+data/expansion/sources.json

@@ -29,6 +29,9 @@ CONFIG = "expansion.yaml"
 OUT = common.ROOT / "data" / "expansion"
 SCHEMA = "the-source.expansion/1"
 SEARCH_PAUSE_S = 2.1  # GitHub search allows 30 requests a minute with a token
+# The list and chart sources are extras: a rate-limited one gives up after two tries rather than
+# sleeping out five long backoffs (a stall of an hour or more, 2026-10-20). Its errors are recorded.
+AUX_TRIES = 2
 SEARCH_CAP = 1000     # results GitHub search will page through for one query
 
 
@@ -133,7 +136,7 @@ def _artifacthub(http, src: dict, family: str) -> tuple[list[dict], list[str], l
             url = "https://artifacthub.io/api/v1/packages/search?" + urllib.parse.urlencode(
                 {"kind": kind, "sort": "stars", "limit": size, "offset": offset})
             queries.append(url)
-            st, doc = http.call(url)
+            st, doc = http.call(url, tries=AUX_TRIES)
             if st != 200 or not isinstance(doc, dict):
                 errors.append(f"artifacthub kind {kind} offset {offset}: http {st}")
                 break
@@ -143,7 +146,7 @@ def _artifacthub(http, src: dict, family: str) -> tuple[list[dict], list[str], l
                 break
             offset += size
         for pid in ids[: int(src["max_packages_per_kind"])]:
-            st, d = http.call(f"https://artifacthub.io/api/v1/packages/{pid}")
+            st, d = http.call(f"https://artifacthub.io/api/v1/packages/{pid}", tries=AUX_TRIES)
             if st != 200 or not isinstance(d, dict):
                 errors.append(f"artifacthub package {pid}: http {st}")
                 continue
@@ -159,13 +162,13 @@ def _awesome(http, src: dict, family: str) -> tuple[list[dict], list[str], list[
     rows, queries, errors = [], [], []
     for list_url in src["lists"]:
         name = "/".join(urllib.parse.urlparse(list_url).path.strip("/").split("/")[:2]).lower()
-        st, meta = http.call("https://awesome.ecosyste.ms/api/v1/lists/lookup?" + urllib.parse.urlencode({"url": list_url}))
+        st, meta = http.call("https://awesome.ecosyste.ms/api/v1/lists/lookup?" + urllib.parse.urlencode({"url": list_url}), tries=AUX_TRIES)
         if st != 200 or not isinstance(meta, dict) or not meta.get("projects_url"):
             errors.append(f"awesome {name}: lookup http {st}")
             continue
         queries.append(meta["projects_url"])
         for page in range(1, int(src.get("max_pages", 40)) + 1):
-            st, got = http.call(meta["projects_url"] + f"?per_page=100&page={page}")
+            st, got = http.call(meta["projects_url"] + f"?per_page=100&page={page}", tries=AUX_TRIES)
             if st != 200 or not isinstance(got, list):
                 errors.append(f"awesome {name}: page {page} http {st}")
                 break
@@ -225,7 +228,8 @@ def merge(rows: list[dict]) -> list[dict]:
     return out
 
 
-def harvest(as_of: datetime | None = None, http=None, out: Path = OUT, only: list[str] | None = None) -> dict:
+def harvest(as_of: datetime | None = None, http=None, out: Path = OUT, only: list[str] | None = None,
+            resume: bool = False) -> dict:
     """Run every declared source (network) and record the frontier. Returns the manifest."""
     from .discover import log
     from .enrich import Http
@@ -236,8 +240,17 @@ def harvest(as_of: datetime | None = None, http=None, out: Path = OUT, only: lis
     search = _Search(http)
     started = time.time()
     rows, sources = [], {}
+    part = out / "sources"
+    part.mkdir(parents=True, exist_ok=True)
+    done = common.read_json(out / "sources.json") if (out / "sources.json").exists() else {}
     for name, src in cfg["sources"].items():
         if only and name not in only:
+            continue
+        if resume and (part / f"{name}.jsonl").exists():
+            got = common.read_jsonl(part / f"{name}.jsonl")
+            rows += got
+            sources[name] = {**done.get(name, {"family": src["family"], "status": "ok"}), "resumed": True}
+            log(f"expansion: {name} resumed {len(got)} rows from the last harvest")
             continue
         t0, calls0, family = time.time(), http.calls, src["family"]
         errors: list[str] = []
@@ -257,11 +270,15 @@ def harvest(as_of: datetime | None = None, http=None, out: Path = OUT, only: lis
         except Exception as exc:  # a source failure is recorded, never fatal
             got, queries, errors = [], [], [f"{name}: {type(exc).__name__}: {exc}"]
         rows += got
+        # Each source's rows are kept as soon as it ends, so a later stall cannot cost them;
+        # `resume` reuses them instead of asking the host again.
+        common.write_jsonl(part / f"{name}.jsonl", got)
         sources[name] = {"family": family, "status": "failed" if errors and not got else "degraded" if errors else "ok",
                          "returned": len(got), "unique": len({r["key"] for r in got}), "queries": len(queries),
                          "requests": http.calls - calls0, "runtime_s": round(time.time() - t0, 1),
                          "errors": errors[:50], "error_count": len(errors)}
         log(f"expansion: {name} {sources[name]['status']} {len(got)} rows, {sources[name]['requests']} requests")
+        common.write_json(out / "sources.json", {**done, **sources})
     frontier = merge(rows)
     if only and (out / "frontier.jsonl").exists():  # a partial harvest updates its own sources only
         keep = [r for r in common.read_jsonl(out / "frontier.jsonl")
@@ -351,10 +368,11 @@ def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(prog="source_pipeline")
     ap.add_argument("command", choices=["corpus-expand-harvest", "corpus-expand-admit"])
     ap.add_argument("--only", action="append", help="corpus-expand-harvest: run only this source (repeatable)")
+    ap.add_argument("--resume", action="store_true", help="corpus-expand-harvest: reuse sources the last harvest finished")
     ap.add_argument("--max-admit", type=int, help="corpus-expand-admit: admit at most this many in this run")
     a = ap.parse_args(argv)
     if a.command == "corpus-expand-harvest":
-        m = harvest(only=a.only)
+        m = harvest(only=a.only, resume=a.resume)
         print(json.dumps({k: m[k] for k in ("as_of", "counts", "cost")}, indent=2))
         return 0
     res = admit(max_admit=a.max_admit)

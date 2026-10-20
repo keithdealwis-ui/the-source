@@ -145,3 +145,24 @@ def test_noise_check_uses_the_wider_of_threshold_and_baseline():
     assert N.check(res(0.09), None, cfg) == []
     assert N.check(res(0.12), None, cfg)                                   # no baseline: the threshold
     assert N.check(res(0.30, [{"saas": "s", "id": "b"}]), base, cfg)       # a newly flagged recommendation
+
+
+def test_harvest_keeps_each_source_and_resume_reuses_it(tmp_path, monkeypatch):
+    calls = []
+
+    def fake_awesome(http, src, family):
+        calls.append(family)
+        return [{"key": "github.com/a/b", "source": f"{family}:x", "host_repo_id": None, "stars": None,
+                 "historical_candidate": False}], ["q"], []
+
+    monkeypatch.setattr(E, "_awesome", fake_awesome)
+
+    class NoHttp:
+        calls = 0
+        failures = []
+
+    E.harvest(AS_OF, NoHttp(), tmp_path, only=["awesome_lists"])
+    assert (tmp_path / "sources" / "awesome_lists.jsonl").exists() and len(calls) == 1
+    m = E.harvest(AS_OF, NoHttp(), tmp_path, only=["awesome_lists"], resume=True)
+    assert len(calls) == 1 and m["sources"]["awesome_lists"]["resumed"] is True
+    assert m["counts"]["addresses"] == 1
