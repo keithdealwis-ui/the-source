@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-18T02:47:20Z",
+  "as_of": "2026-10-20T12:54:02Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -13,7 +13,7 @@
         "entries_with_saas_claim": 73,
         "harvested": true,
         "licence_file_sha256": "c76f488fd52bf3c9bac423df8456156f997835d1bc012f4786d07c1208aad409",
-        "pinned_commit": "0b9dacd632f128922862f70e1e09011c8611b48c",
+        "pinned_commit": "e6b7941038edf3507a1e14866c2f84553ddfc96b",
         "relationship_claims": 80,
         "unparseable_files": 0
       },
@@ -23,7 +23,7 @@
         "entries_with_saas_claim": 87,
         "harvested": true,
         "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
-        "pinned_commit": "8cf2209828f0ee185109a98808010534bd78517e",
+        "pinned_commit": "f64d7119a90de19fa4e530233253dbe3fc271883",
         "relationship_claims": 148,
         "unparseable_files": 0
       },
@@ -124,13 +124,13 @@
   "lanes": {
     "oss_projects": {
       "licence_exception": 14,
-      "recommendable": 811,
-      "rejected": 112
+      "recommendable": 820,
+      "rejected": 103
     },
     "relationships": {
       "licence_exception": 28,
-      "recommendable": 1332,
-      "rejected": 1675
+      "recommendable": 1345,
+      "rejected": 1662
     }
   },
   "launch": {
@@ -143,10 +143,8 @@
       "adobe-analytics",
       "adobe-experience-manager",
       "adobe-firefly",
-      "agora",
       "ahrefs",
       "amazon-cognito",
-      "amazon-dynamodb",
       "amazon-photos",
       "amazon-redshift",
       "amazon-ses",
@@ -166,7 +164,6 @@
       "bolt-new",
       "box",
       "braze",
-      "bugsnag",
       "campaign-monitor",
       "canva",
       "capcut",
@@ -195,7 +192,6 @@
       "dashlane",
       "datocms",
       "deepl",
-      "deepseek-chat",
       "descript",
       "diffbot",
       "digitalocean-app-platform",
@@ -246,14 +242,12 @@
       "icloud-photos",
       "ilovepdf",
       "inoreader",
-      "instatus",
       "iterable",
       "jamf",
       "jumpcloud",
       "keap",
       "keeper",
       "klaviyo",
-      "landbot",
       "lastpass",
       "later",
       "leonardo-ai",
@@ -298,8 +292,6 @@
       "perplexity",
       "photopea",
       "pinecone",
-      "pitch",
-      "poeditor",
       "postmark",
       "prezi",
       "prismic",
@@ -318,7 +310,6 @@
       "rippling",
       "roam-research",
       "rocket-money",
-      "rollbar",
       "runway",
       "sage-intacct",
       "salesforce-marketing-cloud",
@@ -326,7 +317,6 @@
       "scrapingbee",
       "semrush",
       "shortcut",
-      "slite",
       "smallpdf",
       "snyk",
       "splashtop",
@@ -345,12 +335,9 @@
       "tigergraph",
       "tinyurl",
       "trakt",
-      "transifex",
-      "travis-ci",
       "tray-io",
       "upstash",
       "vimeo",
-      "visualping",
       "voiceflow",
       "wave",
       "webex",
@@ -359,7 +346,6 @@
       "whatsapp",
       "whimsical",
       "wistia",
-      "wordpress-com",
       "workday",
       "workos",
       "wrike",
@@ -371,20 +357,20 @@
       "zoho-desk",
       "zuora"
     ],
-    "catalogue_served_relationships": 685,
-    "oss_distinct_products": 454,
-    "oss_projects": 455,
+    "catalogue_served_relationships": 700,
+    "oss_distinct_products": 455,
+    "oss_projects": 456,
     "preserve_served": {
-      "kept": 385,
+      "kept": 365,
       "not_kept": 0,
-      "served_before": 385
+      "served_before": 365
     },
-    "relationships": 1070,
-    "relationships_corroborated_by_2plus_sources": 181,
+    "relationships": 1065,
+    "relationships_corroborated_by_2plus_sources": 182,
     "relationships_share_alike_only": 0,
     "saas_added_beyond_floor": 18,
-    "saas_named_by_a_single_source": 105,
-    "saas_products": 352,
+    "saas_named_by_a_single_source": 98,
+    "saas_products": 338,
     "saas_target_decision_ref": "dr-KEI-805-507e4f70",
     "saas_target_is": "floor",
     "targets": {
@@ -431,13 +417,13 @@
     "by_code": {
       "archived": 18,
       "host_unverifiable": 3,
-      "identity_unverified": 6,
+      "identity_unverified": 5,
       "licence_not_open": 28,
       "not_a_replacement": 1495,
       "not_a_repository": 21,
       "not_found": 13,
       "saas_not_in_catalogue": 152,
-      "unmaintained": 58
+      "unmaintained": 50
     },
     "by_reason": {
       "eligibility:archived": 5,
@@ -448,9 +434,9 @@
       "eligibility:no_recognised_open_source_licence;repository_identity_changed_since_listed": 1,
       "eligibility:no_recognised_open_source_licence;stale_no_meaningful_activity_12_months": 14,
       "eligibility:no_recognised_open_source_licence;stale_no_meaningful_activity_12_months;repository_identity_changed_since_listed": 1,
-      "eligibility:repository_identity_changed_since_listed": 4,
+      "eligibility:repository_identity_changed_since_listed": 3,
       "eligibility:repository_not_found": 13,
-      "eligibility:stale_no_meaningful_activity_12_months": 58,
+      "eligibility:stale_no_meaningful_activity_12_months": 50,
       "normalise:repo_url_not_a_repository": 21,
       "normalise:saas_not_in_catalogue": 152,
       "plausibility_review:AI agent skill for 3D landing pages; not a landing page builder": 2,
@@ -939,7 +925,7 @@
       "plausibility_review:whiteboard; not an interface design tool": 1,
       "plausibility_review:workflow engine programmed in code; not a no-code automation product": 1
     },
-    "total": 1794
+    "total": 1785
   },
   "review_queue": {
     "open": 9,
@@ -949,16 +935,16 @@
   "schema_version": "1.0.0",
   "verified": {
     "maintenance_status": {
-      "active": 757,
-      "maintained": 78,
-      "stale": 86,
+      "active": 763,
+      "maintained": 80,
+      "stale": 78,
       "unverified": 16
     },
-    "oss_recommendable": 811,
-    "oss_rejected": 126,
+    "oss_recommendable": 820,
+    "oss_rejected": 117,
     "relationships_flagged_licence_exception": 28,
-    "relationships_rejected": 1675,
-    "relationships_validated": 1332,
+    "relationships_rejected": 1662,
+    "relationships_validated": 1345,
     "saas_with_validated_alternatives": 432
   }
 }

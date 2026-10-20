@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "3275503f8976b0b5",
+  "dataset_version": "edab459c7b41c1a3",
   "last_checked": {
-    "newest": "2026-10-18T02:47:20Z",
-    "oldest": "2026-10-18T02:47:20Z"
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
   },
   "more_available": 3,
   "provenance": {
@@ -46,7 +46,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-10-18T02:47:20Z"
+          "validated_as_of": "2026-10-20T12:54:02Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -83,7 +83,7 @@
         "tag": "2026-10-08.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-18T02:47:20Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Authgear",
       "note": {
@@ -118,7 +118,98 @@
         "diegoleme",
         "fossalt"
       ],
-      "stars": 2112
+      "stars": 2119
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Hanko.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L339",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 93.8,
+            "ease_of_adoption": 78.4,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/teamhanko/hanko",
+      "last_meaningful_activity_at": "2026-10-05T15:04:06Z",
+      "latest_release": {
+        "published_at": "2026-10-01T12:51:22Z",
+        "tag": "backend/v3.1.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Hanko",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity."
+      },
+      "oss_id": "github.com/teamhanko/hanko",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 86.3,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 92.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 90.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/teamhanko/hanko",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital",
+        "opensaasdirectory"
+      ],
+      "stars": 9043
     },
     {
       "evidence": {
@@ -158,7 +249,7 @@
             },
             {
               "locator": "data/tools.json#slug=keycloak;named_by=auth0,okta",
-              "source_commit": "0b9dacd632f128922862f70e1e09011c8611b48c",
+              "source_commit": "e6b7941038edf3507a1e14866c2f84553ddfc96b",
               "source_id": "altstack"
             },
             {
@@ -167,7 +258,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-10-18T02:47:20Z"
+          "validated_as_of": "2026-10-20T12:54:02Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -197,7 +288,7 @@
         "tag": "26.8.1"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-18T02:47:20Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Keycloak",
       "note": {
@@ -216,7 +307,7 @@
         "score": 95.2,
         "trajectory": "Stable"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "confidence": 95.0,
         "evaluated_at": "2026-10-14T01:06:00Z",
@@ -238,7 +329,7 @@
         "altstack",
         "fossalt"
       ],
-      "stars": 37416
+      "stars": 37442
     },
     {
       "evidence": {
@@ -252,7 +343,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-10-18T02:47:20Z"
+          "validated_as_of": "2026-10-20T12:54:02Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -287,7 +378,7 @@
         "tag": "v26.2.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-18T02:47:20Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Ory",
       "note": {
@@ -306,7 +397,7 @@
         "score": 89.1,
         "trajectory": "Stable"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "confidence": 86.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
@@ -340,7 +431,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-10-18T02:47:20Z"
+          "validated_as_of": "2026-10-20T12:54:02Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -375,7 +466,7 @@
         "tag": "v1.45.0"
       },
       "licence_spdx": "MPL-2.0",
-      "live_checked_at": "2026-10-18T02:47:20Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Logto",
       "note": {
@@ -396,7 +487,7 @@
         "score": 91.4,
         "trajectory": "Rising"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "confidence": 90.5,
         "evaluated_at": "2026-10-14T01:06:00Z",
@@ -412,103 +503,7 @@
         "btwso",
         "fossalt"
       ],
-      "stars": 14689
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": true,
-          "evidence_class": "listed",
-          "provenance": [
-            {
-              "locator": "README.md#L658",
-              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
-              "source_id": "solvohq"
-            },
-            {
-              "locator": "submissions/Zitadel.yaml",
-              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
-              "source_id": "runacapital"
-            },
-            {
-              "locator": "README.md#L323",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
-              "source_id": "opensaasdirectory"
-            }
-          ],
-          "validated_as_of": "2026-10-18T02:47:20Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 43.8,
-            "ease_of_adoption": 60.0,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 100.0,
-            "integrations_extensibility": 100.0,
-            "migration_friction": 33.3,
-            "production_commercial_readiness": 100.0
-          },
-          "evidence_families": [
-            "api",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "sso",
-            "support",
-            "webhook"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/zitadel/zitadel",
-      "last_meaningful_activity_at": "2026-10-15T09:40:41Z",
-      "latest_release": {
-        "published_at": "2026-10-15T09:40:41Z",
-        "tag": "v4.19.5"
-      },
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-18T02:47:20Z",
-      "maintenance_status": "active",
-      "name": "Zitadel",
-      "note": {
-        "gaps": [
-          "migration path"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "feature parity"
-        ],
-        "text": "Strongest on core use-case coverage and feature parity; weakest on migration path."
-      },
-      "oss_id": "github.com/zitadel/zitadel",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 96.6,
-        "score": 89.5,
-        "trajectory": "Stable"
-      },
-      "rank": 5,
-      "replacement_fit": {
-        "confidence": 95.0,
-        "evaluated_at": "2026-10-16T01:10:28Z",
-        "score": 79.7,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/zitadel/zitadel",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "solvohq",
-        "runacapital",
-        "opensaasdirectory"
-      ],
-      "stars": 15337
+      "stars": 14731
     }
   ],
   "saas": {

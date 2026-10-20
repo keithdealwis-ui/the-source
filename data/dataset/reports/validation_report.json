@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-18T02:47:20Z",
+  "as_of": "2026-10-20T12:54:02Z",
   "checks": [
     {
       "criterion": 1,
@@ -51,13 +51,13 @@
       "observed": {
         "archived": 18,
         "host_unverifiable": 3,
-        "identity_unverified": 6,
+        "identity_unverified": 5,
         "licence_not_open": 28,
         "not_a_replacement": 1495,
         "not_a_repository": 21,
         "not_found": 13,
         "saas_not_in_catalogue": 152,
-        "unmaintained": 58
+        "unmaintained": 50
       },
       "ok": true
     },
@@ -209,7 +209,7 @@
       "failures": 0,
       "id": "activity.recommended_within_12_months",
       "kind": "assertion",
-      "observed": 811,
+      "observed": 820,
       "ok": true
     },
     {
@@ -219,7 +219,7 @@
       "failures": 0,
       "id": "activity.evidence_is_not_docs_only",
       "kind": "assertion",
-      "observed": 2834,
+      "observed": 3016,
       "ok": true
     },
     {
@@ -249,7 +249,7 @@
       "failures": 0,
       "id": "licence.recommended_have_recognised_licence",
       "kind": "assertion",
-      "observed": 811,
+      "observed": 820,
       "ok": true
     },
     {
@@ -305,13 +305,13 @@
       "observed": {
         "oss_projects": {
           "licence_exception": 14,
-          "recommendable": 811,
-          "rejected": 112
+          "recommendable": 820,
+          "rejected": 103
         },
         "relationships": {
           "licence_exception": 28,
-          "recommendable": 1332,
-          "rejected": 1675
+          "recommendable": 1345,
+          "rejected": 1662
         }
       },
       "ok": true
@@ -334,9 +334,9 @@
       "id": "maintenance.classification_matches_definition",
       "kind": "assertion",
       "observed": {
-        "active": 757,
-        "maintained": 78,
-        "stale": 86,
+        "active": 763,
+        "maintained": 80,
+        "stale": 78,
         "unverified": 16
       },
       "ok": true
@@ -368,7 +368,7 @@
       "failures": 0,
       "id": "strategy.every_rejection_is_recorded",
       "kind": "assertion",
-      "observed": 126,
+      "observed": 117,
       "ok": true
     },
     {
@@ -422,7 +422,7 @@
         "publication_status": "public",
         "share_alike_only_relationships_all_lanes": 70,
         "share_alike_only_relationships_in_launch": 0,
-        "share_alike_only_relationships_validated": 60,
+        "share_alike_only_relationships_validated": 61,
         "withheld_from_default_export": 0
       },
       "ok": true
@@ -434,7 +434,7 @@
       "failures": 0,
       "id": "dedupe.one_repository_per_product_per_saas",
       "kind": "assertion",
-      "observed": 1070,
+      "observed": 1065,
       "ok": true
     },
     {
@@ -444,7 +444,7 @@
       "failures": 0,
       "id": "launch.only_validated_edges",
       "kind": "assertion",
-      "observed": 1070,
+      "observed": 1065,
       "ok": true
     },
     {
@@ -466,7 +466,7 @@
       "kind": "assertion",
       "observed": {
         "floor": 100,
-        "launch_saas": 352,
+        "launch_saas": 338,
         "mode": "floor"
       },
       "ok": true
@@ -479,10 +479,10 @@
       "id": "launch.targets",
       "kind": "assertion",
       "observed": {
-        "oss_distinct_products": 454,
-        "oss_projects": 455,
-        "relationships": 1070,
-        "saas_products": 352
+        "oss_distinct_products": 455,
+        "oss_projects": 456,
+        "relationships": 1065,
+        "saas_products": 338
       },
       "ok": true
     }
@@ -505,14 +505,14 @@
       "kind": "observation",
       "observed": {
         "examples": [
-          "github.com/nomic-ai/gpt4all (77357 stars: stale_no_meaningful_activity_12_months)",
-          "github.com/minio/minio (61319 stars: archived)",
-          "github.com/maybe-finance/maybe (54215 stars: archived,stale_no_meaningful_activity_12_months)",
-          "github.com/harness/harness (38561 stars: repository_identity_changed_since_listed)",
-          "github.com/laion-ai/open-assistant (37372 stars: stale_no_meaningful_activity_12_months)"
+          "github.com/nomic-ai/gpt4all (77354 stars: stale_no_meaningful_activity_12_months)",
+          "github.com/minio/minio (61313 stars: archived)",
+          "github.com/maybe-finance/maybe (54213 stars: archived,stale_no_meaningful_activity_12_months)",
+          "github.com/harness/harness (38616 stars: repository_identity_changed_since_listed)",
+          "github.com/laion-ai/open-assistant (37370 stars: stale_no_meaningful_activity_12_months)"
         ],
-        "launch_projects_under_500_stars": 38,
-        "rejected_with_10k_plus_stars": 19
+        "launch_projects_under_500_stars": 39,
+        "rejected_with_10k_plus_stars": 18
       }
     },
     {
@@ -523,10 +523,10 @@
       "observed": {
         "entries_read": 2874,
         "oss_candidates": 937,
-        "oss_recommendable": 811,
-        "rejections_recorded": 1794,
+        "oss_recommendable": 820,
+        "rejections_recorded": 1785,
         "relationship_claims_read": 3686,
-        "relationships_validated": 1332
+        "relationships_validated": 1345
       }
     }
   ],

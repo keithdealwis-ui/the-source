@@ -3,16 +3,16 @@
   "catalogue": {
     "audience": "b2c",
     "rank": 59,
-    "reason": "4 recommendations passed the full evaluation",
+    "reason": "5 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "3275503f8976b0b5",
+  "dataset_version": "edab459c7b41c1a3",
   "last_checked": {
-    "newest": "2026-10-18T02:47:20Z",
-    "oldest": "2026-10-18T02:47:20Z"
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
   },
   "more_available": 0,
   "provenance": {
@@ -35,7 +35,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-10-18T02:47:20Z"
+          "validated_as_of": "2026-10-20T12:54:02Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -67,7 +67,7 @@
         "tag": "v26.10.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-18T02:47:20Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Actual Budget",
       "note": {
@@ -103,7 +103,7 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 29578
+      "stars": 29628
     },
     {
       "evidence": {
@@ -117,7 +117,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-10-18T02:47:20Z"
+          "validated_as_of": "2026-10-20T12:54:02Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -144,13 +144,13 @@
         }
       },
       "github_url": "https://github.com/firefly-iii/firefly-iii",
-      "last_meaningful_activity_at": "2026-10-11T19:22:50Z",
+      "last_meaningful_activity_at": "2026-10-18T09:30:54Z",
       "latest_release": {
-        "published_at": "2026-10-11T19:22:50Z",
-        "tag": "develop-20261011.1"
+        "published_at": "2026-10-18T09:30:54Z",
+        "tag": "develop-20261018.1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-18T02:47:20Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Firefly III",
       "note": {
@@ -185,7 +185,7 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 24922
+      "stars": 24946
     },
     {
       "evidence": {
@@ -199,7 +199,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-18T02:47:20Z"
+          "validated_as_of": "2026-10-20T12:54:02Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -228,13 +228,13 @@
         }
       },
       "github_url": "https://github.com/mayswind/ezbookkeeping",
-      "last_meaningful_activity_at": "2026-10-15T15:47:22Z",
+      "last_meaningful_activity_at": "2026-10-19T03:47:17Z",
       "latest_release": {
         "published_at": "2026-10-15T15:47:22Z",
         "tag": "v2.1.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-18T02:47:20Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "ezbookkeeping",
       "note": {
@@ -268,7 +268,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 5785
+      "stars": 5791
     },
     {
       "evidence": {
@@ -282,7 +282,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-18T02:47:20Z"
+          "validated_as_of": "2026-10-20T12:54:02Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -312,7 +312,7 @@
       "last_meaningful_activity_at": "2026-10-11T16:00:31Z",
       "latest_release": null,
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-18T02:47:20Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "countinghouse",
       "note": {
@@ -349,6 +349,88 @@
         "job_match"
       ],
       "stars": 52
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/algirdasc/expensave",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 46.2,
+            "ease_of_adoption": 99.5,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 0.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "demo",
+            "import",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/algirdasc/expensave",
+      "last_meaningful_activity_at": "2026-10-18T13:02:20Z",
+      "latest_release": {
+        "published_at": "2026-10-18T09:59:12Z",
+        "tag": "v1.1.5"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "expensave",
+      "note": {
+        "gaps": [
+          "integrations and extensibility",
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on integrations and extensibility and migration path."
+      },
+      "oss_id": "github.com/algirdasc/expensave",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 93.6,
+        "score": 81.9,
+        "trajectory": "Rising"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T12:30:08Z",
+        "score": 68.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/algirdasc/expensave",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 56
     }
   ],
   "saas": {

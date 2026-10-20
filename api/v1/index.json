@@ -3,17 +3,17 @@
   "canonical_schema": "the-source.canonical/1",
   "catalogue": {
     "entries": 500,
-    "none_yet": 148,
-    "ok": 167,
-    "partial": 185,
+    "none_yet": 162,
+    "ok": 168,
+    "partial": 170,
     "path": "catalogue.json"
   },
-  "data_as_of": "2026-10-18T02:47:20Z",
-  "dataset_version": "3275503f8976b0b5",
+  "data_as_of": "2026-10-20T12:54:02Z",
+  "dataset_version": "edab459c7b41c1a3",
   "domains": "domains.json",
   "live_checked_at": {
-    "newest": "2026-10-18T02:47:20Z",
-    "oldest": "2026-10-18T02:47:20Z"
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
   },
   "supported_saas": [
     {
@@ -551,7 +551,7 @@
       "compare_path": "/open-source/ynab-alternatives",
       "name": "YNAB",
       "path": "saas/ynab.json",
-      "recommendations": 4,
+      "recommendations": 5,
       "saas_id": "ynab",
       "slug": "ynab",
       "status": "ok"
@@ -695,7 +695,7 @@
       "compare_path": "/open-source/google-keep-alternatives",
       "name": "Google Keep",
       "path": "saas/google-keep.json",
-      "recommendations": 4,
+      "recommendations": 5,
       "saas_id": "google-keep",
       "slug": "google-keep",
       "status": "ok"
@@ -938,7 +938,7 @@
       "compare_path": null,
       "name": "Semrush",
       "path": "saas/semrush.json",
-      "recommendations": 1,
+      "recommendations": 2,
       "saas_id": "semrush",
       "slug": "semrush",
       "status": "insufficient_recommendations"
@@ -1235,7 +1235,7 @@
       "compare_path": null,
       "name": "Ahrefs",
       "path": "saas/ahrefs.json",
-      "recommendations": 1,
+      "recommendations": 2,
       "saas_id": "ahrefs",
       "slug": "ahrefs",
       "status": "insufficient_recommendations"
@@ -1460,7 +1460,7 @@
       "compare_path": null,
       "name": "Rocket Money",
       "path": "saas/rocket-money.json",
-      "recommendations": 1,
+      "recommendations": 2,
       "saas_id": "rocket-money",
       "slug": "rocket-money",
       "status": "insufficient_recommendations"
@@ -1475,13 +1475,13 @@
       "status": "ok"
     },
     {
-      "compare_path": null,
+      "compare_path": "/open-source/monarch-money-alternatives",
       "name": "Monarch Money",
       "path": "saas/monarch-money.json",
-      "recommendations": 2,
+      "recommendations": 3,
       "saas_id": "monarch-money",
       "slug": "monarch-money",
-      "status": "insufficient_recommendations"
+      "status": "ok"
     },
     {
       "compare_path": "/open-source/rebrandly-alternatives",
@@ -2090,7 +2090,7 @@
       "compare_path": "/open-source/craft-alternatives",
       "name": "Craft",
       "path": "saas/craft.json",
-      "recommendations": 3,
+      "recommendations": 4,
       "saas_id": "craft",
       "slug": "craft",
       "status": "ok"
@@ -2177,13 +2177,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": null,
+      "compare_path": "/open-source/roam-research-alternatives",
       "name": "Roam Research",
       "path": "saas/roam-research.json",
-      "recommendations": 2,
+      "recommendations": 3,
       "saas_id": "roam-research",
       "slug": "roam-research",
-      "status": "insufficient_recommendations"
+      "status": "ok"
     },
     {
       "compare_path": null,
@@ -3024,83 +3024,11 @@
     },
     {
       "compare_path": null,
-      "name": "Slite",
-      "path": "saas/slite.json",
-      "recommendations": 1,
-      "saas_id": "slite",
-      "slug": "slite",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "WordPress.com",
-      "path": "saas/wordpress-com.json",
-      "recommendations": 1,
-      "saas_id": "wordpress-com",
-      "slug": "wordpress-com",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "Travis CI",
-      "path": "saas/travis-ci.json",
-      "recommendations": 1,
-      "saas_id": "travis-ci",
-      "slug": "travis-ci",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "Transifex",
-      "path": "saas/transifex.json",
-      "recommendations": 1,
-      "saas_id": "transifex",
-      "slug": "transifex",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "Agora",
-      "path": "saas/agora.json",
-      "recommendations": 1,
-      "saas_id": "agora",
-      "slug": "agora",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
       "name": "Checkly",
       "path": "saas/checkly.json",
       "recommendations": 2,
       "saas_id": "checkly",
       "slug": "checkly",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "Instatus",
-      "path": "saas/instatus.json",
-      "recommendations": 1,
-      "saas_id": "instatus",
-      "slug": "instatus",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "Visualping",
-      "path": "saas/visualping.json",
-      "recommendations": 1,
-      "saas_id": "visualping",
-      "slug": "visualping",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "Landbot",
-      "path": "saas/landbot.json",
-      "recommendations": 1,
-      "saas_id": "landbot",
-      "slug": "landbot",
       "status": "insufficient_recommendations"
     },
     {
@@ -3114,66 +3042,12 @@
     },
     {
       "compare_path": null,
-      "name": "Amazon DynamoDB",
-      "path": "saas/amazon-dynamodb.json",
-      "recommendations": 1,
-      "saas_id": "amazon-dynamodb",
-      "slug": "amazon-dynamodb",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "Pitch",
-      "path": "saas/pitch.json",
-      "recommendations": 1,
-      "saas_id": "pitch",
-      "slug": "pitch",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "Bugsnag",
-      "path": "saas/bugsnag.json",
-      "recommendations": 1,
-      "saas_id": "bugsnag",
-      "slug": "bugsnag",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "Rollbar",
-      "path": "saas/rollbar.json",
-      "recommendations": 1,
-      "saas_id": "rollbar",
-      "slug": "rollbar",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "POEditor",
-      "path": "saas/poeditor.json",
-      "recommendations": 1,
-      "saas_id": "poeditor",
-      "slug": "poeditor",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "DeepSeek Chat",
-      "path": "saas/deepseek-chat.json",
-      "recommendations": 1,
-      "saas_id": "deepseek-chat",
-      "slug": "deepseek-chat",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": "/open-source/mode-analytics-alternatives",
       "name": "Mode Analytics",
       "path": "saas/mode-analytics.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "mode-analytics",
       "slug": "mode-analytics",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,

@@ -187,7 +187,9 @@ def test_tampered_signal_is_not_served(tmp_path):
 
 
 def test_old_signal_is_reported_stale():
-    later = M.datetime(2026, 10, 20, 12, tzinfo=M.timezone.utc)
+    # past the committed signal's own as_of, so the test does not expire as the daily cycle moves the data on
+    as_of = json.loads((ROOT / "data" / "momentum" / "MANIFEST.json").read_text())["as_of"]
+    later = M.datetime.fromisoformat(as_of.replace("Z", "+00:00")) + M.timedelta(hours=M.SIGNAL_STALE_AFTER_HOURS + 1)
     st = _ok(_server(now=later), "source_compare_projects", projects=["Docmost", "AppFlowy"])["signals"]
     assert st["momentum"]["status"] == "stale" and st["momentum"]["stale"] is True
 

@@ -217,6 +217,7 @@ def _anomalies(record: dict) -> list[dict]:
 
 
 GOLDEN_BASELINE = common.ROOT / "observability" / "golden-baseline.json"
+SCORES_FIT = common.DATA / "scores" / "fit.jsonl"
 
 
 def _golden_step() -> dict:
@@ -549,11 +550,20 @@ def work(run_id: str, result_path: Path) -> int:
 
         # 8. score what is new, re-score what materially changed
         step("scoring")
+        fit_before = common.sha256_file(SCORES_FIT) if SCORES_FIT.exists() else None
         _score_new(cfg["scoring"]["max_new_projects_per_cycle"], res)
         rescored = _rescore(changed_keys, int(cfg["scoring"].get("max_rescored_per_cycle", 40)), res)
         res["counts"]["rescored"] = len(rescored)
         res["counts"]["deferred"] += next(s for s in res["strategies"] if s["id"] == "rescoring")["deferred_to_next_cycle"]
         res["counts"]["deferred"] += next(s for s in res["strategies"] if s["id"] == "new_pair_scoring")["deferred_to_next_cycle"]
+        # launch.catalogue_serving (KEI-930) serves from the scores the build finds, so once scoring has moved them the
+        # dataset is rebuilt; otherwise the committed data lags its own rebuild by a cycle and CI's rebuild check fails.
+        if common.sha256_file(SCORES_FIT) != fit_before:
+            build.run()
+            report = validate.run()
+            failed = [c["id"] for c in report["checks"] if not c["ok"] and c["criterion"] != 6]
+            if failed:
+                raise CycleError(f"dataset validation failed after rescoring: {failed}")
 
         # 9. canonical dataset + read surface, then its own validation
         step("canonical")

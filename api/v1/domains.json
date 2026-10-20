@@ -1,6 +1,6 @@
 {
   "api_version": "v1",
-  "dataset_version": "3275503f8976b0b5",
+  "dataset_version": "edab459c7b41c1a3",
   "match_semantics": "Lowercase the page hostname and strip one leading \"www.\". A rule matches when its host equals the hostname (or the hostname ends with its host_suffix) and, if it has a path_prefix, the URL path equals the prefix or continues it at a \"/\" (a prefix that ends in \"/\" is a plain prefix). When several rules match, the most specific wins: one with a path_prefix beats one without, a longer path_prefix beats a shorter one, an exact host beats a host_suffix, a longer host_suffix beats a shorter one; remaining ties go to the first rule in file order.",
   "rules": [
     {
@@ -136,11 +136,6 @@
       "host_suffix": ".console.aws.amazon.com",
       "path_prefix": "/cognito",
       "saas_id": "amazon-cognito"
-    },
-    {
-      "host_suffix": ".console.aws.amazon.com",
-      "path_prefix": "/dynamodbv2",
-      "saas_id": "amazon-dynamodb"
     },
     {
       "host_suffix": ".console.aws.amazon.com",
@@ -354,10 +349,6 @@
       "saas_id": "slack"
     },
     {
-      "host_suffix": ".slite.com",
-      "saas_id": "slite"
-    },
-    {
       "host_suffix": ".snowflakecomputing.com",
       "saas_id": "snowflake"
     },
@@ -414,10 +405,6 @@
       "saas_id": "wix"
     },
     {
-      "host_suffix": ".wordpress.com",
-      "saas_id": "wordpress-com"
-    },
-    {
       "host_suffix": ".zendesk.com",
       "saas_id": "zendesk"
     },
@@ -469,10 +456,6 @@
       "host": "adobe.com",
       "path_prefix": "/sign",
       "saas_id": "adobe-acrobat-sign"
-    },
-    {
-      "host": "agora.io",
-      "saas_id": "agora"
     },
     {
       "host": "ahrefs.com",
@@ -562,10 +545,6 @@
     {
       "host": "app.brevo.com",
       "saas_id": "brevo"
-    },
-    {
-      "host": "app.bugsnag.com",
-      "saas_id": "bugsnag"
     },
     {
       "host": "app.checklyhq.com",
@@ -705,10 +684,6 @@
       "saas_id": "kit"
     },
     {
-      "host": "app.landbot.io",
-      "saas_id": "landbot"
-    },
-    {
       "host": "app.later.com",
       "saas_id": "later"
     },
@@ -757,10 +732,6 @@
       "saas_id": "pinecone"
     },
     {
-      "host": "app.pitch.com",
-      "saas_id": "pitch"
-    },
-    {
       "host": "app.powerbi.com",
       "saas_id": "power-bi"
     },
@@ -787,10 +758,6 @@
     {
       "host": "app.rocketmoney.com",
       "saas_id": "rocket-money"
-    },
-    {
-      "host": "app.rollbar.com",
-      "saas_id": "rollbar"
     },
     {
       "host": "app.runwayml.com",
@@ -855,14 +822,6 @@
     {
       "host": "app.trakt.tv",
       "saas_id": "trakt"
-    },
-    {
-      "host": "app.transifex.com",
-      "saas_id": "transifex"
-    },
-    {
-      "host": "app.travis-ci.com",
-      "saas_id": "travis-ci"
     },
     {
       "host": "app.tray.io",
@@ -937,11 +896,6 @@
       "host": "aws.amazon.com",
       "path_prefix": "/cognito",
       "saas_id": "amazon-cognito"
-    },
-    {
-      "host": "aws.amazon.com",
-      "path_prefix": "/dynamodb",
-      "saas_id": "amazon-dynamodb"
     },
     {
       "host": "aws.amazon.com",
@@ -1030,10 +984,6 @@
       "saas_id": "buffer"
     },
     {
-      "host": "bugsnag.com",
-      "saas_id": "bugsnag"
-    },
-    {
       "host": "business.adobe.com",
       "path_prefix": "/products/analytics",
       "saas_id": "adobe-analytics"
@@ -1075,10 +1025,6 @@
     {
       "host": "chargebee.com",
       "saas_id": "chargebee"
-    },
-    {
-      "host": "chat.deepseek.com",
-      "saas_id": "deepseek-chat"
     },
     {
       "host": "chat.google.com",
@@ -1236,10 +1182,6 @@
       "saas_id": "connectwise-screenconnect"
     },
     {
-      "host": "console.agora.io",
-      "saas_id": "agora"
-    },
-    {
       "host": "console.aws.amazon.com",
       "path_prefix": "/amplify",
       "saas_id": "aws-amplify"
@@ -1248,11 +1190,6 @@
       "host": "console.aws.amazon.com",
       "path_prefix": "/cognito",
       "saas_id": "amazon-cognito"
-    },
-    {
-      "host": "console.aws.amazon.com",
-      "path_prefix": "/dynamodbv2",
-      "saas_id": "amazon-dynamodb"
     },
     {
       "host": "console.aws.amazon.com",
@@ -1385,10 +1322,6 @@
     {
       "host": "dashboard.heroku.com",
       "saas_id": "heroku"
-    },
-    {
-      "host": "dashboard.instatus.com",
-      "saas_id": "instatus"
     },
     {
       "host": "dashboard.mailerlite.com",
@@ -1814,10 +1747,6 @@
       "saas_id": "hotjar"
     },
     {
-      "host": "instatus.com",
-      "saas_id": "instatus"
-    },
-    {
       "host": "intercom.com",
       "saas_id": "intercom"
     },
@@ -1856,10 +1785,6 @@
     {
       "host": "klaviyo.com",
       "saas_id": "klaviyo"
-    },
-    {
-      "host": "landbot.io",
-      "saas_id": "landbot"
     },
     {
       "host": "lastpass.com",
@@ -2267,20 +2192,12 @@
       "saas_id": "pipedrive"
     },
     {
-      "host": "pitch.com",
-      "saas_id": "pitch"
-    },
-    {
       "host": "planner.cloud.microsoft",
       "saas_id": "microsoft-planner"
     },
     {
       "host": "platform.openai.com",
       "saas_id": "openai-api"
-    },
-    {
-      "host": "poeditor.com",
-      "saas_id": "poeditor"
     },
     {
       "host": "portal.document360.io",
@@ -2408,10 +2325,6 @@
       "saas_id": "rocket-money"
     },
     {
-      "host": "rollbar.com",
-      "saas_id": "rollbar"
-    },
-    {
       "host": "runwayml.com",
       "saas_id": "runway"
     },
@@ -2506,10 +2419,6 @@
     {
       "host": "slides.google.com",
       "saas_id": "google-slides"
-    },
-    {
-      "host": "slite.com",
-      "saas_id": "slite"
     },
     {
       "host": "smallpdf.com",
@@ -2678,16 +2587,8 @@
       "saas_id": "trakt"
     },
     {
-      "host": "transifex.com",
-      "saas_id": "transifex"
-    },
-    {
       "host": "translate.google.com",
       "saas_id": "google-translate"
-    },
-    {
-      "host": "travis-ci.com",
-      "saas_id": "travis-ci"
     },
     {
       "host": "tray.ai",
@@ -2758,10 +2659,6 @@
       "saas_id": "vimeo"
     },
     {
-      "host": "visualping.io",
-      "saas_id": "visualping"
-    },
-    {
       "host": "voiceflow.com",
       "saas_id": "voiceflow"
     },
@@ -2816,10 +2713,6 @@
     {
       "host": "wix.com",
       "saas_id": "wix"
-    },
-    {
-      "host": "wordpress.com",
-      "saas_id": "wordpress-com"
     },
     {
       "host": "workday.com",

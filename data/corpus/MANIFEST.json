@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-10-18T02:47:20Z",
+  "as_of": "2026-10-20T12:30:08Z",
   "attribution": "The Source (github.com/keithdealwis-ui/the-source), by Keith de Alwis",
-  "corpus_version": "1fba1fadc30a4116",
+  "corpus_version": "db61d41f65eb4c27",
   "counts": {
     "archived": 23,
     "by_lane": {
-      "discover": 9554,
+      "discover": 9600,
       "replace": 485
     },
     "host_not_found": 44,
@@ -36,10 +36,10 @@
       "eligible": 49,
       "not_eligible": 1410
     },
-    "licence_issue": 1478,
+    "licence_issue": 1486,
     "maintainer_seeded": 68,
-    "projects": 9855,
-    "with_description": 9484
+    "projects": 9901,
+    "with_description": 9526
   },
   "edition_check": {
     "generated_exceptions": "config/licence_exceptions.generated.yaml",
@@ -54,8 +54,8 @@
     "scope": "rows classified open_core"
   },
   "files": {
-    "live.jsonl": "8c924ab9d1e7825625b1d1281c3fa71795e911e21d8c75dba52b5a12e4310a60",
-    "projects.jsonl": "200915a3c05f6609cf85b30a9f1b941090eb47eba73394650011ef1e36dc508b"
+    "live.jsonl": "c394886798328c694b8144a80d7ecf78a7f84544a15dd1f2ea6345f420ea1e15",
+    "projects.jsonl": "fb1c8e18a9458e868afe98b1990393c27ad8530184c06c3df02438bdfd8d8bb2"
   },
   "identity": {
     "facts": {
@@ -75,18 +75,18 @@
     "scope": "rows with licence.status == 'issue'"
   },
   "live_observed_as_of": {
-    "newest": "2026-10-18T02:47:20Z",
+    "newest": "2026-10-20T12:30:08Z",
     "oldest": "2026-09-29T10:34:38Z"
   },
   "membership": {
     "admission": {
       "last": {
-        "admitted": 1,
-        "at": "2026-10-18T02:47:20Z"
+        "admitted": 11,
+        "at": "2026-10-20T12:30:08Z"
       },
       "method": "the-source.corpus-admit/1: source_pipeline/corpus_admit.py; the Discover lane prefilter and licence bar, maintenance read from pushed_at"
     },
-    "as_of": "2026-10-18T02:47:20Z",
+    "as_of": "2026-10-20T12:30:08Z",
     "maintenance_evaluated_as_of": "per the Discover lane build at membership.as_of (docs/DISCOVER.md); live facts are refreshed, evaluations are not",
     "outcomes_published": [
       "recommendation_eligible",

@@ -2,37 +2,37 @@
   "canonical_schema": "the-source.canonical/1",
   "counts": {
     "catalogue_entries": 500,
-    "catalogue_none_yet": 148,
-    "catalogue_ok": 167,
-    "catalogue_partial": 185,
-    "oss_projects": 455,
-    "recommended_relationships": 1026,
-    "relationships": 1070,
-    "saas_products": 352,
-    "supported_saas": 352,
-    "supported_saas_ok": 167
+    "catalogue_none_yet": 162,
+    "catalogue_ok": 168,
+    "catalogue_partial": 170,
+    "oss_projects": 456,
+    "recommended_relationships": 1021,
+    "relationships": 1065,
+    "saas_products": 338,
+    "supported_saas": 338,
+    "supported_saas_ok": 168
   },
-  "data_as_of": "2026-10-18T02:47:20Z",
-  "dataset_version": "3275503f8976b0b5",
+  "data_as_of": "2026-10-20T12:54:02Z",
+  "dataset_version": "edab459c7b41c1a3",
   "export_guard": {
     "export_licence_constraint": "none beyond attribution notices",
-    "relationships_exported": 1070,
+    "relationships_exported": 1065,
     "relationships_withheld_share_alike_only": 0
   },
   "files": {
-    "NOTICE.md": "d6d13d4ab9e610dc10fcd18018c2e7e86ad8fe268ed195e392f1a2d10bb30998",
-    "oss_projects.jsonl": "f11702fb637f5b6f87b7e280bca43aaf5e2e515817f31718e6c05d7c98705bd5",
-    "relationships.jsonl": "a21283042ec6932606034aff04b2a5e054f91b658b4341ef408c2bbf357481b5",
-    "saas_products.jsonl": "3fbd42b4209bd5d7009c6f177b19347d8bb21aafaac6e416f80acc484566e4c7"
+    "NOTICE.md": "6473b50c3b998bd89626f6e6721bd313989b4190be67430db2ebfaa82f99adce",
+    "oss_projects.jsonl": "fb4a9af4bc3903f0a9eddbfa6543ca050dc0d9f9ba5b6e72966e30869269c291",
+    "relationships.jsonl": "083d1e5fd96a9fa69cfd4c2cc492227009506217caa44c8b40456d052e683d81",
+    "saas_products.jsonl": "91a197432019fe0fa936c8e1842de71c3d4faf6bf6a019e801fb4ac1d78a407c"
   },
   "live_checked_at": {
-    "newest": "2026-10-18T02:47:20Z",
-    "oldest": "2026-10-18T02:47:20Z"
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
   },
   "sources": {
     "altstack": {
       "decision": "allow_with_conditions",
-      "pinned_commit": "0b9dacd632f128922862f70e1e09011c8611b48c"
+      "pinned_commit": "e6b7941038edf3507a1e14866c2f84553ddfc96b"
     },
     "btwso": {
       "decision": "allow",
