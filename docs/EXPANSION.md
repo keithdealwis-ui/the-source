@@ -6,7 +6,14 @@ candidate quality and the cost of ingestion stay acceptable. **50,000 is a separ
 review; admission never goes past `milestones.target` on its own.
 
 Nothing here changes a recommendation. Recommendations come only from `data/canonical`. Every member added
-here is a `discovery` tier project ("discovered, not scored") with a quick score.
+here is a `discovery` tier project ("discovered, not scored") with a quick score. The one derived file that
+moves is `api/v1/catalogue.json`: its entries count the corpus projects that name themselves an alternative
+(`corpus_pairings`), so after admission it is rebuilt (`canonical.build`) and only those counts, their reason
+text and the corpus version change. No entry's status changes.
+
+Discovery answers (`source_get_alternatives`, `source_search`) also leave out plugins, extensions, add-ons and
+connectors, and repositories that describe themselves as lists, cheat sheets, study notes or interview
+questions (`mcp_server.not_a_product`).
 
 ## Run it
 
@@ -61,6 +68,11 @@ From `config/expansion.yaml` `quotas`:
 - `max_source_share` (0.60): no single source family may take more than 60% of a run's admission budget.
 - `max_per_query` (1,200): one topic, list or forge topic contributes at most this many in a run.
 
+Each admission run writes its report, with the quotas it charged and every refusal by reason, to
+`data/expansion/runs/<membership_as_of>.json`. Together with the frontier these are the lineage of every
+expansion member. (The three runs that reached 25k ran before the report was written by the command itself;
+their reports were copied verbatim from the run output.)
+
 A route is charged when its row is admitted. A row reached by several routes is charged to the least-used route
 that is still under its cap. A refusal is counted (`deferred_source_quota`, `deferred_admission_quota`,
 `milestone_reached`), never silent.
@@ -76,7 +88,14 @@ their own name, description and topics:
 - `learning_material`: courses, tutorials, exercises, interview preparation
 - `template_or_example`: boilerplates, starters, examples, demos
 - `personal_configuration`: dotfiles, "my homelab", personal infrastructure
-- `prompt_pack`
+- `prompt_pack`: prompt collections and agent/Claude/Codex skill packs (a skill *registry* or server is software and stays)
+- `personal_site`: portfolios, personal websites and blogs
+- `research_code`: the official or companion code for a paper
+- `documentation`: repositories that are documentation, wiki pages, RFCs or proposals, or episodes
+
+The last three, and the skill-pack and wider template and learning rules, were added after a blind desk review
+of 400 admissions (KEI-923) rated 10.75% of them as material, against an audit reading of 1.3%. Each rule was
+checked against the 9,901-member corpus and the review sample for products it would wrongly refuse.
 
 The gate applies to every admission, daily ones included, while `noise.gate` is on. Each refusal is counted as
 `intake_noise:<code>`. Integrations (MCP servers, SDKs, clients) are *not* refused at intake. The corpus

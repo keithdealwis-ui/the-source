@@ -86,6 +86,14 @@ _MORE_TEMPLATE = re.compile(r"\b(admin|dashboard|landing page|website|ui|vault|s
 _MORE_LEARN = re.compile(r"\b(study guide|exam objectives|exam prep|course notes|day wise notes|hands on resources|"
                          r"checklist (helps|for)|comparison of|books (related|about|on))\b")
 _MORE_LEARN_NAME = re.compile(r"(^|[-_.])(cheat-?sheets?|study-guide|books)([-_.]|$)")
+# Second desk review, 2026-10-21: only the signals that refused no product anywhere in the 25k corpus. Venue tags,
+# "reference implementation", "sandbox project" and dataset/survey topics were tried and dropped: each also marks
+# software people run.
+_SURVEY = re.compile(r"\ba (comprehensive |systematic )?survey (on|of)\b")
+_SPEC_DOCS = re.compile(r"^(the )?(specification|spec) (for|of)\b|^(user |official )?documentation( for| of| repo|,|$)|"
+                        r"\bto host the [a-z0-9 .-]{1,30} wiki\b")
+_DATASET = re.compile(r"\bdataset (for|of)\b|^dataset\b")
+_SAMPLE_OWNER = re.compile(r"[-_](samples|examples)$")
 _NOISE_TOPICS = {"awesome", "awesome-list", "awesome-lists", "list", "tutorial", "tutorials", "course",
                  "courses", "learning", "education-material", "interview-questions", "interview-preparation",
                  "leetcode", "cheatsheet", "cheatsheets", "boilerplate", "starter-kit", "starter-template",
@@ -126,8 +134,16 @@ def intake_reasons(name, full_name, description, topics) -> list[str]:
         out.append("documentation")
     if "template_or_example" not in out and _MORE_TEMPLATE.search(desc):
         out.append("template_or_example")
-    if "learning_material" not in out and (_MORE_LEARN.search(desc) or _MORE_LEARN_NAME.search(repo)):
+    if "learning_material" not in out and (_MORE_LEARN.search(desc) or _MORE_LEARN_NAME.search(repo)
+                                           or "skills-course" in tops):
         out.append("learning_material")
+    if "research_code" not in out and (_SURVEY.search(desc) or _DATASET.search(desc)):
+        out.append("research_code")
+    if "documentation" not in out and _SPEC_DOCS.search(desc):
+        out.append("documentation")
+    owner = str(full_name or "").split("/")[0].lower()
+    if "template_or_example" not in out and _SAMPLE_OWNER.search(owner):
+        out.append("template_or_example")
     return out
 
 

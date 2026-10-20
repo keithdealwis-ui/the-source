@@ -1668,6 +1668,21 @@ def tool_search(layer, args, server):
                             "recommended_for": sorted(r["saas_id"] for r in rels if r["recommended"])})
         if extra:
             results[-1].update(extra[(k, key)])
+    # KEI-923 S4.3: a discovery project that works with a product (MCP server, SDK, client, plugin) or is material
+    # about one answers a category query badly. It is listed after the rest, never dropped, unless the query asks
+    # for that kind of thing.
+    aside = {}
+    if not set(_tokens(query)) & _ASKS_FOR_INTEGRATION:
+        for r in results:
+            if r["tier"] == "discovery":
+                c = layer.corpus[r["id"]]
+                why = ("integration" if integration_kind(c["name"], c["full_name"], c["description"], c["topics"])
+                       or _LIBRARY_OR_CLIENT.search(_norm(c["description"]))
+                       else "not_a_product" if not_a_product(c["name"], c["full_name"], c["topics"], c["description"])
+                       else None)
+                if why:
+                    aside[r["id"]] = r["listed_after_products"] = why
+        results = [r for r in results if r["id"] not in aside] + [r for r in results if r["id"] in aside]
     total = len(results)
     out = {"query": query, "kind": kind, "mode": mode, "tier": tier, "total": total, "results": results[:limit],
            "more_available": max(0, total - limit),
@@ -1685,7 +1700,17 @@ def tool_search(layer, args, server):
         out["ranking"] = ("BM25 over weighted fields (name, aliases or repository, products replaced, category, "
                           "topics, host description, languages, licence), +10 for an exact name match; ties by kind "
                           "then id. Lexical, deterministic.")
+    if aside:
+        out["ranking"] += (f" {len(aside)} discovery project(s) that integrate with a product or are material about "
+                           "one are listed after the rest (listed_after_products); name mcp, sdk, plugin, client and "
+                           "so on in the query to rank them normally.")
     return out
+
+
+_ASKS_FOR_INTEGRATION = {"mcp", "sdk", "sdks", "plugin", "plugins", "extension", "extensions", "client", "clients",
+                         "integration", "integrations", "bot", "bots", "api", "library", "libraries", "connector",
+                         "connectors", "wrapper", "bindings", "addon", "addons", "awesome", "list", "template",
+                         "templates", "tutorial", "tutorials", "examples", "skill", "skills", "prompts"}
 
 
 def tool_get_project(layer, args, server):

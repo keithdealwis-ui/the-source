@@ -187,6 +187,15 @@ def test_harvest_keeps_each_source_and_resume_reuses_it(tmp_path, monkeypatch):
     (("PDFMathTranslate", "o/PDFMathTranslate", "[EMNLP 2025 Demo] PDF scientific paper translation", []), []),
     (("capnweb", "cloudflare/capnweb", "JavaScript-native, low-boilerplate, object-capability RPC system", []), []),
     (("ghostfolio", "o/ghostfolio", "Open source wealth management software for portfolio tracking", []), []),
+    # the second desk review (2026-10-21)
+    (("x", "o/x-survey", "A Survey on Multimodal Retrieval-Augmented Generation", []), ["research_code"]),
+    (("x", "o/x", "UrbanLoco: A Full Sensor Suite Dataset for Mapping and Localization", []), ["research_code"]),
+    (("docs", "knative/docs", "User documentation for Knative components.", []), ["documentation"]),
+    (("x", "o/x", "Specification for a Fediverse Directory Server", []), ["documentation"]),
+    (("chat", "Azure-Samples/chat", "Serverless AI chat with RAG", []), ["template_or_example"]),
+    (("t", "skills/test-with-actions", "Create CI workflows", ["skills-course"]), ["learning_material"]),
+    (("docmd", "docmd-io/docmd", "Documentation compiler for humans and machines", []), []),
+    (("communitynotes", "twitter/communitynotes", "Documentation and source code powering Community Notes", []), []),
 ])
 def test_desk_review_intake_classes(args, codes):
     assert N.intake_reasons(*args) == codes

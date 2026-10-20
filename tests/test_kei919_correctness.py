@@ -123,6 +123,14 @@ class TestLiveLayer(unittest.TestCase):
         rel = self.call("source_get_relationship", {"saas": "Notion", "project": "docmost/docmost"})
         self.assertEqual(rel["relationship"]["edge_id"], "notion--github.com/docmost/docmost")
 
+    def test_search_lists_integrations_after_products_unless_asked(self):
+        # KEI-923 S4.3: an MCP server for a CRM answers "CRM" badly; it is ranked after, never dropped
+        r = self.call("source_search", {"query": "CRM", "tier": "discovery", "limit": 50})
+        flags = [bool(x.get("listed_after_products")) for x in r["results"]]
+        self.assertEqual(flags, sorted(flags))
+        asked = self.call("source_search", {"query": "CRM mcp", "tier": "discovery", "limit": 50})
+        self.assertFalse(any(x.get("listed_after_products") for x in asked["results"]))
+
     def test_relationship_without_replacement_fit_does_not_crash(self):
         unscored = next(((r["saas_id"], r["oss_id"]) for rs in self.s.layer.rel_by_saas.values() for r in rs
                          if not r["replacement_fit"]), None)
