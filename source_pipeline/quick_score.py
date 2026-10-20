@@ -231,6 +231,8 @@ def _replace_edges() -> dict:
     path = common.DATASET / "relationships.jsonl"
     if path.exists():
         for e in common.read_jsonl(path):
+            if e.get("evidence_class", "listed") == "job_matched":
+                continue  # KEI-930: a job match is The Source's own candidate, not an upstream-listed pairing
             out.setdefault(e["oss_id"], set()).add(e["saas_id"])
     return out
 

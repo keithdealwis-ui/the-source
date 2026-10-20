@@ -1,0 +1,286 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 163,
+    "reason": "3 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "edab459c7b41c1a3",
+  "last_checked": {
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L815",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 71.2,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/chamilo/chamilo-lms",
+      "last_meaningful_activity_at": "2026-10-16T23:22:39Z",
+      "latest_release": {
+        "published_at": "2026-09-19T00:40:14Z",
+        "tag": "v3.0.1"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Chamilo",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness."
+      },
+      "oss_id": "github.com/chamilo/chamilo-lms",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 87.0,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 81.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/chamilo/chamilo-lms",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 1016
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L814",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 18.8,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 30.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/openedx/openedx-platform",
+      "last_meaningful_activity_at": "2026-10-16T20:46:46Z",
+      "latest_release": {
+        "published_at": "2015-07-17T20:25:03Z",
+        "tag": "named-release/cypress.rc2"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Open edX",
+      "note": {
+        "gaps": [
+          "self-hosting and data ownership",
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness; weakest on self-hosting and data ownership and cost advantage."
+      },
+      "oss_id": "github.com/openedx/openedx-platform",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 92.1,
+        "score": 77.6,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 63.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/openedx/openedx-platform",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 8206
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L813",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 85.0,
+            "ease_of_adoption": 49.5,
+            "economic_advantage": 34.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": null,
+            "migration_friction": null,
+            "production_commercial_readiness": 50.0
+          },
+          "evidence_families": [
+            "demo",
+            "multi_user",
+            "quickstart"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/moodle/moodle",
+      "last_meaningful_activity_at": "2026-10-13T11:22:49Z",
+      "latest_release": null,
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Moodle",
+      "note": {
+        "gaps": [
+          "feature parity",
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity and cost advantage."
+      },
+      "oss_id": "github.com/moodle/moodle",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 90.4,
+        "score": 84.9,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 78.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 62.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/moodle/moodle",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 7507
+    }
+  ],
+  "saas": {
+    "category": "Online courses",
+    "compare_path": "/open-source/teachable-alternatives",
+    "domain": "teachable.com",
+    "name": "Teachable",
+    "saas_id": "teachable",
+    "slug": "teachable"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

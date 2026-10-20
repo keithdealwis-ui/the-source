@@ -1,0 +1,208 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 188,
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+    "reasons": [
+      "fewer_than_minimum"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "edab459c7b41c1a3",
+  "last_checked": {
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "btwso",
+      "job_match",
+      "runacapital"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Databend.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L268",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 92.4,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": null,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/databendlabs/databend",
+      "last_meaningful_activity_at": "2026-10-15T14:53:15Z",
+      "latest_release": {
+        "published_at": "2026-10-15T05:59:19Z",
+        "tag": "v1.2.925-patch-15"
+      },
+      "licence_disclosure": "open core: recommendation covers the Apache-2.0 core; enterprise features excluded (src/bendsave/, src/binaries/query/ee_main.rs, src/meta/ee/, src/query/ee/): attach table, backup, data mask, data sharing, fail safe, materialized view, resource management, restore, row access policy, storage encryption, stream, table ref; core-only build: databend-meta-oss, databend-query-oss (the repository's default image, docker/Dockerfile, ships the full build)",
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Databend",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
+      },
+      "oss_id": "github.com/databendlabs/databend",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 91.0,
+        "score": 94.0,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 89.5,
+        "evaluated_at": "2026-10-16T01:10:28Z",
+        "score": 85.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/databendlabs/databend",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital",
+        "btwso"
+      ],
+      "stars": 9472
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/clickhouse/clickhouse",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 95.4,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": null,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "cloud_option",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/ClickHouse/ClickHouse",
+      "last_meaningful_activity_at": "2026-10-20T12:40:53Z",
+      "latest_release": {
+        "published_at": "2026-10-20T12:40:53Z",
+        "tag": "v26.3.57.12-lts"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "ClickHouse",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/clickhouse/clickhouse",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 96.8,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 78.5,
+        "evaluated_at": "2026-10-20T12:54:02Z",
+        "score": 88.5,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/ClickHouse/ClickHouse",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 50496
+    }
+  ],
+  "saas": {
+    "category": "Data warehouse",
+    "compare_path": null,
+    "domain": "snowflake.com",
+    "name": "Snowflake",
+    "saas_id": "snowflake",
+    "slug": "snowflake"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

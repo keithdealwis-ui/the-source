@@ -1,0 +1,123 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 332,
+    "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+    "reasons": [
+      "fewer_than_minimum"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "edab459c7b41c1a3",
+  "last_checked": {
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "runacapital"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Apache_APISIX.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/apache/apisix",
+      "last_meaningful_activity_at": "2026-10-16T01:58:41Z",
+      "latest_release": {
+        "published_at": "2026-09-28T05:13:59Z",
+        "tag": "3.19.0"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "apisix",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness."
+      },
+      "oss_id": "github.com/apache/apisix",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 93.4,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 83.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/apache/apisix",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 17241
+    }
+  ],
+  "saas": {
+    "category": "API tooling",
+    "compare_path": null,
+    "domain": "cloud.google.com",
+    "name": "Apigee",
+    "saas_id": "apigee",
+    "slug": "apigee"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

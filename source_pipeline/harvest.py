@@ -97,6 +97,19 @@ def _harvest_intake(source: dict, claims: list, st: dict) -> None:
               unparseable_files=0, relationship_claims=sum(len(r["saas_names"]) for r in rows))
 
 
+def _harvest_job_match(source: dict, claims: list, st: dict) -> None:
+    """The job-match ledger (KEI-930) as a claims source: candidate pairings The Source derived from each
+    project's own description, never an upstream claim. Same claim shape as every other source."""
+    from . import job_match
+
+    st["licence_file_sha256"] = verify_licence(source, common.ROOT)
+    rows = job_match.claims(source)
+    claims.extend(rows)
+    st.update(harvested=True, pinned_commit=job_match.version(), entries=len(rows),
+              entries_with_saas_claim=sum(1 for r in rows if r["saas_names"]), unparseable_files=0,
+              relationship_claims=sum(len(r["saas_names"]) for r in rows))
+
+
 def run(offline: bool = False) -> dict:
     cfg = common.load_sources()
     claims: list[dict] = []
@@ -110,6 +123,9 @@ def run(offline: bool = False) -> dict:
             continue
         if source.get("kind") == "intake":
             _harvest_intake(source, claims, st)
+            continue
+        if source.get("kind") == "job_match":
+            _harvest_job_match(source, claims, st)
             continue
         src = checkout_dir(source)
         if not (src / ".complete").exists():

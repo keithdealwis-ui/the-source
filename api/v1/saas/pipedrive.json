@@ -1,0 +1,463 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 39,
+    "reason": "8 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "edab459c7b41c1a3",
+  "last_checked": {
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
+  },
+  "more_available": 3,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "altstack",
+      "job_match",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L948",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 56.7,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/krayin/laravel-crm",
+      "last_meaningful_activity_at": "2026-10-16T10:29:11Z",
+      "latest_release": {
+        "published_at": "2026-10-16T10:29:11Z",
+        "tag": "v2.2.7"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Krayin",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
+      },
+      "oss_id": "github.com/krayin/laravel-crm",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 83.5,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 81.5,
+        "evaluated_at": "2026-10-16T23:27:37Z",
+        "score": 75.6,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/krayin/laravel-crm",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 24030
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "data/tools.json#slug=customermates;named_by=salesforce,pipedrive",
+              "source_commit": "e6b7941038edf3507a1e14866c2f84553ddfc96b",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/customermates/customermates",
+      "last_meaningful_activity_at": "2026-10-16T08:03:30Z",
+      "latest_release": {
+        "published_at": "2026-03-27T13:16:42Z",
+        "tag": "v.1.1.0"
+      },
+      "licence_disclosure": "open core: recommendation covers the AGPL-3.0-only core; parts under Customermates Commercial License are excluded",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Customermates",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/customermates/customermates",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 90.0,
+        "score": 75.5,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 88.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/customermates/customermates",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "altstack"
+      ],
+      "stars": 230
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "data/tools.json#slug=twenty;named_by=pipedrive",
+              "source_commit": "e6b7941038edf3507a1e14866c2f84553ddfc96b",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 40.0,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/twentyhq/twenty",
+      "last_meaningful_activity_at": "2026-10-19T22:58:27Z",
+      "latest_release": {
+        "published_at": "2026-10-19T14:53:16Z",
+        "tag": "sdk/v2.49.0"
+      },
+      "licence_disclosure": "open core: recommendation covers the AGPL-3.0 core; parts under Twenty commercial licence are excluded",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Twenty",
+      "note": {
+        "gaps": [
+          "integrations and extensibility",
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness; weakest on integrations and extensibility and feature parity."
+      },
+      "oss_id": "github.com/twentyhq/twenty",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 92.8,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 62.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/twentyhq/twenty",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "altstack"
+      ],
+      "stars": 58688
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/django-crm/django-crm",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 96.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/Django-CRM/Django-CRM",
+      "last_meaningful_activity_at": "2026-10-17T20:06:47Z",
+      "latest_release": {
+        "published_at": "2026-10-15T15:13:59Z",
+        "tag": "v1.17.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Django-CRM",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/django-crm/django-crm",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 87.1,
+        "trajectory": "Rising"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 90.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Django-CRM/Django-CRM",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 2451
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/dolibarr/dolibarr",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 96.2,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 51.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/Dolibarr/dolibarr",
+      "last_meaningful_activity_at": "2026-10-16T22:55:13Z",
+      "latest_release": {
+        "published_at": "2026-09-07T12:58:22Z",
+        "tag": "24.0.1"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Dolibarr",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness."
+      },
+      "oss_id": "github.com/dolibarr/dolibarr",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 94.2,
+        "trajectory": "Rising"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 87.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Dolibarr/dolibarr",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 7752
+    }
+  ],
+  "saas": {
+    "category": "CRM",
+    "compare_path": "/open-source/pipedrive-alternatives",
+    "domain": "pipedrive.com",
+    "name": "Pipedrive",
+    "saas_id": "pipedrive",
+    "slug": "pipedrive"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

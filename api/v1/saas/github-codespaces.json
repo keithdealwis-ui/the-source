@@ -1,0 +1,294 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 106,
+    "reason": "3 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "edab459c7b41c1a3",
+  "last_checked": {
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "altstack",
+      "opensaasdirectory",
+      "runacapital",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Gitpod.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L853",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 91.7,
+            "ease_of_adoption": 89.2,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "cloud_option",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/gitpod-io/gitpod",
+      "last_meaningful_activity_at": "2026-10-13T13:47:03Z",
+      "latest_release": {
+        "published_at": "2023-06-05T12:24:19Z",
+        "tag": "2022.11.3"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Gitpod",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/gitpod-io/gitpod",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 83.8,
+        "trajectory": "Declining"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 90.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 89.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/gitpod-io/gitpod",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "runacapital",
+        "opensaasdirectory"
+      ],
+      "stars": 13804
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L348",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "data/tools.json#slug=coder;named_by=codespaces",
+              "source_commit": "e6b7941038edf3507a1e14866c2f84553ddfc96b",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 43.8,
+            "ease_of_adoption": 79.8,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/coder/coder",
+      "last_meaningful_activity_at": "2026-10-19T22:39:22Z",
+      "latest_release": {
+        "published_at": "2026-10-19T22:20:08Z",
+        "tag": "v2.29.22"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Coder",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness; weakest on migration path."
+      },
+      "oss_id": "github.com/coder/coder",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 92.3,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 90.5,
+        "evaluated_at": "2026-10-19T23:32:37Z",
+        "score": 71.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/coder/coder",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "altstack"
+      ],
+      "stars": 17113
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L349",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 33.3,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": null,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/coder/code-server",
+      "last_meaningful_activity_at": "2026-10-14T21:47:08Z",
+      "latest_release": {
+        "published_at": "2026-10-08T08:02:54Z",
+        "tag": "v4.141.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "code-server",
+      "note": {
+        "gaps": [
+          "feature parity",
+          "ease of adoption"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity and ease of adoption."
+      },
+      "oss_id": "github.com/coder/code-server",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 92.1,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 66.0,
+        "evaluated_at": "2026-10-09T01:58:15Z",
+        "score": 68.1,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/coder/code-server",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 79656
+    }
+  ],
+  "saas": {
+    "category": "Cloud development environment",
+    "compare_path": "/open-source/github-codespaces-alternatives",
+    "domain": "github.com",
+    "name": "GitHub Codespaces",
+    "saas_id": "github-codespaces",
+    "slug": "github-codespaces"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

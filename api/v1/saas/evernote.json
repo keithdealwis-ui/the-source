@@ -1,11 +1,20 @@
 {
   "api_version": "v1",
-  "dataset_version": "4e4082c51e91f41a",
-  "last_checked": {
-    "newest": "2026-10-19T23:32:37Z",
-    "oldest": "2026-10-19T23:32:37Z"
+  "catalogue": {
+    "audience": "both",
+    "rank": 5,
+    "reason": "8 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
   },
-  "more_available": 0,
+  "dataset_version": "edab459c7b41c1a3",
+  "last_checked": {
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
+  },
+  "more_available": 3,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -17,14 +26,59 @@
   },
   "recommendations": [
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L48",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            },
+            {
+              "locator": "README.md#L71",
+              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/siyuan-note/siyuan",
-      "last_meaningful_activity_at": "2026-10-14T05:28:36Z",
+      "last_meaningful_activity_at": "2026-10-20T12:04:24Z",
       "latest_release": {
-        "published_at": "2026-10-14T03:24:20Z",
-        "tag": "v3.8.7"
+        "published_at": "2026-10-20T12:04:24Z",
+        "tag": "v3.8.9-alpha.1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "SiYuan",
       "note": {
@@ -40,13 +94,13 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 92.1,
-        "score": 89.9,
+        "score": 91.5,
         "trajectory": "Rising"
       },
       "rank": 1,
       "replacement_fit": {
         "confidence": 90.5,
-        "evaluated_at": "2026-10-14T23:51:42Z",
+        "evaluated_at": "2026-10-20T12:30:08Z",
         "score": 87.2,
         "score_version": "1.2.0"
       },
@@ -59,9 +113,48 @@
         "btwso",
         "fossalt"
       ],
-      "stars": 46844
+      "stars": 46853
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Trilium.cc.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 62.5,
+            "deployment_ownership": 43.8,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/TriliumNext/Trilium",
       "last_meaningful_activity_at": "2026-10-17T21:42:04Z",
       "latest_release": {
@@ -69,7 +162,7 @@
         "tag": "web-clipper-v1.2.0-rc1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Trilium.cc",
       "note": {
@@ -103,9 +196,56 @@
       "sources": [
         "runacapital"
       ],
-      "stars": 38412
+      "stars": 38420
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L177",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L47",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            },
+            {
+              "locator": "README.md#L68",
+              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/logseq/logseq",
       "last_meaningful_activity_at": "2026-10-16T01:03:52Z",
       "latest_release": {
@@ -113,7 +253,7 @@
         "tag": "nightly"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Logseq",
       "note": {
@@ -149,9 +289,55 @@
         "btwso",
         "fossalt"
       ],
-      "stars": 45296
+      "stars": 45301
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Notesnook.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L49",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            },
+            {
+              "locator": "README.md#L70",
+              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 62.5,
+            "deployment_ownership": 95.0,
+            "ease_of_adoption": 69.8,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "data_ownership",
+            "demo",
+            "import",
+            "plugins",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/streetwriters/notesnook",
       "last_meaningful_activity_at": "2026-10-14T05:51:11Z",
       "latest_release": {
@@ -159,7 +345,7 @@
         "tag": "3.4.14-android"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Notesnook",
       "note": {
@@ -195,9 +381,47 @@
         "btwso",
         "fossalt"
       ],
-      "stars": 14798
+      "stars": 14803
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L69",
+              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 46.2,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/codexu/note-gen",
       "last_meaningful_activity_at": "2026-10-18T14:21:57Z",
       "latest_release": {
@@ -205,7 +429,7 @@
         "tag": "note-gen-v0.38.3"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "NoteGen",
       "note": {
@@ -239,7 +463,7 @@
       "sources": [
         "fossalt"
       ],
-      "stars": 12900
+      "stars": 12902
     }
   ],
   "saas": {

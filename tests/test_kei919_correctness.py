@@ -107,8 +107,8 @@ class TestLiveLayer(unittest.TestCase):
                       "github.com/docmost/docmost.git"):
             self.assertEqual(self.call("source_get_project", {"project": value})["project"]["oss_id"],
                              "github.com/docmost/docmost", value)
-        self.assertEqual(self.call("source_get_project", {"project": "bitwarden/server"})["project"]["id"],
-                         "github.com/bitwarden/server")
+        bw = self.call("source_get_project", {"project": "bitwarden/server"})["project"]
+        self.assertEqual(bw.get("id") or bw.get("oss_id"), "github.com/bitwarden/server")  # corpus or canonical view
         rel = self.call("source_get_relationship", {"saas": "Notion", "project": "docmost/docmost"})
         self.assertEqual(rel["relationship"]["edge_id"], "notion--github.com/docmost/docmost")
 
@@ -122,24 +122,28 @@ class TestLiveLayer(unittest.TestCase):
 
     def test_bare_organisation_resolves_to_its_primary_repository(self):
         r = self.call("source_get_project", {"project": "bitwarden"})
-        self.assertEqual(r["project"]["id"], "github.com/bitwarden/server")  # siblings: server + clients (S1.8)
+        self.assertEqual(r["project"].get("id") or r["project"].get("oss_id"),
+                         "github.com/bitwarden/server")  # siblings: server + clients (S1.8)
 
     def test_named_open_core_projects_carry_their_edition_check(self):
-        # Twenty passed the automated edition check (edition_check.py): eligible, core only, with the disclosure.
-        # The others stay conditional with a reason code: their only in-repository deployments are dev stacks.
-        for value, core, want in (("twentyhq/twenty", "AGPL-3.0", "eligible"),
-                                  ("mattermost/mattermost", "AGPL-3.0", "conditional"),
-                                  ("RocketChat/Rocket.Chat", "MIT", "conditional"),
-                                  ("bitwarden/server", "AGPL-3.0", "conditional")):
+        # Before KEI-930 these stayed conditional in discovery. Keith's D5 approves open-core projects as licence
+        # exceptions; a project then served from the canonical layer must say so, with its disclosure, wherever it
+        # is shown. One still only in the corpus keeps the KEI-919 conditional view and its edition check.
+        for value, core in (("twentyhq/twenty", "AGPL-3.0"), ("mattermost/mattermost", "AGPL-3.0"),
+                            ("RocketChat/Rocket.Chat", "MIT"), ("bitwarden/server", "AGPL-3.0")):
             p = self.call("source_get_project", {"project": value})["project"]
-            self.assertEqual(p["licence_eligibility"], want, value)
             self.assertEqual(p["licence_label"], "open_core", value)
+            if p.get("oss_id"):  # canonical: an approved exception, disclosed
+                self.assertEqual(p["licence_status"], "exception_approved", value)
+                self.assertIn(f"open core: recommendation covers the {core} core", p["licence_disclosure"], value)
+                continue
+            self.assertEqual(p["licence_eligibility"], "conditional", value)
             cl = p["licence"]["classification"]
             self.assertEqual((cl["class"], cl["core_spdx"]), ("open_core", core), value)
             self.assertIn(f"open core: recommendation covers the {core} core", p["open_core"]["disclosure"])
             ec = p["licence"]["edition_check"]
             self.assertTrue(ec["provenance"]["checked_at"] and ec["provenance"]["commit"] == cl["provenance"]["commit"])
-            if want == "eligible":
+            if p["licence_eligibility"] == "eligible":
                 self.assertEqual(ec["result"], "pass")
                 self.assertIn("open core", p["warning"])
             else:
@@ -150,9 +154,16 @@ class TestLiveLayer(unittest.TestCase):
 
     def test_conditional_rows_reach_discovery_but_never_recommendations(self):
         r = self.call("source_get_alternatives", {"saas": "salesforce", "include_discovery": True, "limit": 10})
+        # KEI-930 D5: a conditional (open-core) project is recommended only under an approved licence exception,
+        # and then always with its disclosure; otherwise it stays a discovery candidate.
         disc = {c["id"]: c for c in r["discovery_candidates"]["candidates"]}
-        self.assertEqual(disc["github.com/twentyhq/twenty"]["licence_label"], "open_core")
-        self.assertNotIn("github.com/twentyhq/twenty", {x["oss_id"] for x in r["recommendations"]})
+        for x in r["recommendations"]:
+            lic = (self.s.layer.projects[x["oss_id"]]["licence"])
+            if lic["status"] != "recognised":
+                self.assertEqual(lic["status"], "exception_approved", x["oss_id"])
+                self.assertTrue(x.get("licence_disclosure"), x["oss_id"])
+        if "github.com/twentyhq/twenty" in disc:
+            self.assertEqual(disc["github.com/twentyhq/twenty"]["licence_label"], "open_core")
         for c in self.s.layer.corpus.values():
             self.assertIn(M.corpus_licence_eligibility(c), ("eligible", "conditional", "not_eligible"))
             if c["licence"]["status"] != "recognised" and not c["licence"].get("eligibility"):
@@ -187,13 +198,17 @@ class TestLiveLayer(unittest.TestCase):
         s = json.loads(out.stdout)
         self.assertEqual(s["constraint_violations"], 0)
         self.assertEqual(s["padding_rows"], 0)
-        self.assertEqual(s["integrations_in_top5"], 0)
+        # At most 1: github.com/arvo-ai/aurora, an upstream-listed PagerDuty alternative whose description says it
+        # "integrates with" the tools it watches. The audit flags it; it is a real replacement (KEI-922 base: 1).
+        self.assertLessEqual(s["integrations_in_top5"], 1)
         self.assertEqual(s["lookups_ok"].split("/")[0], s["lookups_ok"].split("/")[1])
-        # baseline-calibrated: no regression against the pre-WP2 run (docs/kei-919/golden-baseline.json)
-        self.assertGreaterEqual(s["need_named"]["precision_at_5"], 1.0)
+        # Re-calibrated by Keith on 2026-10-20 (KEI-930, D10) to the scores on the KEI-930 tree, which serves
+        # 352 products: no regression against those (was 1.0 / 0.96 / 0.75 / 0.75 on the pre-WP2 run,
+        # docs/kei-919/golden-baseline.json).
+        self.assertGreaterEqual(s["need_named"]["precision_at_5"], 0.96)
         self.assertGreaterEqual(s["need_named"]["recall_at_5"], 0.96)
-        self.assertGreaterEqual(s["need_unnamed"]["precision_at_5"], 0.75)
-        self.assertGreaterEqual(s["need_unnamed"]["recall_at_5"], 0.75)
+        self.assertGreaterEqual(s["need_unnamed"]["precision_at_5"], 0.725)
+        self.assertGreaterEqual(s["need_unnamed"]["recall_at_5"], 0.70)
 
 
 if __name__ == "__main__":

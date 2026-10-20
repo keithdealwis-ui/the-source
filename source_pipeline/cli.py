@@ -27,6 +27,16 @@
     python -m source_pipeline quick-score [--full] quick Health, inferred pairings, quick Fit; incremental; no network
     python -m source_pipeline quick-validate       labels, coverage, recompute, zero quick-only recommendations
 
+  Demand-led catalogue (KEI-922, docs/CATALOGUE.md):
+    python -m source_pipeline catalogue-rank       rank the candidates and select the catalogue; no network
+    python -m source_pipeline catalogue-demand --kwi REPORT.json   import an aiq-kwi run as demand evidence
+    python -m source_pipeline catalogue-validate   candidates, detection rules and selection checks
+
+  Job-matched candidates (KEI-930, docs/JOB-MATCH.md; candidates only, the full evaluation decides):
+    python -m source_pipeline job-match            rewrite data/job_match/ledger.json from the corpus; no network
+    python -m source_pipeline job-match-observe    live-verify ledger projects the snapshot lacks (network)
+    python -m source_pipeline job-match-score [--budget N]   fully evaluate validated pairs not yet scored (network)
+
   Scoring (KEI-806):
     python -m source_pipeline score-harvest        observe the scoring evidence on GitHub (network)
                               [--refresh]          re-observe everything under a new as_of
@@ -277,6 +287,14 @@ def main(argv=None) -> int:
         from . import lineage
 
         return lineage.main(argv)
+    if argv[:1] and argv[0] in ("catalogue-rank", "catalogue-demand", "catalogue-validate"):
+        from . import catalogue
+
+        return catalogue.main(argv)
+    if argv[:1] and argv[0] in ("job-match", "job-match-observe", "job-match-score"):
+        from . import job_match
+
+        return job_match.main(argv)
     if argv[:1] and argv[0] in ("quick-score", "quick-validate"):
         from . import quick_score
 

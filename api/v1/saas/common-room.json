@@ -1,0 +1,121 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 450,
+    "reason": "1 of the 3 recommendations needed have passed the full evaluation; 2 fully evaluated relationships did not qualify as recommendations",
+    "reasons": [
+      "fewer_than_minimum",
+      "evaluated_not_recommended"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "edab459c7b41c1a3",
+  "last_checked": {
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "runacapital"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/crowd.dev.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 50.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 65.3,
+            "economic_advantage": 80.0,
+            "feature_equivalence": null,
+            "integrations_extensibility": 100.0,
+            "migration_friction": null,
+            "production_commercial_readiness": 75.0
+          },
+          "evidence_families": [
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/linuxfoundation/crowd.dev",
+      "last_meaningful_activity_at": "2026-10-16T17:09:55Z",
+      "latest_release": {
+        "published_at": "2023-11-21T10:31:03Z",
+        "tag": "v0.49.0"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "crowd.dev",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "self-hosting and data ownership",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on self-hosting and data ownership and integrations and extensibility."
+      },
+      "oss_id": "github.com/linuxfoundation/crowd.dev",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 95.0,
+        "score": 76.9,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 77.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 71.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/linuxfoundation/crowd.dev",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 3370
+    }
+  ],
+  "saas": {
+    "category": "Community",
+    "compare_path": null,
+    "domain": "commonroom.io",
+    "name": "Common Room",
+    "saas_id": "common-room",
+    "slug": "common-room"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

@@ -1,7 +1,7 @@
 // Fetching and caching the canonical read surface (docs/READ-API.md).
 //
 // The extension downloads the WHOLE surface (index, domain rules and every product
-// file, about 170 KB) on a timer, never per page. What it requests is therefore the
+// file, about 0.9 MB for 114 products) on a timer, never per page. What it requests is therefore the
 // same whatever the user browses, and nothing about their browsing leaves the machine.
 // A snapshot replaces the cached one only when every file arrived, validated and
 // carried the same dataset_version; otherwise the last good copy stays in use.

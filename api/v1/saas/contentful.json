@@ -1,11 +1,20 @@
 {
   "api_version": "v1",
-  "dataset_version": "4e4082c51e91f41a",
-  "last_checked": {
-    "newest": "2026-10-19T23:32:37Z",
-    "oldest": "2026-10-19T23:32:37Z"
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 51,
+    "reason": "8 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
   },
-  "more_available": 1,
+  "dataset_version": "edab459c7b41c1a3",
+  "last_checked": {
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
+  },
+  "more_available": 3,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -17,6 +26,40 @@
   },
   "recommendations": [
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Tina.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 53.9,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/tinacms/tinacms",
       "last_meaningful_activity_at": "2026-10-19T21:55:48Z",
       "latest_release": {
@@ -24,9 +67,9 @@
         "tag": "tinacms@3.15.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
-      "name": "Tina",
+      "name": "tinacms",
       "note": {
         "gaps": [],
         "origin": "derived",
@@ -58,9 +101,57 @@
       "sources": [
         "runacapital"
       ],
-      "stars": 13834
+      "stars": 13836
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L680",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L257",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "README.md#L114",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/payloadcms/payload",
       "last_meaningful_activity_at": "2026-10-16T01:11:21Z",
       "latest_release": {
@@ -68,7 +159,7 @@
         "tag": "v3.91.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Payload CMS",
       "note": {
@@ -84,7 +175,7 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 92.1,
-        "score": 96.8,
+        "score": 97.0,
         "trajectory": "Stable"
       },
       "rank": 2,
@@ -104,9 +195,48 @@
         "opensaasdirectory",
         "btwso"
       ],
-      "stars": 45357
+      "stars": 45371
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Decap_CMS.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "submissions/Netlify_CMS.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 42.8,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "multi_user",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/decaporg/decap-cms",
       "last_meaningful_activity_at": "2026-10-14T11:38:18Z",
       "latest_release": {
@@ -114,7 +244,7 @@
         "tag": "decap-cms@3.17.1"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Decap CMS",
       "note": {
@@ -132,7 +262,7 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 96.6,
-        "score": 86.4,
+        "score": 86.3,
         "trajectory": "Rising"
       },
       "rank": 3,
@@ -153,6 +283,39 @@
       "stars": 19440
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Sulu.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 68.2,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": null,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "multi_user",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/sulu/sulu",
       "last_meaningful_activity_at": "2026-10-16T06:20:40Z",
       "latest_release": {
@@ -160,7 +323,7 @@
         "tag": "3.0.10"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Sulu",
       "note": {
@@ -177,8 +340,8 @@
       "oss_id": "github.com/sulu/sulu",
       "project_health": {
         "band": "Exceptional",
-        "confidence": 95.0,
-        "score": 91.0,
+        "confidence": 96.6,
+        "score": 88.9,
         "trajectory": "Stable"
       },
       "rank": 4,
@@ -199,14 +362,49 @@
       "stars": 1361
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Builder.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 38.6,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "import",
+            "plugins"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/BuilderIO/builder",
-      "last_meaningful_activity_at": "2026-10-15T06:09:04Z",
+      "last_meaningful_activity_at": "2026-10-20T08:38:16Z",
       "latest_release": {
-        "published_at": "2026-10-15T06:09:04Z",
-        "tag": "@builder.io/react@9.4.9"
+        "published_at": "2026-10-20T08:38:16Z",
+        "tag": "@builder.io/sdk-vue@5.4.2"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Builder",
       "note": {
@@ -225,13 +423,13 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 96.6,
-        "score": 85.7,
+        "score": 85.3,
         "trajectory": "Rising"
       },
       "rank": 5,
       "replacement_fit": {
         "confidence": 84.5,
-        "evaluated_at": "2026-10-16T01:10:28Z",
+        "evaluated_at": "2026-10-20T12:30:08Z",
         "score": 75.3,
         "score_version": "1.2.0"
       },
@@ -243,7 +441,7 @@
       "sources": [
         "runacapital"
       ],
-      "stars": 8867
+      "stars": 8868
     }
   ],
   "saas": {

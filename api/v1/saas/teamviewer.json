@@ -1,0 +1,212 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "both",
+    "rank": 72,
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations",
+    "reasons": [
+      "fewer_than_minimum",
+      "evaluated_not_recommended"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "edab459c7b41c1a3",
+  "last_checked": {
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "diegoleme",
+      "opensaasdirectory",
+      "runacapital"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L195",
+              "source_commit": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+              "source_id": "diegoleme"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 93.2,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "quickstart",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/Ylianst/MeshCentral",
+      "last_meaningful_activity_at": "2026-09-24T00:51:47Z",
+      "latest_release": {
+        "published_at": "2026-09-24T00:51:47Z",
+        "tag": "1.2.6"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "MeshCentral",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
+      },
+      "oss_id": "github.com/ylianst/meshcentral",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.0,
+        "score": 89.9,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 81.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 86.6,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Ylianst/MeshCentral",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "diegoleme"
+      ],
+      "stars": 7447
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/RustDesk.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L1645",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/rustdesk/rustdesk",
+      "last_meaningful_activity_at": "2026-10-16T03:18:22Z",
+      "latest_release": {
+        "published_at": "2026-09-30T16:11:03Z",
+        "tag": "1.5.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "RustDesk",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/rustdesk/rustdesk",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 94.9,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 92.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 81.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/rustdesk/rustdesk",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital",
+        "opensaasdirectory"
+      ],
+      "stars": 126413
+    }
+  ],
+  "saas": {
+    "category": "Remote access",
+    "compare_path": null,
+    "domain": "teamviewer.com",
+    "name": "TeamViewer",
+    "saas_id": "teamviewer",
+    "slug": "teamviewer"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

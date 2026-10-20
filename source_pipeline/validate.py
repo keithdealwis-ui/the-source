@@ -381,8 +381,13 @@ def run() -> dict:
         miss.append(f"saas_products {counts['saas_products']} < {targets['saas_target']}")
     if min(counts["oss_projects"], counts["oss_distinct_products"]) < targets["oss_minimum"]:
         miss.append(f"oss_projects {counts['oss_projects']} / distinct products {counts['oss_distinct_products']} < {targets['oss_minimum']}")
-    if not targets["edges_min"] <= counts["relationships"] <= targets["edges_max"]:
-        miss.append(f"relationships {counts['relationships']} outside {targets['edges_min']}-{targets['edges_max']}")
+    # launch.catalogue_serving (KEI-930) has its own budget; launch.edges_max bounds the ranked selection.
+    cat_n = summary["launch"].get("catalogue_served_relationships") or 0
+    ranked_n = counts["relationships"] - cat_n
+    if not targets["edges_min"] <= ranked_n <= targets["edges_max"]:
+        miss.append(f"relationships {ranked_n} outside {targets['edges_min']}-{targets['edges_max']}")
+    if cat_n > int((targets.get("catalogue_serving") or {}).get("edges_max", 0)):
+        miss.append(f"catalogue-served relationships {cat_n} above launch.catalogue_serving.edges_max")
     ranks = sorted(x["derived"]["launch_rank"] for x in launch_saas)
     bad = [] if ranks == list(range(1, len(ranks) + 1)) else ["launch ranks are not the unbroken top of the ranking"]
     by_rank = sorted(saas, key=lambda x: (-x["derived"]["source_count"], -x["derived"]["validated_alternatives"], x["name"].lower()))
@@ -395,7 +400,11 @@ def run() -> dict:
         ranked_ids = [x["saas_id"] for x in by_rank if x["derived"]["validated_alternatives"] > 0]
         top = set(ranked_ids[:targets["saas_target"]])
         served_saas = {sid for sid, _ in served}
-        if not top <= set(chosen_ids) or any(c not in top and c not in served_saas
+        # launch.catalogue_serving (KEI-930): catalogue products served for their full-evaluation recommendations.
+        cat_served = set(summary["launch"].get("catalogue_served") or [])
+        if cat_served and not (policy["launch"].get("catalogue_serving") or {}).get("enabled"):
+            bad.append("catalogue-served products in the launch set while launch.catalogue_serving is off")
+        if not top <= set(chosen_ids) or any(c not in top and c not in served_saas and c not in cat_served
                                              and c not in ranked_ids[:len(chosen_ids)] for c in chosen_ids):
             bad.append("the launch SaaS are not the top of the ranking plus the products already served")
     elif eligible != chosen_ids:

@@ -61,6 +61,9 @@ def load_exceptions() -> dict:
                 f"licence exception for {e.get('oss_id')} is not valid: it needs a human "
                 "approver and an approval_ref"
             )
+        if e.get("class") is not None and (e["class"] not in ("open_core", "source_available")
+                                           or len(str(e.get("disclosure") or "")) < 20):
+            raise ValueError(f"licence exception for {e.get('oss_id')}: a class needs a disclosure (KEI-930)")
         out[e["oss_id"].lower()] = e
     return out
 
@@ -110,11 +113,27 @@ def _edition_rights(e: dict, project: dict, saas: dict, exceptions: dict, jobs: 
     return pair_rights(scope, jobs.get(product.get("category")))
 
 
+def load_readings() -> dict:
+    """config/licence_readings.yaml (KEI-930 D6): human-approved readings of licences the detector misread."""
+    path = common.CONFIG / "licence_readings.yaml"
+    doc = (common.load_yaml(path) or {}) if path.exists() else {}
+    out = {}
+    for r in doc.get("readings") or []:
+        approver = str(r.get("approved_by") or "").strip().lower()
+        if approver in EXECUTORS or approver == EDITION_CHECK_APPROVER or not r.get("approval_ref"):
+            raise ValueError(f"licence reading for {r.get('oss_id')} needs a human approver and an approval_ref")
+        out[r["oss_id"].lower()] = r
+    return out
+
+
 def exception_record(exc: dict | None) -> dict | None:
     """The exception as a project's licence verdict carries it; an edition-check one keeps its disclosure."""
     if not exc:
         return None
     out = {"approved_by": exc["approved_by"], "approval_ref": exc["approval_ref"]}
+    if exc.get("disclosure") and exc.get("kind") != "edition_check":  # KEI-930: a hand exception's class and disclosure
+        out.update(kind="keith_approved", **{"class": exc["class"]}, disclosure=exc["disclosure"],
+                   **({"core_spdx": exc["core_spdx"]} if exc.get("core_spdx") else {}))
     if exc.get("kind") == "edition_check":
         ec = exc["edition_check"]
         out.update(kind="edition_check", core_spdx=exc["core_spdx"], disclosure=exc["disclosure"],
@@ -138,6 +157,13 @@ def licence_verdict(live: dict, policy: dict, exceptions: dict, oss_id: str) -> 
         if second["recognised"]:
             recognised = True
             spdx = second["spdx"]
+    reading = load_readings().get(oss_id)
+    if not recognised and reading is not None:  # KEI-930 D6: a reviewed reading of a misread OSI licence
+        if reading["spdx"] not in allowed:
+            raise ValueError(f"licence reading for {oss_id}: {reading['spdx']} is not a recognised licence")
+        recognised, spdx = True, reading["spdx"]
+        detection = {"method": "reviewed_reading", "recognised": True, "evidence": reading["evidence"],
+                     "approved_by": reading["approved_by"], "approval_ref": reading["approval_ref"]}
     exc = exceptions.get(oss_id)
     return {
         "spdx": spdx,
@@ -333,7 +359,14 @@ def served_baseline(policy: dict) -> set | None:
     if not policy["launch"].get("preserve_served"):
         return None
     path = common.DATA / "canonical" / "relationships.jsonl"
-    return {(r["saas_id"], r["oss_id"]) for r in common.read_jsonl(path)} if path.exists() else None
+    if not path.exists():
+        return None
+    # A relationship served by launch.catalogue_serving (KEI-930) is re-derived from its evidence on every build;
+    # it is not pinned into the ranked selection, or it would be counted against launch.edges_max.
+    prev = common.DATASET / "relationships.jsonl"
+    via_catalogue = {(e["saas_id"], e["oss_id"]) for e in common.read_jsonl(prev)
+                     if (e.get("launch_position") or {}).get("via") == "catalogue_serving"} if prev.exists() else set()
+    return {(r["saas_id"], r["oss_id"]) for r in common.read_jsonl(path)} - via_catalogue
 
 
 def select_launch(saas: dict, edges: list[dict], projects: dict, policy: dict, served: set | None = None) -> dict:
@@ -442,6 +475,58 @@ def select_launch(saas: dict, edges: list[dict], projects: dict, policy: dict, s
     }
 
 
+def catalogue_serve(sel: dict, edges: list[dict], projects: dict, policy: dict) -> None:
+    """launch.catalogue_serving (KEI-930, a Keith policy gate): after the ranked launch selection, every product in
+    the catalogue selection (data/catalogue/selection.json) is served with its fully evaluated recommendations, up
+    to max_per_saas and at most edges_max relationships in all (a budget of its own: launch.edges_max still bounds
+    the ranked selection), so its catalogue status can be what its evidence supports. Only validated, recommendable,
+    exportable relationships whose newest Replacement Fit is a full evaluation that is publishable and credible are
+    added; nothing already picked is displaced. Products new to the launch set continue the launch ranks. Off when
+    the key is absent or not enabled: the dr-KEI-805-507e4f70 selection, unchanged. Recommendations come from the
+    scores the build finds (data/scores/), so a pair fully evaluated after this build is served by the next one."""
+    cs = policy["launch"].get("catalogue_serving") or {}
+    sel["catalogue_served"] = []
+    if not cs.get("enabled"):
+        return
+    from . import canonical, catalogue
+
+    selection = catalogue.load_selection()
+    fit, _ = canonical._load_scores()
+    cap, budget = int(cs["max_per_saas"]), int(cs["edges_max"])
+    picked = sel["edge_picks"]
+    sel["catalogue_served_relationships"] = 0
+    by_saas: dict[str, list] = {}
+    for e in edges:
+        f = fit.get((e["saas_id"], e["oss_id"]))
+        live = projects[e["oss_id"]]["live"]
+        if (e["validation"]["status"] == "validated" and not e["share_alike_only"] and f and f["publish"]
+                and f["credible_alternative"] and f.get("scoring_path") in catalogue.FULL_PATHS
+                and None not in (live.get("stars"), live.get("licence_spdx"), live.get("pushed_at"))):
+            by_saas.setdefault(e["saas_id"], []).append((f["score"], e))
+    rank = {sid: i for i, sid in enumerate(sel["saas_ranked"], 1)}
+    for sid in (selection or {}).get("selected", []):
+        if sid not in by_saas:
+            continue
+        have = [e for e in edges if e["saas_id"] == sid and e["edge_id"] in picked]
+        groups = {projects[e["oss_id"]]["product_group"] for e in have}
+        room = cap - sum(1 for _, e in by_saas[sid] if e["edge_id"] in picked)
+        for _, e in sorted(by_saas[sid], key=lambda x: (-x[0], x[1]["oss_id"])):
+            if room <= 0 or sel["catalogue_served_relationships"] >= budget:
+                break
+            g = projects[e["oss_id"]]["product_group"]
+            if e["edge_id"] in picked or g in groups:
+                continue
+            if sid not in rank:
+                rank[sid] = len(rank) + 1
+                sel["saas_ranked"].append(sid)
+                sel["catalogue_served"].append(sid)
+            groups.add(g)
+            picked[e["edge_id"]] = {"saas_rank": rank[sid], "position": len(have) + 1, "via": "catalogue_serving"}
+            have.append(e)
+            room -= 1
+            sel["catalogue_served_relationships"] += 1
+
+
 def _lost_reason(sid: str, oid: str, edges: list[dict]) -> str:
     e = next((e for e in edges if e["saas_id"] == sid and e["oss_id"] == oid), None)
     if e is None:
@@ -449,6 +534,17 @@ def _lost_reason(sid: str, oid: str, edges: list[dict]) -> str:
     if e["validation"]["status"] != "validated":
         return f"no longer validated: {', '.join(e['validation']['reasons'][:4])}"
     return "another repository of the same product is served for this product"
+
+
+def evidence_class(source_ids: list[str], sources_cfg: dict) -> str:
+    """What a relationship rests on: `listed` (an upstream list names the pair), `self_described` (the project's own
+    repository says it is an alternative, the intake ledger) or `job_matched` (KEI-930: the project only says it
+    does the category's job; a candidate the full evaluation must confirm). The strongest class present wins."""
+    kinds = {s["source_id"]: s.get("kind") for s in sources_cfg["sources"]}
+    found = {kinds.get(s) for s in source_ids}
+    if found - {"intake", "job_match"}:
+        return "listed"
+    return "self_described" if "intake" in found else "job_matched"
 
 
 def run() -> dict:
@@ -547,6 +643,14 @@ def run() -> dict:
     }
     review = common.load_yaml(common.CONFIG / "edge_review.yaml")
     review_rejections = {(r["saas"], r["oss"].lower()): r["reason"] for r in review["rejected"]}
+    # Job-matched pairs (KEI-930) have their own exhaustive desk review: the full evaluation's core gate cannot
+    # discriminate them (they were selected on the very phrase it checks), so every pair is read and the ones
+    # whose project is not a counterpart to the product are rejected here.
+    jm_path = common.CONFIG / "job_match_review.yaml"
+    jm_review = common.load_yaml(jm_path) if jm_path.exists() else {"rejected": [], "reviewed": [],
+                                                                       "reviewed_by": None, "reviewed_at": None}
+    jm_rejections = {(r["saas"], r["oss"].lower()): r["reason"] for r in jm_review["rejected"]}
+    jm_reviewed = {(r["saas"], r["oss"].lower()) for r in jm_review.get("reviewed") or []} | set(jm_rejections)
     unknown = sorted(k for k in review_rejections
                      if k[0] not in rec["saas"] and k[0] not in load_catalogue()[0])
     if unknown:
@@ -557,11 +661,14 @@ def run() -> dict:
     edges = []
     for e in merged["edges"]:
         project = projects[e["oss_id"]]
-        refusal = review_rejections.get((e["saas_id"], e["oss_id"]))
+        job_only = e["source_ids"] == ["job_match"]
+        refusal = (jm_rejections if job_only else review_rejections).get((e["saas_id"], e["oss_id"]))
+        if job_only and refusal is None and (e["saas_id"], e["oss_id"]) not in jm_reviewed:
+            refusal = "job match not yet desk-reviewed"
         if refusal:
             rejections.append({"stage": "plausibility_review", "reason": refusal, "oss_id": e["oss_id"],
-                               "saas_id": e["saas_id"], "reviewed_by": review["reviewed_by"],
-                               "reviewed_at": review["reviewed_at"]})
+                               "saas_id": e["saas_id"], "reviewed_by": (jm_review if job_only else review)["reviewed_by"],
+                               "reviewed_at": (jm_review if job_only else review)["reviewed_at"]})
         rights = _edition_rights(e, project, rec["saas"], exceptions, jobs)
         checks = {
             "passed_plausibility_review": refusal is None,
@@ -590,7 +697,8 @@ def run() -> dict:
                 "provenance": e["provenance"],
                 "source_ids": e["source_ids"],
                 "source_count": e["source_count"],
-                "corroborated": e["source_count"] >= 2,
+                "corroborated": len([s for s in e["source_ids"] if s != "job_match"]) >= 2,
+                "evidence_class": evidence_class(e["source_ids"], sources_cfg),
                 "share_alike_only": e["share_alike_only"],
                 "lane": "recommendable" if ok else ("licence_exception" if flagged else "rejected"),
                 "recommendation_eligible": ok,
@@ -605,8 +713,8 @@ def run() -> dict:
                        if e["oss_id"] in held else [])
                     + ([f"edition_rights: {rights['status']}: {rights['reason']}"]
                        if rights is not None and rights["status"] != "covered" else []),
-                    "plausibility_review": {"reviewed_by": review["reviewed_by"],
-                                            "reviewed_at": review["reviewed_at"],
+                    "plausibility_review": {"reviewed_by": (jm_review if job_only else review)["reviewed_by"],
+                                            "reviewed_at": (jm_review if job_only else review)["reviewed_at"],
                                             "outcome": ("rejected" if refusal else
                                                         "left standing" if ok else "not reviewed")},
                     "validated_as_of": snapshot["as_of"],
@@ -616,6 +724,7 @@ def run() -> dict:
         )
 
     sel = select_launch(rec["saas"], edges, projects, policy, served_baseline(policy))
+    catalogue_serve(sel, edges, projects, policy)
     launch_oss = set()
     for e in edges:
         pick = sel["edge_picks"].get(e["edge_id"])
@@ -666,7 +775,7 @@ def run() -> dict:
         row["reviewed_at"] = sources_cfg["reviewed_at"]
         row["reviewed_by"] = sources_cfg["reviewed_by"]
         row["harvest"] = harvest_stats.get(s["source_id"], {})
-        if s.get("kind") == "intake":
+        if s.get("kind") in ("intake", "job_match"):
             # The ledger as harvested, not as it is now: an admission changes the dataset
             # only when a cycle harvests it (KEI-807).
             row["pinned_commit"] = row["harvest"].get("pinned_commit", row["pinned_commit"])
@@ -783,6 +892,9 @@ def run() -> dict:
             "saas_added_beyond_floor": sel["saas_added_beyond_floor"],
             **({"preserve_served": {k: sel["preserve_served"][k] for k in ("served_before", "kept")}
                 | {"not_kept": len(sel["preserve_served"]["not_kept"])}} if "preserve_served" in sel else {}),
+            **({"catalogue_served": sorted(sel["catalogue_served"]),
+                "catalogue_served_relationships": sel["catalogue_served_relationships"]}
+               if sel.get("catalogue_served_relationships") else {}),
             "saas_named_by_a_single_source": count(
                 saas_rows, lambda r: r["derived"]["launch"] and r["derived"]["source_count"] == 1),
         },

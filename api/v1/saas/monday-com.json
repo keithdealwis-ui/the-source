@@ -1,21 +1,68 @@
 {
   "api_version": "v1",
-  "dataset_version": "4e4082c51e91f41a",
-  "last_checked": {
-    "newest": "2026-10-19T23:32:37Z",
-    "oldest": "2026-10-19T23:32:37Z"
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 23,
+    "reason": "8 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
   },
-  "more_available": 0,
+  "dataset_version": "edab459c7b41c1a3",
+  "last_checked": {
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
+  },
+  "more_available": 3,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
       "emmraan",
+      "job_match",
       "opensaasdirectory",
       "solvohq"
     ]
   },
   "recommendations": [
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L296",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 91.7,
+            "ease_of_adoption": 71.9,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/go-vikunja/vikunja",
       "last_meaningful_activity_at": "2026-10-16T14:04:37Z",
       "latest_release": {
@@ -23,7 +70,7 @@
         "tag": "v2.7.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Vikunja",
       "note": {
@@ -37,9 +84,9 @@
       },
       "oss_id": "github.com/go-vikunja/vikunja",
       "project_health": {
-        "band": "Healthy",
+        "band": "Exceptional",
         "confidence": 95.0,
-        "score": 83.3,
+        "score": 86.5,
         "trajectory": "Rising"
       },
       "rank": 1,
@@ -57,9 +104,48 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 5793
+      "stars": 5800
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L297",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 93.8,
+            "ease_of_adoption": 99.5,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/makeplane/plane",
       "last_meaningful_activity_at": "2026-10-17T10:44:44Z",
       "latest_release": {
@@ -67,7 +153,7 @@
         "tag": "v1.4.3-rc1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Plane",
       "note": {
@@ -84,8 +170,8 @@
       "oss_id": "github.com/makeplane/plane",
       "project_health": {
         "band": "Exceptional",
-        "confidence": 95.0,
-        "score": 88.0,
+        "confidence": 92.1,
+        "score": 87.2,
         "trajectory": "Declining"
       },
       "rank": 2,
@@ -103,9 +189,47 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 61143
+      "stars": 61163
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "data/products.json#/164/slug=openproject",
+              "source_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
+              "source_id": "emmraan"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 96.2,
+            "ease_of_adoption": 98.2,
+            "economic_advantage": 51.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 0.0,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/opf/openproject",
       "last_meaningful_activity_at": "2026-10-15T15:41:02Z",
       "latest_release": {
@@ -113,7 +237,7 @@
         "tag": "v17.9.2"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "OpenProject",
       "note": {
@@ -132,7 +256,7 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 91.2,
-        "score": 96.5,
+        "score": 96.2,
         "trajectory": "Rising"
       },
       "rank": 3,
@@ -150,9 +274,47 @@
       "sources": [
         "emmraan"
       ],
-      "stars": 16479
+      "stars": 16508
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L735",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/hcengineering/platform",
       "last_meaningful_activity_at": "2026-10-14T05:50:21Z",
       "latest_release": {
@@ -160,7 +322,7 @@
         "tag": "v0.7.426"
       },
       "licence_spdx": "EPL-2.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Huly",
       "note": {
@@ -174,9 +336,9 @@
       },
       "oss_id": "github.com/hcengineering/platform",
       "project_health": {
-        "band": "Exceptional",
-        "confidence": 96.6,
-        "score": 85.8,
+        "band": "Healthy",
+        "confidence": 95.0,
+        "score": 84.0,
         "trajectory": "Declining"
       },
       "rank": 4,
@@ -194,7 +356,92 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 27937
+      "stars": 27941
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/wekan/wekan",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/wekan/wekan",
+      "last_meaningful_activity_at": "2026-10-20T10:15:20Z",
+      "latest_release": {
+        "published_at": "2026-10-20T01:01:12Z",
+        "tag": "v12.56"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Wekan",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/wekan/wekan",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 94.0,
+        "trajectory": "Rising"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-10-20T12:30:08Z",
+        "score": 91.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/wekan/wekan",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 21130
     }
   ],
   "saas": {

@@ -9,9 +9,15 @@ needs to call GitHub or any upstream to render a recommendation.
 
 | File | Contents |
 |---|---|
-| `index.json` | `dataset_version`, `data_as_of`, `live_checked_at` (oldest/newest), and one row per supported SaaS product (`saas_id`, `name`, `slug`, `path`, `compare_path`, `recommendations`, `status`) |
+| `index.json` | `dataset_version`, `data_as_of`, `live_checked_at` (oldest/newest), one row per supported SaaS product (`saas_id`, `name`, `slug`, `path`, `compare_path`, `recommendations`, `status`), and `catalogue` (path and status counts) |
 | `domains.json` | Host rules for detecting a supported product locally, plus `match_semantics` |
-| `saas/<saas_id>.json` | One product's record: `saas`, `status`, up to 5 `recommendations`, `more_available`, `last_checked`, `scoring`, `provenance` |
+| `saas/<saas_id>.json` | One product's support record: `saas`, `status`, `catalogue`, up to 5 `recommendations`, `more_available`, `last_checked`, `scoring`, `provenance` |
+| `catalogue.json` | The 500-product catalogue (KEI-922, [`CATALOGUE.md`](CATALOGUE.md)): per entry `audience`, `category`, `status` (`ok` / `partial` / `none_yet`), `reasons` and `reason`, evidence counts, `path` of its support record or null, `compare_path` or null, and its detection rules `match` |
+
+A product is supported (it has a support record) when it has at least one recommendation
+that passed the full evaluation, or is one of the products configured in
+`config/supported_saas.yaml`. Since KEI-922, `compare_path` is null for a product that
+is not yet `ok`, apart from those configured ones.
 
 Every file carries the same `dataset_version`, a 16-hex content hash of the canonical
 dataset. Clients can key caches on it.
@@ -35,6 +41,12 @@ dataset. Clients can key caches on it.
   "self_hosting": {"self_hostable": true, "basis": "self-hosting documented in the project's README"},
   "note": {"strengths": ["core use-case coverage", "migration path"], "gaps": [], "text": "...", "origin": "derived"},
   "sources": ["btwso"],
+  "evidence": {
+    "relationship": {"corroborated": false, "validated_as_of": "...",
+                     "provenance": [{"source_id": "btwso", "source_commit": "...", "locator": "README.md#L120"}]},
+    "replacement_fit": {"scoring_path": "full_lane", "core_gate": "passed",
+                        "evidence_families": ["self_host", "api"], "dimensions": {"core_use_case_coverage": 100.0}}
+  },
   "live_checked_at": "2026-09-27T05:08:30Z"
 }
 ```
@@ -60,17 +72,31 @@ has dropped below 3 (for example because a project went stale) is still served, 
 `status: "insufficient_recommendations"`. A client should then show what there is, or
 nothing, but never pad.
 
+`catalogue` on a support record, and every entry of `catalogue.json`, carries the catalogue
+state: `ok` (at least 3 recommendations that passed the full evaluation), `partial` (1 or 2)
+or `none_yet` (none), with `reasons` (codes) and `reason` (a sentence) saying why a product
+is not ok yet. Quick scores, corpus pairings and demand never change it.
+
 ## Detecting a product (domains.json)
 
 Checked locally; nothing about the page is sent anywhere:
 
 1. Lowercase the page hostname and strip one leading `www.`.
 2. A rule matches when its `host` equals the hostname (or the hostname ends with its
-   `host_suffix`) and, if it has a `path_prefix`, the URL path starts with it.
-3. If several rules match, one with a `path_prefix` wins; otherwise the first in file order.
+   `host_suffix`, which starts with `.` or `-`) and, if it has a `path_prefix`, the URL path
+   equals the prefix or continues it at a `/`. Whole segments only: `/wiki` never matches
+   `/wikipedia`. A prefix that ends in `/` is a plain prefix.
+3. If several rules match, the most specific wins: a `path_prefix` beats none, a longer
+   `path_prefix` beats a shorter one, an exact `host` beats a `host_suffix`, a longer suffix
+   beats a shorter one. Remaining ties go to the first in file order.
 
 Examples: `acme.atlassian.net/jira/...` gives `jira`, `acme.atlassian.net/wiki/...` gives
-nothing, `aws.amazon.com/s3/...` gives `amazon-s3`, and `shop.myshopify.com` gives `shopify`.
+`confluence`, `aws.amazon.com/s3/...` gives `amazon-s3` (`/s3-glacier/` gives nothing), and
+`shop.myshopify.com` gives `shopify`. `source_pipeline/detect.py` is the reference
+implementation; `catalogue.json` carries the same kind of rules for every catalogue entry, so
+`app.hubspot.com/email/...` resolves to HubSpot Marketing Hub there (see `CATALOGUE.md`).
+Rules from before KEI-922 behave the same under these semantics, apart from the
+whole-segment rule.
 
 ## Serving
 

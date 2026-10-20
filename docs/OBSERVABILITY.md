@@ -191,8 +191,11 @@ and commit the file.
 
 **Label review.** The relevance labels were written by linux-claude from domain knowledge,
 against the list of projects only (not their ranks, fit or health). They name projects The
-Source may not hold yet, which then count as misses. Keith has not reviewed them yet. The
-measures are only as good as the labels, so reviewing them is the first improvement to make.
+Source may not hold yet, which then count as misses. Keith reviewed them on 2026-10-20 (KEI-930)
+and approved them unchanged. The baseline was re-recorded that day, on the KEI-930 tree (precision@5
+0.663, recall@5 0.687). The fall from 0.778 is mostly genuine alternatives the labels do not name,
+admitted by KEI-930's licence decisions (KeePassXC, GitLab, Rocket.Chat, Outline, ...). A precision@5
+regression is measured from the new baseline.
 
 ## S0.5 Privacy-preserving MCP telemetry and weekly reports
 

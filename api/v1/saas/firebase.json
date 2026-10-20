@@ -1,11 +1,20 @@
 {
   "api_version": "v1",
-  "dataset_version": "4e4082c51e91f41a",
-  "last_checked": {
-    "newest": "2026-10-19T23:32:37Z",
-    "oldest": "2026-10-19T23:32:37Z"
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 15,
+    "reason": "8 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
   },
-  "more_available": 0,
+  "dataset_version": "edab459c7b41c1a3",
+  "last_checked": {
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
+  },
+  "more_available": 3,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -20,6 +29,44 @@
   },
   "recommendations": [
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Kuzzle.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 96.3,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/kuzzleio/kuzzle",
       "last_meaningful_activity_at": "2026-10-12T14:02:07Z",
       "latest_release": {
@@ -27,7 +74,7 @@
         "tag": "v2.60.0-beta.1"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Kuzzle",
       "note": {
@@ -64,6 +111,75 @@
       "stars": 1668
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L604",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "submissions/Supabase.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L803",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "data/products.json#/22/slug=supabase",
+              "source_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
+              "source_id": "emmraan"
+            },
+            {
+              "locator": "README.md#L198",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            },
+            {
+              "locator": "data/tools.json#slug=supabase;named_by=firebase",
+              "source_commit": "e6b7941038edf3507a1e14866c2f84553ddfc96b",
+              "source_id": "altstack"
+            },
+            {
+              "locator": "README.md#L248",
+              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/supabase/supabase",
       "last_meaningful_activity_at": "2026-10-16T20:10:48Z",
       "latest_release": {
@@ -71,7 +187,7 @@
         "tag": "v1.26.08"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Supabase",
       "note": {
@@ -111,9 +227,72 @@
         "altstack",
         "fossalt"
       ],
-      "stars": 111778
+      "stars": 112159
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L605",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "submissions/Appwrite.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L769",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "README.md#L199",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            },
+            {
+              "locator": "data/tools.json#slug=appwrite;named_by=firebase",
+              "source_commit": "e6b7941038edf3507a1e14866c2f84553ddfc96b",
+              "source_id": "altstack"
+            },
+            {
+              "locator": "README.md#L246",
+              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/appwrite/appwrite",
       "last_meaningful_activity_at": "2026-10-13T20:16:25Z",
       "latest_release": {
@@ -121,7 +300,7 @@
         "tag": "2.5.0"
       },
       "licence_spdx": "BSD-3-Clause",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Appwrite",
       "note": {
@@ -160,9 +339,45 @@
         "altstack",
         "fossalt"
       ],
-      "stars": 57729
+      "stars": 57737
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/AceBase.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "import",
+            "quickstart",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/appy-one/acebase",
       "last_meaningful_activity_at": "2026-06-25T16:55:42Z",
       "latest_release": {
@@ -170,7 +385,7 @@
         "tag": "v1.29.13"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "maintained",
       "name": "AceBase",
       "note": {
@@ -207,14 +422,59 @@
       "stars": 524
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Nhost.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L200",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            },
+            {
+              "locator": "README.md#L247",
+              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 57.8,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/nhost/nhost",
-      "last_meaningful_activity_at": "2026-10-14T17:34:22Z",
+      "last_meaningful_activity_at": "2026-10-20T11:57:47Z",
       "latest_release": {
-        "published_at": "2026-10-14T17:34:22Z",
-        "tag": "@nhost/dashboard@3.7.1"
+        "published_at": "2026-10-20T11:57:47Z",
+        "tag": "@nhost/dashboard@3.8.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Nhost",
       "note": {
@@ -231,14 +491,14 @@
       "oss_id": "github.com/nhost/nhost",
       "project_health": {
         "band": "Exceptional",
-        "confidence": 96.6,
-        "score": 93.6,
+        "confidence": 95.0,
+        "score": 93.5,
         "trajectory": "Rising"
       },
       "rank": 5,
       "replacement_fit": {
         "confidence": 95.0,
-        "evaluated_at": "2026-10-14T23:51:42Z",
+        "evaluated_at": "2026-10-20T12:30:08Z",
         "score": 67.7,
         "score_version": "1.2.0"
       },
@@ -252,7 +512,7 @@
         "btwso",
         "fossalt"
       ],
-      "stars": 9362
+      "stars": 9363
     }
   ],
   "saas": {

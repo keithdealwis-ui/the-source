@@ -228,11 +228,14 @@ def _call(s, name, **args):
 def test_slack_discovery_lists_mattermost_and_rocket_chat_as_open_core(srv):
     r = _call(srv, "source_get_alternatives", saas="slack", include_discovery=True, limit=10)
     disc = {c["id"]: c for c in r["discovery_candidates"]["candidates"]}
+    recs = {x["oss_id"]: x for x in r["recommendations"]}
     for pid in ("github.com/mattermost/mattermost", "github.com/rocketchat/rocket.chat"):
+        if pid in recs:  # KEI-930 D5: recommended under an approved open-core exception, always disclosed
+            assert recs[pid]["licence_disclosure"].startswith("open core: recommendation covers")
+            continue
         assert disc[pid]["licence_label"] == "open_core" and disc[pid]["tier"] == "discovery"
         assert disc[pid]["open_core"]["disclosure"].startswith("open core: recommendation covers")
         assert "slack" in disc[pid]["listed_alternative_to"]
-        assert pid not in {x["oss_id"] for x in r["recommendations"]}
     # conditional rows are listed, never counted as licence issues
     assert all(M.corpus_licence_eligibility(c) != "not_eligible" for c in map(srv.layer.corpus.get, disc))
 

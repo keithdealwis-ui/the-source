@@ -55,7 +55,8 @@ import time
 import unicodedata
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from urllib.parse import urlsplit
+
+from . import detect as _detect
 
 SERVER_NAME = "the-source"
 SERVER_VERSION = "1.2.0"
@@ -116,7 +117,8 @@ TIER_MEANING = {
 }
 
 INSTRUCTIONS = (
-    "The Source: evidence-backed open-source alternatives to SaaS products. Answers come from "
+    "The Source: evidence-backed open-source (and disclosed source-available) alternatives to SaaS products. "
+    "Answers come from "
     "The Source's published read layer (CC BY 4.0; attribute \"" + ATTRIBUTION + "\"). "
     "Use source_get_alternatives for 'what can replace X', source_detect_saas for a URL, "
     "source_search to find products or projects, source_get_project and "
@@ -126,7 +128,8 @@ INSTRUCTIONS = (
     "relationships marked recommended are recommendations; Replacement Fit notes are "
     "machine-derived, not editorial. Every project carries a tier: recommended, scored, or discovery "
     "(discovered, not scored: never present a discovery project as a recommendation). "
-    "Show live_checked_at or observed_as_of with any live figure."
+    "Show live_checked_at or observed_as_of with any live figure. A project that is not under a recognised "
+    "open-source licence carries a licence_disclosure: always show it with that project."
 )
 
 
@@ -488,6 +491,10 @@ class Layer:
         self.disclosures, self.undisclosed = {}, []
         for pid, p in self.projects.items():
             oc = p["licence"].get("open_core") or {}
+            exc = p["licence"].get("exception") or {}
+            if exc.get("disclosure"):  # KEI-930: hand-approved open-core or source-available exception
+                self.disclosures[pid] = exc["disclosure"]
+                continue
             row = self.canonical_corpus.get(pid) or {}
             cl = (row.get("licence") or {}).get("classification") or {}
             open_core = bool(oc) or cl.get("class") == "open_core"
@@ -842,26 +849,11 @@ class Layer:
         raise ToolError(f"{v!r} is not a project in The Source canonical layer; try source_search")
 
     def detect(self, url: str):
+        """api/v1/domains.json semantics (source_pipeline/detect.py): the most specific matching rule wins."""
         host, path = _host_path(url)
         if host is None:
             return None
-        first = None
-        for rule in self.domains.get("rules", []):
-            if "host" in rule:
-                if host != rule["host"]:
-                    continue
-            elif "host_suffix" in rule:
-                if not host.endswith(rule["host_suffix"]):
-                    continue
-            else:
-                continue
-            if "path_prefix" in rule:
-                if path.startswith(rule["path_prefix"]):
-                    return rule["saas_id"]
-                continue
-            if first is None:
-                first = rule["saas_id"]
-        return first
+        return _detect.match(host, path, self.domains.get("rules", []))
 
 
 class _FullIndex:
@@ -914,18 +906,7 @@ class _FullIndex:
 def _host_path(url: str):
     """The READ-API.md detection inputs: lowercase host without one leading www., and path.
     Only http(s); a bare host gets https://. Never fetched."""
-    u = str(url or "").strip()
-    if "://" not in u:
-        u = "https://" + u
-    try:
-        parts = urlsplit(u)
-        host = (parts.hostname or "").rstrip(".")
-    except ValueError:
-        return None, ""
-    if parts.scheme not in ("http", "https") or not host:
-        return None, ""
-    host = host[4:] if host.startswith("www.") else host
-    return host, parts.path or "/"
+    return _detect.host_path(url)
 
 
 # --------------------------------------------------------------------------- KEI-919 correctness guards
@@ -952,6 +933,8 @@ def match_strength(hit: dict, terms: list, anchors=None, topics=None):
     reached through a matched product's REPLACES edge, or matches at least half of the query's content words with
     at least one of them in a field that says what the project is. Anything else is a weak word match, and a weak
     match never fills a result list (KEI-919 S1.3): an empty answer is truthful, a padded one is not."""
+    if not terms:  # nothing but stopwords: nothing is strong against it, not even a graph path through "of"
+        return False, 0.0, []
     if hit.get("exact") or (hit.get("components") or {}).get("graph", 0) > 0:
         return True, 1.0, sorted(terms)
     why = hit.get("matched") or {}
@@ -1026,6 +1009,13 @@ def claims_alternative(description, topics, product: str) -> bool:
                           rf"\b(open source|self hosted|selfhosted|free|foss|libre) {p}\b|\binstead of {p}\b", text))
 
 
+# KEI-930: a developer library or a client for another service is not a product that replaces one (the KEI-919
+# audit's definition, scripts/kei919_golden.py AUDIT_DESC): kept out of discovery unless it claims the alternative.
+_LIBRARY_OR_CLIENT = re.compile(r"\b(library|framework|bindings|sdk|client|wrapper|integration) for\b|"
+                                r"\b(python|java|jvm|net|php|go|golang|rust|node js|nodejs|javascript|typescript|ruby|"
+                                r"c|cpp|swift|kotlin|dart) library\b|\bintegrates with\b")
+
+
 def integration_kind(name, full_name, description, topics, products=(), claims_alt=False):
     """'mcp_server' | 'sdk' | 'bot' | 'api_client' | 'plugin' when a project is an integration with another product rather
     than a replacement for one; None otherwise. `products` are SaaS names whose appearance in the repository name
@@ -1070,10 +1060,19 @@ def integration_kind(name, full_name, description, topics, products=(), claims_a
 # --------------------------------------------------------------------------- tools
 
 
+def _evidence_tier(rec) -> int:
+    """KEI-930: a job-matched recommendation ranks after every listed or self-described one, whatever its score:
+    weaker evidence never displaces stronger evidence. Same rule as canonical._rank_key."""
+    cls = rec.get("evidence_class") or ((rec.get("evidence") or {}).get("relationship") or {}).get("evidence_class")
+    return 1 if cls == "job_matched" else 0
+
+
 def _rank_key(rec):
     fit = rec.get("replacement_fit") or {}
     health = rec.get("project_health") or {}
-    return (-(fit.get("score") or 0), -(health.get("score") or 0), -(rec.get("stars") or 0), rec["oss_id"])
+    d = rec.get("licence_disclosure") or ""
+    licence_tier = 2 if d.startswith("source-available") else 1 if d else 0  # same rule as canonical._licence_tier
+    return (_evidence_tier(rec), licence_tier, -(fit.get("score") or 0), -(health.get("score") or 0), -(rec.get("stars") or 0), rec["oss_id"])
 
 
 def _saas_view(layer, sid):
@@ -1093,7 +1092,21 @@ def _project_view(p):
         "latest_release": p["live"]["latest_release"], "pushed_at": p["live"]["pushed_at"],
         "maintenance": p["maintenance"], "project_health": p["project_health"],
         "live_checked_at": p["live"]["checked_at"],
+        **_licence_exception_view(p),
     }
+
+
+def _licence_exception_view(p):
+    """KEI-930 D5: a project recommended under an approved licence exception says so wherever it is shown, with
+    the class (open core or source-available) and the disclosure every recommendation of it carries."""
+    lic = p["licence"]
+    exc = lic.get("exception") or {}
+    oc = lic.get("open_core") or {}
+    if exc.get("disclosure"):
+        return {"licence_status": lic["status"], "licence_label": exc["class"], "licence_disclosure": exc["disclosure"]}
+    if oc.get("disclosure"):
+        return {"licence_status": lic["status"], "licence_label": "open_core", "licence_disclosure": oc["disclosure"]}
+    return {}
 
 
 def _rel_summary(layer, r):
@@ -1122,7 +1135,9 @@ def _canonical_rec(layer, r):
         "latest_release": p["live"]["latest_release"],
         "replacement_fit": {k: fit[k] for k in ("score", "confidence", "score_version", "evaluated_at")},
         "project_health": None if h is None else {k: h[k] for k in ("score", "band", "trajectory", "confidence")},
-        "sources": r["sources"], "live_checked_at": p["live"]["checked_at"],
+        "sources": r["sources"], "evidence_class": r.get("evidence_class", "listed"),
+        "live_checked_at": p["live"]["checked_at"],
+        **({"licence_disclosure": layer.disclosures[p["oss_id"]]} if p["oss_id"] in layer.disclosures else {}),
     }
 
 
@@ -1450,6 +1465,7 @@ def _discovery_candidates(layer, server, query, limit, licences=None, family=Non
                    else "integration_not_replacement"
                    if uses or integration_kind(c["name"], c["full_name"], c["description"], c["topics"], products, alt)
                    else "not_a_product" if not_a_product(c["name"], c["full_name"], c["topics"])
+                   else "library_or_client" if not alt and _LIBRARY_OR_CLIENT.search(" ".join(_norm(c["description"]).split()))
                    else "fork_of_corpus_project" if (c.get("identity") or {}).get("fork_parent_in_corpus")
                    else "mirror" if (c.get("identity") or {}).get("mirror")
                    else "licence_issue" if corpus_licence_eligibility(c) == "not_eligible"
@@ -1943,7 +1959,20 @@ def tool_recommend(layer, args, server):
             matched.append({"saas_id": sid, "name": layer.saas[sid]["name"], "matched_by": "named_in_need",
                             "strength": 1.0})
         top_saas = max((h["score"] for h in hits if h["kind"] == "saas"), default=0)
-        for h in ([] if named else hits):
+        # A need of nothing but stopwords ("the and of") names no product: the same content-word rule the project
+        # matches use (KEI-919 S1.3), so a product whose name holds a stopword ("Square Point of Sale") is not hit.
+        # KEI-930: when some products cover every content word of the need in their name, aliases or category
+        # ("password manager": 1Password, Dashlane), a product sharing one generic word ("Adobe Experience Manager")
+        # is not a match for it.
+        need_terms = set(_query_terms(need))
+
+        def _covered(sid):
+            sv = layer.saas[sid]
+            return need_terms & set(_tokens(" ".join([sv["name"], *(sv.get("aliases") or []), sv.get("category") or ""])))
+        full = {h["key"] for h in hits if h["kind"] == "saas" and need_terms and _covered(h["key"]) == need_terms}
+        for h in ([] if named or not need_terms else hits):
+            if full and h["kind"] == "saas" and h["key"] not in full:
+                continue
             if h["kind"] == "saas" and h["score"] >= max(0.25, 0.8 * top_saas) and len(matched) < 3 and \
                     h["key"] not in {m["saas_id"] for m in matched}:
                 matched.append({"saas_id": h["key"], "name": layer.saas[h["key"]]["name"],
@@ -2183,7 +2212,8 @@ TOOLS = [
      "The SaaS products that have a published comparison page, with how many recommendations each has.",
      _obj({}), tool_list_supported),
     ("source_get_alternatives", "Open-source alternatives to a SaaS product",
-     "Ranked, evidence-backed open-source alternatives to one SaaS product. 'saas' may be a saas_id, a name, "
+     "Ranked, evidence-backed open-source alternatives to one SaaS product (a source-available one carries a "
+     "licence_disclosure). 'saas' may be a saas_id, a name, "
      "an alias, a domain or a URL. For supported products this is exactly the published api/v1 page.",
      _obj({"saas": {"type": "string", "description": "saas_id, name, alias, domain or URL, e.g. 'Notion'"},
            "limit": {**LIMIT, "description": "how many recommendations (default 5)"},

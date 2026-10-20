@@ -1,0 +1,121 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "both",
+    "rank": 385,
+    "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+    "reasons": [
+      "fewer_than_minimum"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "edab459c7b41c1a3",
+  "last_checked": {
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "diegoleme"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L83",
+              "source_commit": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+              "source_id": "diegoleme"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 91.6,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": null,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 50.0
+          },
+          "evidence_families": [
+            "demo",
+            "import",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/isso-comments/isso",
+      "last_meaningful_activity_at": "2026-09-15T08:43:25Z",
+      "latest_release": {
+        "published_at": "2026-03-26T01:02:45Z",
+        "tag": "0.14.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Isso",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
+      },
+      "oss_id": "github.com/isso-comments/isso",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 87.8,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 83.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 78.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/isso-comments/isso",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "diegoleme"
+      ],
+      "stars": 5311
+    }
+  ],
+  "saas": {
+    "category": "Community",
+    "compare_path": null,
+    "domain": "disqus.com",
+    "name": "Disqus",
+    "saas_id": "disqus",
+    "slug": "disqus"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

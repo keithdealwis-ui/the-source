@@ -92,6 +92,9 @@ project_health:
     copyleft:   {value: 0.85, ids: [GPL-2.0, GPL-3.0, LGPL-2.1, LGPL-3.0, GPL-2.0-only, GPL-3.0-only, GPL-2.0-or-later, GPL-3.0-or-later, LGPL-2.1-only, LGPL-3.0-only, EUPL-1.2, OSL-3.0, CECILL-2.1]}
     network_copyleft: {value: 0.75, ids: [AGPL-3.0, AGPL-3.0-only, AGPL-3.0-or-later]}
     other_recognised: 0.7
+    # KEI-930 D5: a source-available licence approved by Keith as an exception (disclosed on every recommendation).
+    # An approved open-core exception is scored on its open core's family instead.
+    exception_source_available: 0.5
     unclear: 0.2
 
   bands:

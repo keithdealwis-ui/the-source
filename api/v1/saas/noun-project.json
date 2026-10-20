@@ -1,0 +1,283 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "both",
+    "rank": 305,
+    "reason": "3 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "edab459c7b41c1a3",
+  "last_checked": {
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "btwso"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L86",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 40.8,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": null,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "multi_user",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/FortAwesome/Font-Awesome",
+      "last_meaningful_activity_at": "2026-07-15T18:15:54Z",
+      "latest_release": {
+        "published_at": "2026-07-15T18:15:54Z",
+        "tag": "7.3.1"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "maintained",
+      "name": "Font-Awesome",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/fortawesome/font-awesome",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 72.0,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 78.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 78.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/FortAwesome/Font-Awesome",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "btwso"
+      ],
+      "stars": 76975
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L88",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 25.0,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 20.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "import",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/tabler/tabler-icons",
+      "last_meaningful_activity_at": "2026-10-05T16:51:42Z",
+      "latest_release": {
+        "published_at": "2026-10-05T14:51:44Z",
+        "tag": "v3.49.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Tabler-Icons",
+      "note": {
+        "gaps": [
+          "cost advantage",
+          "self-hosting and data ownership"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity; weakest on cost advantage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/tabler/tabler-icons",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 86.8,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 69.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/tabler/tabler-icons",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "btwso"
+      ],
+      "stars": 22383
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L90",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 12.5,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 20.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "demo",
+            "import",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/Remix-Design/RemixIcon",
+      "last_meaningful_activity_at": "2026-01-29T11:29:07Z",
+      "latest_release": {
+        "published_at": "2026-01-29T11:29:07Z",
+        "tag": "v4.9.1"
+      },
+      "licence_disclosure": "source-available: licensed under Remix Icon License v1.0, which is not an OSI-approved open-source licence",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "maintained",
+      "name": "RemixIcon",
+      "note": {
+        "gaps": [
+          "self-hosting and data ownership",
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity; weakest on self-hosting and data ownership and cost advantage."
+      },
+      "oss_id": "github.com/remix-design/remixicon",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 96.6,
+        "score": 67.6,
+        "trajectory": "Declining"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 62.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Remix-Design/RemixIcon",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "btwso"
+      ],
+      "stars": 8422
+    }
+  ],
+  "saas": {
+    "category": "Stock media",
+    "compare_path": "/open-source/noun-project-alternatives",
+    "domain": "thenounproject.com",
+    "name": "Noun Project",
+    "saas_id": "noun-project",
+    "slug": "noun-project"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

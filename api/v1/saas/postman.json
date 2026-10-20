@@ -1,9 +1,18 @@
 {
   "api_version": "v1",
-  "dataset_version": "4e4082c51e91f41a",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 3,
+    "reason": "6 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "edab459c7b41c1a3",
   "last_checked": {
-    "newest": "2026-10-19T23:32:37Z",
-    "oldest": "2026-10-19T23:32:37Z"
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
   },
   "more_available": 1,
   "provenance": {
@@ -19,6 +28,56 @@
   },
   "recommendations": [
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L399",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L585",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "README.md#L256",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/Kong/insomnia",
       "last_meaningful_activity_at": "2026-10-16T07:21:32Z",
       "latest_release": {
@@ -26,7 +85,7 @@
         "tag": "core@13.3.1"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Insomnia",
       "note": {
@@ -62,9 +121,74 @@
         "opensaasdirectory",
         "btwso"
       ],
-      "stars": 40059
+      "stars": 40067
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L400",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "submissions/Hoppscotch.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L569",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "README.md#L255",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            },
+            {
+              "locator": "README.md#L154",
+              "source_commit": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+              "source_id": "diegoleme"
+            },
+            {
+              "locator": "data/tools.json#slug=hoppscotch;named_by=postman",
+              "source_commit": "e6b7941038edf3507a1e14866c2f84553ddfc96b",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/hoppscotch/hoppscotch",
       "last_meaningful_activity_at": "2026-09-30T11:50:32Z",
       "latest_release": {
@@ -72,7 +196,7 @@
         "tag": "2026.9.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Hoppscotch",
       "note": {
@@ -111,9 +235,47 @@
         "diegoleme",
         "altstack"
       ],
-      "stars": 80656
+      "stars": 80663
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L601",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/scalar/scalar",
       "last_meaningful_activity_at": "2026-10-16T23:11:24Z",
       "latest_release": {
@@ -121,7 +283,7 @@
         "tag": "release-2026-10-16-3197dc0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Scalar",
       "note": {
@@ -155,9 +317,47 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 16288
+      "stars": 16294
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L155",
+              "source_commit": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+              "source_id": "diegoleme"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 20.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/VoidenHQ/voiden",
       "last_meaningful_activity_at": "2026-10-13T11:29:32Z",
       "latest_release": {
@@ -165,7 +365,7 @@
         "tag": "v2.3.3-beta.1"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Voiden",
       "note": {
@@ -201,9 +401,46 @@
       "sources": [
         "diegoleme"
       ],
-      "stars": 1867
+      "stars": 1871
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L398",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/usebruno/bruno",
       "last_meaningful_activity_at": "2026-10-16T12:49:43Z",
       "latest_release": {
@@ -211,7 +448,7 @@
         "tag": "v4.2.1"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Bruno",
       "note": {
@@ -247,7 +484,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 47748
+      "stars": 47761
     }
   ],
   "saas": {

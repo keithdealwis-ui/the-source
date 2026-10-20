@@ -1,0 +1,455 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 29,
+    "reason": "5 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "edab459c7b41c1a3",
+  "last_checked": {
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "btwso",
+      "fossalt",
+      "job_match",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L699",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 50.0
+          },
+          "evidence_families": [
+            "api",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/plasmicapp/plasmic",
+      "last_meaningful_activity_at": "2026-10-16T23:57:13Z",
+      "latest_release": null,
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Plasmic",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/plasmicapp/plasmic",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 90.4,
+        "score": 82.9,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 74.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/plasmicapp/plasmic",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 7120
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L79",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            },
+            {
+              "locator": "README.md#L180",
+              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 62.5,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/silexlabs/Silex",
+      "last_meaningful_activity_at": "2026-10-09T07:17:18Z",
+      "latest_release": {
+        "published_at": "2026-10-07T12:01:49Z",
+        "tag": "v3.10.0-canary.4"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Silex",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "migration path",
+          "feature parity"
+        ],
+        "text": "Strongest on migration path and feature parity."
+      },
+      "oss_id": "github.com/silexlabs/silex",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 93.6,
+        "score": 87.9,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 92.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 69.5,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/silexlabs/Silex",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "btwso",
+        "fossalt"
+      ],
+      "stars": 3012
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L698",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L81",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 50.0,
+            "deployment_ownership": 91.7,
+            "ease_of_adoption": 82.6,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 75.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "multi_user",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/webstudio-is/webstudio",
+      "last_meaningful_activity_at": "2026-10-14T18:13:59Z",
+      "latest_release": {
+        "published_at": "2026-10-14T18:13:59Z",
+        "tag": "0.306.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Webstudio",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "integrations and extensibility",
+          "migration path"
+        ],
+        "text": "Strongest on integrations and extensibility and migration path; weakest on feature parity."
+      },
+      "oss_id": "github.com/webstudio-is/webstudio",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 82.0,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 92.5,
+        "evaluated_at": "2026-10-14T23:51:42Z",
+        "score": 66.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/webstudio-is/webstudio",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "solvohq",
+        "btwso"
+      ],
+      "stars": 9093
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L700",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 33.6,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": null,
+            "migration_friction": null,
+            "production_commercial_readiness": 50.0
+          },
+          "evidence_families": [],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/GrapesJS/grapesjs",
+      "last_meaningful_activity_at": "2026-10-15T09:13:51Z",
+      "latest_release": {
+        "published_at": "2026-10-15T09:13:51Z",
+        "tag": "v0.23.8"
+      },
+      "licence_spdx": "BSD-3-Clause",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "GrapesJS + a CMS",
+      "note": {
+        "gaps": [
+          "feature parity",
+          "ease of adoption"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity and ease of adoption."
+      },
+      "oss_id": "github.com/grapesjs/grapesjs",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 83.7,
+        "trajectory": "Stable"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 78.5,
+        "evaluated_at": "2026-10-16T01:10:28Z",
+        "score": 65.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/GrapesJS/grapesjs",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 26320
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/corebunch/instatic",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 40.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/CoreBunch/Instatic",
+      "last_meaningful_activity_at": "2026-10-13T15:40:58Z",
+      "latest_release": {
+        "published_at": "2026-10-12T17:53:45Z",
+        "tag": "v0.0.21"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Instatic",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/corebunch/instatic",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 92.1,
+        "score": 82.1,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 79.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/CoreBunch/Instatic",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 8985
+    }
+  ],
+  "saas": {
+    "category": "Site builder",
+    "compare_path": "/open-source/webflow-alternatives",
+    "domain": "webflow.com",
+    "name": "Webflow",
+    "saas_id": "webflow",
+    "slug": "webflow"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

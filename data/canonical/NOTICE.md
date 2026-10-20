@@ -152,7 +152,7 @@ SOFTWARE.
 
 ## altstackHQ/altstack-data
 
-- Source: https://github.com/altstackHQ/altstack-data at commit 0b9dacd632f128922862f70e1e09011c8611b48c
+- Source: https://github.com/altstackHQ/altstack-data at commit e6b7941038edf3507a1e14866c2f84553ddfc96b
 - Licence: Apache-2.0 (LICENSE file) / CC-BY-4.0 (README statement)
 - Attribution: The AltStack data (altstackHQ/altstack-data), https://github.com/altstackHQ/altstack-data, licensed CC BY 4.0 per its README and Apache-2.0 per its LICENSE file; facts extracted, no text reproduced
 
@@ -167,3 +167,9 @@ SOFTWARE.
 - Source: https://github.com/keithdealwis-ui/the-source/blob/main/data/intake/admitted/ at commit feb7d601b43d46fdbc692e43a3082998c61cc659
 - Licence: n/a (The Source's own assessment record)
 - Attribution: The Source intake ledger (data/intake/admitted/): relationships stated by each project in its own public repository and assessed by The Source
+
+## keithdealwis-ui/the-source
+
+- Source: https://github.com/keithdealwis-ui/the-source/blob/main/data/job_match/ledger.json at commit dcb85b2b5e3cdce933a9964f465ce0bc98a14c02
+- Licence: n/a (The Source's own derivation)
+- Attribution: The Source job-match ledger (data/job_match/ledger.json): candidate pairings derived from each project's own description of its job, confirmed only by The Source's full evaluation

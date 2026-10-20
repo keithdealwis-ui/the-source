@@ -29,7 +29,7 @@ was last checked.
 ## Data
 
 The extension bundles no data. The service worker downloads the whole read surface
-(`index.json`, `domains.json` and every `saas/<id>.json`, about 170 KB) on install, at
+(`index.json`, `domains.json` and every `saas/<id>.json`, about 0.9 MB for 114 products) on install, at
 browser start if more than 6 hours old, and every 6 hours. It uses
 `raw.githubusercontent.com/keithdealwis-ui/the-source/main/api/v1/`, falling back to
 the jsDelivr mirror. A snapshot is accepted only when every file arrived and all carry

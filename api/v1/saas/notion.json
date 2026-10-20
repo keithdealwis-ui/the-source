@@ -1,9 +1,18 @@
 {
   "api_version": "v1",
-  "dataset_version": "4e4082c51e91f41a",
+  "catalogue": {
+    "audience": "both",
+    "rank": 2,
+    "reason": "8 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "edab459c7b41c1a3",
   "last_checked": {
-    "newest": "2026-10-19T23:32:37Z",
-    "oldest": "2026-10-19T23:32:37Z"
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
   },
   "more_available": 3,
   "provenance": {
@@ -16,6 +25,46 @@
   },
   "recommendations": [
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L52",
+              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/evergreen-it-dev/folio",
       "last_meaningful_activity_at": "2026-10-16T15:05:18Z",
       "latest_release": {
@@ -23,7 +72,7 @@
         "tag": "v0.4.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Folio Wiki",
       "note": {
@@ -60,6 +109,42 @@
       "stars": 73
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L22",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 91.7,
+            "ease_of_adoption": 69.7,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": null,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 75.0
+          },
+          "evidence_families": [
+            "cloud_option",
+            "demo",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/docmost/docmost",
       "last_meaningful_activity_at": "2026-10-16T00:26:43Z",
       "latest_release": {
@@ -67,7 +152,7 @@
         "tag": "v0.96.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "docmost",
       "note": {
@@ -82,8 +167,8 @@
       "oss_id": "github.com/docmost/docmost",
       "project_health": {
         "band": "Healthy",
-        "confidence": 93.1,
-        "score": 71.6,
+        "confidence": 95.0,
+        "score": 79.0,
         "trajectory": "Stable"
       },
       "rank": 2,
@@ -101,9 +186,48 @@
       "sources": [
         "btwso"
       ],
-      "stars": 22035
+      "stars": 22041
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L51",
+              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 99.0,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/dexio-wiki/dexio",
       "last_meaningful_activity_at": "2026-10-13T13:36:51Z",
       "latest_release": {
@@ -111,7 +235,7 @@
         "tag": "v1.0.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Dexio",
       "note": {
@@ -148,11 +272,48 @@
       "stars": 3
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Notabase.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 93.8,
+            "ease_of_adoption": 54.3,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": null,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 50.0
+          },
+          "evidence_families": [
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/churichard/notabase",
       "last_meaningful_activity_at": "2026-07-17T17:01:39Z",
       "latest_release": null,
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "maintained",
       "name": "Notabase",
       "note": {
@@ -189,6 +350,39 @@
       "stars": 915
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L55",
+              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 85.0,
+            "ease_of_adoption": 38.7,
+            "economic_advantage": 34.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "plugins",
+            "quickstart"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/xwiki/xwiki-platform",
       "last_meaningful_activity_at": "2026-10-19T21:24:20Z",
       "latest_release": {
@@ -196,7 +390,7 @@
         "tag": "xwiki-platform-18.9.0-rc-1"
       },
       "licence_spdx": "LGPL-2.1",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "XWiki",
       "note": {
@@ -233,7 +427,7 @@
       "sources": [
         "fossalt"
       ],
-      "stars": 1322
+      "stars": 1323
     }
   ],
   "saas": {

@@ -1,9 +1,18 @@
 {
   "api_version": "v1",
-  "dataset_version": "4e4082c51e91f41a",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 93,
+    "reason": "5 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "edab459c7b41c1a3",
   "last_checked": {
-    "newest": "2026-10-19T23:32:37Z",
-    "oldest": "2026-10-19T23:32:37Z"
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
   },
   "more_available": 0,
   "provenance": {
@@ -17,6 +26,46 @@
   },
   "recommendations": [
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "data/tools.json#slug=rustfs;named_by=s3",
+              "source_commit": "e6b7941038edf3507a1e14866c2f84553ddfc96b",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/rustfs/rustfs",
       "last_meaningful_activity_at": "2026-10-17T20:03:17Z",
       "latest_release": {
@@ -24,7 +73,7 @@
         "tag": "1.0.3"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "RustFS",
       "note": {
@@ -40,7 +89,7 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 92.1,
-        "score": 95.4,
+        "score": 94.9,
         "trajectory": "Rising"
       },
       "rank": 1,
@@ -58,9 +107,53 @@
       "sources": [
         "altstack"
       ],
-      "stars": 35122
+      "stars": 35157
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L563",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "data/tools.json#slug=seaweedfs;named_by=s3",
+              "source_commit": "e6b7941038edf3507a1e14866c2f84553ddfc96b",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/seaweedfs/seaweedfs",
       "last_meaningful_activity_at": "2026-10-17T22:25:56Z",
       "latest_release": {
@@ -68,7 +161,7 @@
         "tag": "4.48"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "SeaweedFS",
       "note": {
@@ -84,7 +177,7 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 92.1,
-        "score": 95.1,
+        "score": 93.9,
         "trajectory": "Rising"
       },
       "rank": 2,
@@ -103,14 +196,50 @@
         "solvohq",
         "altstack"
       ],
-      "stars": 35603
+      "stars": 35626
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L58",
+              "source_commit": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+              "source_id": "diegoleme"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 95.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 66.7
+          },
+          "evidence_families": [
+            "api",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/openstack/swift",
       "last_meaningful_activity_at": "2026-10-16T17:19:53Z",
       "latest_release": null,
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "SwiftStack",
       "note": {
@@ -149,14 +278,46 @@
       "stars": 2802
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Storj.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 52.8,
+            "economic_advantage": 30.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "plugins",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/storj/storj",
-      "last_meaningful_activity_at": "2026-10-19T13:14:03Z",
+      "last_meaningful_activity_at": "2026-10-20T11:51:11Z",
       "latest_release": {
-        "published_at": "2026-10-19T12:57:29Z",
-        "tag": "v1.165.2"
+        "published_at": "2026-10-20T11:17:41Z",
+        "tag": "v1.165.3"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Storj",
       "note": {
@@ -174,13 +335,13 @@
       "project_health": {
         "band": "Healthy",
         "confidence": 96.6,
-        "score": 82.9,
+        "score": 82.8,
         "trajectory": "Stable"
       },
       "rank": 4,
       "replacement_fit": {
         "confidence": 81.5,
-        "evaluated_at": "2026-10-19T23:32:37Z",
+        "evaluated_at": "2026-10-20T12:30:08Z",
         "score": 79.1,
         "score_version": "1.2.0"
       },
@@ -195,11 +356,49 @@
       "stars": 3282
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L564",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "data/tools.json#slug=garage;named_by=s3",
+              "source_commit": "e6b7941038edf3507a1e14866c2f84553ddfc96b",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 87.5,
+            "ease_of_adoption": 85.8,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 0.0
+          },
+          "evidence_families": [
+            "api",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/deuxfleurs-org/garage",
       "last_meaningful_activity_at": "2026-10-16T11:08:55Z",
       "latest_release": null,
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-19T23:32:37Z",
+      "live_checked_at": "2026-10-20T12:54:02Z",
       "maintenance_status": "active",
       "name": "Garage",
       "note": {
@@ -217,7 +416,7 @@
       "project_health": {
         "band": "Healthy",
         "confidence": 88.0,
-        "score": 81.7,
+        "score": 81.4,
         "trajectory": "Stable"
       },
       "rank": 5,
@@ -236,7 +435,7 @@
         "solvohq",
         "altstack"
       ],
-      "stars": 4734
+      "stars": 4737
     }
   ],
   "saas": {

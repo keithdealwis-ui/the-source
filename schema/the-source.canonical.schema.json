@@ -18,14 +18,16 @@
 
     "saas_product": {
       "type": "object", "additionalProperties": false,
-      "required": ["saas_id", "name", "domain", "category", "aliases", "supported"],
+      "required": ["saas_id", "name", "domain", "category", "aliases", "supported", "audience", "catalogue_status"],
       "properties": {
         "saas_id": {"$ref": "#/$defs/saas_id"},
         "name": {"type": "string", "minLength": 1},
         "domain": {"type": "string", "minLength": 3},
         "category": {"type": "string", "minLength": 1},
         "aliases": {"type": "array", "items": {"type": "string"}},
-        "supported": {"type": "boolean"}
+        "supported": {"type": "boolean"},
+        "audience": {"enum": ["b2b", "b2c", "both", null]},
+        "catalogue_status": {"enum": ["ok", "partial", "none_yet", null]}
       }
     },
 
@@ -78,6 +80,12 @@
         "licence": {
           "type": "object", "additionalProperties": false, "required": ["spdx", "status"],
           "properties": {"spdx": {"type": "string", "minLength": 1}, "status": {"enum": ["recognised", "exception_approved"]},
+                         "exception": {"type": "object", "additionalProperties": false,
+                                       "required": ["class", "disclosure", "approved_by", "approval_ref"],
+                                       "properties": {"class": {"enum": ["open_core", "source_available"]},
+                                                      "disclosure": {"type": "string", "minLength": 20},
+                                                      "approved_by": {"type": "string", "minLength": 1},
+                                                      "approval_ref": {"type": "string", "minLength": 1}}},
                          "open_core": {"type": "object", "additionalProperties": false,
                                        "required": ["core_spdx", "disclosure", "edition_check"],
                                        "properties": {"core_spdx": {"type": "string", "minLength": 1},
@@ -108,6 +116,7 @@
         "saas_id": {"$ref": "#/$defs/saas_id"},
         "oss_id": {"$ref": "#/$defs/oss_id"},
         "relation": {"const": "open_source_alternative_to"},
+        "evidence_class": {"enum": ["listed", "self_described", "job_matched"]},
         "corroborated": {"type": "boolean"},
         "sources": {"type": "array", "minItems": 1, "items": {"type": "string"}},
         "provenance": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["source_id", "source_commit", "locator"]}},
@@ -121,7 +130,7 @@
       "type": "object", "additionalProperties": false,
       "required": ["rank", "oss_id", "name", "repo_url", "github_url", "stars", "licence_spdx", "maintenance_status",
                    "last_meaningful_activity_at", "latest_release", "replacement_fit", "project_health", "self_hosting",
-                   "note", "sources", "live_checked_at"],
+                   "note", "sources", "evidence", "live_checked_at"],
       "properties": {
         "rank": {"type": "integer", "minimum": 1},
         "oss_id": {"$ref": "#/$defs/oss_id"}, "name": {"type": "string", "minLength": 1},
@@ -137,18 +146,48 @@
         "self_hosting": {"type": "object", "required": ["self_hostable", "basis"]},
         "note": {"type": "object", "required": ["strengths", "gaps", "text", "origin"], "properties": {"origin": {"const": "derived"}}},
         "sources": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "evidence": {"type": "object", "additionalProperties": false, "required": ["relationship", "replacement_fit"],
+          "properties": {
+            "relationship": {"type": "object", "additionalProperties": false,
+              "required": ["corroborated", "validated_as_of", "provenance"],
+              "properties": {"corroborated": {"type": "boolean"}, "validated_as_of": {"$ref": "#/$defs/ts"},
+                             "evidence_class": {"enum": ["listed", "self_described", "job_matched"]},
+                             "provenance": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false,
+                               "required": ["source_id", "source_commit", "locator"],
+                               "properties": {"source_id": {"type": "string"}, "source_commit": {"type": "string"},
+                                              "locator": {"type": "string"}}}}}},
+            "replacement_fit": {"type": "object", "additionalProperties": false,
+              "required": ["scoring_path", "core_gate", "evidence_families", "dimensions"],
+              "properties": {"scoring_path": {"enum": ["full_lane", "single_project"]}, "core_gate": {"type": "string"},
+                             "evidence_families": {"type": "array", "items": {"type": "string"}},
+                             "dimensions": {"type": "object"}}}}},
         "live_checked_at": {"$ref": "#/$defs/ts"}
+      }
+    },
+
+    "catalogue_state": {
+      "type": "object", "additionalProperties": false, "required": ["status", "reasons", "reason", "rank", "audience"],
+      "properties": {
+        "status": {"enum": ["ok", "partial", "none_yet"]},
+        "reasons": {"type": "array", "minItems": 1, "items": {"enum": ["full_evaluation", "fewer_than_minimum",
+          "awaiting_full_evaluation", "evaluated_not_recommended", "outside_launch_selection", "share_alike_only",
+          "licence_review", "no_job_definition",
+          "corpus_candidates_only", "no_relationship_evidence"]}},
+        "reason": {"type": "string", "minLength": 10},
+        "rank": {"type": ["integer", "null"], "minimum": 1},
+        "audience": {"enum": ["b2b", "b2c", "both"]}
       }
     },
 
     "api_saas": {
       "type": "object", "additionalProperties": false,
-      "required": ["api_version", "dataset_version", "saas", "status", "recommendations", "more_available", "last_checked", "scoring", "provenance"],
+      "required": ["api_version", "dataset_version", "saas", "status", "catalogue", "recommendations", "more_available", "last_checked", "scoring", "provenance"],
       "properties": {
         "api_version": {"const": "v1"}, "dataset_version": {"type": "string", "pattern": "^[0-9a-f]{16}$"},
         "saas": {"type": "object", "required": ["saas_id", "name", "domain", "category", "slug", "compare_path"],
-                 "properties": {"compare_path": {"type": "string", "pattern": "^/open-source/[a-z0-9-]+-alternatives$"}}},
+                 "properties": {"compare_path": {"type": ["string", "null"], "pattern": "^/open-source/[a-z0-9-]+-alternatives$"}}},
         "status": {"enum": ["ok", "insufficient_recommendations"]},
+        "catalogue": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/catalogue_state"}]},
         "recommendations": {"type": "array", "maxItems": 5, "items": {"$ref": "#/$defs/recommendation"}},
         "more_available": {"type": "integer", "minimum": 0},
         "last_checked": {"$ref": "#/$defs/checked_range"},
@@ -164,7 +203,49 @@
         "data_as_of": {"$ref": "#/$defs/ts"}, "live_checked_at": {"$ref": "#/$defs/checked_range"},
         "supported_saas": {"type": "array", "minItems": 1, "items": {"type": "object",
           "required": ["saas_id", "name", "slug", "path", "compare_path", "recommendations", "status"]}},
-        "domains": {"const": "domains.json"}
+        "domains": {"const": "domains.json"},
+        "catalogue": {"type": "object", "additionalProperties": false, "required": ["path", "entries", "ok", "partial", "none_yet"],
+          "properties": {"path": {"const": "catalogue.json"}, "entries": {"type": "integer"}, "ok": {"type": "integer"},
+                         "partial": {"type": "integer"}, "none_yet": {"type": "integer"}}}
+      }
+    },
+
+    "match_rule": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"saas_id": {"$ref": "#/$defs/saas_id"}, "host": {"type": "string"}, "host_suffix": {"type": "string", "pattern": "^[.-]"},
+                     "path_prefix": {"type": "string", "pattern": "^/."}},
+      "oneOf": [{"required": ["host"]}, {"required": ["host_suffix"]}]
+    },
+
+    "api_catalogue": {
+      "type": "object", "additionalProperties": false,
+      "required": ["api_version", "dataset_version", "catalogue_schema", "status_rule", "ranked_from", "demand", "match_semantics", "counts", "entries"],
+      "properties": {
+        "api_version": {"const": "v1"}, "dataset_version": {"type": "string", "pattern": "^[0-9a-f]{16}$"},
+        "catalogue_schema": {"const": "the-source.catalogue/1"}, "status_rule": {"type": "string"},
+        "ranked_from": {"type": ["object", "null"]}, "demand": {"type": "object", "required": ["status", "telemetry"]},
+        "match_semantics": {"type": "string"},
+        "counts": {"type": "object", "required": ["entries", "ok", "partial", "none_yet", "by_audience", "support_records"]},
+        "entries": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+          "required": ["saas_id", "name", "domain", "category", "audience", "rank", "status", "reasons", "reason", "recommended",
+                       "evidence", "path", "compare_path", "match"],
+          "properties": {
+            "saas_id": {"$ref": "#/$defs/saas_id"}, "name": {"type": "string"}, "domain": {"type": "string"},
+            "category": {"type": "string"}, "audience": {"enum": ["b2b", "b2c", "both"]},
+            "rank": {"type": ["integer", "null"], "minimum": 1},
+            "status": {"enum": ["ok", "partial", "none_yet"]},
+            "reasons": {"$ref": "#/$defs/catalogue_state/properties/reasons"}, "reason": {"type": "string", "minLength": 10},
+            "recommended": {"type": "integer", "minimum": 0},
+            "evidence": {"type": "object", "additionalProperties": false,
+              "required": ["awaiting", "not_recommended", "outside_launch", "share_alike_only", "licence_review",
+                           "corpus_pairings", "job_defined"],
+              "properties": {"awaiting": {"type": "integer"}, "not_recommended": {"type": "integer"},
+                             "outside_launch": {"type": "integer"}, "share_alike_only": {"type": "integer"},
+                             "licence_review": {"type": "integer"}, "corpus_pairings": {"type": "integer"}, "job_defined": {"type": "boolean"}}},
+            "path": {"type": ["string", "null"], "pattern": "^saas/[a-z0-9-]+\\.json$"},
+            "compare_path": {"type": ["string", "null"], "pattern": "^/open-source/[a-z0-9-]+-alternatives$"},
+            "match": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/match_rule"}}
+          }}}
       }
     },
 
@@ -173,7 +254,7 @@
       "properties": {
         "api_version": {"const": "v1"}, "dataset_version": {"type": "string"}, "match_semantics": {"type": "string"},
         "rules": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["saas_id"],
-          "properties": {"saas_id": {"$ref": "#/$defs/saas_id"}, "host": {"type": "string"}, "host_suffix": {"type": "string", "pattern": "^\\."},
+          "properties": {"saas_id": {"$ref": "#/$defs/saas_id"}, "host": {"type": "string"}, "host_suffix": {"type": "string", "pattern": "^[.-]"},
                          "path_prefix": {"type": "string", "pattern": "^/"}},
           "anyOf": [{"required": ["host"]}, {"required": ["host_suffix"]}]}}
       }

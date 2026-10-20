@@ -5,7 +5,8 @@
 # only with a named human approver and a reference to where the approval is recorded.
 # The pipeline refuses entries whose approver is an executor or is empty.
 #
-# None has been approved. Candidates for review are generated on every run at
+# KEI-930 (2026-10-20): Keith approved open-core and source-available projects by rule (D5a/D5b), each
+# with a mandatory disclosure carried by every recommendation (`class`, `disclosure`). Candidates for review are generated on every run at
 # data/dataset/reports/licence_exception_candidates.json.
 #
 # Example:
@@ -16,4 +17,672 @@
 #     reviewed_at: "2026-10-01"
 #     rationale: "Core is AGPL-3.0; ee/ is optional and not needed to self-host."
 
-exceptions: []
+exceptions:
+  - oss_id: github.com/activepieces/activepieces
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "MIT; packages/ee and server/api/src/app/ee under EE licence"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under Activepieces EE licence are excluded"
+  - oss_id: github.com/airbytehq/airbyte
+    class: source_available
+    licence_as_found: "Elastic License 2.0"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under Elastic-2.0, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/akaunting/akaunting
+    class: source_available
+    licence_as_found: "Business Source License (Akaunting parameters)"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under BUSL-1.1, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/amplication/amplication
+    class: open_core
+    core_spdx: Apache-2.0
+    licence_as_found: "Apache-2.0; ee/ under ee/LICENSE"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the Apache-2.0 core; parts under Amplication EE licence are excluded"
+  - oss_id: github.com/arangodb/arangodb
+    class: source_available
+    licence_as_found: "Business Source License 1.1"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under BUSL-1.1, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/automatisch/automatisch
+    class: open_core
+    core_spdx: AGPL-3.0
+    licence_as_found: "AGPL; files with .ee. in name under LICENSE.enterprise"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the AGPL-3.0 core; parts under Automatisch Enterprise License are excluded"
+  - oss_id: github.com/baptistearno/typebot.io
+    class: source_available
+    licence_as_found: "Functional Source License 1.1"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under FSL-1.1-Apache-2.0, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/baserow/baserow
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "MIT; premium/ and enterprise/ under their own licences"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under Baserow premium/enterprise licences are excluded"
+  - oss_id: github.com/berriai/litellm
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "MIT; enterprise/ under enterprise/LICENSE.md"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under LiteLLM Enterprise licence are excluded"
+  - oss_id: github.com/bitwarden/clients
+    class: open_core
+    core_spdx: GPL-3.0
+    licence_as_found: "GPL-3.0 default; bitwarden_license/ under Bitwarden License"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the GPL-3.0 core; parts under Bitwarden License v1.0 are excluded"
+  - oss_id: github.com/bitwarden/server
+    class: open_core
+    core_spdx: AGPL-3.0
+    licence_as_found: "AGPL-3.0 default; bitwarden_license/ under Bitwarden License"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the AGPL-3.0 core; parts under Bitwarden License v1.0 are excluded"
+  - oss_id: github.com/budibase/budibase
+    class: open_core
+    core_spdx: GPL-3.0
+    licence_as_found: "Packages GPL-3.0/MPL-2.0; packages/pro under Business Source License"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the GPL-3.0 core; parts under BSL-1.1 (packages/pro) are excluded"
+  - oss_id: github.com/cachethq/cachet
+    class: source_available
+    licence_as_found: "Custom Cachet licence: no standalone distribution; source-available"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (low confidence)"
+    disclosure: "source-available: licensed under Cachet License (custom), which is not an OSI-approved open-source licence"
+  - oss_id: github.com/chaskiq/chaskiq
+    class: source_available
+    licence_as_found: "Commons Clause on AGPL-3.0"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under Commons Clause + AGPL-3.0, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/chatwoot/chatwoot
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "LICENSE is MIT; enterprise/ under Chatwoot EE licence"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under Chatwoot Enterprise licence are excluded"
+  - oss_id: github.com/codewithcj/sparkyfitness
+    class: source_available
+    licence_as_found: "Custom non-commercial-only licence"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under SparkyFitness non-commercial licence, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/customermates/customermates
+    class: open_core
+    core_spdx: AGPL-3.0-only
+    licence_as_found: "AGPL-3.0-only outside ee/; ee/ under Customermates Commercial License"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the AGPL-3.0-only core; parts under Customermates Commercial License are excluded"
+  - oss_id: github.com/directus/directus
+    class: source_available
+    licence_as_found: "Monospace Sustainable Core License 1.0 (GPL future licence)"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under MSCL-1.0-GPL, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/dokploy/dokploy
+    class: open_core
+    core_spdx: Apache-2.0
+    licence_as_found: "Apache-2.0; /proprietary dirs (e.g. apps/dokploy/components/proprietary) under DSAL"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the Apache-2.0 core; parts under Dokploy Source Available License are excluded"
+  - oss_id: github.com/dubinc/dub
+    class: open_core
+    core_spdx: AGPL-3.0
+    licence_as_found: "AGPL; apps/web/app/(ee) dirs under ee/LICENSE"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the AGPL-3.0 core; parts under Dub EE licence are excluded"
+  - oss_id: github.com/elastic/elasticsearch
+    class: open_core
+    core_spdx: AGPL-3.0-only
+    licence_as_found: "Default AGPL/SSPL/ELv2 at user choice; x-pack/ ELv2 only"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the AGPL-3.0-only core; parts under Elastic-2.0 (x-pack) are excluded"
+  - oss_id: github.com/erxes/erxes
+    class: source_available
+    licence_as_found: "AGPL plus clause barring SaaS hosting competing with erxes; no ee/ dir present"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (low confidence)"
+    disclosure: "source-available: licensed under AGPL-3.0 + anti-SaaS-competition clause, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/flipt-io/flipt
+    class: source_available
+    licence_as_found: "Fair Core License 1.0 (MIT future)"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under FCL-1.0-MIT, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/formbricks/formbricks
+    class: open_core
+    core_spdx: AGPL-3.0
+    licence_as_found: "AGPL; apps/web/modules/ee under EE licence"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the AGPL-3.0 core; parts under Formbricks EE licence are excluded"
+  - oss_id: github.com/forwardemail/forwardemail.net
+    class: source_available
+    licence_as_found: "BSL 1.1 for most code; a few named files MPL-2.0"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under BUSL-1.1, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/fosrl/pangolin
+    class: open_core
+    core_spdx: AGPL-3.0
+    licence_as_found: "Per-file headers: AGPL-3 files vs Fossorial Commercial License files"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the AGPL-3.0 core; parts under Fossorial Commercial License are excluded"
+  - oss_id: github.com/getsentry/self-hosted
+    class: source_available
+    licence_as_found: "Functional Source License 1.1"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under FSL-1.1-Apache-2.0, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/getsentry/sentry
+    class: source_available
+    licence_as_found: "Functional Source License 1.1 (Apache-2.0 future)"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under FSL-1.1-Apache-2.0, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/goauthentik/authentik
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "LICENSE is MIT; authentik/enterprise/ under its own EE licence"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under authentik Enterprise licence are excluded"
+  - oss_id: github.com/gravitl/netmaker
+    class: open_core
+    core_spdx: Apache-2.0
+    licence_as_found: "Apache-2.0; pro/ under pro/PRO_LICENSE"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the Apache-2.0 core; parts under Netmaker Pro licence are excluded"
+  - oss_id: github.com/graylog2/graylog2-server
+    class: source_available
+    licence_as_found: "Server Side Public License v1"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under SSPL-1.0, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/growthbook/growthbook
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "MIT; packages/*/enterprise dirs under GrowthBook Enterprise License"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under GrowthBook Enterprise License are excluded"
+  - oss_id: github.com/hook0/hook0
+    class: source_available
+    licence_as_found: "Server Side Public License v1"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under SSPL-1.0, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/infisical/infisical
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "MIT; ee/ dirs (e.g. backend/src/ee) under ee/LICENSE"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under Infisical EE licence are excluded"
+  - oss_id: github.com/invoiceninja/invoiceninja
+    class: source_available
+    licence_as_found: "Elastic License 2.0"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under Elastic-2.0, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/keephq/keep
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "MIT; ee/ under ee/LICENSE"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under Keep EE licence are excluded"
+  - oss_id: github.com/langgenius/dify
+    class: source_available
+    licence_as_found: "Modified Apache-2.0: no multi-tenant service, no logo removal"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (low confidence)"
+    disclosure: "source-available: licensed under Dify Open Source License (modified Apache-2.0), which is not an OSI-approved open-source licence"
+  - oss_id: github.com/laurent22/joplin
+    class: open_core
+    core_spdx: AGPL-3.0-or-later
+    licence_as_found: "AGPL-3.0+ default; packages/server under Joplin Server Personal Use License"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the AGPL-3.0-or-later core; parts under Joplin Server Personal Use License are excluded"
+  - oss_id: github.com/lightdash/lightdash
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "MIT; packages/backend/src/ee under EE licence"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under Lightdash EE licence are excluded"
+  - oss_id: github.com/lobehub/lobehub
+    class: source_available
+    licence_as_found: "Apache-2.0 modified: derivative distribution needs commercial licence"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (low confidence)"
+    disclosure: "source-available: licensed under LobeHub Community License, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/mattermost/mattermost
+    class: open_core
+    core_spdx: AGPL-3.0
+    licence_as_found: "AGPL-3.0 (Apache-2.0 parts); server/enterprise under Mattermost Source Available License"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the AGPL-3.0 core; parts under Mattermost Source Available License are excluded"
+  - oss_id: github.com/medusajs/medusa
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "MIT except RBAC/policy files listed in ENTERPRISE-LICENSE.md (proprietary)"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under Medusa Enterprise Edition License are excluded"
+  - oss_id: github.com/meilisearch/meilisearch
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "MIT; enterprise_edition modules under BUSL-1.1"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under BUSL-1.1 (Meilisearch EE) are excluded"
+  - oss_id: github.com/memgraph/memgraph
+    class: source_available
+    licence_as_found: "BSL 1.1 default plus Memgraph Enterprise License"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under BUSL-1.1 + Memgraph Enterprise License, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/metabase/metabase
+    class: open_core
+    core_spdx: AGPL-3.0
+    licence_as_found: "AGPL outside enterprise/; enterprise/ under Metabase Commercial License"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the AGPL-3.0 core; parts under Metabase Commercial License are excluded"
+  - oss_id: github.com/mongodb/mongo
+    class: source_available
+    licence_as_found: "Server Side Public License v1"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under SSPL-1.0, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/n8n-io/n8n
+    class: source_available
+    licence_as_found: "Sustainable Use License (fair-code); .ee. files under n8n Enterprise License"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under Sustainable Use License, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/nocodb/nocodb
+    class: source_available
+    licence_as_found: "Sustainable Use License (fair-code)"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under Sustainable Use License, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/novuhq/novu
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "MIT outside enterprise/packages; that dir under Novu proprietary licence"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under Novu Proprietary Software License are excluded"
+  - oss_id: github.com/onyx-dot-app/onyx
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "MIT outside ee/ dirs (backend/ee, web/src/ee); ee/ under Onyx Enterprise License"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under Onyx Enterprise License are excluded"
+  - oss_id: github.com/openreplay/openreplay
+    class: open_core
+    core_spdx: AGPL-3.0
+    licence_as_found: "AGPL default (some MIT dirs); ee/ under ee/LICENSE"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the AGPL-3.0 core; parts under OpenReplay EE licence are excluded"
+  - oss_id: github.com/opensignlabs/opensign
+    class: open_core
+    core_spdx: AGPL-3.0
+    licence_as_found: "AGPL except apps/OpenSignServer/cloud/customRoute (separate terms, no licence file found)"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (low confidence)"
+    disclosure: "open core: recommendation covers the AGPL-3.0 core; parts under non-open terms are excluded"
+  - oss_id: github.com/outline/outline
+    class: source_available
+    licence_as_found: "Business Source License 1.1"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under BUSL-1.1, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/pipedreamhq/pipedream
+    class: source_available
+    licence_as_found: "Pipedream Source Available License v1.0"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under Pipedream Source Available License, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/plankanban/planka
+    class: source_available
+    licence_as_found: "Fair Use License 1.1 (fair-code); .pe. files under Pro/Enterprise licence"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under PLANKA Fair Use License, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/posthog/posthog
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "LICENSE is MIT; ee/ under ee/LICENSE"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under PostHog EE licence are excluded"
+  - oss_id: github.com/redpanda-data/redpanda
+    class: source_available
+    licence_as_found: "No root file; licenses/: core BSL, enterprise features RCL"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under BUSL-1.1 + Redpanda Community License, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/remix-design/remixicon
+    class: source_available
+    licence_as_found: "Custom icon licence: no standalone icon sales"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (low confidence)"
+    disclosure: "source-available: licensed under Remix Icon License v1.0, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/rocketchat/rocket.chat
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "MIT; ee/ and apps/meteor/ee under EE licence"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under Rocket.Chat EE licence are excluded"
+  - oss_id: github.com/rudderlabs/rudder-server
+    class: source_available
+    licence_as_found: "Elastic License 2.0 for whole repo (enterprise/ too)"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under Elastic-2.0, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/seldonio/seldon-core
+    class: source_available
+    licence_as_found: "Business Source License 1.1 (Seldon Core v2)"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under BUSL-1.1, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/signoz/signoz
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "MIT; ee/ and cmd/enterprise under EE licence"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under SigNoz Enterprise licence are excluded"
+  - oss_id: github.com/strapi/strapi
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "MIT Community Edition; ee/ dirs under Strapi EE terms"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under Strapi Enterprise Edition licence are excluded"
+  - oss_id: github.com/supertokens/supertokens-core
+    class: open_core
+    core_spdx: Apache-2.0
+    licence_as_found: "Apache-2.0; ee/ under ee/LICENSE.md"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the Apache-2.0 core; parts under SuperTokens EE licence are excluded"
+  - oss_id: github.com/tabbyml/tabby
+    class: open_core
+    core_spdx: Apache-2.0
+    licence_as_found: "Apache-2.0; ee/ under ee/LICENSE"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the Apache-2.0 core; parts under Tabby EE licence are excluded"
+  - oss_id: github.com/timescale/timescaledb
+    class: open_core
+    core_spdx: Apache-2.0
+    licence_as_found: "Apache-2.0 outside tsl/; tsl/ under Timescale License"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the Apache-2.0 core; parts under Timescale License are excluded"
+  - oss_id: github.com/tldraw/tldraw
+    class: source_available
+    licence_as_found: "tldraw licence: production use needs licence key"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under tldraw license, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/toeverything/affine
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "MIT; packages/backend (the server) and common/native under AFFiNE EE licence"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (low confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under AFFiNE Enterprise Edition License are excluded"
+  - oss_id: github.com/tolgee/tolgee-platform
+    class: open_core
+    core_spdx: Apache-2.0
+    licence_as_found: "Apache-2.0; ee/ and webapp/src/ee under ee/LICENSE"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the Apache-2.0 core; parts under Tolgee EE licence are excluded"
+  - oss_id: github.com/tracardi/tracardi
+    class: source_available
+    licence_as_found: "MIT with Commons Clause"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as source available with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "source-available: licensed under Commons Clause + MIT, which is not an OSI-approved open-source licence"
+  - oss_id: github.com/twentyhq/twenty
+    class: open_core
+    core_spdx: AGPL-3.0
+    licence_as_found: "AGPL (some MIT pkgs); files marked @license Enterprise under commercial licence"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the AGPL-3.0 core; parts under Twenty commercial licence are excluded"
+  - oss_id: github.com/weaviate/weaviate
+    class: open_core
+    core_spdx: BSD-3-Clause
+    licence_as_found: "BSD-3-Clause outside wl/; wl/ under separate enterprise licence"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the BSD-3-Clause core; parts under Weaviate enterprise licence are excluded"
+  - oss_id: github.com/webiny/webiny-js
+    class: open_core
+    core_spdx: MIT
+    licence_as_found: "MIT; packages/*/src/enterprise dirs reserved to enterprise licence (file absent)"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (low confidence)"
+    disclosure: "open core: recommendation covers the MIT core; parts under Webiny enterprise licence are excluded"
+  - oss_id: github.com/windmill-labs/windmill
+    class: open_core
+    core_spdx: AGPL-3.0
+    licence_as_found: "AGPL (clients Apache-2.0); enterprise-flagged code proprietary"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the AGPL-3.0 core; parts under Windmill proprietary licence are excluded"
+  - oss_id: github.com/yugabyte/yugabyte-db
+    class: open_core
+    core_spdx: Apache-2.0
+    licence_as_found: "Apache-2.0 core DB; managed/ and troubleshoot/ under PolyForm Free Trial"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment e2fe9932-03e4-4b66-ada3-e54a8433e218 (D5a/D5b, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D5: approved as open core with a mandatory disclosure; reading verified against the repository's licence files on 2026-10-20 (high confidence)"
+    disclosure: "open core: recommendation covers the Apache-2.0 core; parts under PolyForm Free Trial 1.0.0 are excluded"
+  - oss_id: github.com/open-webui/open-webui
+    class: source_available
+    licence_as_found: "BSD-3-Clause plus a ban on removing Open WebUI branding above 50 users (Open WebUI License); not OSI"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D7, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D7: Keith approved as source-available with a mandatory disclosure; terms verified against the licence file on 2026-10-20"
+    disclosure: "source-available: licensed under the Open WebUI License (BSD-3-Clause with a branding-retention requirement), which is not an OSI-approved open-source licence"
+  - oss_id: github.com/openfaas/faas
+    class: source_available
+    licence_as_found: "OpenFaaS CE EULA: proprietary; no right to modify or redistribute, commercial use limited"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D7, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D7: Keith approved as source-available with a mandatory disclosure; terms verified against the licence file on 2026-10-20"
+    disclosure: "source-available: published under the proprietary OpenFaaS CE EULA, which does not permit modification or redistribution and limits commercial use; not open source"
+  - oss_id: github.com/teableio/teable
+    class: source_available
+    licence_as_found: "AGPL-3.0 and MIT packages, with an added ban on removing brand assets"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D7, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+    rationale: "KEI-930 D7: Keith approved as source-available with a mandatory disclosure; terms verified against the licence file on 2026-10-20"
+    disclosure: "source-available: AGPL-3.0 with an added prohibition on removing Teable brand assets, which makes it not an OSI-approved open-source licence"

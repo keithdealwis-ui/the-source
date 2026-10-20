@@ -1,34 +1,38 @@
 {
   "canonical_schema": "the-source.canonical/1",
   "counts": {
-    "oss_projects": 236,
-    "recommended_relationships": 301,
-    "relationships": 341,
-    "saas_products": 114,
-    "supported_saas": 20,
-    "supported_saas_ok": 20
+    "catalogue_entries": 500,
+    "catalogue_none_yet": 162,
+    "catalogue_ok": 168,
+    "catalogue_partial": 170,
+    "oss_projects": 456,
+    "recommended_relationships": 1021,
+    "relationships": 1065,
+    "saas_products": 338,
+    "supported_saas": 338,
+    "supported_saas_ok": 168
   },
-  "data_as_of": "2026-10-19T23:32:37Z",
-  "dataset_version": "4e4082c51e91f41a",
+  "data_as_of": "2026-10-20T12:54:02Z",
+  "dataset_version": "edab459c7b41c1a3",
   "export_guard": {
     "export_licence_constraint": "none beyond attribution notices",
-    "relationships_exported": 341,
-    "relationships_withheld_share_alike_only": 25
+    "relationships_exported": 1065,
+    "relationships_withheld_share_alike_only": 0
   },
   "files": {
-    "NOTICE.md": "7c974b467b0c249fd69e88f8fd3fee40060d8b605bbaa0fbadb53b60c4721be0",
-    "oss_projects.jsonl": "2c561af069469f39de2d106e23b00225d656828b14bdc96ff85c1ab027b36988",
-    "relationships.jsonl": "50d6553af61cc69735225478d7d6a390b8c285763f576a5b7f3aa5b90e36086c",
-    "saas_products.jsonl": "60dff248dd622c4e9cfbecc147ae08277ddc590a47c0c034e43fdb9d34032315"
+    "NOTICE.md": "6473b50c3b998bd89626f6e6721bd313989b4190be67430db2ebfaa82f99adce",
+    "oss_projects.jsonl": "fb4a9af4bc3903f0a9eddbfa6543ca050dc0d9f9ba5b6e72966e30869269c291",
+    "relationships.jsonl": "083d1e5fd96a9fa69cfd4c2cc492227009506217caa44c8b40456d052e683d81",
+    "saas_products.jsonl": "91a197432019fe0fa936c8e1842de71c3d4faf6bf6a019e801fb4ac1d78a407c"
   },
   "live_checked_at": {
-    "newest": "2026-10-19T23:32:37Z",
-    "oldest": "2026-10-19T23:32:37Z"
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
   },
   "sources": {
     "altstack": {
       "decision": "allow_with_conditions",
-      "pinned_commit": "0b9dacd632f128922862f70e1e09011c8611b48c"
+      "pinned_commit": "e6b7941038edf3507a1e14866c2f84553ddfc96b"
     },
     "btwso": {
       "decision": "allow",
@@ -49,6 +53,10 @@
     "intake": {
       "decision": "allow",
       "pinned_commit": "feb7d601b43d46fdbc692e43a3082998c61cc659"
+    },
+    "job_match": {
+      "decision": "allow",
+      "pinned_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02"
     },
     "opensaasdirectory": {
       "decision": "allow",

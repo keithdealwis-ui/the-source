@@ -1,0 +1,204 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2c",
+    "rank": 84,
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+    "reasons": [
+      "fewer_than_minimum"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "edab459c7b41c1a3",
+  "last_checked": {
+    "newest": "2026-10-20T12:54:02Z",
+    "oldest": "2026-10-20T12:54:02Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "diegoleme"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L158",
+              "source_commit": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+              "source_id": "diegoleme"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 57.6,
+            "economic_advantage": 30.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "quickstart"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/ankitects/anki",
+      "last_meaningful_activity_at": "2026-10-16T17:28:05Z",
+      "latest_release": {
+        "published_at": "2026-09-23T15:24:13Z",
+        "tag": "26.09.3"
+      },
+      "licence_spdx": "AGPL-3.0-or-later",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "active",
+      "name": "Anki",
+      "note": {
+        "gaps": [
+          "feature parity",
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity and cost advantage."
+      },
+      "oss_id": "github.com/ankitects/anki",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 95.0,
+        "score": 84.2,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 75.1,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/ankitects/anki",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "diegoleme"
+      ],
+      "stars": 32141
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L159",
+              "source_commit": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+              "source_id": "diegoleme"
+            }
+          ],
+          "validated_as_of": "2026-10-20T12:54:02Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 21.2,
+            "ease_of_adoption": 79.7,
+            "economic_advantage": 17.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 75.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/JuliusBrussee/revu-swift",
+      "last_meaningful_activity_at": "2026-04-02T12:15:08Z",
+      "latest_release": {
+        "published_at": "2026-03-20T00:28:40Z",
+        "tag": "release"
+      },
+      "licence_spdx": "GPL-3.0-only",
+      "live_checked_at": "2026-10-20T12:54:02Z",
+      "maintenance_status": "maintained",
+      "name": "Revu",
+      "note": {
+        "gaps": [
+          "feature parity",
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on feature parity and cost advantage."
+      },
+      "oss_id": "github.com/juliusbrussee/revu-swift",
+      "project_health": {
+        "band": "Caution",
+        "confidence": 90.2,
+        "score": 42.3,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 61.6,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/JuliusBrussee/revu-swift",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "diegoleme"
+      ],
+      "stars": 380
+    }
+  ],
+  "saas": {
+    "category": "Online courses",
+    "compare_path": null,
+    "domain": "quizlet.com",
+    "name": "Quizlet",
+    "saas_id": "quizlet",
+    "slug": "quizlet"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

@@ -56,7 +56,8 @@ def score(key: str, live: dict, licence: dict, pairs: list[dict], as_of: str, ht
     row = {
         "canonical": key,
         "project": project_id,
-        "licence": {"spdx": licence.get("spdx"), "status": licence.get("status") or "recognised"},
+        "licence": {"spdx": licence.get("spdx"), "status": licence.get("status") or "recognised",
+                    "exception": licence.get("exception")},
         "observations": [{"as_of": live.get("fetched_at"), "pushed_at": live.get("pushed_at"),
                           "stars": live.get("stars"), "forks": live.get("forks"),
                           "archived": live.get("archived")}],

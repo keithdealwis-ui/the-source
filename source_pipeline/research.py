@@ -42,7 +42,7 @@ def advance_pins(min_entry_ratio: float = 0.8, as_of: str | None = None) -> list
     results = []
     for s in sorted(cfg["sources"], key=lambda s: s["priority"]):
         sid = s["source_id"]
-        if s.get("kind") == "intake" or s["decision"] not in harvest.ALLOWED_DECISIONS:
+        if s.get("kind") in ("intake", "job_match") or s["decision"] not in harvest.ALLOWED_DECISIONS:
             continue
         res = {"source_id": sid, "from": s["pinned_commit"]}
         st, head = http.call(f"https://api.github.com/repos/{s['repo']}/commits/HEAD", auth=True)
