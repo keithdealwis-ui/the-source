@@ -1,0 +1,417 @@
+# The Source: controlled corpus expansion (KEI-923, V2.1 WP6). Method: docs/EXPANSION.md.
+#
+# Every source that can add members to the discovery corpus at scale is declared here, with its
+# bound. `corpus-expand-harvest` (network) records what each source returned in
+# data/expansion/frontier.jsonl. `corpus-expand-admit` then admits from that record under the
+# Discover lane's bar (config/policy.yaml, unchanged), the intake noise gate and the quotas
+# below. Nothing here can recommend: recommendations come only from data/canonical.
+#
+# Growth is a milestone, not a mandate. The corpus grows toward `milestones.target` only while
+# the noise and golden-set checks (`obs-noise`, `obs-golden`) stay inside their bounds.
+# `milestones.checkpoint` (50k) is a separate decision, never reached automatically.
+
+schema: the-source.expansion/1
+
+milestones:
+  target: 25000
+  checkpoint: 50000              # requires a review; admission refuses to go past target
+
+# The active quality floor (S4.2). Each source's search asks the host only for repositories that
+# already clear it, so a lookup is not spent on a certain rejection. Admission re-applies the
+# Discover lane prefilter (found, public, not archived/disabled/empty/fork/mirror, pushed inside
+# policy.yaml maintained_days) to the host's own answer regardless.
+floor:
+  min_stars: {github.com: 30, gitlab.com: 10, codeberg.org: 10}
+
+# Archived or long-inactive projects that were notable are kept, apart, as a historical tier
+# (data/historical/). They are never members of the active corpus, never counted toward the
+# milestone, never served as discovery, and never recommended.
+historical:
+  min_stars: 1000
+
+# Quotas: no source can dominate the expansion, and one run is bounded.
+quotas:
+  max_lookups_per_run: 40000     # host metadata lookups in one admission run
+  max_admit_per_run: 16000       # admissions in one run
+  # Share of one run's admissions any single source family may take.
+  max_source_share: 0.60
+  # Admissions one GitHub topic (or one list, one forge topic) may contribute in a run.
+  max_per_query: 1200
+
+# Intake noise gate (S4.3): rows that are not software a person would run are refused at intake
+# with a named reason (source_pipeline/noise.py). Measured separately by `obs-noise`.
+noise:
+  gate: true
+  # Initial thresholds from the V2.1 proposal; calibrated against the recorded baseline
+  # (observability/noise-baseline.json): a measure may never be worse than
+  # max(threshold, baseline + tolerance).
+  thresholds:
+    top10_discovery_irrelevant: 0.10
+    top5_supported_irrelevant: 0.05
+    intake_irrelevant: 0.10
+  tolerance: 0.02
+  integration_false_positives_in_recommendations: 0
+
+sources:
+  # S4.1a GitHub topics: product domains that SaaS products occupy, one search per topic, sliced
+  # by star band when a topic has more than the search API's 1,000 results.
+  github_topics:
+    family: github_topics
+    pushed_within_days: 365
+    topics:
+      # work management and collaboration
+      - project-management
+      - task-manager
+      - kanban
+      - todo-app
+      - issue-tracker
+      - time-tracking
+      - timetracker
+      - wiki
+      - knowledge-base
+      - knowledge-management
+      - note-taking
+      - notes-app
+      - personal-knowledge-management
+      - whiteboard
+      - collaboration
+      - document-editor
+      - office-suite
+      - spreadsheet
+      - presentation
+      - calendar
+      - scheduling
+      - appointment-booking
+      - booking-system
+      - forms
+      - form-builder
+      - survey
+      - polls
+      # communication
+      - chat
+      - team-chat
+      - messaging
+      - matrix-org
+      - xmpp
+      - video-conferencing
+      - webrtc
+      - voip
+      - email
+      - email-client
+      - mail-server
+      - webmail
+      - newsletter
+      - mailing-list
+      - forum
+      - community
+      - discourse
+      - social-network
+      - fediverse
+      - activitypub
+      - mastodon
+      - comments
+      - commenting-system
+      - notifications
+      - push-notifications
+      - live-chat
+      - chatbot-platform
+      # customer and sales
+      - crm
+      - helpdesk
+      - help-desk
+      - ticketing-system
+      - customer-support
+      - customer-feedback
+      - feedback
+      - marketing-automation
+      - email-marketing
+      - social-media-management
+      - link-shortener
+      - url-shortener
+      - link-in-bio
+      - affiliate-marketing
+      - seo
+      # business and finance
+      - erp
+      - accounting
+      - invoicing
+      - invoice
+      - billing
+      - subscription-management
+      - payments
+      - payment-gateway
+      - point-of-sale
+      - pos
+      - inventory-management
+      - inventory
+      - hrm
+      - hr
+      - human-resources
+      - payroll
+      - recruitment
+      - applicant-tracking-system
+      - expense-tracker
+      - personal-finance
+      - budgeting
+      - finance-management
+      - e-signature
+      - document-management
+      - dms
+      - contract-management
+      - procurement
+      - property-management
+      - restaurant
+      - hotel-management
+      - school-management
+      - lms
+      - learning-management-system
+      - e-learning
+      - elearning
+      - quiz
+      # commerce and web
+      - ecommerce
+      - e-commerce
+      - shop
+      - shopping-cart
+      - marketplace
+      - cms
+      - headless-cms
+      - content-management-system
+      - blog
+      - blogging-platform
+      - static-site-generator
+      - website-builder
+      - page-builder
+      - landing-page
+      - portfolio
+      - wordpress-alternative
+      - web-analytics
+      - analytics
+      - product-analytics
+      - privacy-friendly-analytics
+      - session-replay
+      - heatmap
+      - ab-testing
+      - feature-flags
+      - feature-toggles
+      - search-engine
+      - full-text-search
+      - localization
+      - translation
+      - i18n-platform
+      # data and BI
+      - business-intelligence
+      - dashboard
+      - data-visualization
+      - reporting
+      - etl
+      - elt
+      - data-integration
+      - data-pipeline
+      - data-warehouse
+      - olap
+      - time-series-database
+      - nosql
+      - no-code
+      - nocode
+      - low-code
+      - lowcode
+      - internal-tools
+      - app-builder
+      - airtable-alternative
+      - notion-alternative
+      - workflow-automation
+      - automation-platform
+      - workflow-engine
+      - integration-platform
+      - ipaas
+      - bpm
+      - rpa
+      - spreadsheet-database
+      # files and media
+      - file-sharing
+      - file-sync
+      - file-manager
+      - file-hosting
+      - cloud-storage
+      - object-storage
+      - s3-compatible
+      - backup
+      - backup-tool
+      - photo-gallery
+      - photo-management
+      - media-server
+      - music-streaming
+      - music-server
+      - podcast
+      - video-streaming
+      - video-platform
+      - live-streaming
+      - video-editor
+      - image-editor
+      - audiobooks
+      - ebook-reader
+      - ebooks
+      - rss-reader
+      - rss
+      - feed-reader
+      - bookmarks
+      - bookmark-manager
+      - read-it-later
+      - pastebin
+      - screenshot-tool
+      - screen-recorder
+      - pdf-tools
+      - ocr
+      - transcription
+      - speech-to-text
+      - text-to-speech
+      # identity and security
+      - identity-provider
+      - identity-management
+      - iam
+      - sso
+      - single-sign-on
+      - oauth2-server
+      - openid-connect
+      - authentication
+      - password-manager
+      - secrets-management
+      - vault
+      - two-factor-authentication
+      - vpn
+      - wireguard
+      - zero-trust
+      - firewall
+      - remote-desktop
+      - remote-access
+      - remote-support
+      - mdm
+      - device-management
+      - siem
+      - vulnerability-scanner
+      - security-scanner
+      - waf
+      # developer platform
+      - paas
+      - self-hosted-paas
+      - heroku-alternative
+      - deployment
+      - ci-cd
+      - continuous-integration
+      - continuous-delivery
+      - gitops
+      - git-server
+      - code-review
+      - code-search
+      - container-registry
+      - package-registry
+      - artifact-repository
+      - api-gateway
+      - api-client
+      - api-testing
+      - api-documentation
+      - documentation-generator
+      - developer-portal
+      - backend-as-a-service
+      - baas
+      - firebase-alternative
+      - serverless
+      - cloud-ide
+      - online-ide
+      - dev-environment
+      - error-tracking
+      - error-monitoring
+      - apm
+      - observability
+      - monitoring
+      - uptime-monitor
+      - status-page
+      - logging
+      - log-management
+      - log-analysis
+      - tracing
+      - metrics
+      - alerting
+      - incident-management
+      - on-call
+      - load-testing
+      - cron
+      - job-scheduler
+      - message-queue
+      - email-api
+      - smtp-server
+      - transactional-email
+      - sms-gateway
+      # AI applications
+      - llm-ui
+      - chatgpt-alternative
+      - ai-chat
+      - local-llm
+      - llm-inference
+      - rag
+      - vector-database
+      - image-generation
+      - stable-diffusion-webui
+      - ai-assistant
+      - ai-writing
+      # self-hosting itself
+      - self-hosted
+      - selfhosted
+      - self-hosting
+      - homelab
+      - home-automation
+      - smart-home
+      - home-assistant
+      - dashboard-app
+      - nas
+      - home-server
+
+  # S4.1b Docker and Helm signals: repositories that ship a compose file, an image or a chart are
+  # the ones a person can self-host. GitHub topics carry the signal; Artifact Hub carries charts.
+  docker_signals:
+    family: docker_helm
+    pushed_within_days: 365
+    topics: [docker-compose, docker-image, dockerfile, docker-container, helm-chart, helm-charts, helm,
+             kubernetes-operator, k8s-operator]
+  artifacthub:
+    family: docker_helm
+    # Artifact Hub package kinds: 0 Helm chart, 3 OLM operator, 12 container image.
+    kinds: [0, 3, 12]
+    # Packages read per kind, most-starred first (one detail call each). A package names its
+    # source in `links` or `home_url`; only an address that is a repository root is kept, so a
+    # chart inside a chart monorepo (…/tree/…) never stands in for the application it packages.
+    max_packages_per_kind: 800
+    page_size: 60
+
+  # S4.1c Curated lists, as awesome.ecosyste.ms parses them. Seeds only: the addresses are kept,
+  # nothing else (the lists are CC BY-SA; see docs/LICENCE-REVIEW.md, KEI-912).
+  awesome_lists:
+    family: awesome_lists
+    lists:
+      - https://github.com/awesome-selfhosted/awesome-selfhosted
+      - https://github.com/awesome-foss/awesome-sysadmin
+      - https://github.com/mikeroyal/Self-Hosting-Guide
+      - https://github.com/pluja/awesome-privacy
+      - https://github.com/Lissy93/awesome-privacy
+      - https://github.com/RunaCapital/awesome-oss-alternatives
+      - https://github.com/btw-so/open-source-alternatives
+    max_pages: 40
+
+  # S4.1d / S4.1e The independent forges. Topics are searched most-starred first.
+  gitlab:
+    family: gitlab
+    host: gitlab.com
+    topics: [self-hosted, selfhosted, crm, erp, cms, wiki, project-management, kanban, chat, email, analytics,
+             monitoring, accounting, invoicing, helpdesk, file-sharing, backup, media-server, password-manager,
+             vpn, git, ci-cd, devops, nocode, dashboard, calendar, notes, fediverse, activitypub, matrix,
+             e-commerce, forum, lms, home-automation, privacy, open-source-alternative]
+    per_topic: 200
+  codeberg:
+    family: codeberg
+    host: codeberg.org
+    topics: [self-hosted, selfhosted, fediverse, activitypub, matrix, xmpp, privacy, email, chat, cms, wiki,
+             notes, calendar, analytics, monitoring, backup, file-sharing, media-server, password-manager,
+             git, ci-cd, forgejo, e-commerce, forum, rss, bookmarks, home-automation, accounting, crm,
+             project-management, kanban, open-source-alternative]
+    per_topic: 200

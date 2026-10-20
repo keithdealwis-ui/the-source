@@ -1,0 +1,340 @@
+{
+  "corpus_members": 9901,
+  "corpus_version": "db61d41f65eb4c27",
+  "intake_scope": "whole corpus (no expansion admissions yet)",
+  "measures": {
+    "corpus_irrelevant": {
+      "by_flag": {
+        "material": 502,
+        "undescribed": 338
+      },
+      "flagged": 838,
+      "integrations_labelled": 3299,
+      "rows": 9901,
+      "share": 0.0846
+    },
+    "intake_irrelevant": {
+      "by_flag": {
+        "material": 502,
+        "undescribed": 338
+      },
+      "flagged": 838,
+      "integrations_labelled": 3299,
+      "rows": 9901,
+      "share": 0.0846
+    },
+    "integration_false_positives_in_recommendations": {
+      "count": 13,
+      "rows": [
+        {
+          "description": "AI Agents & MCPs & AI Workflow Automation • (~400 MCP servers for AI agents) • AI Automation / AI Agent with MCPs • AI Workflows & AI Agents • MCPs for AI Agents",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "activepieces/activepieces",
+          "id": "github.com/activepieces/activepieces",
+          "saas": "zapier",
+          "topics": [
+            "ai-agent",
+            "ai-agent-tools",
+            "ai-agents",
+            "ai-agents-framework",
+            "mcp",
+            "mcp-server",
+            "mcp-tools",
+            "mcps",
+            "n8n-alternative",
+            "no-code-automation",
+            "workflow",
+            "workflow-automation",
+            "workflows"
+          ]
+        },
+        {
+          "description": "Tunnelmole - Connect to local servers from anywhere",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "robbie-cahill/tunnelmole-client",
+          "id": "github.com/robbie-cahill/tunnelmole-client",
+          "saas": "ngrok",
+          "topics": []
+        },
+        {
+          "description": "Platform to build admin panels, internal tools, and dashboards. Integrates with 25+ databases and any API.",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "appsmithorg/appsmith",
+          "id": "github.com/appsmithorg/appsmith",
+          "saas": "retool",
+          "topics": [
+            "admin-dashboard",
+            "admin-panels",
+            "app-builder",
+            "automation",
+            "crud",
+            "custom-internal",
+            "developer-tools",
+            "gui",
+            "gui-application",
+            "hacktoberfest",
+            "internal-tools",
+            "java",
+            "javascript",
+            "low-code",
+            "low-code-framework",
+            "react",
+            "self-hosted",
+            "typescript",
+            "webdevelopment",
+            "workflows"
+          ]
+        },
+        {
+          "description": "Cross-platform encrypted email client for Aster",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "Aster-Privacy/Aster-Mail",
+          "id": "github.com/aster-privacy/aster-mail",
+          "saas": "gmail",
+          "topics": [
+            "cryptography",
+            "email",
+            "encryption",
+            "end-to-end-encryption",
+            "privacy"
+          ]
+        },
+        {
+          "description": "Passbolt Community Edition (CE) API. The JSON API for the open source password manager for teams!",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "passbolt/passbolt_api",
+          "id": "github.com/passbolt/passbolt_api",
+          "saas": "1password",
+          "topics": [
+            "cakephp",
+            "cakephp5",
+            "credentials",
+            "passbolt",
+            "password",
+            "password-manager",
+            "php",
+            "productivity",
+            "security"
+          ]
+        },
+        {
+          "description": "Dockerized OpenAI-compatible wrapper for Kokoro-82M text-to-speech w/multiplatform CPU, AMD, NVIDIA GPU PyTorch; multi-speaker, clone-tuning, caption timestamps, SSML, optional readalong web UI",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "remsky/Kokoro-FastAPI",
+          "id": "github.com/remsky/kokoro-fastapi",
+          "saas": "elevenlabs",
+          "topics": [
+            "fastapi",
+            "kokoro",
+            "kokoro-82m",
+            "kokoro-tts",
+            "multi-speaker-tts",
+            "mutilingual-audio",
+            "openai-compatible-api",
+            "openwebui",
+            "pytorch",
+            "read-along",
+            "sillytavern",
+            "ssml",
+            "text-to-speech",
+            "tts",
+            "tts-api",
+            "tts-captions",
+            "tts-generation",
+            "voice-clone-tool"
+          ]
+        },
+        {
+          "description": "Cross-platform encrypted email client for Aster",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "Aster-Privacy/Aster-Mail",
+          "id": "github.com/aster-privacy/aster-mail",
+          "saas": "proton-mail",
+          "topics": [
+            "cryptography",
+            "email",
+            "encryption",
+            "end-to-end-encryption",
+            "privacy"
+          ]
+        },
+        {
+          "description": "Supercharge your AI agents with data from the web and beyond. Building the library for superintelligence. 🔥",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "firecrawl/firecrawl",
+          "id": "github.com/firecrawl/firecrawl",
+          "saas": "scrapingbee",
+          "topics": [
+            "ai",
+            "ai-agents",
+            "ai-crawler",
+            "ai-scraping",
+            "ai-search",
+            "crawler",
+            "data-extraction",
+            "html-to-markdown",
+            "llm",
+            "markdown",
+            "scraper",
+            "scraping",
+            "web-crawler",
+            "web-data",
+            "web-data-extraction",
+            "web-scraper",
+            "web-scraping",
+            "web-search",
+            "webscraping"
+          ]
+        },
+        {
+          "description": "Passbolt Community Edition (CE) API. The JSON API for the open source password manager for teams!",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "passbolt/passbolt_api",
+          "id": "github.com/passbolt/passbolt_api",
+          "saas": "lastpass",
+          "topics": [
+            "cakephp",
+            "cakephp5",
+            "credentials",
+            "passbolt",
+            "password",
+            "password-manager",
+            "php",
+            "productivity",
+            "security"
+          ]
+        },
+        {
+          "description": "Passbolt Community Edition (CE) API. The JSON API for the open source password manager for teams!",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "passbolt/passbolt_api",
+          "id": "github.com/passbolt/passbolt_api",
+          "saas": "dashlane",
+          "topics": [
+            "cakephp",
+            "cakephp5",
+            "credentials",
+            "passbolt",
+            "password",
+            "password-manager",
+            "php",
+            "productivity",
+            "security"
+          ]
+        },
+        {
+          "description": "AI Agents & MCPs & AI Workflow Automation • (~400 MCP servers for AI agents) • AI Automation / AI Agent with MCPs • AI Workflows & AI Agents • MCPs for AI Agents",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "activepieces/activepieces",
+          "id": "github.com/activepieces/activepieces",
+          "saas": "tray-io",
+          "topics": [
+            "ai-agent",
+            "ai-agent-tools",
+            "ai-agents",
+            "ai-agents-framework",
+            "mcp",
+            "mcp-server",
+            "mcp-tools",
+            "mcps",
+            "n8n-alternative",
+            "no-code-automation",
+            "workflow",
+            "workflow-automation",
+            "workflows"
+          ]
+        },
+        {
+          "description": "Supercharge your AI agents with data from the web and beyond. Building the library for superintelligence. 🔥",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "firecrawl/firecrawl",
+          "id": "github.com/firecrawl/firecrawl",
+          "saas": "diffbot",
+          "topics": [
+            "ai",
+            "ai-agents",
+            "ai-crawler",
+            "ai-scraping",
+            "ai-search",
+            "crawler",
+            "data-extraction",
+            "html-to-markdown",
+            "llm",
+            "markdown",
+            "scraper",
+            "scraping",
+            "web-crawler",
+            "web-data",
+            "web-data-extraction",
+            "web-scraper",
+            "web-scraping",
+            "web-search",
+            "webscraping"
+          ]
+        },
+        {
+          "description": "Passbolt Community Edition (CE) API. The JSON API for the open source password manager for teams!",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "passbolt/passbolt_api",
+          "id": "github.com/passbolt/passbolt_api",
+          "saas": "keeper",
+          "topics": [
+            "cakephp",
+            "cakephp5",
+            "credentials",
+            "passbolt",
+            "password",
+            "password-manager",
+            "php",
+            "productivity",
+            "security"
+          ]
+        }
+      ]
+    },
+    "top10_discovery_irrelevant": {
+      "irrelevant": 373,
+      "queries": 112,
+      "rows": 1089,
+      "share": 0.3425
+    },
+    "top5_supported_integrations": {
+      "irrelevant": 11,
+      "rows": 822,
+      "share": 0.0134
+    },
+    "top5_supported_irrelevant": {
+      "irrelevant": 20,
+      "products": 338,
+      "rows": 822,
+      "share": 0.0243
+    }
+  },
+  "schema": "the-source.noise/1"
+}

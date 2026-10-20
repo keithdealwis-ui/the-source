@@ -80,7 +80,7 @@ def test_new_candidates_are_admitted_and_counted(layer):
 def test_the_gate_and_dedupe_drop_with_reasons(layer):
     alice_id = common.read_jsonl(layer / "projects.jsonl")[0]["host_repo_id"]
     pool = _pool(_entry("github.com/x/archived"), _entry("github.com/x/fork"), _entry("github.com/x/stale"),
-                 _entry("github.com/x/gone"), _entry("github.com/x/renamed-alice"), _entry("gitlab.com/x/y"))
+                 _entry("github.com/x/gone"), _entry("github.com/x/renamed-alice"), _entry("bitbucket.org/x/y"))
     api = FakeApi({"x/archived": _m("x/archived", 99, 21, archived=True),
                    "x/fork": _m("x/fork", 99, 22, is_fork=True),
                    "x/stale": _m("x/stale", 99, 23, pushed_at="2024-01-01T00:00:00Z"),
@@ -192,3 +192,42 @@ def test_cycle_step_puts_the_corpus_back_when_quick_scores_cannot_follow(layer, 
     assert step["status"] == "failed" and "quick scores" in step["errors"][0]
     assert {p.name: p.read_bytes() for p in layer.iterdir()} == before
     assert (quick / "MANIFEST.json").read_text() == "{}"
+
+
+def test_expansion_admits_under_the_gate_quotas_milestone_and_historical_tier(layer, monkeypatch):
+    """KEI-923: a bulk run orders by stars, refuses noise, keeps notable inactive projects apart, admits a GitLab
+    member through hosts.py and stops at the milestone."""
+    from source_pipeline import hosts
+
+    shutil.copy(ROOT / "config" / "expansion.yaml", common.CONFIG / "expansion.yaml")
+
+    def exp(key, stars):
+        return _entry(key, "corpus_expansion", "github_topics:crm", stars=stars)
+
+    pool = _pool(exp("github.com/n/crm", 900), exp("github.com/n/awesome-crm", 800), exp("github.com/n/old", 5000),
+                 exp("github.com/n/oldsmall", 50), exp("gitlab.com/g/sub/helpdesk", 300), exp("github.com/n/late", 10))
+    api = FakeApi({"n/crm": _m("n/crm", 900, 21),
+                   "n/awesome-crm": _m("n/awesome-crm", 800, 22, description="A curated list of CRM software"),
+                   "n/old": _m("n/old", 5000, 23, archived=True),
+                   "n/oldsmall": _m("n/oldsmall", 50, 24, pushed_at="2020-01-01T00:00:00Z"),
+                   "n/late": _m("n/late", 10, 25)})
+    monkeypatch.setattr(hosts, "meta_batch", lambda http, host, slugs: {
+        "g/sub/helpdesk": {**_m("g/sub/Helpdesk", 300, 31), "host": host}})
+    cfg = common.load_yaml(common.CONFIG / "expansion.yaml")
+    cfg["milestones"]["target"] = 4  # two members already; room for two
+    hist = layer.parent / "historical"
+    out = A.admit(pool, NOW, layer, api, expansion=cfg, historical_out=hist)
+    assert out["corpus_added"] == 2 and out["membership_after"] == 4
+    added = {t["id"] for t in out["top_new_by_stars"]}
+    assert added == {"github.com/n/crm", "gitlab.com/g/sub/helpdesk"}
+    assert out["dropped"]["intake_noise:curated_list"] == 1
+    assert out["dropped"]["historical_tier"] == 1 and out["historical"] == 1
+    assert out["dropped"]["stale_no_meaningful_activity_12_months"] == 1   # not notable: simply refused
+    assert out["dropped"]["milestone_reached"] == 1                         # n/late, the least starred
+    assert C.validate(layer)["failed_checks"] == []
+    rows = {p["id"]: p for p in common.read_jsonl(layer / "projects.jsonl")}
+    assert rows["gitlab.com/g/sub/helpdesk"]["url"] == "https://gitlab.com/g/sub/Helpdesk"
+    assert rows["github.com/n/crm"]["provenance"][0]["strategy"] == "corpus_expansion"
+    h = common.read_jsonl(hist / "projects.jsonl")
+    assert [r["id"] for r in h] == ["github.com/n/old"] and h[0]["reasons"] == ["archived"]
+    assert common.read_json(layer / "MANIFEST.json")["membership"]["expansion"]["last"]["admitted"] == 2

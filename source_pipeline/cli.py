@@ -22,6 +22,8 @@
     python -m source_pipeline corpus-identity [--refresh]   renames, forks, mirrors, sibling repositories
                                                    (--refresh re-reads GitHub's identity facts first; network)
     python -m source_pipeline corpus-licence-classify  classify every flagged row's licence (network; KEI-919)
+    python -m source_pipeline corpus-expand-harvest [--only SOURCE]   record the expansion frontier (network; KEI-923)
+    python -m source_pipeline corpus-expand-admit [--max-admit N]     admit from it under quotas, quick-score (network)
 
   Quick scoring of the whole corpus (KEI-921, docs/QUICK-SCORING.md; never a recommendation):
     python -m source_pipeline quick-score [--full] quick Health, inferred pairings, quick Fit; incremental; no network
@@ -90,6 +92,8 @@
     python -m source_pipeline obs-fingerprints     every failure fingerprint across runs/
     python -m source_pipeline obs-golden [--baseline FILE] [--write-baseline FILE] [--check]
                                                    S0.4 golden queries: recall@5, precision@5, violations
+    python -m source_pipeline obs-noise [--out FILE] [--write-baseline] [--check]
+                                                   KEI-923 intake and top-result noise (docs/EXPANSION.md)
     python -m source_pipeline obs-telemetry-report --telemetry FILE [--week YYYY-Www] [--out DIR]
                                                    S0.5 weekly MCP usage report, small counts suppressed
     python -m source_pipeline obs-lineage history|reconcile|verify [--from REV] [--to REV]
@@ -279,6 +283,14 @@ def main(argv=None) -> int:
         from . import observability
 
         return observability.main(argv)
+    if argv[:1] and argv[0] in ("corpus-expand-harvest", "corpus-expand-admit"):
+        from . import expansion
+
+        return expansion.main(argv)
+    if argv[:1] and argv[0] in ("obs-noise",):
+        from . import noise
+
+        return noise.main(argv[1:])
     if argv[:1] and argv[0] in ("obs-golden",):
         from . import golden
 

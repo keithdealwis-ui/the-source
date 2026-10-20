@@ -336,28 +336,44 @@ def refresh(now: datetime | None = None, out: Path = OUT, api=None) -> dict:
         raise CorpusError(f"{batches} batches would exceed max_graphql_points {cfg['max_graphql_points']}")
     api = api or Api()
     log(f"corpus-refresh: {len(slugs)} repositories in {batches} GraphQL batches")
-    meta = api.meta_batch(sorted(set(slugs.values())), size=cfg["batch_size"])
+    meta = {f"github.com/{k}": v for k, v in api.meta_batch(sorted(set(slugs.values())), size=cfg["batch_size"]).items()}
+    slugs = {pid: f"github.com/{slug}" for pid, slug in slugs.items()}
+    # GitLab and Codeberg members (KEI-923) are re-read through hosts.py, one REST call (and GitLab GraphQL) each.
+    from . import hosts
+    forge = {}
+    for pid in projects:
+        host = pid.split("/", 1)[0]
+        if host in ("gitlab.com", "codeberg.org"):
+            forge.setdefault(host, {})[pid] = (live[pid].get("full_name") or projects[pid]["full_name"]).lower()
+    for host, rows in sorted(forge.items()):
+        got = hosts.meta_batch(api.http, host, sorted(set(rows.values())))
+        meta.update({f"{host}/{k}": {**v, "host": host} for k, v in got.items()})
+        slugs.update({pid: f"{host}/{slug}" for pid, slug in rows.items()})
     stamp = _iso(now)
     stats = {"resolved": 0, "not_found": 0, "unresolved": 0, "renamed": 0, "changed_metadata": 0,
              "not_on_github": len(projects) - len(slugs)}
     pub = load_cfg()["publication"]
     for pid, slug in slugs.items():
+        host = slug.split("/", 1)[0]
         got = meta.get(slug) or {"found": False, "error": "missing_from_response"}
         row = dict(live[pid])
         if got.get("found"):
             stats["resolved"] += 1
             row.update(found=True, full_name=got["name_with_owner"], stars=got["stars"], forks=got["forks"],
                        pushed_at=got["pushed_at"], archived=got["archived"],
-                       latest_release=_release(got.get("latest_release")), licence_spdx=got["licence_spdx"],
+                       latest_release=_release(got.get("latest_release")),
+                       # Codeberg's API names no licence (hosts.py); keep the one admission read from the files
+                       licence_spdx=got["licence_spdx"] if host != "codeberg.org" else
+                       (got["licence_spdx"] or row.get("licence_spdx")),
                        observed_as_of=stamp, unresolved=None)
             p = dict(projects[pid])
-            if got["canonical_slug"] != slug:
+            if f"{host}/{got['canonical_slug']}" != slug:
                 stats["renamed"] += 1
-            new_key = f"github.com/{got['canonical_slug']}"
+            new_key = f"{host}/{got['canonical_slug']}"
             aliases = sorted(set(p["aliases"]) | ({new_key} - {pid}))
             upd = {"aliases": aliases, "full_name": got["name_with_owner"],
                    "name": got["name_with_owner"].split("/")[-1],
-                   "url": f"https://github.com/{got['name_with_owner']}",
+                   "url": f"https://{host}/{got['name_with_owner']}",
                    "description": _text(got.get("description"), pub["description_max_chars"])
                    if pub["include_descriptions"] else None,
                    "homepage": got.get("homepage") or None,
@@ -383,7 +399,8 @@ def refresh(now: datetime | None = None, out: Path = OUT, api=None) -> dict:
     extra = {k: m[k] for k in ("membership", "publication", "licence_classification", "edition_check") if k in m}
     extra["refresh"] = {"cadence": cfg["cadence"], "stale_after_days": cfg["stale_after_days"],
                         "last": {"at": stamp, "method": f"GitHub GraphQL, {cfg['batch_size']} repositories per "
-                                                        "request; REST only to follow a rename",
+                                                        "request; REST only to follow a rename; GitLab and "
+                                                        "Codeberg through hosts.py",
                                  "requests": api.http.calls, "batches": batches, **stats}}
     manifest = write_layer(out, list(projects.values()), list(live.values()), extra)
     return {"refresh": extra["refresh"]["last"], "corpus_version": manifest["corpus_version"]}

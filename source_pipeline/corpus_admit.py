@@ -35,7 +35,10 @@ from pathlib import Path
 from . import common, corpus
 
 # Provenance strategies that only admission writes (a re-export keeps these rows; see corpus.export).
-STRATEGIES = ("discovery_search", "community_radar")
+STRATEGIES = ("discovery_search", "community_radar", "corpus_expansion")
+HOSTS = ("github.com", "gitlab.com", "codeberg.org")
+# Prefilter reasons that, alone, mark a notable project as historical rather than unwanted (KEI-923 S4.2).
+HISTORICAL_REASONS = {"archived", "stale_no_meaningful_activity_12_months"}
 METHOD = "the-source.corpus-admit/1"
 TOP_N = 10
 
@@ -46,10 +49,17 @@ def manifest_sha(out: Path) -> str | None:
 
 
 def strategy_of(prov: dict) -> str:
-    """One label per discovery route: the search lane, the awesome-list seed, or the radar source."""
+    """One label per discovery route: the search lane, the awesome-list seed, the radar source, or an expansion
+    source (`corpus_expansion:<family>:<query>`, KEI-923)."""
     if prov.get("provider") == "community_radar":
         return f"community_radar:{prov.get('query')}"
     return f"{prov.get('provider')}:{prov.get('query')}"
+
+
+def _verifiable(key: str) -> bool:
+    host, _, path = key.partition("/")
+    depth = path.count("/") + 1 if path else 0
+    return host in HOSTS and (depth == 2 or (host == "gitlab.com" and depth >= 2))
 
 
 def _known(projects: list[dict]) -> tuple[dict, dict]:
@@ -90,11 +100,12 @@ def _licence(spdx, recognised: set) -> dict:
 
 def _rows(meta: dict, routes: list[dict], as_of: datetime, policy: dict, pub: dict) -> tuple[dict, dict]:
     nwo = meta["name_with_owner"]
-    rid = f"github.com/{nwo.lower()}"
+    host = meta.get("host") or "github.com"
+    rid = f"{host}/{nwo.lower()}"
     stamp = corpus._iso(as_of)
     project = {
         "id": rid, "host_repo_id": meta.get("database_id"), "name": nwo.split("/")[-1], "full_name": nwo,
-        "url": f"https://github.com/{nwo}", "aliases": [],
+        "url": f"https://{host}/{nwo}", "aliases": [],
         "description": corpus._text(meta.get("description"), pub["description_max_chars"])
         if pub["include_descriptions"] else None,
         "homepage": meta.get("homepage") or None,
@@ -116,22 +127,87 @@ def _rows(meta: dict, routes: list[dict], as_of: datetime, policy: dict, pub: di
 def _routes(entry: dict) -> list[dict]:
     out = []
     for prov in entry.get("providers") or []:
-        strategy = "community_radar" if prov.get("provider") == "community_radar" else "discovery_search"
+        strategy = prov.get("provider") if prov.get("provider") in ("community_radar", "corpus_expansion") \
+            else "discovery_search"
         out.append({"strategy": strategy, "source": strategy_of(prov), "commit": None, "locator": entry["key"],
                     "depth": 1, "via": None})
     return sorted(out, key=lambda r: (r["strategy"], r["source"]))
 
 
-def admit(pool: dict, as_of: datetime, out: Path | None = None, api=None, max_lookups: int | None = None) -> dict:
+def _lookup(keys: list[str], api, http, batch: int) -> dict:
+    """Host facts for `host/path` keys: GitHub in GraphQL batches, GitLab and Codeberg through hosts.py."""
+    from . import hosts
+
+    out, by_host = {}, {}
+    for k in keys:
+        host, _, path = k.partition("/")
+        by_host.setdefault(host, []).append(path)
+    for host, paths in sorted(by_host.items()):
+        got = api.meta_batch(paths, size=batch) if host == "github.com" else hosts.meta_batch(http, host, paths)
+        for path in paths:
+            m = got.get(path) or {"found": False, "error": "missing_from_response"}
+            out[f"{host}/{path}"] = {**m, "host": host} if m.get("found") else m
+    return out
+
+
+def _probe_licence(http, got: dict) -> None:
+    """Codeberg reports no licence (hosts.py): read the licence files at the root, as enrich.codeberg does."""
+    from .enrich import _gitea_probe_licence
+    from .licence_detect import detect
+
+    probe = _gitea_probe_licence(http, "https://codeberg.org/api/v1/repos/" + got["name_with_owner"])
+    if not probe.get("error"):
+        d = detect(probe["root"], probe["texts"])
+        if d["recognised"] and d["spdx"] and " AND " not in d["spdx"]:
+            got["licence_spdx"] = d["spdx"]
+
+
+def _quota(cfg: dict | None):
+    """Admission quotas (config/expansion.yaml `quotas`): a route is chargeable while its query and its source
+    family are both under their caps. Returns (pick, charge, counts)."""
+    if not cfg:
+        return (lambda routes: routes[0] if routes else None), (lambda route: None), {}
+    per_query, per_family = {}, {}
+    q_cap = int(cfg["max_per_query"])
+    f_cap = int(float(cfg["max_source_share"]) * int(cfg["max_admit_per_run"]))
+
+    def family(route: str) -> str:
+        parts = route.split(":")
+        return parts[1] if parts[0] == "corpus_expansion" and len(parts) > 2 else parts[0]
+
+    def pick(routes: list[str]):
+        ok = [r for r in routes if per_query.get(r, 0) < q_cap and per_family.get(family(r), 0) < f_cap]
+        return min(ok, key=lambda r: (per_query.get(r, 0), r)) if ok else None
+
+    def charge(route: str):
+        per_query[route] = per_query.get(route, 0) + 1
+        per_family[family(route)] = per_family.get(family(route), 0) + 1
+
+    return pick, charge, {"per_family": per_family, "per_query": per_query}
+
+
+def admit(pool: dict, as_of: datetime, out: Path | None = None, api=None, max_lookups: int | None = None,
+          expansion: dict | None = None, historical_out: Path | None = None, http=None) -> dict:
     """Admit the pool's genuinely new candidates into data/corpus. Returns the counts the run record carries.
 
+    `expansion` (config/expansion.yaml, KEI-923) turns on, for a bulk run: lookups ordered by stars, the
+    quotas, the milestone ceiling and the historical tier (written to `historical_out`). The intake noise gate
+    (noise.intake_reasons) applies whenever config/expansion.yaml `noise.gate` is on, daily admissions included.
+
     Raises corpus.CorpusError when the layer cannot be read or would not validate; the previous layer is kept."""
+    from . import noise
     from .discover import Api, prefilter
 
     out = out or corpus.OUT
     cfg = corpus.load_cfg()
     pub, adm = cfg["publication"], cfg.get("admission") or {}
-    max_lookups = int(max_lookups or adm.get("max_lookups_per_cycle", 2000))
+    exp_path = common.CONFIG / "expansion.yaml"
+    exp_cfg = common.load_yaml(exp_path) if exp_path.is_file() else {}
+    gate = bool((exp_cfg.get("noise") or {}).get("gate"))
+    quotas = (expansion or {}).get("quotas")
+    max_lookups = int(max_lookups or (quotas or {}).get("max_lookups_per_run") or adm.get("max_lookups_per_cycle", 2000))
+    target = int(((expansion or {}).get("milestones") or {}).get("target") or 0)
+    hist_min = int(((expansion or {}).get("historical") or {}).get("min_stars") or 0)
     policy = common.load_policy()
     disc_cfg = common.load_yaml(common.CONFIG / "discover.yaml")
     m = common.read_json(out / "MANIFEST.json")
@@ -156,36 +232,73 @@ def admit(pool: dict, as_of: datetime, out: Path | None = None, api=None, max_lo
         if hit:
             drop("already_in_corpus")
             continue
-        if not key.startswith("github.com/") or key.count("/") != 2:
+        if not _verifiable(key):
             drop("host_not_independently_verifiable")
             continue
         for s in strategies:
             found_by[s]["new_to_corpus"] += 1
-        todo[key.split("/", 1)[1]] = entry
-    slugs = sorted(todo)
-    deferred = slugs[max_lookups:]
-    slugs = slugs[:max_lookups]
+        todo[key] = entry
+    # A bulk run spends its lookups on the most-starred candidates first; a daily run keeps key order.
+    keys = sorted(todo, key=(lambda k: (-(todo[k].get("stars") or 0), k)) if expansion else None)
+    deferred = keys[max_lookups:]
+    keys = keys[:max_lookups]
     if deferred:
         drop("deferred_lookup_budget", len(deferred))
 
     api = api or Api()
-    meta = api.meta_batch(slugs, size=int(cfg["refresh"]["batch_size"])) if slugs else {}
+    http = http or api.http
+    meta = _lookup(keys, api, http, int(cfg["refresh"]["batch_size"])) if keys else {}
     window_start = corpus._iso(as_of - timedelta(days=int(policy["maintenance"]["maintained_days"])))
-    admitted_p, admitted_l, admitted_routes = {}, {}, {}
-    for slug in slugs:
-        entry, got = todo[slug], meta.get(slug) or {"found": False, "error": "missing_from_response"}
+    pick, charge, quota_counts = _quota(quotas)
+    max_admit = int((quotas or {}).get("max_admit_per_run") or 0)
+    admitted_p, admitted_l, admitted_routes, historical = {}, {}, {}, {}
+    for key in keys:
+        entry, got = todo[key], meta.get(key) or {"found": False, "error": "missing_from_response"}
+        host = key.split("/", 1)[0]
         if not got.get("found"):
             drop("repository_not_found" if got.get("error") == "not_found" else "lookup_failed")
             continue
-        hit, _ = _match(f"github.com/{got['canonical_slug']}", [], got.get("database_id"), by_key, by_hid)
+        new_key = f"{host}/{got['canonical_slug']}"
+        hit, _ = _match(new_key, [], got.get("database_id"), by_key, by_hid)
         if hit:  # renamed or transferred into a project the corpus already holds
             drop("already_in_corpus_after_rename")
             continue
+        noisy = noise.intake_reasons(got["name_with_owner"].split("/")[-1], got["name_with_owner"],
+                                     got.get("description"), got.get("topics")) if gate else []
         reasons = prefilter(got, window_start, disc_cfg)
         if reasons:
+            if (hist_min and not noisy and set(reasons) <= HISTORICAL_REASONS and (got.get("stars") or 0) >= hist_min
+                    and new_key not in historical):
+                historical[new_key] = {"id": new_key, "full_name": got["name_with_owner"],
+                                       "url": f"https://{host}/{got['name_with_owner']}",
+                                       "host_repo_id": got.get("database_id"), "stars": got.get("stars"),
+                                       "archived": bool(got.get("archived")), "pushed_at": got.get("pushed_at"),
+                                       "licence_spdx": got.get("licence_spdx"),
+                                       "description": corpus._text(got.get("description"), pub["description_max_chars"]),
+                                       "topics": list(got.get("topics") or [])[:pub["max_topics"]],
+                                       "reasons": sorted(reasons), "observed_as_of": corpus._iso(as_of),
+                                       "routes": sorted({strategy_of(pr) for pr in entry.get("providers") or []})}
+                drop("historical_tier")
+                continue
             for r in reasons:
                 drop(r)
             continue
+        if noisy:
+            drop(f"intake_noise:{noisy[0]}")
+            continue
+        routes = sorted({strategy_of(pr) for pr in entry.get("providers") or []})
+        if expansion and target and len(before_ids) + len(admitted_p) >= target:
+            drop("milestone_reached")
+            continue
+        if max_admit and len(admitted_p) >= max_admit:
+            drop("deferred_admission_quota")
+            continue
+        route = pick(routes)
+        if quotas and route is None:
+            drop("deferred_source_quota")
+            continue
+        if host == "codeberg.org" and not got.get("licence_spdx"):
+            _probe_licence(http, got)
         p, l = _rows(got, _routes(entry), as_of, policy, pub)
         if p["id"] in admitted_p:  # two pool addresses for one repository
             admitted_p[p["id"]]["provenance"] = sorted(
@@ -193,13 +306,20 @@ def admit(pool: dict, as_of: datetime, out: Path | None = None, api=None, max_lo
                 key=lambda r: (r["strategy"], r["source"]))
             drop("duplicate_in_pool")
             continue
+        if route:
+            charge(route)
         admitted_p[p["id"]], admitted_l[p["id"]] = p, l
-        admitted_routes[p["id"]] = sorted({strategy_of(pr) for pr in entry.get("providers") or []})
+        admitted_routes[p["id"]] = routes
 
+    if historical_out is not None and historical:
+        _write_historical(historical_out, historical, as_of)
     result = {"method": METHOD, "at": corpus._iso(as_of), "pool_candidates": len(pool),
-              "looked_up": len(slugs), "membership_before": len(before_ids),
+              "looked_up": len(keys), "membership_before": len(before_ids),
               "manifest_sha256_before": sha_before, "corpus_version_before": m.get("corpus_version"),
-              "dropped": dict(sorted(dropped.items()))}
+              "dropped": dict(sorted(dropped.items())), "historical": len(historical),
+              "noise_gate": gate}
+    if quotas:
+        result["quotas"] = {"config": quotas, **{k: dict(sorted(v.items())) for k, v in quota_counts.items()}}
     if not admitted_p:
         result.update(membership_after=len(before_ids), corpus_added=0, corpus_removed=0, corpus_collapsed=0,
                       manifest_sha256_after=sha_before, corpus_version_after=m.get("corpus_version"),
@@ -213,6 +333,13 @@ def admit(pool: dict, as_of: datetime, out: Path | None = None, api=None, max_lo
         "method": f"{METHOD}: source_pipeline/corpus_admit.py; the Discover lane prefilter and licence bar, "
                   "maintenance read from pushed_at",
         "last": {"at": result["at"], "admitted": len(admitted_p)}}
+    if expansion:
+        membership["expansion"] = {
+            "method": "the-source.expansion/1: source_pipeline/expansion.py and corpus_admit.py (KEI-923); "
+                      "config/expansion.yaml sources, quotas and noise gate",
+            "last": {"at": result["at"], "admitted": len(admitted_p), "historical": len(historical)}}
+    elif (m.get("membership") or {}).get("expansion"):
+        membership["expansion"] = m["membership"]["expansion"]
     extra = {k: m[k] for k in ("publication", "licence_classification", "edition_check", "refresh") if k in m}
     extra["membership"] = membership
     manifest = corpus.write_layer(out, projects + list(admitted_p.values()), live + list(admitted_l.values()), extra)
@@ -224,6 +351,7 @@ def admit(pool: dict, as_of: datetime, out: Path | None = None, api=None, max_lo
     collapsed = {g for g in gone if g in after_alias}
     added = sorted(after_ids - before_ids)
     stars = {r["id"]: r.get("stars") or 0 for r in common.read_jsonl(out / "live.jsonl")}
+    lic = {p["id"]: p["licence"]["status"] for p in after}
     for pid in admitted_p:
         if pid not in after_ids:
             drop("collapsed_by_identity")
@@ -236,10 +364,28 @@ def admit(pool: dict, as_of: datetime, out: Path | None = None, api=None, max_lo
         corpus_collapsed=len(collapsed), manifest_sha256_after=manifest_sha(out),
         corpus_version_after=manifest["corpus_version"], membership_as_of=manifest["membership"]["as_of"],
         dropped=dict(sorted(dropped.items())), candidates_found_by_strategy=dict(sorted(found_by.items())),
-        top_new_by_stars=[{"id": pid, "stars": stars.get(pid), "licence_status":
-                           next(p["licence"]["status"] for p in after if p["id"] == pid),
+        top_new_by_stars=[{"id": pid, "stars": stars.get(pid), "licence_status": lic[pid],
                            "strategies": admitted_routes.get(pid, [])} for pid in top])
     return result
+
+
+def _write_historical(out: Path, rows: dict, as_of: datetime) -> None:
+    """The historical tier (KEI-923 S4.2): notable archived or long-inactive projects, kept apart from the active
+    corpus. Merged with what is already there; never served as discovery, never recommended."""
+    out.mkdir(parents=True, exist_ok=True)
+    path = out / "projects.jsonl"
+    have = {r["id"]: r for r in common.read_jsonl(path)} if path.exists() else {}
+    have.update(rows)
+    common.write_jsonl(path, [have[k] for k in sorted(have)])
+    by_reason = {}
+    for r in have.values():
+        for x in r["reasons"]:
+            by_reason[x] = by_reason.get(x, 0) + 1
+    common.write_json(out / "MANIFEST.json", {
+        "schema": "the-source.historical/1", "as_of": corpus._iso(as_of), "projects": len(have),
+        "by_reason": dict(sorted(by_reason.items())), "projects_sha256": common.sha256_file(path),
+        "note": "Notable projects that no longer clear the active quality floor (archived, or no push inside "
+                "config/policy.yaml maintained_days). Not members of data/corpus, not discovery, never recommended."})
 
 
 # ---------------------------------------------------------------- anomalies
