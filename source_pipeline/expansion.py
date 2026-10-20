@@ -29,9 +29,12 @@ CONFIG = "expansion.yaml"
 OUT = common.ROOT / "data" / "expansion"
 SCHEMA = "the-source.expansion/1"
 SEARCH_PAUSE_S = 2.1  # GitHub search allows 30 requests a minute with a token
-# The list and chart sources are extras: a rate-limited one gives up after two tries rather than
-# sleeping out five long backoffs (a stall of an hour or more, 2026-10-20). Its errors are recorded.
-AUX_TRIES = 2
+# The list and chart sources are extras. Each call gets one try, and a source stops after
+# AUX_BREAK failures in a row, rather than sleeping out long rate-limit backoffs (a stall of an
+# hour or more, 2026-10-20). What it skipped is recorded as errors.
+AUX_TRIES = 1
+AUX_BREAK = 10
+AUX_PAUSE_S = 0.5
 SEARCH_CAP = 1000     # results GitHub search will page through for one query
 
 
@@ -145,11 +148,18 @@ def _artifacthub(http, src: dict, family: str) -> tuple[list[dict], list[str], l
             if len(pkgs) < size:
                 break
             offset += size
+        failed = 0
         for pid in ids[: int(src["max_packages_per_kind"])]:
+            time.sleep(AUX_PAUSE_S)
             st, d = http.call(f"https://artifacthub.io/api/v1/packages/{pid}", tries=AUX_TRIES)
             if st != 200 or not isinstance(d, dict):
                 errors.append(f"artifacthub package {pid}: http {st}")
+                failed += 1
+                if failed >= AUX_BREAK:
+                    errors.append(f"artifacthub kind {kind}: stopped after {failed} failures in a row")
+                    break
                 continue
+            failed = 0
             urls = [l.get("url") for l in d.get("links") or []] + [d.get("home_url")]
             keys = sorted({k for k in map(_repo_root, filter(None, urls)) if k})
             for k in keys:

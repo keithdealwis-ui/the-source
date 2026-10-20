@@ -42,6 +42,7 @@ class FakeSearchHttp:
 @pytest.fixture(autouse=True)
 def no_pause(monkeypatch):
     monkeypatch.setattr(E, "SEARCH_PAUSE_S", 0)
+    monkeypatch.setattr(E, "AUX_PAUSE_S", 0)
 
 
 def test_star_bands_split_until_every_result_is_reachable():
