@@ -1,12 +1,19 @@
 {
-  "as_of": "2026-10-20T12:54:02Z",
+  "as_of": "2026-10-20T23:06:47Z",
   "collection": {
-    "as_of": "2026-10-20T12:54:02Z",
+    "as_of": "2026-10-20T23:06:47Z",
     "resolve": {
-      "asked": 0,
+      "asked": 9,
       "deferred": 0,
-      "pool_added": [],
-      "resolved": 0,
+      "pool_added": [
+        "github.com/abdullahalhariri/penmentor",
+        "github.com/answerloops/answerloops",
+        "github.com/google-pytorch/torch_tpu",
+        "github.com/jose-sabater/jevcards",
+        "github.com/katrielmoses/voidaccess",
+        "github.com/respanai/respan-gateway"
+      ],
+      "resolved": 9,
       "transient_failures": []
     },
     "sources": {
@@ -17,7 +24,7 @@
         "http_calls": 2,
         "items_read": 100,
         "listed": 100,
-        "mentions": 47,
+        "mentions": 49,
         "status": "ok"
       },
       "forem": {
@@ -26,7 +33,7 @@
         "http_calls": 29,
         "items_read": 25,
         "listed": 25,
-        "mentions": 18,
+        "mentions": 20,
         "status": "ok"
       },
       "hn": {
@@ -34,8 +41,8 @@
         "gone": 0,
         "http_calls": 303,
         "items_read": 300,
-        "listed": 352,
-        "mentions": 29,
+        "listed": 338,
+        "mentions": 33,
         "status": "ok"
       },
       "instagram": {
@@ -62,57 +69,57 @@
       }
     },
     "stars": {
-      "asked": 0,
+      "asked": 1,
       "error": null,
-      "found": 0,
-      "http_calls": 0,
-      "missing_before": 0,
+      "found": 1,
+      "http_calls": 1,
+      "missing_before": 1,
       "not_found": 0,
       "status": "ok"
     }
   },
   "counts": {
     "candidates": 30,
-    "mentions_held": 431,
-    "mentions_in_window": 176,
+    "mentions_held": 455,
+    "mentions_in_window": 182,
     "mentions_in_window_by_source": {
-      "bluesky": 100,
-      "forem": 18,
-      "hn": 58,
+      "bluesky": 99,
+      "forem": 20,
+      "hn": 63,
       "instagram": 0,
       "x": 0
     },
     "ranked": 50,
     "ranked_by_status": {
-      "candidate": 38,
+      "candidate": 41,
       "canonical": 0,
-      "corpus": 1,
+      "corpus": 0,
       "not_found": 0,
-      "unresolved": 11
+      "unresolved": 9
     },
-    "repositories_mentioned": 166,
-    "resolutions_held": 229,
+    "repositories_mentioned": 173,
+    "resolutions_held": 238,
     "stars": {
       "radar_only_without_stars": 0,
       "ranked_with_stars": 50,
       "ranked_without_stars": 0,
-      "readings_held": 67
+      "readings_held": 68
     },
-    "truncated": 116
+    "truncated": 123
   },
   "files": {
-    "candidates.jsonl": "4c9e13c3001ea7fc147b9cad7d0c29040c23085a3a991309d5354943002845f0",
-    "collection.json": "7f453b116d9be3cf0559b840d4d4a5ed07a943f1fdfc536daf9504e81089f970",
-    "mentions.jsonl": "ae20da1cbfb29faf0a29979cab44cbaf5e090190402fc7937b51c068121f82e0",
-    "radar.jsonl": "19516f3fd5e706161c00b76d852331d121b19549955150f429bbe2e215b5c935",
-    "resolved.jsonl": "e73cfdfb848aa17ad07debfeaf37056d98e6178e7152d1824b236d690221bd23",
-    "stars.jsonl": "f60b58225eaebae758b79376998cae8944502ddd4a8e086f0446f029d1cf51ea"
+    "candidates.jsonl": "c568a84ffd1622bbed71d1df037704f163db0797634595fee52bef6f75791473",
+    "collection.json": "e8096677dff0c04465ac4da506bfc8ba2e77a4002aea2fe20e44593a55d88ce8",
+    "mentions.jsonl": "8a5d5d2bc143c5c0bf7e7c2b6e8f44d00cad6dc4970e81a86e5c4405d5e1e1af",
+    "radar.jsonl": "d7d56bb4b8e0bdb3fd9789477bb8b9d2675f2bcc3aa1f234027f8d5df99fe017",
+    "resolved.jsonl": "d5bc3ddea223a86ee4d2ef67239e60b1a9af57f0de997844f59f5febb474124a",
+    "stars.jsonl": "550164ea3776e33a73a903227f3aa2a5d4da48f9d5546a717a2fe6fd1adf041b"
   },
   "inputs": {
-    "data/canonical/oss_projects.jsonl": "fb4a9af4bc3903f0a9eddbfa6543ca050dc0d9f9ba5b6e72966e30869269c291",
-    "data/dataset/oss_projects.jsonl": "8044718e9f2989d79e21b35384fd104ed1bc6c9505419d73a1e23444072c21f0",
-    "data/discovery/candidates.jsonl": "861a1dd4c1ae025aa50484b0f306783719aee371e01378c1717e55882ba34ecf",
-    "data/live/snapshot.json": "ef9eeee372011656a485c4bd2784966ec1338fb25b6f6b41aafb35ed983a004f"
+    "data/canonical/oss_projects.jsonl": "c3b754b2088c0dc6cf5693b286006974627a8016c9d330b54842fb57d2d4cd7b",
+    "data/dataset/oss_projects.jsonl": "df67c81ebb561aa9baf1d71e744d584d59fdbeb28f1beff62fd15179bf175617",
+    "data/discovery/candidates.jsonl": "36b663a0433f023beadd242d9e5fec2ce553fca76820b549c47015e993c052bb",
+    "data/live/snapshot.json": "b1c1dbba0608594d7a3224f26c98dc003d3cbc52132111c10a4483f40381b743"
   },
   "methodology": {
     "doc": "docs/RADAR.md",

@@ -1,10 +1,17 @@
 {
-  "as_of": "2026-10-20T12:54:02Z",
+  "as_of": "2026-10-20T23:06:47Z",
   "resolve": {
-    "asked": 0,
+    "asked": 9,
     "deferred": 0,
-    "pool_added": [],
-    "resolved": 0,
+    "pool_added": [
+      "github.com/abdullahalhariri/penmentor",
+      "github.com/answerloops/answerloops",
+      "github.com/google-pytorch/torch_tpu",
+      "github.com/jose-sabater/jevcards",
+      "github.com/katrielmoses/voidaccess",
+      "github.com/respanai/respan-gateway"
+    ],
+    "resolved": 9,
     "transient_failures": []
   },
   "sources": {
@@ -15,7 +22,7 @@
       "http_calls": 2,
       "items_read": 100,
       "listed": 100,
-      "mentions": 47,
+      "mentions": 49,
       "status": "ok"
     },
     "forem": {
@@ -24,7 +31,7 @@
       "http_calls": 29,
       "items_read": 25,
       "listed": 25,
-      "mentions": 18,
+      "mentions": 20,
       "status": "ok"
     },
     "hn": {
@@ -32,8 +39,8 @@
       "gone": 0,
       "http_calls": 303,
       "items_read": 300,
-      "listed": 352,
-      "mentions": 29,
+      "listed": 338,
+      "mentions": 33,
       "status": "ok"
     },
     "instagram": {
@@ -60,11 +67,11 @@
     }
   },
   "stars": {
-    "asked": 0,
+    "asked": 1,
     "error": null,
-    "found": 0,
-    "http_calls": 0,
-    "missing_before": 0,
+    "found": 1,
+    "http_calls": 1,
+    "missing_before": 1,
     "not_found": 0,
     "status": "ok"
   }
