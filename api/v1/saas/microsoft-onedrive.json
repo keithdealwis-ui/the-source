@@ -1,0 +1,212 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "both",
+    "rank": 296,
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+    "reasons": [
+      "fewer_than_minimum"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "emmraan",
+      "job_match"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "data/products.json#/48/slug=nextcloud",
+              "source_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
+              "source_id": "emmraan"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 93.8,
+            "ease_of_adoption": 77.6,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/nextcloud/server",
+      "last_meaningful_activity_at": "2026-10-15T17:19:36Z",
+      "latest_release": {
+        "published_at": "2026-10-15T08:37:28Z",
+        "tag": "v33.0.10"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Nextcloud",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on migration path."
+      },
+      "oss_id": "github.com/nextcloud/server",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 94.6,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-16T01:10:28Z",
+        "score": 76.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/nextcloud/server",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "emmraan"
+      ],
+      "stars": 37162
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/9001/copyparty",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 20.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/9001/copyparty",
+      "last_meaningful_activity_at": "2026-10-14T23:43:28Z",
+      "latest_release": {
+        "published_at": "2026-10-14T23:43:28Z",
+        "tag": "v1.20.26"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "copyparty",
+      "note": {
+        "gaps": [
+          "cost advantage",
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness; weakest on cost advantage and migration path."
+      },
+      "oss_id": "github.com/9001/copyparty",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 86.2,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 74.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/9001/copyparty",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 47084
+    }
+  ],
+  "saas": {
+    "category": "File storage & sync",
+    "compare_path": null,
+    "domain": "onedrive.com",
+    "name": "Microsoft OneDrive",
+    "saas_id": "microsoft-onedrive",
+    "slug": "microsoft-onedrive"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

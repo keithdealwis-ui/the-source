@@ -270,8 +270,6 @@ sources:
       - "Attribution names the work, links to it and to the CC BY 4.0 licence, and states that the material was modified."
       - "No upstream description text is imported."
 
-# Lists that were investigated and NOT harvested. Recorded so the decision is visible
-# and is not silently re-litigated on a later run.
   # --- KEI-807: the manual / conversational intake path. Not an upstream list: it is The
   # Source's own ledger of repositories submitted through the authenticated intake surface
   # and admitted by intake.py after passing the same live verification, licence, activity
@@ -304,6 +302,37 @@ sources:
       tool acting for him) submits a URL; a conversational or human preliminary assessment is
       advisory only and never recorded as approval.
 
+  # --- KEI-930: job-matched candidates (decision D1, orch-KEI-930-05ad0e7f). Not an upstream list and not a
+  # project's own claim: The Source's derivation that a corpus project's own description does a catalogue
+  # category's job. Relationships resting only on it carry evidence_class job_matched and count toward a status
+  # only after the full evaluation passes them. See docs/JOB-MATCH.md.
+  - source_id: job_match
+    kind: job_match
+    repo: keithdealwis-ui/the-source
+    url: https://github.com/keithdealwis-ui/the-source/blob/main/data/job_match/ledger.json
+    # Replaced at harvest by the ledger's content hash.
+    pinned_commit: "0000000000000000000000000000000000000000"
+    licence_file: docs/JOB-MATCH.md
+    licence_file_sha256: 199e9c1378d77da147e67bbc9465d65492650b458b77aafb627444c75a4110c7
+    licence_spdx: "n/a (The Source's own derivation)"
+    decision: allow
+    parser: job_match
+    parse_path: data/job_match/ledger.json
+    priority: 11
+    attribution: >-
+      The Source job-match ledger (data/job_match/ledger.json): candidate pairings derived from each project's own
+      description of its job, confirmed only by The Source's full evaluation
+    share_alike: false
+    conditions:
+      - "a job match is a candidate, never presented as an upstream-listed alternative (evidence_class job_matched)"
+      - "it counts toward a status only after the unchanged full evaluation passes it"
+    rationale: >
+      No third-party material is involved. Keith decided on 2026-10-19 (KEI-930 D1) that a project whose own
+      description shows it does a category's job may be a candidate alternative to that category's products,
+      labelled as its own evidence class and gated by the full evaluation.
+
+# Lists that were investigated and NOT harvested. Recorded so the decision is visible
+# and is not silently re-litigated on a later run.
 investigated_not_harvested:
   - repo: piotrkulpinski/open-source-alternatives
     licence_spdx: CC0-1.0

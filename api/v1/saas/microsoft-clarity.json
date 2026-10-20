@@ -1,0 +1,212 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 316,
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 candidate relationships are waiting on a licence decision",
+    "reasons": [
+      "fewer_than_minimum",
+      "licence_review"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "job_match"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/talivia-group/talivia",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 68.7,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/talivia-group/talivia",
+      "last_meaningful_activity_at": "2026-09-26T08:55:34Z",
+      "latest_release": {
+        "published_at": "2026-09-24T11:12:18Z",
+        "tag": "v1.0.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "talivia",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
+      },
+      "oss_id": "github.com/talivia-group/talivia",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 87.6,
+        "score": 64.8,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 84.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/talivia-group/talivia",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 2379
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/posthog/posthog",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/PostHog/posthog",
+      "last_meaningful_activity_at": "2026-10-18T02:43:33Z",
+      "latest_release": {
+        "published_at": "2026-10-18T02:43:33Z",
+        "tag": "agent-skills-v0.3338.0"
+      },
+      "licence_disclosure": "open core: recommendation covers the MIT core; parts under PostHog EE licence are excluded",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "PostHog",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/posthog/posthog",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 93.1,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 78.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/PostHog/posthog",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 40328
+    }
+  ],
+  "saas": {
+    "category": "Session replay",
+    "compare_path": null,
+    "domain": "clarity.microsoft.com",
+    "name": "Microsoft Clarity",
+    "saas_id": "microsoft-clarity",
+    "slug": "microsoft-clarity"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

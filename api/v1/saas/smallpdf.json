@@ -1,0 +1,205 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "both",
+    "rank": 232,
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+    "reasons": [
+      "fewer_than_minimum",
+      "outside_launch_selection"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "job_match"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/stevethekiller/killerpdf",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 21.2,
+            "ease_of_adoption": 79.8,
+            "economic_advantage": 34.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/SteveTheKiller/KillerPDF",
+      "last_meaningful_activity_at": "2026-10-14T19:02:11Z",
+      "latest_release": {
+        "published_at": "2026-10-14T19:02:11Z",
+        "tag": "v1.8.91"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "KillerPDF",
+      "note": {
+        "gaps": [
+          "self-hosting and data ownership",
+          "integrations and extensibility"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity; weakest on self-hosting and data ownership and integrations and extensibility."
+      },
+      "oss_id": "github.com/stevethekiller/killerpdf",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 93.7,
+        "score": 77.5,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 71.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/SteveTheKiller/KillerPDF",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 4150
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/24eme/signaturepdf",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 0.0,
+            "migration_friction": 0.0,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "data_ownership",
+            "demo",
+            "multi_user",
+            "quickstart"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/24eme/signaturepdf",
+      "last_meaningful_activity_at": "2026-09-08T08:30:29Z",
+      "latest_release": {
+        "published_at": "2025-12-03T17:49:31Z",
+        "tag": "v1.9.2"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "signaturepdf",
+      "note": {
+        "gaps": [
+          "integrations and extensibility",
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity; weakest on integrations and extensibility and migration path."
+      },
+      "oss_id": "github.com/24eme/signaturepdf",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 73.7,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 65.6,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/24eme/signaturepdf",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 831
+    }
+  ],
+  "saas": {
+    "category": "PDF tools",
+    "compare_path": null,
+    "domain": "smallpdf.com",
+    "name": "Smallpdf",
+    "saas_id": "smallpdf",
+    "slug": "smallpdf"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

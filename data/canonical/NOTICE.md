@@ -167,3 +167,9 @@ SOFTWARE.
 - Source: https://github.com/keithdealwis-ui/the-source/blob/main/data/intake/admitted/ at commit feb7d601b43d46fdbc692e43a3082998c61cc659
 - Licence: n/a (The Source's own assessment record)
 - Attribution: The Source intake ledger (data/intake/admitted/): relationships stated by each project in its own public repository and assessed by The Source
+
+## keithdealwis-ui/the-source
+
+- Source: https://github.com/keithdealwis-ui/the-source/blob/main/data/job_match/ledger.json at commit dcb85b2b5e3cdce933a9964f465ce0bc98a14c02
+- Licence: n/a (The Source's own derivation)
+- Attribution: The Source job-match ledger (data/job_match/ledger.json): candidate pairings derived from each project's own description of its job, confirmed only by The Source's full evaluation

@@ -1,0 +1,220 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 119,
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 2 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+    "reasons": [
+      "fewer_than_minimum",
+      "outside_launch_selection"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "altstack",
+      "diegoleme",
+      "job_match",
+      "runacapital"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Chaskiq.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L140",
+              "source_commit": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+              "source_id": "diegoleme"
+            },
+            {
+              "locator": "data/tools.json#slug=chaskiq;named_by=intercom",
+              "source_commit": "0b9dacd632f128922862f70e1e09011c8611b48c",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 62.5,
+            "ease_of_adoption": 56.7,
+            "economic_advantage": 30.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/chaskiq/chaskiq",
+      "last_meaningful_activity_at": "2026-06-30T17:20:11Z",
+      "latest_release": {
+        "published_at": "2023-11-14T20:58:55Z",
+        "tag": "2.0.3"
+      },
+      "licence_disclosure": "source-available: licensed under Commons Clause + AGPL-3.0, which is not an OSI-approved open-source licence",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "maintained",
+      "name": "Chaskiq",
+      "note": {
+        "gaps": [
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on cost advantage."
+      },
+      "oss_id": "github.com/chaskiq/chaskiq",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 96.6,
+        "score": 65.8,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 81.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/chaskiq/chaskiq",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "runacapital",
+        "diegoleme",
+        "altstack"
+      ],
+      "stars": 3573
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/zammad/zammad",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 87.5,
+            "ease_of_adoption": 92.4,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 66.7
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/zammad/zammad",
+      "last_meaningful_activity_at": "2026-10-16T13:56:35Z",
+      "latest_release": null,
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Zammad",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/zammad/zammad",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 91.2,
+        "score": 82.9,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 84.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/zammad/zammad",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 6016
+    }
+  ],
+  "saas": {
+    "category": "Customer support",
+    "compare_path": null,
+    "domain": "intercom.com",
+    "name": "Intercom",
+    "saas_id": "intercom",
+    "slug": "intercom"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

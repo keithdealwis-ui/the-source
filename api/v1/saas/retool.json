@@ -1,0 +1,499 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 46,
+    "reason": "5 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "btwso",
+      "emmraan",
+      "job_match",
+      "opensaasdirectory",
+      "runacapital"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Lowdefy.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 37.9,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/lowdefy/lowdefy",
+      "last_meaningful_activity_at": "2026-10-16T12:29:32Z",
+      "latest_release": {
+        "published_at": "2026-09-28T14:09:39Z",
+        "tag": "v6.1.0"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Lowdefy",
+      "note": {
+        "gaps": [
+          "ease of adoption"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity; weakest on ease of adoption."
+      },
+      "oss_id": "github.com/lowdefy/lowdefy",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 86.7,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 73.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/lowdefy/lowdefy",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 3011
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/AppSmith.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L973",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "data/products.json#/166/slug=appsmith",
+              "source_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
+              "source_id": "emmraan"
+            },
+            {
+              "locator": "README.md#L27",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/appsmithorg/appsmith",
+      "last_meaningful_activity_at": "2026-10-16T15:24:35Z",
+      "latest_release": {
+        "published_at": "2026-10-09T15:59:16Z",
+        "tag": "v2.5.0"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "AppSmith",
+      "note": {
+        "gaps": [
+          "integrations and extensibility",
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on integrations and extensibility and migration path."
+      },
+      "oss_id": "github.com/appsmithorg/appsmith",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 87.3,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-10-10T00:41:48Z",
+        "score": 71.6,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/appsmithorg/appsmith",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital",
+        "opensaasdirectory",
+        "emmraan",
+        "btwso"
+      ],
+      "stars": 41080
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Windmill.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L31",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 62.5,
+            "deployment_ownership": 93.8,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/windmill-labs/windmill",
+      "last_meaningful_activity_at": "2026-10-17T22:17:19Z",
+      "latest_release": {
+        "published_at": "2026-10-17T21:24:51Z",
+        "tag": "v1.840.0"
+      },
+      "licence_disclosure": "open core: recommendation covers the AGPL-3.0 core; parts under Windmill proprietary licence are excluded",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Windmill",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "ease of adoption",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on ease of adoption and integrations and extensibility."
+      },
+      "oss_id": "github.com/windmill-labs/windmill",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 89.8,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 92.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 85.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/windmill-labs/windmill",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital",
+        "btwso"
+      ],
+      "stars": 18217
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Budibase.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L989",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "README.md#L29",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 46.2,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 51.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/Budibase/budibase",
+      "last_meaningful_activity_at": "2026-10-12T15:11:59Z",
+      "latest_release": {
+        "published_at": "2026-10-12T15:11:59Z",
+        "tag": "v3.50.0-cloud.2"
+      },
+      "licence_disclosure": "open core: recommendation covers the GPL-3.0 core; parts under BSL-1.1 (packages/pro) are excluded",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Budibase",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on migration path."
+      },
+      "oss_id": "github.com/budibase/budibase",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 93.1,
+        "score": 86.0,
+        "trajectory": "Stable"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 71.5,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Budibase/budibase",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital",
+        "opensaasdirectory",
+        "btwso"
+      ],
+      "stars": 28329
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/totumonline/totum-mit",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 37.6,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 40.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "plugins",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/totumonline/totum-mit",
+      "last_meaningful_activity_at": "2026-05-30T12:37:05Z",
+      "latest_release": {
+        "published_at": "2025-06-12T11:36:48Z",
+        "tag": "7.17.63.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "maintained",
+      "name": "totum-mit",
+      "note": {
+        "gaps": [
+          "migration path",
+          "ease of adoption"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on migration path and ease of adoption."
+      },
+      "oss_id": "github.com/totumonline/totum-mit",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 93.4,
+        "score": 71.2,
+        "trajectory": "Declining"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 62.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/totumonline/totum-mit",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 980
+    }
+  ],
+  "saas": {
+    "category": "Internal tools",
+    "compare_path": "/open-source/retool-alternatives",
+    "domain": "retool.com",
+    "name": "Retool",
+    "saas_id": "retool",
+    "slug": "retool"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

@@ -122,8 +122,22 @@ def _entries(obj):
     return ((obj or {}).get("entries")) or []
 
 
-def _licence_usability(spdx, status, cfg):
+def _approved_exception(lic: dict) -> dict | None:
+    """A licence exception approved by a named human (KEI-930 D5: class open_core or source_available, or the automated
+    edition check's open core), which the scoring honours; anything else not recognised stays unclear."""
+    exc = (lic or {}).get("exception") or {}
+    if lic.get("status") == "exception_approved" and (exc.get("kind") in ("keith_approved", "edition_check")):
+        return exc
+    return None
+
+
+def _licence_usability(spdx, status, cfg, exception=None):
     lu = cfg["project_health"]["licence_usability"]
+    if exception is not None:
+        cls = "open_core" if exception.get("kind") == "edition_check" else exception.get("class")
+        if cls == "open_core" and exception.get("core_spdx"):
+            return _licence_usability(exception["core_spdx"], "recognised", cfg)
+        return lu["exception_source_available"]
     if status != "recognised" or not spdx or spdx in ("NOASSERTION", "NONE", "OTHER"):
         return lu["unclear"]
     for fam in ("permissive", "copyleft", "network_copyleft"):
@@ -311,9 +325,11 @@ def extract_project(row, meta, deep, owner_is_org, cfg):
                                       view_obs.get("as_of") or as_of)
 
     spdx = (r.get("licenseInfo") or {}).get("spdxId") or row["licence"].get("spdx")
-    S["licence_usability"] = sig(_licence_usability(row["licence"].get("spdx") or spdx, row["licence"]["status"], cfg),
+    S["licence_usability"] = sig(_licence_usability(row["licence"].get("spdx") or spdx, row["licence"]["status"], cfg,
+                                                    _approved_exception(row["licence"])),
                                  "host_api_via_listing", f"graph:views/scoring_inputs.jsonl#{row['project']}:licence", view_obs.get("as_of") or as_of)
     facts.update({"licence_spdx": row["licence"].get("spdx"), "licence_status": row["licence"]["status"],
+                  "licence_exception_approved": _approved_exception(row["licence"]) is not None,
                   "archived": r.get("isArchived", view_obs.get("archived") if view_obs else d.get("archived")),
                   "disabled": r.get("isDisabled", d.get("disabled")),
                   "homepage": r.get("homepageUrl"), "description": r.get("description"),
@@ -496,7 +512,7 @@ def disqualifiers(p, cfg, overrides):
         out.append({"id": "archived", "reason": q["archived"], "evidence": f"score:evidence/github_meta.json#{p['canonical']}:isArchived"})
     if f.get("disabled"):
         out.append({"id": "disabled", "reason": q["disabled"], "evidence": f"score:evidence/github_meta.json#{p['canonical']}:isDisabled"})
-    if f.get("licence_status") != "recognised":
+    if f.get("licence_status") != "recognised" and not f.get("licence_exception_approved"):
         out.append({"id": "licence_unclear", "reason": q["licence_unclear"], "evidence": s["licence_usability"]["ref"]})
     dsl = (s.get("days_since_last_commit") or {}).get("value")
     if (f.get("c365") == 0 and f.get("cprev") == 0) or (dsl is not None and dsl >= 730):

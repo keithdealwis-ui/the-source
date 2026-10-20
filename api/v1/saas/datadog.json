@@ -1,6 +1,15 @@
 {
   "api_version": "v1",
-  "dataset_version": "1e1edfdb836490f2",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 9,
+    "reason": "10 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
   "last_checked": {
     "newest": "2026-10-18T02:47:20Z",
     "oldest": "2026-10-18T02:47:20Z"
@@ -18,6 +27,40 @@
   },
   "recommendations": [
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L272",
+              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 95.4,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "demo",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/coroot/coroot",
       "last_meaningful_activity_at": "2026-10-15T21:00:44Z",
       "latest_release": {
@@ -41,7 +84,7 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 96.6,
-        "score": 86.3,
+        "score": 86.2,
         "trajectory": "Stable"
       },
       "rank": 1,
@@ -62,6 +105,56 @@
       "stars": 7975
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L421",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "submissions/Grafana.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L669",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "data/products.json#/72/slug=grafana",
+              "source_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
+              "source_id": "emmraan"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 91.7,
+            "ease_of_adoption": 89.8,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "data_ownership",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/grafana/grafana",
       "last_meaningful_activity_at": "2026-10-13T23:53:50Z",
       "latest_release": {
@@ -85,7 +178,7 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 92.1,
-        "score": 96.3,
+        "score": 96.4,
         "trajectory": "Stable"
       },
       "rank": 2,
@@ -109,6 +202,51 @@
       "stars": 77341
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Netdata.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L685",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 96.2,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/netdata/netdata",
       "last_meaningful_activity_at": "2026-10-16T19:30:23Z",
       "latest_release": {
@@ -154,6 +292,48 @@
       "stars": 80991
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L422",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "submissions/Uptrace.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 87.5,
+            "ease_of_adoption": 72.7,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 100.0,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "demo",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/uptrace/uptrace",
       "last_meaningful_activity_at": "2026-10-08T08:24:53Z",
       "latest_release": {
@@ -199,6 +379,47 @@
       "stars": 4304
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L277",
+              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/Telemetry-Tracker/telemetry-tracker",
       "last_meaningful_activity_at": "2026-10-16T19:32:47Z",
       "latest_release": {

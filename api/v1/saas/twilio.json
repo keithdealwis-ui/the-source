@@ -1,0 +1,299 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 66,
+    "reason": "3 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "btwso",
+      "runacapital"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Fonoster.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L315",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/fonoster/fonoster",
+      "last_meaningful_activity_at": "2026-10-17T03:47:31Z",
+      "latest_release": {
+        "published_at": "2026-09-11T23:46:55Z",
+        "tag": "v0.22.14"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Fonoster",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/fonoster/fonoster",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 80.4,
+        "trajectory": "Declining"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 92.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 75.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/fonoster/fonoster",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital",
+        "btwso"
+      ],
+      "stars": 8140
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/LiveKit.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 62.5,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/livekit/livekit",
+      "last_meaningful_activity_at": "2026-10-14T23:50:05Z",
+      "latest_release": {
+        "published_at": "2026-10-14T07:18:58Z",
+        "tag": "v1.13.10"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "LiveKit",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "ease of adoption",
+          "cost advantage"
+        ],
+        "text": "Strongest on ease of adoption and cost advantage."
+      },
+      "oss_id": "github.com/livekit/livekit",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 93.0,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-14T23:51:42Z",
+        "score": 70.5,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/livekit/livekit",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 21534
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/OpenVidu.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 62.5,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 77.5,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/OpenVidu/openvidu",
+      "last_meaningful_activity_at": "2026-10-16T17:36:16Z",
+      "latest_release": {
+        "published_at": "2026-09-29T16:27:34Z",
+        "tag": "v3.9.0"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "OpenVidu",
+      "note": {
+        "gaps": [
+          "feature parity",
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "cost advantage",
+          "production readiness"
+        ],
+        "text": "Strongest on cost advantage and production readiness; weakest on feature parity and migration path."
+      },
+      "oss_id": "github.com/openvidu/openvidu",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 86.8,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 62.6,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/OpenVidu/openvidu",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 2137
+    }
+  ],
+  "saas": {
+    "category": "Communications API",
+    "compare_path": "/open-source/twilio-alternatives",
+    "domain": "twilio.com",
+    "name": "Twilio",
+    "saas_id": "twilio",
+    "slug": "twilio"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

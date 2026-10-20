@@ -1,0 +1,450 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 99,
+    "reason": "7 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 2,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "job_match",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L461",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/jaegertracing/jaeger",
+      "last_meaningful_activity_at": "2026-10-14T22:28:15Z",
+      "latest_release": {
+        "published_at": "2026-10-06T14:27:50Z",
+        "tag": "v2.22.0"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Jaeger",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on feature parity."
+      },
+      "oss_id": "github.com/jaegertracing/jaeger",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 93.4,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-07T01:24:34Z",
+        "score": 70.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/jaegertracing/jaeger",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 23303
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L462",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 43.8,
+            "ease_of_adoption": 77.7,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 0.0,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/grafana/tempo",
+      "last_meaningful_activity_at": "2026-10-16T20:12:21Z",
+      "latest_release": {
+        "published_at": "2026-10-16T20:12:21Z",
+        "tag": "v3.0.4"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Grafana Tempo",
+      "note": {
+        "gaps": [
+          "migration path",
+          "integrations and extensibility"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness; weakest on migration path and integrations and extensibility."
+      },
+      "oss_id": "github.com/grafana/tempo",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 89.0,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 63.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/grafana/tempo",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 5536
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L460",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/SigNoz/signoz",
+      "last_meaningful_activity_at": "2026-10-14T20:02:18Z",
+      "latest_release": {
+        "published_at": "2026-10-14T06:42:10Z",
+        "tag": "v0.146.0"
+      },
+      "licence_disclosure": "open core: recommendation covers the MIT core; parts under SigNoz Enterprise licence are excluded",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "SigNoz",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity; weakest on migration path."
+      },
+      "oss_id": "github.com/signoz/signoz",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 92.5,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 77.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/SigNoz/signoz",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 32376
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/coroot/coroot",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 95.4,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "demo",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/coroot/coroot",
+      "last_meaningful_activity_at": "2026-10-15T21:00:44Z",
+      "latest_release": {
+        "published_at": "2026-10-15T21:00:44Z",
+        "tag": "v1.27.4"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Coroot",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/coroot/coroot",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 86.2,
+        "trajectory": "Stable"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 81.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 98.1,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/coroot/coroot",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 7975
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/grafana/grafana",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 91.7,
+            "ease_of_adoption": 89.8,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "data_ownership",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/grafana/grafana",
+      "last_meaningful_activity_at": "2026-10-13T23:53:50Z",
+      "latest_release": {
+        "published_at": "2026-10-13T13:09:03Z",
+        "tag": "v12.4.13"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Grafana",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/grafana/grafana",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 96.4,
+        "trajectory": "Stable"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 91.6,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/grafana/grafana",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 77341
+    }
+  ],
+  "saas": {
+    "category": "Observability",
+    "compare_path": "/open-source/honeycomb-alternatives",
+    "domain": "honeycomb.io",
+    "name": "Honeycomb",
+    "saas_id": "honeycomb",
+    "slug": "honeycomb"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

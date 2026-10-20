@@ -1,11 +1,20 @@
 {
   "api_version": "v1",
-  "dataset_version": "1e1edfdb836490f2",
+  "catalogue": {
+    "audience": "both",
+    "rank": 1,
+    "reason": "8 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
   "last_checked": {
     "newest": "2026-10-18T02:47:20Z",
     "oldest": "2026-10-18T02:47:20Z"
   },
-  "more_available": 0,
+  "more_available": 3,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -16,6 +25,51 @@
   },
   "recommendations": [
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L999",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L177",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/LibreChat-AI/LibreChat",
       "last_meaningful_activity_at": "2026-10-16T23:12:07Z",
       "latest_release": {
@@ -61,6 +115,45 @@
       "stars": 45897
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L129",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/Mintplex-Labs/anything-llm",
       "last_meaningful_activity_at": "2026-10-13T19:39:53Z",
       "latest_release": {
@@ -105,6 +198,129 @@
       "stars": 67257
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L1000",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L161",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 78.7,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 40.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/janhq/jan",
+      "last_meaningful_activity_at": "2026-10-15T12:16:17Z",
+      "latest_release": {
+        "published_at": "2026-10-09T09:03:08Z",
+        "tag": "v0.8.6"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Jan",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "cost advantage"
+        ],
+        "text": "Strongest on core use-case coverage and cost advantage."
+      },
+      "oss_id": "github.com/janhq/jan",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 91.5,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 92.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 75.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/janhq/jan",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "opensaasdirectory"
+      ],
+      "stars": 44984
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L145",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 46.2,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 34.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/chatboxai/chatbox",
       "last_meaningful_activity_at": "2026-09-24T14:09:30Z",
       "latest_release": {
@@ -134,7 +350,7 @@
         "score": 80.6,
         "trajectory": "Rising"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "confidence": 86.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
@@ -152,6 +368,42 @@
       "stars": 42054
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L8",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 40.0,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 50.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "import",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/leon-ai/leon",
       "last_meaningful_activity_at": "2026-10-12T12:24:27Z",
       "latest_release": {
@@ -177,7 +429,7 @@
         "score": 81.3,
         "trajectory": "Rising"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-09-29T18:28:27Z",

@@ -1,0 +1,121 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2c",
+    "rank": 136,
+    "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+    "reasons": [
+      "fewer_than_minimum"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "diegoleme"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L90",
+              "source_commit": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+              "source_id": "diegoleme"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 87.5,
+            "ease_of_adoption": 95.5,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/mastodon/mastodon",
+      "last_meaningful_activity_at": "2026-10-16T18:11:45Z",
+      "latest_release": {
+        "published_at": "2026-10-01T14:09:54Z",
+        "tag": "v4.4.26"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Mastodon",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/mastodon/mastodon",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 94.5,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 93.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/mastodon/mastodon",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "diegoleme"
+      ],
+      "stars": 50414
+    }
+  ],
+  "saas": {
+    "category": "Social network",
+    "compare_path": null,
+    "domain": "facebook.com",
+    "name": "Facebook",
+    "saas_id": "facebook",
+    "slug": "facebook"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

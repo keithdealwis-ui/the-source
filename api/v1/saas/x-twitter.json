@@ -1,0 +1,370 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2c",
+    "rank": 44,
+    "reason": "4 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "btwso",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L124",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L145",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 87.5,
+            "ease_of_adoption": 95.5,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/mastodon/mastodon",
+      "last_meaningful_activity_at": "2026-10-16T18:11:45Z",
+      "latest_release": {
+        "published_at": "2026-10-01T14:09:54Z",
+        "tag": "v4.4.26"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Mastodon",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/mastodon/mastodon",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 94.5,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 90.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 93.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/mastodon/mastodon",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "btwso"
+      ],
+      "stars": 50414
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L146",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 71.2,
+            "economic_advantage": 30.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/humhub/humhub",
+      "last_meaningful_activity_at": "2026-10-12T16:08:47Z",
+      "latest_release": {
+        "published_at": "2026-10-12T12:16:57Z",
+        "tag": "v1.19.0"
+      },
+      "licence_spdx": "AGPL-3.0-only",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "HumHub",
+      "note": {
+        "gaps": [
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on cost advantage."
+      },
+      "oss_id": "github.com/humhub/humhub",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 88.8,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 82.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/humhub/humhub",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "btwso"
+      ],
+      "stars": 6751
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L125",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 50.0,
+            "deployment_ownership": 87.5,
+            "ease_of_adoption": 65.7,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "multi_user",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/misskey-dev/misskey",
+      "last_meaningful_activity_at": "2026-10-17T08:12:17Z",
+      "latest_release": {
+        "published_at": "2026-10-13T11:10:02Z",
+        "tag": "2026.10.1-alpha.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Misskey",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "integrations and extensibility",
+          "migration path"
+        ],
+        "text": "Strongest on integrations and extensibility and migration path."
+      },
+      "oss_id": "github.com/misskey-dev/misskey",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 90.4,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 73.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/misskey-dev/misskey",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 11344
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L147",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 50.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 66.9,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/Elgg/Elgg",
+      "last_meaningful_activity_at": "2026-10-09T08:25:34Z",
+      "latest_release": {
+        "published_at": "2026-10-09T08:25:34Z",
+        "tag": "7.1.1"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Elgg",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "self-hosting and data ownership",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on self-hosting and data ownership and integrations and extensibility."
+      },
+      "oss_id": "github.com/elgg/elgg",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 86.5,
+        "trajectory": "Stable"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 72.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Elgg/Elgg",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "btwso"
+      ],
+      "stars": 1676
+    }
+  ],
+  "saas": {
+    "category": "Social network",
+    "compare_path": "/open-source/x-twitter-alternatives",
+    "domain": "x.com",
+    "name": "X (Twitter)",
+    "saas_id": "x-twitter",
+    "slug": "x-twitter"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

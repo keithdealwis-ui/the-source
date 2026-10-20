@@ -153,6 +153,12 @@ launch:
   preserve_served: true
   edges_min: 300
   edges_max: 400
+  # Catalogue serving (KEI-930; Keith gate gate-KEI-930-08d23cd6, approved 2026-10-20T06:27:33Z). After the ranked
+  # selection above, every product in the catalogue selection (data/catalogue/selection.json) is also served with up to
+  # max_per_saas of its full-evaluation recommendations (validated, exportable, publishable and credible, live facts
+  # present), within a budget of its own (edges_max here). launch.edges_max still bounds the ranked selection; nothing
+  # served is displaced. Absent or enabled: false = the dr-KEI-805-507e4f70 behaviour, unchanged.
+  catalogue_serving: {enabled: true, max_per_saas: 8, edges_max: 700}
   # "High value" is decided by evidence, never by stars:
   #   1. the SaaS product is in the reviewed catalogue (config/saas_catalogue.yaml)
   #   2. ranked by number of independent sources naming it, then by number of

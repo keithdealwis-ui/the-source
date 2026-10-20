@@ -1,11 +1,20 @@
 {
   "api_version": "v1",
-  "dataset_version": "1e1edfdb836490f2",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 11,
+    "reason": "6 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
   "last_checked": {
     "newest": "2026-10-18T02:47:20Z",
     "oldest": "2026-10-18T02:47:20Z"
   },
-  "more_available": 0,
+  "more_available": 1,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -19,6 +28,46 @@
   },
   "recommendations": [
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "data/tools.json#slug=orbit;named_by=jira",
+              "source_commit": "0b9dacd632f128922862f70e1e09011c8611b48c",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/Noveum/orbit",
       "last_meaningful_activity_at": "2026-10-18T00:22:29Z",
       "latest_release": {
@@ -63,6 +112,46 @@
       "stars": 66
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L366",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/Leantime/leantime",
       "last_meaningful_activity_at": "2026-10-15T23:11:05Z",
       "latest_release": {
@@ -86,7 +175,7 @@
       "project_health": {
         "band": "Healthy",
         "confidence": 95.0,
-        "score": 84.7,
+        "score": 83.3,
         "trajectory": "Stable"
       },
       "rank": 2,
@@ -107,6 +196,70 @@
       "stars": 11857
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L277",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "submissions/Plane.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L719",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "data/products.json#/163/slug=plane",
+              "source_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
+              "source_id": "emmraan"
+            },
+            {
+              "locator": "README.md#L365",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            },
+            {
+              "locator": "data/tools.json#slug=plane;named_by=jira",
+              "source_commit": "0b9dacd632f128922862f70e1e09011c8611b48c",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 93.8,
+            "ease_of_adoption": 99.5,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/makeplane/plane",
       "last_meaningful_activity_at": "2026-10-17T10:44:44Z",
       "latest_release": {
@@ -129,8 +282,8 @@
       "oss_id": "github.com/makeplane/plane",
       "project_health": {
         "band": "Exceptional",
-        "confidence": 95.0,
-        "score": 88.0,
+        "confidence": 92.1,
+        "score": 87.2,
         "trajectory": "Declining"
       },
       "rank": 3,
@@ -156,6 +309,49 @@
       "stars": 61027
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L276",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "data/products.json#/164/slug=openproject",
+              "source_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
+              "source_id": "emmraan"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 96.2,
+            "ease_of_adoption": 98.2,
+            "economic_advantage": 51.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
       "github_url": "https://github.com/opf/openproject",
       "last_meaningful_activity_at": "2026-10-15T15:41:02Z",
       "latest_release": {
@@ -182,7 +378,7 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 91.2,
-        "score": 96.5,
+        "score": 96.2,
         "trajectory": "Rising"
       },
       "rank": 4,
@@ -204,6 +400,42 @@
       "stars": 16451
     },
     {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "data/tools.json#slug=taiga;named_by=jira",
+              "source_commit": "0b9dacd632f128922862f70e1e09011c8611b48c",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 50.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 91.8,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 50.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
       "github_url": "https://github.com/taigaio/taiga-back",
       "last_meaningful_activity_at": "2026-09-28T17:26:50Z",
       "latest_release": null,

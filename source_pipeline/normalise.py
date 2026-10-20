@@ -158,6 +158,7 @@ def reconcile(claims: list[dict], sources_cfg: dict) -> dict:
     overrides = load_overrides()
     priority = {s["source_id"]: s["priority"] for s in sources_cfg["sources"]}
     share_alike = {s["source_id"]: bool(s.get("share_alike")) for s in sources_cfg["sources"]}
+    kinds = {s["source_id"]: s.get("kind") for s in sources_cfg["sources"]}
 
     oss: dict[str, dict] = {}
     edges: dict[tuple[str, str], dict] = {}
@@ -231,7 +232,9 @@ def reconcile(claims: list[dict], sources_cfg: dict) -> dict:
                 u["sources"].add(sid)
                 reject(claim, "normalise", "saas_not_in_catalogue", saas_name=raw_name)
                 continue
-            saas_seen.setdefault(saas_id, set()).add(sid)
+            seen = saas_seen.setdefault(saas_id, set())
+            if kinds.get(sid) != "job_match":  # a derived candidate is not a source naming the product
+                seen.add(sid)
             edge = edges.setdefault(
                 (saas_id, key),
                 {"saas_id": saas_id, "oss_id": key, "relation": "open_source_alternative_to", "provenance": []},
@@ -313,6 +316,7 @@ def merge_renamed(rec: dict, canonical: dict[str, str]) -> dict:
     sources_cfg = common.load_sources()
     priority = {s["source_id"]: s["priority"] for s in sources_cfg["sources"]}
     share_alike = {s["source_id"]: bool(s.get("share_alike")) for s in sources_cfg["sources"]}
+    kinds = {s["source_id"]: s.get("kind") for s in sources_cfg["sources"]}
     for project in oss.values():
         project["provenance"].sort(key=lambda p: (priority[p["source_id"]], p["locator"]))
         for field in project["imported"]:

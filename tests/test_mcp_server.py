@@ -205,7 +205,12 @@ def test_unsupported_product_is_served_from_canonical_with_a_caveat():
     s = _server()
     unsupported = [r["saas_id"] for r in _jsonl("saas_products.jsonl") if not r["supported"]]
     rels = _jsonl("relationships.jsonl")
-    sid = next(x for x in unsupported if sum(1 for r in rels if r["saas_id"] == x and r["recommended"]) >= 2)
+    sid = next((x for x in unsupported if sum(1 for r in rels if r["saas_id"] == x and r["recommended"]) >= 2), None)
+    if sid is None:
+        # KEI-922 publishes a support record for every product with a fully evaluated recommendation, so no
+        # unsupported product has one; drop one product's page from the loaded layer to exercise the canonical path.
+        sid = next(x["saas_id"] for x in s.layer.index["supported_saas"] if x["recommendations"] >= 2)
+        s.layer.surface.pop(sid)
     got = _ok(s, "source_get_alternatives", saas=sid)
     assert got["surface"] == "data/canonical/relationships.jsonl" and "no published api/v1 page" in got["caveat"]
     keys = [M._rank_key(r) for r in got["recommendations"]]
@@ -223,16 +228,22 @@ def test_resolution_by_alias_domain_and_url():
 
 
 def _reference_match(domains, url):
-    """tests/test_canonical.py's reference matcher, restricted to http(s) like the extension."""
+    """An independent reading of docs/READ-API.md's semantics (whole path segments; most specific rule wins),
+    restricted to http(s) like the extension. source_pipeline/detect.py is the implementation under test."""
     u = urlparse(url)
     if u.scheme not in ("http", "https"):
         return None
     host = (u.hostname or "").lower()
     host = host[4:] if host.startswith("www.") else host
+    path = u.path or "/"
+
+    def seg(prefix):
+        return path.startswith(prefix) if prefix.endswith("/") else path == prefix or path.startswith(prefix + "/")
+
     hits = [r for r in domains["rules"]
             if (r.get("host") == host or (r.get("host_suffix") and host.endswith(r["host_suffix"])))
-            and (not r.get("path_prefix") or u.path.startswith(r["path_prefix"]))]
-    hits.sort(key=lambda r: 0 if r.get("path_prefix") else 1)
+            and (not r.get("path_prefix") or seg(r["path_prefix"]))]
+    hits.sort(key=lambda r: (-len(r.get("path_prefix", "")), "host" not in r, -len(r.get("host_suffix", ""))))
     return hits[0]["saas_id"] if hits else None
 
 
@@ -240,7 +251,8 @@ def test_detect_agrees_with_the_reference_matcher():
     s = _server()
     domains = _api("domains.json")
     assert _ok(s, "source_detect_saas", url="https://acme.atlassian.net/jira/software")["saas_id"] == "jira"
-    assert _ok(s, "source_detect_saas", url="https://acme.atlassian.net/wiki/spaces")["saas_id"] is None
+    assert _ok(s, "source_detect_saas", url="https://acme.atlassian.net/wiki/spaces")["saas_id"] == "confluence"
+    assert _ok(s, "source_detect_saas", url="https://acme.atlassian.net/wikipedia")["saas_id"] is None
     assert _ok(s, "source_detect_saas", url="https://aws.amazon.com/s3/pricing/")["saas_id"] == "amazon-s3"
     assert _ok(s, "source_detect_saas", url="shop.myshopify.com")["saas_id"] == "shopify"
     assert _ok(s, "source_detect_saas", url="ftp://notion.so/")["saas_id"] is None
@@ -249,7 +261,8 @@ def test_detect_agrees_with_the_reference_matcher():
         hosts = [r["host"], "www." + r["host"], "x." + r["host"]] if "host" in r else \
             ["acme" + r["host_suffix"], r["host_suffix"][1:]]
         for h in hosts:
-            for p in ["/", r.get("path_prefix", "/app"), r.get("path_prefix", "") + "/deep", "/other"]:
+            for p in ["/", r.get("path_prefix", "/app"), r.get("path_prefix", "") + "/deep", r.get("path_prefix", "") + "x",
+                      "/other"]:
                 urls += [f"https://{h}{p}", f"http://{h.upper()}{p}?q=1#f"]
     assert len(urls) > 300
     for u in urls:
@@ -286,7 +299,11 @@ def test_project_and_relationship_evidence():
     # fit.get: an mcp_server.py defect noted under KEI-919, fixed there, not here.)
     bad = next(r for r in rels if not r["recommended"] and r["replacement_fit"] is not None)
     got = _ok(s, "source_get_relationship", saas=bad["saas_id"], project=bad["oss_id"])
-    assert got["relationship"] == bad and got["verdict"].startswith("not recommended")
+    # A row naming a licence-exception project carries its disclosure (KEI-930 D5); the rest is the record verbatim.
+    shown = dict(got["relationship"])
+    disclosure = shown.pop("licence_disclosure", None)
+    assert shown == bad and got["verdict"].startswith("not recommended")
+    assert disclosure is None or disclosure == s.layer.disclosures[bad["oss_id"]]
     good = next(r for r in rels if r["recommended"])
     got = _ok(s, "source_get_relationship", saas=good["saas_id"], project="https://" + good["oss_id"] + ".git/")
     assert got["relationship"]["provenance"] == good["provenance"] and got["verdict"].startswith("recommended")
@@ -453,7 +470,14 @@ def test_module_is_standard_library_only():
         if isinstance(node, ast.Import):
             imports |= {a.name.split(".")[0] for a in node.names}
         elif isinstance(node, ast.ImportFrom):
+            if node.level:  # a package-relative import: only the shared, standard-library-only matcher (KEI-922)
+                assert node.module is None and [a.name for a in node.names] == ["detect"], ast.dump(node)
+                continue
             imports.add(node.module.split(".")[0])
     assert imports <= {"__future__", "argparse", "hashlib", "json", "math", "re", "sys", "time", "unicodedata",
                        "datetime", "pathlib", "urllib"}
     assert "urlopen" not in src and "socket" not in src and "subprocess" not in src
+    det = (ROOT / "source_pipeline" / "detect.py").read_text()
+    det_imports = {a.name.split(".")[0] for n in ast.walk(ast.parse(det)) if isinstance(n, ast.Import) for a in n.names}
+    det_imports |= {n.module.split(".")[0] for n in ast.walk(ast.parse(det)) if isinstance(n, ast.ImportFrom)}
+    assert det_imports <= {"__future__", "re", "urllib"}

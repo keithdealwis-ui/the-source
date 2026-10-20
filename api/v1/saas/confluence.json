@@ -1,0 +1,312 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 76,
+    "reason": "3 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "altstack",
+      "job_match",
+      "opensaasdirectory",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L165",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L1023",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 62.5,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "cloud_option",
+            "demo",
+            "import",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/BookStackApp/BookStack",
+      "last_meaningful_activity_at": "2026-10-15T16:27:12Z",
+      "latest_release": {
+        "published_at": "2026-09-29T14:24:29Z",
+        "tag": "v26.09.1"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "BookStack",
+      "note": {
+        "gaps": [
+          "integrations and extensibility",
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "ease of adoption",
+          "cost advantage"
+        ],
+        "text": "Strongest on ease of adoption and cost advantage; weakest on integrations and extensibility and migration path."
+      },
+      "oss_id": "github.com/bookstackapp/bookstack",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 85.2,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 90.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 62.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/BookStackApp/BookStack",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "opensaasdirectory"
+      ],
+      "stars": 19086
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L166",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L1007",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "data/tools.json#slug=outline;named_by=confluence",
+              "source_commit": "0b9dacd632f128922862f70e1e09011c8611b48c",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 83.3,
+            "ease_of_adoption": 96.4,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/outline/outline",
+      "last_meaningful_activity_at": "2026-10-12T18:49:36Z",
+      "latest_release": {
+        "published_at": "2026-10-12T14:22:35Z",
+        "tag": "v1.11.0"
+      },
+      "licence_disclosure": "source-available: licensed under BUSL-1.1, which is not an OSI-approved open-source licence",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Outline",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/outline/outline",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 89.5,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 92.5,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/outline/outline",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "solvohq",
+        "opensaasdirectory",
+        "altstack"
+      ],
+      "stars": 40936
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/colanode/colanode",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 39.3,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/colanode/colanode",
+      "last_meaningful_activity_at": "2026-04-03T15:31:23Z",
+      "latest_release": {
+        "published_at": "2026-04-03T15:31:23Z",
+        "tag": "v0.4.7"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "maintained",
+      "name": "Colanode",
+      "note": {
+        "gaps": [
+          "migration path",
+          "ease of adoption"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity; weakest on migration path and ease of adoption."
+      },
+      "oss_id": "github.com/colanode/colanode",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 96.6,
+        "score": 67.7,
+        "trajectory": "Declining"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 69.5,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/colanode/colanode",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 5167
+    }
+  ],
+  "saas": {
+    "category": "Knowledge management",
+    "compare_path": "/open-source/confluence-alternatives",
+    "domain": "atlassian.com",
+    "name": "Confluence",
+    "saas_id": "confluence",
+    "slug": "confluence"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

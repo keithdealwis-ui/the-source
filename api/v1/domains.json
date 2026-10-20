@@ -1,8 +1,64 @@
 {
   "api_version": "v1",
-  "dataset_version": "1e1edfdb836490f2",
-  "match_semantics": "Lowercase the page hostname and strip one leading \"www.\". A rule matches when its host equals the hostname (or the hostname ends with its host_suffix) and, if it has a path_prefix, the URL path starts with it. When several rules match, the one with a path_prefix wins; otherwise the first in file order.",
+  "dataset_version": "3275503f8976b0b5",
+  "match_semantics": "Lowercase the page hostname and strip one leading \"www.\". A rule matches when its host equals the hostname (or the hostname ends with its host_suffix) and, if it has a path_prefix, the URL path equals the prefix or continues it at a \"/\" (a prefix that ends in \"/\" is a plain prefix). When several rules match, the most specific wins: one with a path_prefix beats one without, a longer path_prefix beats a shorter one, an exact host beats a host_suffix, a longer host_suffix beats a shorter one; remaining ties go to the first rule in file order.",
   "rules": [
+    {
+      "host_suffix": "-my.sharepoint.com",
+      "saas_id": "microsoft-onedrive"
+    },
+    {
+      "host_suffix": ".1password.ca",
+      "saas_id": "1password"
+    },
+    {
+      "host_suffix": ".1password.com",
+      "saas_id": "1password"
+    },
+    {
+      "host_suffix": ".1password.eu",
+      "saas_id": "1password"
+    },
+    {
+      "host_suffix": ".activehosted.com",
+      "saas_id": "activecampaign"
+    },
+    {
+      "host_suffix": ".acumatica.com",
+      "saas_id": "acumatica"
+    },
+    {
+      "host_suffix": ".admin.datocms.com",
+      "saas_id": "datocms"
+    },
+    {
+      "host_suffix": ".admin.mailchimp.com",
+      "saas_id": "mailchimp"
+    },
+    {
+      "host_suffix": ".adobeaemcloud.com",
+      "saas_id": "adobe-experience-manager"
+    },
+    {
+      "host_suffix": ".adobesign.com",
+      "saas_id": "adobe-acrobat-sign"
+    },
+    {
+      "host_suffix": ".app.box.com",
+      "saas_id": "box"
+    },
+    {
+      "host_suffix": ".app.netsuite.com",
+      "saas_id": "netsuite"
+    },
+    {
+      "host_suffix": ".apps.dynatrace.com",
+      "saas_id": "dynatrace"
+    },
+    {
+      "host_suffix": ".as.me",
+      "saas_id": "acuity-scheduling"
+    },
     {
       "host_suffix": ".atlassian.net",
       "path_prefix": "/browse",
@@ -14,32 +70,554 @@
       "saas_id": "jira"
     },
     {
+      "host_suffix": ".atlassian.net",
+      "path_prefix": "/secure",
+      "saas_id": "jira"
+    },
+    {
+      "host_suffix": ".atlassian.net",
+      "path_prefix": "/wiki",
+      "saas_id": "confluence"
+    },
+    {
+      "host_suffix": ".auth0.com",
+      "saas_id": "auth0"
+    },
+    {
+      "host_suffix": ".bamboohr.com",
+      "saas_id": "bamboohr"
+    },
+    {
+      "host_suffix": ".braze.com",
+      "saas_id": "braze"
+    },
+    {
+      "host_suffix": ".canny.io",
+      "saas_id": "canny"
+    },
+    {
+      "host_suffix": ".carrd.co",
+      "saas_id": "carrd"
+    },
+    {
+      "host_suffix": ".chargebee.com",
+      "saas_id": "chargebee"
+    },
+    {
+      "host_suffix": ".circle.so",
+      "saas_id": "circle"
+    },
+    {
+      "host_suffix": ".cloud.looker.com",
+      "saas_id": "looker"
+    },
+    {
+      "host_suffix": ".cloudflareaccess.com",
+      "saas_id": "cloudflare-access"
+    },
+    {
+      "host_suffix": ".cloudvault.m-files.com",
+      "saas_id": "m-files"
+    },
+    {
+      "host_suffix": ".clover.com",
+      "saas_id": "clover"
+    },
+    {
+      "host_suffix": ".commercetools.com",
+      "saas_id": "commercetools"
+    },
+    {
+      "host_suffix": ".console.aws.amazon.com",
+      "path_prefix": "/amplify",
+      "saas_id": "aws-amplify"
+    },
+    {
+      "host_suffix": ".console.aws.amazon.com",
+      "path_prefix": "/cognito",
+      "saas_id": "amazon-cognito"
+    },
+    {
+      "host_suffix": ".console.aws.amazon.com",
+      "path_prefix": "/dynamodbv2",
+      "saas_id": "amazon-dynamodb"
+    },
+    {
+      "host_suffix": ".console.aws.amazon.com",
+      "path_prefix": "/elasticbeanstalk",
+      "saas_id": "aws-elastic-beanstalk"
+    },
+    {
+      "host_suffix": ".console.aws.amazon.com",
+      "path_prefix": "/redshiftv2",
+      "saas_id": "amazon-redshift"
+    },
+    {
+      "host_suffix": ".console.aws.amazon.com",
+      "path_prefix": "/ses",
+      "saas_id": "amazon-ses"
+    },
+    {
+      "host_suffix": ".createsend.com",
+      "saas_id": "campaign-monitor"
+    },
+    {
+      "host_suffix": ".crowdin.com",
+      "saas_id": "crowdin"
+    },
+    {
+      "host_suffix": ".datadoghq.com",
+      "saas_id": "datadog"
+    },
+    {
+      "host_suffix": ".datadoghq.eu",
+      "saas_id": "datadog"
+    },
+    {
+      "host_suffix": ".docusign.net",
+      "saas_id": "docusign"
+    },
+    {
+      "host_suffix": ".dynamics.com",
+      "saas_id": "microsoft-dynamics-365"
+    },
+    {
+      "host_suffix": ".echosign.com",
+      "saas_id": "adobe-acrobat-sign"
+    },
+    {
+      "host_suffix": ".elastic-cloud.com",
+      "saas_id": "elastic-cloud"
+    },
+    {
+      "host_suffix": ".exacttarget.com",
+      "saas_id": "salesforce-marketing-cloud"
+    },
+    {
+      "host_suffix": ".framer.website",
+      "saas_id": "framer"
+    },
+    {
+      "host_suffix": ".freshdesk.com",
+      "saas_id": "freshdesk"
+    },
+    {
+      "host_suffix": ".github.dev",
+      "saas_id": "github-codespaces"
+    },
+    {
+      "host_suffix": ".gorgias.com",
+      "saas_id": "gorgias"
+    },
+    {
+      "host_suffix": ".gumroad.com",
+      "saas_id": "gumroad"
+    },
+    {
+      "host_suffix": ".harvestapp.com",
+      "saas_id": "harvest"
+    },
+    {
+      "host_suffix": ".infusionsoft.com",
+      "saas_id": "keap"
+    },
+    {
+      "host_suffix": ".intacct.com",
+      "saas_id": "sage-intacct"
+    },
+    {
+      "host_suffix": ".jamfcloud.com",
+      "saas_id": "jamf"
+    },
+    {
+      "host_suffix": ".lightning.force.com",
+      "saas_id": "salesforce"
+    },
+    {
+      "host_suffix": ".live.dynatrace.com",
+      "saas_id": "dynatrace"
+    },
+    {
+      "host_suffix": ".loggly.com",
+      "saas_id": "loggly"
+    },
+    {
+      "host_suffix": ".looker.com",
+      "saas_id": "looker"
+    },
+    {
+      "host_suffix": ".make.com",
+      "saas_id": "make"
+    },
+    {
+      "host_suffix": ".marketingcloudapps.com",
+      "saas_id": "salesforce-marketing-cloud"
+    },
+    {
+      "host_suffix": ".marketo.com",
+      "saas_id": "marketo"
+    },
+    {
       "host_suffix": ".monday.com",
       "saas_id": "monday-com"
+    },
+    {
+      "host_suffix": ".my.salesforce.com",
+      "saas_id": "salesforce"
+    },
+    {
+      "host_suffix": ".mybigcommerce.com",
+      "saas_id": "bigcommerce"
+    },
+    {
+      "host_suffix": ".myfreshworks.com",
+      "saas_id": "freshsales"
     },
     {
       "host_suffix": ".myshopify.com",
       "saas_id": "shopify"
     },
     {
+      "host_suffix": ".mystrikingly.com",
+      "saas_id": "strikingly"
+    },
+    {
+      "host_suffix": ".myworkday.com",
+      "saas_id": "workday"
+    },
+    {
       "host_suffix": ".notion.site",
       "saas_id": "notion"
+    },
+    {
+      "host_suffix": ".okta.com",
+      "saas_id": "okta"
+    },
+    {
+      "host_suffix": ".oktapreview.com",
+      "saas_id": "okta"
+    },
+    {
+      "host_suffix": ".onelogin.com",
+      "saas_id": "onelogin"
+    },
+    {
+      "host_suffix": ".online.tableau.com",
+      "saas_id": "tableau"
+    },
+    {
+      "host_suffix": ".pagerduty.com",
+      "saas_id": "pagerduty"
+    },
+    {
+      "host_suffix": ".pipedrive.com",
+      "saas_id": "pipedrive"
+    },
+    {
+      "host_suffix": ".prismic.io",
+      "saas_id": "prismic"
+    },
+    {
+      "host_suffix": ".qlikcloud.com",
+      "saas_id": "qlik-cloud"
+    },
+    {
+      "host_suffix": ".qualtrics.com",
+      "saas_id": "qualtrics"
+    },
+    {
+      "host_suffix": ".recurly.com",
+      "saas_id": "recurly"
+    },
+    {
+      "host_suffix": ".retool.com",
+      "saas_id": "retool"
+    },
+    {
+      "host_suffix": ".saas.appdynamics.com",
+      "saas_id": "appdynamics"
+    },
+    {
+      "host_suffix": ".sanity.studio",
+      "saas_id": "sanity"
+    },
+    {
+      "host_suffix": ".screenconnect.com",
+      "saas_id": "connectwise-screenconnect"
+    },
+    {
+      "host_suffix": ".sentry.io",
+      "saas_id": "sentry"
+    },
+    {
+      "host_suffix": ".slack.com",
+      "saas_id": "slack"
+    },
+    {
+      "host_suffix": ".slite.com",
+      "saas_id": "slite"
+    },
+    {
+      "host_suffix": ".snowflakecomputing.com",
+      "saas_id": "snowflake"
+    },
+    {
+      "host_suffix": ".splunkcloud.com",
+      "saas_id": "splunk"
+    },
+    {
+      "host_suffix": ".squarespace.com",
+      "saas_id": "squarespace"
+    },
+    {
+      "host_suffix": ".substack.com",
+      "saas_id": "substack"
+    },
+    {
+      "host_suffix": ".sumologic.com",
+      "saas_id": "sumo-logic"
+    },
+    {
+      "host_suffix": ".teachable.com",
+      "saas_id": "teachable"
+    },
+    {
+      "host_suffix": ".typeform.com",
+      "saas_id": "typeform"
+    },
+    {
+      "host_suffix": ".visualstudio.com",
+      "saas_id": "azure-devops"
+    },
+    {
+      "host_suffix": ".webex.com",
+      "saas_id": "webex"
+    },
+    {
+      "host_suffix": ".webflow.io",
+      "saas_id": "webflow"
+    },
+    {
+      "host_suffix": ".weebly.com",
+      "saas_id": "weebly"
+    },
+    {
+      "host_suffix": ".wetransfer.com",
+      "saas_id": "wetransfer"
+    },
+    {
+      "host_suffix": ".wistia.com",
+      "saas_id": "wistia"
+    },
+    {
+      "host_suffix": ".wixsite.com",
+      "saas_id": "wix"
+    },
+    {
+      "host_suffix": ".wordpress.com",
+      "saas_id": "wordpress-com"
+    },
+    {
+      "host_suffix": ".zendesk.com",
+      "saas_id": "zendesk"
+    },
+    {
+      "host_suffix": ".zoom.us",
+      "saas_id": "zoom"
+    },
+    {
+      "host_suffix": ".zuora.com",
+      "saas_id": "zuora"
+    },
+    {
+      "host": "1password.com",
+      "saas_id": "1password"
+    },
+    {
+      "host": "3.basecamp.com",
+      "saas_id": "basecamp"
+    },
+    {
+      "host": "about.gitlab.com",
+      "saas_id": "gitlab"
+    },
+    {
+      "host": "account.postmarkapp.com",
+      "saas_id": "postmark"
+    },
+    {
+      "host": "activecampaign.com",
+      "saas_id": "activecampaign"
+    },
+    {
+      "host": "acuityscheduling.com",
+      "saas_id": "acuity-scheduling"
+    },
+    {
+      "host": "acumatica.com",
+      "saas_id": "acumatica"
     },
     {
       "host": "admin.shopify.com",
       "saas_id": "shopify"
     },
     {
+      "host": "admin.typeform.com",
+      "saas_id": "typeform"
+    },
+    {
+      "host": "adobe.com",
+      "path_prefix": "/sign",
+      "saas_id": "adobe-acrobat-sign"
+    },
+    {
+      "host": "agora.io",
+      "saas_id": "agora"
+    },
+    {
+      "host": "ahrefs.com",
+      "saas_id": "ahrefs"
+    },
+    {
+      "host": "airtable.com",
+      "saas_id": "airtable"
+    },
+    {
+      "host": "algolia.com",
+      "saas_id": "algolia"
+    },
+    {
+      "host": "amazon.com",
+      "path_prefix": "/photos",
+      "saas_id": "amazon-photos"
+    },
+    {
+      "host": "amplitude.com",
+      "saas_id": "amplitude"
+    },
+    {
       "host": "analytics.google.com",
       "saas_id": "google-analytics"
+    },
+    {
+      "host": "any.do",
+      "saas_id": "any-do"
+    },
+    {
+      "host": "anydesk.com",
+      "saas_id": "anydesk"
+    },
+    {
+      "host": "apigee.google.com",
+      "saas_id": "apigee"
+    },
+    {
+      "host": "app-ap1.hubspot.com",
+      "saas_id": "hubspot"
+    },
+    {
+      "host": "app-eu.wrike.com",
+      "saas_id": "wrike"
+    },
+    {
+      "host": "app-eu1.hubspot.com",
+      "saas_id": "hubspot"
+    },
+    {
+      "host": "app-na2.hubspot.com",
+      "saas_id": "hubspot"
+    },
+    {
+      "host": "app.ahrefs.com",
+      "saas_id": "ahrefs"
+    },
+    {
+      "host": "app.amplitude.com",
+      "saas_id": "amplitude"
+    },
+    {
+      "host": "app.any.do",
+      "saas_id": "any-do"
     },
     {
       "host": "app.asana.com",
       "saas_id": "asana"
     },
     {
+      "host": "app.attio.com",
+      "saas_id": "attio"
+    },
+    {
+      "host": "app.beehiiv.com",
+      "saas_id": "beehiiv"
+    },
+    {
+      "host": "app.bitly.com",
+      "saas_id": "bitly"
+    },
+    {
+      "host": "app.box.com",
+      "saas_id": "box"
+    },
+    {
+      "host": "app.brevo.com",
+      "saas_id": "brevo"
+    },
+    {
+      "host": "app.bugsnag.com",
+      "saas_id": "bugsnag"
+    },
+    {
+      "host": "app.checklyhq.com",
+      "saas_id": "checkly"
+    },
+    {
+      "host": "app.circleci.com",
+      "saas_id": "circleci"
+    },
+    {
+      "host": "app.clickup.com",
+      "saas_id": "clickup"
+    },
+    {
+      "host": "app.clipchamp.com",
+      "saas_id": "clipchamp"
+    },
+    {
+      "host": "app.clockify.me",
+      "saas_id": "clockify"
+    },
+    {
+      "host": "app.close.com",
+      "saas_id": "close"
+    },
+    {
+      "host": "app.commonroom.io",
+      "saas_id": "common-room"
+    },
+    {
+      "host": "app.constantcontact.com",
+      "saas_id": "constant-contact"
+    },
+    {
       "host": "app.contentful.com",
       "saas_id": "contentful"
+    },
+    {
+      "host": "app.copper.com",
+      "saas_id": "copper"
+    },
+    {
+      "host": "app.courier.com",
+      "saas_id": "courier"
+    },
+    {
+      "host": "app.crazyegg.com",
+      "saas_id": "crazy-egg"
+    },
+    {
+      "host": "app.dashlane.com",
+      "saas_id": "dashlane"
     },
     {
       "host": "app.datadoghq.com",
@@ -50,8 +628,265 @@
       "saas_id": "datadog"
     },
     {
+      "host": "app.diffbot.com",
+      "saas_id": "diffbot"
+    },
+    {
+      "host": "app.docusign.com",
+      "saas_id": "docusign"
+    },
+    {
+      "host": "app.eu.amplitude.com",
+      "saas_id": "amplitude"
+    },
+    {
+      "host": "app.eu.snyk.io",
+      "saas_id": "snyk"
+    },
+    {
+      "host": "app.fireflies.ai",
+      "saas_id": "fireflies-ai"
+    },
+    {
+      "host": "app.frontapp.com",
+      "saas_id": "front"
+    },
+    {
+      "host": "app.fullstory.com",
+      "saas_id": "fullstory"
+    },
+    {
+      "host": "app.getguru.com",
+      "saas_id": "guru"
+    },
+    {
+      "host": "app.gitbook.com",
+      "saas_id": "gitbook"
+    },
+    {
+      "host": "app.grammarly.com",
+      "saas_id": "grammarly"
+    },
+    {
+      "host": "app.gumroad.com",
+      "saas_id": "gumroad"
+    },
+    {
+      "host": "app.gusto.com",
+      "saas_id": "gusto"
+    },
+    {
+      "host": "app.hellosign.com",
+      "saas_id": "dropbox-sign"
+    },
+    {
+      "host": "app.hubspot.com",
+      "saas_id": "hubspot"
+    },
+    {
+      "host": "app.hubspot.com",
+      "path_prefix": "/contacts",
+      "saas_id": "hubspot"
+    },
+    {
+      "host": "app.hygraph.com",
+      "saas_id": "hygraph"
+    },
+    {
+      "host": "app.intercom.com",
+      "saas_id": "intercom"
+    },
+    {
+      "host": "app.iterable.com",
+      "saas_id": "iterable"
+    },
+    {
+      "host": "app.kit.com",
+      "saas_id": "kit"
+    },
+    {
+      "host": "app.landbot.io",
+      "saas_id": "landbot"
+    },
+    {
+      "host": "app.later.com",
+      "saas_id": "later"
+    },
+    {
+      "host": "app.launchdarkly.com",
+      "saas_id": "launchdarkly"
+    },
+    {
+      "host": "app.leonardo.ai",
+      "saas_id": "leonardo-ai"
+    },
+    {
+      "host": "app.logrocket.com",
+      "saas_id": "logrocket"
+    },
+    {
+      "host": "app.lokalise.com",
+      "saas_id": "lokalise"
+    },
+    {
+      "host": "app.mailgun.com",
+      "saas_id": "mailgun"
+    },
+    {
+      "host": "app.mode.com",
+      "saas_id": "mode-analytics"
+    },
+    {
+      "host": "app.monarchmoney.com",
+      "saas_id": "monarch-money"
+    },
+    {
+      "host": "app.mural.co",
+      "saas_id": "mural"
+    },
+    {
+      "host": "app.netlify.com",
+      "saas_id": "netlify"
+    },
+    {
+      "host": "app.pandadoc.com",
+      "saas_id": "pandadoc"
+    },
+    {
+      "host": "app.pinecone.io",
+      "saas_id": "pinecone"
+    },
+    {
+      "host": "app.pitch.com",
+      "saas_id": "pitch"
+    },
+    {
+      "host": "app.powerbi.com",
+      "saas_id": "power-bi"
+    },
+    {
+      "host": "app.qbo.intuit.com",
+      "saas_id": "quickbooks"
+    },
+    {
+      "host": "app.raindrop.io",
+      "saas_id": "raindrop-io"
+    },
+    {
+      "host": "app.rebrandly.com",
+      "saas_id": "rebrandly"
+    },
+    {
+      "host": "app.ringcentral.com",
+      "saas_id": "ringcentral"
+    },
+    {
+      "host": "app.rippling.com",
+      "saas_id": "rippling"
+    },
+    {
+      "host": "app.rocketmoney.com",
+      "saas_id": "rocket-money"
+    },
+    {
+      "host": "app.rollbar.com",
+      "saas_id": "rollbar"
+    },
+    {
+      "host": "app.runwayml.com",
+      "saas_id": "runway"
+    },
+    {
+      "host": "app.scrapingbee.com",
+      "saas_id": "scrapingbee"
+    },
+    {
+      "host": "app.segment.com",
+      "saas_id": "segment"
+    },
+    {
+      "host": "app.sendgrid.com",
+      "saas_id": "sendgrid"
+    },
+    {
+      "host": "app.shortcut.com",
+      "saas_id": "shortcut"
+    },
+    {
+      "host": "app.slack.com",
+      "saas_id": "slack"
+    },
+    {
+      "host": "app.snowflake.com",
+      "saas_id": "snowflake"
+    },
+    {
+      "host": "app.snyk.io",
+      "saas_id": "snyk"
+    },
+    {
+      "host": "app.split.io",
+      "saas_id": "split"
+    },
+    {
+      "host": "app.sproutsocial.com",
+      "saas_id": "sprout-social"
+    },
+    {
+      "host": "app.squareup.com",
+      "saas_id": "square-point-of-sale"
+    },
+    {
+      "host": "app.statuscake.com",
+      "saas_id": "statuscake"
+    },
+    {
+      "host": "app.storyblok.com",
+      "saas_id": "storyblok"
+    },
+    {
+      "host": "app.swaggerhub.com",
+      "saas_id": "swaggerhub"
+    },
+    {
+      "host": "app.todoist.com",
+      "saas_id": "todoist"
+    },
+    {
+      "host": "app.trakt.tv",
+      "saas_id": "trakt"
+    },
+    {
+      "host": "app.transifex.com",
+      "saas_id": "transifex"
+    },
+    {
+      "host": "app.travis-ci.com",
+      "saas_id": "travis-ci"
+    },
+    {
+      "host": "app.tray.io",
+      "saas_id": "tray-io"
+    },
+    {
+      "host": "app.usefathom.com",
+      "saas_id": "fathom-analytics"
+    },
+    {
+      "host": "app.usemotion.com",
+      "saas_id": "motion"
+    },
+    {
+      "host": "app.ynab.com",
+      "saas_id": "ynab"
+    },
+    {
       "host": "app.zoom.us",
       "saas_id": "zoom"
+    },
+    {
+      "host": "appdynamics.com",
+      "saas_id": "appdynamics"
     },
     {
       "host": "asana.com",
@@ -59,8 +894,35 @@
     },
     {
       "host": "atlassian.com",
+      "path_prefix": "/software/bitbucket",
+      "saas_id": "bitbucket"
+    },
+    {
+      "host": "atlassian.com",
+      "path_prefix": "/software/confluence",
+      "saas_id": "confluence"
+    },
+    {
+      "host": "atlassian.com",
       "path_prefix": "/software/jira",
       "saas_id": "jira"
+    },
+    {
+      "host": "atlassian.com",
+      "path_prefix": "/software/statuspage",
+      "saas_id": "statuspage"
+    },
+    {
+      "host": "attio.com",
+      "saas_id": "attio"
+    },
+    {
+      "host": "audible.co.uk",
+      "saas_id": "audible"
+    },
+    {
+      "host": "audible.com",
+      "saas_id": "audible"
     },
     {
       "host": "auth0.com",
@@ -68,8 +930,159 @@
     },
     {
       "host": "aws.amazon.com",
+      "path_prefix": "/amplify",
+      "saas_id": "aws-amplify"
+    },
+    {
+      "host": "aws.amazon.com",
+      "path_prefix": "/cognito",
+      "saas_id": "amazon-cognito"
+    },
+    {
+      "host": "aws.amazon.com",
+      "path_prefix": "/dynamodb",
+      "saas_id": "amazon-dynamodb"
+    },
+    {
+      "host": "aws.amazon.com",
+      "path_prefix": "/elasticbeanstalk",
+      "saas_id": "aws-elastic-beanstalk"
+    },
+    {
+      "host": "aws.amazon.com",
+      "path_prefix": "/redshift",
+      "saas_id": "amazon-redshift"
+    },
+    {
+      "host": "aws.amazon.com",
       "path_prefix": "/s3",
       "saas_id": "amazon-s3"
+    },
+    {
+      "host": "aws.amazon.com",
+      "path_prefix": "/ses",
+      "saas_id": "amazon-ses"
+    },
+    {
+      "host": "azure.microsoft.com",
+      "path_prefix": "/products/devops",
+      "saas_id": "azure-devops"
+    },
+    {
+      "host": "backblaze.com",
+      "path_prefix": "/cloud-storage",
+      "saas_id": "backblaze-b2"
+    },
+    {
+      "host": "bamboohr.com",
+      "saas_id": "bamboohr"
+    },
+    {
+      "host": "basecamp.com",
+      "saas_id": "basecamp"
+    },
+    {
+      "host": "beehiiv.com",
+      "saas_id": "beehiiv"
+    },
+    {
+      "host": "betterstack.com",
+      "saas_id": "better-stack"
+    },
+    {
+      "host": "bigcommerce.com",
+      "saas_id": "bigcommerce"
+    },
+    {
+      "host": "bitbucket.org",
+      "saas_id": "bitbucket"
+    },
+    {
+      "host": "bitly.com",
+      "saas_id": "bitly"
+    },
+    {
+      "host": "bolt.new",
+      "saas_id": "bolt-new"
+    },
+    {
+      "host": "books.zoho.com",
+      "saas_id": "zoho-books"
+    },
+    {
+      "host": "books.zoho.eu",
+      "saas_id": "zoho-books"
+    },
+    {
+      "host": "box.com",
+      "saas_id": "box"
+    },
+    {
+      "host": "braze.com",
+      "saas_id": "braze"
+    },
+    {
+      "host": "brevo.com",
+      "saas_id": "brevo"
+    },
+    {
+      "host": "buffer.com",
+      "saas_id": "buffer"
+    },
+    {
+      "host": "bugsnag.com",
+      "saas_id": "bugsnag"
+    },
+    {
+      "host": "business.adobe.com",
+      "path_prefix": "/products/analytics",
+      "saas_id": "adobe-analytics"
+    },
+    {
+      "host": "business.adobe.com",
+      "path_prefix": "/products/experience-manager",
+      "saas_id": "adobe-experience-manager"
+    },
+    {
+      "host": "business.adobe.com",
+      "path_prefix": "/products/marketo",
+      "saas_id": "marketo"
+    },
+    {
+      "host": "calendly.com",
+      "saas_id": "calendly"
+    },
+    {
+      "host": "campaignmonitor.com",
+      "saas_id": "campaign-monitor"
+    },
+    {
+      "host": "canny.io",
+      "saas_id": "canny"
+    },
+    {
+      "host": "canva.com",
+      "saas_id": "canva"
+    },
+    {
+      "host": "capcut.com",
+      "saas_id": "capcut"
+    },
+    {
+      "host": "carrd.co",
+      "saas_id": "carrd"
+    },
+    {
+      "host": "chargebee.com",
+      "saas_id": "chargebee"
+    },
+    {
+      "host": "chat.deepseek.com",
+      "saas_id": "deepseek-chat"
+    },
+    {
+      "host": "chat.google.com",
+      "saas_id": "google-chat"
     },
     {
       "host": "chat.openai.com",
@@ -80,20 +1093,440 @@
       "saas_id": "chatgpt"
     },
     {
+      "host": "checklyhq.com",
+      "saas_id": "checkly"
+    },
+    {
+      "host": "circle.so",
+      "saas_id": "circle"
+    },
+    {
+      "host": "circleci.com",
+      "saas_id": "circleci"
+    },
+    {
+      "host": "clarity.microsoft.com",
+      "saas_id": "microsoft-clarity"
+    },
+    {
+      "host": "claude.ai",
+      "saas_id": "claude"
+    },
+    {
+      "host": "claude.com",
+      "saas_id": "claude"
+    },
+    {
+      "host": "clerk.com",
+      "saas_id": "clerk"
+    },
+    {
+      "host": "clickup.com",
+      "saas_id": "clickup"
+    },
+    {
+      "host": "clipchamp.com",
+      "saas_id": "clipchamp"
+    },
+    {
+      "host": "clockify.me",
+      "saas_id": "clockify"
+    },
+    {
+      "host": "close.com",
+      "saas_id": "close"
+    },
+    {
+      "host": "cloud.digitalocean.com",
+      "path_prefix": "/apps",
+      "saas_id": "digitalocean-app-platform"
+    },
+    {
+      "host": "cloud.elastic.co",
+      "saas_id": "elastic-cloud"
+    },
+    {
+      "host": "cloud.google.com",
+      "path_prefix": "/apigee",
+      "saas_id": "apigee"
+    },
+    {
+      "host": "cloud.google.com",
+      "path_prefix": "/bigquery",
+      "saas_id": "google-bigquery"
+    },
+    {
+      "host": "cloud.google.com",
+      "path_prefix": "/looker",
+      "saas_id": "looker"
+    },
+    {
+      "host": "cloud.google.com",
+      "path_prefix": "/run",
+      "saas_id": "google-cloud-run"
+    },
+    {
+      "host": "cloud.google.com",
+      "path_prefix": "/vertex-ai",
+      "saas_id": "google-vertex-ai"
+    },
+    {
+      "host": "cloud.mongodb.com",
+      "saas_id": "mongodb-atlas"
+    },
+    {
+      "host": "cloudconvert.com",
+      "saas_id": "cloudconvert"
+    },
+    {
+      "host": "cloudflare.com",
+      "path_prefix": "/developer-platform/products/pages",
+      "saas_id": "cloudflare-pages"
+    },
+    {
+      "host": "cloudflare.com",
+      "path_prefix": "/developer-platform/products/r2",
+      "saas_id": "cloudflare-r2"
+    },
+    {
+      "host": "cloudflare.com",
+      "path_prefix": "/products/tunnel",
+      "saas_id": "cloudflare-tunnel"
+    },
+    {
+      "host": "cloudflare.com",
+      "path_prefix": "/zero-trust/products/access",
+      "saas_id": "cloudflare-access"
+    },
+    {
+      "host": "cloudinary.com",
+      "saas_id": "cloudinary"
+    },
+    {
+      "host": "clover.com",
+      "saas_id": "clover"
+    },
+    {
+      "host": "coda.io",
+      "saas_id": "coda"
+    },
+    {
+      "host": "codesandbox.io",
+      "saas_id": "codesandbox"
+    },
+    {
+      "host": "colab.google",
+      "saas_id": "google-colab"
+    },
+    {
+      "host": "colab.research.google.com",
+      "saas_id": "google-colab"
+    },
+    {
+      "host": "commercetools.com",
+      "saas_id": "commercetools"
+    },
+    {
+      "host": "commonroom.io",
+      "saas_id": "common-room"
+    },
+    {
+      "host": "connectwise.com",
+      "path_prefix": "/platform/unified-management/control",
+      "saas_id": "connectwise-screenconnect"
+    },
+    {
+      "host": "console.agora.io",
+      "saas_id": "agora"
+    },
+    {
+      "host": "console.aws.amazon.com",
+      "path_prefix": "/amplify",
+      "saas_id": "aws-amplify"
+    },
+    {
+      "host": "console.aws.amazon.com",
+      "path_prefix": "/cognito",
+      "saas_id": "amazon-cognito"
+    },
+    {
+      "host": "console.aws.amazon.com",
+      "path_prefix": "/dynamodbv2",
+      "saas_id": "amazon-dynamodb"
+    },
+    {
+      "host": "console.aws.amazon.com",
+      "path_prefix": "/elasticbeanstalk",
+      "saas_id": "aws-elastic-beanstalk"
+    },
+    {
+      "host": "console.aws.amazon.com",
+      "path_prefix": "/redshiftv2",
+      "saas_id": "amazon-redshift"
+    },
+    {
+      "host": "console.aws.amazon.com",
+      "path_prefix": "/s3",
+      "saas_id": "amazon-s3"
+    },
+    {
+      "host": "console.aws.amazon.com",
+      "path_prefix": "/ses",
+      "saas_id": "amazon-ses"
+    },
+    {
+      "host": "console.cloud.google.com",
+      "path_prefix": "/apigee",
+      "saas_id": "apigee"
+    },
+    {
+      "host": "console.cloud.google.com",
+      "path_prefix": "/bigquery",
+      "saas_id": "google-bigquery"
+    },
+    {
+      "host": "console.cloud.google.com",
+      "path_prefix": "/run",
+      "saas_id": "google-cloud-run"
+    },
+    {
+      "host": "console.cloud.google.com",
+      "path_prefix": "/vertex-ai",
+      "saas_id": "google-vertex-ai"
+    },
+    {
+      "host": "console.cloudinary.com",
+      "saas_id": "cloudinary"
+    },
+    {
       "host": "console.firebase.google.com",
       "saas_id": "firebase"
+    },
+    {
+      "host": "console.jumpcloud.com",
+      "saas_id": "jumpcloud"
+    },
+    {
+      "host": "console.twilio.com",
+      "saas_id": "twilio"
+    },
+    {
+      "host": "console.upstash.com",
+      "saas_id": "upstash"
+    },
+    {
+      "host": "constantcontact.com",
+      "saas_id": "constant-contact"
     },
     {
       "host": "contentful.com",
       "saas_id": "contentful"
     },
     {
+      "host": "convertkit.com",
+      "saas_id": "kit"
+    },
+    {
+      "host": "copilot.cloud.microsoft",
+      "saas_id": "microsoft-copilot"
+    },
+    {
+      "host": "copilot.microsoft.com",
+      "saas_id": "microsoft-copilot"
+    },
+    {
+      "host": "copper.com",
+      "saas_id": "copper"
+    },
+    {
+      "host": "courier.com",
+      "saas_id": "courier"
+    },
+    {
+      "host": "craft.do",
+      "saas_id": "craft"
+    },
+    {
+      "host": "crazyegg.com",
+      "saas_id": "crazy-egg"
+    },
+    {
+      "host": "creator.voiceflow.com",
+      "saas_id": "voiceflow"
+    },
+    {
+      "host": "crm.zoho.com",
+      "saas_id": "zoho-crm"
+    },
+    {
+      "host": "crm.zoho.eu",
+      "saas_id": "zoho-crm"
+    },
+    {
+      "host": "crowdin.com",
+      "saas_id": "crowdin"
+    },
+    {
+      "host": "customer.io",
+      "saas_id": "customer-io"
+    },
+    {
+      "host": "dashboard.algolia.com",
+      "saas_id": "algolia"
+    },
+    {
+      "host": "dashboard.clerk.com",
+      "saas_id": "clerk"
+    },
+    {
+      "host": "dashboard.doppler.com",
+      "saas_id": "doppler"
+    },
+    {
       "host": "dashboard.heroku.com",
       "saas_id": "heroku"
     },
     {
+      "host": "dashboard.instatus.com",
+      "saas_id": "instatus"
+    },
+    {
+      "host": "dashboard.mailerlite.com",
+      "saas_id": "mailerlite"
+    },
+    {
+      "host": "dashboard.mintlify.com",
+      "saas_id": "mintlify"
+    },
+    {
+      "host": "dashboard.ngrok.com",
+      "saas_id": "ngrok"
+    },
+    {
+      "host": "dashboard.onesignal.com",
+      "saas_id": "onesignal"
+    },
+    {
+      "host": "dashboard.render.com",
+      "saas_id": "render"
+    },
+    {
+      "host": "dashboard.stripe.com",
+      "path_prefix": "/billing",
+      "saas_id": "stripe-billing"
+    },
+    {
+      "host": "dashboard.stripe.com",
+      "path_prefix": "/subscriptions",
+      "saas_id": "stripe-billing"
+    },
+    {
+      "host": "dashboard.twitch.tv",
+      "saas_id": "twitch"
+    },
+    {
+      "host": "dashboard.uptimerobot.com",
+      "saas_id": "uptimerobot"
+    },
+    {
+      "host": "dashboard.workos.com",
+      "saas_id": "workos"
+    },
+    {
+      "host": "dashlane.com",
+      "saas_id": "dashlane"
+    },
+    {
       "host": "datadoghq.com",
       "saas_id": "datadog"
+    },
+    {
+      "host": "datastudio.google.com",
+      "saas_id": "looker-studio"
+    },
+    {
+      "host": "datocms.com",
+      "saas_id": "datocms"
+    },
+    {
+      "host": "deepl.com",
+      "saas_id": "deepl"
+    },
+    {
+      "host": "descript.com",
+      "saas_id": "descript"
+    },
+    {
+      "host": "desk.zoho.com",
+      "saas_id": "zoho-desk"
+    },
+    {
+      "host": "desk.zoho.eu",
+      "saas_id": "zoho-desk"
+    },
+    {
+      "host": "dev.azure.com",
+      "saas_id": "azure-devops"
+    },
+    {
+      "host": "diffbot.com",
+      "saas_id": "diffbot"
+    },
+    {
+      "host": "digitalocean.com",
+      "path_prefix": "/products/app-platform",
+      "saas_id": "digitalocean-app-platform"
+    },
+    {
+      "host": "discord.com",
+      "saas_id": "discord"
+    },
+    {
+      "host": "discord.gg",
+      "saas_id": "discord"
+    },
+    {
+      "host": "discordapp.com",
+      "saas_id": "discord"
+    },
+    {
+      "host": "disqus.com",
+      "saas_id": "disqus"
+    },
+    {
+      "host": "docs.craft.do",
+      "saas_id": "craft"
+    },
+    {
+      "host": "docs.google.com",
+      "saas_id": "google-docs"
+    },
+    {
+      "host": "docs.google.com",
+      "path_prefix": "/document",
+      "saas_id": "google-docs"
+    },
+    {
+      "host": "docs.google.com",
+      "path_prefix": "/forms",
+      "saas_id": "google-forms"
+    },
+    {
+      "host": "docs.google.com",
+      "path_prefix": "/presentation",
+      "saas_id": "google-slides"
+    },
+    {
+      "host": "document360.com",
+      "saas_id": "document360"
+    },
+    {
+      "host": "docusign.com",
+      "saas_id": "docusign"
+    },
+    {
+      "host": "doppler.com",
+      "saas_id": "doppler"
     },
     {
       "host": "drive.google.com",
@@ -104,24 +1537,475 @@
       "saas_id": "dropbox"
     },
     {
+      "host": "dynamics.microsoft.com",
+      "saas_id": "microsoft-dynamics-365"
+    },
+    {
+      "host": "dynatrace.com",
+      "saas_id": "dynatrace"
+    },
+    {
+      "host": "ecwid.com",
+      "saas_id": "ecwid"
+    },
+    {
+      "host": "elastic.co",
+      "path_prefix": "/cloud",
+      "saas_id": "elastic-cloud"
+    },
+    {
+      "host": "elevenlabs.io",
+      "saas_id": "elevenlabs"
+    },
+    {
+      "host": "entra.microsoft.com",
+      "saas_id": "microsoft-entra-id"
+    },
+    {
+      "host": "eu.mixpanel.com",
+      "saas_id": "mixpanel"
+    },
+    {
       "host": "evernote.com",
       "saas_id": "evernote"
+    },
+    {
+      "host": "experience.adobe.com",
+      "path_prefix": "/analytics",
+      "saas_id": "adobe-analytics"
+    },
+    {
+      "host": "facebook.com",
+      "saas_id": "facebook"
+    },
+    {
+      "host": "facebook.com",
+      "path_prefix": "/messages",
+      "saas_id": "messenger"
+    },
+    {
+      "host": "feedly.com",
+      "saas_id": "feedly"
+    },
+    {
+      "host": "figma.com",
+      "saas_id": "figma"
+    },
+    {
+      "host": "figma.com",
+      "path_prefix": "/board",
+      "saas_id": "figjam"
+    },
+    {
+      "host": "figma.com",
+      "path_prefix": "/figjam",
+      "saas_id": "figjam"
     },
     {
       "host": "firebase.google.com",
       "saas_id": "firebase"
     },
     {
+      "host": "fireflies.ai",
+      "saas_id": "fireflies-ai"
+    },
+    {
+      "host": "firefly.adobe.com",
+      "saas_id": "adobe-firefly"
+    },
+    {
+      "host": "fivetran.com",
+      "saas_id": "fivetran"
+    },
+    {
+      "host": "flickr.com",
+      "saas_id": "flickr"
+    },
+    {
+      "host": "fly.customer.io",
+      "saas_id": "customer-io"
+    },
+    {
+      "host": "fly.io",
+      "saas_id": "fly-io"
+    },
+    {
+      "host": "forms.google.com",
+      "saas_id": "google-forms"
+    },
+    {
+      "host": "framer.com",
+      "saas_id": "framer"
+    },
+    {
+      "host": "freshbooks.com",
+      "saas_id": "freshbooks"
+    },
+    {
+      "host": "freshdesk.com",
+      "saas_id": "freshdesk"
+    },
+    {
+      "host": "freshworks.com",
+      "path_prefix": "/crm/sales",
+      "saas_id": "freshsales"
+    },
+    {
+      "host": "front.com",
+      "saas_id": "front"
+    },
+    {
+      "host": "fullstory.com",
+      "saas_id": "fullstory"
+    },
+    {
+      "host": "gamma.app",
+      "saas_id": "gamma"
+    },
+    {
+      "host": "gemini.google.com",
+      "saas_id": "google-gemini"
+    },
+    {
+      "host": "getguru.com",
+      "saas_id": "guru"
+    },
+    {
+      "host": "getharvest.com",
+      "saas_id": "harvest"
+    },
+    {
+      "host": "gitbook.com",
+      "saas_id": "gitbook"
+    },
+    {
+      "host": "github.com",
+      "saas_id": "github"
+    },
+    {
+      "host": "github.com",
+      "path_prefix": "/codespaces",
+      "saas_id": "github-codespaces"
+    },
+    {
+      "host": "github.com",
+      "path_prefix": "/copilot",
+      "saas_id": "github-copilot"
+    },
+    {
+      "host": "github.com",
+      "path_prefix": "/features/actions",
+      "saas_id": "github-actions"
+    },
+    {
+      "host": "github.com",
+      "path_prefix": "/features/codespaces",
+      "saas_id": "github-codespaces"
+    },
+    {
+      "host": "github.com",
+      "path_prefix": "/features/copilot",
+      "saas_id": "github-copilot"
+    },
+    {
+      "host": "gitlab.com",
+      "saas_id": "gitlab"
+    },
+    {
+      "host": "gmail.com",
+      "saas_id": "gmail"
+    },
+    {
       "host": "go.postman.co",
       "saas_id": "postman"
+    },
+    {
+      "host": "go.xero.com",
+      "saas_id": "xero"
+    },
+    {
+      "host": "google.com",
+      "saas_id": "google-search"
+    },
+    {
+      "host": "gorgias.com",
+      "saas_id": "gorgias"
+    },
+    {
+      "host": "grammarly.com",
+      "saas_id": "grammarly"
+    },
+    {
+      "host": "grok.com",
+      "saas_id": "grok"
+    },
+    {
+      "host": "gumroad.com",
+      "saas_id": "gumroad"
+    },
+    {
+      "host": "gusto.com",
+      "saas_id": "gusto"
+    },
+    {
+      "host": "heap.io",
+      "saas_id": "heap"
+    },
+    {
+      "host": "heapanalytics.com",
+      "saas_id": "heap"
+    },
+    {
+      "host": "hellosign.com",
+      "saas_id": "dropbox-sign"
+    },
+    {
+      "host": "helpscout.com",
+      "saas_id": "help-scout"
     },
     {
       "host": "heroku.com",
       "saas_id": "heroku"
     },
     {
+      "host": "honeycomb.io",
+      "saas_id": "honeycomb"
+    },
+    {
+      "host": "hootsuite.com",
+      "saas_id": "hootsuite"
+    },
+    {
+      "host": "hotjar.com",
+      "saas_id": "hotjar"
+    },
+    {
+      "host": "hub.docker.com",
+      "saas_id": "docker-hub"
+    },
+    {
+      "host": "hubspot.com",
+      "saas_id": "hubspot"
+    },
+    {
+      "host": "hubspot.com",
+      "path_prefix": "/products/crm",
+      "saas_id": "hubspot"
+    },
+    {
+      "host": "hygraph.com",
+      "saas_id": "hygraph"
+    },
+    {
+      "host": "icloud.com",
+      "path_prefix": "/photos",
+      "saas_id": "icloud-photos"
+    },
+    {
+      "host": "ilovepdf.com",
+      "saas_id": "ilovepdf"
+    },
+    {
+      "host": "inoreader.com",
+      "saas_id": "inoreader"
+    },
+    {
+      "host": "insights.hotjar.com",
+      "saas_id": "hotjar"
+    },
+    {
+      "host": "instatus.com",
+      "saas_id": "instatus"
+    },
+    {
+      "host": "intercom.com",
+      "saas_id": "intercom"
+    },
+    {
+      "host": "intune.microsoft.com",
+      "saas_id": "microsoft-intune"
+    },
+    {
+      "host": "iterable.com",
+      "saas_id": "iterable"
+    },
+    {
+      "host": "jamf.com",
+      "saas_id": "jamf"
+    },
+    {
+      "host": "jumpcloud.com",
+      "saas_id": "jumpcloud"
+    },
+    {
+      "host": "keap.com",
+      "saas_id": "keap"
+    },
+    {
+      "host": "keep.google.com",
+      "saas_id": "google-keep"
+    },
+    {
+      "host": "keepersecurity.com",
+      "saas_id": "keeper"
+    },
+    {
+      "host": "kit.com",
+      "saas_id": "kit"
+    },
+    {
+      "host": "klaviyo.com",
+      "saas_id": "klaviyo"
+    },
+    {
+      "host": "landbot.io",
+      "saas_id": "landbot"
+    },
+    {
+      "host": "lastpass.com",
+      "saas_id": "lastpass"
+    },
+    {
+      "host": "later.com",
+      "saas_id": "later"
+    },
+    {
+      "host": "launchdarkly.com",
+      "saas_id": "launchdarkly"
+    },
+    {
+      "host": "launchpad.37signals.com",
+      "saas_id": "basecamp"
+    },
+    {
+      "host": "leonardo.ai",
+      "saas_id": "leonardo-ai"
+    },
+    {
+      "host": "linear.app",
+      "saas_id": "linear"
+    },
+    {
+      "host": "linktr.ee",
+      "saas_id": "linktree"
+    },
+    {
+      "host": "linktree.com",
+      "saas_id": "linktree"
+    },
+    {
+      "host": "loggly.com",
+      "saas_id": "loggly"
+    },
+    {
+      "host": "login.salesforce.com",
+      "saas_id": "salesforce"
+    },
+    {
+      "host": "login.tailscale.com",
+      "saas_id": "tailscale"
+    },
+    {
+      "host": "login.teamviewer.com",
+      "saas_id": "teamviewer"
+    },
+    {
+      "host": "login.xero.com",
+      "saas_id": "xero"
+    },
+    {
+      "host": "logrocket.com",
+      "saas_id": "logrocket"
+    },
+    {
+      "host": "logs.betterstack.com",
+      "saas_id": "better-stack"
+    },
+    {
+      "host": "lokalise.com",
+      "saas_id": "lokalise"
+    },
+    {
+      "host": "looker.com",
+      "saas_id": "looker"
+    },
+    {
+      "host": "lookerstudio.google.com",
+      "saas_id": "looker-studio"
+    },
+    {
+      "host": "loom.com",
+      "saas_id": "loom"
+    },
+    {
+      "host": "lovable.dev",
+      "saas_id": "lovable"
+    },
+    {
+      "host": "lucid.app",
+      "path_prefix": "/lucidchart",
+      "saas_id": "lucidchart"
+    },
+    {
+      "host": "lucidchart.com",
+      "saas_id": "lucidchart"
+    },
+    {
+      "host": "m-files.com",
+      "saas_id": "m-files"
+    },
+    {
+      "host": "m.facebook.com",
+      "saas_id": "facebook"
+    },
+    {
+      "host": "m.youtube.com",
+      "saas_id": "youtube"
+    },
+    {
+      "host": "m365.cloud.microsoft",
+      "saas_id": "microsoft-365"
+    },
+    {
+      "host": "mail.google.com",
+      "saas_id": "gmail"
+    },
+    {
+      "host": "mail.google.com",
+      "path_prefix": "/chat",
+      "saas_id": "google-chat"
+    },
+    {
+      "host": "mail.proton.me",
+      "saas_id": "proton-mail"
+    },
+    {
+      "host": "mailchimp.com",
+      "saas_id": "mailchimp"
+    },
+    {
+      "host": "mailerlite.com",
+      "saas_id": "mailerlite"
+    },
+    {
+      "host": "mailgun.com",
+      "saas_id": "mailgun"
+    },
+    {
+      "host": "make.com",
+      "saas_id": "make"
+    },
+    {
       "host": "manage.auth0.com",
       "saas_id": "auth0"
+    },
+    {
+      "host": "manage.statuspage.io",
+      "saas_id": "statuspage"
+    },
+    {
+      "host": "manage.wix.com",
+      "saas_id": "wix"
     },
     {
       "host": "marketingplatform.google.com",
@@ -129,12 +2013,121 @@
       "saas_id": "google-analytics"
     },
     {
+      "host": "medium.com",
+      "saas_id": "medium"
+    },
+    {
+      "host": "meet.google.com",
+      "saas_id": "google-meet"
+    },
+    {
+      "host": "mega.io",
+      "saas_id": "mega"
+    },
+    {
+      "host": "mega.nz",
+      "saas_id": "mega"
+    },
+    {
+      "host": "messenger.com",
+      "saas_id": "messenger"
+    },
+    {
+      "host": "microsoft365.com",
+      "saas_id": "microsoft-365"
+    },
+    {
+      "host": "midjourney.com",
+      "saas_id": "midjourney"
+    },
+    {
+      "host": "mintlify.com",
+      "saas_id": "mintlify"
+    },
+    {
+      "host": "miro.com",
+      "saas_id": "miro"
+    },
+    {
+      "host": "mixpanel.com",
+      "saas_id": "mixpanel"
+    },
+    {
+      "host": "mobile.twitter.com",
+      "saas_id": "x-twitter"
+    },
+    {
+      "host": "mode.com",
+      "saas_id": "mode-analytics"
+    },
+    {
+      "host": "monarchmoney.com",
+      "saas_id": "monarch-money"
+    },
+    {
       "host": "monday.com",
       "saas_id": "monday-com"
     },
     {
+      "host": "mongodb.com",
+      "path_prefix": "/atlas",
+      "saas_id": "mongodb-atlas"
+    },
+    {
+      "host": "mural.co",
+      "saas_id": "mural"
+    },
+    {
+      "host": "music.youtube.com",
+      "saas_id": "youtube-music"
+    },
+    {
+      "host": "my.anydesk.com",
+      "saas_id": "anydesk"
+    },
+    {
+      "host": "my.ecwid.com",
+      "saas_id": "ecwid"
+    },
+    {
+      "host": "my.freshbooks.com",
+      "saas_id": "freshbooks"
+    },
+    {
+      "host": "my.papertrailapp.com",
+      "saas_id": "papertrail"
+    },
+    {
+      "host": "my.pcloud.com",
+      "saas_id": "pcloud"
+    },
+    {
+      "host": "my.pingdom.com",
+      "saas_id": "pingdom"
+    },
+    {
+      "host": "my.splashtop.com",
+      "saas_id": "splashtop"
+    },
+    {
+      "host": "netlify.com",
+      "saas_id": "netlify"
+    },
+    {
+      "host": "netsuite.com",
+      "saas_id": "netsuite"
+    },
+    {
       "host": "newrelic.com",
       "saas_id": "new-relic"
+    },
+    {
+      "host": "next.waveapps.com",
+      "saas_id": "wave"
+    },
+    {
+      "host": "ngrok.com",
+      "saas_id": "ngrok"
     },
     {
       "host": "notion.com",
@@ -145,6 +2138,22 @@
       "saas_id": "notion"
     },
     {
+      "host": "npmjs.com",
+      "saas_id": "npm"
+    },
+    {
+      "host": "office.com",
+      "saas_id": "microsoft-365"
+    },
+    {
+      "host": "okta.com",
+      "saas_id": "okta"
+    },
+    {
+      "host": "old.reddit.com",
+      "saas_id": "reddit"
+    },
+    {
       "host": "one.eu.newrelic.com",
       "saas_id": "new-relic"
     },
@@ -153,28 +2162,725 @@
       "saas_id": "new-relic"
     },
     {
+      "host": "onedrive.com",
+      "saas_id": "microsoft-onedrive"
+    },
+    {
+      "host": "onedrive.live.com",
+      "saas_id": "microsoft-onedrive"
+    },
+    {
+      "host": "onelogin.com",
+      "saas_id": "onelogin"
+    },
+    {
+      "host": "onenote.cloud.microsoft",
+      "saas_id": "microsoft-onenote"
+    },
+    {
+      "host": "onenote.com",
+      "saas_id": "microsoft-onenote"
+    },
+    {
+      "host": "onesignal.com",
+      "saas_id": "onesignal"
+    },
+    {
+      "host": "open.spotify.com",
+      "saas_id": "spotify"
+    },
+    {
+      "host": "openai.com",
+      "path_prefix": "/api",
+      "saas_id": "openai-api"
+    },
+    {
+      "host": "openrouter.ai",
+      "saas_id": "openrouter"
+    },
+    {
+      "host": "otter.ai",
+      "saas_id": "otter-ai"
+    },
+    {
+      "host": "outlook.cloud.microsoft",
+      "saas_id": "microsoft-outlook"
+    },
+    {
+      "host": "outlook.live.com",
+      "saas_id": "microsoft-outlook"
+    },
+    {
+      "host": "outlook.office.com",
+      "saas_id": "microsoft-outlook"
+    },
+    {
+      "host": "outlook.office365.com",
+      "saas_id": "microsoft-outlook"
+    },
+    {
+      "host": "pagerduty.com",
+      "saas_id": "pagerduty"
+    },
+    {
+      "host": "pages.cloudflare.com",
+      "saas_id": "cloudflare-pages"
+    },
+    {
+      "host": "pandadoc.com",
+      "saas_id": "pandadoc"
+    },
+    {
+      "host": "papertrail.com",
+      "saas_id": "papertrail"
+    },
+    {
+      "host": "pcloud.com",
+      "saas_id": "pcloud"
+    },
+    {
+      "host": "perplexity.ai",
+      "saas_id": "perplexity"
+    },
+    {
+      "host": "photopea.com",
+      "saas_id": "photopea"
+    },
+    {
+      "host": "photos.google.com",
+      "saas_id": "google-photos"
+    },
+    {
+      "host": "pi.pardot.com",
+      "saas_id": "marketing-cloud-account-engagement"
+    },
+    {
+      "host": "pinecone.io",
+      "saas_id": "pinecone"
+    },
+    {
+      "host": "pingdom.com",
+      "saas_id": "pingdom"
+    },
+    {
+      "host": "pipedrive.com",
+      "saas_id": "pipedrive"
+    },
+    {
+      "host": "pitch.com",
+      "saas_id": "pitch"
+    },
+    {
+      "host": "planner.cloud.microsoft",
+      "saas_id": "microsoft-planner"
+    },
+    {
+      "host": "platform.openai.com",
+      "saas_id": "openai-api"
+    },
+    {
+      "host": "poeditor.com",
+      "saas_id": "poeditor"
+    },
+    {
+      "host": "portal.document360.io",
+      "saas_id": "document360"
+    },
+    {
       "host": "postman.com",
       "saas_id": "postman"
+    },
+    {
+      "host": "postmarkapp.com",
+      "saas_id": "postmark"
+    },
+    {
+      "host": "powerbi.microsoft.com",
+      "saas_id": "power-bi"
+    },
+    {
+      "host": "prezi.com",
+      "saas_id": "prezi"
+    },
+    {
+      "host": "prismic.io",
+      "saas_id": "prismic"
+    },
+    {
+      "host": "proton.me",
+      "path_prefix": "/mail",
+      "saas_id": "proton-mail"
+    },
+    {
+      "host": "protonmail.com",
+      "saas_id": "proton-mail"
+    },
+    {
+      "host": "public.tableau.com",
+      "saas_id": "tableau"
+    },
+    {
+      "host": "publish.buffer.com",
+      "saas_id": "buffer"
+    },
+    {
+      "host": "qbo.intuit.com",
+      "saas_id": "quickbooks"
+    },
+    {
+      "host": "qlik.com",
+      "saas_id": "qlik-cloud"
+    },
+    {
+      "host": "qualtrics.com",
+      "saas_id": "qualtrics"
+    },
+    {
+      "host": "quickbooks.intuit.com",
+      "saas_id": "quickbooks"
+    },
+    {
+      "host": "quizlet.com",
+      "saas_id": "quizlet"
+    },
+    {
+      "host": "railway.app",
+      "saas_id": "railway"
+    },
+    {
+      "host": "railway.com",
+      "saas_id": "railway"
+    },
+    {
+      "host": "raindrop.io",
+      "saas_id": "raindrop-io"
+    },
+    {
+      "host": "rebrandly.com",
+      "saas_id": "rebrandly"
+    },
+    {
+      "host": "recurly.com",
+      "saas_id": "recurly"
+    },
+    {
+      "host": "reddit.com",
+      "saas_id": "reddit"
+    },
+    {
+      "host": "remotedesktop.google.com",
+      "saas_id": "chrome-remote-desktop"
+    },
+    {
+      "host": "remove.bg",
+      "saas_id": "remove-bg"
+    },
+    {
+      "host": "render.com",
+      "saas_id": "render"
+    },
+    {
+      "host": "replicate.com",
+      "saas_id": "replicate"
+    },
+    {
+      "host": "replit.com",
+      "saas_id": "replit"
+    },
+    {
+      "host": "retool.com",
+      "saas_id": "retool"
+    },
+    {
+      "host": "ringcentral.com",
+      "saas_id": "ringcentral"
+    },
+    {
+      "host": "rippling.com",
+      "saas_id": "rippling"
+    },
+    {
+      "host": "roamresearch.com",
+      "saas_id": "roam-research"
+    },
+    {
+      "host": "rocketmoney.com",
+      "saas_id": "rocket-money"
+    },
+    {
+      "host": "rollbar.com",
+      "saas_id": "rollbar"
+    },
+    {
+      "host": "runwayml.com",
+      "saas_id": "runway"
     },
     {
       "host": "s3.console.aws.amazon.com",
       "saas_id": "amazon-s3"
     },
     {
+      "host": "sage.com",
+      "path_prefix": "/en-us/sage-business-cloud/intacct",
+      "saas_id": "sage-intacct"
+    },
+    {
+      "host": "salesforce.com",
+      "saas_id": "salesforce"
+    },
+    {
+      "host": "salesforce.com",
+      "path_prefix": "/marketing",
+      "saas_id": "salesforce-marketing-cloud"
+    },
+    {
+      "host": "salesforce.com",
+      "path_prefix": "/marketing/b2b-automation",
+      "saas_id": "marketing-cloud-account-engagement"
+    },
+    {
+      "host": "sanity.io",
+      "saas_id": "sanity"
+    },
+    {
+      "host": "sap.com",
+      "path_prefix": "/products/erp/business-one",
+      "saas_id": "sap-business-one"
+    },
+    {
+      "host": "scrapingbee.com",
+      "saas_id": "scrapingbee"
+    },
+    {
+      "host": "screenconnect.com",
+      "saas_id": "connectwise-screenconnect"
+    },
+    {
+      "host": "secure.acuityscheduling.com",
+      "saas_id": "acuity-scheduling"
+    },
+    {
+      "host": "secure.backblaze.com",
+      "saas_id": "backblaze-b2"
+    },
+    {
+      "host": "secure.helpscout.net",
+      "saas_id": "help-scout"
+    },
+    {
+      "host": "segment.com",
+      "saas_id": "segment"
+    },
+    {
+      "host": "semrush.com",
+      "saas_id": "semrush"
+    },
+    {
+      "host": "sendgrid.com",
+      "saas_id": "sendgrid"
+    },
+    {
+      "host": "sentry.io",
+      "saas_id": "sentry"
+    },
+    {
+      "host": "service.sumologic.com",
+      "saas_id": "sumo-logic"
+    },
+    {
       "host": "shopify.com",
       "saas_id": "shopify"
+    },
+    {
+      "host": "shortcut.com",
+      "saas_id": "shortcut"
+    },
+    {
+      "host": "sign.dropbox.com",
+      "saas_id": "dropbox-sign"
+    },
+    {
+      "host": "slack.com",
+      "saas_id": "slack"
+    },
+    {
+      "host": "slides.google.com",
+      "saas_id": "google-slides"
+    },
+    {
+      "host": "slite.com",
+      "saas_id": "slite"
+    },
+    {
+      "host": "smallpdf.com",
+      "saas_id": "smallpdf"
+    },
+    {
+      "host": "snowflake.com",
+      "saas_id": "snowflake"
+    },
+    {
+      "host": "snyk.io",
+      "saas_id": "snyk"
+    },
+    {
+      "host": "splashtop.com",
+      "saas_id": "splashtop"
+    },
+    {
+      "host": "split.io",
+      "saas_id": "split"
+    },
+    {
+      "host": "splunk.com",
+      "saas_id": "splunk"
+    },
+    {
+      "host": "spotify.com",
+      "saas_id": "spotify"
+    },
+    {
+      "host": "sproutsocial.com",
+      "saas_id": "sprout-social"
+    },
+    {
+      "host": "squarespace.com",
+      "saas_id": "squarespace"
+    },
+    {
+      "host": "squareup.com",
+      "saas_id": "square-point-of-sale"
+    },
+    {
+      "host": "statuscake.com",
+      "saas_id": "statuscake"
+    },
+    {
+      "host": "statuspage.io",
+      "saas_id": "statuspage"
+    },
+    {
+      "host": "storyblok.com",
+      "saas_id": "storyblok"
+    },
+    {
+      "host": "strikingly.com",
+      "saas_id": "strikingly"
+    },
+    {
+      "host": "stripe.com",
+      "path_prefix": "/billing",
+      "saas_id": "stripe-billing"
+    },
+    {
+      "host": "studio.youtube.com",
+      "saas_id": "youtube"
+    },
+    {
+      "host": "stytch.com",
+      "saas_id": "stytch"
+    },
+    {
+      "host": "substack.com",
+      "saas_id": "substack"
+    },
+    {
+      "host": "sumologic.com",
+      "saas_id": "sumo-logic"
+    },
+    {
+      "host": "surveymonkey.com",
+      "saas_id": "surveymonkey"
+    },
+    {
+      "host": "swagger.io",
+      "path_prefix": "/tools/swaggerhub",
+      "saas_id": "swaggerhub"
+    },
+    {
+      "host": "tableau.com",
+      "saas_id": "tableau"
+    },
+    {
+      "host": "tailscale.com",
+      "saas_id": "tailscale"
+    },
+    {
+      "host": "tasks.google.com",
+      "saas_id": "google-tasks"
+    },
+    {
+      "host": "tasks.office.com",
+      "saas_id": "microsoft-planner"
+    },
+    {
+      "host": "teachable.com",
+      "saas_id": "teachable"
+    },
+    {
+      "host": "teams.cloud.microsoft",
+      "saas_id": "microsoft-teams"
+    },
+    {
+      "host": "teams.live.com",
+      "saas_id": "microsoft-teams"
+    },
+    {
+      "host": "teams.microsoft.com",
+      "saas_id": "microsoft-teams"
+    },
+    {
+      "host": "teamviewer.com",
+      "saas_id": "teamviewer"
+    },
+    {
+      "host": "tgcloud.io",
+      "saas_id": "tigergraph"
+    },
+    {
+      "host": "thenounproject.com",
+      "saas_id": "noun-project"
+    },
+    {
+      "host": "ticktick.com",
+      "saas_id": "ticktick"
+    },
+    {
+      "host": "tigergraph.com",
+      "saas_id": "tigergraph"
+    },
+    {
+      "host": "tinyurl.com",
+      "saas_id": "tinyurl"
+    },
+    {
+      "host": "to-do.live.com",
+      "saas_id": "microsoft-to-do"
+    },
+    {
+      "host": "to-do.office.com",
+      "saas_id": "microsoft-to-do"
+    },
+    {
+      "host": "todoist.com",
+      "saas_id": "todoist"
+    },
+    {
+      "host": "toggl.com",
+      "saas_id": "toggl-track"
+    },
+    {
+      "host": "track.toggl.com",
+      "saas_id": "toggl-track"
+    },
+    {
+      "host": "trakt.tv",
+      "saas_id": "trakt"
+    },
+    {
+      "host": "transifex.com",
+      "saas_id": "transifex"
+    },
+    {
+      "host": "translate.google.com",
+      "saas_id": "google-translate"
+    },
+    {
+      "host": "travis-ci.com",
+      "saas_id": "travis-ci"
+    },
+    {
+      "host": "tray.ai",
+      "saas_id": "tray-io"
+    },
+    {
+      "host": "tray.io",
+      "saas_id": "tray-io"
     },
     {
       "host": "trello.com",
       "saas_id": "trello"
     },
     {
+      "host": "twilio.com",
+      "saas_id": "twilio"
+    },
+    {
+      "host": "twitch.tv",
+      "saas_id": "twitch"
+    },
+    {
+      "host": "twitter.com",
+      "saas_id": "x-twitter"
+    },
+    {
+      "host": "typeform.com",
+      "saas_id": "typeform"
+    },
+    {
+      "host": "ui.honeycomb.io",
+      "saas_id": "honeycomb"
+    },
+    {
+      "host": "upstash.com",
+      "saas_id": "upstash"
+    },
+    {
+      "host": "uptime.betterstack.com",
+      "saas_id": "better-stack"
+    },
+    {
+      "host": "uptimerobot.com",
+      "saas_id": "uptimerobot"
+    },
+    {
+      "host": "us3.datadoghq.com",
+      "saas_id": "datadog"
+    },
+    {
       "host": "us5.datadoghq.com",
       "saas_id": "datadog"
     },
     {
+      "host": "usefathom.com",
+      "saas_id": "fathom-analytics"
+    },
+    {
+      "host": "usemotion.com",
+      "saas_id": "motion"
+    },
+    {
+      "host": "vercel.com",
+      "saas_id": "vercel"
+    },
+    {
+      "host": "vimeo.com",
+      "saas_id": "vimeo"
+    },
+    {
+      "host": "visualping.io",
+      "saas_id": "visualping"
+    },
+    {
+      "host": "voiceflow.com",
+      "saas_id": "voiceflow"
+    },
+    {
+      "host": "waveapps.com",
+      "saas_id": "wave"
+    },
+    {
+      "host": "web.descript.com",
+      "saas_id": "descript"
+    },
+    {
       "host": "web.postman.co",
       "saas_id": "postman"
+    },
+    {
+      "host": "web.teamviewer.com",
+      "saas_id": "teamviewer"
+    },
+    {
+      "host": "web.whatsapp.com",
+      "saas_id": "whatsapp"
+    },
+    {
+      "host": "webex.com",
+      "saas_id": "webex"
+    },
+    {
+      "host": "webflow.com",
+      "saas_id": "webflow"
+    },
+    {
+      "host": "weebly.com",
+      "saas_id": "weebly"
+    },
+    {
+      "host": "wetransfer.com",
+      "saas_id": "wetransfer"
+    },
+    {
+      "host": "whatsapp.com",
+      "saas_id": "whatsapp"
+    },
+    {
+      "host": "whimsical.com",
+      "saas_id": "whimsical"
+    },
+    {
+      "host": "wistia.com",
+      "saas_id": "wistia"
+    },
+    {
+      "host": "wix.com",
+      "saas_id": "wix"
+    },
+    {
+      "host": "wordpress.com",
+      "saas_id": "wordpress-com"
+    },
+    {
+      "host": "workday.com",
+      "saas_id": "workday"
+    },
+    {
+      "host": "workos.com",
+      "saas_id": "workos"
+    },
+    {
+      "host": "wrike.com",
+      "saas_id": "wrike"
+    },
+    {
+      "host": "wrike.com",
+      "path_prefix": "/workspace.htm",
+      "saas_id": "wrike"
+    },
+    {
+      "host": "x.com",
+      "saas_id": "x-twitter"
+    },
+    {
+      "host": "x.com",
+      "path_prefix": "/i/grok",
+      "saas_id": "grok"
+    },
+    {
+      "host": "xero.com",
+      "saas_id": "xero"
+    },
+    {
+      "host": "ynab.com",
+      "saas_id": "ynab"
+    },
+    {
+      "host": "youtube.com",
+      "saas_id": "youtube"
+    },
+    {
+      "host": "zapier.com",
+      "saas_id": "zapier"
+    },
+    {
+      "host": "zendesk.com",
+      "saas_id": "zendesk"
+    },
+    {
+      "host": "zoho.com",
+      "path_prefix": "/books",
+      "saas_id": "zoho-books"
+    },
+    {
+      "host": "zoho.com",
+      "path_prefix": "/crm",
+      "saas_id": "zoho-crm"
+    },
+    {
+      "host": "zoho.com",
+      "path_prefix": "/desk",
+      "saas_id": "zoho-desk"
     },
     {
       "host": "zoom.com",
@@ -183,6 +2889,10 @@
     {
       "host": "zoom.us",
       "saas_id": "zoom"
+    },
+    {
+      "host": "zuora.com",
+      "saas_id": "zuora"
     }
   ]
 }

@@ -1,0 +1,120 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "both",
+    "rank": 424,
+    "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+    "reasons": [
+      "fewer_than_minimum",
+      "outside_launch_selection"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "emmraan"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "data/products.json#/105/slug=mailcow",
+              "source_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
+              "source_id": "emmraan"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 92.5,
+            "ease_of_adoption": 64.8,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": null,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "import",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/mailcow/mailcow-dockerized",
+      "last_meaningful_activity_at": "2026-10-06T10:28:37Z",
+      "latest_release": {
+        "published_at": "2026-10-06T10:44:21Z",
+        "tag": "2026-09a"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Mailcow",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "migration path"
+        ],
+        "text": "Strongest on core use-case coverage and migration path."
+      },
+      "oss_id": "github.com/mailcow/mailcow-dockerized",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 83.6,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 81.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 83.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/mailcow/mailcow-dockerized",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "emmraan"
+      ],
+      "stars": 13632
+    }
+  ],
+  "saas": {
+    "category": "Email",
+    "compare_path": null,
+    "domain": "microsoft.com",
+    "name": "Microsoft Outlook",
+    "saas_id": "microsoft-outlook",
+    "slug": "microsoft-outlook"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

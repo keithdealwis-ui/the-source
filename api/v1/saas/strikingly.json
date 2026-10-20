@@ -1,0 +1,287 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "both",
+    "rank": 266,
+    "reason": "3 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "btwso",
+      "job_match"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L81",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 50.0,
+            "deployment_ownership": 91.7,
+            "ease_of_adoption": 82.6,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 75.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "multi_user",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/webstudio-is/webstudio",
+      "last_meaningful_activity_at": "2026-10-14T18:13:59Z",
+      "latest_release": {
+        "published_at": "2026-10-14T18:13:59Z",
+        "tag": "0.306.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Webstudio",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "integrations and extensibility",
+          "migration path"
+        ],
+        "text": "Strongest on integrations and extensibility and migration path; weakest on feature parity."
+      },
+      "oss_id": "github.com/webstudio-is/webstudio",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 82.0,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-14T23:51:42Z",
+        "score": 66.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/webstudio-is/webstudio",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "btwso"
+      ],
+      "stars": 9082
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L79",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 62.5,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/silexlabs/Silex",
+      "last_meaningful_activity_at": "2026-10-09T07:17:18Z",
+      "latest_release": {
+        "published_at": "2026-10-07T12:01:49Z",
+        "tag": "v3.10.0-canary.4"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Silex",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "feature parity",
+          "production readiness"
+        ],
+        "text": "Strongest on feature parity and production readiness."
+      },
+      "oss_id": "github.com/silexlabs/silex",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 93.6,
+        "score": 87.9,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 66.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/silexlabs/Silex",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "btwso"
+      ],
+      "stars": 3008
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/corebunch/instatic",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 40.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/CoreBunch/Instatic",
+      "last_meaningful_activity_at": "2026-10-13T15:40:58Z",
+      "latest_release": {
+        "published_at": "2026-10-12T17:53:45Z",
+        "tag": "v0.0.21"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Instatic",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/corebunch/instatic",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 92.1,
+        "score": 82.1,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 76.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/CoreBunch/Instatic",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 8975
+    }
+  ],
+  "saas": {
+    "category": "Site builder",
+    "compare_path": "/open-source/strikingly-alternatives",
+    "domain": "strikingly.com",
+    "name": "Strikingly",
+    "saas_id": "strikingly",
+    "slug": "strikingly"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

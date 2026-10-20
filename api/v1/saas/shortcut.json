@@ -1,0 +1,289 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 307,
+    "reason": "3 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "job_match"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/makeplane/plane",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 93.8,
+            "ease_of_adoption": 99.5,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/makeplane/plane",
+      "last_meaningful_activity_at": "2026-10-17T10:44:44Z",
+      "latest_release": {
+        "published_at": "2026-10-06T08:29:42Z",
+        "tag": "v1.4.3-rc1"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Plane",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on migration path."
+      },
+      "oss_id": "github.com/makeplane/plane",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 87.2,
+        "trajectory": "Declining"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 81.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/makeplane/plane",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 61027
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/kanboard/kanboard",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 61.3,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": null,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/kanboard/kanboard",
+      "last_meaningful_activity_at": "2026-10-12T04:30:11Z",
+      "latest_release": {
+        "published_at": "2026-08-29T02:38:58Z",
+        "tag": "v1.2.54"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Kanboard",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
+      },
+      "oss_id": "github.com/kanboard/kanboard",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 89.0,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 78.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 75.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/kanboard/kanboard",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 9909
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/opf/openproject",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 96.2,
+            "ease_of_adoption": 98.2,
+            "economic_advantage": 51.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 0.0,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/opf/openproject",
+      "last_meaningful_activity_at": "2026-10-15T15:41:02Z",
+      "latest_release": {
+        "published_at": "2026-10-15T11:56:10Z",
+        "tag": "v17.9.2"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "OpenProject",
+      "note": {
+        "gaps": [
+          "migration path",
+          "integrations and extensibility"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on migration path and integrations and extensibility."
+      },
+      "oss_id": "github.com/opf/openproject",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 91.2,
+        "score": 96.2,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 71.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/opf/openproject",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 16451
+    }
+  ],
+  "saas": {
+    "category": "Project management",
+    "compare_path": "/open-source/shortcut-alternatives",
+    "domain": "shortcut.com",
+    "name": "Shortcut",
+    "saas_id": "shortcut",
+    "slug": "shortcut"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

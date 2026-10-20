@@ -1,0 +1,196 @@
+# Reviewed licence readings (KEI-930, D6).
+#
+# Projects the automated licence detection misread: their repository is wholly under an OSI licence on the
+# policy's recognised list, but the host reported NOASSERTION or the classifier matched ordinary licence wording
+# (an ee/ path that holds no code, standard GPL "noncommercial" wording, a tri-licence with an AGPL option, ...).
+# Each reading was verified against the licence files on 2026-10-20 and approved by Keith. A reading is not a
+# licence exception: the project is then treated as ordinary open source, with no disclosure. The build refuses a
+# reading whose spdx is not on policy.licence.recognised_spdx, or that lacks a human approver and approval_ref.
+
+readings:
+  - oss_id: github.com/ankitects/anki
+    spdx: AGPL-3.0-or-later
+    evidence: "AGPL-3.0+; listed files MIT/BSD/Apache/CC-BY; no proprietary part"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/capsoftware/cap
+    spdx: AGPL-3.0
+    evidence: "AGPL-3.0 with MIT crates; no proprietary part"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/ceph/ceph
+    spdx: LGPL-2.1
+    evidence: "LGPL-2.1/LGPL-3 with GPL/BSD/MIT parts; no proprietary part"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/cube-js/cube
+    spdx: Apache-2.0
+    evidence: "Apache-2.0 default, some MIT packages; all package licences Apache/MIT"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/elgg/elgg
+    spdx: MIT
+    evidence: "MIT or GPL-2.0; mod/ GPL-2.0; \"noncommercial\" hit is GPL boilerplate"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/fortawesome/font-awesome
+    spdx: MIT
+    evidence: "Free: code MIT, fonts OFL-1.1, icons CC-BY-4.0; Pro not in repo"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/gitlabhq/gitlabhq
+    spdx: MIT
+    evidence: "FOSS mirror: MIT (docs CC-BY-SA); ee/ and jh/ absent from repo"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/gnome/gimp
+    spdx: GPL-3.0
+    evidence: "GPL-3.0 (libgimp LGPL); no proprietary part"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/haiwen/seafile
+    spdx: GPL-2.0
+    evidence: "GPL-2.0 with OpenSSL linking exception (extra permission only)"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/haiwen/seafile-server
+    spdx: AGPL-3.0
+    evidence: "AGPL-3.0 with OpenSSL exception; python/ Apache-2.0"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/humhub/humhub
+    spdx: AGPL-3.0-only
+    evidence: "Dual: AGPL-3.0-only or commercial; no proprietary part in repo"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/invoiceplane/invoiceplane
+    spdx: MIT
+    evidence: "MIT; extra text is a trademark notice only"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/janhq/jan
+    spdx: Apache-2.0
+    evidence: "Apache-2.0 (attribution only requested)"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/juliusbrussee/revu-swift
+    spdx: GPL-3.0-only
+    evidence: "GPL-3.0-only; trademark note only"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/keepassxreboot/keepassxc
+    spdx: GPL-2.0-or-later
+    evidence: "GPL-2/3 with BSD/MIT/LGPL/CC0/OFL extras"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/librecad/librecad
+    spdx: GPL-2.0
+    evidence: "GPL-2.0"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/limesurvey/limesurvey
+    spdx: GPL-2.0-or-later
+    evidence: "GPL-2.0-or-later; \"noncommercial\" hit is GPL boilerplate"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/moinwiki/moin
+    spdx: GPL-2.0-or-later
+    evidence: "GPL-2.0-or-later"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/mrrobotogit/tiramisu
+    spdx: GPL-3.0
+    evidence: "GPL-3.0; vendored parts MPL-2.0/MIT"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/netbirdio/netbird
+    spdx: BSD-3-Clause
+    evidence: "BSD-3-Clause; management/signal/relay/combined AGPL-3.0"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/odoo/odoo
+    spdx: LGPL-3.0
+    evidence: "LGPL-3.0; no enterprise code in this repo"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/openbq-org/openbb
+    spdx: Apache-2.0
+    evidence: "All files Apache-2.0"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/opensourcepos/opensourcepos
+    spdx: MIT
+    evidence: "MIT plus harmless \"cannot claim copyright\" sentence"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/photoprism/photoprism
+    spdx: AGPL-3.0
+    evidence: "AGPL-3.0; \"non commercial\" hit is GPL boilerplate"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/prestashop/prestashop
+    spdx: OSL-3.0
+    evidence: "Core OSL-3.0, modules AFL-3.0"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/rabbitmq/rabbitmq-server
+    spdx: MPL-2.0
+    evidence: "MPL-2.0; some OCF files Apache-2.0"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/redis/redis
+    spdx: AGPL-3.0
+    evidence: "Tri-licence at user choice: RSALv2, SSPLv1 or AGPLv3"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/redmine/redmine
+    spdx: GPL-2.0-or-later
+    evidence: "GPL-2.0-or-later"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/teamhanko/hanko
+    spdx: AGPL-3.0
+    evidence: "AGPL-3.0; frontend/elements and frontend-sdk are MIT; no enterprise part"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/vendurehq/vendure
+    spdx: GPL-3.0-or-later
+    evidence: "GPL-3.0 (plugin exception) or commercial VCL; no proprietary part in repo"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"
+  - oss_id: github.com/zincsearch/zincsearch
+    spdx: Apache-2.0
+    evidence: "Apache-2.0"
+    approved_by: keith
+    approval_ref: "KEI-930 Linear comment 65f9fd80-377f-448c-aa88-37905644a23f (D6, Keith, attended session 2026-10-20)"
+    reviewed_at: "2026-10-20"

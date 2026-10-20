@@ -1,0 +1,203 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 238,
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+    "reasons": [
+      "fewer_than_minimum"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "job_match"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/voidauth/voidauth",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 87.5,
+            "ease_of_adoption": 96.4,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "demo",
+            "import",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/voidauth/voidauth",
+      "last_meaningful_activity_at": "2026-10-17T21:08:17Z",
+      "latest_release": {
+        "published_at": "2026-09-26T03:36:42Z",
+        "tag": "v1.16.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "voidauth",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/voidauth/voidauth",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 86.5,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 88.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/voidauth/voidauth",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 2889
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/goauthentik/authentik",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 73.4,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/goauthentik/authentik",
+      "last_meaningful_activity_at": "2026-10-14T23:36:02Z",
+      "latest_release": {
+        "published_at": "2026-10-14T22:53:11Z",
+        "tag": "version/2026.8.4"
+      },
+      "licence_disclosure": "open core: recommendation covers the MIT core; parts under authentik Enterprise licence are excluded",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Authentik",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/goauthentik/authentik",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 93.9,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 81.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 86.1,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/goauthentik/authentik",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 25992
+    }
+  ],
+  "saas": {
+    "category": "Identity & access",
+    "compare_path": null,
+    "domain": "jumpcloud.com",
+    "name": "JumpCloud",
+    "saas_id": "jumpcloud",
+    "slug": "jumpcloud"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

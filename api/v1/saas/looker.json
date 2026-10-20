@@ -1,0 +1,462 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 63,
+    "reason": "6 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 1,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "btwso",
+      "opensaasdirectory",
+      "runacapital"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L651",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 67.6,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "import",
+            "multi_user",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/getredash/redash",
+      "last_meaningful_activity_at": "2026-10-03T19:03:55Z",
+      "latest_release": {
+        "published_at": "2026-09-24T10:46:49Z",
+        "tag": "v26.9.0"
+      },
+      "licence_spdx": "BSD-2-Clause",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Redash",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/getredash/redash",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 95.0,
+        "score": 84.2,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 88.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/getredash/redash",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "opensaasdirectory"
+      ],
+      "stars": 28835
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L619",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/apache/superset",
+      "last_meaningful_activity_at": "2026-10-16T23:27:14Z",
+      "latest_release": {
+        "published_at": "2026-10-16T23:27:14Z",
+        "tag": "7.0.0rc2"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "superset",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on migration path."
+      },
+      "oss_id": "github.com/apache/superset",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 97.4,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 78.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/apache/superset",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "opensaasdirectory"
+      ],
+      "stars": 75196
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Evidence.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 61.9,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": null,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "data_ownership",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/evidence-dev/evidence",
+      "last_meaningful_activity_at": "2026-10-15T16:16:44Z",
+      "latest_release": {
+        "published_at": "2026-02-06T16:08:58Z",
+        "tag": "@evidence-dev/evidence@40.1.8"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Evidence",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
+      },
+      "oss_id": "github.com/evidence-dev/evidence",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 75.3,
+        "trajectory": "Declining"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 78.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 76.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/evidence-dev/evidence",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 7032
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Cube.js.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 59.8,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/cube-js/cube",
+      "last_meaningful_activity_at": "2026-10-16T18:57:26Z",
+      "latest_release": {
+        "published_at": "2026-10-16T18:57:26Z",
+        "tag": "v1.8.8"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Cube.js",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on migration path."
+      },
+      "oss_id": "github.com/cube-js/cube",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 90.9,
+        "trajectory": "Rising"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 73.6,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/cube-js/cube",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 21029
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L635",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "README.md#L302",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 93.8,
+            "ease_of_adoption": 96.5,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 75.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/metabase/metabase",
+      "last_meaningful_activity_at": "2026-10-16T00:27:07Z",
+      "latest_release": {
+        "published_at": "2026-10-13T21:19:43Z",
+        "tag": "v0.65.0-beta"
+      },
+      "licence_disclosure": "open core: recommendation covers the AGPL-3.0 core; parts under Metabase Commercial License are excluded",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Metabase",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/metabase/metabase",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 93.3,
+        "trajectory": "Rising"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 90.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 90.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/metabase/metabase",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "opensaasdirectory",
+        "btwso"
+      ],
+      "stars": 49718
+    }
+  ],
+  "saas": {
+    "category": "Business intelligence",
+    "compare_path": "/open-source/looker-alternatives",
+    "domain": "looker.com",
+    "name": "Looker",
+    "saas_id": "looker",
+    "slug": "looker"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

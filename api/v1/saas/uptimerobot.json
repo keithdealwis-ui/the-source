@@ -1,0 +1,471 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "both",
+    "rank": 90,
+    "reason": "5 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "emmraan",
+      "job_match",
+      "opensaasdirectory",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L531",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/healthchecks/healthchecks",
+      "last_meaningful_activity_at": "2026-10-16T14:01:37Z",
+      "latest_release": {
+        "published_at": "2026-08-31T08:32:16Z",
+        "tag": "v4.4"
+      },
+      "licence_spdx": "BSD-3-Clause",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Healthchecks.io (self-hosted)",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/healthchecks/healthchecks",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 94.1,
+        "score": 85.9,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 86.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/healthchecks/healthchecks",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 10426
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L421",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/fclairamb/solidping",
+      "last_meaningful_activity_at": "2026-10-16T22:47:47Z",
+      "latest_release": {
+        "published_at": "2026-10-16T22:47:47Z",
+        "tag": "v0.38.6"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "SolidPing",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity."
+      },
+      "oss_id": "github.com/fclairamb/solidping",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 92.1,
+        "score": 79.4,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-16T23:27:37Z",
+        "score": 86.5,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/fclairamb/solidping",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "opensaasdirectory"
+      ],
+      "stars": 22
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L405",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 43.8,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/bluewave-labs/Checkmate",
+      "last_meaningful_activity_at": "2026-10-16T19:19:47Z",
+      "latest_release": {
+        "published_at": "2026-09-13T18:42:21Z",
+        "tag": "v3.12.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Checkmate",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/bluewave-labs/checkmate",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 95.0,
+        "score": 84.9,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 83.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/bluewave-labs/Checkmate",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "opensaasdirectory"
+      ],
+      "stars": 10959
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L530",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L357",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "data/products.json#/76/slug=uptime-kuma",
+              "source_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
+              "source_id": "emmraan"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/louislam/uptime-kuma",
+      "last_meaningful_activity_at": "2026-10-13T17:16:20Z",
+      "latest_release": {
+        "published_at": "2026-10-09T15:46:26Z",
+        "tag": "2.5.6"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Uptime Kuma",
+      "note": {
+        "gaps": [
+          "integrations and extensibility",
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity; weakest on integrations and extensibility and migration path."
+      },
+      "oss_id": "github.com/louislam/uptime-kuma",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 93.1,
+        "trajectory": "Stable"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-10-10T00:41:48Z",
+        "score": 70.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/louislam/uptime-kuma",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "opensaasdirectory",
+        "emmraan"
+      ],
+      "stars": 92582
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/msgbyte/tianji",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 94.2,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": null,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/msgbyte/tianji",
+      "last_meaningful_activity_at": "2026-10-17T18:03:18Z",
+      "latest_release": {
+        "published_at": "2026-10-18T17:48:08Z",
+        "tag": "v1.33.11"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "tianji",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
+      },
+      "oss_id": "github.com/msgbyte/tianji",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 78.0,
+        "trajectory": "Stable"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 78.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 85.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/msgbyte/tianji",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 3115
+    }
+  ],
+  "saas": {
+    "category": "Uptime monitoring",
+    "compare_path": "/open-source/uptimerobot-alternatives",
+    "domain": "uptimerobot.com",
+    "name": "UptimeRobot",
+    "saas_id": "uptimerobot",
+    "slug": "uptimerobot"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

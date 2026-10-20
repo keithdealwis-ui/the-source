@@ -1,6 +1,6 @@
 {
-  "data_as_of": "2026-10-16T23:27:37Z",
-  "dataset_version": "02568a5dd656e3a8",
+  "data_as_of": "2026-10-18T02:47:20Z",
+  "dataset_version": "3275503f8976b0b5",
   "k": 5,
   "queries": [
     {
@@ -30,13 +30,14 @@
       ],
       "id": "alt-1password",
       "kind": "positive",
-      "precision": 1.0,
+      "precision": 0.5,
       "reachable": 2,
       "recall": 0.5,
       "relevant": 2,
       "status": "insufficient_recommendations",
       "tool": "source_get_alternatives",
       "top": [
+        "github.com/keepassxreboot/keepassxc",
         "github.com/passbolt/passbolt_api"
       ],
       "violations": []
@@ -47,14 +48,15 @@
       ],
       "id": "alt-slack",
       "kind": "positive",
-      "precision": 1.0,
+      "precision": 0.5,
       "reachable": 3,
       "recall": 0.3333,
       "relevant": 3,
       "status": "insufficient_recommendations",
       "tool": "source_get_alternatives",
       "top": [
-        "github.com/zulip/zulip"
+        "github.com/zulip/zulip",
+        "github.com/rocketchat/rocket.chat"
       ],
       "violations": []
     },
@@ -114,7 +116,7 @@
       ],
       "id": "alt-asana",
       "kind": "positive",
-      "precision": 1.0,
+      "precision": 0.8,
       "reachable": 6,
       "recall": 0.8,
       "relevant": 6,
@@ -124,7 +126,8 @@
         "github.com/leantime/leantime",
         "github.com/go-vikunja/vikunja",
         "github.com/makeplane/plane",
-        "github.com/opf/openproject"
+        "github.com/opf/openproject",
+        "github.com/wekan/wekan"
       ],
       "violations": []
     },
@@ -183,7 +186,7 @@
       ],
       "id": "alt-dropbox",
       "kind": "positive",
-      "precision": 1.0,
+      "precision": 0.8,
       "reachable": 5,
       "recall": 0.8,
       "relevant": 5,
@@ -193,6 +196,7 @@
         "github.com/owncloud/core",
         "github.com/syncthing/syncthing",
         "github.com/nextcloud/server",
+        "github.com/haiwen/seafile-server",
         "github.com/mickael-kerjean/filestash"
       ],
       "violations": []
@@ -346,23 +350,22 @@
       "hits": [
         "github.com/saleor/saleor",
         "github.com/bagisto/bagisto",
-        "github.com/sylius/sylius",
-        "github.com/woocommerce/woocommerce"
+        "github.com/sylius/sylius"
       ],
       "id": "alt-shopify",
       "kind": "positive",
-      "precision": 0.8,
+      "precision": 0.6,
       "reachable": 4,
-      "recall": 1.0,
+      "recall": 0.75,
       "relevant": 4,
       "status": "ok",
       "tool": "source_get_alternatives",
       "top": [
         "github.com/itswadesh/svelte-commerce",
+        "github.com/vendurehq/vendure",
         "github.com/saleor/saleor",
         "github.com/bagisto/bagisto",
-        "github.com/sylius/sylius",
-        "github.com/woocommerce/woocommerce"
+        "github.com/sylius/sylius"
       ],
       "violations": []
     },
@@ -423,7 +426,7 @@
       ],
       "id": "alt-chatgpt",
       "kind": "positive",
-      "precision": 0.75,
+      "precision": 0.6,
       "reachable": 4,
       "recall": 0.75,
       "relevant": 4,
@@ -432,6 +435,7 @@
       "top": [
         "github.com/librechat-ai/librechat",
         "github.com/mintplex-labs/anything-llm",
+        "github.com/janhq/jan",
         "github.com/chatboxai/chatbox",
         "github.com/leon-ai/leon"
       ],
@@ -440,21 +444,20 @@
     {
       "hits": [
         "github.com/gogs/gogs",
-        "github.com/go-gitea/gitea",
-        "codeberg.org/forgejo/forgejo"
+        "github.com/go-gitea/gitea"
       ],
       "id": "alt-github",
       "kind": "positive",
-      "precision": 1.0,
+      "precision": 0.6667,
       "reachable": 4,
-      "recall": 0.75,
+      "recall": 0.5,
       "relevant": 4,
       "status": "ok",
       "tool": "source_get_alternatives",
       "top": [
         "github.com/gogs/gogs",
-        "github.com/go-gitea/gitea",
-        "codeberg.org/forgejo/forgejo"
+        "github.com/gitlabhq/gitlabhq",
+        "github.com/go-gitea/gitea"
       ],
       "violations": []
     },
@@ -467,7 +470,7 @@
       ],
       "id": "alt-zendesk",
       "kind": "positive",
-      "precision": 1.0,
+      "precision": 0.8,
       "reachable": 5,
       "recall": 0.8,
       "relevant": 5,
@@ -477,7 +480,8 @@
         "github.com/zammad/zammad",
         "github.com/freescout-help-desk/freescout",
         "github.com/osticket/osticket",
-        "github.com/uvdesk/community-skeleton"
+        "github.com/uvdesk/community-skeleton",
+        "github.com/chaskiq/chaskiq"
       ],
       "violations": []
     },
@@ -510,7 +514,7 @@
       ],
       "id": "alt-docusign",
       "kind": "positive",
-      "precision": 1.0,
+      "precision": 0.75,
       "reachable": 3,
       "recall": 1.0,
       "relevant": 3,
@@ -519,7 +523,8 @@
       "top": [
         "github.com/docusealco/docuseal",
         "github.com/libresign/libresign",
-        "github.com/documenso/documenso"
+        "github.com/documenso/documenso",
+        "github.com/opensignlabs/opensign"
       ],
       "violations": []
     },
@@ -530,7 +535,7 @@
       ],
       "id": "alt-airtable",
       "kind": "positive",
-      "precision": 0.6667,
+      "precision": 0.4,
       "reachable": 3,
       "recall": 0.6667,
       "relevant": 3,
@@ -539,7 +544,9 @@
       "top": [
         "github.com/gristlabs/grist-core",
         "github.com/apitable/apitable",
-        "github.com/totumonline/totum-mit"
+        "github.com/totumonline/totum-mit",
+        "github.com/baserow/baserow",
+        "github.com/teableio/teable"
       ],
       "violations": []
     },
@@ -568,35 +575,35 @@
       ],
       "id": "alt-confluence",
       "kind": "positive",
-      "precision": 1.0,
+      "precision": 0.3333,
       "reachable": 5,
       "recall": 0.2,
       "relevant": 5,
-      "status": "insufficient_recommendations",
+      "status": "ok",
       "tool": "source_get_alternatives",
       "top": [
-        "github.com/bookstackapp/bookstack"
+        "github.com/bookstackapp/bookstack",
+        "github.com/outline/outline",
+        "github.com/colanode/colanode"
       ],
       "violations": []
     },
     {
       "hits": [
         "github.com/tymeslot/tymeslot",
-        "github.com/alextselegidis/easyappointments",
-        "github.com/calcom/cal.diy"
+        "github.com/alextselegidis/easyappointments"
       ],
       "id": "alt-calendly",
       "kind": "positive",
       "precision": 1.0,
       "reachable": 3,
-      "recall": 1.0,
+      "recall": 0.6667,
       "relevant": 3,
-      "status": "ok",
+      "status": "insufficient_recommendations",
       "tool": "source_get_alternatives",
       "top": [
         "github.com/tymeslot/tymeslot",
-        "github.com/alextselegidis/easyappointments",
-        "github.com/calcom/cal.diy"
+        "github.com/alextselegidis/easyappointments"
       ],
       "violations": []
     },
@@ -622,22 +629,21 @@
       "violations": []
     },
     {
-      "hits": [
-        "github.com/passbolt/passbolt_api"
-      ],
+      "hits": [],
       "id": "need-password-manager",
       "kind": "positive",
-      "precision": 0.25,
+      "precision": 0.0,
       "reachable": 2,
-      "recall": 0.5,
+      "recall": 0.0,
       "relevant": 2,
       "status": "ok",
       "tool": "source_recommend",
       "top": [
         "github.com/jitsi/jitsi-meet",
+        "github.com/primocms/primo",
         "github.com/zulip/zulip",
-        "github.com/passbolt/passbolt_api",
-        "github.com/healthchecks/healthchecks"
+        "github.com/sulu/sulu",
+        "github.com/keepassxreboot/keepassxc"
       ],
       "violations": []
     },
@@ -681,9 +687,9 @@
       "top": [
         "github.com/plausible/analytics",
         "github.com/umami-software/umami",
+        "github.com/dgtlmoon/changedetection.io",
         "github.com/open-web-analytics/open-web-analytics",
-        "github.com/frigadehq/trench",
-        "github.com/prismelabs/analytics"
+        "github.com/frigadehq/trench"
       ],
       "violations": []
     },
@@ -696,7 +702,7 @@
       ],
       "id": "need-helpdesk",
       "kind": "positive",
-      "precision": 1.0,
+      "precision": 0.8,
       "reachable": 5,
       "recall": 0.8,
       "relevant": 5,
@@ -705,6 +711,7 @@
       "top": [
         "github.com/zammad/zammad",
         "github.com/freescout-help-desk/freescout",
+        "github.com/chaskiq/chaskiq",
         "github.com/osticket/osticket",
         "github.com/uvdesk/community-skeleton"
       ],
@@ -717,7 +724,7 @@
       ],
       "id": "need-feature-flags",
       "kind": "positive",
-      "precision": 1.0,
+      "precision": 0.5,
       "reachable": 2,
       "recall": 1.0,
       "relevant": 2,
@@ -725,6 +732,8 @@
       "tool": "source_recommend",
       "top": [
         "github.com/unleash/unleash",
+        "github.com/growthbook/growthbook",
+        "github.com/thomaspoignant/go-feature-flag",
         "github.com/flagsmith/flagsmith"
       ],
       "violations": []
@@ -758,23 +767,22 @@
       "hits": [
         "github.com/healthchecks/healthchecks",
         "github.com/twin/gatus",
-        "github.com/bluewave-labs/checkmate",
-        "github.com/openstatushq/openstatus"
+        "github.com/bluewave-labs/checkmate"
       ],
       "id": "need-status-page",
       "kind": "positive",
-      "precision": 0.8,
+      "precision": 0.6,
       "reachable": 5,
-      "recall": 0.8,
+      "recall": 0.6,
       "relevant": 5,
       "status": "ok",
       "tool": "source_recommend",
       "top": [
         "github.com/healthchecks/healthchecks",
         "github.com/fclairamb/solidping",
+        "github.com/msgbyte/tianji",
         "github.com/twin/gatus",
-        "github.com/bluewave-labs/checkmate",
-        "github.com/openstatushq/openstatus"
+        "github.com/bluewave-labs/checkmate"
       ],
       "violations": []
     },
@@ -824,14 +832,15 @@
       ],
       "id": "con-slack-10k-stars",
       "kind": "positive",
-      "precision": 1.0,
+      "precision": 0.5,
       "reachable": 2,
       "recall": 0.5,
       "relevant": 3,
       "status": "ok",
       "tool": "source_recommend",
       "top": [
-        "github.com/zulip/zulip"
+        "github.com/zulip/zulip",
+        "github.com/rocketchat/rocket.chat"
       ],
       "violations": []
     },
@@ -846,7 +855,8 @@
       "status": "ok",
       "tool": "source_recommend",
       "top": [
-        "github.com/noveum/orbit"
+        "github.com/noveum/orbit",
+        "github.com/kanboard/kanboard"
       ],
       "violations": []
     },
@@ -876,8 +886,8 @@
       "id": "con-pm-agpl",
       "kind": "positive",
       "precision": 1.0,
-      "reachable": 2,
-      "recall": 0.5,
+      "reachable": 1,
+      "recall": 1.0,
       "relevant": 2,
       "status": "ok",
       "tool": "source_recommend",
@@ -889,14 +899,13 @@
     {
       "hits": [
         "github.com/tsuru/tsuru",
-        "github.com/coollabsio/coolify",
-        "github.com/kubero-dev/kubero"
+        "github.com/coollabsio/coolify"
       ],
       "id": "con-heroku-health-fit",
       "kind": "positive",
-      "precision": 0.6,
+      "precision": 0.4,
       "reachable": 5,
-      "recall": 0.6,
+      "recall": 0.4,
       "relevant": 5,
       "status": "ok",
       "tool": "source_recommend",
@@ -904,8 +913,8 @@
         "github.com/peon-sh/peon",
         "github.com/tsuru/tsuru",
         "github.com/coollabsio/coolify",
-        "github.com/kubero-dev/kubero",
-        "github.com/dyrector-io/dyrectorio"
+        "github.com/dokploy/dokploy",
+        "github.com/hivepaas/hivepaas"
       ],
       "violations": []
     },
@@ -944,8 +953,8 @@
       "tool": "source_search",
       "top": [
         "github.com/passbolt/passbolt_api",
-        "github.com/marucie/authbox",
         "github.com/keepassxreboot/keepassxc",
+        "github.com/marucie/authbox",
         "github.com/icoretech/warden-mcp",
         "github.com/forest6511/secretctl"
       ],
@@ -956,8 +965,8 @@
         "github.com/rustfs/rustfs",
         "github.com/deuxfleurs-org/garage",
         "github.com/storj/storj",
-        "github.com/openstack/swift",
-        "github.com/seaweedfs/seaweedfs"
+        "github.com/seaweedfs/seaweedfs",
+        "github.com/openstack/swift"
       ],
       "id": "search-object-storage",
       "kind": "positive",
@@ -971,8 +980,8 @@
         "github.com/rustfs/rustfs",
         "github.com/deuxfleurs-org/garage",
         "github.com/storj/storj",
-        "github.com/openstack/swift",
-        "github.com/seaweedfs/seaweedfs"
+        "github.com/seaweedfs/seaweedfs",
+        "github.com/openstack/swift"
       ],
       "violations": []
     },
@@ -1017,20 +1026,20 @@
       "violations": []
     }
   ],
-  "queries_file_sha256": "52b5ef74177a5d22c8c7c6d5603e2cd7f6f62b5e64b512fb9ca64b6041f04697",
+  "queries_file_sha256": "5d2127c2961ce1039a7862901259ca5021bc48ec381914e6491d7f4a0489476a",
   "schema": "the-source.golden-eval/1",
   "server_version": "1.2.0",
   "summary": {
     "by_tool": {
       "source_get_alternatives": {
-        "precision@5": 0.8363,
+        "precision@5": 0.7125,
         "queries": 28,
-        "recall@5": 0.7381
+        "recall@5": 0.7083
       },
       "source_recommend": {
-        "precision@5": 0.7189,
+        "precision@5": 0.5956,
         "queries": 15,
-        "recall@5": 0.6643
+        "recall@5": 0.6357
       },
       "source_search": {
         "precision@5": 0.5333,
@@ -1043,11 +1052,11 @@
     "negative_passed": 2,
     "no_rows": [],
     "positive": 46,
-    "precision@5": 0.7783,
+    "precision@5": 0.6627,
     "precision_measured_on": 46,
     "queries": 48,
     "queries_with_violations": [],
-    "recall@5": 0.7141,
+    "recall@5": 0.6867,
     "recall_measured_on": 45
   }
 }

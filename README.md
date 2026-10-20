@@ -3,7 +3,9 @@
 The Source maps commercial SaaS products to open-source projects that can credibly
 replace them. Every recommendation passes three tests: it is verified against the
 project's own repository host, maintained within the last 12 months, and under a
-recognised open-source licence. Each one is scored for fit and health, and each carries
+recognised open-source licence, or under an open-core or source-available licence that
+was approved one project at a time and is disclosed with the recommendation
+(`licence_disclosure`). Each one is scored for fit and health, and each carries
 its provenance and the time it was last checked.
 
 This repository is the single source of truth. The Source Chrome extension, the
@@ -26,6 +28,7 @@ Nothing downstream keeps its own copy.
 | `data/radar/` | Community Radar: repositories being discussed on Hacker News, Forem and Bluesky (and X and Instagram once a credential is granted), ranked and reconciled against the corpus, with a daily list of candidates new to The Source (KEI-850, KEI-913). Facts and addresses only. |
 | `data/discovery/` | Candidate repositories found by the daily discovery lanes, reconciled against the corpus, awaiting relationship evidence. |
 | `data/intake/` | Manual intake: outcome records and the ledger of admitted repositories. |
+| `data/catalogue/` | The demand-led catalogue (KEI-922): 602 candidates with their ranking evidence, the selected 500, and any imported demand. |
 | `data/state/` | Operational state, such as upstream pins advanced by the daily research. |
 | `runs/` | One record per cycle (daily since KEI-848): what ran, what was found, what changed. |
 | `config/` | Sources and licence decisions, quality policy, SaaS catalogue, scoring rubric, supported products, schedule, discovery lanes, corroboration. |
@@ -41,7 +44,8 @@ Clients read `api/v1/`, never the GitHub API:
 ```text
 api/v1/index.json            supported products, dataset version, when live data was last checked
 api/v1/domains.json          hostname rules, so a client can detect a product locally
-api/v1/saas/<saas_id>.json   3-5 ranked recommendations for one product
+api/v1/catalogue.json        the 500-product catalogue: ok / partial / none_yet, reasons, detection rules
+api/v1/saas/<saas_id>.json   3-5 ranked recommendations for one product, with their evidence
 ```
 
 Each recommendation carries the GitHub link, stars, maintenance status, licence, latest
@@ -116,6 +120,7 @@ GITHUB_TOKEN=... .venv/bin/python -m source_pipeline cycle --trigger local   # a
 - [`docs/RADAR.md`](docs/RADAR.md): Community Radar (Hacker News, Forem, Bluesky; sources, terms, ranking, reconciliation)
 - [`docs/RADAR-SOCIAL.md`](docs/RADAR-SOCIAL.md): the X, Instagram and Bluesky feasibility spike and what each adapter may ask (KEI-913)
 - [`docs/READ-API.md`](docs/READ-API.md): the consumer contract
+- [`docs/CATALOGUE.md`](docs/CATALOGUE.md): the 500-product demand-led catalogue, its ok / partial / none_yet states and detection rules (KEI-922)
 - [`docs/MCP.md`](docs/MCP.md): the MCP retrieval server over the read layer (tools, gates, protocol)
 - [`docs/CORPUS.md`](docs/CORPUS.md): the public discovery corpus and its tiers (KEI-912)
 - [`docs/OPERATIONS.md`](docs/OPERATIONS.md): the daily cycle, failures, retries, run records and history

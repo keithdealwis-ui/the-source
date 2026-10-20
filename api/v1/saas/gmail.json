@@ -1,0 +1,207 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "both",
+    "rank": 70,
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations",
+    "reasons": [
+      "fewer_than_minimum",
+      "evaluated_not_recommended"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "altstack",
+      "fossalt"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L94",
+              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 93.8,
+            "ease_of_adoption": 67.7,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "import",
+            "quickstart"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/Aster-Privacy/Aster-Mail",
+      "last_meaningful_activity_at": "2026-10-17T22:04:29Z",
+      "latest_release": {
+        "published_at": "2026-10-17T18:45:07Z",
+        "tag": "v1.4.73"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Aster Mail",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity."
+      },
+      "oss_id": "github.com/aster-privacy/aster-mail",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 89.2,
+        "score": 80.7,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T00:51:00Z",
+        "score": 80.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Aster-Privacy/Aster-Mail",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "fossalt"
+      ],
+      "stars": 82
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "data/tools.json#slug=forward-email;named_by=gmail",
+              "source_commit": "0b9dacd632f128922862f70e1e09011c8611b48c",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 62.5,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/forwardemail/forwardemail.net",
+      "last_meaningful_activity_at": "2026-10-13T19:26:29Z",
+      "latest_release": {
+        "published_at": "2026-10-13T19:26:29Z",
+        "tag": "v2.18.6"
+      },
+      "licence_disclosure": "source-available: licensed under BUSL-1.1, which is not an OSI-approved open-source licence",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Forward Email",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "migration path"
+        ],
+        "text": "Strongest on core use-case coverage and migration path."
+      },
+      "oss_id": "github.com/forwardemail/forwardemail.net",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 82.6,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 81.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/forwardemail/forwardemail.net",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "altstack"
+      ],
+      "stars": 1686
+    }
+  ],
+  "saas": {
+    "category": "Email",
+    "compare_path": null,
+    "domain": "mail.google.com",
+    "name": "Gmail",
+    "saas_id": "gmail",
+    "slug": "gmail"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

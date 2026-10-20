@@ -1,0 +1,123 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2c",
+    "rank": 113,
+    "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+    "reasons": [
+      "fewer_than_minimum"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L794",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 46.2,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/advplyr/audiobookshelf",
+      "last_meaningful_activity_at": "2026-10-05T22:45:14Z",
+      "latest_release": {
+        "published_at": "2026-09-29T23:13:50Z",
+        "tag": "v2.37.1"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Audiobookshelf",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/advplyr/audiobookshelf",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 85.0,
+        "trajectory": "Declining"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 76.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/advplyr/audiobookshelf",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 14689
+    }
+  ],
+  "saas": {
+    "category": "Audio streaming",
+    "compare_path": null,
+    "domain": "audible.com",
+    "name": "Audible",
+    "saas_id": "audible",
+    "slug": "audible"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

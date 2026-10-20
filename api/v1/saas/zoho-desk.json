@@ -1,0 +1,204 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 258,
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+    "reasons": [
+      "fewer_than_minimum",
+      "outside_launch_selection"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "job_match"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/zammad/zammad",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 87.5,
+            "ease_of_adoption": 92.4,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 66.7
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/zammad/zammad",
+      "last_meaningful_activity_at": "2026-10-16T13:56:35Z",
+      "latest_release": null,
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Zammad",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/zammad/zammad",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 91.2,
+        "score": 82.9,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 84.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/zammad/zammad",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 6016
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/freescout-help-desk/freescout",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 58.3,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/freescout-help-desk/freescout",
+      "last_meaningful_activity_at": "2026-10-17T05:01:00Z",
+      "latest_release": {
+        "published_at": "2026-10-17T05:01:00Z",
+        "tag": "1.8.248"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "FreeScout",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness."
+      },
+      "oss_id": "github.com/freescout-help-desk/freescout",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 93.6,
+        "score": 86.4,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 75.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/freescout-help-desk/freescout",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 4604
+    }
+  ],
+  "saas": {
+    "category": "Customer support",
+    "compare_path": null,
+    "domain": "zoho.com",
+    "name": "Zoho Desk",
+    "saas_id": "zoho-desk",
+    "slug": "zoho-desk"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

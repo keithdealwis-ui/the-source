@@ -337,5 +337,37 @@
     "share_alike": false,
     "source_id": "intake",
     "url": "https://github.com/keithdealwis-ui/the-source/blob/main/data/intake/admitted/"
+  },
+  {
+    "attribution": "The Source job-match ledger (data/job_match/ledger.json): candidate pairings derived from each project's own description of its job, confirmed only by The Source's full evaluation",
+    "conditions": [
+      "a job match is a candidate, never presented as an upstream-listed alternative (evidence_class job_matched)",
+      "it counts toward a status only after the unchanged full evaluation passes it"
+    ],
+    "decision": "allow",
+    "harvest": {
+      "decision": "allow",
+      "entries": 437,
+      "entries_with_saas_claim": 437,
+      "harvested": true,
+      "licence_file_sha256": "199e9c1378d77da147e67bbc9465d65492650b458b77aafb627444c75a4110c7",
+      "pinned_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+      "relationship_claims": 2116,
+      "unparseable_files": 0
+    },
+    "kind": "job_match",
+    "licence_file": "docs/JOB-MATCH.md",
+    "licence_file_sha256": "199e9c1378d77da147e67bbc9465d65492650b458b77aafb627444c75a4110c7",
+    "licence_spdx": "n/a (The Source's own derivation)",
+    "pinned_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+    "priority": 11,
+    "rationale": "No third-party material is involved. Keith decided on 2026-10-19 (KEI-930 D1) that a project whose own description shows it does a category's job may be a candidate alternative to that category's products, labelled as its own evidence class and gated by the full evaluation.\n",
+    "repo": "keithdealwis-ui/the-source",
+    "reviewed_at": "2026-09-27",
+    "reviewed_by": "claude-heavy",
+    "schema_version": "1.0.0",
+    "share_alike": false,
+    "source_id": "job_match",
+    "url": "https://github.com/keithdealwis-ui/the-source/blob/main/data/job_match/ledger.json"
   }
 ]

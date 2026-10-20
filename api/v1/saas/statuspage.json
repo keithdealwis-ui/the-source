@@ -1,0 +1,282 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 237,
+    "reason": "3 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "altstack",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L521",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/TwiN/gatus",
+      "last_meaningful_activity_at": "2026-10-17T16:28:53Z",
+      "latest_release": {
+        "published_at": "2026-09-24T00:00:21Z",
+        "tag": "v5.37.0"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Gatus",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness."
+      },
+      "oss_id": "github.com/twin/gatus",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 87.8,
+        "trajectory": "Declining"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 81.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/TwiN/gatus",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 12339
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "data/tools.json#slug=warden;named_by=statuspage",
+              "source_commit": "0b9dacd632f128922862f70e1e09011c8611b48c",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 87.5,
+            "ease_of_adoption": 88.2,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": null,
+            "production_commercial_readiness": 50.0
+          },
+          "evidence_families": [
+            "quickstart",
+            "self_host",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/projecthelena/warden",
+      "last_meaningful_activity_at": "2026-10-08T10:37:31Z",
+      "latest_release": {
+        "published_at": "2026-10-08T10:37:31Z",
+        "tag": "v0.10.0-rc.1"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Warden",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity."
+      },
+      "oss_id": "github.com/projecthelena/warden",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 90.8,
+        "score": 71.3,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 81.5,
+        "evaluated_at": "2026-10-14T01:06:00Z",
+        "score": 77.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/projecthelena/warden",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "altstack"
+      ],
+      "stars": 5
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L520",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 50.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 50.6,
+            "economic_advantage": 40.0,
+            "feature_equivalence": null,
+            "integrations_extensibility": null,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "demo",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/cachethq/cachet",
+      "last_meaningful_activity_at": "2026-10-05T13:40:26Z",
+      "latest_release": {
+        "published_at": "2023-11-07T21:31:56Z",
+        "tag": "v2.4.1"
+      },
+      "licence_disclosure": "source-available: licensed under Cachet License (custom), which is not an OSI-approved open-source licence",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Cachet",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "production readiness",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on production readiness and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/cachethq/cachet",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 74.3,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 76.0,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 60.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/cachethq/cachet",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 15261
+    }
+  ],
+  "saas": {
+    "category": "Status pages",
+    "compare_path": "/open-source/statuspage-alternatives",
+    "domain": "atlassian.com",
+    "name": "Statuspage",
+    "saas_id": "statuspage",
+    "slug": "statuspage"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

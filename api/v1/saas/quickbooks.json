@@ -1,0 +1,470 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 12,
+    "reason": "6 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 1,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "altstack",
+      "fossalt",
+      "job_match",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L107",
+              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/SolidInvoice/SolidInvoice",
+      "last_meaningful_activity_at": "2026-10-15T18:24:48Z",
+      "latest_release": {
+        "published_at": "2026-10-15T18:16:36Z",
+        "tag": "3.1.1"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "SolidInvoice",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/solidinvoice/solidinvoice",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 86.4,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-16T01:10:28Z",
+        "score": 87.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/SolidInvoice/SolidInvoice",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "fossalt"
+      ],
+      "stars": 979
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L958",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "data/tools.json#slug=erpnext;named_by=salesforce,sap,quickbooks",
+              "source_commit": "0b9dacd632f128922862f70e1e09011c8611b48c",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 46.2,
+            "ease_of_adoption": 59.1,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/frappe/erpnext",
+      "last_meaningful_activity_at": "2026-10-15T21:11:16Z",
+      "latest_release": {
+        "published_at": "2026-10-15T17:09:25Z",
+        "tag": "v16.51.1"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "ERPNext",
+      "note": {
+        "gaps": [
+          "integrations and extensibility",
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness; weakest on integrations and extensibility and migration path."
+      },
+      "oss_id": "github.com/frappe/erpnext",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 91.8,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 90.5,
+        "evaluated_at": "2026-10-16T01:10:28Z",
+        "score": 63.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/frappe/erpnext",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "altstack"
+      ],
+      "stars": 40286
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L956",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "data/tools.json#slug=akaunting;named_by=quickbooks",
+              "source_commit": "0b9dacd632f128922862f70e1e09011c8611b48c",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 39.8,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/akaunting/akaunting",
+      "last_meaningful_activity_at": "2026-10-08T17:43:04Z",
+      "latest_release": {
+        "published_at": "2026-09-17T13:09:14Z",
+        "tag": "3.2.4"
+      },
+      "licence_disclosure": "source-available: licensed under BUSL-1.1, which is not an OSI-approved open-source licence",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Akaunting",
+      "note": {
+        "gaps": [
+          "ease of adoption"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on ease of adoption."
+      },
+      "oss_id": "github.com/akaunting/akaunting",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 85.1,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 90.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 79.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/akaunting/akaunting",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "altstack"
+      ],
+      "stars": 10188
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/dolibarr/dolibarr",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 96.2,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 51.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/Dolibarr/dolibarr",
+      "last_meaningful_activity_at": "2026-10-16T22:55:13Z",
+      "latest_release": {
+        "published_at": "2026-09-07T12:58:22Z",
+        "tag": "24.0.1"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Dolibarr",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness."
+      },
+      "oss_id": "github.com/dolibarr/dolibarr",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 94.2,
+        "trajectory": "Rising"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 86.1,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Dolibarr/dolibarr",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 7739
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/idurar/idurar-erp-crm",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 87.5,
+            "ease_of_adoption": 66.3,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": null,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/idurar/idurar-erp-crm",
+      "last_meaningful_activity_at": "2026-03-16T19:17:57Z",
+      "latest_release": {
+        "published_at": "2026-03-16T19:17:57Z",
+        "tag": "4.1.1"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "maintained",
+      "name": "IDURAR ERP CRM",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness; weakest on feature parity."
+      },
+      "oss_id": "github.com/idurar/idurar-erp-crm",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 75.2,
+        "trajectory": "Stable"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 78.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 77.1,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/idurar/idurar-erp-crm",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 8882
+    }
+  ],
+  "saas": {
+    "category": "Accounting",
+    "compare_path": "/open-source/quickbooks-alternatives",
+    "domain": "quickbooks.intuit.com",
+    "name": "QuickBooks",
+    "saas_id": "quickbooks",
+    "slug": "quickbooks"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

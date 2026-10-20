@@ -53,6 +53,11 @@ jobs:
           THE_SOURCE_NO_NETWORK: "1"
         run: python -m source_pipeline quick-validate
 
+      - name: Catalogue candidates, detection rules for every entry, reproducible selection (KEI-922)
+        env:
+          THE_SOURCE_NO_NETWORK: "1"
+        run: python -m source_pipeline catalogue-validate
+
       - name: Golden queries, no constraint violations, no regression past the baseline (KEI-918)
         env:
           THE_SOURCE_NO_NETWORK: "1"
@@ -66,7 +71,7 @@ jobs:
       - name: Tests
         env:
           THE_SOURCE_NO_NETWORK: "1"
-        run: python -m pytest tests/test_canonical.py tests/test_daily.py tests/test_momentum.py tests/test_radar.py tests/test_momentum_radar.py tests/test_mcp_server.py tests/test_mcp_v1_tools.py tests/test_mcp_http.py tests/test_corpus.py tests/test_corpus_admit.py tests/test_edition_check.py tests/test_observability.py tests/test_licence_classify.py tests/test_kei919_correctness.py tests/test_identity.py tests/test_rejection_codes.py -q
+        run: python -m pytest tests/test_canonical.py tests/test_daily.py tests/test_momentum.py tests/test_radar.py tests/test_momentum_radar.py tests/test_mcp_server.py tests/test_mcp_v1_tools.py tests/test_mcp_http.py tests/test_corpus.py tests/test_corpus_admit.py tests/test_edition_check.py tests/test_observability.py tests/test_licence_classify.py tests/test_kei919_correctness.py tests/test_identity.py tests/test_rejection_codes.py tests/test_catalogue.py -q
 
       - name: Committed data equals the rebuild
         run: |

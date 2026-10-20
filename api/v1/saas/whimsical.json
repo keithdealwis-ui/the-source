@@ -1,0 +1,202 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 314,
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+    "reasons": [
+      "fewer_than_minimum"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "job_match"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/jgraph/drawio",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 53.0,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "import",
+            "multi_user",
+            "plugins",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/jgraph/drawio",
+      "last_meaningful_activity_at": "2026-10-08T21:49:28Z",
+      "latest_release": {
+        "published_at": "2026-10-08T21:49:28Z",
+        "tag": "v32.4.1"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "drawio (diagrams.net)",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/jgraph/drawio",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 83.7,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 87.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/jgraph/drawio",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 8838
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/lovasoa/whitebophir",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 43.8,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 0.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "demo",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/lovasoa/whitebophir",
+      "last_meaningful_activity_at": "2026-10-17T17:44:37Z",
+      "latest_release": {
+        "published_at": "2026-10-17T17:44:37Z",
+        "tag": "v2.18.2"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "whitebophir",
+      "note": {
+        "gaps": [
+          "integrations and extensibility",
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on integrations and extensibility and migration path."
+      },
+      "oss_id": "github.com/lovasoa/whitebophir",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 92.1,
+        "score": 73.3,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 65.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/lovasoa/whitebophir",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 2670
+    }
+  ],
+  "saas": {
+    "category": "Whiteboarding",
+    "compare_path": null,
+    "domain": "whimsical.com",
+    "name": "Whimsical",
+    "saas_id": "whimsical",
+    "slug": "whimsical"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

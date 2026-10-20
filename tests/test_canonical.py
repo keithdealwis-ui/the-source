@@ -40,17 +40,10 @@ def test_every_supported_domain_resolves_to_a_deterministic_record():
 
 
 def _match(domains, url):
-    """Reference implementation of the domain match semantics (docs/READ-API.md)."""
-    from urllib.parse import urlparse
+    """The domain match semantics (docs/READ-API.md), through the shared reference (source_pipeline/detect.py)."""
+    from source_pipeline import detect
 
-    u = urlparse(url)
-    host = (u.hostname or "").lower()
-    host = host[4:] if host.startswith("www.") else host
-    hits = [r for r in domains["rules"]
-            if (r.get("host") == host or (r.get("host_suffix") and host.endswith(r["host_suffix"])))
-            and (not r.get("path_prefix") or u.path.startswith(r["path_prefix"]))]
-    hits.sort(key=lambda r: 0 if r.get("path_prefix") else 1)
-    return hits[0]["saas_id"] if hits else None
+    return detect.match_url(url, domains["rules"])
 
 
 @pytest.mark.skipif(not HAVE_DATASET, reason="needs the committed dataset")
@@ -58,8 +51,10 @@ def test_domain_matching_examples():
     domains = json.loads((common.ROOT / "api" / "v1" / "domains.json").read_text())
     assert _match(domains, "https://www.notion.so/workspace/page") == "notion"
     assert _match(domains, "https://acme.atlassian.net/jira/software/projects") == "jira"
-    assert _match(domains, "https://acme.atlassian.net/wiki/spaces") is None
+    assert _match(domains, "https://acme.atlassian.net/wiki/spaces") == "confluence"  # KEI-922: Confluence is served
+    assert _match(domains, "https://acme.atlassian.net/wikipedia") is None             # whole path segments only
     assert _match(domains, "https://aws.amazon.com/s3/pricing/") == "amazon-s3"
+    assert _match(domains, "https://aws.amazon.com/s3-glacier/") is None
     assert _match(domains, "https://aws.amazon.com/ec2/") is None
     assert _match(domains, "https://shop-name.myshopify.com/admin") == "shopify"
     assert _match(domains, "https://example.com/") is None

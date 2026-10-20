@@ -1,0 +1,374 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 202,
+    "reason": "4 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "job_match",
+      "opensaasdirectory"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L1401",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 46.2,
+            "ease_of_adoption": 97.7,
+            "economic_advantage": 51.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 0.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "demo",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/paperless-ngx/paperless-ngx",
+      "last_meaningful_activity_at": "2026-10-16T17:47:58Z",
+      "latest_release": {
+        "published_at": "2026-10-16T06:14:32Z",
+        "tag": "v3.3.2"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Paperless-ngx",
+      "note": {
+        "gaps": [
+          "integrations and extensibility",
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on integrations and extensibility and migration path."
+      },
+      "oss_id": "github.com/paperless-ngx/paperless-ngx",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 95.4,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 65.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/paperless-ngx/paperless-ngx",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "opensaasdirectory"
+      ],
+      "stars": 46818
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/sismics/docs",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 46.2,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 51.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/sismics/docs",
+      "last_meaningful_activity_at": "2026-08-17T07:16:50Z",
+      "latest_release": {
+        "published_at": "2023-03-12T13:01:29Z",
+        "tag": "v1.11"
+      },
+      "licence_spdx": "GPL-2.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "docs",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/sismics/docs",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 74.8,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 88.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/sismics/docs",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 2570
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/logicaldoc/community",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 85.0,
+            "ease_of_adoption": 45.2,
+            "economic_advantage": 34.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "import",
+            "multi_user",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/logicaldoc/community",
+      "last_meaningful_activity_at": "2026-10-16T12:53:40Z",
+      "latest_release": {
+        "published_at": "2025-08-12T13:57:56Z",
+        "tag": "9.2"
+      },
+      "licence_spdx": "LGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "LogicalDOC",
+      "note": {
+        "gaps": [
+          "feature parity",
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity and cost advantage."
+      },
+      "oss_id": "github.com/logicaldoc/community",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 92.8,
+        "score": 74.2,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 74.5,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/logicaldoc/community",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 144
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/jonashellmann/everydocs-core",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 71.2,
+            "ease_of_adoption": 77.7,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 40.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/jonashellmann/everydocs-core",
+      "last_meaningful_activity_at": "2026-08-03T15:54:12Z",
+      "latest_release": {
+        "published_at": "2019-10-16T04:50:16Z",
+        "tag": "v1.0"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "everydocs-core",
+      "note": {
+        "gaps": [
+          "integrations and extensibility",
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on integrations and extensibility and feature parity."
+      },
+      "oss_id": "github.com/jonashellmann/everydocs-core",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 96.6,
+        "score": 67.2,
+        "trajectory": "Stable"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 65.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/jonashellmann/everydocs-core",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 422
+    }
+  ],
+  "saas": {
+    "category": "Document management",
+    "compare_path": "/open-source/m-files-alternatives",
+    "domain": "m-files.com",
+    "name": "M-Files",
+    "saas_id": "m-files",
+    "slug": "m-files"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

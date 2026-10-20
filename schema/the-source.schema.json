@@ -27,7 +27,8 @@
         "diegoleme",
         "altstack",
         "fossalt",
-        "intake"
+        "intake",
+        "job_match"
       ]
     },
     "saas_id": {
@@ -231,10 +232,10 @@
           "properties": {
             "named_by_sources": {
               "type": "array",
-              "minItems": 1,
               "items": {
                 "$ref": "#/$defs/source_id"
-              }
+              },
+              "description": "Upstream sources naming the product. Empty for a product reached only by job matching (KEI-930), which is not a source naming it."
             },
             "spellings_seen": {
               "type": "array",
@@ -256,7 +257,7 @@
           "properties": {
             "source_count": {
               "type": "integer",
-              "minimum": 1
+              "minimum": 0
             },
             "validated_alternatives": {
               "type": "integer",
@@ -960,6 +961,13 @@
         "relation": {
           "const": "open_source_alternative_to"
         },
+        "evidence_class": {
+          "enum": [
+            "listed",
+            "self_described",
+            "job_matched"
+          ]
+        },
         "provenance": {
           "type": "array",
           "minItems": 1,
@@ -1077,6 +1085,10 @@
             "position": {
               "type": "integer",
               "minimum": 1
+            },
+            "via": {
+              "description": "catalogue_serving: added by launch.catalogue_serving (KEI-930) for a full-evaluation recommendation, outside the ranked selection",
+              "const": "catalogue_serving"
             }
           }
         }

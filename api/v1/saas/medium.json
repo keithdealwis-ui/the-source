@@ -1,0 +1,298 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "both",
+    "rank": 52,
+    "reason": "3 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "btwso",
+      "fossalt",
+      "runacapital"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L59",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            },
+            {
+              "locator": "README.md#L175",
+              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 87.5,
+            "ease_of_adoption": 75.3,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "demo",
+            "import",
+            "multi_user",
+            "quickstart",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/writefreely/writefreely",
+      "last_meaningful_activity_at": "2026-09-28T18:46:02Z",
+      "latest_release": {
+        "published_at": "2026-08-10T07:27:49Z",
+        "tag": "v0.17.2"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Writefreely",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity."
+      },
+      "oss_id": "github.com/writefreely/writefreely",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 79.7,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 90.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 81.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/writefreely/writefreely",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "btwso",
+        "fossalt"
+      ],
+      "stars": 5273
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L60",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            },
+            {
+              "locator": "README.md#L174",
+              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 96.2,
+            "ease_of_adoption": 74.8,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": null,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 0.0
+          },
+          "evidence_families": [
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/btw-so/btw",
+      "last_meaningful_activity_at": "2026-08-15T20:00:34Z",
+      "latest_release": null,
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "btw",
+      "note": {
+        "gaps": [
+          "production readiness",
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "migration path"
+        ],
+        "text": "Strongest on core use-case coverage and migration path; weakest on production readiness and feature parity."
+      },
+      "oss_id": "github.com/btw-so/btw",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 94.2,
+        "score": 65.7,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 89.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 68.6,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/btw-so/btw",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "btwso",
+        "fossalt"
+      ],
+      "stars": 1253
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Ghost.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 50.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 77.1,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "import",
+            "multi_user",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/TryGhost/Ghost",
+      "last_meaningful_activity_at": "2026-10-15T18:40:44Z",
+      "latest_release": {
+        "published_at": "2026-10-15T12:55:12Z",
+        "tag": "v6.71.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Ghost",
+      "note": {
+        "gaps": [
+          "integrations and extensibility"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "cost advantage",
+          "production readiness"
+        ],
+        "text": "Strongest on cost advantage and production readiness; weakest on integrations and extensibility."
+      },
+      "oss_id": "github.com/tryghost/ghost",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 94.3,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-16T01:10:28Z",
+        "score": 60.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/TryGhost/Ghost",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 55558
+    }
+  ],
+  "saas": {
+    "category": "Publishing",
+    "compare_path": "/open-source/medium-alternatives",
+    "domain": "medium.com",
+    "name": "Medium",
+    "saas_id": "medium",
+    "slug": "medium"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

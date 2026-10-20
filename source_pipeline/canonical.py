@@ -22,7 +22,7 @@ import shutil
 import tempfile
 from pathlib import Path
 
-from . import common
+from . import common, detect
 
 CANONICAL = common.DATA / "canonical"
 API = common.ROOT / "api" / "v1"
@@ -30,7 +30,11 @@ SCORES = common.DATA / "scores"
 SUPPORTED = common.CONFIG / "supported_saas.yaml"
 
 CANONICAL_SCHEMA = "the-source.canonical/1"
+CATALOGUE_SCHEMA = "the-source.catalogue/1"
 API_VERSION = "v1"
+STATUS_RULE = ("ok: at least {minimum} recommendations that passed the full evaluation (export-guarded relationship, "
+               "Replacement Fit publishable and a credible alternative). partial: 1 to {minimum} minus 1. none_yet: none. "
+               "Quick scores, corpus pairings and demand never change a status.")
 
 DIMENSION_LABELS = {
     "core_use_case_coverage": "core use-case coverage",
@@ -200,10 +204,20 @@ def _self_hosting(fit: dict | None) -> dict:
     return {"self_hostable": None, "basis": "no self-hosting evidence found; not evidence of absence"}
 
 
+def _licence_tier(rec: dict) -> int:
+    """KEI-930 D5: an OSI-licensed recommendation first, then a disclosed open-core exception, then a disclosed
+    source-available one; a licence exception never displaces an open-source alternative."""
+    d = rec.get("licence_disclosure") or ""
+    return 2 if d.startswith("source-available") else 1 if d else 0
+
+
 def _rank_key(rec: dict):
+    """Listed and self-described recommendations before job-matched ones, then by licence tier (_licence_tier) (KEI-930: weaker evidence never
+    displaces stronger evidence); within each, Replacement Fit, Project Health, stars, id."""
     fit = rec["replacement_fit"] or {}
     health = rec["project_health"] or {}
-    return (-(fit.get("score") or 0), -(health.get("score") or 0), -(rec["stars"] or 0), rec["oss_id"])
+    tier = 1 if rec["evidence"]["relationship"].get("evidence_class") == "job_matched" else 0
+    return (tier, _licence_tier(rec), -(fit.get("score") or 0), -(health.get("score") or 0), -(rec["stars"] or 0), rec["oss_id"])
 
 
 def _utc(ts: str | None) -> str | None:
@@ -219,6 +233,105 @@ def _sha(path: Path) -> str:
     return common.sha256_file(path)
 
 
+# ---------------------------------------------------------------- catalogue (KEI-922)
+
+def _evidence(rel: dict, fit: dict) -> dict:
+    """What a recommendation rests on: the relationship's upstream evidence and the full evaluation's evidence."""
+    return {
+        "relationship": {"corroborated": rel["corroborated"], "validated_as_of": rel["validated_as_of"],
+                         "evidence_class": rel.get("evidence_class", "listed"),
+                         "provenance": [{k: p[k] for k in ("source_id", "source_commit", "locator")}
+                                        for p in rel["provenance"]]},
+        "replacement_fit": {"scoring_path": fit["scoring_path"], "core_gate": fit["core_gate"],
+                            "evidence_families": fit["evidence_families"],
+                            "dimensions": fit["dimensions"]},
+    }
+
+
+def _corpus_pairing_counts() -> dict:
+    """Corpus projects whose own description or topics call them an alternative to a product (KEI-921 pairings,
+    upstream-list pairings left out: those are relationships, counted separately). Counts only; no quick score
+    leaves data/quick."""
+    path = common.DATA / "quick" / "pairings.jsonl"
+    out = {}
+    for r in common.read_jsonl(path) if path.exists() else []:
+        if any(ev["source"] in ("description", "topic") for ev in r.get("evidence") or []):
+            out[r["saas_id"]] = out.get(r["saas_id"], 0) + 1
+    return out
+
+
+def _catalogue_states(rel_rows: list, edges: dict, supported: dict, lo: int) -> dict:
+    """The selected catalogue with each product's status, and the products served with a support record:
+    the configured ones (config/supported_saas.yaml) plus every selected product that is ok or partial."""
+    from . import catalogue
+    from .score_build import load_jobs
+
+    cands = {c["saas_id"]: c for c in catalogue.candidates()}
+    sel = catalogue.load_selection()
+    ranks = {}
+    cand_path = common.DATA / "catalogue" / "candidates.jsonl"
+    if sel is not None and cand_path.exists():
+        ranks = {r["saas_id"]: r["rank"] for r in common.read_jsonl(cand_path)}
+    selected = list(sel["selected"]) if sel else []
+    jobs = load_jobs()
+    edges_max = common.load_policy()["launch"]["edges_max"]
+    pairings = _corpus_pairing_counts()
+    exported = {(r["saas_id"], r["oss_id"]) for r in rel_rows}
+    by_saas: dict = {}
+    for r in rel_rows:
+        by_saas.setdefault(r["saas_id"], []).append(r)
+    entries, by_id = [], {}
+    for sid in selected:
+        rows = by_saas.get(sid, [])
+        full = [r for r in rows if r["recommended"]
+                and (r["replacement_fit"] or {}).get("scoring_path") in catalogue.FULL_PATHS]
+        ds = [e for (s_, o), e in edges.items() if s_ == sid]
+        evidence = {
+            "awaiting": sum(1 for r in rows if r["replacement_fit"] is None),
+            "not_recommended": sum(1 for r in rows if r["replacement_fit"] is not None and not r["recommended"]),
+            "outside_launch": sum(1 for e in ds if e["lane"] == "recommendable" and not e["launch"]),
+            "share_alike_only": sum(1 for e in ds if e["lane"] == "recommendable" and e["launch"]
+                                    and (sid, e["oss_id"]) not in exported),
+            "licence_review": sum(1 for e in ds if e["lane"] == "licence_exception"),
+            "corpus_pairings": pairings.get(sid, 0),
+            "job_defined": cands[sid]["category"] in jobs,
+        }
+        st = catalogue.status(len(full), lo, evidence, edges_max=edges_max)
+        c = cands[sid]
+        e = {"saas_id": sid, "name": c["name"], "domain": c["domain"], "category": c["category"],
+             "audience": c["audience"], "rank": ranks.get(sid), "recommended": len(full), "evidence": evidence, **st}
+        entries.append(e)
+        by_id[sid] = e
+    entries.sort(key=lambda e: (e["rank"] is None, e["rank"] or 0, e["saas_id"]))
+    served, compare = [], {}
+    legacy = {p["saas_id"]: p for p in supported["products"]}
+    for p in supported["products"]:
+        served.append({"saas_id": p["saas_id"], "slug": p["slug"], "compare_path": p["compare_path"]})
+        compare[p["saas_id"]] = p["compare_path"]
+    for e in entries:
+        if e["saas_id"] in legacy or e["status"] == "none_yet":
+            continue
+        cp = f"/open-source/{e['saas_id']}-alternatives" if e["status"] == "ok" else None
+        served.append({"saas_id": e["saas_id"], "slug": e["saas_id"], "compare_path": cp})
+        compare[e["saas_id"]] = cp
+    return {
+        "entries": entries, "by_id": by_id, "served": served, "compare_path": compare,
+        "audience": {sid: c["audience"] for sid, c in cands.items()},
+        "match": {sid: c["match"] for sid, c in cands.items()},
+        "ranked_from": (sel or {}).get("ranked_from"),
+        "demand": {"status": ((sel or {}).get("demand") or {}).get("status", "unavailable"),
+                   "telemetry": catalogue.TELEMETRY["status"]},
+    }
+
+
+def _catalogue_counts(entries: list) -> dict:
+    out = {"entries": len(entries), **{s: sum(1 for e in entries if e["status"] == s) for s in ("ok", "partial", "none_yet")}}
+    out["by_audience"] = {a: {s: sum(1 for e in entries if e["audience"] == a and e["status"] == s)
+                              for s in ("ok", "partial", "none_yet")}
+                          for a in sorted({e["audience"] for e in entries})}
+    return out
+
+
 # ---------------------------------------------------------------- build
 
 def _licence_block(lic: dict) -> dict:
@@ -230,6 +343,9 @@ def _licence_block(lic: dict) -> dict:
     if exc.get("kind") == "edition_check":
         out["open_core"] = {"core_spdx": exc["core_spdx"], "disclosure": exc["disclosure"],
                             "edition_check": exc["edition_check"]}
+    elif exc.get("kind") == "keith_approved":  # KEI-930: a hand-approved exception names its class and disclosure
+        out["exception"] = {"class": exc["class"], "disclosure": exc["disclosure"],
+                            "approved_by": exc["approved_by"], "approval_ref": exc["approval_ref"]}
     elif oc.get("disclosure") and oc.get("edition_check"):  # recognised, with a carve-out (build.carve_out)
         ec = oc["edition_check"]
         out["open_core"] = {"core_spdx": oc["core_spdx"], "disclosure": oc["disclosure"],
@@ -280,6 +396,7 @@ def build(out_root: Path | None = None) -> dict:
             "saas_id": sid,
             "oss_id": oid,
             "relation": e["relation"],
+            "evidence_class": e.get("evidence_class", "listed"),
             "corroborated": e["corroborated"],
             "sources": row["sources"],
             "provenance": [p for p in e["provenance"] if p["source_id"] in row["sources"]],
@@ -325,11 +442,18 @@ def build(out_root: Path | None = None) -> dict:
                                   "score_version", "evaluated_at", "scoring_path")},
         })
 
+    # --- the catalogue (KEI-922): every selected product, its status from full evaluations alone
+    cat = _catalogue_states(rel_rows, edges, supported, lo=supported["recommendations"]["min"])
+    served_ids = [e["saas_id"] for e in cat["served"]]
+
     saas_rows = []
-    for sid in sorted({r["saas_id"] for r in rel_rows} | set(supported_ids)):
+    for sid in sorted({r["saas_id"] for r in rel_rows} | set(served_ids)):
         s = saas[sid]
+        entry = cat["by_id"].get(sid)
         saas_rows.append({"saas_id": sid, "name": s["name"], "domain": s["domain"], "category": s["category"],
-                          "aliases": s["aliases"], "supported": sid in supported_ids})
+                          "aliases": s["aliases"], "supported": sid in served_ids,
+                          "audience": cat["audience"].get(sid),
+                          "catalogue_status": entry["status"] if entry else None})
 
     common.write_jsonl(canon_dir / "saas_products.jsonl", saas_rows)
     common.write_jsonl(canon_dir / "oss_projects.jsonl", proj_rows)
@@ -346,7 +470,7 @@ def build(out_root: Path | None = None) -> dict:
     cfg = supported
     lo, hi = cfg["recommendations"]["min"], cfg["recommendations"]["max"]
     index_rows, domain_rules = [], []
-    for entry in cfg["products"]:
+    for entry in cat["served"]:
         sid = entry["saas_id"]
         s = saas[sid]
         recs = []
@@ -370,21 +494,27 @@ def build(out_root: Path | None = None) -> dict:
                 "self_hosting": _self_hosting(fit),
                 "note": _note(fit),
                 "sources": r["sources"],
+                "evidence": _evidence(r, fit),
                 "live_checked_at": p["live"]["checked_at"],
                 **({"licence_disclosure": p["licence"]["open_core"]["disclosure"]}
-                   if p["licence"].get("open_core") else {}),
+                   if p["licence"].get("open_core") else
+                   {"licence_disclosure": p["licence"]["exception"]["disclosure"]}
+                   if p["licence"].get("exception") else {}),
             })
         recs.sort(key=_rank_key)
         for i, rec in enumerate(recs, 1):
             rec["rank"] = i
         shown = recs[:hi]
         rec_checked = sorted(r["live_checked_at"] for r in shown)
+        state = cat["by_id"].get(sid)
         doc = {
             "api_version": API_VERSION,
             "dataset_version": dataset_version,
             "saas": {"saas_id": sid, "name": s["name"], "domain": s["domain"], "category": s["category"],
                      "slug": entry["slug"], "compare_path": entry["compare_path"]},
             "status": "ok" if len(shown) >= lo else "insufficient_recommendations",
+            "catalogue": None if state is None else {k: state[k] for k in ("status", "reasons", "reason", "rank",
+                                                                           "audience")},
             "recommendations": shown,
             "more_available": max(0, len(recs) - hi),
             "last_checked": {"oldest": rec_checked[0] if rec_checked else None,
@@ -397,12 +527,31 @@ def build(out_root: Path | None = None) -> dict:
         index_rows.append({"saas_id": sid, "name": s["name"], "slug": entry["slug"], "path": f"saas/{sid}.json",
                            "compare_path": entry["compare_path"], "recommendations": len(shown),
                            "status": doc["status"]})
-        for m in entry["match"]:
+        for m in cat["match"][sid]:
             domain_rules.append({"saas_id": sid, **m})
 
     domain_rules.sort(key=lambda d: (d.get("host") or "", d.get("host_suffix") or "", d.get("path_prefix") or "", d["saas_id"]))
     common.write_json(api_dir / "domains.json", {"api_version": API_VERSION, "dataset_version": dataset_version,
-                                                  "match_semantics": cfg["match_semantics"], "rules": domain_rules})
+                                                  "match_semantics": detect.MATCH_SEMANTICS, "rules": domain_rules})
+    entries = []
+    for e in cat["entries"]:
+        entries.append({**{k: e[k] for k in ("saas_id", "name", "domain", "category", "audience", "rank", "status",
+                                              "reasons", "reason", "recommended", "evidence")},
+                        "path": f"saas/{e['saas_id']}.json" if e["saas_id"] in served_ids else None,
+                        "compare_path": cat["compare_path"].get(e["saas_id"]),
+                        "match": cat["match"][e["saas_id"]]})
+    counts = {**_catalogue_counts(entries), "support_records": len(index_rows)}
+    common.write_json(api_dir / "catalogue.json", {
+        "api_version": API_VERSION,
+        "dataset_version": dataset_version,
+        "catalogue_schema": CATALOGUE_SCHEMA,
+        "status_rule": STATUS_RULE.format(minimum=lo),
+        "ranked_from": cat["ranked_from"],
+        "demand": cat["demand"],
+        "match_semantics": detect.MATCH_SEMANTICS,
+        "counts": counts,
+        "entries": entries,
+    })
     common.write_json(api_dir / "index.json", {
         "api_version": API_VERSION,
         "dataset_version": dataset_version,
@@ -411,6 +560,7 @@ def build(out_root: Path | None = None) -> dict:
         "live_checked_at": live_checked_at,
         "supported_saas": index_rows,
         "domains": "domains.json",
+        "catalogue": {"path": "catalogue.json", **{k: counts[k] for k in ("entries", "ok", "partial", "none_yet")}},
     })
 
     manifest = {
@@ -421,7 +571,9 @@ def build(out_root: Path | None = None) -> dict:
         "counts": {"saas_products": len(saas_rows), "oss_projects": len(proj_rows), "relationships": len(rel_rows),
                    "recommended_relationships": sum(r["recommended"] for r in rel_rows),
                    "supported_saas": len(index_rows),
-                   "supported_saas_ok": sum(1 for r in index_rows if r["status"] == "ok")},
+                   "supported_saas_ok": sum(1 for r in index_rows if r["status"] == "ok"),
+                   "catalogue_entries": counts["entries"], "catalogue_ok": counts["ok"],
+                   "catalogue_partial": counts["partial"], "catalogue_none_yet": counts["none_yet"]},
         "export_guard": {k: guard[k] for k in ("relationships_exported", "relationships_withheld_share_alike_only",
                                                 "export_licence_constraint")},
         "sources": {sid: {"pinned_commit": sources[sid]["pinned_commit"], "decision": sources[sid]["decision"]}

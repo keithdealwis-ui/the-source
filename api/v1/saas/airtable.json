@@ -1,0 +1,481 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 10,
+    "reason": "6 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 1,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "btwso",
+      "emmraan",
+      "opensaasdirectory",
+      "runacapital",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L166",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/gristlabs/grist-core",
+      "last_meaningful_activity_at": "2026-10-15T16:38:34Z",
+      "latest_release": {
+        "published_at": "2026-10-09T20:08:10Z",
+        "tag": "v1.7.21"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Grist",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/gristlabs/grist-core",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 90.9,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 92.5,
+        "evaluated_at": "2026-10-10T00:41:48Z",
+        "score": 93.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/gristlabs/grist-core",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "btwso"
+      ],
+      "stars": 11964
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L165",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 62.5,
+            "deployment_ownership": 93.8,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/apitable/apitable",
+      "last_meaningful_activity_at": "2026-09-06T14:15:13Z",
+      "latest_release": {
+        "published_at": "2026-09-06T14:15:13Z",
+        "tag": "v1.14.0-beta"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "APITable",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "ease of adoption",
+          "feature parity"
+        ],
+        "text": "Strongest on ease of adoption and feature parity."
+      },
+      "oss_id": "github.com/apitable/apitable",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 81.6,
+        "trajectory": "Declining"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 84.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/apitable/apitable",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "btwso"
+      ],
+      "stars": 15635
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Totum.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 37.6,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 40.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "plugins",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/totumonline/totum-mit",
+      "last_meaningful_activity_at": "2026-05-30T12:37:05Z",
+      "latest_release": {
+        "published_at": "2025-06-12T11:36:48Z",
+        "tag": "7.17.63.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "maintained",
+      "name": "totum-mit",
+      "note": {
+        "gaps": [
+          "migration path",
+          "ease of adoption"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on migration path and ease of adoption."
+      },
+      "oss_id": "github.com/totumonline/totum-mit",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 93.4,
+        "score": 71.2,
+        "trajectory": "Declining"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 61.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/totumonline/totum-mit",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 980
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L156",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L1539",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "data/products.json#/27/slug=baserow",
+              "source_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
+              "source_id": "emmraan"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 95.7,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/baserow/baserow",
+      "last_meaningful_activity_at": "2026-10-13T15:39:27Z",
+      "latest_release": {
+        "published_at": "2026-10-13T15:39:27Z",
+        "tag": "2.4.1"
+      },
+      "licence_disclosure": "open core: recommendation covers the MIT core; parts under Baserow premium/enterprise licences are excluded",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Baserow",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/baserow/baserow",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 90.1,
+        "trajectory": "Stable"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 93.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/baserow/baserow",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "opensaasdirectory",
+        "emmraan"
+      ],
+      "stars": 6168
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L157",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 62.5,
+            "deployment_ownership": 87.5,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 30.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/teableio/teable",
+      "last_meaningful_activity_at": "2026-10-16T08:44:11Z",
+      "latest_release": {
+        "published_at": "2026-10-16T07:57:29Z",
+        "tag": "release.2026-10-16T07-06-34Z.3445"
+      },
+      "licence_disclosure": "source-available: AGPL-3.0 with an added prohibition on removing Teable brand assets, which makes it not an OSI-approved open-source licence",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Teable",
+      "note": {
+        "gaps": [
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "feature parity",
+          "migration path"
+        ],
+        "text": "Strongest on feature parity and migration path; weakest on cost advantage."
+      },
+      "oss_id": "github.com/teableio/teable",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 75.6,
+        "trajectory": "Declining"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 75.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/teableio/teable",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 21894
+    }
+  ],
+  "saas": {
+    "category": "No-code database",
+    "compare_path": "/open-source/airtable-alternatives",
+    "domain": "airtable.com",
+    "name": "Airtable",
+    "saas_id": "airtable",
+    "slug": "airtable"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

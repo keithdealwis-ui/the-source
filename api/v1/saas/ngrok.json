@@ -1,0 +1,370 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 41,
+    "reason": "4 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "job_match",
+      "runacapital"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/OmniEdge.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/omniedgeio/omniedge",
+      "last_meaningful_activity_at": "2026-02-16T12:05:48Z",
+      "latest_release": {
+        "published_at": "2026-02-16T12:05:48Z",
+        "tag": "v2.9.0"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "maintained",
+      "name": "OmniEdge",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "cost advantage"
+        ],
+        "text": "Strongest on core use-case coverage and cost advantage."
+      },
+      "oss_id": "github.com/omniedgeio/omniedge",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 96.6,
+        "score": 69.3,
+        "trajectory": "Declining"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 76.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/omniedgeio/omniedge",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 889
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Tunnelmole.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 25.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/robbie-cahill/tunnelmole-client",
+      "last_meaningful_activity_at": "2026-04-13T08:54:01Z",
+      "latest_release": null,
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "maintained",
+      "name": "Tunnelmole",
+      "note": {
+        "gaps": [
+          "feature parity",
+          "production readiness"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "migration path"
+        ],
+        "text": "Strongest on core use-case coverage and migration path; weakest on feature parity and production readiness."
+      },
+      "oss_id": "github.com/robbie-cahill/tunnelmole-client",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 94.2,
+        "score": 55.4,
+        "trajectory": "Declining"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 68.5,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/robbie-cahill/tunnelmole-client",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 1898
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/amalshaji/portr",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 87.5,
+            "ease_of_adoption": 67.1,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/amalshaji/portr",
+      "last_meaningful_activity_at": "2026-10-11T17:39:52Z",
+      "latest_release": {
+        "published_at": "2026-09-27T08:48:44Z",
+        "tag": "v2.0.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "portr",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity."
+      },
+      "oss_id": "github.com/amalshaji/portr",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 81.8,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 79.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/amalshaji/portr",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 3189
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/fatedier/frp",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "import",
+            "multi_user",
+            "plugins",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/fatedier/frp",
+      "last_meaningful_activity_at": "2026-10-15T05:02:00Z",
+      "latest_release": {
+        "published_at": "2026-10-14T09:52:45Z",
+        "tag": "v0.71.1"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "frp",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/fatedier/frp",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 85.9,
+        "trajectory": "Rising"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 77.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/fatedier/frp",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 109993
+    }
+  ],
+  "saas": {
+    "category": "Networking & VPN",
+    "compare_path": "/open-source/ngrok-alternatives",
+    "domain": "ngrok.com",
+    "name": "ngrok",
+    "saas_id": "ngrok",
+    "slug": "ngrok"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

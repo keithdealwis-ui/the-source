@@ -1,0 +1,317 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 64,
+    "reason": "3 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "altstack",
+      "emmraan",
+      "opensaasdirectory",
+      "runacapital",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L722",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "submissions/Keila.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 91.7,
+            "ease_of_adoption": 72.6,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 66.7
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/pentacent/keila",
+      "last_meaningful_activity_at": "2026-10-02T08:39:56Z",
+      "latest_release": {
+        "published_at": "2026-09-06T09:30:31Z",
+        "tag": "0.30.3"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Keila",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/pentacent/keila",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 77.9,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 82.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/pentacent/keila",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "runacapital"
+      ],
+      "stars": 2237
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L720",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L1419",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "data/products.json#/103/slug=listmonk",
+              "source_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
+              "source_id": "emmraan"
+            },
+            {
+              "locator": "data/tools.json#slug=listmonk;named_by=mailchimp",
+              "source_commit": "0b9dacd632f128922862f70e1e09011c8611b48c",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 87.5,
+            "ease_of_adoption": 90.2,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": null,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "demo",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/knadh/listmonk",
+      "last_meaningful_activity_at": "2026-10-17T05:13:34Z",
+      "latest_release": {
+        "published_at": "2026-10-17T02:18:16Z",
+        "tag": "nightly"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Listmonk",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness; weakest on feature parity."
+      },
+      "oss_id": "github.com/knadh/listmonk",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 89.1,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 89.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 81.6,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/knadh/listmonk",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "opensaasdirectory",
+        "emmraan",
+        "altstack"
+      ],
+      "stars": 23824
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L721",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "data/tools.json#slug=mautic;named_by=mailchimp",
+              "source_commit": "0b9dacd632f128922862f70e1e09011c8611b48c",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 71.2,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/mautic/mautic",
+      "last_meaningful_activity_at": "2026-10-16T09:47:45Z",
+      "latest_release": {
+        "published_at": "2026-09-23T13:55:48Z",
+        "tag": "7.2.1"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Mautic",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness; weakest on migration path."
+      },
+      "oss_id": "github.com/mautic/mautic",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 94.9,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 90.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 70.1,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/mautic/mautic",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "altstack"
+      ],
+      "stars": 10788
+    }
+  ],
+  "saas": {
+    "category": "Email marketing",
+    "compare_path": "/open-source/mailchimp-alternatives",
+    "domain": "mailchimp.com",
+    "name": "Mailchimp",
+    "saas_id": "mailchimp",
+    "slug": "mailchimp"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

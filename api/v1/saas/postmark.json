@@ -1,0 +1,119 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 322,
+    "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+    "reasons": [
+      "fewer_than_minimum"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "emmraan"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "data/products.json#/104/slug=postal",
+              "source_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
+              "source_id": "emmraan"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 79.4,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": null,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/postalserver/postal",
+      "last_meaningful_activity_at": "2026-10-01T11:32:47Z",
+      "latest_release": {
+        "published_at": "2026-06-03T15:25:03Z",
+        "tag": "3.3.7"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Postal",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
+      },
+      "oss_id": "github.com/postalserver/postal",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 82.6,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 80.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 79.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/postalserver/postal",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "emmraan"
+      ],
+      "stars": 16872
+    }
+  ],
+  "saas": {
+    "category": "Transactional email",
+    "compare_path": null,
+    "domain": "postmarkapp.com",
+    "name": "Postmark",
+    "saas_id": "postmark",
+    "slug": "postmark"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

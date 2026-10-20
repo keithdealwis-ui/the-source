@@ -1,0 +1,375 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2c",
+    "rank": 37,
+    "reason": "4 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "job_match",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L803",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 46.2,
+            "ease_of_adoption": 76.9,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/navidrome/navidrome",
+      "last_meaningful_activity_at": "2026-10-16T21:54:34Z",
+      "latest_release": {
+        "published_at": "2026-09-24T23:26:20Z",
+        "tag": "v0.64.2"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Navidrome",
+      "note": {
+        "gaps": [
+          "integrations and extensibility"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on integrations and extensibility."
+      },
+      "oss_id": "github.com/navidrome/navidrome",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 88.4,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 70.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/navidrome/navidrome",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 24212
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/blackcandy-org/blackcandy",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/blackcandy-org/blackcandy",
+      "last_meaningful_activity_at": "2026-10-07T11:11:36Z",
+      "latest_release": {
+        "published_at": "2026-08-26T07:39:03Z",
+        "tag": "v3.2.1"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "blackcandy",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on feature parity."
+      },
+      "oss_id": "github.com/blackcandy-org/blackcandy",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 82.7,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 73.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/blackcandy-org/blackcandy",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 4428
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/epoupon/lms",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 46.2,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 51.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/epoupon/lms",
+      "last_meaningful_activity_at": "2026-09-18T20:09:50Z",
+      "latest_release": {
+        "published_at": "2026-09-18T20:09:50Z",
+        "tag": "v3.81.0"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "lms",
+      "note": {
+        "gaps": [
+          "integrations and extensibility",
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity; weakest on integrations and extensibility and migration path."
+      },
+      "oss_id": "github.com/epoupon/lms",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 81.7,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 68.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/epoupon/lms",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 1688
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/clangen/musikcube",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 25.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 20.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "multi_user",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/clangen/musikcube",
+      "last_meaningful_activity_at": "2026-03-23T02:00:44Z",
+      "latest_release": {
+        "published_at": "2025-09-21T07:16:59Z",
+        "tag": "3.0.5"
+      },
+      "licence_spdx": "BSD-3-Clause",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "maintained",
+      "name": "musikcube",
+      "note": {
+        "gaps": [
+          "cost advantage",
+          "self-hosting and data ownership"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on cost advantage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/clangen/musikcube",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 96.6,
+        "score": 56.6,
+        "trajectory": "Declining"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 62.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/clangen/musikcube",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 4856
+    }
+  ],
+  "saas": {
+    "category": "Audio streaming",
+    "compare_path": "/open-source/spotify-alternatives",
+    "domain": "spotify.com",
+    "name": "Spotify",
+    "saas_id": "spotify",
+    "slug": "spotify"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

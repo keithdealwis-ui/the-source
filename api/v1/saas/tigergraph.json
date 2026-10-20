@@ -1,0 +1,452 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 110,
+    "reason": "5 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "job_match",
+      "runacapital"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Neo4j.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 92.5,
+            "ease_of_adoption": 42.8,
+            "economic_advantage": 17.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "cloud_option",
+            "import",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/neo4j/neo4j",
+      "last_meaningful_activity_at": "2026-10-06T09:49:26Z",
+      "latest_release": {
+        "published_at": "2017-09-15T12:28:27Z",
+        "tag": "3.3.0-beta01"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Neo4j",
+      "note": {
+        "gaps": [
+          "feature parity",
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity and cost advantage."
+      },
+      "oss_id": "github.com/neo4j/neo4j",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 79.0,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 74.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/neo4j/neo4j",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 17337
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/TerminusDB.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/terminusdb/terminusdb",
+      "last_meaningful_activity_at": "2026-10-12T15:29:13Z",
+      "latest_release": {
+        "published_at": "2026-10-12T15:29:13Z",
+        "tag": "v12.0.8"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "TerminusDB",
+      "note": {
+        "gaps": [
+          "integrations and extensibility"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on integrations and extensibility."
+      },
+      "oss_id": "github.com/terminusdb/terminusdb",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 90.2,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-13T00:32:08Z",
+        "score": 70.7,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/terminusdb/terminusdb",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 3449
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/ArangoDB.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 83.3,
+            "ease_of_adoption": 69.5,
+            "economic_advantage": 30.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 50.0
+          },
+          "evidence_families": [
+            "data_ownership",
+            "import",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/arangodb/arangodb",
+      "last_meaningful_activity_at": "2026-10-16T21:27:19Z",
+      "latest_release": null,
+      "licence_disclosure": "source-available: licensed under BUSL-1.1, which is not an OSI-approved open-source licence",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "ArangoDB",
+      "note": {
+        "gaps": [
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on cost advantage."
+      },
+      "oss_id": "github.com/arangodb/arangodb",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 92.6,
+        "score": 82.8,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 84.1,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/arangodb/arangodb",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 14284
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Memgraph.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 62.5,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/memgraph/memgraph",
+      "last_meaningful_activity_at": "2026-10-16T23:17:30Z",
+      "latest_release": {
+        "published_at": "2026-10-09T12:05:41Z",
+        "tag": "v3.13.2"
+      },
+      "licence_disclosure": "source-available: licensed under BUSL-1.1 + Memgraph Enterprise License, which is not an OSI-approved open-source licence",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Memgraph",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness; weakest on migration path."
+      },
+      "oss_id": "github.com/memgraph/memgraph",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 92.1,
+        "score": 81.6,
+        "trajectory": "Rising"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 71.6,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/memgraph/memgraph",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 4621
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/hydra-db/hydradb",
+              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 43.8,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/hydra-db/hydradb",
+      "last_meaningful_activity_at": "2026-10-12T11:08:20Z",
+      "latest_release": {
+        "published_at": "2026-09-30T12:34:52Z",
+        "tag": "v0.2.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "hydradb",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage"
+        ],
+        "text": "Strongest on core use-case coverage."
+      },
+      "oss_id": "github.com/hydra-db/hydradb",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 90.2,
+        "score": 69.2,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 68.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/hydra-db/hydradb",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 13066
+    }
+  ],
+  "saas": {
+    "category": "Managed database",
+    "compare_path": "/open-source/tigergraph-alternatives",
+    "domain": "tigergraph.com",
+    "name": "TigerGraph",
+    "saas_id": "tigergraph",
+    "slug": "tigergraph"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

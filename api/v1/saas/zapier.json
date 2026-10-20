@@ -1,0 +1,508 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 25,
+    "reason": "5 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "3275503f8976b0b5",
+  "last_checked": {
+    "newest": "2026-10-18T02:47:20Z",
+    "oldest": "2026-10-18T02:47:20Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "altstack",
+      "btwso",
+      "diegoleme",
+      "opensaasdirectory",
+      "runacapital",
+      "solvohq"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L636",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L212",
+              "source_commit": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+              "source_id": "diegoleme"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "quickstart",
+            "self_host",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/huginn/huginn",
+      "last_meaningful_activity_at": "2026-10-13T20:53:47Z",
+      "latest_release": {
+        "published_at": "2026-10-13T20:53:47Z",
+        "tag": "v2026.10.14"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Huginn",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/huginn/huginn",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 87.3,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 92.5,
+        "evaluated_at": "2026-10-14T01:06:00Z",
+        "score": 80.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/huginn/huginn",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "diegoleme"
+      ],
+      "stars": 50069
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L359",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 91.7,
+            "ease_of_adoption": 71.7,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": null,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 66.7
+          },
+          "evidence_families": [
+            "data_ownership",
+            "demo",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/automatisch/automatisch",
+      "last_meaningful_activity_at": "2025-12-03T12:02:09Z",
+      "latest_release": {
+        "published_at": "2025-08-08T13:07:43Z",
+        "tag": "v0.15.0"
+      },
+      "licence_disclosure": "open core: recommendation covers the AGPL-3.0 core; parts under Automatisch Enterprise License are excluded",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "maintained",
+      "name": "Automatisch",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "migration path"
+        ],
+        "text": "Strongest on core use-case coverage and migration path; weakest on feature parity."
+      },
+      "oss_id": "github.com/automatisch/automatisch",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 96.6,
+        "score": 59.3,
+        "trajectory": "Declining"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 89.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 76.5,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/automatisch/automatisch",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "btwso"
+      ],
+      "stars": 14000
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L635",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "submissions/[Activepieces.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L360",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            },
+            {
+              "locator": "data/tools.json#slug=activepieces;named_by=zapier",
+              "source_commit": "0b9dacd632f128922862f70e1e09011c8611b48c",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 62.5,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/activepieces/activepieces",
+      "last_meaningful_activity_at": "2026-10-12T22:17:02Z",
+      "latest_release": {
+        "published_at": "2026-10-12T18:43:34Z",
+        "tag": "0.92.3"
+      },
+      "licence_disclosure": "open core: recommendation covers the MIT core; parts under Activepieces EE licence are excluded",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Activepieces",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "feature parity",
+          "ease of adoption"
+        ],
+        "text": "Strongest on feature parity and ease of adoption; weakest on migration path."
+      },
+      "oss_id": "github.com/activepieces/activepieces",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 90.0,
+        "trajectory": "Declining"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 95.0,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 65.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/activepieces/activepieces",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "runacapital",
+        "btwso",
+        "altstack"
+      ],
+      "stars": 25086
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L634",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "submissions/N8N.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L1787",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "README.md#L213",
+              "source_commit": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+              "source_id": "diegoleme"
+            },
+            {
+              "locator": "data/tools.json#slug=n8n;named_by=zapier",
+              "source_commit": "0b9dacd632f128922862f70e1e09011c8611b48c",
+              "source_id": "altstack"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 93.4,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/n8n-io/n8n",
+      "last_meaningful_activity_at": "2026-10-16T22:49:19Z",
+      "latest_release": {
+        "published_at": "2026-10-16T07:23:58Z",
+        "tag": "stable"
+      },
+      "licence_disclosure": "source-available: licensed under Sustainable Use License, which is not an OSI-approved open-source licence",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "n8n",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/n8n-io/n8n",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 91.0,
+        "score": 95.0,
+        "trajectory": "Rising"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 92.0,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 88.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/n8n-io/n8n",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "runacapital",
+        "opensaasdirectory",
+        "diegoleme",
+        "altstack"
+      ],
+      "stars": 207835
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Pipedream.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-10-18T02:47:20Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 62.5,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 10.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 75.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/PipedreamHQ/pipedream",
+      "last_meaningful_activity_at": "2026-10-16T20:08:52Z",
+      "latest_release": null,
+      "licence_disclosure": "source-available: licensed under Pipedream Source Available License, which is not an OSI-approved open-source licence",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-10-18T02:47:20Z",
+      "maintenance_status": "active",
+      "name": "Pipedream",
+      "note": {
+        "gaps": [
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on cost advantage."
+      },
+      "oss_id": "github.com/pipedreamhq/pipedream",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 89.6,
+        "score": 80.2,
+        "trajectory": "Stable"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 73.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/PipedreamHQ/pipedream",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 11750
+    }
+  ],
+  "saas": {
+    "category": "Workflow automation",
+    "compare_path": "/open-source/zapier-alternatives",
+    "domain": "zapier.com",
+    "name": "Zapier",
+    "saas_id": "zapier",
+    "slug": "zapier"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}
