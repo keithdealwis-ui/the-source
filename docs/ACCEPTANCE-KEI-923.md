@@ -11,7 +11,7 @@ pushed to main, deployed or published. That is behind a Keith gate.
 |---|---|---|
 | A1 | 25k corpus milestone; 50k only after a review | **Met.** 25,000 exactly. Admission stops at `milestones.target` (16,979 rows refused as `milestone_reached` in the last run). No path admits past it. |
 | A2 | Stable noise (S4.3) | **Met against the baseline. The ticket's 10% top-10 proposal is not met by human judgement.** The audit numbers and the blind human reviews disagree; both are below. |
-| A3 | No golden-set regression | **One label gap, no quality regression.** KEI-919 golden summary is identical to main. obs-golden: one query moves against main (`search-object-storage`, recall 1.0 → 0.8) because a newly admitted, genuinely relevant project (`supabase/storage`, S3-compatible object storage) is unlabelled and outranks the labelled `openstack/swift`. Labels left unedited; for Keith. |
+| A3 | No golden-set regression | **Met.** KEI-919 golden summary is identical to main. obs-golden was also identical to main once Keith added `supabase/storage` (S3-compatible object storage, newly admitted) to `search-object-storage` on 2026-10-21. Before that, unlabelled, it outranked `openstack/swift` and moved the query's recall 1.0 → 0.8. Recall@5 0.6822, precision@5 0.6583, same as main. |
 | A4 | Reproducible lineage | **Met.** Every expansion member traces to a row of the recorded frontier (`data/expansion/frontier.jsonl`, sha `acdcfb0f…`) through a declared source, and to an admission run report in `data/expansion/runs/`. Independent check `lineage_ok`. |
 | A5 | Acceptable quota and runtime | **Met, with one capacity note.** Per-run caps held in all three runs (independent `quota_ok`). The weekly refresh fits its budget. MCP peak RSS 350 MB of the 512 MB cap at 25k: 50k needs memory work first. |
 | S4.1 | GitHub topics, awesome-selfhosted, Docker/Helm, GitLab, Codeberg | **Met except Artifact Hub.** Artifact Hub refused connections for the whole harvest (`status: failed`, 0 returned); its breaker stopped it. Docker/Helm signals came from GitHub instead. |
@@ -85,7 +85,7 @@ rather than fill, as `source_get_alternatives` already does, or model-based clas
 2. **Noise below the 10% proposals**: accept the human-measured improvement (intake 16.5% → 12.5%, top-10 junk
    37.8% → 27.7%), or open a follow-on: model-based intake classification (spend) and/or a search that stops
    short instead of filling ten.
-3. **Golden label**: add `supabase/storage` as relevant to `search-object-storage`, or leave it.
+3. **Golden label**: Keith added `supabase/storage` to `search-object-storage` (2026-10-21).
 4. **Artifact Hub** gap: retry in a later harvest.
 5. **50k**: a separate checkpoint, after MCP memory work.
 6. `data/dataset/reports/validation_report.json` turns `launch.ranking_unchanged` false whenever

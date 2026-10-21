@@ -6,7 +6,8 @@
 # ranker grading itself. Ids without a host are github.com. Labels name projects The Source may not
 # hold yet; those count as misses, which is the point (coverage). Labelled by linux-claude on
 # 2026-10-17. Reviewed by Keith on 2026-10-20 and approved unchanged (KEI-930; relayed by attended claude-code);
-# the baseline was re-recorded the same day (see docs/OBSERVABILITY.md, "Label review").
+# the baseline was re-recorded the same day (see docs/OBSERVABILITY.md, "Label review"). Keith added
+# supabase/storage to search-object-storage on 2026-10-21 (KEI-923).
 #
 # recall@5 = relevant in the top 5 / min(5, relevant that can be returned)
 #   (for a constrained call, relevant is first narrowed to the projects whose published facts meet
@@ -68,7 +69,7 @@ queries:
 
   # --- search (source_search, hybrid)
   - {id: search-password-manager, tool: source_search, args: {query: open source password manager, kind: project, mode: hybrid}, relevant: [dani-garcia/vaultwarden, passbolt/passbolt_api]}
-  - {id: search-object-storage, tool: source_search, args: {query: s3 compatible object storage, kind: project, mode: hybrid}, relevant: [deuxfleurs-org/garage, seaweedfs/seaweedfs, rustfs/rustfs, openstack/swift, storj/storj]}
+  - {id: search-object-storage, tool: source_search, args: {query: s3 compatible object storage, kind: project, mode: hybrid}, relevant: [deuxfleurs-org/garage, seaweedfs/seaweedfs, rustfs/rustfs, openstack/swift, storj/storj, supabase/storage]}
   - {id: search-remote-desktop, tool: source_search, args: {query: remote desktop access, kind: project, mode: hybrid}, relevant: [rustdesk/rustdesk, ylianst/meshcentral, apache/guacamole-server]}
 
   # --- must fail safely

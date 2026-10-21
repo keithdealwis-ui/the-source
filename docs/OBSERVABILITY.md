@@ -197,6 +197,10 @@ and approved them unchanged. The baseline was re-recorded that day, on the KEI-9
 admitted by KEI-930's licence decisions (KeePassXC, GitLab, Rocket.Chat, Outline, ...). A precision@5
 regression is measured from the new baseline.
 
+On 2026-10-21 Keith added `supabase/storage` (S3-compatible object storage, admitted by KEI-923) to
+`search-object-storage`. Unlabelled, it outranked `openstack/swift` and moved that query's recall@5 from
+1.0 to 0.8. The baseline was not re-recorded.
+
 ## S0.5 Privacy-preserving MCP telemetry and weekly reports
 
 **Off by default.** The engine counts nothing unless a transport gives the counters somewhere
