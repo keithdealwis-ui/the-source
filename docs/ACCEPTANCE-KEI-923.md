@@ -4,6 +4,12 @@
 **Base.** origin/main `70b6e2e` (KEI-922/KEI-930 merged), corpus `db61d41f65eb4c27`, 9,901 members.
 **Result.** Corpus `99078afc2a6dcb42`, **25,000 members** (15,099 new), quick layer `b587723dc30fb446`. Nothing is
 pushed to main, deployed or published. That is behind a Keith gate.
+**Merged with main `b7a033c`** (2026-10-21; the scheduled cycle `2026-10-21-schedule-a1`, data only). Main's rows
+win for main's members (refreshed live facts, 11 daily Discover-lane admissions); expansion rows come from this branch.
+Corpus `7b43654d42585919`, **25,010 members**: 9,912 on main plus 15,098 expansion members (one of main's 11 daily
+admissions was already an expansion member). None of the 10 others trips the intake gate. Quick layer `3c0dd7149f7b35e1`,
+99.82% coverage, the same 44 host_not_found. Catalogue: all 500 statuses equal main's. `data/canonical`, `data/scores`,
+`data/dataset` and `data/radar` are byte-identical to main.
 
 ## Acceptance
 

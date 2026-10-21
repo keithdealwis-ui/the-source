@@ -1,18 +1,18 @@
 {
   "as_of": "2026-10-21T00:50:50Z",
   "attribution": "The Source (github.com/keithdealwis-ui/the-source), by Keith de Alwis",
-  "corpus_version": "99078afc2a6dcb42",
+  "corpus_version": "7b43654d42585919",
   "counts": {
     "archived": 23,
     "by_lane": {
-      "discover": 24701,
+      "discover": 24709,
       "replace": 485
     },
     "host_not_found": 44,
     "identity": {
-      "collapsed": 11,
+      "collapsed": 7,
       "collapsed_by_reason": {
-        "mirror": 11
+        "mirror": 7
       },
       "forks": 0,
       "forks_of_corpus_projects": 0,
@@ -21,7 +21,7 @@
       "renamed": 61,
       "sibling_groups": 145,
       "sibling_repositories": 311,
-      "with_identity": 436
+      "with_identity": 432
     },
     "licence_classification": {
       "missing": 590,
@@ -36,10 +36,10 @@
       "eligible": 49,
       "not_eligible": 1410
     },
-    "licence_issue": 4199,
+    "licence_issue": 4202,
     "maintainer_seeded": 68,
-    "projects": 25000,
-    "with_description": 24533
+    "projects": 25010,
+    "with_description": 24542
   },
   "edition_check": {
     "generated_exceptions": "config/licence_exceptions.generated.yaml",
@@ -54,8 +54,8 @@
     "scope": "rows classified open_core"
   },
   "files": {
-    "live.jsonl": "8086697605f7c8e804050369818b2262aa14396e75e2b6ba08f98f4a84729938",
-    "projects.jsonl": "9fb2c6cb8ed31f7c0f9232f3ee9436bb2faef9786667f2c12a1c8605bcbba61a"
+    "live.jsonl": "fc2ae2c1b4e96368cf08504d88d47b9810226d71f6daf5345ea108e120549fff",
+    "projects.jsonl": "6543d075f3af9631a5aa1ce9c3f92a4825e25a4d096b1998d22f215123162fe0"
   },
   "identity": {
     "facts": {
@@ -81,8 +81,8 @@
   "membership": {
     "admission": {
       "last": {
-        "admitted": 1,
-        "at": "2026-10-21T00:50:50Z"
+        "admitted": 11,
+        "at": "2026-10-20T23:06:47Z"
       },
       "method": "the-source.corpus-admit/1: source_pipeline/corpus_admit.py; the Discover lane prefilter and licence bar, maintenance read from pushed_at"
     },
