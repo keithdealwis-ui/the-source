@@ -199,3 +199,16 @@ def test_harvest_keeps_each_source_and_resume_reuses_it(tmp_path, monkeypatch):
 ])
 def test_desk_review_intake_classes(args, codes):
     assert N.intake_reasons(*args) == codes
+
+
+def test_a_member_leaves_the_historical_tier(tmp_path):
+    # KEI-923: onblog/BlogHelper was archived when one run looked it up and active again by the next, which admitted it
+    from datetime import datetime, timezone
+    from source_pipeline import corpus_admit
+    row = {"id": "github.com/o/a", "reasons": ["archived"], "stars": 2000}
+    corpus_admit._write_historical(tmp_path, {"github.com/o/a": row, "github.com/o/b": {**row, "id": "github.com/o/b"}},
+                                   datetime(2026, 10, 21, tzinfo=timezone.utc))
+    corpus_admit._write_historical(tmp_path, {}, datetime(2026, 10, 21, tzinfo=timezone.utc), members={"github.com/o/a"})
+    kept = [json.loads(l)["id"] for l in (tmp_path / "projects.jsonl").read_text().splitlines()]
+    assert kept == ["github.com/o/b"]
+    assert json.loads((tmp_path / "MANIFEST.json").read_text())["projects"] == 1

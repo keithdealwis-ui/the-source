@@ -311,8 +311,8 @@ def admit(pool: dict, as_of: datetime, out: Path | None = None, api=None, max_lo
         admitted_p[p["id"]], admitted_l[p["id"]] = p, l
         admitted_routes[p["id"]] = routes
 
-    if historical_out is not None and historical:
-        _write_historical(historical_out, historical, as_of)
+    if historical_out is not None and (historical or (historical_out / "projects.jsonl").exists()):
+        _write_historical(historical_out, historical, as_of, members=before_ids | set(admitted_p))
     result = {"method": METHOD, "at": corpus._iso(as_of), "pool_candidates": len(pool),
               "looked_up": len(keys), "membership_before": len(before_ids),
               "manifest_sha256_before": sha_before, "corpus_version_before": m.get("corpus_version"),
@@ -369,13 +369,15 @@ def admit(pool: dict, as_of: datetime, out: Path | None = None, api=None, max_lo
     return result
 
 
-def _write_historical(out: Path, rows: dict, as_of: datetime) -> None:
+def _write_historical(out: Path, rows: dict, as_of: datetime, members: set = frozenset()) -> None:
     """The historical tier (KEI-923 S4.2): notable archived or long-inactive projects, kept apart from the active
-    corpus. Merged with what is already there; never served as discovery, never recommended."""
+    corpus. Merged with what is already there; never served as discovery, never recommended. A project that has
+    since become a member (unarchived and active again) leaves the tier."""
     out.mkdir(parents=True, exist_ok=True)
     path = out / "projects.jsonl"
     have = {r["id"]: r for r in common.read_jsonl(path)} if path.exists() else {}
     have.update(rows)
+    have = {k: v for k, v in have.items() if k not in members}
     common.write_jsonl(path, [have[k] for k in sorted(have)])
     by_reason = {}
     for r in have.values():
