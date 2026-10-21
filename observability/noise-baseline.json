@@ -24,7 +24,7 @@
       "share": 0.0846
     },
     "integration_false_positives_in_recommendations": {
-      "count": 13,
+      "count": 25,
       "rows": [
         {
           "description": "AI Agents & MCPs & AI Workflow Automation • (~400 MCP servers for AI agents) • AI Automation / AI Agent with MCPs • AI Workflows & AI Agents • MCPs for AI Agents",
@@ -314,6 +314,249 @@
             "php",
             "productivity",
             "security"
+          ]
+        },
+        {
+          "description": "📨 Open-Source Email API for Developers. Cloud & Self-hosted Alternative to SES, Mailgun, SendGrid.",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "hyvor/relay",
+          "id": "github.com/hyvor/relay",
+          "reviewed": "2026-10-21 claude-code: read by hand, a product not an integration (discovery-tier evaluation)",
+          "saas": "amazon-ses",
+          "topics": [
+            "email",
+            "smtp"
+          ]
+        },
+        {
+          "description": "📨 Open-Source Email API for Developers. Cloud & Self-hosted Alternative to SES, Mailgun, SendGrid.",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "hyvor/relay",
+          "id": "github.com/hyvor/relay",
+          "reviewed": "2026-10-21 claude-code: read by hand, a product not an integration (discovery-tier evaluation)",
+          "saas": "mailgun",
+          "topics": [
+            "email",
+            "smtp"
+          ]
+        },
+        {
+          "description": "Open-source email API for applications and AI agents. Managed hosting at e2a.dev, or self-host with Docker.",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "tokencanopy/e2a",
+          "id": "github.com/tokencanopy/e2a",
+          "reviewed": "2026-10-21 claude-code: read by hand, a product not an integration (discovery-tier evaluation)",
+          "saas": "mailgun",
+          "topics": [
+            "ai-agents",
+            "email",
+            "email-agent",
+            "email-agent-interface",
+            "email-agents",
+            "email-api",
+            "email-automation",
+            "email-marketing",
+            "email-phishing",
+            "email-sender",
+            "email-templates",
+            "email-workflow",
+            "email-workflows",
+            "go",
+            "hitl",
+            "human-in-the-loop",
+            "human-in-the-loop-ai",
+            "mail-gateway",
+            "smtp",
+            "webhook"
+          ]
+        },
+        {
+          "description": "📨 Open-Source Email API for Developers. Cloud & Self-hosted Alternative to SES, Mailgun, SendGrid.",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "hyvor/relay",
+          "id": "github.com/hyvor/relay",
+          "reviewed": "2026-10-21 claude-code: read by hand, a product not an integration (discovery-tier evaluation)",
+          "saas": "mailjet",
+          "topics": [
+            "email",
+            "smtp"
+          ]
+        },
+        {
+          "description": ":love_letter: A beautiful, fast and fully open source mail client for Mac, Windows and Linux.",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "Foundry376/Mailspring",
+          "id": "github.com/foundry376/mailspring",
+          "reviewed": "2026-10-21 claude-code: read by hand, a product not an integration (discovery-tier evaluation)",
+          "saas": "microsoft-outlook",
+          "topics": [
+            "electron",
+            "electron-app",
+            "email",
+            "imap",
+            "linux",
+            "mail",
+            "osx",
+            "windows"
+          ]
+        },
+        {
+          "description": "Browser based non-destructive image editor with layering, masking, animation timeline, spritesheet editor, customizable brushes and cloud storage integration for all your online editing.",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "igorski/bitmappery",
+          "id": "github.com/igorski/bitmappery",
+          "reviewed": "2026-10-21 claude-code: read by hand, a product not an integration (discovery-tier evaluation)",
+          "saas": "photopea",
+          "topics": [
+            "browser",
+            "image-editor",
+            "image-processing",
+            "photo-editor",
+            "photos",
+            "photoshop",
+            "pwa-apps",
+            "spritesheet-editor",
+            "typescript",
+            "vue",
+            "vuejs"
+          ]
+        },
+        {
+          "description": "📨 Open-Source Email API for Developers. Cloud & Self-hosted Alternative to SES, Mailgun, SendGrid.",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "hyvor/relay",
+          "id": "github.com/hyvor/relay",
+          "reviewed": "2026-10-21 claude-code: read by hand, a product not an integration (discovery-tier evaluation)",
+          "saas": "postmark",
+          "topics": [
+            "email",
+            "smtp"
+          ]
+        },
+        {
+          "description": "📨 Open-Source Email API for Developers. Cloud & Self-hosted Alternative to SES, Mailgun, SendGrid.",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "hyvor/relay",
+          "id": "github.com/hyvor/relay",
+          "reviewed": "2026-10-21 claude-code: read by hand, a product not an integration (discovery-tier evaluation)",
+          "saas": "resend",
+          "topics": [
+            "email",
+            "smtp"
+          ]
+        },
+        {
+          "description": "Open-source email API for applications and AI agents. Managed hosting at e2a.dev, or self-host with Docker.",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "tokencanopy/e2a",
+          "id": "github.com/tokencanopy/e2a",
+          "reviewed": "2026-10-21 claude-code: read by hand, a product not an integration (discovery-tier evaluation)",
+          "saas": "resend",
+          "topics": [
+            "ai-agents",
+            "email",
+            "email-agent",
+            "email-agent-interface",
+            "email-agents",
+            "email-api",
+            "email-automation",
+            "email-marketing",
+            "email-phishing",
+            "email-sender",
+            "email-templates",
+            "email-workflow",
+            "email-workflows",
+            "go",
+            "hitl",
+            "human-in-the-loop",
+            "human-in-the-loop-ai",
+            "mail-gateway",
+            "smtp",
+            "webhook"
+          ]
+        },
+        {
+          "description": "📨 Open-Source Email API for Developers. Cloud & Self-hosted Alternative to SES, Mailgun, SendGrid.",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "hyvor/relay",
+          "id": "github.com/hyvor/relay",
+          "reviewed": "2026-10-21 claude-code: read by hand, a product not an integration (discovery-tier evaluation)",
+          "saas": "sendgrid",
+          "topics": [
+            "email",
+            "smtp"
+          ]
+        },
+        {
+          "description": "Open-source email API for applications and AI agents. Managed hosting at e2a.dev, or self-host with Docker.",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "tokencanopy/e2a",
+          "id": "github.com/tokencanopy/e2a",
+          "reviewed": "2026-10-21 claude-code: read by hand, a product not an integration (discovery-tier evaluation)",
+          "saas": "sendgrid",
+          "topics": [
+            "ai-agents",
+            "email",
+            "email-agent",
+            "email-agent-interface",
+            "email-agents",
+            "email-api",
+            "email-automation",
+            "email-marketing",
+            "email-phishing",
+            "email-sender",
+            "email-templates",
+            "email-workflow",
+            "email-workflows",
+            "go",
+            "hitl",
+            "human-in-the-loop",
+            "human-in-the-loop-ai",
+            "mail-gateway",
+            "smtp",
+            "webhook"
+          ]
+        },
+        {
+          "description": ":love_letter: A beautiful, fast and fully open source mail client for Mac, Windows and Linux.",
+          "flags": [
+            "integration"
+          ],
+          "full_name": "Foundry376/Mailspring",
+          "id": "github.com/foundry376/mailspring",
+          "reviewed": "2026-10-21 claude-code: read by hand, a product not an integration (discovery-tier evaluation)",
+          "saas": "superhuman",
+          "topics": [
+            "electron",
+            "electron-app",
+            "email",
+            "imap",
+            "linux",
+            "mail",
+            "osx",
+            "windows"
           ]
         }
       ]

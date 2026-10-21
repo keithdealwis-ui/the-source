@@ -18,7 +18,8 @@ Who is a candidate (all must hold, so the ledger is reproducible from committed 
 - not an integration with another product (KEI-919 integration_kind / not_a_product, plus a client/front-end rule);
 - not already a relationship of that product from any other source (job matching never adds a second source to a
   listed pair, so it never corroborates one);
-- at most PER_PRODUCT per product, strongest quick Health first, then oss_id.
+- at most PER_PRODUCT per product, strongest quick Health first, then oss_id; a pairing the full evaluation has
+  already scored (data/scores/fit.jsonl) always keeps its place, and new candidates fill what is left.
 """
 from __future__ import annotations
 
@@ -110,9 +111,16 @@ def select() -> dict:
                 hits.append((p, score, m.group(0), _excerpt(desc, m)))
         by_cat[cat] = sorted(hits, key=lambda x: (-x[1], x[0]["id"]))
 
+    # A candidate the full evaluation has already scored keeps its place: a larger corpus must not displace an
+    # evaluated pairing (and with it a recommendation) for a stronger, unevaluated one. New candidates take the
+    # remaining places, so the cap holds unless the evaluated pairings alone exceed it.
+    scored = {(r["saas_id"], r["oss_id"]) for r in common.read_jsonl(common.DATA / "scores" / "fit.jsonl")}
     rows: dict[str, dict] = {}
     for c in sorted(cands, key=lambda c: c["saas_id"]):
-        picked = [x for x in by_cat.get(c["category"], []) if (c["saas_id"], x[0]["id"]) not in listed][:PER_PRODUCT]
+        hits = [x for x in by_cat.get(c["category"], []) if (c["saas_id"], x[0]["id"]) not in listed]
+        kept = [x for x in hits if (c["saas_id"], x[0]["id"]) in scored]
+        picked = kept + [x for x in hits if (c["saas_id"], x[0]["id"]) not in scored][:max(0, PER_PRODUCT - len(kept))]
+        picked.sort(key=lambda x: (-x[1], x[0]["id"]))
         for p, score, phrase, excerpt in picked:
             r = rows.setdefault(p["id"], {
                 "oss_id": p["id"], "oss_name": p.get("name") or p["id"].split("/")[-1],
@@ -127,7 +135,7 @@ def select() -> dict:
             "pairs": sum(len(r["saas_ids"]) for r in out), "projects": len(out), "rows": out}
 
 
-CONFIG_INPUTS = ("config/saas_catalogue.yaml", "config/catalogue.yaml", "config/saas_jobs.yaml")
+CONFIG_INPUTS = ("config/saas_catalogue.yaml", "config/catalogue.yaml", "config/saas_jobs.yaml", "data/scores/fit.jsonl")
 PROJECT_FIELDS = ("id", "name", "full_name", "description", "topics", "url")
 
 

@@ -475,7 +475,17 @@ def select_launch(saas: dict, edges: list[dict], projects: dict, policy: dict, s
     }
 
 
-def catalogue_serve(sel: dict, edges: list[dict], projects: dict, policy: dict) -> None:
+def catalogue_served_before(policy: dict) -> set:
+    """The relationships launch.catalogue_serving served in the previous build (data/dataset/relationships.jsonl),
+    which keep their places when launch.preserve_served is true. Empty when the rule is off or there is none."""
+    prev = common.DATASET / "relationships.jsonl"
+    if not policy["launch"].get("preserve_served") or not prev.exists():
+        return set()
+    return {(e["saas_id"], e["oss_id"]) for e in common.read_jsonl(prev)
+            if (e.get("launch_position") or {}).get("via") == "catalogue_serving"}
+
+
+def catalogue_serve(sel: dict, edges: list[dict], projects: dict, policy: dict, before: set = frozenset()) -> None:
     """launch.catalogue_serving (KEI-930, a Keith policy gate): after the ranked launch selection, every product in
     the catalogue selection (data/catalogue/selection.json) is served with its fully evaluated recommendations, up
     to max_per_saas and at most edges_max relationships in all (a budget of its own: launch.edges_max still bounds
@@ -483,7 +493,9 @@ def catalogue_serve(sel: dict, edges: list[dict], projects: dict, policy: dict) 
     exportable relationships whose newest Replacement Fit is a full evaluation that is publishable and credible are
     added; nothing already picked is displaced. Products new to the launch set continue the launch ranks. Off when
     the key is absent or not enabled: the dr-KEI-805-507e4f70 selection, unchanged. Recommendations come from the
-    scores the build finds (data/scores/), so a pair fully evaluated after this build is served by the next one."""
+    scores the build finds (data/scores/), so a pair fully evaluated after this build is served by the next one.
+    With launch.preserve_served, a relationship served this way in `before` (the previous build) that still qualifies
+    keeps its place: a newly evaluated, higher-scoring candidate takes only the room that is left."""
     cs = policy["launch"].get("catalogue_serving") or {}
     sel["catalogue_served"] = []
     if not cs.get("enabled"):
@@ -510,7 +522,7 @@ def catalogue_serve(sel: dict, edges: list[dict], projects: dict, policy: dict) 
         have = [e for e in edges if e["saas_id"] == sid and e["edge_id"] in picked]
         groups = {projects[e["oss_id"]]["product_group"] for e in have}
         room = cap - sum(1 for _, e in by_saas[sid] if e["edge_id"] in picked)
-        for _, e in sorted(by_saas[sid], key=lambda x: (-x[0], x[1]["oss_id"])):
+        for _, e in sorted(by_saas[sid], key=lambda x: ((sid, x[1]["oss_id"]) not in before, -x[0], x[1]["oss_id"])):
             if room <= 0 or sel["catalogue_served_relationships"] >= budget:
                 break
             g = projects[e["oss_id"]]["product_group"]
@@ -724,7 +736,7 @@ def run() -> dict:
         )
 
     sel = select_launch(rec["saas"], edges, projects, policy, served_baseline(policy))
-    catalogue_serve(sel, edges, projects, policy)
+    catalogue_serve(sel, edges, projects, policy, catalogue_served_before(policy))
     launch_oss = set()
     for e in edges:
         pick = sel["edge_picks"].get(e["edge_id"])

@@ -20,8 +20,8 @@ k: 5
 queries:
   # --- what replaces X (source_get_alternatives)
   - {id: alt-notion, tool: source_get_alternatives, args: {saas: Notion}, relevant: [appflowy-io/appflowy, docmost/docmost, siyuan-note/siyuan, logseq/logseq, triliumnext/trilium, hcengineering/platform]}
-  - {id: alt-1password, tool: source_get_alternatives, args: {saas: 1Password}, relevant: [dani-garcia/vaultwarden, passbolt/passbolt_api]}
-  - {id: alt-slack, tool: source_get_alternatives, args: {saas: Slack}, relevant: [zulip/zulip, element-hq/element-web, element-hq/synapse]}
+  - {id: alt-1password, tool: source_get_alternatives, args: {saas: 1Password}, relevant: [dani-garcia/vaultwarden, passbolt/passbolt_api, aliasvault/aliasvault, gopasspw/gopass]}
+  - {id: alt-slack, tool: source_get_alternatives, args: {saas: Slack}, relevant: [zulip/zulip, element-hq/element-web, element-hq/synapse, aozorae/edgechat]}
   - {id: alt-jira, tool: source_get_alternatives, args: {saas: Jira}, relevant: [makeplane/plane, opf/openproject, taigaio/taiga-back, hcengineering/platform, leantime/leantime]}
   - {id: alt-trello, tool: source_get_alternatives, args: {saas: Trello}, relevant: [wekan/wekan, kanboard/kanboard, go-vikunja/vikunja, makeplane/plane, taigaio/taiga-back]}
   - {id: alt-asana, tool: source_get_alternatives, args: {saas: Asana}, relevant: [makeplane/plane, opf/openproject, leantime/leantime, go-vikunja/vikunja, hcengineering/platform, taigaio/taiga-back]}
@@ -31,7 +31,7 @@ queries:
   - {id: alt-datadog, tool: source_get_alternatives, args: {saas: Datadog}, relevant: [grafana/grafana, prometheus/prometheus, netdata/netdata, openobserve/openobserve, hyperdxio/hyperdx, uptrace/uptrace, coroot/coroot, victoriametrics/victoriametrics]}
   - {id: alt-heroku, tool: source_get_alternatives, args: {saas: Heroku}, relevant: [dokku/dokku, coollabsio/coolify, kubero-dev/kubero, tsuru/tsuru, qovery/engine]}
   - {id: alt-firebase, tool: source_get_alternatives, args: {saas: Firebase}, relevant: [supabase/supabase, appwrite/appwrite, pocketbase/pocketbase, nhost/nhost, kuzzleio/kuzzle]}
-  - {id: alt-auth0, tool: source_get_alternatives, args: {saas: Auth0}, relevant: [keycloak/keycloak, zitadel/zitadel, logto-io/logto, ory/kratos, authgear/authgear-server, janssenproject/jans]}
+  - {id: alt-auth0, tool: source_get_alternatives, args: {saas: Auth0}, relevant: [keycloak/keycloak, zitadel/zitadel, logto-io/logto, ory/kratos, authgear/authgear-server, janssenproject/jans, teamhanko/hanko]}
   - {id: alt-contentful, tool: source_get_alternatives, args: {saas: Contentful}, relevant: [payloadcms/payload, decaporg/decap-cms, tinacms/tinacms, builderio/builder]}
   - {id: alt-postman, tool: source_get_alternatives, args: {saas: Postman}, relevant: [hoppscotch/hoppscotch, usebruno/bruno, kong/insomnia, scalar/scalar, voidenhq/voiden]}
   - {id: alt-shopify, tool: source_get_alternatives, args: {saas: Shopify}, relevant: [saleor/saleor, bagisto/bagisto, sylius/sylius, woocommerce/woocommerce]}
@@ -40,11 +40,11 @@ queries:
   - {id: alt-chatgpt, tool: source_get_alternatives, args: {saas: ChatGPT}, relevant: [librechat-ai/librechat, mintplex-labs/anything-llm, chatboxai/chatbox, ollama/ollama]}
   - {id: alt-github, tool: source_get_alternatives, args: {saas: GitHub}, relevant: [go-gitea/gitea, codeberg.org/forgejo/forgejo, gogs/gogs, theonedev/onedev]}
   - {id: alt-zendesk, tool: source_get_alternatives, args: {saas: Zendesk}, relevant: [zammad/zammad, freescout-help-desk/freescout, osticket/osticket, faveosuite/faveo-helpdesk, uvdesk/community-skeleton]}
-  - {id: alt-mailchimp, tool: source_get_alternatives, args: {saas: Mailchimp}, relevant: [knadh/listmonk, mautic/mautic, pentacent/keila]}
+  - {id: alt-mailchimp, tool: source_get_alternatives, args: {saas: Mailchimp}, relevant: [knadh/listmonk, mautic/mautic, pentacent/keila, phplist/phplist3, billionmail/billionmail]}
   - {id: alt-docusign, tool: source_get_alternatives, args: {saas: DocuSign}, relevant: [documenso/documenso, docusealco/docuseal, libresign/libresign]}
   - {id: alt-airtable, tool: source_get_alternatives, args: {saas: Airtable}, relevant: [gitlab.com/baserow/baserow, apitable/apitable, gristlabs/grist-core]}
-  - {id: alt-teamviewer, tool: source_get_alternatives, args: {saas: TeamViewer}, relevant: [rustdesk/rustdesk, ylianst/meshcentral, apache/guacamole-server]}
-  - {id: alt-confluence, tool: source_get_alternatives, args: {saas: Confluence}, relevant: [bookstackapp/bookstack, docmost/docmost, xwiki/xwiki-platform, requarks/wiki, wikimedia/mediawiki]}
+  - {id: alt-teamviewer, tool: source_get_alternatives, args: {saas: TeamViewer}, relevant: [rustdesk/rustdesk, ylianst/meshcentral, apache/guacamole-server, dchapyshev/aspia, kunkundi/crossdesk]}
+  - {id: alt-confluence, tool: source_get_alternatives, args: {saas: Confluence}, relevant: [bookstackapp/bookstack, docmost/docmost, xwiki/xwiki-platform, requarks/wiki, wikimedia/mediawiki, leomoon-studios/wiki-go]}
   - {id: alt-calendly, tool: source_get_alternatives, args: {saas: Calendly}, relevant: [calcom/cal.diy, alextselegidis/easyappointments, tymeslot/tymeslot]}
   - {id: alt-by-url, tool: source_get_alternatives, args: {saas: "https://www.notion.so/product"}, relevant: [appflowy-io/appflowy, docmost/docmost, siyuan-note/siyuan, logseq/logseq, triliumnext/trilium, hcengineering/platform]}
 
@@ -52,10 +52,10 @@ queries:
   - {id: need-password-manager, tool: source_recommend, args: {need: self-hosted password manager for a team}, relevant: [dani-garcia/vaultwarden, passbolt/passbolt_api]}
   - {id: need-video-meetings, tool: source_recommend, args: {need: open source video conferencing for meetings}, relevant: [jitsi/jitsi-meet, bigbluebutton/bigbluebutton, jech/galene, element-hq/element-call, openvidu/openvidu, livekit/livekit]}
   - {id: need-web-analytics, tool: source_recommend, args: {need: privacy-friendly website analytics}, relevant: [plausible/analytics, umami-software/umami, matomo-org/matomo, open-web-analytics/open-web-analytics, milesmcc/shynet, electerious/ackee, openpanel-dev/openpanel]}
-  - {id: need-helpdesk, tool: source_recommend, args: {need: customer support helpdesk ticketing}, relevant: [zammad/zammad, freescout-help-desk/freescout, osticket/osticket, faveosuite/faveo-helpdesk, uvdesk/community-skeleton]}
+  - {id: need-helpdesk, tool: source_recommend, args: {need: customer support helpdesk ticketing}, relevant: [zammad/zammad, freescout-help-desk/freescout, osticket/osticket, faveosuite/faveo-helpdesk, uvdesk/community-skeleton, abhinavxd/libredesk, useopendesk/opendesk, bytedesk/bytedesk]}
   - {id: need-feature-flags, tool: source_recommend, args: {need: feature flag management}, relevant: [unleash/unleash, flagsmith/flagsmith]}
   - {id: need-api-client, tool: source_recommend, args: {need: API client for testing REST APIs}, relevant: [hoppscotch/hoppscotch, usebruno/bruno, kong/insomnia, scalar/scalar, voidenhq/voiden]}
-  - {id: need-status-page, tool: source_recommend, args: {need: status page and uptime monitoring}, relevant: [openstatushq/openstatus, louislam/uptime-kuma, twin/gatus, healthchecks/healthchecks, bluewave-labs/checkmate]}
+  - {id: need-status-page, tool: source_recommend, args: {need: status page and uptime monitoring}, relevant: [openstatushq/openstatus, louislam/uptime-kuma, twin/gatus, healthchecks/healthchecks, bluewave-labs/checkmate, uptimy/agent, kolapsis/maintenant]}
   - {id: need-like-notion, tool: source_recommend, args: {need: a workspace wiki like Notion}, relevant: [appflowy-io/appflowy, docmost/docmost, siyuan-note/siyuan, logseq/logseq, triliumnext/trilium, hcengineering/platform]}
 
   # --- hard constraints (source_recommend): violations must be zero
@@ -63,14 +63,14 @@ queries:
   - {id: con-slack-10k-stars, tool: source_recommend, args: {saas: Slack, min_stars: 10000}, relevant: [zulip/zulip, element-hq/element-web, element-hq/synapse]}
   - {id: con-jira-permissive, tool: source_recommend, args: {saas: Jira, licence_family: permissive}, relevant: [makeplane/plane, opf/openproject, taigaio/taiga-back, hcengineering/platform, leantime/leantime]}
   - {id: con-ga-selfhost-90d, tool: source_recommend, args: {saas: Google Analytics, self_hostable: true, max_days_since_activity: 90}, relevant: [plausible/analytics, umami-software/umami, matomo-org/matomo, open-web-analytics/open-web-analytics, milesmcc/shynet, electerious/ackee, openpanel-dev/openpanel]}
-  - {id: con-pm-agpl, tool: source_recommend, args: {need: self-hosted password manager, licence: [AGPL-3.0]}, relevant: [dani-garcia/vaultwarden, passbolt/passbolt_api]}
+  - {id: con-pm-agpl, tool: source_recommend, args: {need: self-hosted password manager, licence: [AGPL-3.0]}, relevant: [dani-garcia/vaultwarden, passbolt/passbolt_api, aliasvault/aliasvault]}
   - {id: con-heroku-health-fit, tool: source_recommend, args: {saas: Heroku, min_health: 60, min_fit: 50}, relevant: [dokku/dokku, coollabsio/coolify, kubero-dev/kubero, tsuru/tsuru, qovery/engine]}
   - {id: con-zoom-under-20k, tool: source_recommend, args: {saas: Zoom, max_stars: 20000, maintenance_status: [active, maintained]}, relevant: [jitsi/jitsi-meet, bigbluebutton/bigbluebutton, jech/galene, element-hq/element-call, openvidu/openvidu, livekit/livekit]}
 
   # --- search (source_search, hybrid)
-  - {id: search-password-manager, tool: source_search, args: {query: open source password manager, kind: project, mode: hybrid}, relevant: [dani-garcia/vaultwarden, passbolt/passbolt_api]}
-  - {id: search-object-storage, tool: source_search, args: {query: s3 compatible object storage, kind: project, mode: hybrid}, relevant: [deuxfleurs-org/garage, seaweedfs/seaweedfs, rustfs/rustfs, openstack/swift, storj/storj, supabase/storage]}
-  - {id: search-remote-desktop, tool: source_search, args: {query: remote desktop access, kind: project, mode: hybrid}, relevant: [rustdesk/rustdesk, ylianst/meshcentral, apache/guacamole-server]}
+  - {id: search-password-manager, tool: source_search, args: {query: open source password manager, kind: project, mode: hybrid}, relevant: [dani-garcia/vaultwarden, passbolt/passbolt_api, eusonlito/password-manager, gopasspw/gopass, conradkleinespel/rooster, rabbit-company/passky-server, soulnaturalist/zero_password_manager]}
+  - {id: search-object-storage, tool: source_search, args: {query: s3 compatible object storage, kind: project, mode: hybrid}, relevant: [deuxfleurs-org/garage, seaweedfs/seaweedfs, rustfs/rustfs, openstack/swift, storj/storj, supabase/storage, versity/versitygw]}
+  - {id: search-remote-desktop, tool: source_search, args: {query: remote desktop access, kind: project, mode: hybrid}, relevant: [rustdesk/rustdesk, ylianst/meshcentral, apache/guacamole-server, dchapyshev/aspia, kunkundi/crossdesk]}
 
   # --- must fail safely
   - {id: neg-unknown-product, tool: source_get_alternatives, args: {saas: NotARealProduct123}, expect: tool_error}

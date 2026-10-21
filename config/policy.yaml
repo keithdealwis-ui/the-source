@@ -158,7 +158,12 @@ launch:
   # max_per_saas of its full-evaluation recommendations (validated, exportable, publishable and credible, live facts
   # present), within a budget of its own (edges_max here). launch.edges_max still bounds the ranked selection; nothing
   # served is displaced. Absent or enabled: false = the dr-KEI-805-507e4f70 behaviour, unchanged.
-  catalogue_serving: {enabled: true, max_per_saas: 8, edges_max: 700}
+  # edges_max 700 -> 1250: Keith, 2026-10-21 (KEI-940; in chat, to be confirmed on the merge gate), for the
+  # discovery-tier evaluation of the 25k corpus, which needs 1,203 catalogue-served relationships. At 700 the
+  # products served first took the budget and 118 products lost the relationships they had. With preserve_served on,
+  # a relationship catalogue serving served in the previous build keeps its place; a newly evaluated, higher-scoring
+  # candidate takes only the room left under max_per_saas (KEI-940).
+  catalogue_serving: {enabled: true, max_per_saas: 8, edges_max: 1250}
   # "High value" is decided by evidence, never by stars:
   #   1. the SaaS product is in the reviewed catalogue (config/saas_catalogue.yaml)
   #   2. ranked by number of independent sources naming it, then by number of

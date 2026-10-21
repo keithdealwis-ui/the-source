@@ -125,3 +125,38 @@ def test_a_job_match_is_recommended_only_after_the_full_evaluation():
             fit = r["replacement_fit"]
             assert fit["scoring_path"] in catalogue.FULL_PATHS
             assert fit["credible_alternative"] and fit["publish"] and fit["core_gate"] == "passed"
+
+
+@needs_ledger
+def test_an_evaluated_pairing_keeps_its_place_in_the_ledger(ledger):
+    # KEI-940: a larger corpus must not displace a pairing the full evaluation has scored, and with it a recommendation
+    in_ledger = {(s, r["oss_id"]) for r in ledger["rows"] for s in r["saas_ids"]}
+    served = [(r["saas_id"], r["oss_id"]) for r in common.read_jsonl(common.DATA / "canonical" / "relationships.jsonl")
+              if r["evidence_class"] == "job_matched"]
+    assert served and all(k in in_ledger for k in served)
+
+
+def test_catalogue_serving_keeps_what_it_served_before(monkeypatch):
+    # KEI-940: with preserve_served, a newly evaluated higher-scoring candidate takes only the room that is left
+    from source_pipeline import canonical, catalogue
+
+    def edge(oid):
+        return {"edge_id": f"p--{oid}", "saas_id": "p", "oss_id": oid, "share_alike_only": False,
+                "validation": {"status": "validated"}}
+
+    edges = [edge(f"o{i}") for i in range(4)]
+    projects = {e["oss_id"]: {"product_group": e["oss_id"], "live": {"stars": 1, "licence_spdx": "MIT", "pushed_at": "x"}}
+                for e in edges}
+    fit = {("p", f"o{i}"): {"score": 90 - 10 * i, "publish": True, "credible_alternative": True,
+                             "scoring_path": next(iter(catalogue.FULL_PATHS))} for i in range(4)}
+    monkeypatch.setattr(canonical, "_load_scores", lambda: (fit, {}))
+    monkeypatch.setattr(catalogue, "load_selection", lambda: {"selected": ["p"]})
+    policy = {"launch": {"catalogue_serving": {"enabled": True, "max_per_saas": 2, "edges_max": 10}}}
+
+    def served(before):
+        sel = {"edge_picks": {}, "saas_ranked": []}
+        build.catalogue_serve(sel, edges, projects, policy, before)
+        return sorted(e.split("--")[1] for e in sel["edge_picks"])
+
+    assert served(set()) == ["o0", "o1"]
+    assert served({("p", "o3")}) == ["o0", "o3"]
