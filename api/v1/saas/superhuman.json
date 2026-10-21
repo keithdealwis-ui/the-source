@@ -1,0 +1,202 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 331,
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+    "reasons": [
+      "fewer_than_minimum",
+      "outside_launch_selection"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "e93d849be7ae8040",
+  "last_checked": {
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "job_match"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/cypht-org/cypht",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 92.5,
+            "ease_of_adoption": 90.7,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "demo",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/cypht-org/cypht",
+      "last_meaningful_activity_at": "2026-10-16T01:36:10Z",
+      "latest_release": {
+        "published_at": "2026-10-16T01:36:10Z",
+        "tag": "v2.13.0"
+      },
+      "licence_spdx": "LGPL-2.1",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "cypht",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/cypht-org/cypht",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 92.1,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 81.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 87.5,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/cypht-org/cypht",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 1768
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/foundry376/mailspring",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 85.0,
+            "ease_of_adoption": 76.6,
+            "economic_advantage": 34.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "demo",
+            "import",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/Foundry376/Mailspring",
+      "last_meaningful_activity_at": "2026-10-21T02:18:39Z",
+      "latest_release": {
+        "published_at": "2026-10-21T02:18:39Z",
+        "tag": "1.26.1"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "Mailspring",
+      "note": {
+        "gaps": [
+          "feature parity",
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity and cost advantage."
+      },
+      "oss_id": "github.com/foundry376/mailspring",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 92.3,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 79.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Foundry376/Mailspring",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 17936
+    }
+  ],
+  "saas": {
+    "category": "Email",
+    "compare_path": null,
+    "domain": "superhuman.com",
+    "name": "Superhuman",
+    "saas_id": "superhuman",
+    "slug": "superhuman"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

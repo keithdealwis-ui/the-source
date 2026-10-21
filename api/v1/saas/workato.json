@@ -1,0 +1,285 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 324,
+    "reason": "3 recommendations passed the full evaluation",
+    "reasons": [
+      "full_evaluation"
+    ],
+    "status": "ok"
+  },
+  "dataset_version": "e93d849be7ae8040",
+  "last_checked": {
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "job_match"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/apache/camel-karavan",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 66.0,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/apache/camel-karavan",
+      "last_meaningful_activity_at": "2026-10-12T14:01:35Z",
+      "latest_release": {
+        "published_at": "2026-09-30T11:56:20Z",
+        "tag": "4.22.1"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "camel-karavan",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/apache/camel-karavan",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 83.7,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 84.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/apache/camel-karavan",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 598
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/openfn/lightning",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 71.2,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 51.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/OpenFn/lightning",
+      "last_meaningful_activity_at": "2026-10-16T10:28:54Z",
+      "latest_release": {
+        "published_at": "2026-10-09T07:03:08Z",
+        "tag": "v2.19.1-pre"
+      },
+      "licence_spdx": "LGPL-3.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "lightning",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity."
+      },
+      "oss_id": "github.com/openfn/lightning",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 88.2,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 83.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/OpenFn/lightning",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 319
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/cenit-io/cenit",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/cenit-io/cenit",
+      "last_meaningful_activity_at": "2026-07-29T18:10:56Z",
+      "latest_release": {
+        "published_at": "2025-11-01T18:02:24Z",
+        "tag": "v1.0.4"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "cenit",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/cenit-io/cenit",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 72.7,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 74.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/cenit-io/cenit",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 507
+    }
+  ],
+  "saas": {
+    "category": "Workflow automation",
+    "compare_path": "/open-source/workato-alternatives",
+    "domain": "workato.com",
+    "name": "Workato",
+    "saas_id": "workato",
+    "slug": "workato"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "ok"
+}

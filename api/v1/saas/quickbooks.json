@@ -3,18 +3,18 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 12,
-    "reason": "6 recommendations passed the full evaluation",
+    "reason": "7 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "94a9f53ad645d14f",
+  "dataset_version": "e93d849be7ae8040",
   "last_checked": {
-    "newest": "2026-10-20T23:06:47Z",
-    "oldest": "2026-10-20T23:06:47Z"
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
   },
-  "more_available": 1,
+  "more_available": 2,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -37,7 +37,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -74,7 +74,7 @@
         "tag": "3.1.1"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "SolidInvoice",
       "note": {
@@ -127,7 +127,7 @@
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -153,13 +153,13 @@
         }
       },
       "github_url": "https://github.com/frappe/erpnext",
-      "last_meaningful_activity_at": "2026-10-15T21:11:16Z",
+      "last_meaningful_activity_at": "2026-10-21T08:42:34Z",
       "latest_release": {
-        "published_at": "2026-10-15T17:09:25Z",
-        "tag": "v16.51.1"
+        "published_at": "2026-10-21T06:58:04Z",
+        "tag": "v15.123.1"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "ERPNext",
       "note": {
@@ -184,7 +184,7 @@
       "rank": 2,
       "replacement_fit": {
         "confidence": 90.5,
-        "evaluated_at": "2026-10-16T01:10:28Z",
+        "evaluated_at": "2026-10-21T08:41:23Z",
         "score": 63.2,
         "score_version": "1.2.0"
       },
@@ -197,7 +197,7 @@
         "solvohq",
         "altstack"
       ],
-      "stars": 40405
+      "stars": 40418
     },
     {
       "evidence": {
@@ -216,7 +216,7 @@
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -248,7 +248,7 @@
       },
       "licence_disclosure": "source-available: licensed under BUSL-1.1, which is not an OSI-approved open-source licence",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Akaunting",
       "note": {
@@ -285,7 +285,7 @@
         "solvohq",
         "altstack"
       ],
-      "stars": 10193
+      "stars": 10197
     },
     {
       "evidence": {
@@ -295,11 +295,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/dolibarr/dolibarr",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -336,7 +336,7 @@
         "tag": "24.0.1"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Dolibarr",
       "note": {
@@ -380,11 +380,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/idurar/idurar-erp-crm",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -413,7 +413,7 @@
         "tag": "4.1.1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "maintained",
       "name": "IDURAR ERP CRM",
       "note": {
@@ -449,7 +449,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 8901
+      "stars": 8904
     }
   ],
   "saas": {

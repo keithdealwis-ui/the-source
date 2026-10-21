@@ -3,18 +3,18 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 123,
-    "reason": "3 recommendations passed the full evaluation",
+    "reason": "8 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "94a9f53ad645d14f",
+  "dataset_version": "e93d849be7ae8040",
   "last_checked": {
-    "newest": "2026-10-20T23:06:47Z",
-    "oldest": "2026-10-20T23:06:47Z"
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
   },
-  "more_available": 0,
+  "more_available": 3,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -41,7 +41,7 @@
               "source_id": "emmraan"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -77,7 +77,7 @@
         "tag": "1.8.248"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "FreeScout",
       "note": {
@@ -112,7 +112,7 @@
         "solvohq",
         "emmraan"
       ],
-      "stars": 4606
+      "stars": 4607
     },
     {
       "evidence": {
@@ -126,7 +126,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -159,7 +159,7 @@
         "tag": "v1.1.8"
       },
       "licence_spdx": "OSL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "UVdesk",
       "note": {
@@ -177,7 +177,7 @@
       "project_health": {
         "band": "Developing",
         "confidence": 96.6,
-        "score": 69.3,
+        "score": 69.1,
         "trajectory": "Declining"
       },
       "rank": 2,
@@ -195,7 +195,90 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 19637
+      "stars": 19639
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/abhinavxd/libredesk",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 87.5,
+            "ease_of_adoption": 74.7,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/abhinavxd/libredesk",
+      "last_meaningful_activity_at": "2026-10-20T22:17:27Z",
+      "latest_release": {
+        "published_at": "2026-10-10T19:28:06Z",
+        "tag": "v2.9.0-rc.9"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "libredesk",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/abhinavxd/libredesk",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 95.0,
+        "score": 84.4,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 91.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/abhinavxd/libredesk",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 3062
     },
     {
       "evidence": {
@@ -205,11 +288,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/zammad/zammad",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -239,7 +322,7 @@
       "last_meaningful_activity_at": "2026-10-16T13:56:35Z",
       "latest_release": null,
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Zammad",
       "note": {
@@ -258,7 +341,7 @@
         "score": 82.9,
         "trajectory": "Rising"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
@@ -273,7 +356,90 @@
       "sources": [
         "job_match"
       ],
-      "stars": 6021
+      "stars": 6023
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/useopendesk/opendesk",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/useopendesk/opendesk",
+      "last_meaningful_activity_at": "2026-10-21T05:03:43Z",
+      "latest_release": {
+        "published_at": "2026-10-20T12:09:42Z",
+        "tag": "v0.3.1"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "opendesk",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity."
+      },
+      "oss_id": "github.com/useopendesk/opendesk",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 89.2,
+        "score": 78.3,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 82.5,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/useopendesk/opendesk",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 427
     }
   ],
   "saas": {

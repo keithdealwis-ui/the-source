@@ -3,18 +3,18 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 71,
-    "reason": "6 recommendations passed the full evaluation",
+    "reason": "7 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "94a9f53ad645d14f",
+  "dataset_version": "e93d849be7ae8040",
   "last_checked": {
-    "newest": "2026-10-20T23:06:47Z",
-    "oldest": "2026-10-20T23:06:47Z"
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
   },
-  "more_available": 1,
+  "more_available": 2,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -30,11 +30,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/wekan/wekan",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -71,7 +71,7 @@
         "tag": "v12.57"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Wekan",
       "note": {
@@ -115,11 +115,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/leantime/leantime",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -155,7 +155,7 @@
         "tag": "v3.12.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Leantime",
       "note": {
@@ -189,7 +189,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 11876
+      "stars": 11877
     },
     {
       "evidence": {
@@ -199,11 +199,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/makeplane/plane",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -238,7 +238,7 @@
         "tag": "v1.4.3-rc1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Plane",
       "note": {
@@ -274,7 +274,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 61187
+      "stars": 61217
     },
     {
       "evidence": {
@@ -284,11 +284,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/kanboard/kanboard",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -310,13 +310,13 @@
         }
       },
       "github_url": "https://github.com/kanboard/kanboard",
-      "last_meaningful_activity_at": "2026-10-12T04:30:11Z",
+      "last_meaningful_activity_at": "2026-10-21T00:57:56Z",
       "latest_release": {
-        "published_at": "2026-08-29T02:38:58Z",
-        "tag": "v1.2.54"
+        "published_at": "2026-10-21T00:57:56Z",
+        "tag": "v1.2.55"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Kanboard",
       "note": {
@@ -334,13 +334,13 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 96.6,
-        "score": 89.0,
+        "score": 89.6,
         "trajectory": "Rising"
       },
       "rank": 4,
       "replacement_fit": {
         "confidence": 78.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
+        "evaluated_at": "2026-10-21T08:41:23Z",
         "score": 75.9,
         "score_version": "1.2.0"
       },
@@ -362,11 +362,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/nextcloud/deck",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -400,7 +400,7 @@
         "tag": "v1.14.12"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "deck",
       "note": {

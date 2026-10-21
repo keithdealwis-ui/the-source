@@ -1,0 +1,126 @@
+{
+  "api_version": "v1",
+  "catalogue": {
+    "audience": "b2b",
+    "rank": 481,
+    "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+    "reasons": [
+      "fewer_than_minimum"
+    ],
+    "status": "partial"
+  },
+  "dataset_version": "e93d849be7ae8040",
+  "last_checked": {
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
+  },
+  "more_available": 0,
+  "provenance": {
+    "notice": "data/canonical/NOTICE.md",
+    "sources": [
+      "job_match"
+    ]
+  },
+  "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/elonen/clapshot",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 71.2,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "cloud_option",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/elonen/clapshot",
+      "last_meaningful_activity_at": "2026-07-10T14:08:29Z",
+      "latest_release": {
+        "published_at": "2026-07-08T21:37:05Z",
+        "tag": "v0.12.1"
+      },
+      "licence_spdx": "GPL-2.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "maintained",
+      "name": "clapshot",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on migration path."
+      },
+      "oss_id": "github.com/elonen/clapshot",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 78.1,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 81.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/elonen/clapshot",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 267
+    }
+  ],
+  "saas": {
+    "category": "Video review",
+    "compare_path": null,
+    "domain": "frame.io",
+    "name": "Frame.io",
+    "saas_id": "frame-io",
+    "slug": "frame-io"
+  },
+  "scoring": {
+    "methodology": "docs/METHODOLOGY.md",
+    "score_version": [
+      "1.2.0"
+    ]
+  },
+  "status": "insufficient_recommendations"
+}

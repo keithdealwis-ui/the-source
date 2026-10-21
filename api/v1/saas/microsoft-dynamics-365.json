@@ -3,18 +3,18 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 96,
-    "reason": "6 recommendations passed the full evaluation",
+    "reason": "7 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "94a9f53ad645d14f",
+  "dataset_version": "e93d849be7ae8040",
   "last_checked": {
-    "newest": "2026-10-20T23:06:47Z",
-    "oldest": "2026-10-20T23:06:47Z"
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
   },
-  "more_available": 1,
+  "more_available": 2,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -35,7 +35,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -72,7 +72,7 @@
         "tag": "24.0.1"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Dolibarr",
       "note": {
@@ -116,18 +116,18 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/django-crm/django-crm",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 100.0,
-            "ease_of_adoption": 96.0,
+            "ease_of_adoption": 96.1,
             "economic_advantage": 80.0,
             "feature_equivalence": 50.0,
             "integrations_extensibility": 100.0,
@@ -149,13 +149,13 @@
         }
       },
       "github_url": "https://github.com/Django-CRM/Django-CRM",
-      "last_meaningful_activity_at": "2026-10-17T20:06:47Z",
+      "last_meaningful_activity_at": "2026-10-21T04:42:55Z",
       "latest_release": {
-        "published_at": "2026-10-15T15:13:59Z",
-        "tag": "v1.17.0"
+        "published_at": "2026-10-21T04:42:55Z",
+        "tag": "v1.18.2"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Django-CRM",
       "note": {
@@ -171,13 +171,13 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 95.0,
-        "score": 87.1,
+        "score": 89.0,
         "trajectory": "Rising"
       },
       "rank": 2,
       "replacement_fit": {
         "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
+        "evaluated_at": "2026-10-21T08:41:23Z",
         "score": 90.9,
         "score_version": "1.2.0"
       },
@@ -199,11 +199,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/arnasdon/wacrm",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -236,7 +236,7 @@
       "last_meaningful_activity_at": "2026-10-17T02:21:57Z",
       "latest_release": null,
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "wacrm",
       "note": {
@@ -270,7 +270,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 2589
+      "stars": 2591
     },
     {
       "evidence": {
@@ -280,11 +280,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/djangocrm/django-crm",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -319,7 +319,7 @@
         "tag": "v3.1.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "django-crm",
       "note": {
@@ -362,20 +362,20 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/krayin/laravel-crm",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "locator": "data/job_match/ledger.json#github.com/lsfusion-solutions/mycompany",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 100.0,
-            "ease_of_adoption": 56.7,
-            "economic_advantage": 40.0,
+            "ease_of_adoption": 74.6,
+            "economic_advantage": 80.0,
             "feature_equivalence": 16.7,
             "integrations_extensibility": 100.0,
             "migration_friction": null,
@@ -383,24 +383,24 @@
           },
           "evidence_families": [
             "demo",
-            "multi_user",
             "plugins",
             "quickstart",
+            "self_host",
             "support"
           ],
           "scoring_path": "single_project"
         }
       },
-      "github_url": "https://github.com/krayin/laravel-crm",
-      "last_meaningful_activity_at": "2026-10-16T10:29:11Z",
+      "github_url": "https://github.com/lsfusion-solutions/mycompany",
+      "last_meaningful_activity_at": "2026-10-20T12:20:02Z",
       "latest_release": {
-        "published_at": "2026-10-16T10:29:11Z",
-        "tag": "v2.2.7"
+        "published_at": "2026-07-27T08:50:47Z",
+        "tag": "6.2"
       },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
-      "name": "Krayin",
+      "name": "mycompany",
       "note": {
         "gaps": [
           "feature parity"
@@ -412,29 +412,29 @@
         ],
         "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
       },
-      "oss_id": "github.com/krayin/laravel-crm",
+      "oss_id": "github.com/lsfusion-solutions/mycompany",
       "project_health": {
         "band": "Healthy",
         "confidence": 96.6,
-        "score": 83.5,
+        "score": 81.9,
         "trajectory": "Stable"
       },
       "rank": 5,
       "replacement_fit": {
         "confidence": 81.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 75.6,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 80.8,
         "score_version": "1.2.0"
       },
-      "repo_url": "https://github.com/krayin/laravel-crm",
+      "repo_url": "https://github.com/lsfusion-solutions/mycompany",
       "self_hosting": {
-        "basis": "container image or self-hosting evidence found",
+        "basis": "self-hosting documented in the project's README",
         "self_hostable": true
       },
       "sources": [
         "job_match"
       ],
-      "stars": 24035
+      "stars": 359
     }
   ],
   "saas": {

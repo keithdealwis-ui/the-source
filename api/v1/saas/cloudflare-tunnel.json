@@ -3,17 +3,17 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 199,
-    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 2 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
     "reasons": [
       "fewer_than_minimum",
       "outside_launch_selection"
     ],
     "status": "partial"
   },
-  "dataset_version": "94a9f53ad645d14f",
+  "dataset_version": "e93d849be7ae8040",
   "last_checked": {
-    "newest": "2026-10-20T23:06:47Z",
-    "oldest": "2026-10-20T23:06:47Z"
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
   },
   "more_available": 0,
   "provenance": {
@@ -31,11 +31,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/amalshaji/portr",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -66,7 +66,7 @@
         "tag": "v2.0.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "portr",
       "note": {
@@ -112,11 +112,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/fatedier/frp",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -151,7 +151,7 @@
         "tag": "v0.71.1"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "frp",
       "note": {
@@ -185,7 +185,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 110019
+      "stars": 110037
     }
   ],
   "saas": {

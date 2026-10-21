@@ -3,16 +3,17 @@
   "catalogue": {
     "audience": "both",
     "rank": 152,
-    "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+    "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
     "reasons": [
-      "fewer_than_minimum"
+      "fewer_than_minimum",
+      "outside_launch_selection"
     ],
     "status": "partial"
   },
-  "dataset_version": "94a9f53ad645d14f",
+  "dataset_version": "e93d849be7ae8040",
   "last_checked": {
-    "newest": "2026-10-20T23:06:47Z",
-    "oldest": "2026-10-20T23:06:47Z"
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
   },
   "more_available": 0,
   "provenance": {
@@ -45,7 +46,7 @@
               "source_id": "emmraan"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -81,7 +82,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the AGPL-3.0 core; parts under Formbricks EE licence are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Formbricks",
       "note": {

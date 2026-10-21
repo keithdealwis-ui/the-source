@@ -3,16 +3,16 @@
   "catalogue": {
     "audience": "b2c",
     "rank": 323,
-    "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+    "reason": "4 recommendations passed the full evaluation",
     "reasons": [
-      "fewer_than_minimum"
+      "full_evaluation"
     ],
-    "status": "partial"
+    "status": "ok"
   },
-  "dataset_version": "94a9f53ad645d14f",
+  "dataset_version": "e93d849be7ae8040",
   "last_checked": {
-    "newest": "2026-10-20T23:06:47Z",
-    "oldest": "2026-10-20T23:06:47Z"
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
   },
   "more_available": 0,
   "provenance": {
@@ -35,7 +35,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -69,7 +69,7 @@
         "tag": "v3.3.4"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Immich",
       "note": {
@@ -103,7 +103,7 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 116774
+      "stars": 116811
     },
     {
       "evidence": {
@@ -113,11 +113,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/piwigo/piwigo",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -149,7 +149,7 @@
         "tag": "16.4.0"
       },
       "licence_spdx": "GPL-2.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Piwigo",
       "note": {
@@ -183,12 +183,176 @@
       "sources": [
         "job_match"
       ],
-      "stars": 3869
+      "stars": 3868
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/lynavo/lynavo-drive",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/Lynavo/lynavo-drive",
+      "last_meaningful_activity_at": "2026-07-31T08:23:51Z",
+      "latest_release": {
+        "published_at": "2026-07-31T08:23:51Z",
+        "tag": "v1.0.2"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "lynavo-drive",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "migration path"
+        ],
+        "text": "Strongest on core use-case coverage and migration path."
+      },
+      "oss_id": "github.com/lynavo/lynavo-drive",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 95.8,
+        "score": 78.8,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 77.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Lynavo/lynavo-drive",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 530
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/fregie/pho",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 95.0,
+            "ease_of_adoption": 44.9,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "plugins",
+            "self_host"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/fregie/pho",
+      "last_meaningful_activity_at": "2026-10-19T11:03:52Z",
+      "latest_release": {
+        "published_at": "2026-10-19T11:03:52Z",
+        "tag": "v1.5.1"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "pho",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity."
+      },
+      "oss_id": "github.com/fregie/pho",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 94.1,
+        "score": 62.4,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 77.1,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/fregie/pho",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 1174
     }
   ],
   "saas": {
     "category": "Photo management",
-    "compare_path": null,
+    "compare_path": "/open-source/icloud-photos-alternatives",
     "domain": "icloud.com",
     "name": "iCloud Photos",
     "saas_id": "icloud-photos",
@@ -200,5 +364,5 @@
       "1.2.0"
     ]
   },
-  "status": "insufficient_recommendations"
+  "status": "ok"
 }

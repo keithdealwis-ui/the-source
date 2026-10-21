@@ -3,16 +3,16 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 200,
-    "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+    "reason": "4 recommendations passed the full evaluation",
     "reasons": [
-      "fewer_than_minimum"
+      "full_evaluation"
     ],
-    "status": "partial"
+    "status": "ok"
   },
-  "dataset_version": "94a9f53ad645d14f",
+  "dataset_version": "e93d849be7ae8040",
   "last_checked": {
-    "newest": "2026-10-20T23:06:47Z",
-    "oldest": "2026-10-20T23:06:47Z"
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
   },
   "more_available": 0,
   "provenance": {
@@ -29,12 +29,95 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/knadh/listmonk",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "locator": "data/job_match/ledger.json#github.com/phplist/phplist3",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 93.8,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/phpList/phplist3",
+      "last_meaningful_activity_at": "2026-10-19T07:51:26Z",
+      "latest_release": {
+        "published_at": "2026-08-09T17:52:58Z",
+        "tag": "v3.6.17"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "phplist3",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/phplist/phplist3",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 79.2,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 79.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/phpList/phplist3",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 878
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/knadh/listmonk",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -63,7 +146,7 @@
         "tag": "v7.0.0-beta.1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Listmonk",
       "note": {
@@ -84,7 +167,7 @@
         "score": 89.7,
         "trajectory": "Rising"
       },
-      "rank": 1,
+      "rank": 2,
       "replacement_fit": {
         "confidence": 78.5,
         "evaluated_at": "2026-10-20T12:30:08Z",
@@ -99,12 +182,175 @@
       "sources": [
         "job_match"
       ],
-      "stars": 23886
+      "stars": 23892
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/billionmail/billionmail",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 97.1,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/Billionmail/BillionMail",
+      "last_meaningful_activity_at": "2026-06-11T06:42:43Z",
+      "latest_release": {
+        "published_at": "2025-12-11T10:37:13Z",
+        "tag": "v4.9"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "maintained",
+      "name": "BillionMail",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on migration path."
+      },
+      "oss_id": "github.com/billionmail/billionmail",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 94.7,
+        "score": 60.2,
+        "trajectory": "Declining"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 73.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Billionmail/BillionMail",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 15934
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/mettle/sendportal",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 37.7,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": null,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "multi_user",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/mettle/sendportal",
+      "last_meaningful_activity_at": "2026-10-12T10:19:50Z",
+      "latest_release": {
+        "published_at": "2026-10-12T10:02:38Z",
+        "tag": "v4.0.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "sendportal",
+      "note": {
+        "gaps": [
+          "feature parity",
+          "ease of adoption"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity and ease of adoption."
+      },
+      "oss_id": "github.com/mettle/sendportal",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 96.6,
+        "score": 69.3,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 78.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 71.4,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/mettle/sendportal",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 2178
     }
   ],
   "saas": {
     "category": "Email marketing",
-    "compare_path": null,
+    "compare_path": "/open-source/klaviyo-alternatives",
     "domain": "klaviyo.com",
     "name": "Klaviyo",
     "saas_id": "klaviyo",
@@ -116,5 +362,5 @@
       "1.2.0"
     ]
   },
-  "status": "insufficient_recommendations"
+  "status": "ok"
 }

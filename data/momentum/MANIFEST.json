@@ -1,13 +1,17 @@
 {
-  "as_of": "2026-10-20T23:06:47Z",
+  "as_of": "2026-10-21T09:59:55Z",
   "counts": {
-    "measured_any_window": 614,
-    "projects": 963
+    "measured_any_window": 897,
+    "projects": 1512
   },
   "coverage": {
     "1": {
       "acceleration": {
-        "labels": {},
+        "labels": {
+          "accelerating": 101,
+          "decelerating": 155,
+          "steady": 365
+        },
         "measurable_from": "2026-10-04",
         "prior_base": {
           "base_day": "2026-10-19",
@@ -18,11 +22,11 @@
         "projects": {
           "identity_changed": 0,
           "insufficient_history": 0,
-          "measured": 0,
-          "no_baseline": 0,
+          "measured": 621,
+          "no_baseline": 276,
           "not_observed": 0
         },
-        "status": "insufficient_history"
+        "status": "measured"
       },
       "base": {
         "base_day": "2026-10-20",
@@ -33,16 +37,21 @@
       },
       "calendar_days_in_window": 2,
       "measurable_from": "2026-10-03",
-      "momentum": {},
+      "momentum": {
+        "declining": 12,
+        "flat": 612,
+        "rising": 249,
+        "surging": 24
+      },
       "projects": {
         "identity_changed": 0,
-        "insufficient_history": 947,
-        "measured": 0,
-        "no_baseline": 0,
+        "insufficient_history": 0,
+        "measured": 897,
+        "no_baseline": 599,
         "not_observed": 16
       },
       "snapshots_in_window": 2,
-      "status": "insufficient_history"
+      "status": "measured"
     },
     "30": {
       "acceleration": {
@@ -68,7 +77,7 @@
       "momentum": {},
       "projects": {
         "identity_changed": 0,
-        "insufficient_history": 963,
+        "insufficient_history": 1512,
         "measured": 0,
         "no_baseline": 0,
         "not_observed": 0
@@ -79,9 +88,9 @@
     "7": {
       "acceleration": {
         "labels": {
-          "accelerating": 169,
-          "decelerating": 79,
-          "steady": 360
+          "accelerating": 171,
+          "decelerating": 83,
+          "steady": 354
         },
         "measurable_from": "2026-10-16",
         "prior_base": {
@@ -110,15 +119,15 @@
       "measurable_from": "2026-10-09",
       "momentum": {
         "declining": 2,
-        "flat": 389,
-        "rising": 208,
-        "surging": 15
+        "flat": 386,
+        "rising": 209,
+        "surging": 17
       },
       "projects": {
         "identity_changed": 0,
         "insufficient_history": 0,
         "measured": 614,
-        "no_baseline": 333,
+        "no_baseline": 882,
         "not_observed": 16
       },
       "snapshots_in_window": 8,
@@ -148,7 +157,7 @@
       "momentum": {},
       "projects": {
         "identity_changed": 0,
-        "insufficient_history": 963,
+        "insufficient_history": 1512,
         "measured": 0,
         "no_baseline": 0,
         "not_observed": 0
@@ -158,10 +167,10 @@
     }
   },
   "files": {
-    "projects.jsonl": "00ee6b4c2ed495b4c4daa14e538d4efe61ad7663553c28487fb76b4f85e8f541"
+    "projects.jsonl": "5aadf1860cf18cb71b2b848880230423ba1c0e44a4f84a1b0b51494260cd9409"
   },
   "history": {
-    "dataset_version": "94a9f53ad645d14f",
+    "dataset_version": "e93d849be7ae8040",
     "day_sha256": {
       "2026-10-07": "5eacab70e9aba853157d171edd1e8f34472ef5b13cb11a54407715191e459265",
       "2026-10-08": "34af132680cde4a0b3cd73bbab419fedef6c44d31bf6aff5456a962b86bba895",
@@ -177,7 +186,7 @@
       "2026-10-18": "5b28e6550ae5a251fa4e5903a1657e916fd8eeacaaecc630563a13ff83bddac7",
       "2026-10-19": "20e56df6a9b2bd7a12a80e60771c8f6d9b2a633b66528b743934c94ab5e41984",
       "2026-10-20": "15f6956e150420f08ac7c632a32645730a115ea7ab0b095c0d59318d4efe6fe3",
-      "2026-10-21": "4b67ca4d04278bb91b366f9cd41d4da5375f5ad056a4a1efb4a22bbe2688e97b"
+      "2026-10-21": "a98c75f470abed527f178c980e762f10b1c3aa9aa589aab2836c126634270ce4"
     },
     "days_held": 20,
     "days_read": [
@@ -199,7 +208,7 @@
     ],
     "newest": "2026-10-21",
     "oldest": "2026-10-02",
-    "run_id": "2026-10-21-schedule-a1"
+    "run_id": "manual-20261021T095954Z-manual-a1"
   },
   "methodology": {
     "doc": "docs/MOMENTUM.md",

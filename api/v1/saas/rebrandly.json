@@ -3,18 +3,18 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 169,
-    "reason": "5 recommendations passed the full evaluation",
+    "reason": "8 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "94a9f53ad645d14f",
+  "dataset_version": "e93d849be7ae8040",
   "last_checked": {
-    "newest": "2026-10-20T23:06:47Z",
-    "oldest": "2026-10-20T23:06:47Z"
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
   },
-  "more_available": 0,
+  "more_available": 3,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -35,7 +35,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -68,7 +68,7 @@
       "latest_release": null,
       "licence_disclosure": "open core: recommendation covers the AGPL-3.0 core; parts under Dub EE licence are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Dub",
       "note": {
@@ -102,7 +102,7 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 24919
+      "stars": 24917
     },
     {
       "evidence": {
@@ -112,11 +112,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/sjdonado/bit",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -145,7 +145,7 @@
         "tag": "1.7.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "bit",
       "note": {
@@ -190,12 +190,90 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/sintan1729/chhoto-url",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "locator": "data/job_match/ledger.json#github.com/realodix/urlhub",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 55.8,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": null,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "demo",
+            "import",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/realodix/urlhub",
+      "last_meaningful_activity_at": "2026-05-29T16:31:49Z",
+      "latest_release": {
+        "published_at": "2026-05-29T16:29:20Z",
+        "tag": "v1.20.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "maintained",
+      "name": "urlhub",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/realodix/urlhub",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 96.6,
+        "score": 65.9,
+        "trajectory": "Declining"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 81.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 85.1,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/realodix/urlhub",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 542
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/sintan1729/chhoto-url",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -229,7 +307,7 @@
         "tag": "7.8.4"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "chhoto-url",
       "note": {
@@ -250,7 +328,7 @@
         "score": 84.8,
         "trajectory": "Rising"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
@@ -265,7 +343,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 989
+      "stars": 991
     },
     {
       "evidence": {
@@ -275,11 +353,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/yourselfhosted/slash",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -311,7 +389,7 @@
         "tag": "v0.5.3"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "slash",
       "note": {
@@ -332,7 +410,7 @@
         "score": 67.1,
         "trajectory": "Declining"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
@@ -348,87 +426,6 @@
         "job_match"
       ],
       "stars": 3184
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/spoo-me/spoo",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 43.8,
-            "ease_of_adoption": 60.0,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 100.0,
-            "integrations_extensibility": 75.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 80.0
-          },
-          "evidence_families": [
-            "api",
-            "import",
-            "quickstart",
-            "self_host",
-            "sso",
-            "support",
-            "webhook"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/spoo-me/spoo",
-      "last_meaningful_activity_at": "2026-10-07T07:09:07Z",
-      "latest_release": {
-        "published_at": "2026-10-07T07:09:07Z",
-        "tag": "v2.7.1"
-      },
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
-      "maintenance_status": "active",
-      "name": "spoo",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "feature parity"
-        ],
-        "text": "Strongest on core use-case coverage and feature parity."
-      },
-      "oss_id": "github.com/spoo-me/spoo",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 96.6,
-        "score": 85.3,
-        "trajectory": "Rising"
-      },
-      "rank": 5,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 78.5,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/spoo-me/spoo",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 263
     }
   ],
   "saas": {

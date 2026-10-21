@@ -3,22 +3,23 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 167,
-    "reason": "3 recommendations passed the full evaluation",
+    "reason": "6 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "94a9f53ad645d14f",
+  "dataset_version": "e93d849be7ae8040",
   "last_checked": {
-    "newest": "2026-10-20T23:06:47Z",
-    "oldest": "2026-10-20T23:06:47Z"
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
   },
-  "more_available": 0,
+  "more_available": 1,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
       "emmraan",
+      "job_match",
       "solvohq"
     ]
   },
@@ -35,7 +36,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -64,7 +65,7 @@
         "tag": "v3.1.2"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Distribution (CNCF)",
       "note": {
@@ -100,7 +101,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 10657
+      "stars": 10658
     },
     {
       "evidence": {
@@ -119,7 +120,7 @@
               "source_id": "emmraan"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -154,7 +155,7 @@
         "tag": "v2.14.6-rc1"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Harbor",
       "note": {
@@ -189,7 +190,7 @@
         "solvohq",
         "emmraan"
       ],
-      "stars": 29577
+      "stars": 29585
     },
     {
       "evidence": {
@@ -203,7 +204,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -234,7 +235,7 @@
         "tag": "release-3.97.1-02"
       },
       "licence_spdx": "EPL-1.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Sonatype Nexus Repository OSS",
       "note": {
@@ -270,7 +271,162 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 2681
+      "stars": 2684
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/trow-registry/trow",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 88.3,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": null,
+            "production_commercial_readiness": 50.0
+          },
+          "evidence_families": [
+            "quickstart",
+            "self_host",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/Trow-Registry/trow",
+      "last_meaningful_activity_at": "2026-09-30T14:18:55Z",
+      "latest_release": {
+        "published_at": "2025-02-21T13:29:21Z",
+        "tag": "v0.7.2"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "trow",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/trow-registry/trow",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 80.7,
+        "trajectory": "Declining"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 81.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 86.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Trow-Registry/trow",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 1033
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/project-zot/zot",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 50.6,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "self_host"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/project-zot/zot",
+      "last_meaningful_activity_at": "2026-10-20T06:21:42Z",
+      "latest_release": {
+        "published_at": "2026-10-06T16:50:05Z",
+        "tag": "v2.1.22"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "zot",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
+      },
+      "oss_id": "github.com/project-zot/zot",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 92.7,
+        "trajectory": "Rising"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 81.6,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/project-zot/zot",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 2893
     }
   ],
   "saas": {

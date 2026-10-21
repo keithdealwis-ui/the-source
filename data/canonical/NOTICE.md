@@ -170,6 +170,6 @@ SOFTWARE.
 
 ## keithdealwis-ui/the-source
 
-- Source: https://github.com/keithdealwis-ui/the-source/blob/main/data/job_match/ledger.json at commit dcb85b2b5e3cdce933a9964f465ce0bc98a14c02
+- Source: https://github.com/keithdealwis-ui/the-source/blob/main/data/job_match/ledger.json at commit b9be7c612e7324680852cf3ca79d0efe635c7abd
 - Licence: n/a (The Source's own derivation)
 - Attribution: The Source job-match ledger (data/job_match/ledger.json): candidate pairings derived from each project's own description of its job, confirmed only by The Source's full evaluation

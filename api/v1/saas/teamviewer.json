@@ -3,23 +3,23 @@
   "catalogue": {
     "audience": "both",
     "rank": 72,
-    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations",
+    "reason": "4 recommendations passed the full evaluation",
     "reasons": [
-      "fewer_than_minimum",
-      "evaluated_not_recommended"
+      "full_evaluation"
     ],
-    "status": "partial"
+    "status": "ok"
   },
-  "dataset_version": "94a9f53ad645d14f",
+  "dataset_version": "e93d849be7ae8040",
   "last_checked": {
-    "newest": "2026-10-20T23:06:47Z",
-    "oldest": "2026-10-20T23:06:47Z"
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
   },
   "more_available": 0,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
       "diegoleme",
+      "job_match",
       "opensaasdirectory",
       "runacapital"
     ]
@@ -37,7 +37,7 @@
               "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -66,7 +66,7 @@
         "tag": "1.2.6"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "MeshCentral",
       "note": {
@@ -102,7 +102,7 @@
       "sources": [
         "diegoleme"
       ],
-      "stars": 7447
+      "stars": 7450
     },
     {
       "evidence": {
@@ -121,7 +121,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -156,7 +156,7 @@
         "tag": "1.5.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "RustDesk",
       "note": {
@@ -191,12 +191,173 @@
         "runacapital",
         "opensaasdirectory"
       ],
-      "stars": 126440
+      "stars": 126503
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/dchapyshev/aspia",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 85.0,
+            "ease_of_adoption": 18.1,
+            "economic_advantage": 34.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": null,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "multi_user",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/dchapyshev/aspia",
+      "last_meaningful_activity_at": "2026-10-20T11:53:44Z",
+      "latest_release": {
+        "published_at": "2026-10-20T11:53:44Z",
+        "tag": "v3.1.2"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "aspia",
+      "note": {
+        "gaps": [
+          "ease of adoption",
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness; weakest on ease of adoption and cost advantage."
+      },
+      "oss_id": "github.com/dchapyshev/aspia",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 77.8,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 80.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 71.5,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/dchapyshev/aspia",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 1960
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/kunkundi/crossdesk",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 71.2,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/kunkundi/crossdesk",
+      "last_meaningful_activity_at": "2026-10-21T03:45:27Z",
+      "latest_release": {
+        "published_at": "2026-10-19T14:31:41Z",
+        "tag": "v1.7.1-20261019"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "crossdesk",
+      "note": {
+        "gaps": [
+          "integrations and extensibility",
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on integrations and extensibility and migration path."
+      },
+      "oss_id": "github.com/kunkundi/crossdesk",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 84.8,
+        "trajectory": "Rising"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 66.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/kunkundi/crossdesk",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 4536
     }
   ],
   "saas": {
     "category": "Remote access",
-    "compare_path": null,
+    "compare_path": "/open-source/teamviewer-alternatives",
     "domain": "teamviewer.com",
     "name": "TeamViewer",
     "saas_id": "teamviewer",
@@ -208,5 +369,5 @@
       "1.2.0"
     ]
   },
-  "status": "insufficient_recommendations"
+  "status": "ok"
 }

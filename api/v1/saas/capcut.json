@@ -3,18 +3,18 @@
   "catalogue": {
     "audience": "b2c",
     "rank": 281,
-    "reason": "4 recommendations passed the full evaluation",
+    "reason": "8 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "94a9f53ad645d14f",
+  "dataset_version": "e93d849be7ae8040",
   "last_checked": {
-    "newest": "2026-10-20T23:06:47Z",
-    "oldest": "2026-10-20T23:06:47Z"
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
   },
-  "more_available": 0,
+  "more_available": 3,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -29,12 +29,255 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/chatman-media/timeline-studio",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "locator": "data/job_match/ledger.json#github.com/b-editor/beutl",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 93.6,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "demo",
+            "import",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/b-editor/beutl",
+      "last_meaningful_activity_at": "2026-10-20T23:41:05Z",
+      "latest_release": {
+        "published_at": "2026-10-05T06:32:11Z",
+        "tag": "v2.0.0-preview.8"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "beutl",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
+      },
+      "oss_id": "github.com/b-editor/beutl",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 85.2,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 87.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/b-editor/beutl",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 1242
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/voylinsgamedevjourney/gozen",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 85.0,
+            "ease_of_adoption": 55.5,
+            "economic_advantage": 34.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 66.7
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/VoylinsGamedevJourney/gozen",
+      "last_meaningful_activity_at": "2026-10-20T07:26:29Z",
+      "latest_release": {
+        "published_at": "2026-10-13T09:45:30Z",
+        "tag": "v0.16-beta"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "gozen",
+      "note": {
+        "gaps": [
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on cost advantage."
+      },
+      "oss_id": "github.com/voylinsgamedevjourney/gozen",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 92.8,
+        "score": 82.1,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 82.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/VoylinsGamedevJourney/gozen",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 470
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/mltframework/shotcut",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 85.0,
+            "ease_of_adoption": 71.4,
+            "economic_advantage": 34.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "demo",
+            "plugins",
+            "quickstart"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/mltframework/shotcut",
+      "last_meaningful_activity_at": "2026-10-20T21:44:38Z",
+      "latest_release": {
+        "published_at": "2026-09-28T00:29:29Z",
+        "tag": "v26.9.27"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "shotcut",
+      "note": {
+        "gaps": [
+          "feature parity",
+          "cost advantage"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity and cost advantage."
+      },
+      "oss_id": "github.com/mltframework/shotcut",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 88.2,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 81.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 76.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/mltframework/shotcut",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 15459
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/chatman-media/timeline-studio",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -66,7 +309,7 @@
         "tag": "v3.111.1"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "maintained",
       "name": "timeline-studio",
       "note": {
@@ -85,7 +328,7 @@
         "score": 77.0,
         "trajectory": "Declining"
       },
-      "rank": 1,
+      "rank": 4,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
@@ -109,12 +352,12 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/diffusionstudio/editor",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "locator": "data/job_match/ledger.json#github.com/storytold/filmcraft",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -122,11 +365,11 @@
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 25.0,
             "ease_of_adoption": 80.0,
-            "economic_advantage": 20.0,
-            "feature_equivalence": 92.5,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 100.0,
             "integrations_extensibility": 50.0,
             "migration_friction": 66.7,
-            "production_commercial_readiness": 40.0
+            "production_commercial_readiness": 60.0
           },
           "evidence_families": [
             "api",
@@ -134,24 +377,24 @@
             "import",
             "multi_user",
             "plugins",
-            "quickstart"
+            "quickstart",
+            "support"
           ],
           "scoring_path": "single_project"
         }
       },
-      "github_url": "https://github.com/diffusionstudio/editor",
-      "last_meaningful_activity_at": "2026-10-18T22:31:55Z",
+      "github_url": "https://github.com/storytold/filmcraft",
+      "last_meaningful_activity_at": "2026-10-20T15:38:41Z",
       "latest_release": {
-        "published_at": "2026-10-18T22:31:55Z",
-        "tag": "v0.216.0"
+        "published_at": "2026-10-18T03:55:32Z",
+        "tag": "v0.9.0"
       },
-      "licence_spdx": "MPL-2.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
-      "name": "editor",
+      "name": "filmcraft",
       "note": {
         "gaps": [
-          "cost advantage",
           "self-hosting and data ownership"
         ],
         "origin": "derived",
@@ -159,23 +402,23 @@
           "core use-case coverage",
           "feature parity"
         ],
-        "text": "Strongest on core use-case coverage and feature parity; weakest on cost advantage and self-hosting and data ownership."
+        "text": "Strongest on core use-case coverage and feature parity; weakest on self-hosting and data ownership."
       },
-      "oss_id": "github.com/diffusionstudio/editor",
+      "oss_id": "github.com/storytold/filmcraft",
       "project_health": {
         "band": "Healthy",
-        "confidence": 93.7,
-        "score": 71.1,
+        "confidence": 89.2,
+        "score": 75.3,
         "trajectory": "Insufficient history"
       },
-      "rank": 2,
+      "rank": 5,
       "replacement_fit": {
         "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 70.0,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 74.2,
         "score_version": "1.2.0"
       },
-      "repo_url": "https://github.com/diffusionstudio/editor",
+      "repo_url": "https://github.com/storytold/filmcraft",
       "self_hosting": {
         "basis": "no self-hosting evidence found; not evidence of absence",
         "self_hostable": null
@@ -183,163 +426,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 3357
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/kde/kdenlive",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 85.0,
-            "ease_of_adoption": 64.0,
-            "economic_advantage": 34.0,
-            "feature_equivalence": 33.3,
-            "integrations_extensibility": null,
-            "migration_friction": null,
-            "production_commercial_readiness": 50.0
-          },
-          "evidence_families": [
-            "quickstart",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/KDE/kdenlive",
-      "last_meaningful_activity_at": "2026-10-16T16:37:55Z",
-      "latest_release": null,
-      "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
-      "maintenance_status": "active",
-      "name": "Kdenlive",
-      "note": {
-        "gaps": [
-          "feature parity",
-          "cost advantage"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "self-hosting and data ownership"
-        ],
-        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity and cost advantage."
-      },
-      "oss_id": "github.com/kde/kdenlive",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 90.4,
-        "score": 81.3,
-        "trajectory": "Stable"
-      },
-      "rank": 3,
-      "replacement_fit": {
-        "confidence": 78.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 68.5,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/KDE/kdenlive",
-      "self_hosting": {
-        "basis": "no self-hosting evidence found; not evidence of absence",
-        "self_hostable": null
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 5907
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/aieradev/clypra",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 50.0,
-            "ease_of_adoption": 59.9,
-            "economic_advantage": 40.0,
-            "feature_equivalence": 73.3,
-            "integrations_extensibility": 0.0,
-            "migration_friction": 33.3,
-            "production_commercial_readiness": 60.0
-          },
-          "evidence_families": [
-            "data_ownership",
-            "import",
-            "quickstart",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/AIEraDev/Clypra",
-      "last_meaningful_activity_at": "2026-10-19T11:55:20Z",
-      "latest_release": {
-        "published_at": "2026-10-11T11:53:10Z",
-        "tag": "v1.6.0"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-20T23:06:47Z",
-      "maintenance_status": "active",
-      "name": "Clypra",
-      "note": {
-        "gaps": [
-          "integrations and extensibility",
-          "migration path"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage"
-        ],
-        "text": "Strongest on core use-case coverage; weakest on integrations and extensibility and migration path."
-      },
-      "oss_id": "github.com/aieradev/clypra",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 92.1,
-        "score": 75.6,
-        "trajectory": "Insufficient history"
-      },
-      "rank": 4,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 61.3,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/AIEraDev/Clypra",
-      "self_hosting": {
-        "basis": "no self-hosting evidence found; not evidence of absence",
-        "self_hostable": null
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 3330
+      "stars": 15415
     }
   ],
   "saas": {

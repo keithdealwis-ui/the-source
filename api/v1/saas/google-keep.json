@@ -3,18 +3,18 @@
   "catalogue": {
     "audience": "b2c",
     "rank": 75,
-    "reason": "5 recommendations passed the full evaluation",
+    "reason": "6 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "94a9f53ad645d14f",
+  "dataset_version": "e93d849be7ae8040",
   "last_checked": {
-    "newest": "2026-10-20T23:06:47Z",
-    "oldest": "2026-10-20T23:06:47Z"
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
   },
-  "more_available": 0,
+  "more_available": 1,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -30,11 +30,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/dullage/flatnotes",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -65,7 +65,7 @@
         "tag": "v5.5.5"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "flatnotes",
       "note": {
@@ -109,11 +109,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/nuttyartist/notes",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -144,7 +144,7 @@
         "tag": "v2.3.1"
       },
       "licence_spdx": "MPL-2.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "maintained",
       "name": "notes",
       "note": {
@@ -187,12 +187,94 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/brufdev/many-notes",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "locator": "data/job_match/ledger.json#github.com/standardnotes/app",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 91.7,
+            "ease_of_adoption": 39.9,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "data_ownership",
+            "import",
+            "plugins",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/standardnotes/app",
+      "last_meaningful_activity_at": "2026-10-17T03:12:48Z",
+      "latest_release": {
+        "published_at": "2026-10-17T03:16:49Z",
+        "tag": "@standardnotes/desktop@3.202.10"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "app",
+      "note": {
+        "gaps": [
+          "feature parity",
+          "ease of adoption"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity and ease of adoption."
+      },
+      "oss_id": "github.com/standardnotes/app",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.8,
+        "score": 87.1,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 78.1,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/standardnotes/app",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 6674
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/brufdev/many-notes",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -226,7 +308,7 @@
         "tag": "v0.18.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "many-notes",
       "note": {
@@ -248,7 +330,7 @@
         "score": 79.7,
         "trajectory": "Declining"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
@@ -273,11 +355,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/team-reflect/reflect-open",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -310,7 +392,7 @@
         "tag": "extension-v0.4.2"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "reflect-open",
       "note": {
@@ -329,7 +411,7 @@
         "score": 75.2,
         "trajectory": "Insufficient history"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-20T12:30:08Z",
@@ -344,90 +426,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 1588
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/usememos/memos",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 75.0,
-            "ease_of_adoption": 77.1,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 50.0,
-            "integrations_extensibility": 50.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 20.0
-          },
-          "evidence_families": [
-            "api",
-            "data_ownership",
-            "demo",
-            "import",
-            "plugins",
-            "quickstart",
-            "self_host"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/usememos/memos",
-      "last_meaningful_activity_at": "2026-10-19T05:58:40Z",
-      "latest_release": {
-        "published_at": "2026-10-09T14:49:15Z",
-        "tag": "26.10-rc.1"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-20T23:06:47Z",
-      "maintenance_status": "active",
-      "name": "memos",
-      "note": {
-        "gaps": [
-          "production readiness"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "cost advantage"
-        ],
-        "text": "Strongest on core use-case coverage and cost advantage; weakest on production readiness."
-      },
-      "oss_id": "github.com/usememos/memos",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 95.0,
-        "score": 89.7,
-        "trajectory": "Stable"
-      },
-      "rank": 5,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 69.2,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/usememos/memos",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 63952
+      "stars": 1589
     }
   ],
   "saas": {

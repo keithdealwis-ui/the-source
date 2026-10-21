@@ -3,21 +3,22 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 170,
-    "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+    "reason": "4 recommendations passed the full evaluation",
     "reasons": [
-      "fewer_than_minimum"
+      "full_evaluation"
     ],
-    "status": "partial"
+    "status": "ok"
   },
-  "dataset_version": "94a9f53ad645d14f",
+  "dataset_version": "e93d849be7ae8040",
   "last_checked": {
-    "newest": "2026-10-20T23:06:47Z",
-    "oldest": "2026-10-20T23:06:47Z"
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
   },
   "more_available": 0,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "job_match",
       "opensaasdirectory",
       "runacapital"
     ]
@@ -35,7 +36,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -61,14 +62,14 @@
         }
       },
       "github_url": "https://github.com/n8n-io/n8n",
-      "last_meaningful_activity_at": "2026-10-20T12:24:50Z",
+      "last_meaningful_activity_at": "2026-10-21T08:39:17Z",
       "latest_release": {
-        "published_at": "2026-10-20T09:19:58Z",
+        "published_at": "2026-10-21T07:26:48Z",
         "tag": "stable"
       },
       "licence_disclosure": "source-available: licensed under Sustainable Use License, which is not an OSI-approved open-source licence",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "n8n",
       "note": {
@@ -90,7 +91,7 @@
       "rank": 1,
       "replacement_fit": {
         "confidence": 81.5,
-        "evaluated_at": "2026-10-20T12:30:08Z",
+        "evaluated_at": "2026-10-21T08:41:23Z",
         "score": 88.3,
         "score_version": "1.2.0"
       },
@@ -102,7 +103,7 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 208154
+      "stars": 208199
     },
     {
       "evidence": {
@@ -116,7 +117,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -150,7 +151,7 @@
       "latest_release": null,
       "licence_disclosure": "source-available: licensed under Pipedream Source Available License, which is not an OSI-approved open-source licence",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Pipedream",
       "note": {
@@ -186,12 +187,178 @@
       "sources": [
         "runacapital"
       ],
-      "stars": 11756
+      "stars": 11757
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/openfn/lightning",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 71.2,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 51.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/OpenFn/lightning",
+      "last_meaningful_activity_at": "2026-10-16T10:28:54Z",
+      "latest_release": {
+        "published_at": "2026-10-09T07:03:08Z",
+        "tag": "v2.19.1-pre"
+      },
+      "licence_spdx": "LGPL-3.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "lightning",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity."
+      },
+      "oss_id": "github.com/openfn/lightning",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 88.2,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 87.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/OpenFn/lightning",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 319
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/cenit-io/cenit",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/cenit-io/cenit",
+      "last_meaningful_activity_at": "2026-07-29T18:10:56Z",
+      "latest_release": {
+        "published_at": "2025-11-01T18:02:24Z",
+        "tag": "v1.0.4"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "cenit",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/cenit-io/cenit",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 72.7,
+        "trajectory": "Rising"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 74.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/cenit-io/cenit",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 507
     }
   ],
   "saas": {
     "category": "Workflow automation",
-    "compare_path": null,
+    "compare_path": "/open-source/make-alternatives",
     "domain": "make.com",
     "name": "Make",
     "saas_id": "make",
@@ -203,5 +370,5 @@
       "1.2.0"
     ]
   },
-  "status": "insufficient_recommendations"
+  "status": "ok"
 }

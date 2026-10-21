@@ -3,23 +3,22 @@
   "catalogue": {
     "audience": "both",
     "rank": 65,
-    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations; 2 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+    "reason": "4 recommendations passed the full evaluation",
     "reasons": [
-      "fewer_than_minimum",
-      "evaluated_not_recommended",
-      "outside_launch_selection"
+      "full_evaluation"
     ],
-    "status": "partial"
+    "status": "ok"
   },
-  "dataset_version": "94a9f53ad645d14f",
+  "dataset_version": "e93d849be7ae8040",
   "last_checked": {
-    "newest": "2026-10-20T23:06:47Z",
-    "oldest": "2026-10-20T23:06:47Z"
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
   },
   "more_available": 0,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "job_match",
       "runacapital",
       "solvohq"
     ]
@@ -42,7 +41,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -77,7 +76,7 @@
         "tag": "v0.81.3"
       },
       "licence_spdx": "BSD-3-Clause",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Netbird",
       "note": {
@@ -112,7 +111,7 @@
         "solvohq",
         "runacapital"
       ],
-      "stars": 30097
+      "stars": 30110
     },
     {
       "evidence": {
@@ -126,7 +125,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -151,13 +150,13 @@
         }
       },
       "github_url": "https://github.com/juanfont/headscale",
-      "last_meaningful_activity_at": "2026-10-13T13:05:15Z",
+      "last_meaningful_activity_at": "2026-10-20T09:55:12Z",
       "latest_release": {
         "published_at": "2026-10-13T13:05:15Z",
         "tag": "v0.29.5"
       },
       "licence_spdx": "BSD-3-Clause",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Headscale",
       "note": {
@@ -194,12 +193,176 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 44824
+      "stars": 44839
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/rayfish/rayfish",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 43.3,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 75.0
+          },
+          "evidence_families": [
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/rayfish/rayfish",
+      "last_meaningful_activity_at": "2026-10-20T14:32:20Z",
+      "latest_release": {
+        "published_at": "2026-10-19T05:10:15Z",
+        "tag": "v0.5.10"
+      },
+      "licence_spdx": "MPL-2.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "rayfish",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/rayfish/rayfish",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 93.7,
+        "score": 75.0,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 82.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/rayfish/rayfish",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 752
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/anywherelan/awl",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-21T09:59:55Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/anywherelan/awl",
+      "last_meaningful_activity_at": "2026-10-20T15:00:56Z",
+      "latest_release": {
+        "published_at": "2026-07-18T12:12:41Z",
+        "tag": "v0.19.0"
+      },
+      "licence_spdx": "MPL-2.0",
+      "live_checked_at": "2026-10-21T09:59:55Z",
+      "maintenance_status": "active",
+      "name": "awl",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on migration path."
+      },
+      "oss_id": "github.com/anywherelan/awl",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 81.3,
+        "trajectory": "Rising"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 81.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/anywherelan/awl",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 705
     }
   ],
   "saas": {
     "category": "Networking & VPN",
-    "compare_path": null,
+    "compare_path": "/open-source/tailscale-alternatives",
     "domain": "tailscale.com",
     "name": "Tailscale",
     "saas_id": "tailscale",
@@ -211,5 +374,5 @@
       "1.2.0"
     ]
   },
-  "status": "insufficient_recommendations"
+  "status": "ok"
 }

@@ -1,26 +1,6 @@
 [
   {
     "detected": {
-      "closest_standard_licences": [],
-      "enterprise_directories": [],
-      "host_licence_name": null,
-      "host_spdx": null,
-      "licence_files": [],
-      "restriction_markers": []
-    },
-    "issue_category": "missing",
-    "maintenance": "active",
-    "name": "Bangle.io",
-    "oss_id": "github.com/bangle-io/bangle-io",
-    "reason": "no licence file at the repository root and the host reports no licence",
-    "recommendation_eligible": false,
-    "relationships_flagged": 5,
-    "repo_url": "https://github.com/bangle-io/bangle-io",
-    "review_status": "flagged_retained_not_reviewed_individually",
-    "upstream_claims": []
-  },
-  {
-    "detected": {
       "closest_standard_licences": [
         "Apache-2.0"
       ],
@@ -254,6 +234,26 @@
     "recommendation_eligible": false,
     "relationships_flagged": 2,
     "repo_url": "https://github.com/vuestorefront/vue-storefront",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": null,
+      "host_spdx": null,
+      "licence_files": [],
+      "restriction_markers": []
+    },
+    "issue_category": "missing",
+    "maintenance": "active",
+    "name": "Bangle.io",
+    "oss_id": "github.com/bangle-io/bangle-io",
+    "reason": "no licence file at the repository root and the host reports no licence",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/bangle-io/bangle-io",
     "review_status": "flagged_retained_not_reviewed_individually",
     "upstream_claims": []
   },

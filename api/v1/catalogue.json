@@ -4,28 +4,28 @@
   "counts": {
     "by_audience": {
       "b2b": {
-        "none_yet": 107,
-        "ok": 122,
-        "partial": 108
+        "none_yet": 63,
+        "ok": 178,
+        "partial": 96
       },
       "b2c": {
-        "none_yet": 32,
-        "ok": 14,
-        "partial": 25
+        "none_yet": 23,
+        "ok": 29,
+        "partial": 19
       },
       "both": {
-        "none_yet": 23,
-        "ok": 32,
-        "partial": 37
+        "none_yet": 14,
+        "ok": 44,
+        "partial": 34
       }
     },
     "entries": 500,
-    "none_yet": 162,
-    "ok": 168,
-    "partial": 170,
-    "support_records": 338
+    "none_yet": 100,
+    "ok": 251,
+    "partial": 149,
+    "support_records": 400
   },
-  "dataset_version": "94a9f53ad645d14f",
+  "dataset_version": "e93d849be7ae8040",
   "demand": {
     "status": "available",
     "telemetry": "no_product_dimension"
@@ -75,7 +75,7 @@
         "job_defined": true,
         "licence_review": 1,
         "not_recommended": 0,
-        "outside_launch": 6,
+        "outside_launch": 7,
         "share_alike_only": 0
       },
       "match": [
@@ -147,7 +147,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 7,
+        "outside_launch": 9,
         "share_alike_only": 0
       },
       "match": [
@@ -175,9 +175,9 @@
         "awaiting": 0,
         "corpus_pairings": 4,
         "job_defined": true,
-        "licence_review": 1,
+        "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 5,
         "share_alike_only": 0
       },
       "match": [
@@ -207,7 +207,7 @@
         "job_defined": true,
         "licence_review": 1,
         "not_recommended": 0,
-        "outside_launch": 2,
+        "outside_launch": 6,
         "share_alike_only": 0
       },
       "match": [
@@ -315,7 +315,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 3,
+        "outside_launch": 4,
         "share_alike_only": 0
       },
       "match": [
@@ -417,11 +417,11 @@
       "name": "Jira",
       "path": "saas/jira.json",
       "rank": 11,
-      "reason": "6 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 6,
+      "recommended": 7,
       "saas_id": "jira",
       "status": "ok"
     },
@@ -453,11 +453,11 @@
       "name": "QuickBooks",
       "path": "saas/quickbooks.json",
       "rank": 12,
-      "reason": "6 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 6,
+      "recommended": 7,
       "saas_id": "quickbooks",
       "status": "ok"
     },
@@ -483,11 +483,11 @@
       "name": "Dropbox",
       "path": "saas/dropbox.json",
       "rank": 13,
-      "reason": "6 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 6,
+      "recommended": 8,
       "saas_id": "dropbox",
       "status": "ok"
     },
@@ -502,7 +502,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 1,
-        "outside_launch": 1,
+        "outside_launch": 4,
         "share_alike_only": 0
       },
       "match": [
@@ -516,11 +516,11 @@
       "name": "Zendesk",
       "path": "saas/zendesk.json",
       "rank": 14,
-      "reason": "5 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 5,
+      "recommended": 8,
       "saas_id": "zendesk",
       "status": "ok"
     },
@@ -535,7 +535,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 1,
-        "outside_launch": 1,
+        "outside_launch": 3,
         "share_alike_only": 0
       },
       "match": [
@@ -568,7 +568,7 @@
         "job_defined": true,
         "licence_review": 1,
         "not_recommended": 0,
-        "outside_launch": 3,
+        "outside_launch": 4,
         "share_alike_only": 0
       },
       "match": [
@@ -651,11 +651,11 @@
       "name": "Hootsuite",
       "path": "saas/hootsuite.json",
       "rank": 18,
-      "reason": "5 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 5,
+      "recommended": 6,
       "saas_id": "hootsuite",
       "status": "ok"
     },
@@ -670,7 +670,7 @@
         "job_defined": true,
         "licence_review": 1,
         "not_recommended": 2,
-        "outside_launch": 1,
+        "outside_launch": 6,
         "share_alike_only": 0
       },
       "match": [
@@ -714,11 +714,11 @@
       "name": "Google Drive",
       "path": "saas/google-drive.json",
       "rank": 20,
-      "reason": "6 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 6,
+      "recommended": 8,
       "saas_id": "google-drive",
       "status": "ok"
     },
@@ -747,11 +747,11 @@
       "name": "Buffer",
       "path": "saas/buffer.json",
       "rank": 21,
-      "reason": "5 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 5,
+      "recommended": 6,
       "saas_id": "buffer",
       "status": "ok"
     },
@@ -805,7 +805,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 3,
         "share_alike_only": 0
       },
       "match": [
@@ -838,7 +838,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -855,11 +855,11 @@
       "name": "Tableau",
       "path": "saas/tableau.json",
       "rank": 24,
-      "reason": "6 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 6,
+      "recommended": 8,
       "saas_id": "tableau",
       "status": "ok"
     },
@@ -885,11 +885,11 @@
       "name": "Zapier",
       "path": "saas/zapier.json",
       "rank": 25,
-      "reason": "5 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 5,
+      "recommended": 7,
       "saas_id": "zapier",
       "status": "ok"
     },
@@ -904,7 +904,7 @@
         "job_defined": true,
         "licence_review": 1,
         "not_recommended": 1,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -915,11 +915,11 @@
       "name": "Vercel",
       "path": "saas/vercel.json",
       "rank": 26,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 8,
       "saas_id": "vercel",
       "status": "ok"
     },
@@ -934,7 +934,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 2,
         "share_alike_only": 0
       },
       "match": [
@@ -948,11 +948,11 @@
       "name": "ClickUp",
       "path": "saas/clickup.json",
       "rank": 27,
-      "reason": "7 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 7,
+      "recommended": 8,
       "saas_id": "clickup",
       "status": "ok"
     },
@@ -1031,11 +1031,11 @@
       "name": "Webflow",
       "path": "saas/webflow.json",
       "rank": 29,
-      "reason": "5 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 5,
+      "recommended": 6,
       "saas_id": "webflow",
       "status": "ok"
     },
@@ -1248,7 +1248,7 @@
     {
       "audience": "b2b",
       "category": "Team chat",
-      "compare_path": null,
+      "compare_path": "/open-source/slack-alternatives",
       "domain": "slack.com",
       "evidence": {
         "awaiting": 0,
@@ -1273,16 +1273,13 @@
       "name": "Slack",
       "path": "saas/slack.json",
       "rank": 36,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 2 fully evaluated relationships did not qualify as recommendations; 3 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision; 1 candidate relationships are waiting on a licence decision",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "evaluated_not_recommended",
-        "outside_launch_selection",
-        "licence_review"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "saas_id": "slack",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2c",
@@ -1328,7 +1325,7 @@
         "job_defined": true,
         "licence_review": 1,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -1397,7 +1394,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -1411,11 +1408,11 @@
       "name": "Asana",
       "path": "saas/asana.json",
       "rank": 40,
-      "reason": "7 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 7,
+      "recommended": 8,
       "saas_id": "asana",
       "status": "ok"
     },
@@ -1430,7 +1427,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -1562,7 +1559,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 2,
+        "outside_launch": 4,
         "share_alike_only": 0
       },
       "match": [
@@ -1672,11 +1669,11 @@
       "name": "Linear",
       "path": "saas/linear.json",
       "rank": 48,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 5,
       "saas_id": "linear",
       "status": "ok"
     },
@@ -1702,18 +1699,18 @@
       "name": "Google Photos",
       "path": "saas/google-photos.json",
       "rank": 49,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 6,
       "saas_id": "google-photos",
       "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "AI platform",
-      "compare_path": null,
+      "compare_path": "/open-source/openai-api-alternatives",
       "domain": "openai.com",
       "evidence": {
         "awaiting": 0,
@@ -1736,14 +1733,13 @@
       "name": "OpenAI API",
       "path": "saas/openai-api.json",
       "rank": 50,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "evaluated_not_recommended"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "saas_id": "openai-api",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -1879,7 +1875,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 3,
         "share_alike_only": 0
       },
       "match": [
@@ -1893,11 +1889,11 @@
       "name": "Bitly",
       "path": "saas/bitly.json",
       "rank": 55,
-      "reason": "5 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 5,
+      "recommended": 8,
       "saas_id": "bitly",
       "status": "ok"
     },
@@ -1992,11 +1988,11 @@
       "name": "WeTransfer",
       "path": "saas/wetransfer.json",
       "rank": 58,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 7,
       "saas_id": "wetransfer",
       "status": "ok"
     },
@@ -2025,11 +2021,11 @@
       "name": "YNAB",
       "path": "saas/ynab.json",
       "rank": 59,
-      "reason": "5 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 5,
+      "recommended": 6,
       "saas_id": "ynab",
       "status": "ok"
     },
@@ -2147,7 +2143,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 2,
         "share_alike_only": 0
       },
       "match": [
@@ -2168,11 +2164,11 @@
       "name": "Looker",
       "path": "saas/looker.json",
       "rank": 63,
-      "reason": "6 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 6,
+      "recommended": 8,
       "saas_id": "looker",
       "status": "ok"
     },
@@ -2201,18 +2197,18 @@
       "name": "Mailchimp",
       "path": "saas/mailchimp.json",
       "rank": 64,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 6,
       "saas_id": "mailchimp",
       "status": "ok"
     },
     {
       "audience": "both",
       "category": "Networking & VPN",
-      "compare_path": null,
+      "compare_path": "/open-source/tailscale-alternatives",
       "domain": "tailscale.com",
       "evidence": {
         "awaiting": 0,
@@ -2234,15 +2230,13 @@
       "name": "Tailscale",
       "path": "saas/tailscale.json",
       "rank": 65,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations; 2 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "evaluated_not_recommended",
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "saas_id": "tailscale",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -2302,11 +2296,11 @@
       "name": "Grammarly",
       "path": "saas/grammarly.json",
       "rank": 67,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "saas_id": "grammarly",
       "status": "ok"
     },
@@ -2321,7 +2315,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 1,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -2355,9 +2349,9 @@
         "awaiting": 0,
         "corpus_pairings": 0,
         "job_defined": true,
-        "licence_review": 1,
+        "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 2,
         "share_alike_only": 0
       },
       "match": [
@@ -2371,18 +2365,18 @@
       "name": "Microsoft OneNote",
       "path": "saas/microsoft-onenote.json",
       "rank": 69,
-      "reason": "6 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 6,
+      "recommended": 8,
       "saas_id": "microsoft-onenote",
       "status": "ok"
     },
     {
       "audience": "both",
       "category": "Email",
-      "compare_path": null,
+      "compare_path": "/open-source/gmail-alternatives",
       "domain": "mail.google.com",
       "evidence": {
         "awaiting": 0,
@@ -2404,14 +2398,13 @@
       "name": "Gmail",
       "path": "saas/gmail.json",
       "rank": 70,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 5,
       "saas_id": "gmail",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -2438,18 +2431,18 @@
       "name": "Microsoft Planner",
       "path": "saas/microsoft-planner.json",
       "rank": 71,
-      "reason": "6 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 6,
+      "recommended": 7,
       "saas_id": "microsoft-planner",
       "status": "ok"
     },
     {
       "audience": "both",
       "category": "Remote access",
-      "compare_path": null,
+      "compare_path": "/open-source/teamviewer-alternatives",
       "domain": "teamviewer.com",
       "evidence": {
         "awaiting": 0,
@@ -2474,14 +2467,13 @@
       "name": "TeamViewer",
       "path": "saas/teamviewer.json",
       "rank": 72,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "evaluated_not_recommended"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "saas_id": "teamviewer",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -2508,11 +2500,11 @@
       "name": "Power BI",
       "path": "saas/power-bi.json",
       "rank": 73,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 7,
       "saas_id": "power-bi",
       "status": "ok"
     },
@@ -2541,11 +2533,11 @@
       "name": "Netlify",
       "path": "saas/netlify.json",
       "rank": 74,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 6,
       "saas_id": "netlify",
       "status": "ok"
     },
@@ -2558,7 +2550,7 @@
         "awaiting": 0,
         "corpus_pairings": 0,
         "job_defined": true,
-        "licence_review": 1,
+        "licence_review": 0,
         "not_recommended": 0,
         "outside_launch": 0,
         "share_alike_only": 0
@@ -2571,11 +2563,11 @@
       "name": "Google Keep",
       "path": "saas/google-keep.json",
       "rank": 75,
-      "reason": "5 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 5,
+      "recommended": 6,
       "saas_id": "google-keep",
       "status": "ok"
     },
@@ -2606,11 +2598,11 @@
       "name": "Confluence",
       "path": "saas/confluence.json",
       "rank": 76,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "saas_id": "confluence",
       "status": "ok"
     },
@@ -2643,11 +2635,11 @@
       "name": "Wrike",
       "path": "saas/wrike.json",
       "rank": 77,
-      "reason": "5 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 5,
+      "recommended": 6,
       "saas_id": "wrike",
       "status": "ok"
     },
@@ -2662,7 +2654,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -2676,11 +2668,11 @@
       "name": "Clipchamp",
       "path": "saas/clipchamp.json",
       "rank": 78,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 8,
       "saas_id": "clipchamp",
       "status": "ok"
     },
@@ -2695,7 +2687,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 3,
         "share_alike_only": 0
       },
       "match": [
@@ -2709,11 +2701,11 @@
       "name": "Render",
       "path": "saas/render.json",
       "rank": 79,
-      "reason": "5 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 5,
+      "recommended": 8,
       "saas_id": "render",
       "status": "ok"
     },
@@ -2728,7 +2720,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 3,
         "share_alike_only": 0
       },
       "match": [
@@ -2742,11 +2734,11 @@
       "name": "Ecwid",
       "path": "saas/ecwid.json",
       "rank": 80,
-      "reason": "7 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 7,
+      "recommended": 8,
       "saas_id": "ecwid",
       "status": "ok"
     },
@@ -2805,11 +2797,11 @@
       "name": "Squarespace",
       "path": "saas/squarespace.json",
       "rank": 82,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 5,
       "saas_id": "squarespace",
       "status": "ok"
     },
@@ -2838,11 +2830,11 @@
       "name": "Sprout Social",
       "path": "saas/sprout-social.json",
       "rank": 83,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "saas_id": "sprout-social",
       "status": "ok"
     },
@@ -2912,7 +2904,7 @@
     {
       "audience": "both",
       "category": "Documents",
-      "compare_path": null,
+      "compare_path": "/open-source/google-docs-alternatives",
       "domain": "docs.google.com",
       "evidence": {
         "awaiting": 0,
@@ -2935,13 +2927,13 @@
       "name": "Google Docs",
       "path": "saas/google-docs.json",
       "rank": 86,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 5,
       "saas_id": "google-docs",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "both",
@@ -2965,11 +2957,11 @@
       "name": "Midjourney",
       "path": "saas/midjourney.json",
       "rank": 87,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "saas_id": "midjourney",
       "status": "ok"
     },
@@ -2984,7 +2976,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 2,
         "share_alike_only": 0
       },
       "match": [
@@ -2998,18 +2990,18 @@
       "name": "Railway",
       "path": "saas/railway.json",
       "rank": 88,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 8,
       "saas_id": "railway",
       "status": "ok"
     },
     {
       "audience": "both",
       "category": "Password management",
-      "compare_path": null,
+      "compare_path": "/open-source/1password-alternatives",
       "domain": "1password.com",
       "evidence": {
         "awaiting": 0,
@@ -3037,15 +3029,13 @@
       "name": "1Password",
       "path": "saas/1password.json",
       "rank": 89,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "evaluated_not_recommended",
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "saas_id": "1password",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "both",
@@ -3058,7 +3048,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -3072,11 +3062,11 @@
       "name": "UptimeRobot",
       "path": "saas/uptimerobot.json",
       "rank": 90,
-      "reason": "5 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 5,
+      "recommended": 8,
       "saas_id": "uptimerobot",
       "status": "ok"
     },
@@ -3173,11 +3163,11 @@
       "name": "Amazon S3",
       "path": "saas/amazon-s3.json",
       "rank": 93,
-      "reason": "5 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 5,
+      "recommended": 7,
       "saas_id": "amazon-s3",
       "status": "ok"
     },
@@ -3239,11 +3229,11 @@
       "name": "GitBook",
       "path": "saas/gitbook.json",
       "rank": 95,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "saas_id": "gitbook",
       "status": "ok"
     },
@@ -3272,11 +3262,11 @@
       "name": "Microsoft Dynamics 365",
       "path": "saas/microsoft-dynamics-365.json",
       "rank": 96,
-      "reason": "6 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 6,
+      "recommended": 7,
       "saas_id": "microsoft-dynamics-365",
       "status": "ok"
     },
@@ -3408,11 +3398,11 @@
       "name": "NetSuite",
       "path": "saas/netsuite.json",
       "rank": 100,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 7,
       "saas_id": "netsuite",
       "status": "ok"
     },
@@ -3457,7 +3447,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -3468,9 +3458,10 @@
       "name": "SurveyMonkey",
       "path": "saas/surveymonkey.json",
       "rank": 102,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
-        "fewer_than_minimum"
+        "fewer_than_minimum",
+        "outside_launch_selection"
       ],
       "recommended": 2,
       "saas_id": "surveymonkey",
@@ -3635,18 +3626,18 @@
       "name": "Microsoft Teams",
       "path": "saas/microsoft-teams.json",
       "rank": 107,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "saas_id": "microsoft-teams",
       "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "Customer support",
-      "compare_path": null,
+      "compare_path": "/open-source/freshdesk-alternatives",
       "domain": "freshdesk.com",
       "evidence": {
         "awaiting": 0,
@@ -3668,14 +3659,13 @@
       "name": "Freshdesk",
       "path": "saas/freshdesk.json",
       "rank": 108,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 7,
       "saas_id": "freshdesk",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "both",
@@ -3705,11 +3695,11 @@
       "name": "Wix",
       "path": "saas/wix.json",
       "rank": 109,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "saas_id": "wix",
       "status": "ok"
     },
@@ -3807,11 +3797,11 @@
       "name": "BigCommerce",
       "path": "saas/bigcommerce.json",
       "rank": 112,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 7,
       "saas_id": "bigcommerce",
       "status": "ok"
     },
@@ -3873,11 +3863,11 @@
       "name": "CircleCI",
       "path": "saas/circleci.json",
       "rank": 114,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 5,
       "saas_id": "circleci",
       "status": "ok"
     },
@@ -3892,7 +3882,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 2,
         "share_alike_only": 0
       },
       "match": [
@@ -4007,7 +3997,7 @@
     {
       "audience": "b2b",
       "category": "Customer support",
-      "compare_path": null,
+      "compare_path": "/open-source/intercom-alternatives",
       "domain": "intercom.com",
       "evidence": {
         "awaiting": 0,
@@ -4029,20 +4019,18 @@
       "name": "Intercom",
       "path": "saas/intercom.json",
       "rank": 119,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "evaluated_not_recommended",
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 5,
       "saas_id": "intercom",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "both",
       "category": "Link in bio",
-      "compare_path": null,
+      "compare_path": "/open-source/linktree-alternatives",
       "domain": "linktr.ee",
       "evidence": {
         "awaiting": 0,
@@ -4064,13 +4052,13 @@
       "name": "Linktree",
       "path": "saas/linktree.json",
       "rank": 120,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "saas_id": "linktree",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -4163,11 +4151,11 @@
       "name": "Help Scout",
       "path": "saas/help-scout.json",
       "rank": 123,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 8,
       "saas_id": "help-scout",
       "status": "ok"
     },
@@ -4207,7 +4195,7 @@
     {
       "audience": "both",
       "category": "Task management",
-      "compare_path": null,
+      "compare_path": "/open-source/todoist-alternatives",
       "domain": "todoist.com",
       "evidence": {
         "awaiting": 0,
@@ -4229,14 +4217,13 @@
       "name": "Todoist",
       "path": "saas/todoist.json",
       "rank": 125,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 6,
       "saas_id": "todoist",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -4296,11 +4283,11 @@
       "name": "WorkOS",
       "path": "saas/workos.json",
       "rank": 127,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 5,
       "saas_id": "workos",
       "status": "ok"
     },
@@ -4329,18 +4316,18 @@
       "name": "Later",
       "path": "saas/later.json",
       "rank": 128,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "saas_id": "later",
       "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "Transactional email",
-      "compare_path": null,
+      "compare_path": "/open-source/sendgrid-alternatives",
       "domain": "sendgrid.com",
       "evidence": {
         "awaiting": 0,
@@ -4362,13 +4349,13 @@
       "name": "SendGrid",
       "path": "saas/sendgrid.json",
       "rank": 129,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 5,
       "saas_id": "sendgrid",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "both",
@@ -4461,11 +4448,11 @@
       "name": "Better Stack",
       "path": "saas/better-stack.json",
       "rank": 132,
-      "reason": "5 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 5,
+      "recommended": 8,
       "saas_id": "better-stack",
       "status": "ok"
     },
@@ -4495,18 +4482,18 @@
       "name": "Adobe Experience Manager",
       "path": "saas/adobe-experience-manager.json",
       "rank": 133,
-      "reason": "5 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 5,
+      "recommended": 7,
       "saas_id": "adobe-experience-manager",
       "status": "ok"
     },
     {
       "audience": "b2c",
       "category": "Messaging",
-      "compare_path": null,
+      "compare_path": "/open-source/messenger-alternatives",
       "domain": "messenger.com",
       "evidence": {
         "awaiting": 0,
@@ -4529,14 +4516,13 @@
       "name": "Messenger",
       "path": "saas/messenger.json",
       "rank": 134,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "saas_id": "messenger",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -4566,11 +4552,11 @@
       "name": "Kit",
       "path": "saas/kit.json",
       "rank": 135,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 6,
       "saas_id": "kit",
       "status": "ok"
     },
@@ -4686,7 +4672,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 2,
         "share_alike_only": 0
       },
       "match": [
@@ -4697,7 +4683,7 @@
       "name": "Canva",
       "path": "saas/canva.json",
       "rank": 139,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 2 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
         "fewer_than_minimum",
         "outside_launch_selection"
@@ -4728,11 +4714,11 @@
       "name": "Adobe Firefly",
       "path": "saas/adobe-firefly.json",
       "rank": 140,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "saas_id": "adobe-firefly",
       "status": "ok"
     },
@@ -4761,11 +4747,11 @@
       "name": "Pingdom",
       "path": "saas/pingdom.json",
       "rank": 141,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 7,
       "saas_id": "pingdom",
       "status": "ok"
     },
@@ -4794,11 +4780,11 @@
       "name": "FreshBooks",
       "path": "saas/freshbooks.json",
       "rank": 142,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 5,
       "saas_id": "freshbooks",
       "status": "ok"
     },
@@ -4875,7 +4861,7 @@
     {
       "audience": "b2c",
       "category": "Email",
-      "compare_path": null,
+      "compare_path": "/open-source/proton-mail-alternatives",
       "domain": "proton.me",
       "evidence": {
         "awaiting": 0,
@@ -4901,14 +4887,13 @@
       "name": "Proton Mail",
       "path": "saas/proton-mail.json",
       "rank": 145,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 4,
       "saas_id": "proton-mail",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -4932,11 +4917,11 @@
       "name": "Fly.io",
       "path": "saas/fly-io.json",
       "rank": 146,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 7,
       "saas_id": "fly-io",
       "status": "ok"
     },
@@ -4987,7 +4972,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 2,
         "share_alike_only": 0
       },
       "match": [
@@ -4998,11 +4983,11 @@
       "name": "TinyURL",
       "path": "saas/tinyurl.json",
       "rank": 148,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 8,
       "saas_id": "tinyurl",
       "status": "ok"
     },
@@ -5031,11 +5016,11 @@
       "name": "Looker Studio",
       "path": "saas/looker-studio.json",
       "rank": 149,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 7,
       "saas_id": "looker-studio",
       "status": "ok"
     },
@@ -5110,7 +5095,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -5125,9 +5110,10 @@
       "name": "Google Forms",
       "path": "saas/google-forms.json",
       "rank": 152,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
-        "fewer_than_minimum"
+        "fewer_than_minimum",
+        "outside_launch_selection"
       ],
       "recommended": 1,
       "saas_id": "google-forms",
@@ -5225,11 +5211,11 @@
       "name": "Wave",
       "path": "saas/wave.json",
       "rank": 155,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "saas_id": "wave",
       "status": "ok"
     },
@@ -5327,7 +5313,7 @@
     {
       "audience": "b2b",
       "category": "Email marketing",
-      "compare_path": null,
+      "compare_path": "/open-source/brevo-alternatives",
       "domain": "brevo.com",
       "evidence": {
         "awaiting": 0,
@@ -5349,13 +5335,13 @@
       "name": "Brevo",
       "path": "saas/brevo.json",
       "rank": 159,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 5,
       "saas_id": "brevo",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -5382,20 +5368,20 @@
       "name": "Segment",
       "path": "saas/segment.json",
       "rank": 160,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
         "fewer_than_minimum",
         "evaluated_not_recommended",
         "outside_launch_selection"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "segment",
       "status": "partial"
     },
     {
       "audience": "both",
       "category": "Remote access",
-      "compare_path": null,
+      "compare_path": "/open-source/anydesk-alternatives",
       "domain": "anydesk.com",
       "evidence": {
         "awaiting": 0,
@@ -5403,7 +5389,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -5417,13 +5403,13 @@
       "name": "AnyDesk",
       "path": "saas/anydesk.json",
       "rank": 161,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "saas_id": "anydesk",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -5513,11 +5499,11 @@
       "name": "Lovable",
       "path": "saas/lovable.json",
       "rank": 164,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
         "fewer_than_minimum"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "lovable",
       "status": "partial"
     },
@@ -5557,7 +5543,7 @@
     {
       "audience": "b2c",
       "category": "Personal finance",
-      "compare_path": null,
+      "compare_path": "/open-source/rocket-money-alternatives",
       "domain": "rocketmoney.com",
       "evidence": {
         "awaiting": 0,
@@ -5565,7 +5551,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 2,
         "share_alike_only": 0
       },
       "match": [
@@ -5579,13 +5565,13 @@
       "name": "Rocket Money",
       "path": "saas/rocket-money.json",
       "rank": 166,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "saas_id": "rocket-money",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -5609,11 +5595,11 @@
       "name": "Docker Hub",
       "path": "saas/docker-hub.json",
       "rank": 167,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 6,
       "saas_id": "docker-hub",
       "status": "ok"
     },
@@ -5628,7 +5614,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -5642,11 +5628,11 @@
       "name": "Monarch Money",
       "path": "saas/monarch-money.json",
       "rank": 168,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 6,
       "saas_id": "monarch-money",
       "status": "ok"
     },
@@ -5661,7 +5647,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 3,
         "share_alike_only": 0
       },
       "match": [
@@ -5675,18 +5661,18 @@
       "name": "Rebrandly",
       "path": "saas/rebrandly.json",
       "rank": 169,
-      "reason": "5 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 5,
+      "recommended": 8,
       "saas_id": "rebrandly",
       "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "Workflow automation",
-      "compare_path": null,
+      "compare_path": "/open-source/make-alternatives",
       "domain": "make.com",
       "evidence": {
         "awaiting": 0,
@@ -5708,13 +5694,13 @@
       "name": "Make",
       "path": "saas/make.json",
       "rank": 170,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "saas_id": "make",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -5842,11 +5828,11 @@
       "name": "Clockify",
       "path": "saas/clockify.json",
       "rank": 174,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 5,
       "saas_id": "clockify",
       "status": "ok"
     },
@@ -5875,18 +5861,18 @@
       "name": "Toggl Track",
       "path": "saas/toggl-track.json",
       "rank": 175,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 6,
       "saas_id": "toggl-track",
       "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "Documents",
-      "compare_path": null,
+      "compare_path": "/open-source/microsoft-365-alternatives",
       "domain": "microsoft.com",
       "evidence": {
         "awaiting": 0,
@@ -5911,13 +5897,13 @@
       "name": "Microsoft 365",
       "path": "saas/microsoft-365.json",
       "rank": 176,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "saas_id": "microsoft-365",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -6079,11 +6065,11 @@
       "name": "OneLogin",
       "path": "saas/onelogin.json",
       "rank": 181,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 5,
       "saas_id": "onelogin",
       "status": "ok"
     },
@@ -6123,7 +6109,7 @@
     {
       "audience": "b2b",
       "category": "Data integration",
-      "compare_path": null,
+      "compare_path": "/open-source/fivetran-alternatives",
       "domain": "fivetran.com",
       "evidence": {
         "awaiting": 0,
@@ -6142,13 +6128,13 @@
       "name": "Fivetran",
       "path": "saas/fivetran.json",
       "rank": 183,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 5,
       "saas_id": "fivetran",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "both",
@@ -6175,18 +6161,18 @@
       "name": "Leonardo.Ai",
       "path": "saas/leonardo-ai.json",
       "rank": 184,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "saas_id": "leonardo-ai",
       "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "Customer support",
-      "compare_path": null,
+      "compare_path": "/open-source/front-alternatives",
       "domain": "front.com",
       "evidence": {
         "awaiting": 0,
@@ -6208,13 +6194,13 @@
       "name": "Front",
       "path": "saas/front.json",
       "rank": 185,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 7,
       "saas_id": "front",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2c",
@@ -6241,11 +6227,11 @@
       "name": "Carrd",
       "path": "saas/carrd.json",
       "rank": 186,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
         "fewer_than_minimum"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "carrd",
       "status": "partial"
     },
@@ -6361,7 +6347,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -6375,9 +6361,10 @@
       "name": "Qualtrics",
       "path": "saas/qualtrics.json",
       "rank": 190,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
-        "fewer_than_minimum"
+        "fewer_than_minimum",
+        "outside_launch_selection"
       ],
       "recommended": 1,
       "saas_id": "qualtrics",
@@ -6386,7 +6373,7 @@
     {
       "audience": "b2c",
       "category": "Task management",
-      "compare_path": null,
+      "compare_path": "/open-source/ticktick-alternatives",
       "domain": "ticktick.com",
       "evidence": {
         "awaiting": 0,
@@ -6405,14 +6392,13 @@
       "name": "TickTick",
       "path": "saas/ticktick.json",
       "rank": 191,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 6,
       "saas_id": "ticktick",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -6442,11 +6428,11 @@
       "name": "Xero",
       "path": "saas/xero.json",
       "rank": 192,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "saas_id": "xero",
       "status": "ok"
     },
@@ -6574,11 +6560,11 @@
       "name": "Sage Intacct",
       "path": "saas/sage-intacct.json",
       "rank": 196,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 5,
       "saas_id": "sage-intacct",
       "status": "ok"
     },
@@ -6602,20 +6588,20 @@
         }
       ],
       "name": "Imgur",
-      "path": null,
+      "path": "saas/imgur.json",
       "rank": 197,
-      "reason": "2 corpus projects describe themselves as alternatives; none is fully evaluated",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "corpus_candidates_only"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "saas_id": "imgur",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
       "category": "Web scraping",
-      "compare_path": null,
+      "compare_path": "/open-source/scrapingbee-alternatives",
       "domain": "scrapingbee.com",
       "evidence": {
         "awaiting": 0,
@@ -6637,13 +6623,13 @@
       "name": "ScrapingBee",
       "path": "saas/scrapingbee.json",
       "rank": 198,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "saas_id": "scrapingbee",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -6656,7 +6642,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 2,
         "share_alike_only": 0
       },
       "match": [
@@ -6668,7 +6654,7 @@
       "name": "Cloudflare Tunnel",
       "path": "saas/cloudflare-tunnel.json",
       "rank": 199,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 2 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
         "fewer_than_minimum",
         "outside_launch_selection"
@@ -6680,7 +6666,7 @@
     {
       "audience": "b2b",
       "category": "Email marketing",
-      "compare_path": null,
+      "compare_path": "/open-source/klaviyo-alternatives",
       "domain": "klaviyo.com",
       "evidence": {
         "awaiting": 0,
@@ -6699,13 +6685,13 @@
       "name": "Klaviyo",
       "path": "saas/klaviyo.json",
       "rank": 200,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 4,
       "saas_id": "klaviyo",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "both",
@@ -6762,18 +6748,18 @@
       "name": "M-Files",
       "path": "saas/m-files.json",
       "rank": 202,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 6,
       "saas_id": "m-files",
       "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "HR",
-      "compare_path": null,
+      "compare_path": "/open-source/workday-alternatives",
       "domain": "workday.com",
       "evidence": {
         "awaiting": 0,
@@ -6795,13 +6781,13 @@
       "name": "Workday",
       "path": "saas/workday.json",
       "rank": 203,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "saas_id": "workday",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -6826,18 +6812,18 @@
       "name": "GitHub Actions",
       "path": "saas/github-actions.json",
       "rank": 204,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
         "fewer_than_minimum"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "github-actions",
       "status": "partial"
     },
     {
       "audience": "b2c",
       "category": "Photo management",
-      "compare_path": null,
+      "compare_path": "/open-source/flickr-alternatives",
       "domain": "flickr.com",
       "evidence": {
         "awaiting": 0,
@@ -6856,13 +6842,13 @@
       "name": "Flickr",
       "path": "saas/flickr.json",
       "rank": 205,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 3,
       "saas_id": "flickr",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "both",
@@ -6930,7 +6916,7 @@
     {
       "audience": "b2c",
       "category": "Remote access",
-      "compare_path": null,
+      "compare_path": "/open-source/chrome-remote-desktop-alternatives",
       "domain": "remotedesktop.google.com",
       "evidence": {
         "awaiting": 0,
@@ -6949,13 +6935,13 @@
       "name": "Chrome Remote Desktop",
       "path": "saas/chrome-remote-desktop.json",
       "rank": 208,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "saas_id": "chrome-remote-desktop",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -6994,7 +6980,7 @@
     {
       "audience": "both",
       "category": "Password management",
-      "compare_path": null,
+      "compare_path": "/open-source/lastpass-alternatives",
       "domain": "lastpass.com",
       "evidence": {
         "awaiting": 0,
@@ -7013,13 +6999,13 @@
       "name": "LastPass",
       "path": "saas/lastpass.json",
       "rank": 210,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 3,
       "saas_id": "lastpass",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -7112,18 +7098,18 @@
       "name": "Acumatica",
       "path": "saas/acumatica.json",
       "rank": 213,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 5,
       "saas_id": "acumatica",
       "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "Transactional email",
-      "compare_path": null,
+      "compare_path": "/open-source/amazon-ses-alternatives",
       "domain": "aws.amazon.com",
       "evidence": {
         "awaiting": 0,
@@ -7151,13 +7137,13 @@
       "name": "Amazon SES",
       "path": "saas/amazon-ses.json",
       "rank": 214,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "saas_id": "amazon-ses",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -7185,11 +7171,11 @@
       "name": "Backblaze B2",
       "path": "saas/backblaze-b2.json",
       "rank": 215,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 6,
       "saas_id": "backblaze-b2",
       "status": "ok"
     },
@@ -7229,7 +7215,7 @@
     {
       "audience": "b2b",
       "category": "Transactional email",
-      "compare_path": null,
+      "compare_path": "/open-source/mailgun-alternatives",
       "domain": "mailgun.com",
       "evidence": {
         "awaiting": 0,
@@ -7251,13 +7237,13 @@
       "name": "Mailgun",
       "path": "saas/mailgun.json",
       "rank": 217,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 4,
       "saas_id": "mailgun",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -7343,15 +7329,15 @@
         }
       ],
       "name": "Suno",
-      "path": null,
+      "path": "saas/suno.json",
       "rank": 220,
-      "reason": "2 corpus projects describe themselves as alternatives; none is fully evaluated",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "corpus_candidates_only"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "suno",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -7397,7 +7383,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -7409,11 +7395,11 @@
       "name": "SAP Business One",
       "path": "saas/sap-business-one.json",
       "rank": 222,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 8,
       "saas_id": "sap-business-one",
       "status": "ok"
     },
@@ -7448,11 +7434,11 @@
       "name": "Amazon Cognito",
       "path": "saas/amazon-cognito.json",
       "rank": 223,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 5,
       "saas_id": "amazon-cognito",
       "status": "ok"
     },
@@ -7478,18 +7464,18 @@
       "name": "Google Search",
       "path": "saas/google-search.json",
       "rank": 224,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
         "fewer_than_minimum"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "google-search",
       "status": "partial"
     },
     {
       "audience": "b2b",
       "category": "Customer support",
-      "compare_path": null,
+      "compare_path": "/open-source/gorgias-alternatives",
       "domain": "gorgias.com",
       "evidence": {
         "awaiting": 0,
@@ -7511,19 +7497,18 @@
       "name": "Gorgias",
       "path": "saas/gorgias.json",
       "rank": 225,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 6,
       "saas_id": "gorgias",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "Email marketing",
-      "compare_path": null,
+      "compare_path": "/open-source/constant-contact-alternatives",
       "domain": "constantcontact.com",
       "evidence": {
         "awaiting": 0,
@@ -7545,18 +7530,18 @@
       "name": "Constant Contact",
       "path": "saas/constant-contact.json",
       "rank": 226,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 4,
       "saas_id": "constant-contact",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "Email marketing",
-      "compare_path": null,
+      "compare_path": "/open-source/mailerlite-alternatives",
       "domain": "mailerlite.com",
       "evidence": {
         "awaiting": 0,
@@ -7578,18 +7563,18 @@
       "name": "MailerLite",
       "path": "saas/mailerlite.json",
       "rank": 227,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 4,
       "saas_id": "mailerlite",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "Remote access",
-      "compare_path": null,
+      "compare_path": "/open-source/splashtop-alternatives",
       "domain": "splashtop.com",
       "evidence": {
         "awaiting": 0,
@@ -7611,13 +7596,13 @@
       "name": "Splashtop",
       "path": "saas/splashtop.json",
       "rank": 228,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "saas_id": "splashtop",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -7836,15 +7821,16 @@
         }
       ],
       "name": "MyFitnessPal",
-      "path": null,
+      "path": "saas/myfitnesspal.json",
       "rank": 235,
-      "reason": "2 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 2 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
+        "fewer_than_minimum",
         "outside_launch_selection"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "saas_id": "myfitnesspal",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -7908,11 +7894,11 @@
       "name": "Statuspage",
       "path": "saas/statuspage.json",
       "rank": 237,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 7,
       "saas_id": "statuspage",
       "status": "ok"
     },
@@ -7971,11 +7957,11 @@
       "name": "CloudConvert",
       "path": "saas/cloudconvert.json",
       "rank": 239,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 5,
       "saas_id": "cloudconvert",
       "status": "ok"
     },
@@ -8046,7 +8032,7 @@
     {
       "audience": "b2b",
       "category": "Remote access",
-      "compare_path": null,
+      "compare_path": "/open-source/connectwise-screenconnect-alternatives",
       "domain": "screenconnect.com",
       "evidence": {
         "awaiting": 0,
@@ -8072,13 +8058,13 @@
       "name": "ConnectWise ScreenConnect",
       "path": "saas/connectwise-screenconnect.json",
       "rank": 242,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "saas_id": "connectwise-screenconnect",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2c",
@@ -8102,11 +8088,11 @@
       "name": "Photopea",
       "path": "saas/photopea.json",
       "rank": 243,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
         "fewer_than_minimum"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "photopea",
       "status": "partial"
     },
@@ -8173,7 +8159,7 @@
     {
       "audience": "b2b",
       "category": "Email marketing",
-      "compare_path": null,
+      "compare_path": "/open-source/beehiiv-alternatives",
       "domain": "beehiiv.com",
       "evidence": {
         "awaiting": 0,
@@ -8195,14 +8181,13 @@
       "name": "beehiiv",
       "path": "saas/beehiiv.json",
       "rank": 246,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 5,
       "saas_id": "beehiiv",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2c",
@@ -8213,7 +8198,7 @@
         "awaiting": 0,
         "corpus_pairings": 0,
         "job_defined": true,
-        "licence_review": 1,
+        "licence_review": 0,
         "not_recommended": 0,
         "outside_launch": 0,
         "share_alike_only": 0
@@ -8229,11 +8214,11 @@
       "name": "Craft",
       "path": "saas/craft.json",
       "rank": 247,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 8,
       "saas_id": "craft",
       "status": "ok"
     },
@@ -8276,7 +8261,7 @@
     {
       "audience": "b2c",
       "category": "Task management",
-      "compare_path": null,
+      "compare_path": "/open-source/google-tasks-alternatives",
       "domain": "tasks.google.com",
       "evidence": {
         "awaiting": 0,
@@ -8295,18 +8280,18 @@
       "name": "Google Tasks",
       "path": "saas/google-tasks.json",
       "rank": 249,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 6,
       "saas_id": "google-tasks",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2c",
       "category": "Task management",
-      "compare_path": null,
+      "compare_path": "/open-source/microsoft-to-do-alternatives",
       "domain": "microsoft.com",
       "evidence": {
         "awaiting": 0,
@@ -8328,13 +8313,13 @@
       "name": "Microsoft To Do",
       "path": "saas/microsoft-to-do.json",
       "rank": 250,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 6,
       "saas_id": "microsoft-to-do",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -8365,11 +8350,11 @@
       "name": "Zoho Books",
       "path": "saas/zoho-books.json",
       "rank": 251,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "saas_id": "zoho-books",
       "status": "ok"
     },
@@ -8409,7 +8394,7 @@
     {
       "audience": "b2b",
       "category": "Time tracking",
-      "compare_path": null,
+      "compare_path": "/open-source/harvest-alternatives",
       "domain": "getharvest.com",
       "evidence": {
         "awaiting": 0,
@@ -8431,18 +8416,18 @@
       "name": "Harvest",
       "path": "saas/harvest.json",
       "rank": 253,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "saas_id": "harvest",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "HR",
-      "compare_path": null,
+      "compare_path": "/open-source/bamboohr-alternatives",
       "domain": "bamboohr.com",
       "evidence": {
         "awaiting": 0,
@@ -8464,13 +8449,13 @@
       "name": "BambooHR",
       "path": "saas/bamboohr.json",
       "rank": 254,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "saas_id": "bamboohr",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "both",
@@ -8505,7 +8490,7 @@
     {
       "audience": "b2b",
       "category": "Email marketing",
-      "compare_path": null,
+      "compare_path": "/open-source/activecampaign-alternatives",
       "domain": "activecampaign.com",
       "evidence": {
         "awaiting": 0,
@@ -8527,13 +8512,13 @@
       "name": "ActiveCampaign",
       "path": "saas/activecampaign.json",
       "rank": 256,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 4,
       "saas_id": "activecampaign",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2c",
@@ -8568,7 +8553,7 @@
     {
       "audience": "b2b",
       "category": "Customer support",
-      "compare_path": null,
+      "compare_path": "/open-source/zoho-desk-alternatives",
       "domain": "zoho.com",
       "evidence": {
         "awaiting": 0,
@@ -8594,14 +8579,13 @@
       "name": "Zoho Desk",
       "path": "saas/zoho-desk.json",
       "rank": 258,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 6,
       "saas_id": "zoho-desk",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -8628,11 +8612,11 @@
       "name": "commercetools",
       "path": "saas/commercetools.json",
       "rank": 259,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 6,
       "saas_id": "commercetools",
       "status": "ok"
     },
@@ -8714,7 +8698,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -8728,11 +8712,11 @@
       "name": "Clover",
       "path": "saas/clover.json",
       "rank": 262,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 7,
       "saas_id": "clover",
       "status": "ok"
     },
@@ -8747,7 +8731,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -8761,11 +8745,11 @@
       "name": "Square Point of Sale",
       "path": "saas/square-point-of-sale.json",
       "rank": 263,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 7,
       "saas_id": "square-point-of-sale",
       "status": "ok"
     },
@@ -8780,7 +8764,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 2,
         "share_alike_only": 0
       },
       "match": [
@@ -8800,11 +8784,11 @@
       "name": "AWS Elastic Beanstalk",
       "path": "saas/aws-elastic-beanstalk.json",
       "rank": 264,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 7,
       "saas_id": "aws-elastic-beanstalk",
       "status": "ok"
     },
@@ -8819,7 +8803,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 2,
         "share_alike_only": 0
       },
       "match": [
@@ -8835,11 +8819,11 @@
       "name": "Google Cloud Run",
       "path": "saas/google-cloud-run.json",
       "rank": 265,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 7,
       "saas_id": "google-cloud-run",
       "status": "ok"
     },
@@ -8868,11 +8852,11 @@
       "name": "Strikingly",
       "path": "saas/strikingly.json",
       "rank": 266,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "saas_id": "strikingly",
       "status": "ok"
     },
@@ -8899,11 +8883,11 @@
       "name": "Cloudflare R2",
       "path": "saas/cloudflare-r2.json",
       "rank": 267,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 6,
       "saas_id": "cloudflare-r2",
       "status": "ok"
     },
@@ -8930,15 +8914,15 @@
         }
       ],
       "name": "Phrase",
-      "path": null,
+      "path": "saas/phrase.json",
       "rank": 268,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "phrase",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -8998,11 +8982,11 @@
       "name": "Weebly",
       "path": "saas/weebly.json",
       "rank": 270,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
         "fewer_than_minimum"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "weebly",
       "status": "partial"
     },
@@ -9028,11 +9012,11 @@
       "name": "Bolt.new",
       "path": "saas/bolt-new.json",
       "rank": 271,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
         "fewer_than_minimum"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "bolt-new",
       "status": "partial"
     },
@@ -9128,18 +9112,18 @@
       "name": "Stytch",
       "path": "saas/stytch.json",
       "rank": 274,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 5,
       "saas_id": "stytch",
       "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "Billing",
-      "compare_path": null,
+      "compare_path": "/open-source/chargebee-alternatives",
       "domain": "chargebee.com",
       "evidence": {
         "awaiting": 0,
@@ -9161,13 +9145,13 @@
       "name": "Chargebee",
       "path": "saas/chargebee.json",
       "rank": 275,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 4,
       "saas_id": "chargebee",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -9194,11 +9178,11 @@
       "name": "Gusto",
       "path": "saas/gusto.json",
       "rank": 276,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
         "fewer_than_minimum"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "gusto",
       "status": "partial"
     },
@@ -9344,7 +9328,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -9355,11 +9339,11 @@
       "name": "CapCut",
       "path": "saas/capcut.json",
       "rank": 281,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 8,
       "saas_id": "capcut",
       "status": "ok"
     },
@@ -9374,7 +9358,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -9391,9 +9375,9 @@
       "name": "Jotform",
       "path": null,
       "rank": 282,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
-        "no_relationship_evidence"
+        "outside_launch_selection"
       ],
       "recommended": 0,
       "saas_id": "jotform",
@@ -9593,7 +9577,7 @@
     {
       "audience": "b2b",
       "category": "File storage & sync",
-      "compare_path": null,
+      "compare_path": "/open-source/box-alternatives",
       "domain": "box.com",
       "evidence": {
         "awaiting": 0,
@@ -9618,18 +9602,18 @@
       "name": "Box",
       "path": "saas/box.json",
       "rank": 289,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 3,
       "saas_id": "box",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2c",
       "category": "File storage & sync",
-      "compare_path": null,
+      "compare_path": "/open-source/mega-alternatives",
       "domain": "mega.io",
       "evidence": {
         "awaiting": 0,
@@ -9651,13 +9635,13 @@
       "name": "MEGA",
       "path": "saas/mega.json",
       "rank": 290,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 3,
       "saas_id": "mega",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "both",
@@ -9681,11 +9665,11 @@
       "name": "remove.bg",
       "path": "saas/remove-bg.json",
       "rank": 291,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
         "fewer_than_minimum"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "remove-bg",
       "status": "partial"
     },
@@ -9778,11 +9762,11 @@
       "name": "Cloudflare Access",
       "path": "saas/cloudflare-access.json",
       "rank": 294,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "saas_id": "cloudflare-access",
       "status": "ok"
     },
@@ -9797,7 +9781,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 2,
         "share_alike_only": 0
       },
       "match": [
@@ -9813,18 +9797,18 @@
       "name": "DigitalOcean App Platform",
       "path": "saas/digitalocean-app-platform.json",
       "rank": 295,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 8,
       "saas_id": "digitalocean-app-platform",
       "status": "ok"
     },
     {
       "audience": "both",
       "category": "File storage & sync",
-      "compare_path": null,
+      "compare_path": "/open-source/microsoft-onedrive-alternatives",
       "domain": "onedrive.com",
       "evidence": {
         "awaiting": 0,
@@ -9849,13 +9833,13 @@
       "name": "Microsoft OneDrive",
       "path": "saas/microsoft-onedrive.json",
       "rank": 296,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "saas_id": "microsoft-onedrive",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2c",
@@ -9952,11 +9936,11 @@
       "name": "Elastic Cloud",
       "path": "saas/elastic-cloud.json",
       "rank": 299,
-      "reason": "7 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 7,
+      "recommended": 8,
       "saas_id": "elastic-cloud",
       "status": "ok"
     },
@@ -9996,7 +9980,7 @@
     {
       "audience": "b2b",
       "category": "Package registry",
-      "compare_path": null,
+      "compare_path": "/open-source/npm-alternatives",
       "domain": "npmjs.com",
       "evidence": {
         "awaiting": 0,
@@ -10015,13 +9999,13 @@
       "name": "npm",
       "path": "saas/npm.json",
       "rank": 301,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 4,
       "saas_id": "npm",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -10082,18 +10066,18 @@
       "name": "Mintlify",
       "path": "saas/mintlify.json",
       "rank": 303,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
         "fewer_than_minimum"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "mintlify",
       "status": "partial"
     },
     {
       "audience": "b2b",
       "category": "Customer support",
-      "compare_path": null,
+      "compare_path": "/open-source/drift-alternatives",
       "domain": "drift.com",
       "evidence": {
         "awaiting": 0,
@@ -10113,15 +10097,15 @@
         }
       ],
       "name": "Drift",
-      "path": null,
+      "path": "saas/drift.json",
       "rank": 304,
-      "reason": "1 corpus projects describe themselves as alternatives; none is fully evaluated",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "corpus_candidates_only"
+        "full_evaluation"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "saas_id": "drift",
-      "status": "none_yet"
+      "status": "ok"
     },
     {
       "audience": "both",
@@ -10211,11 +10195,11 @@
       "name": "Shortcut",
       "path": "saas/shortcut.json",
       "rank": 307,
-      "reason": "3 recommendations passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 3,
+      "recommended": 4,
       "saas_id": "shortcut",
       "status": "ok"
     },
@@ -10252,7 +10236,7 @@
     {
       "audience": "b2b",
       "category": "Log management",
-      "compare_path": null,
+      "compare_path": "/open-source/loggly-alternatives",
       "domain": "loggly.com",
       "evidence": {
         "awaiting": 0,
@@ -10260,7 +10244,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 2,
         "share_alike_only": 0
       },
       "match": [
@@ -10274,19 +10258,18 @@
       "name": "Loggly",
       "path": "saas/loggly.json",
       "rank": 309,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "saas_id": "loggly",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "Log management",
-      "compare_path": null,
+      "compare_path": "/open-source/papertrail-alternatives",
       "domain": "papertrail.com",
       "evidence": {
         "awaiting": 0,
@@ -10294,7 +10277,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 2,
         "share_alike_only": 0
       },
       "match": [
@@ -10308,14 +10291,13 @@
       "name": "Papertrail",
       "path": "saas/papertrail.json",
       "rank": 310,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "saas_id": "papertrail",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -10405,11 +10387,11 @@
       "name": "Rippling",
       "path": "saas/rippling.json",
       "rank": 313,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
         "fewer_than_minimum"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "rippling",
       "status": "partial"
     },
@@ -10466,15 +10448,15 @@
         }
       ],
       "name": "Eventbrite",
-      "path": null,
+      "path": "saas/eventbrite.json",
       "rank": 315,
-      "reason": "3 corpus projects describe themselves as alternatives; none is fully evaluated",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "corpus_candidates_only"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "eventbrite",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -10530,15 +10512,15 @@
         }
       ],
       "name": "Microsoft Power Automate",
-      "path": null,
+      "path": "saas/microsoft-power-automate.json",
       "rank": 317,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "saas_id": "microsoft-power-automate",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2c",
@@ -10657,20 +10639,20 @@
         }
       ],
       "name": "Google Calendar",
-      "path": null,
+      "path": "saas/google-calendar.json",
       "rank": 321,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "google-calendar",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
       "category": "Transactional email",
-      "compare_path": null,
+      "compare_path": "/open-source/postmark-alternatives",
       "domain": "postmarkapp.com",
       "evidence": {
         "awaiting": 0,
@@ -10692,18 +10674,18 @@
       "name": "Postmark",
       "path": "saas/postmark.json",
       "rank": 322,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 3,
       "saas_id": "postmark",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2c",
       "category": "Photo management",
-      "compare_path": null,
+      "compare_path": "/open-source/icloud-photos-alternatives",
       "domain": "icloud.com",
       "evidence": {
         "awaiting": 0,
@@ -10723,18 +10705,18 @@
       "name": "iCloud Photos",
       "path": "saas/icloud-photos.json",
       "rank": 323,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 4,
       "saas_id": "icloud-photos",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "Workflow automation",
-      "compare_path": null,
+      "compare_path": "/open-source/workato-alternatives",
       "domain": "workato.com",
       "evidence": {
         "awaiting": 0,
@@ -10757,15 +10739,15 @@
         }
       ],
       "name": "Workato",
-      "path": null,
+      "path": "saas/workato.json",
       "rank": 324,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "full_evaluation"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "saas_id": "workato",
-      "status": "none_yet"
+      "status": "ok"
     },
     {
       "audience": "both",
@@ -10790,15 +10772,16 @@
         }
       ],
       "name": "Mentimeter",
-      "path": null,
+      "path": "saas/mentimeter.json",
       "rank": 325,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
+        "fewer_than_minimum",
         "outside_launch_selection"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "mentimeter",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -10891,12 +10874,12 @@
       "name": "Dashlane",
       "path": "saas/dashlane.json",
       "rank": 328,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
         "fewer_than_minimum",
         "outside_launch_selection"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "dashlane",
       "status": "partial"
     },
@@ -10925,18 +10908,18 @@
       "name": "Guru",
       "path": "saas/guru.json",
       "rank": 329,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
         "fewer_than_minimum"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "guru",
       "status": "partial"
     },
     {
       "audience": "b2b",
       "category": "Workflow automation",
-      "compare_path": null,
+      "compare_path": "/open-source/tray-io-alternatives",
       "domain": "tray.io",
       "evidence": {
         "awaiting": 0,
@@ -10961,13 +10944,13 @@
       "name": "Tray.io",
       "path": "saas/tray-io.json",
       "rank": 330,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 4,
       "saas_id": "tray-io",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -10992,20 +10975,21 @@
         }
       ],
       "name": "Superhuman",
-      "path": null,
+      "path": "saas/superhuman.json",
       "rank": 331,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
+        "fewer_than_minimum",
         "outside_launch_selection"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "saas_id": "superhuman",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
       "category": "API tooling",
-      "compare_path": null,
+      "compare_path": "/open-source/apigee-alternatives",
       "domain": "cloud.google.com",
       "evidence": {
         "awaiting": 0,
@@ -11032,13 +11016,13 @@
       "name": "Apigee",
       "path": "saas/apigee.json",
       "rank": 332,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 5,
       "saas_id": "apigee",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2c",
@@ -11135,11 +11119,11 @@
       "name": "Acuity Scheduling",
       "path": "saas/acuity-scheduling.json",
       "rank": 335,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
         "fewer_than_minimum"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "acuity-scheduling",
       "status": "partial"
     },
@@ -11226,7 +11210,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -11238,15 +11222,16 @@
         }
       ],
       "name": "ServiceNow",
-      "path": null,
+      "path": "saas/servicenow.json",
       "rank": 338,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum",
+        "outside_launch_selection"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "saas_id": "servicenow",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -11328,7 +11313,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -11346,9 +11331,9 @@
       "name": "Adobe Express",
       "path": null,
       "rank": 341,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
-        "no_relationship_evidence"
+        "outside_launch_selection"
       ],
       "recommended": 0,
       "saas_id": "adobe-express",
@@ -11357,7 +11342,7 @@
     {
       "audience": "b2b",
       "category": "Log management",
-      "compare_path": null,
+      "compare_path": "/open-source/sumo-logic-alternatives",
       "domain": "sumologic.com",
       "evidence": {
         "awaiting": 0,
@@ -11365,7 +11350,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -11382,13 +11367,13 @@
       "name": "Sumo Logic",
       "path": "saas/sumo-logic.json",
       "rank": 342,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 3,
       "saas_id": "sumo-logic",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2c",
@@ -11463,7 +11448,7 @@
     {
       "audience": "b2c",
       "category": "File storage & sync",
-      "compare_path": null,
+      "compare_path": "/open-source/pcloud-alternatives",
       "domain": "pcloud.com",
       "evidence": {
         "awaiting": 0,
@@ -11485,13 +11470,13 @@
       "name": "pCloud",
       "path": "saas/pcloud.json",
       "rank": 345,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 3,
       "saas_id": "pcloud",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -11562,7 +11547,7 @@
     {
       "audience": "b2b",
       "category": "Business intelligence",
-      "compare_path": null,
+      "compare_path": "/open-source/qlik-cloud-alternatives",
       "domain": "qlik.com",
       "evidence": {
         "awaiting": 0,
@@ -11584,13 +11569,13 @@
       "name": "Qlik Cloud",
       "path": "saas/qlik-cloud.json",
       "rank": 348,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 6,
       "saas_id": "qlik-cloud",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "both",
@@ -11714,20 +11699,21 @@
         }
       ],
       "name": "Slido",
-      "path": null,
+      "path": "saas/slido.json",
       "rank": 352,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
+        "fewer_than_minimum",
         "outside_launch_selection"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "slido",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
       "category": "Business phone",
-      "compare_path": null,
+      "compare_path": "/open-source/ringcentral-alternatives",
       "domain": "ringcentral.com",
       "evidence": {
         "awaiting": 0,
@@ -11749,13 +11735,13 @@
       "name": "RingCentral",
       "path": "saas/ringcentral.json",
       "rank": 353,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 3,
       "saas_id": "ringcentral",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -11783,11 +11769,11 @@
       "name": "Google Chat",
       "path": "saas/google-chat.json",
       "rank": 354,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
         "fewer_than_minimum"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "google-chat",
       "status": "partial"
     },
@@ -11829,7 +11815,7 @@
     {
       "audience": "b2b",
       "category": "Transactional email",
-      "compare_path": null,
+      "compare_path": "/open-source/resend-alternatives",
       "domain": "resend.com",
       "evidence": {
         "awaiting": 0,
@@ -11846,15 +11832,15 @@
         }
       ],
       "name": "Resend",
-      "path": null,
+      "path": "saas/resend.json",
       "rank": 356,
-      "reason": "3 corpus projects describe themselves as alternatives; none is fully evaluated",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "corpus_candidates_only"
+        "full_evaluation"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "saas_id": "resend",
-      "status": "none_yet"
+      "status": "ok"
     },
     {
       "audience": "both",
@@ -11876,20 +11862,20 @@
         }
       ],
       "name": "Bubble",
-      "path": null,
+      "path": "saas/bubble.json",
       "rank": 357,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "bubble",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
       "category": "Email marketing",
-      "compare_path": null,
+      "compare_path": "/open-source/campaign-monitor-alternatives",
       "domain": "campaignmonitor.com",
       "evidence": {
         "awaiting": 0,
@@ -11911,13 +11897,13 @@
       "name": "Campaign Monitor",
       "path": "saas/campaign-monitor.json",
       "rank": 358,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 4,
       "saas_id": "campaign-monitor",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2c",
@@ -11939,15 +11925,15 @@
         }
       ],
       "name": "QuillBot",
-      "path": null,
+      "path": "saas/quillbot.json",
       "rank": 359,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "quillbot",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -11987,7 +11973,7 @@
     {
       "audience": "b2b",
       "category": "Platform as a service",
-      "compare_path": null,
+      "compare_path": "/open-source/aws-amplify-alternatives",
       "domain": "aws.amazon.com",
       "evidence": {
         "awaiting": 0,
@@ -12015,14 +12001,13 @@
       "name": "AWS Amplify",
       "path": "saas/aws-amplify.json",
       "rank": 361,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "evaluated_not_recommended"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 4,
       "saas_id": "aws-amplify",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -12093,7 +12078,7 @@
     {
       "audience": "b2c",
       "category": "Email",
-      "compare_path": null,
+      "compare_path": "/open-source/fastmail-alternatives",
       "domain": "fastmail.com",
       "evidence": {
         "awaiting": 0,
@@ -12113,15 +12098,15 @@
         }
       ],
       "name": "Fastmail",
-      "path": null,
+      "path": "saas/fastmail.json",
       "rank": 364,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "saas_id": "fastmail",
-      "status": "none_yet"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -12163,7 +12148,7 @@
     {
       "audience": "b2b",
       "category": "Customer support",
-      "compare_path": null,
+      "compare_path": "/open-source/tidio-alternatives",
       "domain": "tidio.com",
       "evidence": {
         "awaiting": 0,
@@ -12180,15 +12165,15 @@
         }
       ],
       "name": "Tidio",
-      "path": null,
+      "path": "saas/tidio.json",
       "rank": 366,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "saas_id": "tidio",
-      "status": "none_yet"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -12215,11 +12200,11 @@
       "name": "Diffbot",
       "path": "saas/diffbot.json",
       "rank": 367,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
         "fewer_than_minimum"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "diffbot",
       "status": "partial"
     },
@@ -12247,15 +12232,15 @@
         }
       ],
       "name": "HCP Terraform",
-      "path": null,
+      "path": "saas/hcp-terraform.json",
       "rank": 368,
-      "reason": "1 corpus projects describe themselves as alternatives; none is fully evaluated",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "corpus_candidates_only"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "hcp-terraform",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -12277,15 +12262,15 @@
         }
       ],
       "name": "Pipedream",
-      "path": null,
+      "path": "saas/pipedream.json",
       "rank": 369,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "saas_id": "pipedream",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -12414,15 +12399,15 @@
         }
       ],
       "name": "UiPath",
-      "path": null,
+      "path": "saas/uipath.json",
       "rank": 373,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "uipath",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -12485,19 +12470,19 @@
       "name": "Lokalise",
       "path": "saas/lokalise.json",
       "rank": 375,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 candidate relationships are waiting on a licence decision",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 candidate relationships are waiting on a licence decision",
       "reasons": [
         "fewer_than_minimum",
         "licence_review"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "lokalise",
       "status": "partial"
     },
     {
       "audience": "b2b",
       "category": "Email",
-      "compare_path": null,
+      "compare_path": "/open-source/zoho-mail-alternatives",
       "domain": "zoho.com",
       "evidence": {
         "awaiting": 0,
@@ -12521,15 +12506,15 @@
         }
       ],
       "name": "Zoho Mail",
-      "path": null,
+      "path": "saas/zoho-mail.json",
       "rank": 376,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "saas_id": "zoho-mail",
-      "status": "none_yet"
+      "status": "ok"
     },
     {
       "audience": "b2c",
@@ -12551,20 +12536,20 @@
         }
       ],
       "name": "Strava",
-      "path": null,
+      "path": "saas/strava.json",
       "rank": 377,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "strava",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
       "category": "Customer support",
-      "compare_path": null,
+      "compare_path": "/open-source/livechat-alternatives",
       "domain": "livechat.com",
       "evidence": {
         "awaiting": 0,
@@ -12584,15 +12569,15 @@
         }
       ],
       "name": "LiveChat",
-      "path": null,
+      "path": "saas/livechat.json",
       "rank": 378,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "full_evaluation"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "saas_id": "livechat",
-      "status": "none_yet"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -12716,15 +12701,15 @@
         }
       ],
       "name": "FlutterFlow",
-      "path": null,
+      "path": "saas/flutterflow.json",
       "rank": 382,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "flutterflow",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "both",
@@ -12776,15 +12761,15 @@
         }
       ],
       "name": "Google Classroom",
-      "path": null,
+      "path": "saas/google-classroom.json",
       "rank": 384,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "google-classroom",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "both",
@@ -12819,7 +12804,7 @@
     {
       "audience": "b2b",
       "category": "Customer support",
-      "compare_path": null,
+      "compare_path": "/open-source/crisp-alternatives",
       "domain": "crisp.chat",
       "evidence": {
         "awaiting": 0,
@@ -12839,20 +12824,20 @@
         }
       ],
       "name": "Crisp",
-      "path": null,
+      "path": "saas/crisp.json",
       "rank": 386,
-      "reason": "1 corpus projects describe themselves as alternatives; none is fully evaluated",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "corpus_candidates_only"
+        "full_evaluation"
       ],
-      "recommended": 0,
+      "recommended": 4,
       "saas_id": "crisp",
-      "status": "none_yet"
+      "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "Customer support",
-      "compare_path": null,
+      "compare_path": "/open-source/tawk-to-alternatives",
       "domain": "tawk.to",
       "evidence": {
         "awaiting": 0,
@@ -12872,15 +12857,15 @@
         }
       ],
       "name": "tawk.to",
-      "path": null,
+      "path": "saas/tawk-to.json",
       "rank": 387,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "saas_id": "tawk-to",
-      "status": "none_yet"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -12924,7 +12909,7 @@
     {
       "audience": "b2b",
       "category": "Knowledge base",
-      "compare_path": null,
+      "compare_path": "/open-source/document360-alternatives",
       "domain": "document360.com",
       "evidence": {
         "awaiting": 0,
@@ -12946,13 +12931,13 @@
       "name": "Document360",
       "path": "saas/document360.json",
       "rank": 389,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 4,
       "saas_id": "document360",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -13155,7 +13140,7 @@
     {
       "audience": "b2c",
       "category": "Photo management",
-      "compare_path": null,
+      "compare_path": "/open-source/amazon-photos-alternatives",
       "domain": "amazon.com",
       "evidence": {
         "awaiting": 0,
@@ -13175,18 +13160,18 @@
       "name": "Amazon Photos",
       "path": "saas/amazon-photos.json",
       "rank": 396,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 5,
       "saas_id": "amazon-photos",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2c",
       "category": "Task management",
-      "compare_path": null,
+      "compare_path": "/open-source/any-do-alternatives",
       "domain": "any.do",
       "evidence": {
         "awaiting": 0,
@@ -13208,13 +13193,13 @@
       "name": "Any.do",
       "path": "saas/any-do.json",
       "rank": 397,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 6,
       "saas_id": "any-do",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -13566,11 +13551,11 @@
       "name": "Microsoft Intune",
       "path": "saas/microsoft-intune.json",
       "rank": 408,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
         "fewer_than_minimum"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "microsoft-intune",
       "status": "partial"
     },
@@ -13715,7 +13700,7 @@
     {
       "audience": "b2b",
       "category": "Uptime monitoring",
-      "compare_path": null,
+      "compare_path": "/open-source/statuscake-alternatives",
       "domain": "statuscake.com",
       "evidence": {
         "awaiting": 0,
@@ -13737,13 +13722,13 @@
       "name": "StatusCake",
       "path": "saas/statuscake.json",
       "rank": 413,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 5,
       "saas_id": "statuscake",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -13822,7 +13807,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -13839,9 +13824,9 @@
       "name": "Microsoft Forms",
       "path": null,
       "rank": 416,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
-        "no_relationship_evidence"
+        "outside_launch_selection"
       ],
       "recommended": 0,
       "saas_id": "microsoft-forms",
@@ -13903,15 +13888,15 @@
         }
       ],
       "name": "ShipStation",
-      "path": null,
+      "path": "saas/shipstation.json",
       "rank": 418,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "shipstation",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -13938,12 +13923,12 @@
       "name": "Crowdin",
       "path": "saas/crowdin.json",
       "rank": 419,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 candidate relationships are waiting on a licence decision",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 candidate relationships are waiting on a licence decision",
       "reasons": [
         "fewer_than_minimum",
         "licence_review"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "crowdin",
       "status": "partial"
     },
@@ -13980,7 +13965,7 @@
     {
       "audience": "b2b",
       "category": "Billing",
-      "compare_path": null,
+      "compare_path": "/open-source/recurly-alternatives",
       "domain": "recurly.com",
       "evidence": {
         "awaiting": 0,
@@ -14002,18 +13987,18 @@
       "name": "Recurly",
       "path": "saas/recurly.json",
       "rank": 421,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 4,
       "saas_id": "recurly",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "Billing",
-      "compare_path": null,
+      "compare_path": "/open-source/zuora-alternatives",
       "domain": "zuora.com",
       "evidence": {
         "awaiting": 0,
@@ -14035,13 +14020,13 @@
       "name": "Zuora",
       "path": "saas/zuora.json",
       "rank": 422,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 4,
       "saas_id": "zuora",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -14079,7 +14064,7 @@
     {
       "audience": "both",
       "category": "Email",
-      "compare_path": null,
+      "compare_path": "/open-source/microsoft-outlook-alternatives",
       "domain": "microsoft.com",
       "evidence": {
         "awaiting": 0,
@@ -14107,14 +14092,13 @@
       "name": "Microsoft Outlook",
       "path": "saas/microsoft-outlook.json",
       "rank": 424,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 6,
       "saas_id": "microsoft-outlook",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -14187,7 +14171,7 @@
     {
       "audience": "b2c",
       "category": "Email",
-      "compare_path": null,
+      "compare_path": "/open-source/yahoo-mail-alternatives",
       "domain": "yahoo.com",
       "evidence": {
         "awaiting": 0,
@@ -14204,20 +14188,20 @@
         }
       ],
       "name": "Yahoo Mail",
-      "path": null,
+      "path": "saas/yahoo-mail.json",
       "rank": 427,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "saas_id": "yahoo-mail",
-      "status": "none_yet"
+      "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "Point of sale",
-      "compare_path": null,
+      "compare_path": "/open-source/toast-alternatives",
       "domain": "toasttab.com",
       "evidence": {
         "awaiting": 0,
@@ -14225,7 +14209,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -14237,15 +14221,15 @@
         }
       ],
       "name": "Toast",
-      "path": null,
+      "path": "saas/toast.json",
       "rank": 428,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "full_evaluation"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "saas_id": "toast",
-      "status": "none_yet"
+      "status": "ok"
     },
     {
       "audience": "both",
@@ -14269,18 +14253,18 @@
       "name": "Keeper",
       "path": "saas/keeper.json",
       "rank": 429,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
         "fewer_than_minimum"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "keeper",
       "status": "partial"
     },
     {
       "audience": "b2b",
       "category": "Platform as a service",
-      "compare_path": null,
+      "compare_path": "/open-source/cloudflare-pages-alternatives",
       "domain": "cloudflare.com",
       "evidence": {
         "awaiting": 0,
@@ -14303,13 +14287,13 @@
       "name": "Cloudflare Pages",
       "path": "saas/cloudflare-pages.json",
       "rank": 430,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 4,
       "saas_id": "cloudflare-pages",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -14322,7 +14306,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -14334,15 +14318,15 @@
         }
       ],
       "name": "Slite",
-      "path": null,
+      "path": "saas/slite.json",
       "rank": 431,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "outside_launch_selection"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "saas_id": "slite",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -14367,15 +14351,15 @@
         }
       ],
       "name": "Productboard",
-      "path": null,
+      "path": "saas/productboard.json",
       "rank": 432,
-      "reason": "1 corpus projects describe themselves as alternatives; none is fully evaluated",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "corpus_candidates_only"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "productboard",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -14413,7 +14397,7 @@
     {
       "audience": "both",
       "category": "Site builder",
-      "compare_path": null,
+      "compare_path": "/open-source/wordpress-com-alternatives",
       "domain": "wordpress.com",
       "evidence": {
         "awaiting": 0,
@@ -14421,7 +14405,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -14433,15 +14417,15 @@
         }
       ],
       "name": "WordPress.com",
-      "path": null,
+      "path": "saas/wordpress-com.json",
       "rank": 434,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 0,
+      "recommended": 3,
       "saas_id": "wordpress-com",
-      "status": "none_yet"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -14466,15 +14450,15 @@
         }
       ],
       "name": "Hubstaff",
-      "path": null,
+      "path": "saas/hubstaff.json",
       "rank": 435,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "hubstaff",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -14553,7 +14537,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -14565,15 +14549,15 @@
         }
       ],
       "name": "Travis CI",
-      "path": null,
+      "path": "saas/travis-ci.json",
       "rank": 438,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "outside_launch_selection"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "saas_id": "travis-ci",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -14586,7 +14570,7 @@
         "job_defined": true,
         "licence_review": 1,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -14598,16 +14582,16 @@
         }
       ],
       "name": "Transifex",
-      "path": null,
+      "path": "saas/transifex.json",
       "rank": 439,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision; 1 candidate relationships are waiting on a licence decision",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 candidate relationships are waiting on a licence decision",
       "reasons": [
-        "outside_launch_selection",
+        "fewer_than_minimum",
         "licence_review"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "saas_id": "transifex",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -14692,7 +14676,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -14704,15 +14688,15 @@
         }
       ],
       "name": "Agora",
-      "path": null,
+      "path": "saas/agora.json",
       "rank": 442,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "outside_launch_selection"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "agora",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -14750,7 +14734,7 @@
     {
       "audience": "b2b",
       "category": "Uptime monitoring",
-      "compare_path": null,
+      "compare_path": "/open-source/checkly-alternatives",
       "domain": "checklyhq.com",
       "evidence": {
         "awaiting": 0,
@@ -14772,18 +14756,18 @@
       "name": "Checkly",
       "path": "saas/checkly.json",
       "rank": 444,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 6,
       "saas_id": "checkly",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
       "category": "Status pages",
-      "compare_path": null,
+      "compare_path": "/open-source/instatus-alternatives",
       "domain": "instatus.com",
       "evidence": {
         "awaiting": 0,
@@ -14791,7 +14775,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -14803,15 +14787,15 @@
         }
       ],
       "name": "Instatus",
-      "path": null,
+      "path": "saas/instatus.json",
       "rank": 445,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 0,
+      "recommended": 5,
       "saas_id": "instatus",
-      "status": "none_yet"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -14858,7 +14842,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -14867,15 +14851,15 @@
         }
       ],
       "name": "Visualping",
-      "path": null,
+      "path": "saas/visualping.json",
       "rank": 447,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "outside_launch_selection"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "visualping",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -14921,7 +14905,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -14933,15 +14917,15 @@
         }
       ],
       "name": "Landbot",
-      "path": null,
+      "path": "saas/landbot.json",
       "rank": 449,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "outside_launch_selection"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "landbot",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -14988,7 +14972,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -15006,15 +14990,15 @@
         }
       ],
       "name": "Amazon DynamoDB",
-      "path": null,
+      "path": "saas/amazon-dynamodb.json",
       "rank": 451,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "outside_launch_selection"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "amazon-dynamodb",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -15039,15 +15023,16 @@
         }
       ],
       "name": "Appian",
-      "path": null,
+      "path": "saas/appian.json",
       "rank": 452,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
+        "fewer_than_minimum",
         "outside_launch_selection"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "appian",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -15093,7 +15078,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -15105,15 +15090,15 @@
         }
       ],
       "name": "Pitch",
-      "path": null,
+      "path": "saas/pitch.json",
       "rank": 454,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "outside_launch_selection"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "pitch",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -15126,7 +15111,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -15138,15 +15123,16 @@
         }
       ],
       "name": "Freshservice",
-      "path": null,
+      "path": "saas/freshservice.json",
       "rank": 455,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum",
+        "outside_launch_selection"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "saas_id": "freshservice",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -15267,15 +15253,15 @@
         }
       ],
       "name": "Codecov",
-      "path": null,
+      "path": "saas/codecov.json",
       "rank": 459,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "codecov",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -15333,15 +15319,15 @@
         }
       ],
       "name": "Docebo",
-      "path": null,
+      "path": "saas/docebo.json",
       "rank": 461,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "docebo",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2c",
@@ -15363,15 +15349,16 @@
         }
       ],
       "name": "Cronometer",
-      "path": null,
+      "path": "saas/cronometer.json",
       "rank": 462,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
+        "fewer_than_minimum",
         "outside_launch_selection"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "saas_id": "cronometer",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -15384,7 +15371,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -15396,15 +15383,15 @@
         }
       ],
       "name": "Bugsnag",
-      "path": null,
+      "path": "saas/bugsnag.json",
       "rank": 463,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "outside_launch_selection"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "bugsnag",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -15417,7 +15404,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -15429,15 +15416,15 @@
         }
       ],
       "name": "Rollbar",
-      "path": null,
+      "path": "saas/rollbar.json",
       "rank": 464,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "outside_launch_selection"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "rollbar",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -15519,7 +15506,7 @@
         "job_defined": true,
         "licence_review": 1,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -15528,16 +15515,16 @@
         }
       ],
       "name": "POEditor",
-      "path": null,
+      "path": "saas/poeditor.json",
       "rank": 467,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision; 1 candidate relationships are waiting on a licence decision",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 candidate relationships are waiting on a licence decision",
       "reasons": [
-        "outside_launch_selection",
+        "fewer_than_minimum",
         "licence_review"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "saas_id": "poeditor",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "both",
@@ -15550,7 +15537,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -15559,15 +15546,15 @@
         }
       ],
       "name": "DeepSeek Chat",
-      "path": null,
+      "path": "saas/deepseek-chat.json",
       "rank": 468,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "outside_launch_selection"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "deepseek-chat",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "both",
@@ -15580,7 +15567,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -15591,9 +15578,9 @@
       "name": "Tally",
       "path": null,
       "rank": 469,
-      "reason": "1 corpus projects describe themselves as alternatives; none is fully evaluated",
+      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
-        "corpus_candidates_only"
+        "outside_launch_selection"
       ],
       "recommended": 0,
       "saas_id": "tally",
@@ -15752,15 +15739,16 @@
         }
       ],
       "name": "Mendix",
-      "path": null,
+      "path": "saas/mendix.json",
       "rank": 474,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
+        "fewer_than_minimum",
         "outside_launch_selection"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "mendix",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -15782,15 +15770,16 @@
         }
       ],
       "name": "OutSystems",
-      "path": null,
+      "path": "saas/outsystems.json",
       "rank": 475,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
+        "fewer_than_minimum",
         "outside_launch_selection"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "outsystems",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -15803,7 +15792,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -15821,15 +15810,16 @@
         }
       ],
       "name": "Jira Service Management",
-      "path": null,
+      "path": "saas/jira-service-management.json",
       "rank": 476,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum",
+        "outside_launch_selection"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "saas_id": "jira-service-management",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -15854,15 +15844,15 @@
         }
       ],
       "name": "Mailjet",
-      "path": null,
+      "path": "saas/mailjet.json",
       "rank": 477,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "saas_id": "mailjet",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -15989,15 +15979,15 @@
         }
       ],
       "name": "Frame.io",
-      "path": null,
+      "path": "saas/frame-io.json",
       "rank": 481,
-      "reason": "2 corpus projects describe themselves as alternatives; none is fully evaluated",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "corpus_candidates_only"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "frame-io",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2c",
@@ -16019,15 +16009,15 @@
         }
       ],
       "name": "Instapaper",
-      "path": null,
+      "path": "saas/instapaper.json",
       "rank": 482,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "instapaper",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -16161,7 +16151,7 @@
     {
       "audience": "b2b",
       "category": "Business intelligence",
-      "compare_path": null,
+      "compare_path": "/open-source/mode-analytics-alternatives",
       "domain": "mode.com",
       "evidence": {
         "awaiting": 0,
@@ -16169,7 +16159,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -16183,14 +16173,13 @@
       "name": "Mode Analytics",
       "path": "saas/mode-analytics.json",
       "rank": 487,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "7 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 7,
       "saas_id": "mode-analytics",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -16248,15 +16237,15 @@
         }
       ],
       "name": "TalentLMS",
-      "path": null,
+      "path": "saas/talentlms.json",
       "rank": 489,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "talentlms",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "both",
@@ -16281,15 +16270,15 @@
         }
       ],
       "name": "Luma",
-      "path": null,
+      "path": "saas/luma.json",
       "rank": 490,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "luma",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -16446,15 +16435,16 @@
         }
       ],
       "name": "Shogun",
-      "path": null,
+      "path": "saas/shogun.json",
       "rank": 495,
-      "reason": "1 candidate relationships are waiting on a licence decision",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 candidate relationships are waiting on a licence decision",
       "reasons": [
+        "fewer_than_minimum",
         "licence_review"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "shogun",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -16480,15 +16470,15 @@
         }
       ],
       "name": "Stack Overflow for Teams",
-      "path": null,
+      "path": "saas/stack-overflow-for-teams.json",
       "rank": 496,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "stack-overflow-for-teams",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -16593,7 +16583,7 @@
     {
       "audience": "b2b",
       "category": "Billing",
-      "compare_path": null,
+      "compare_path": "/open-source/stripe-billing-alternatives",
       "domain": "stripe.com",
       "evidence": {
         "awaiting": 0,
@@ -16621,13 +16611,13 @@
       "name": "Stripe Billing",
       "path": "saas/stripe-billing.json",
       "rank": 552,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "4 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 1,
+      "recommended": 4,
       "saas_id": "stripe-billing",
-      "status": "partial"
+      "status": "ok"
     }
   ],
   "match_semantics": "Lowercase the page hostname and strip one leading \"www.\". A rule matches when its host equals the hostname (or the hostname ends with its host_suffix) and, if it has a path_prefix, the URL path equals the prefix or continues it at a \"/\" (a prefix that ends in \"/\" is a plain prefix). When several rules match, the most specific wins: one with a path_prefix beats one without, a longer path_prefix beats a shorter one, an exact host beats a host_suffix, a longer host_suffix beats a shorter one; remaining ties go to the first rule in file order.",

@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "94a9f53ad645d14f",
+  "dataset_version": "e93d849be7ae8040",
   "last_checked": {
-    "newest": "2026-10-20T23:06:47Z",
-    "oldest": "2026-10-20T23:06:47Z"
+    "newest": "2026-10-21T09:59:55Z",
+    "oldest": "2026-10-21T09:59:55Z"
   },
   "more_available": 3,
   "provenance": {
@@ -36,7 +36,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -67,7 +67,7 @@
         "tag": "v2.2.7"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Krayin",
       "note": {
@@ -103,7 +103,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 24035
+      "stars": 24039
     },
     {
       "evidence": {
@@ -117,7 +117,7 @@
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -155,7 +155,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the AGPL-3.0-only core; parts under Customermates Commercial License are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Customermates",
       "note": {
@@ -203,7 +203,7 @@
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -237,7 +237,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the AGPL-3.0 core; parts under Twenty commercial licence are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Twenty",
       "note": {
@@ -274,7 +274,7 @@
       "sources": [
         "altstack"
       ],
-      "stars": 58743
+      "stars": 58771
     },
     {
       "evidence": {
@@ -284,18 +284,18 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/django-crm/django-crm",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 100.0,
-            "ease_of_adoption": 96.0,
+            "ease_of_adoption": 96.1,
             "economic_advantage": 80.0,
             "feature_equivalence": 50.0,
             "integrations_extensibility": 100.0,
@@ -317,13 +317,13 @@
         }
       },
       "github_url": "https://github.com/Django-CRM/Django-CRM",
-      "last_meaningful_activity_at": "2026-10-17T20:06:47Z",
+      "last_meaningful_activity_at": "2026-10-21T04:42:55Z",
       "latest_release": {
-        "published_at": "2026-10-15T15:13:59Z",
-        "tag": "v1.17.0"
+        "published_at": "2026-10-21T04:42:55Z",
+        "tag": "v1.18.2"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Django-CRM",
       "note": {
@@ -339,13 +339,13 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 95.0,
-        "score": 87.1,
+        "score": 89.0,
         "trajectory": "Rising"
       },
       "rank": 4,
       "replacement_fit": {
         "confidence": 86.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
+        "evaluated_at": "2026-10-21T08:41:23Z",
         "score": 90.9,
         "score_version": "1.2.0"
       },
@@ -367,11 +367,11 @@
           "provenance": [
             {
               "locator": "data/job_match/ledger.json#github.com/dolibarr/dolibarr",
-              "source_commit": "dcb85b2b5e3cdce933a9964f465ce0bc98a14c02",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-20T23:06:47Z"
+          "validated_as_of": "2026-10-21T09:59:55Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -408,7 +408,7 @@
         "tag": "24.0.1"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-20T23:06:47Z",
+      "live_checked_at": "2026-10-21T09:59:55Z",
       "maintenance_status": "active",
       "name": "Dolibarr",
       "note": {
