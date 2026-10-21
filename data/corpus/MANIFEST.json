@@ -1,27 +1,27 @@
 {
-  "as_of": "2026-10-20T12:30:08Z",
+  "as_of": "2026-10-21T00:50:50Z",
   "attribution": "The Source (github.com/keithdealwis-ui/the-source), by Keith de Alwis",
-  "corpus_version": "db61d41f65eb4c27",
+  "corpus_version": "99078afc2a6dcb42",
   "counts": {
     "archived": 23,
     "by_lane": {
-      "discover": 9600,
+      "discover": 24701,
       "replace": 485
     },
     "host_not_found": 44,
     "identity": {
-      "collapsed": 1,
+      "collapsed": 11,
       "collapsed_by_reason": {
-        "mirror": 1
+        "mirror": 11
       },
       "forks": 0,
       "forks_of_corpus_projects": 0,
-      "mirrors": 23,
+      "mirrors": 55,
       "mirrors_of_corpus_projects": 0,
       "renamed": 61,
-      "sibling_groups": 22,
-      "sibling_repositories": 48,
-      "with_identity": 132
+      "sibling_groups": 145,
+      "sibling_repositories": 311,
+      "with_identity": 436
     },
     "licence_classification": {
       "missing": 590,
@@ -36,10 +36,10 @@
       "eligible": 49,
       "not_eligible": 1410
     },
-    "licence_issue": 1486,
+    "licence_issue": 4199,
     "maintainer_seeded": 68,
-    "projects": 9901,
-    "with_description": 9526
+    "projects": 25000,
+    "with_description": 24533
   },
   "edition_check": {
     "generated_exceptions": "config/licence_exceptions.generated.yaml",
@@ -54,8 +54,8 @@
     "scope": "rows classified open_core"
   },
   "files": {
-    "live.jsonl": "c394886798328c694b8144a80d7ecf78a7f84544a15dd1f2ea6345f420ea1e15",
-    "projects.jsonl": "fb1c8e18a9458e868afe98b1990393c27ad8530184c06c3df02438bdfd8d8bb2"
+    "live.jsonl": "8086697605f7c8e804050369818b2262aa14396e75e2b6ba08f98f4a84729938",
+    "projects.jsonl": "9fb2c6cb8ed31f7c0f9232f3ee9436bb2faef9786667f2c12a1c8605bcbba61a"
   },
   "identity": {
     "facts": {
@@ -75,18 +75,26 @@
     "scope": "rows with licence.status == 'issue'"
   },
   "live_observed_as_of": {
-    "newest": "2026-10-20T12:30:08Z",
+    "newest": "2026-10-21T00:50:50Z",
     "oldest": "2026-09-29T10:34:38Z"
   },
   "membership": {
     "admission": {
       "last": {
-        "admitted": 11,
-        "at": "2026-10-20T12:30:08Z"
+        "admitted": 1,
+        "at": "2026-10-21T00:50:50Z"
       },
       "method": "the-source.corpus-admit/1: source_pipeline/corpus_admit.py; the Discover lane prefilter and licence bar, maintenance read from pushed_at"
     },
-    "as_of": "2026-10-20T12:30:08Z",
+    "as_of": "2026-10-21T00:50:50Z",
+    "expansion": {
+      "last": {
+        "admitted": 1,
+        "at": "2026-10-21T00:50:50Z",
+        "historical": 1755
+      },
+      "method": "the-source.expansion/1: source_pipeline/expansion.py and corpus_admit.py (KEI-923); config/expansion.yaml sources, quotas and noise gate"
+    },
     "maintenance_evaluated_as_of": "per the Discover lane build at membership.as_of (docs/DISCOVER.md); live facts are refreshed, evaluations are not",
     "outcomes_published": [
       "recommendation_eligible",

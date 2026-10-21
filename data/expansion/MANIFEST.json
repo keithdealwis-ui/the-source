@@ -1,0 +1,124 @@
+{
+  "as_of": "2026-10-20T18:07:54Z",
+  "config_sha256": "de41556c21f3e4d99f1bfd456ac4d06ce08b45256f678a33d97f4a7741b39fd3",
+  "cost": {
+    "github_search_requests": 1321,
+    "requests": 1455,
+    "runtime_s": 5861.7,
+    "transient_failures": 30
+  },
+  "counts": {
+    "addresses": 40293,
+    "by_host": {
+      "codeberg.org": 242,
+      "github.com": 39885,
+      "gitlab.com": 166
+    },
+    "historical_candidates": 1869
+  },
+  "frontier_sha256": "acdcfb0f97bb2979933b531120306a7f2521614e9d255730f0e0cff78fd17f1c",
+  "note": "Addresses and host-reported light facts only. Nothing here is a member, a score or a recommendation.",
+  "schema": "the-source.expansion/1",
+  "sources": {
+    "artifacthub": {
+      "error_count": 33,
+      "errors": [
+        "artifacthub package 7918f2cb-0742-4993-b58a-673129604cf6: http 0",
+        "artifacthub package f475c82a-27a5-4f71-8413-fe70d31268a2: http 0",
+        "artifacthub package e6f213e9-2add-4cc6-92ba-05a025d1f222: http 0",
+        "artifacthub package 625a0f57-5ab0-44ea-91ac-5e8cd8234ad0: http 0",
+        "artifacthub package d5dad873-8e69-411b-8391-933d4391988a: http 0",
+        "artifacthub package 0602c8d2-b17d-432f-89f0-95000f3057a2: http 0",
+        "artifacthub package 8ba0f6dc-591e-4ff4-a2d6-acdbd271677e: http 0",
+        "artifacthub package c617753b-3376-40a1-81a1-3ab00e2868ac: http 0",
+        "artifacthub package 2d84645c-242f-4a0f-92fe-abb0f7984538: http 0",
+        "artifacthub package a779e8e7-a6ce-433b-bda6-fd330d31a280: http 0",
+        "artifacthub kind 0: stopped after 10 failures in a row",
+        "artifacthub package 62d3a0f9-3d23-48f0-9bee-9b4f2060c6df: http 0",
+        "artifacthub package 2d28ca38-12b7-469f-b82e-f00edde51d19: http 0",
+        "artifacthub package cd93e666-2b6d-419e-879d-3890b5f7c200: http 0",
+        "artifacthub package 614a5896-0b60-4e2b-a5b7-3b694658ab2a: http 0",
+        "artifacthub package bb525733-deee-4431-9b51-4897c8d6d21b: http 0",
+        "artifacthub package 0c44b6e2-521b-4485-9d14-fd8f01ea6a4d: http 0",
+        "artifacthub package f68117dd-406d-4a03-b324-db9632769849: http 0",
+        "artifacthub package ed4a8453-75f2-46a4-9743-9f7b12d4d4ea: http 0",
+        "artifacthub package b1aa6353-146c-477c-943e-5a5558b65dc3: http 0",
+        "artifacthub package 5667c55e-0a99-4011-9ab6-7bc3487f43a7: http 0",
+        "artifacthub kind 3: stopped after 10 failures in a row",
+        "artifacthub package 9db875f5-c1bb-4dad-8a67-0540c85e7c70: http 0",
+        "artifacthub package 49760983-aba5-48fd-aee2-f48a31aa81f9: http 0",
+        "artifacthub package 0412cc0c-6b6a-4be0-af4a-b458dd05d332: http 0",
+        "artifacthub package f5107218-6c02-4499-839b-fb29a33ecac4: http 0",
+        "artifacthub package 35a81b18-ffaf-4b8f-8444-3326eb521e64: http 0",
+        "artifacthub package 627693ee-4650-48c8-85b2-b23d3dd52240: http 0",
+        "artifacthub package a38eaea9-b578-43e1-b587-53cea54257d5: http 0",
+        "artifacthub package 666ff10c-ec86-49a8-b9f5-e2ea063f4a18: http 0",
+        "artifacthub package 4c7de0cf-34d7-4afd-b065-fd6266cc0d66: http 0",
+        "artifacthub package ed168b86-1390-4eac-aa1f-2efa40baf632: http 0",
+        "artifacthub kind 12: stopped after 10 failures in a row"
+      ],
+      "family": "docker_helm",
+      "queries": 28,
+      "requests": 58,
+      "returned": 0,
+      "runtime_s": 42.8,
+      "status": "failed",
+      "unique": 0
+    },
+    "awesome_lists": {
+      "error_count": 0,
+      "errors": [],
+      "family": "awesome_lists",
+      "queries": 7,
+      "requests": 76,
+      "returned": 1325,
+      "runtime_s": 66.0,
+      "status": "ok",
+      "unique": 1250
+    },
+    "codeberg": {
+      "error_count": 0,
+      "errors": [],
+      "family": "codeberg",
+      "queries": 32,
+      "requests": 34,
+      "returned": 302,
+      "runtime_s": 50.5,
+      "status": "ok",
+      "unique": 224
+    },
+    "docker_signals": {
+      "error_count": 0,
+      "errors": [],
+      "family": "docker_helm",
+      "queries": 27,
+      "requests": 49,
+      "returned": 2637,
+      "runtime_s": 238.1,
+      "status": "ok",
+      "unique": 2220
+    },
+    "github_topics": {
+      "error_count": 0,
+      "errors": [],
+      "family": "github_topics",
+      "queries": 896,
+      "requests": 1272,
+      "returned": 51626,
+      "runtime_s": 5514.4,
+      "status": "ok",
+      "unique": 37482
+    },
+    "gitlab": {
+      "error_count": 0,
+      "errors": [],
+      "family": "gitlab",
+      "queries": 36,
+      "requests": 36,
+      "returned": 159,
+      "runtime_s": 70.1,
+      "status": "ok",
+      "unique": 143
+    }
+  }
+}
