@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "e93d849be7ae8040",
+  "dataset_version": "82196f0ee11abdcd",
   "last_checked": {
-    "newest": "2026-10-21T09:59:55Z",
-    "oldest": "2026-10-21T09:59:55Z"
+    "newest": "2026-10-22T01:26:16Z",
+    "oldest": "2026-10-22T01:26:16Z"
   },
   "more_available": 0,
   "provenance": {
@@ -31,11 +31,11 @@
           "provenance": [
             {
               "locator": "data/tools.json#slug=onlyoffice;named_by=m365",
-              "source_commit": "e6b7941038edf3507a1e14866c2f84553ddfc96b",
+              "source_commit": "1f32147eaf2004a59721df2a4a346ea3f034f87e",
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-10-21T09:59:55Z"
+          "validated_as_of": "2026-10-22T01:26:16Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -69,7 +69,7 @@
         "tag": "v10.0.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-21T09:59:55Z",
+      "live_checked_at": "2026-10-22T01:26:16Z",
       "maintenance_status": "active",
       "name": "OnlyOffice",
       "note": {
@@ -117,7 +117,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-21T09:59:55Z"
+          "validated_as_of": "2026-10-22T01:26:16Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -149,7 +149,7 @@
         "tag": "v0.2.7"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-21T09:59:55Z",
+      "live_checked_at": "2026-10-22T01:26:16Z",
       "maintenance_status": "active",
       "name": "doca",
       "note": {
@@ -183,7 +183,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 376
+      "stars": 385
     },
     {
       "evidence": {
@@ -197,7 +197,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-21T09:59:55Z"
+          "validated_as_of": "2026-10-22T01:26:16Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -228,7 +228,7 @@
       "last_meaningful_activity_at": "2026-10-15T13:32:24Z",
       "latest_release": null,
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-21T09:59:55Z",
+      "live_checked_at": "2026-10-22T01:26:16Z",
       "maintenance_status": "active",
       "name": "Docker-DocumentServer",
       "note": {
@@ -276,7 +276,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-21T09:59:55Z"
+          "validated_as_of": "2026-10-22T01:26:16Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -302,13 +302,13 @@
         }
       },
       "github_url": "https://github.com/cryptpad/cryptpad",
-      "last_meaningful_activity_at": "2026-10-19T13:44:44Z",
+      "last_meaningful_activity_at": "2026-10-21T14:23:14Z",
       "latest_release": {
-        "published_at": "2026-05-26T11:17:53Z",
-        "tag": "2026.5.1"
+        "published_at": "2026-10-21T14:23:14Z",
+        "tag": "2026.10.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-21T09:59:55Z",
+      "live_checked_at": "2026-10-22T01:26:16Z",
       "maintenance_status": "active",
       "name": "CryptPad",
       "note": {
@@ -327,13 +327,13 @@
       "project_health": {
         "band": "Healthy",
         "confidence": 96.6,
-        "score": 81.0,
+        "score": 82.7,
         "trajectory": "Stable"
       },
       "rank": 4,
       "replacement_fit": {
         "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
+        "evaluated_at": "2026-10-22T01:26:16Z",
         "score": 66.7,
         "score_version": "1.2.0"
       },
@@ -345,7 +345,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 8021
+      "stars": 8022
     }
   ],
   "saas": {

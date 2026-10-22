@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "e93d849be7ae8040",
+  "dataset_version": "82196f0ee11abdcd",
   "last_checked": {
-    "newest": "2026-10-21T09:59:55Z",
-    "oldest": "2026-10-21T09:59:55Z"
+    "newest": "2026-10-22T01:26:16Z",
+    "oldest": "2026-10-22T01:26:16Z"
   },
   "more_available": 3,
   "provenance": {
@@ -32,12 +32,96 @@
           "evidence_class": "listed",
           "provenance": [
             {
+              "locator": "README.md#L405",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-10-22T01:26:16Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/bluewave-labs/Checkmate",
+      "last_meaningful_activity_at": "2026-10-21T18:50:19Z",
+      "latest_release": {
+        "published_at": "2026-10-21T18:50:19Z",
+        "tag": "v3.13.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-22T01:26:16Z",
+      "maintenance_status": "active",
+      "name": "Checkmate",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/bluewave-labs/checkmate",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 95.0,
+        "score": 83.6,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-10-22T01:26:16Z",
+        "score": 87.0,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/bluewave-labs/Checkmate",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "opensaasdirectory"
+      ],
+      "stars": 10972
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
               "locator": "README.md#L531",
               "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-10-21T09:59:55Z"
+          "validated_as_of": "2026-10-22T01:26:16Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -74,7 +158,7 @@
         "tag": "v5.0"
       },
       "licence_spdx": "BSD-3-Clause",
-      "live_checked_at": "2026-10-21T09:59:55Z",
+      "live_checked_at": "2026-10-22T01:26:16Z",
       "maintenance_status": "active",
       "name": "Healthchecks.io (self-hosted)",
       "note": {
@@ -93,7 +177,7 @@
         "score": 85.5,
         "trajectory": "Stable"
       },
-      "rank": 1,
+      "rank": 2,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-20T12:30:08Z",
@@ -108,7 +192,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 10433
+      "stars": 10437
     },
     {
       "evidence": {
@@ -122,7 +206,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-10-21T09:59:55Z"
+          "validated_as_of": "2026-10-22T01:26:16Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -159,7 +243,7 @@
         "tag": "v0.40.1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-21T09:59:55Z",
+      "live_checked_at": "2026-10-22T01:26:16Z",
       "maintenance_status": "active",
       "name": "SolidPing",
       "note": {
@@ -178,7 +262,7 @@
         "score": 79.8,
         "trajectory": "Insufficient history"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-19T23:32:37Z",
@@ -193,90 +277,7 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 23
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
-              "locator": "README.md#L405",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
-              "source_id": "opensaasdirectory"
-            }
-          ],
-          "validated_as_of": "2026-10-21T09:59:55Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 43.8,
-            "ease_of_adoption": 100.0,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 92.5,
-            "integrations_extensibility": 75.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 80.0
-          },
-          "evidence_families": [
-            "api",
-            "demo",
-            "import",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "support",
-            "webhook"
-          ],
-          "scoring_path": "full_lane"
-        }
-      },
-      "github_url": "https://github.com/bluewave-labs/Checkmate",
-      "last_meaningful_activity_at": "2026-10-16T19:19:47Z",
-      "latest_release": {
-        "published_at": "2026-09-13T18:42:21Z",
-        "tag": "v3.12.0"
-      },
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-21T09:59:55Z",
-      "maintenance_status": "active",
-      "name": "Checkmate",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption."
-      },
-      "oss_id": "github.com/bluewave-labs/checkmate",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 95.0,
-        "score": 84.9,
-        "trajectory": "Stable"
-      },
-      "rank": 3,
-      "replacement_fit": {
-        "confidence": 86.5,
-        "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 83.4,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/bluewave-labs/Checkmate",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "opensaasdirectory"
-      ],
-      "stars": 10967
+      "stars": 24
     },
     {
       "evidence": {
@@ -300,7 +301,7 @@
               "source_id": "emmraan"
             }
           ],
-          "validated_as_of": "2026-10-21T09:59:55Z"
+          "validated_as_of": "2026-10-22T01:26:16Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -331,7 +332,7 @@
         "tag": "2.5.6"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-21T09:59:55Z",
+      "live_checked_at": "2026-10-22T01:26:16Z",
       "maintenance_status": "active",
       "name": "Uptime Kuma",
       "note": {
@@ -370,7 +371,7 @@
         "opensaasdirectory",
         "emmraan"
       ],
-      "stars": 92703
+      "stars": 92731
     },
     {
       "evidence": {
@@ -384,7 +385,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-21T09:59:55Z"
+          "validated_as_of": "2026-10-22T01:26:16Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -419,7 +420,7 @@
         "tag": "v0.3.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-21T09:59:55Z",
+      "live_checked_at": "2026-10-22T01:26:16Z",
       "maintenance_status": "active",
       "name": "agent",
       "note": {

@@ -1,6 +1,6 @@
 {
   "api_version": "v1",
-  "dataset_version": "e93d849be7ae8040",
+  "dataset_version": "82196f0ee11abdcd",
   "match_semantics": "Lowercase the page hostname and strip one leading \"www.\". A rule matches when its host equals the hostname (or the hostname ends with its host_suffix) and, if it has a path_prefix, the URL path equals the prefix or continues it at a \"/\" (a prefix that ends in \"/\" is a plain prefix). When several rules match, the most specific wins: one with a path_prefix beats one without, a longer path_prefix beats a shorter one, an exact host beats a host_suffix, a longer host_suffix beats a shorter one; remaining ties go to the first rule in file order.",
   "rules": [
     {

@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-21T09:59:55Z",
+  "as_of": "2026-10-22T01:26:16Z",
   "checks": [
     {
       "criterion": 1,
@@ -219,7 +219,7 @@
       "failures": 0,
       "id": "activity.evidence_is_not_docs_only",
       "kind": "assertion",
-      "observed": 4963,
+      "observed": 4969,
       "ok": true
     },
     {
@@ -334,8 +334,8 @@
       "id": "maintenance.classification_matches_definition",
       "kind": "assertion",
       "observed": {
-        "active": 1243,
-        "maintained": 125,
+        "active": 1242,
+        "maintained": 126,
         "stale": 101,
         "unverified": 16
       },
@@ -505,10 +505,10 @@
       "kind": "observation",
       "observed": {
         "examples": [
-          "github.com/nomic-ai/gpt4all (77347 stars: stale_no_meaningful_activity_12_months)",
-          "github.com/minio/minio (61313 stars: archived)",
-          "github.com/maybe-finance/maybe (54216 stars: archived,stale_no_meaningful_activity_12_months)",
-          "github.com/laion-ai/open-assistant (37369 stars: stale_no_meaningful_activity_12_months)",
+          "github.com/nomic-ai/gpt4all (77352 stars: stale_no_meaningful_activity_12_months)",
+          "github.com/minio/minio (61310 stars: archived)",
+          "github.com/maybe-finance/maybe (54215 stars: archived,stale_no_meaningful_activity_12_months)",
+          "github.com/laion-ai/open-assistant (37371 stars: stale_no_meaningful_activity_12_months)",
           "github.com/mattermost-community/focalboard (26518 stars: no_recognised_open_source_licence,stale_no_meaningful_activity_12_months)"
         ],
         "launch_projects_under_500_stars": 90,

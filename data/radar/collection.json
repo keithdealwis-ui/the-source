@@ -1,10 +1,16 @@
 {
-  "as_of": "2026-10-21T09:59:55Z",
+  "as_of": "2026-10-22T01:26:16Z",
   "resolve": {
-    "asked": 0,
+    "asked": 9,
     "deferred": 0,
-    "pool_added": [],
-    "resolved": 0,
+    "pool_added": [
+      "github.com/alteraidev/openclaw-alter-plugin",
+      "github.com/crocswap/integer-mult-bounds",
+      "github.com/mitmproxy/mitmproxy",
+      "github.com/php/php-src",
+      "github.com/vladocar/sumi.css"
+    ],
+    "resolved": 9,
     "transient_failures": []
   },
   "sources": {
@@ -15,16 +21,16 @@
       "http_calls": 2,
       "items_read": 100,
       "listed": 100,
-      "mentions": 52,
+      "mentions": 55,
       "status": "ok"
     },
     "forem": {
       "errors": [],
       "gone": 0,
-      "http_calls": 28,
-      "items_read": 24,
-      "listed": 24,
-      "mentions": 19,
+      "http_calls": 22,
+      "items_read": 18,
+      "listed": 18,
+      "mentions": 13,
       "status": "ok"
     },
     "hn": {
@@ -32,8 +38,8 @@
       "gone": 0,
       "http_calls": 303,
       "items_read": 300,
-      "listed": 338,
-      "mentions": 35,
+      "listed": 339,
+      "mentions": 37,
       "status": "ok"
     },
     "instagram": {
@@ -60,10 +66,10 @@
     }
   },
   "stars": {
-    "asked": 0,
+    "asked": 29,
     "error": null,
-    "found": 0,
-    "http_calls": 0,
+    "found": 29,
+    "http_calls": 1,
     "missing_before": 0,
     "not_found": 0,
     "status": "ok"
