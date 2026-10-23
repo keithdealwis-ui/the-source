@@ -1,14 +1,14 @@
 {
-  "as_of": "2026-10-23T01:24:19Z",
+  "as_of": "2026-10-23T09:33:53Z",
   "attribution": "The Source (github.com/keithdealwis-ui/the-source), by Keith de Alwis",
-  "corpus_version": "95d4c879a99edd68",
+  "corpus_version": "2b176a0b398d6d19",
   "counts": {
-    "archived": 23,
+    "archived": 36,
     "by_lane": {
       "discover": 24725,
       "replace": 485
     },
-    "host_not_found": 44,
+    "host_not_found": 52,
     "identity": {
       "collapsed": 7,
       "collapsed_by_reason": {
@@ -16,12 +16,12 @@
       },
       "forks": 0,
       "forks_of_corpus_projects": 0,
-      "mirrors": 55,
+      "mirrors": 56,
       "mirrors_of_corpus_projects": 0,
-      "renamed": 61,
+      "renamed": 74,
       "sibling_groups": 145,
       "sibling_repositories": 311,
-      "with_identity": 432
+      "with_identity": 445
     },
     "licence_classification": {
       "missing": 590,
@@ -39,7 +39,7 @@
     "licence_issue": 4207,
     "maintainer_seeded": 68,
     "projects": 25026,
-    "with_description": 24557
+    "with_description": 24564
   },
   "edition_check": {
     "generated_exceptions": "config/licence_exceptions.generated.yaml",
@@ -54,8 +54,8 @@
     "scope": "rows classified open_core"
   },
   "files": {
-    "live.jsonl": "5e54948e1c54e88590990b1411b8b614e17ba6c80261f849a47298dbf74d03cc",
-    "projects.jsonl": "6d015ddf95f3a471aba34eb9a70ebfbfb065423a1bd8d51f8571a0dded960cf7"
+    "live.jsonl": "eb0de5e4f193a270f9364483025023e48b1f4c0738b41f16a82a679e457196fb",
+    "projects.jsonl": "91a2611dd31b358782fff921ebc2c1ba9daa923b7edf832db465a9d9c4ab2db7"
   },
   "identity": {
     "facts": {
@@ -75,8 +75,8 @@
     "scope": "rows with licence.status == 'issue'"
   },
   "live_observed_as_of": {
-    "newest": "2026-10-23T01:24:19Z",
-    "oldest": "2026-09-29T10:34:38Z"
+    "newest": "2026-10-23T09:33:53Z",
+    "oldest": "2026-10-23T09:33:53Z"
   },
   "membership": {
     "admission": {
@@ -114,15 +114,15 @@
   "refresh": {
     "cadence": "weekly",
     "last": {
-      "at": "2026-10-17T08:51:32Z",
-      "batches": 188,
-      "changed_metadata": 622,
-      "method": "GitHub GraphQL, 50 repositories per request; REST only to follow a rename",
-      "not_found": 44,
-      "not_on_github": 5,
-      "renamed": 22,
-      "requests": 260,
-      "resolved": 9314,
+      "at": "2026-10-23T09:33:53Z",
+      "batches": 496,
+      "changed_metadata": 774,
+      "method": "GitHub GraphQL, 50 repositories per request; REST only to follow a rename; GitLab and Codeberg through hosts.py",
+      "not_found": 52,
+      "not_on_github": 0,
+      "renamed": 27,
+      "requests": 1472,
+      "resolved": 24974,
       "unresolved": 0
     },
     "stale_after_days": 10
