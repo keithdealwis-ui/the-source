@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-22T01:26:16Z",
+  "as_of": "2026-10-23T01:24:19Z",
   "checks": [
     {
       "criterion": 1,
@@ -28,7 +28,7 @@
       "failures": 0,
       "id": "schema.oss",
       "kind": "assertion",
-      "observed": 1485,
+      "observed": 1486,
       "ok": true
     },
     {
@@ -38,7 +38,7 @@
       "failures": 0,
       "id": "schema.edge",
       "kind": "assertion",
-      "observed": 5086,
+      "observed": 5087,
       "ok": true
     },
     {
@@ -49,7 +49,7 @@
       "id": "schema.rejection",
       "kind": "assertion",
       "observed": {
-        "archived": 18,
+        "archived": 19,
         "host_unverifiable": 3,
         "identity_unverified": 4,
         "licence_not_open": 28,
@@ -57,7 +57,7 @@
         "not_a_repository": 21,
         "not_found": 13,
         "saas_not_in_catalogue": 152,
-        "unmaintained": 73
+        "unmaintained": 71
       },
       "ok": true
     },
@@ -81,7 +81,7 @@
       "failures": 0,
       "id": "provenance.edge",
       "kind": "assertion",
-      "observed": 5086,
+      "observed": 5087,
       "ok": true
     },
     {
@@ -91,7 +91,7 @@
       "failures": 0,
       "id": "provenance.oss",
       "kind": "assertion",
-      "observed": 1485,
+      "observed": 1486,
       "ok": true
     },
     {
@@ -138,7 +138,7 @@
           "piotrkulpinski/open-source-alternatives",
           "tycrek/degoogle"
         ],
-        "staged_claims": 3420
+        "staged_claims": 3422
       },
       "ok": true
     },
@@ -159,7 +159,7 @@
       "failures": 0,
       "id": "dedupe.oss_ids_unique",
       "kind": "assertion",
-      "observed": 1485,
+      "observed": 1486,
       "ok": true
     },
     {
@@ -169,7 +169,7 @@
       "failures": 0,
       "id": "dedupe.edge_ids_unique",
       "kind": "assertion",
-      "observed": 5086,
+      "observed": 5087,
       "ok": true
     },
     {
@@ -179,7 +179,7 @@
       "failures": 0,
       "id": "dedupe.one_record_per_repository",
       "kind": "assertion",
-      "observed": 1469,
+      "observed": 1470,
       "ok": true
     },
     {
@@ -209,7 +209,7 @@
       "failures": 0,
       "id": "activity.recommended_within_12_months",
       "kind": "assertion",
-      "observed": 1346,
+      "observed": 1348,
       "ok": true
     },
     {
@@ -219,7 +219,7 @@
       "failures": 0,
       "id": "activity.evidence_is_not_docs_only",
       "kind": "assertion",
-      "observed": 4969,
+      "observed": 4985,
       "ok": true
     },
     {
@@ -229,7 +229,7 @@
       "failures": 0,
       "id": "archived.excluded",
       "kind": "assertion",
-      "observed": 18,
+      "observed": 19,
       "ok": true
     },
     {
@@ -249,7 +249,7 @@
       "failures": 0,
       "id": "licence.recommended_have_recognised_licence",
       "kind": "assertion",
-      "observed": 1346,
+      "observed": 1348,
       "ok": true
     },
     {
@@ -305,13 +305,13 @@
       "observed": {
         "oss_projects": {
           "licence_exception": 14,
-          "recommendable": 1346,
-          "rejected": 125
+          "recommendable": 1348,
+          "rejected": 124
         },
         "relationships": {
           "licence_exception": 24,
-          "recommendable": 2001,
-          "rejected": 3061
+          "recommendable": 2003,
+          "rejected": 3060
         }
       },
       "ok": true
@@ -334,9 +334,9 @@
       "id": "maintenance.classification_matches_definition",
       "kind": "assertion",
       "observed": {
-        "active": 1242,
+        "active": 1244,
         "maintained": 126,
-        "stale": 101,
+        "stale": 100,
         "unverified": 16
       },
       "ok": true
@@ -358,7 +358,7 @@
       "failures": 0,
       "id": "stars.do_not_change_any_verdict",
       "kind": "assertion",
-      "observed": 1485,
+      "observed": 1486,
       "ok": true
     },
     {
@@ -368,7 +368,7 @@
       "failures": 0,
       "id": "strategy.every_rejection_is_recorded",
       "kind": "assertion",
-      "observed": 139,
+      "observed": 138,
       "ok": true
     },
     {
@@ -378,7 +378,7 @@
       "failures": 0,
       "id": "origin.no_unlabelled_fields",
       "kind": "assertion",
-      "observed": 1485,
+      "observed": 1486,
       "ok": true
     },
     {
@@ -388,7 +388,7 @@
       "failures": 0,
       "id": "origin.live_matches_snapshot",
       "kind": "assertion",
-      "observed": 1485,
+      "observed": 1486,
       "ok": true
     },
     {
@@ -420,9 +420,9 @@
       "kind": "assertion",
       "observed": {
         "publication_status": "public",
-        "share_alike_only_relationships_all_lanes": 70,
+        "share_alike_only_relationships_all_lanes": 71,
         "share_alike_only_relationships_in_launch": 0,
-        "share_alike_only_relationships_validated": 61,
+        "share_alike_only_relationships_validated": 62,
         "withheld_from_default_export": 0
       },
       "ok": true
@@ -434,7 +434,7 @@
       "failures": 0,
       "id": "dedupe.one_repository_per_product_per_saas",
       "kind": "assertion",
-      "observed": 1571,
+      "observed": 1572,
       "ok": true
     },
     {
@@ -444,7 +444,7 @@
       "failures": 0,
       "id": "launch.only_validated_edges",
       "kind": "assertion",
-      "observed": 1571,
+      "observed": 1572,
       "ok": true
     },
     {
@@ -479,9 +479,9 @@
       "id": "launch.targets",
       "kind": "assertion",
       "observed": {
-        "oss_distinct_products": 621,
-        "oss_projects": 622,
-        "relationships": 1571,
+        "oss_distinct_products": 622,
+        "oss_projects": 623,
+        "relationships": 1572,
         "saas_products": 400
       },
       "ok": true
@@ -505,13 +505,13 @@
       "kind": "observation",
       "observed": {
         "examples": [
-          "github.com/nomic-ai/gpt4all (77352 stars: stale_no_meaningful_activity_12_months)",
-          "github.com/minio/minio (61310 stars: archived)",
-          "github.com/maybe-finance/maybe (54215 stars: archived,stale_no_meaningful_activity_12_months)",
-          "github.com/laion-ai/open-assistant (37371 stars: stale_no_meaningful_activity_12_months)",
-          "github.com/mattermost-community/focalboard (26518 stars: no_recognised_open_source_licence,stale_no_meaningful_activity_12_months)"
+          "github.com/nomic-ai/gpt4all (77350 stars: stale_no_meaningful_activity_12_months)",
+          "github.com/minio/minio (61307 stars: archived)",
+          "github.com/maybe-finance/maybe (54209 stars: archived,stale_no_meaningful_activity_12_months)",
+          "github.com/laion-ai/open-assistant (37367 stars: stale_no_meaningful_activity_12_months)",
+          "github.com/mattermost-community/focalboard (26519 stars: no_recognised_open_source_licence,stale_no_meaningful_activity_12_months)"
         ],
-        "launch_projects_under_500_stars": 90,
+        "launch_projects_under_500_stars": 91,
         "rejected_with_10k_plus_stars": 20
       }
     },
@@ -521,12 +521,12 @@
       "id": "strategy.harvest_broad_reject_aggressive",
       "kind": "observation",
       "observed": {
-        "entries_read": 3420,
-        "oss_candidates": 1485,
-        "oss_recommendable": 1346,
-        "rejections_recorded": 3175,
-        "relationship_claims_read": 5737,
-        "relationships_validated": 2001
+        "entries_read": 3422,
+        "oss_candidates": 1486,
+        "oss_recommendable": 1348,
+        "rejections_recorded": 3174,
+        "relationship_claims_read": 5738,
+        "relationships_validated": 2003
       }
     }
   ],

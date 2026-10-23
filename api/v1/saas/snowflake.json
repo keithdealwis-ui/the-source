@@ -9,10 +9,10 @@
     ],
     "status": "partial"
   },
-  "dataset_version": "82196f0ee11abdcd",
+  "dataset_version": "556992245e5f33c6",
   "last_checked": {
-    "newest": "2026-10-22T01:26:16Z",
-    "oldest": "2026-10-22T01:26:16Z"
+    "newest": "2026-10-23T01:24:19Z",
+    "oldest": "2026-10-23T01:24:19Z"
   },
   "more_available": 0,
   "provenance": {
@@ -41,7 +41,7 @@
               "source_id": "btwso"
             }
           ],
-          "validated_as_of": "2026-10-22T01:26:16Z"
+          "validated_as_of": "2026-10-23T01:24:19Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -66,14 +66,14 @@
         }
       },
       "github_url": "https://github.com/databendlabs/databend",
-      "last_meaningful_activity_at": "2026-10-15T14:53:15Z",
+      "last_meaningful_activity_at": "2026-10-22T08:11:48Z",
       "latest_release": {
-        "published_at": "2026-10-15T05:59:19Z",
-        "tag": "v1.2.925-patch-15"
+        "published_at": "2026-10-21T18:47:05Z",
+        "tag": "v1.2.954-nightly"
       },
       "licence_disclosure": "open core: recommendation covers the Apache-2.0 core; enterprise features excluded (src/bendsave/, src/binaries/query/ee_main.rs, src/meta/ee/, src/query/ee/): attach table, backup, data mask, data sharing, fail safe, materialized view, resource management, restore, row access policy, storage encryption, stream, table ref; core-only build: databend-meta-oss, databend-query-oss (the repository's default image, docker/Dockerfile, ships the full build)",
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-22T01:26:16Z",
+      "live_checked_at": "2026-10-23T01:24:19Z",
       "maintenance_status": "active",
       "name": "Databend",
       "note": {
@@ -110,7 +110,7 @@
         "runacapital",
         "btwso"
       ],
-      "stars": 9472
+      "stars": 9474
     },
     {
       "evidence": {
@@ -124,7 +124,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-22T01:26:16Z"
+          "validated_as_of": "2026-10-23T01:24:19Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -147,13 +147,13 @@
         }
       },
       "github_url": "https://github.com/ClickHouse/ClickHouse",
-      "last_meaningful_activity_at": "2026-10-22T01:26:09Z",
+      "last_meaningful_activity_at": "2026-10-23T00:25:18Z",
       "latest_release": {
-        "published_at": "2026-10-21T17:03:33Z",
-        "tag": "v26.9.24.8-stable"
+        "published_at": "2026-10-22T16:56:35Z",
+        "tag": "v26.9.25.15-stable"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-22T01:26:16Z",
+      "live_checked_at": "2026-10-23T01:24:19Z",
       "maintenance_status": "active",
       "name": "ClickHouse",
       "note": {
@@ -169,13 +169,13 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 92.1,
-        "score": 96.2,
+        "score": 96.5,
         "trajectory": "Rising"
       },
       "rank": 2,
       "replacement_fit": {
         "confidence": 78.5,
-        "evaluated_at": "2026-10-22T01:26:16Z",
+        "evaluated_at": "2026-10-23T01:24:19Z",
         "score": 88.5,
         "score_version": "1.2.0"
       },
@@ -187,7 +187,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 50529
+      "stars": 50546
     }
   ],
   "saas": {
