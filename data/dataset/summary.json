@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-24T00:28:40Z",
+  "as_of": "2026-10-24T23:05:38Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -23,7 +23,7 @@
         "entries_with_saas_claim": 88,
         "harvested": true,
         "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
-        "pinned_commit": "d95fdcd80a4f2d3e3c4743ba4bbccd3f22184620",
+        "pinned_commit": "8feef67974183b4c60aa62da86e8f0c8c4ca0f28",
         "relationship_claims": 149,
         "unparseable_files": 0
       },
@@ -424,8 +424,8 @@
     "oss_projects": 622,
     "preserve_served": {
       "kept": 367,
-      "not_kept": 2,
-      "served_before": 369
+      "not_kept": 0,
+      "served_before": 367
     },
     "relationships": 1571,
     "relationships_corroborated_by_2plus_sources": 184,
@@ -1167,7 +1167,6 @@
       "plausibility_review:Graphics API experiment; not a blogging platform": 1,
       "plausibility_review:Graphics API experiment; not a newsletter platform": 1,
       "plausibility_review:Gym workout and nutrition logger; not GPS activity tracking": 1,
-      "plausibility_review:Gym workout logging app; not GPS activity tracking and sharing": 1,
       "plausibility_review:HR management system; no payroll or EOR, which this product is bought for": 3,
       "plausibility_review:HRMS software; Deel's core job is global payroll and employer-of-record": 1,
       "plausibility_review:HTAP database with vector search side feature; not a vector database": 1,
@@ -2245,8 +2244,6 @@
       "plausibility_review:Workflow orchestration platform; not a meeting scheduling tool": 4,
       "plausibility_review:Workflow orchestrator for coding agent CLIs; not a coding assistant": 1,
       "plausibility_review:Workflow template for Android builds; not a CI platform": 1,
-      "plausibility_review:Workout tracker only; lacks MyFitnessPal's calorie and nutrition tracking core": 1,
-      "plausibility_review:Workout tracker; not a nutrition/micronutrient tracker": 1,
       "plausibility_review:Workspace manager for AI coding CLIs; not this product": 1,
       "plausibility_review:Yelp-internal PaaS tooling atop Kubernetes; not a frontend hosting product": 1,
       "plausibility_review:Yelp-internal PaaS tooling atop Kubernetes; not a general app hosting product": 2,
@@ -2330,7 +2327,7 @@
       "plausibility_review:inference server; not a multi-provider LLM API router": 1,
       "plausibility_review:infrastructure-as-code tool; not a platform that runs applications": 1,
       "plausibility_review:intranet tunneling reverse proxy; not a privacy VPN service": 1,
-      "plausibility_review:job match not yet desk-reviewed": 1,
+      "plausibility_review:job match not yet desk-reviewed": 4,
       "plausibility_review:layered image editor; not background removal": 1,
       "plausibility_review:layered photo/image editor; not template-based graphic design": 1,
       "plausibility_review:list of newsletter RSS feeds": 1,

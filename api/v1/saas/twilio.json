@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "12afe33b2adf6eb0",
+  "dataset_version": "e9436ee9cf7feef5",
   "last_checked": {
-    "newest": "2026-10-24T00:28:40Z",
-    "oldest": "2026-10-24T00:28:40Z"
+    "newest": "2026-10-24T23:05:38Z",
+    "oldest": "2026-10-24T23:05:38Z"
   },
   "more_available": 0,
   "provenance": {
@@ -40,40 +40,42 @@
               "source_id": "btwso"
             }
           ],
-          "validated_as_of": "2026-10-24T00:28:40Z"
+          "validated_as_of": "2026-10-24T23:05:38Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 50.0,
-            "ease_of_adoption": 80.0,
+            "ease_of_adoption": 79.8,
             "economic_advantage": 80.0,
-            "feature_equivalence": 50.0,
-            "integrations_extensibility": 75.0,
-            "migration_friction": 66.7,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
             "production_commercial_readiness": 80.0
           },
           "evidence_families": [
             "api",
+            "import",
             "multi_user",
             "plugins",
             "quickstart",
             "self_host",
             "sso",
-            "support"
+            "support",
+            "webhook"
           ],
-          "scoring_path": "full_lane"
+          "scoring_path": "single_project"
         }
       },
       "github_url": "https://github.com/fonoster/fonoster",
-      "last_meaningful_activity_at": "2026-10-17T03:47:31Z",
+      "last_meaningful_activity_at": "2026-10-24T20:46:08Z",
       "latest_release": {
-        "published_at": "2026-09-11T23:46:55Z",
-        "tag": "v0.22.14"
+        "published_at": "2026-10-24T14:53:56Z",
+        "tag": "v0.31.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-24T00:28:40Z",
+      "live_checked_at": "2026-10-24T23:05:38Z",
       "maintenance_status": "active",
       "name": "Fonoster",
       "note": {
@@ -81,22 +83,22 @@
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
-          "ease of adoption"
+          "integrations and extensibility"
         ],
-        "text": "Strongest on core use-case coverage and ease of adoption."
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
       },
       "oss_id": "github.com/fonoster/fonoster",
       "project_health": {
         "band": "Healthy",
-        "confidence": 96.6,
-        "score": 80.4,
-        "trajectory": "Declining"
+        "confidence": 92.1,
+        "score": 83.8,
+        "trajectory": "Rising"
       },
       "rank": 1,
       "replacement_fit": {
         "confidence": 92.5,
-        "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 75.7,
+        "evaluated_at": "2026-10-24T23:05:38Z",
+        "score": 85.0,
         "score_version": "1.2.0"
       },
       "repo_url": "https://github.com/fonoster/fonoster",
@@ -108,7 +110,7 @@
         "runacapital",
         "btwso"
       ],
-      "stars": 8146
+      "stars": 8147
     },
     {
       "evidence": {
@@ -122,7 +124,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-10-24T00:28:40Z"
+          "validated_as_of": "2026-10-24T23:05:38Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -158,7 +160,7 @@
         "tag": "v1.13.10"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-24T00:28:40Z",
+      "live_checked_at": "2026-10-24T23:05:38Z",
       "maintenance_status": "active",
       "name": "LiveKit",
       "note": {
@@ -192,7 +194,7 @@
       "sources": [
         "runacapital"
       ],
-      "stars": 21765
+      "stars": 21788
     },
     {
       "evidence": {
@@ -206,7 +208,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-10-24T00:28:40Z"
+          "validated_as_of": "2026-10-24T23:05:38Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -241,7 +243,7 @@
         "tag": "v3.9.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-24T00:28:40Z",
+      "live_checked_at": "2026-10-24T23:05:38Z",
       "maintenance_status": "active",
       "name": "OpenVidu",
       "note": {

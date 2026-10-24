@@ -1,17 +1,13 @@
 {
-  "as_of": "2026-10-24T00:28:40Z",
+  "as_of": "2026-10-24T23:05:38Z",
   "resolve": {
-    "asked": 13,
+    "asked": 6,
     "deferred": 0,
     "pool_added": [
-      "github.com/anubhavmalhotra/r2d2-tv",
-      "github.com/clickhouse/clickbench",
-      "github.com/dsmurrell/onkey",
-      "github.com/liliambean/s3unlocked",
-      "github.com/openssl/openssl",
-      "github.com/rbartoli/agent-usage-guard"
+      "github.com/jared-woodruff/omf-2097-remastered",
+      "github.com/zagitta/gpu-unlock"
     ],
-    "resolved": 13,
+    "resolved": 6,
     "transient_failures": []
   },
   "sources": {
@@ -22,16 +18,16 @@
       "http_calls": 2,
       "items_read": 100,
       "listed": 100,
-      "mentions": 57,
+      "mentions": 52,
       "status": "ok"
     },
     "forem": {
       "errors": [],
-      "gone": 1,
-      "http_calls": 28,
-      "items_read": 24,
-      "listed": 24,
-      "mentions": 17,
+      "gone": 0,
+      "http_calls": 32,
+      "items_read": 28,
+      "listed": 28,
+      "mentions": 19,
       "status": "ok"
     },
     "hn": {
@@ -39,7 +35,7 @@
       "gone": 0,
       "http_calls": 303,
       "items_read": 300,
-      "listed": 347,
+      "listed": 342,
       "mentions": 23,
       "status": "ok"
     },
@@ -67,11 +63,11 @@
     }
   },
   "stars": {
-    "asked": 23,
+    "asked": 12,
     "error": null,
-    "found": 23,
+    "found": 12,
     "http_calls": 1,
-    "missing_before": 2,
+    "missing_before": 3,
     "not_found": 0,
     "status": "ok"
   }

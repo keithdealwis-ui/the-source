@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "12afe33b2adf6eb0",
+  "dataset_version": "e9436ee9cf7feef5",
   "last_checked": {
-    "newest": "2026-10-24T00:28:40Z",
-    "oldest": "2026-10-24T00:28:40Z"
+    "newest": "2026-10-24T23:05:38Z",
+    "oldest": "2026-10-24T23:05:38Z"
   },
   "more_available": 0,
   "provenance": {
@@ -34,7 +34,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-24T00:28:40Z"
+          "validated_as_of": "2026-10-24T23:05:38Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -70,7 +70,7 @@
         "tag": "v0.16.5"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-24T00:28:40Z",
+      "live_checked_at": "2026-10-24T23:05:38Z",
       "maintenance_status": "active",
       "name": "securo",
       "note": {
@@ -104,7 +104,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 4103
+      "stars": 4111
     },
     {
       "evidence": {
@@ -118,7 +118,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-24T00:28:40Z"
+          "validated_as_of": "2026-10-24T23:05:38Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -148,7 +148,7 @@
       "last_meaningful_activity_at": "2026-10-11T16:00:31Z",
       "latest_release": null,
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-24T00:28:40Z",
+      "live_checked_at": "2026-10-24T23:05:38Z",
       "maintenance_status": "active",
       "name": "countinghouse",
       "note": {
@@ -184,7 +184,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 46
+      "stars": 112
     },
     {
       "evidence": {
@@ -198,23 +198,25 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-24T00:28:40Z"
+          "validated_as_of": "2026-10-24T23:05:38Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 46.2,
-            "ease_of_adoption": 99.5,
+            "ease_of_adoption": 100.0,
             "economic_advantage": 68.0,
             "feature_equivalence": 73.3,
-            "integrations_extensibility": 0.0,
+            "integrations_extensibility": 25.0,
             "migration_friction": 33.3,
-            "production_commercial_readiness": 60.0
+            "production_commercial_readiness": 80.0
           },
           "evidence_families": [
             "demo",
             "import",
+            "multi_user",
+            "plugins",
             "quickstart",
             "self_host",
             "support"
@@ -223,13 +225,13 @@
         }
       },
       "github_url": "https://github.com/algirdasc/expensave",
-      "last_meaningful_activity_at": "2026-10-18T13:02:20Z",
+      "last_meaningful_activity_at": "2026-10-24T16:23:11Z",
       "latest_release": {
-        "published_at": "2026-10-18T09:59:12Z",
-        "tag": "v1.1.5"
+        "published_at": "2026-10-24T16:00:49Z",
+        "tag": "v1.1.6"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-24T00:28:40Z",
+      "live_checked_at": "2026-10-24T23:05:38Z",
       "maintenance_status": "active",
       "name": "expensave",
       "note": {
@@ -247,15 +249,15 @@
       "oss_id": "github.com/algirdasc/expensave",
       "project_health": {
         "band": "Healthy",
-        "confidence": 93.6,
-        "score": 81.9,
+        "confidence": 92.1,
+        "score": 83.4,
         "trajectory": "Rising"
       },
       "rank": 3,
       "replacement_fit": {
         "confidence": 84.5,
-        "evaluated_at": "2026-10-20T12:30:08Z",
-        "score": 68.3,
+        "evaluated_at": "2026-10-24T23:05:38Z",
+        "score": 72.9,
         "score_version": "1.2.0"
       },
       "repo_url": "https://github.com/algirdasc/expensave",
@@ -266,7 +268,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 56
+      "stars": 57
     }
   ],
   "saas": {
