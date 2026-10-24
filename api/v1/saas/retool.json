@@ -3,16 +3,16 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 46,
-    "reason": "5 recommendations passed the full evaluation",
+    "reason": "4 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "556992245e5f33c6",
+  "dataset_version": "12afe33b2adf6eb0",
   "last_checked": {
-    "newest": "2026-10-23T01:24:19Z",
-    "oldest": "2026-10-23T01:24:19Z"
+    "newest": "2026-10-24T00:28:40Z",
+    "oldest": "2026-10-24T00:28:40Z"
   },
   "more_available": 0,
   "provenance": {
@@ -20,7 +20,6 @@
     "sources": [
       "btwso",
       "emmraan",
-      "job_match",
       "opensaasdirectory",
       "runacapital"
     ]
@@ -38,7 +37,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-10-23T01:24:19Z"
+          "validated_as_of": "2026-10-24T00:28:40Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -71,7 +70,7 @@
         "tag": "v6.2.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-23T01:24:19Z",
+      "live_checked_at": "2026-10-24T00:28:40Z",
       "maintenance_status": "active",
       "name": "Lowdefy",
       "note": {
@@ -136,7 +135,7 @@
               "source_id": "btwso"
             }
           ],
-          "validated_as_of": "2026-10-23T01:24:19Z"
+          "validated_as_of": "2026-10-24T00:28:40Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -168,7 +167,7 @@
         "tag": "v2.5.1"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-23T01:24:19Z",
+      "live_checked_at": "2026-10-24T00:28:40Z",
       "maintenance_status": "active",
       "name": "AppSmith",
       "note": {
@@ -208,7 +207,7 @@
         "emmraan",
         "btwso"
       ],
-      "stars": 41109
+      "stars": 41111
     },
     {
       "evidence": {
@@ -227,7 +226,7 @@
               "source_id": "btwso"
             }
           ],
-          "validated_as_of": "2026-10-23T01:24:19Z"
+          "validated_as_of": "2026-10-24T00:28:40Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -259,14 +258,14 @@
         }
       },
       "github_url": "https://github.com/windmill-labs/windmill",
-      "last_meaningful_activity_at": "2026-10-22T23:38:44Z",
+      "last_meaningful_activity_at": "2026-10-23T23:53:38Z",
       "latest_release": {
-        "published_at": "2026-10-22T23:38:44Z",
-        "tag": "v1.847.0"
+        "published_at": "2026-10-23T23:53:38Z",
+        "tag": "v1.848.1"
       },
       "licence_disclosure": "open core: recommendation covers the AGPL-3.0 core; parts under Windmill proprietary licence are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-10-23T01:24:19Z",
+      "live_checked_at": "2026-10-24T00:28:40Z",
       "maintenance_status": "active",
       "name": "Windmill",
       "note": {
@@ -301,7 +300,7 @@
         "runacapital",
         "btwso"
       ],
-      "stars": 18249
+      "stars": 18255
     },
     {
       "evidence": {
@@ -325,7 +324,7 @@
               "source_id": "btwso"
             }
           ],
-          "validated_as_of": "2026-10-23T01:24:19Z"
+          "validated_as_of": "2026-10-24T00:28:40Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -358,7 +357,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the GPL-3.0 core; parts under BSL-1.1 (packages/pro) are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-10-23T01:24:19Z",
+      "live_checked_at": "2026-10-24T00:28:40Z",
       "maintenance_status": "active",
       "name": "Budibase",
       "note": {
@@ -396,89 +395,7 @@
         "opensaasdirectory",
         "btwso"
       ],
-      "stars": 28342
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/totumonline/totum-mit",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-10-23T01:24:19Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 75.0,
-            "ease_of_adoption": 37.6,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 61.7,
-            "integrations_extensibility": 50.0,
-            "migration_friction": 33.3,
-            "production_commercial_readiness": 40.0
-          },
-          "evidence_families": [
-            "api",
-            "data_ownership",
-            "plugins",
-            "quickstart",
-            "self_host"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/totumonline/totum-mit",
-      "last_meaningful_activity_at": "2026-05-30T12:37:05Z",
-      "latest_release": {
-        "published_at": "2025-06-12T11:36:48Z",
-        "tag": "7.17.63.0"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-23T01:24:19Z",
-      "maintenance_status": "maintained",
-      "name": "totum-mit",
-      "note": {
-        "gaps": [
-          "migration path",
-          "ease of adoption"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "self-hosting and data ownership"
-        ],
-        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on migration path and ease of adoption."
-      },
-      "oss_id": "github.com/totumonline/totum-mit",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 93.4,
-        "score": 71.2,
-        "trajectory": "Declining"
-      },
-      "rank": 5,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 62.7,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/totumonline/totum-mit",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 982
+      "stars": 28345
     }
   ],
   "saas": {

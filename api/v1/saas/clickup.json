@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "556992245e5f33c6",
+  "dataset_version": "12afe33b2adf6eb0",
   "last_checked": {
-    "newest": "2026-10-23T01:24:19Z",
-    "oldest": "2026-10-23T01:24:19Z"
+    "newest": "2026-10-24T00:28:40Z",
+    "oldest": "2026-10-24T00:28:40Z"
   },
   "more_available": 3,
   "provenance": {
@@ -36,7 +36,7 @@
               "source_id": "emmraan"
             }
           ],
-          "validated_as_of": "2026-10-23T01:24:19Z"
+          "validated_as_of": "2026-10-24T00:28:40Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -70,7 +70,7 @@
         "tag": "v17.9.3"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-23T01:24:19Z",
+      "live_checked_at": "2026-10-24T00:28:40Z",
       "maintenance_status": "active",
       "name": "OpenProject",
       "note": {
@@ -107,7 +107,7 @@
       "sources": [
         "emmraan"
       ],
-      "stars": 16568
+      "stars": 16594
     },
     {
       "evidence": {
@@ -121,7 +121,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-10-23T01:24:19Z"
+          "validated_as_of": "2026-10-24T00:28:40Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -155,7 +155,7 @@
         "tag": "v0.7.426"
       },
       "licence_spdx": "EPL-2.0",
-      "live_checked_at": "2026-10-23T01:24:19Z",
+      "live_checked_at": "2026-10-24T00:28:40Z",
       "maintenance_status": "active",
       "name": "Huly",
       "note": {
@@ -189,7 +189,7 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 27968
+      "stars": 27974
     },
     {
       "evidence": {
@@ -203,7 +203,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-23T01:24:19Z"
+          "validated_as_of": "2026-10-24T00:28:40Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -240,7 +240,7 @@
         "tag": "v12.63"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-23T01:24:19Z",
+      "live_checked_at": "2026-10-24T00:28:40Z",
       "maintenance_status": "active",
       "name": "Wekan",
       "note": {
@@ -274,7 +274,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 21133
+      "stars": 21131
     },
     {
       "evidence": {
@@ -288,7 +288,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-23T01:24:19Z"
+          "validated_as_of": "2026-10-24T00:28:40Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -324,7 +324,7 @@
         "tag": "v3.12.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-23T01:24:19Z",
+      "live_checked_at": "2026-10-24T00:28:40Z",
       "maintenance_status": "active",
       "name": "Leantime",
       "note": {
@@ -358,7 +358,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 11885
+      "stars": 11888
     },
     {
       "evidence": {
@@ -367,49 +367,50 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/makeplane/plane",
+              "locator": "data/job_match/ledger.json#github.com/croffasia/itsaplan",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-23T01:24:19Z"
+          "validated_as_of": "2026-10-24T00:28:40Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
           "dimensions": {
             "core_use_case_coverage": 100.0,
-            "deployment_ownership": 93.8,
-            "ease_of_adoption": 99.5,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 85.0,
-            "integrations_extensibility": 50.0,
+            "deployment_ownership": 43.8,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 100.0,
             "migration_friction": 66.7,
-            "production_commercial_readiness": 80.0
+            "production_commercial_readiness": 100.0
           },
           "evidence_families": [
             "api",
-            "cloud_option",
-            "data_ownership",
             "demo",
+            "import",
             "multi_user",
             "plugins",
             "quickstart",
             "self_host",
-            "support"
+            "sso",
+            "support",
+            "webhook"
           ],
           "scoring_path": "single_project"
         }
       },
-      "github_url": "https://github.com/makeplane/plane",
-      "last_meaningful_activity_at": "2026-10-17T10:44:44Z",
+      "github_url": "https://github.com/croffasia/itsaplan",
+      "last_meaningful_activity_at": "2026-10-23T23:54:40Z",
       "latest_release": {
-        "published_at": "2026-10-06T08:29:42Z",
-        "tag": "v1.4.3-rc1"
+        "published_at": "2026-10-23T12:43:09Z",
+        "tag": "v1.8.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-23T01:24:19Z",
+      "live_checked_at": "2026-10-24T00:28:40Z",
       "maintenance_status": "active",
-      "name": "Plane",
+      "name": "itsaplan",
       "note": {
         "gaps": [],
         "origin": "derived",
@@ -419,21 +420,21 @@
         ],
         "text": "Strongest on core use-case coverage and ease of adoption."
       },
-      "oss_id": "github.com/makeplane/plane",
+      "oss_id": "github.com/croffasia/itsaplan",
       "project_health": {
         "band": "Exceptional",
-        "confidence": 92.1,
-        "score": 87.2,
-        "trajectory": "Declining"
+        "confidence": 89.2,
+        "score": 85.9,
+        "trajectory": "Insufficient history"
       },
       "rank": 5,
       "replacement_fit": {
-        "confidence": 86.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 84.7,
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-24T00:28:40Z",
+        "score": 88.3,
         "score_version": "1.2.0"
       },
-      "repo_url": "https://github.com/makeplane/plane",
+      "repo_url": "https://github.com/croffasia/itsaplan",
       "self_hosting": {
         "basis": "self-hosting documented in the project's README",
         "self_hostable": true
@@ -441,7 +442,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 61306
+      "stars": 1854
     }
   ],
   "saas": {

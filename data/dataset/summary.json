@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-23T01:24:19Z",
+  "as_of": "2026-10-24T00:28:40Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -9,12 +9,12 @@
     "by_source": {
       "altstack": {
         "decision": "allow_with_conditions",
-        "entries": 73,
-        "entries_with_saas_claim": 73,
+        "entries": 74,
+        "entries_with_saas_claim": 74,
         "harvested": true,
         "licence_file_sha256": "c76f488fd52bf3c9bac423df8456156f997835d1bc012f4786d07c1208aad409",
-        "pinned_commit": "1f32147eaf2004a59721df2a4a346ea3f034f87e",
-        "relationship_claims": 80,
+        "pinned_commit": "588139d853f9eab183368cfa2eaa8d6c1640fc74",
+        "relationship_claims": 81,
         "unparseable_files": 0
       },
       "awesome-selfhosted": {
@@ -23,7 +23,7 @@
         "entries_with_saas_claim": 88,
         "harvested": true,
         "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
-        "pinned_commit": "124bde8cc2cf2f033bce19b7856e87cdf752103f",
+        "pinned_commit": "d95fdcd80a4f2d3e3c4743ba4bbccd3f22184620",
         "relationship_claims": 149,
         "unparseable_files": 0
       },
@@ -118,19 +118,19 @@
         "unparseable_files": 0
       }
     },
-    "entries_read": 3422,
-    "relationship_claims_read": 5738
+    "entries_read": 3423,
+    "relationship_claims_read": 5739
   },
   "lanes": {
     "oss_projects": {
       "licence_exception": 14,
-      "recommendable": 1348,
-      "rejected": 124
+      "recommendable": 1347,
+      "rejected": 125
     },
     "relationships": {
       "licence_exception": 24,
-      "recommendable": 2003,
-      "rejected": 3060
+      "recommendable": 2002,
+      "rejected": 3062
     }
   },
   "launch": {
@@ -420,14 +420,14 @@
       "zuora"
     ],
     "catalogue_served_relationships": 1204,
-    "oss_distinct_products": 622,
-    "oss_projects": 623,
+    "oss_distinct_products": 621,
+    "oss_projects": 622,
     "preserve_served": {
-      "kept": 368,
-      "not_kept": 0,
-      "served_before": 368
+      "kept": 367,
+      "not_kept": 2,
+      "served_before": 369
     },
-    "relationships": 1572,
+    "relationships": 1571,
     "relationships_corroborated_by_2plus_sources": 184,
     "relationships_share_alike_only": 0,
     "saas_added_beyond_floor": 18,
@@ -471,13 +471,13 @@
   "reconciled": {
     "oss_candidates": 1486,
     "oss_candidates_before_identity_merge": 1513,
-    "relationship_candidates": 5087,
+    "relationship_candidates": 5088,
     "renamed_or_duplicate_repositories_merged": 27,
     "saas_products_named": 569
   },
   "rejections": {
     "by_code": {
-      "archived": 19,
+      "archived": 20,
       "host_unverifiable": 3,
       "identity_unverified": 4,
       "licence_not_open": 28,
@@ -488,7 +488,7 @@
       "unmaintained": 71
     },
     "by_reason": {
-      "eligibility:archived": 5,
+      "eligibility:archived": 6,
       "eligibility:archived;no_recognised_open_source_licence;stale_no_meaningful_activity_12_months": 2,
       "eligibility:archived;stale_no_meaningful_activity_12_months": 12,
       "eligibility:host_not_independently_verifiable": 3,
@@ -2406,7 +2406,7 @@
       "plausibility_review:workbench front end for third-party image model APIs": 1,
       "plausibility_review:workflow engine programmed in code; not a no-code automation product": 1
     },
-    "total": 3174
+    "total": 3175
   },
   "review_queue": {
     "open": 9,
@@ -2421,11 +2421,11 @@
       "stale": 100,
       "unverified": 16
     },
-    "oss_recommendable": 1348,
-    "oss_rejected": 138,
+    "oss_recommendable": 1347,
+    "oss_rejected": 139,
     "relationships_flagged_licence_exception": 24,
-    "relationships_rejected": 3060,
-    "relationships_validated": 2003,
+    "relationships_rejected": 3062,
+    "relationships_validated": 2002,
     "saas_with_validated_alternatives": 488
   }
 }

@@ -1,19 +1,17 @@
 {
-  "as_of": "2026-10-23T01:24:19Z",
+  "as_of": "2026-10-24T00:28:40Z",
   "resolve": {
-    "asked": 8,
+    "asked": 13,
     "deferred": 0,
     "pool_added": [
-      "github.com/algotitanhq/uberblok",
-      "github.com/inochi2d/nmc",
-      "github.com/maxilevi/project-hedra",
-      "github.com/nthnclrk/cleanframe",
-      "github.com/nvidia/openshell",
-      "github.com/omnara-ai/omnara",
-      "github.com/oosexgang/hackios-xnu-kernel",
-      "github.com/openai/openai-cli"
+      "github.com/anubhavmalhotra/r2d2-tv",
+      "github.com/clickhouse/clickbench",
+      "github.com/dsmurrell/onkey",
+      "github.com/liliambean/s3unlocked",
+      "github.com/openssl/openssl",
+      "github.com/rbartoli/agent-usage-guard"
     ],
-    "resolved": 8,
+    "resolved": 13,
     "transient_failures": []
   },
   "sources": {
@@ -24,16 +22,16 @@
       "http_calls": 2,
       "items_read": 100,
       "listed": 100,
-      "mentions": 61,
+      "mentions": 57,
       "status": "ok"
     },
     "forem": {
       "errors": [],
-      "gone": 0,
-      "http_calls": 19,
-      "items_read": 15,
-      "listed": 15,
-      "mentions": 11,
+      "gone": 1,
+      "http_calls": 28,
+      "items_read": 24,
+      "listed": 24,
+      "mentions": 17,
       "status": "ok"
     },
     "hn": {
@@ -41,8 +39,8 @@
       "gone": 0,
       "http_calls": 303,
       "items_read": 300,
-      "listed": 353,
-      "mentions": 32,
+      "listed": 347,
+      "mentions": 23,
       "status": "ok"
     },
     "instagram": {
@@ -69,11 +67,11 @@
     }
   },
   "stars": {
-    "asked": 10,
+    "asked": 23,
     "error": null,
-    "found": 10,
+    "found": 23,
     "http_calls": 1,
-    "missing_before": 0,
+    "missing_before": 2,
     "not_found": 0,
     "status": "ok"
   }

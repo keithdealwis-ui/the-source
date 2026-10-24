@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "556992245e5f33c6",
+  "dataset_version": "12afe33b2adf6eb0",
   "last_checked": {
-    "newest": "2026-10-23T01:24:19Z",
-    "oldest": "2026-10-23T01:24:19Z"
+    "newest": "2026-10-24T00:28:40Z",
+    "oldest": "2026-10-24T00:28:40Z"
   },
   "more_available": 0,
   "provenance": {
@@ -36,7 +36,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-10-23T01:24:19Z"
+          "validated_as_of": "2026-10-24T00:28:40Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -66,7 +66,7 @@
         "tag": "jenkins-2.587"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-23T01:24:19Z",
+      "live_checked_at": "2026-10-24T00:28:40Z",
       "maintenance_status": "active",
       "name": "Jenkins",
       "note": {
@@ -100,7 +100,7 @@
       "sources": [
         "fossalt"
       ],
-      "stars": 26676
+      "stars": 26678
     },
     {
       "evidence": {
@@ -119,7 +119,7 @@
               "source_id": "emmraan"
             }
           ],
-          "validated_as_of": "2026-10-23T01:24:19Z"
+          "validated_as_of": "2026-10-24T00:28:40Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -152,7 +152,7 @@
         "tag": "v3.19.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-23T01:24:19Z",
+      "live_checked_at": "2026-10-24T00:28:40Z",
       "maintenance_status": "active",
       "name": "Woodpecker CI",
       "note": {
@@ -187,7 +187,7 @@
         "solvohq",
         "emmraan"
       ],
-      "stars": 8036
+      "stars": 8040
     },
     {
       "evidence": {
@@ -201,7 +201,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-10-23T01:24:19Z"
+          "validated_as_of": "2026-10-24T00:28:40Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -228,7 +228,7 @@
         "tag": "v4.3.0"
       },
       "licence_spdx": "GPL-2.0",
-      "live_checked_at": "2026-10-23T01:24:19Z",
+      "live_checked_at": "2026-10-24T00:28:40Z",
       "maintenance_status": "active",
       "name": "Buildbot",
       "note": {
@@ -278,7 +278,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-10-23T01:24:19Z"
+          "validated_as_of": "2026-10-24T00:28:40Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -301,17 +301,17 @@
             "self_host",
             "support"
           ],
-          "scoring_path": "full_lane"
+          "scoring_path": "single_project"
         }
       },
       "github_url": "https://github.com/concourse/concourse",
-      "last_meaningful_activity_at": "2026-10-16T19:36:10Z",
+      "last_meaningful_activity_at": "2026-10-23T01:31:14Z",
       "latest_release": {
-        "published_at": "2026-09-28T15:49:57Z",
-        "tag": "v8.3.1"
+        "published_at": "2026-10-23T01:31:14Z",
+        "tag": "v8.3.2"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-23T01:24:19Z",
+      "live_checked_at": "2026-10-24T00:28:40Z",
       "maintenance_status": "active",
       "name": "Concourse",
       "note": {
@@ -329,13 +329,13 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 96.6,
-        "score": 90.6,
-        "trajectory": "Rising"
+        "score": 91.9,
+        "trajectory": "Stable"
       },
       "rank": 4,
       "replacement_fit": {
         "confidence": 84.5,
-        "evaluated_at": "2026-09-29T18:28:27Z",
+        "evaluated_at": "2026-10-24T00:28:40Z",
         "score": 73.3,
         "score_version": "1.2.0"
       },
@@ -366,7 +366,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-10-23T01:24:19Z"
+          "validated_as_of": "2026-10-24T00:28:40Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -399,7 +399,7 @@
         "tag": "v2.28.2"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-23T01:24:19Z",
+      "live_checked_at": "2026-10-24T00:28:40Z",
       "maintenance_status": "active",
       "name": "harness",
       "note": {
@@ -434,7 +434,7 @@
         "solvohq",
         "fossalt"
       ],
-      "stars": 38669
+      "stars": 38682
     }
   ],
   "saas": {

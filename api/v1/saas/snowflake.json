@@ -9,10 +9,10 @@
     ],
     "status": "partial"
   },
-  "dataset_version": "556992245e5f33c6",
+  "dataset_version": "12afe33b2adf6eb0",
   "last_checked": {
-    "newest": "2026-10-23T01:24:19Z",
-    "oldest": "2026-10-23T01:24:19Z"
+    "newest": "2026-10-24T00:28:40Z",
+    "oldest": "2026-10-24T00:28:40Z"
   },
   "more_available": 0,
   "provenance": {
@@ -41,7 +41,7 @@
               "source_id": "btwso"
             }
           ],
-          "validated_as_of": "2026-10-23T01:24:19Z"
+          "validated_as_of": "2026-10-24T00:28:40Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -73,7 +73,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the Apache-2.0 core; enterprise features excluded (src/bendsave/, src/binaries/query/ee_main.rs, src/meta/ee/, src/query/ee/): attach table, backup, data mask, data sharing, fail safe, materialized view, resource management, restore, row access policy, storage encryption, stream, table ref; core-only build: databend-meta-oss, databend-query-oss (the repository's default image, docker/Dockerfile, ships the full build)",
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-23T01:24:19Z",
+      "live_checked_at": "2026-10-24T00:28:40Z",
       "maintenance_status": "active",
       "name": "Databend",
       "note": {
@@ -110,7 +110,7 @@
         "runacapital",
         "btwso"
       ],
-      "stars": 9474
+      "stars": 9477
     },
     {
       "evidence": {
@@ -124,7 +124,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-23T01:24:19Z"
+          "validated_as_of": "2026-10-24T00:28:40Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -147,13 +147,13 @@
         }
       },
       "github_url": "https://github.com/ClickHouse/ClickHouse",
-      "last_meaningful_activity_at": "2026-10-23T00:25:18Z",
+      "last_meaningful_activity_at": "2026-10-24T00:25:50Z",
       "latest_release": {
-        "published_at": "2026-10-22T16:56:35Z",
-        "tag": "v26.9.25.15-stable"
+        "published_at": "2026-10-23T12:45:01Z",
+        "tag": "v26.3.60.2-lts"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-23T01:24:19Z",
+      "live_checked_at": "2026-10-24T00:28:40Z",
       "maintenance_status": "active",
       "name": "ClickHouse",
       "note": {
@@ -175,7 +175,7 @@
       "rank": 2,
       "replacement_fit": {
         "confidence": 78.5,
-        "evaluated_at": "2026-10-23T01:24:19Z",
+        "evaluated_at": "2026-10-24T00:28:40Z",
         "score": 88.5,
         "score_version": "1.2.0"
       },
@@ -187,7 +187,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 50546
+      "stars": 50567
     }
   ],
   "saas": {
