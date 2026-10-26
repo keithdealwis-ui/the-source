@@ -1,13 +1,16 @@
 {
-  "as_of": "2026-10-24T23:05:38Z",
+  "as_of": "2026-10-26T00:06:19Z",
   "resolve": {
-    "asked": 6,
+    "asked": 8,
     "deferred": 0,
     "pool_added": [
-      "github.com/jared-woodruff/omf-2097-remastered",
-      "github.com/zagitta/gpu-unlock"
+      "github.com/forem/forem",
+      "github.com/ihhub/fheroes2",
+      "github.com/jetbrains/thinkrail",
+      "github.com/slee-persis/gvs5h",
+      "github.com/winnin/farol"
     ],
-    "resolved": 6,
+    "resolved": 8,
     "transient_failures": []
   },
   "sources": {
@@ -18,16 +21,16 @@
       "http_calls": 2,
       "items_read": 100,
       "listed": 100,
-      "mentions": 52,
+      "mentions": 50,
       "status": "ok"
     },
     "forem": {
       "errors": [],
-      "gone": 0,
+      "gone": 1,
       "http_calls": 32,
       "items_read": 28,
       "listed": 28,
-      "mentions": 19,
+      "mentions": 20,
       "status": "ok"
     },
     "hn": {
@@ -35,7 +38,7 @@
       "gone": 0,
       "http_calls": 303,
       "items_read": 300,
-      "listed": 342,
+      "listed": 351,
       "mentions": 23,
       "status": "ok"
     },
@@ -63,11 +66,11 @@
     }
   },
   "stars": {
-    "asked": 12,
+    "asked": 36,
     "error": null,
-    "found": 12,
+    "found": 36,
     "http_calls": 1,
-    "missing_before": 3,
+    "missing_before": 4,
     "not_found": 0,
     "status": "ok"
   }
