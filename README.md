@@ -8,9 +8,14 @@ was approved one project at a time and is disclosed with the recommendation
 (`licence_disclosure`). Each one is scored for fit and health, and each carries
 its provenance and the time it was last checked.
 
-This repository is the single source of truth. The Source Chrome extension, the
-comparison pages on de-alwis.com and every future Source workflow read from it.
-Nothing downstream keeps its own copy.
+This repository is the source of truth for the published data and methodology.
+The Source website and Chrome extension read the published layer. The website can
+show a dated saved snapshot when the live feed is unavailable.
+
+- [The Source website](https://the-source.dev/): explore alternatives and published signals.
+- [Agent setup guide](https://the-source.dev/agents/): connect to the public, read-only MCP endpoint.
+- [Facts, limits and citation guidance](https://the-source.dev/ai-instructions/): a dated public reference.
+- [Plain-text discovery guide](https://the-source.dev/llms.txt): capabilities, tools and maintained source links.
 
 > **Licence:** code MIT (`LICENSE`); data CC BY 4.0, with the parts adapted from a share-alike source under CC BY-SA 3.0 (`DATA-LICENCE.md`).
 
