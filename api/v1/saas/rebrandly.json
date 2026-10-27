@@ -9,101 +9,19 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "53afbd9068ca7652",
+  "dataset_version": "0bbe5c203ca361e3",
   "last_checked": {
-    "newest": "2026-10-26T00:06:19Z",
-    "oldest": "2026-10-26T00:06:19Z"
+    "newest": "2026-10-27T01:59:36Z",
+    "oldest": "2026-10-27T01:59:36Z"
   },
   "more_available": 3,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
-      "job_match",
-      "opensaasdirectory"
+      "job_match"
     ]
   },
   "recommendations": [
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
-              "locator": "README.md#L1715",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
-              "source_id": "opensaasdirectory"
-            }
-          ],
-          "validated_as_of": "2026-10-26T00:06:19Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 91.7,
-            "ease_of_adoption": 43.6,
-            "economic_advantage": 45.0,
-            "feature_equivalence": 50.0,
-            "integrations_extensibility": 100.0,
-            "migration_friction": 100.0,
-            "production_commercial_readiness": 75.0
-          },
-          "evidence_families": [
-            "api",
-            "data_ownership",
-            "import",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "sso",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/dubinc/dub",
-      "last_meaningful_activity_at": "2026-10-25T02:49:52Z",
-      "latest_release": null,
-      "licence_disclosure": "open core: recommendation covers the AGPL-3.0 core; parts under Dub EE licence are excluded",
-      "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-10-26T00:06:19Z",
-      "maintenance_status": "active",
-      "name": "Dub",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "integrations and extensibility"
-        ],
-        "text": "Strongest on core use-case coverage and integrations and extensibility."
-      },
-      "oss_id": "github.com/dubinc/dub",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 92.6,
-        "score": 70.8,
-        "trajectory": "Stable"
-      },
-      "rank": 1,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 78.0,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/dubinc/dub",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "opensaasdirectory"
-      ],
-      "stars": 24945
-    },
     {
       "evidence": {
         "relationship": {
@@ -116,7 +34,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-26T00:06:19Z"
+          "validated_as_of": "2026-10-27T01:59:36Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -145,7 +63,7 @@
         "tag": "1.7.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-26T00:06:19Z",
+      "live_checked_at": "2026-10-27T01:59:36Z",
       "maintenance_status": "active",
       "name": "bit",
       "note": {
@@ -166,7 +84,7 @@
         "score": 76.8,
         "trajectory": "Stable"
       },
-      "rank": 2,
+      "rank": 1,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
@@ -195,7 +113,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-26T00:06:19Z"
+          "validated_as_of": "2026-10-27T01:59:36Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -225,7 +143,7 @@
         "tag": "v1.20.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-26T00:06:19Z",
+      "live_checked_at": "2026-10-27T01:59:36Z",
       "maintenance_status": "maintained",
       "name": "urlhub",
       "note": {
@@ -244,7 +162,7 @@
         "score": 65.9,
         "trajectory": "Declining"
       },
-      "rank": 3,
+      "rank": 2,
       "replacement_fit": {
         "confidence": 81.5,
         "evaluated_at": "2026-10-20T23:06:47Z",
@@ -273,7 +191,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-26T00:06:19Z"
+          "validated_as_of": "2026-10-27T01:59:36Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -301,13 +219,13 @@
         }
       },
       "github_url": "https://github.com/SinTan1729/chhoto-url",
-      "last_meaningful_activity_at": "2026-10-24T07:21:41Z",
+      "last_meaningful_activity_at": "2026-10-26T20:28:38Z",
       "latest_release": {
-        "published_at": "2026-10-24T07:21:41Z",
-        "tag": "7.9.7"
+        "published_at": "2026-10-26T20:28:38Z",
+        "tag": "7.9.9"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-26T00:06:19Z",
+      "live_checked_at": "2026-10-27T01:59:36Z",
       "maintenance_status": "active",
       "name": "chhoto-url",
       "note": {
@@ -328,7 +246,7 @@
         "score": 84.8,
         "trajectory": "Rising"
       },
-      "rank": 4,
+      "rank": 3,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
@@ -357,7 +275,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-26T00:06:19Z"
+          "validated_as_of": "2026-10-27T01:59:36Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -389,7 +307,7 @@
         "tag": "v0.5.3"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-26T00:06:19Z",
+      "live_checked_at": "2026-10-27T01:59:36Z",
       "maintenance_status": "active",
       "name": "slash",
       "note": {
@@ -410,7 +328,7 @@
         "score": 67.1,
         "trajectory": "Declining"
       },
-      "rank": 5,
+      "rank": 4,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
@@ -426,6 +344,89 @@
         "job_match"
       ],
       "stars": 3184
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/luadotsh/lua",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-10-27T01:59:36Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 43.8,
+            "ease_of_adoption": 77.2,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/luadotsh/lua",
+      "last_meaningful_activity_at": "2026-09-14T21:22:31Z",
+      "latest_release": {
+        "published_at": "2025-01-28T13:15:40Z",
+        "tag": "1.0.5"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-27T01:59:36Z",
+      "maintenance_status": "active",
+      "name": "lua",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness."
+      },
+      "oss_id": "github.com/luadotsh/lua",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 75.6,
+        "trajectory": "Rising"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 79.1,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/luadotsh/lua",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 343
     }
   ],
   "saas": {

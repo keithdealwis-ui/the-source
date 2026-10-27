@@ -2,6 +2,32 @@
   {
     "detected": {
       "closest_standard_licences": [
+        "GPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "only"
+      ]
+    },
+    "issue_category": "restricted",
+    "maintenance": "active",
+    "name": "crossdesk",
+    "oss_id": "github.com/kunkundi/crossdesk",
+    "reason": "licence text adds or removes terms: only",
+    "recommendation_eligible": false,
+    "relationships_flagged": 5,
+    "repo_url": "https://github.com/kunkundi/crossdesk",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
         "Apache-2.0"
       ],
       "enterprise_directories": [
@@ -162,6 +188,36 @@
         "value": "AGPL-3.0"
       }
     ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "directories",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "tree"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Dub",
+    "oss_id": "github.com/dubinc/dub.link",
+    "reason": "licence text scopes or splits the licence: directories, license defined in, portions of, tree",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/dubinc/dub.link",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
   },
   {
     "detected": {

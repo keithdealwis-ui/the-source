@@ -3,16 +3,16 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 242,
-    "reason": "4 recommendations passed the full evaluation",
+    "reason": "3 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "53afbd9068ca7652",
+  "dataset_version": "0bbe5c203ca361e3",
   "last_checked": {
-    "newest": "2026-10-26T00:06:19Z",
-    "oldest": "2026-10-26T00:06:19Z"
+    "newest": "2026-10-27T01:59:36Z",
+    "oldest": "2026-10-27T01:59:36Z"
   },
   "more_available": 0,
   "provenance": {
@@ -34,7 +34,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-26T00:06:19Z"
+          "validated_as_of": "2026-10-27T01:59:36Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -63,7 +63,7 @@
         "tag": "1.3.1"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-26T00:06:19Z",
+      "live_checked_at": "2026-10-27T01:59:36Z",
       "maintenance_status": "active",
       "name": "MeshCentral",
       "note": {
@@ -99,7 +99,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 7493
+      "stars": 7508
     },
     {
       "evidence": {
@@ -113,7 +113,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-26T00:06:19Z"
+          "validated_as_of": "2026-10-27T01:59:36Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -148,7 +148,7 @@
         "tag": "1.5.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-26T00:06:19Z",
+      "live_checked_at": "2026-10-27T01:59:36Z",
       "maintenance_status": "active",
       "name": "RustDesk",
       "note": {
@@ -182,7 +182,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 127028
+      "stars": 127182
     },
     {
       "evidence": {
@@ -196,7 +196,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-26T00:06:19Z"
+          "validated_as_of": "2026-10-27T01:59:36Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -224,7 +224,7 @@
         "tag": "v3.1.2"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-26T00:06:19Z",
+      "live_checked_at": "2026-10-27T01:59:36Z",
       "maintenance_status": "active",
       "name": "aspia",
       "note": {
@@ -262,88 +262,6 @@
         "job_match"
       ],
       "stars": 1962
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/kunkundi/crossdesk",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-10-26T00:06:19Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 71.2,
-            "ease_of_adoption": 80.0,
-            "economic_advantage": 68.0,
-            "feature_equivalence": 50.0,
-            "integrations_extensibility": 25.0,
-            "migration_friction": 33.3,
-            "production_commercial_readiness": 60.0
-          },
-          "evidence_families": [
-            "api",
-            "data_ownership",
-            "quickstart",
-            "self_host",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/kunkundi/crossdesk",
-      "last_meaningful_activity_at": "2026-10-21T20:17:27Z",
-      "latest_release": {
-        "published_at": "2026-10-21T16:25:49Z",
-        "tag": "v1.7.2-20261022"
-      },
-      "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-26T00:06:19Z",
-      "maintenance_status": "active",
-      "name": "crossdesk",
-      "note": {
-        "gaps": [
-          "integrations and extensibility",
-          "migration path"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption; weakest on integrations and extensibility and migration path."
-      },
-      "oss_id": "github.com/kunkundi/crossdesk",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 96.6,
-        "score": 84.8,
-        "trajectory": "Rising"
-      },
-      "rank": 4,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-20T23:06:47Z",
-        "score": 66.9,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/kunkundi/crossdesk",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 4578
     }
   ],
   "saas": {
