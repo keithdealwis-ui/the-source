@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-27T01:59:36Z",
+  "as_of": "2026-10-27T23:42:23Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -23,7 +23,7 @@
         "entries_with_saas_claim": 88,
         "harvested": true,
         "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
-        "pinned_commit": "8feef67974183b4c60aa62da86e8f0c8c4ca0f28",
+        "pinned_commit": "5a61e8481957cab491cf2ac6314d2819ea40a1e4",
         "relationship_claims": 149,
         "unparseable_files": 0
       },
@@ -424,8 +424,8 @@
     "oss_projects": 619,
     "preserve_served": {
       "kept": 366,
-      "not_kept": 8,
-      "served_before": 374
+      "not_kept": 0,
+      "served_before": 366
     },
     "relationships": 1565,
     "relationships_corroborated_by_2plus_sources": 182,
@@ -2413,8 +2413,8 @@
   "schema_version": "1.0.0",
   "verified": {
     "maintenance_status": {
-      "active": 1244,
-      "maintained": 125,
+      "active": 1243,
+      "maintained": 126,
       "stale": 101,
       "unverified": 16
     },

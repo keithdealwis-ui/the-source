@@ -1,0 +1,1469 @@
+{
+  "anomalies": [],
+  "attempt": 1,
+  "canonical": {
+    "changed": true,
+    "commit_tag": "cycle/2026-10-28-schedule-a1",
+    "dataset_version_after": "5e7d746d49fa5e3e",
+    "dataset_version_before": "0bbe5c203ca361e3"
+  },
+  "corpus": {
+    "at": "2026-10-27T23:42:23Z",
+    "candidates_found_by_strategy": {
+      "community_radar:bluesky": {
+        "admitted": 2,
+        "found": 9,
+        "new_to_corpus": 2
+      },
+      "community_radar:bluesky+hn": {
+        "admitted": 1,
+        "found": 8,
+        "new_to_corpus": 1
+      },
+      "community_radar:forem": {
+        "admitted": 0,
+        "found": 6,
+        "new_to_corpus": 0
+      },
+      "community_radar:hn": {
+        "admitted": 0,
+        "found": 118,
+        "new_to_corpus": 3
+      },
+      "ecosystems_awesome:ecosystems-awesome-selfhosted": {
+        "admitted": 0,
+        "found": 226,
+        "new_to_corpus": 31
+      },
+      "github_search:gh-topic-alternative-active": {
+        "admitted": 0,
+        "found": 23,
+        "new_to_corpus": 1
+      },
+      "github_search:gh-topic-open-source-alternative-new": {
+        "admitted": 0,
+        "found": 1,
+        "new_to_corpus": 1
+      },
+      "github_search:gh-topic-saas-alternative": {
+        "admitted": 0,
+        "found": 2,
+        "new_to_corpus": 0
+      },
+      "github_search:gh-topic-self-hosted-new": {
+        "admitted": 5,
+        "found": 52,
+        "new_to_corpus": 6
+      },
+      "github_search:gh-topic-selfhosted-active": {
+        "admitted": 2,
+        "found": 208,
+        "new_to_corpus": 3
+      }
+    },
+    "corpus_added": 10,
+    "corpus_collapsed": 0,
+    "corpus_removed": 0,
+    "corpus_version_after": "4fbe6dda9dc536c1",
+    "corpus_version_before": "7d14f0b1a5aae708",
+    "dropped": {
+      "already_in_corpus": 593,
+      "already_in_corpus_after_rename": 3,
+      "archived": 4,
+      "fork_alias": 3,
+      "intake_noise:curated_list": 2,
+      "intake_noise:learning_material": 1,
+      "intake_noise:template_or_example": 1,
+      "repository_not_found": 3,
+      "stale_no_meaningful_activity_12_months": 21
+    },
+    "historical": 0,
+    "looked_up": 48,
+    "manifest_sha256_after": "73204d559ddd9144c446e991586bb6b8322b548898f656fb635541320b422d5d",
+    "manifest_sha256_before": "14727d75ccfc691fe4b69e436e695b6c14cb260060c56c0816e78a548865e274",
+    "membership_after": 25067,
+    "membership_as_of": "2026-10-27T23:42:23Z",
+    "membership_before": 25057,
+    "method": "the-source.corpus-admit/1",
+    "noise_gate": true,
+    "pool_candidates": 641,
+    "quick": {
+      "health_rescored": 199,
+      "pairings_rescored": 10,
+      "runtime_s": 107.63
+    },
+    "top_new_by_stars": [
+      {
+        "id": "github.com/otya128/winevdm",
+        "licence_status": "recognised",
+        "stars": 3590,
+        "strategies": [
+          "community_radar:bluesky+hn"
+        ]
+      },
+      {
+        "id": "github.com/nilsteampassnet/teampass",
+        "licence_status": "recognised",
+        "stars": 1868,
+        "strategies": [
+          "github_search:gh-topic-selfhosted-active"
+        ]
+      },
+      {
+        "id": "github.com/serversathome/serversathome",
+        "licence_status": "issue",
+        "stars": 316,
+        "strategies": [
+          "github_search:gh-topic-selfhosted-active"
+        ]
+      },
+      {
+        "id": "github.com/oxidecomputer/skepsis",
+        "licence_status": "issue",
+        "stars": 174,
+        "strategies": [
+          "community_radar:bluesky"
+        ]
+      },
+      {
+        "id": "github.com/junwan666/astrbot-for-android",
+        "licence_status": "recognised",
+        "stars": 169,
+        "strategies": [
+          "github_search:gh-topic-self-hosted-new"
+        ]
+      },
+      {
+        "id": "github.com/emanuele-em/kanzo",
+        "licence_status": "recognised",
+        "stars": 78,
+        "strategies": [
+          "github_search:gh-topic-self-hosted-new"
+        ]
+      },
+      {
+        "id": "github.com/deibler/openskycam",
+        "licence_status": "recognised",
+        "stars": 60,
+        "strategies": [
+          "github_search:gh-topic-self-hosted-new"
+        ]
+      },
+      {
+        "id": "github.com/icookcloud/wecom-inbox",
+        "licence_status": "recognised",
+        "stars": 56,
+        "strategies": [
+          "github_search:gh-topic-self-hosted-new"
+        ]
+      },
+      {
+        "id": "github.com/codician-team/diffinery",
+        "licence_status": "recognised",
+        "stars": 55,
+        "strategies": [
+          "github_search:gh-topic-self-hosted-new"
+        ]
+      },
+      {
+        "id": "github.com/david-crespo/ah",
+        "licence_status": "recognised",
+        "stars": 29,
+        "strategies": [
+          "community_radar:bluesky"
+        ]
+      }
+    ]
+  },
+  "counts": {
+    "added": 0,
+    "candidates": 1513,
+    "canonical_checks": 38,
+    "canonical_projects": 619,
+    "canonical_projects_removed": 0,
+    "canonical_relationships": 1565,
+    "canonical_relationships_added": 0,
+    "canonical_relationships_removed": 0,
+    "canonical_saas_products": 400,
+    "canonical_warnings": 0,
+    "changed": 103,
+    "corpus_added": 10,
+    "corpus_collapsed": 0,
+    "corpus_removed": 0,
+    "deep_enriched": 150,
+    "deferred": 860,
+    "discovered": 7,
+    "discovered_in_corpus": 0,
+    "discovered_pool": 7,
+    "failed": 0,
+    "intake_pending": 0,
+    "intake_promoted": 0,
+    "membership_after": 25067,
+    "membership_before": 25057,
+    "momentum_measured": 1496,
+    "radar_pool_added": 3,
+    "radar_ranked": 50,
+    "refreshed_records": 1497,
+    "rejected": 0,
+    "rescored": 40,
+    "retained": 0,
+    "stale_or_abandoned_detected": 0,
+    "supported_saas_ok": 251,
+    "unchanged": 1409
+  },
+  "cycle_key": "2026-10-28",
+  "ended_at": "2026-10-28T00:03:15Z",
+  "error": null,
+  "failures": [],
+  "history_day": "2026-10-28",
+  "retries": {
+    "deep_enrichment": 0,
+    "light_refresh": 0
+  },
+  "run_id": "2026-10-28-schedule-a1",
+  "schedule": {
+    "cadence": "daily",
+    "time": "03:00",
+    "timezone": "Asia/Dubai",
+    "weekday": null,
+    "window_hours": 4
+  },
+  "started_at": "2026-10-27T23:42:22Z",
+  "status": "succeeded",
+  "strategies": [
+    {
+      "advanced": 1,
+      "detail": [
+        {
+          "from": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+          "source_id": "solvohq",
+          "status": "unchanged"
+        },
+        {
+          "entries": [
+            1358,
+            1358
+          ],
+          "from": "8feef67974183b4c60aa62da86e8f0c8c4ca0f28",
+          "source_id": "awesome-selfhosted",
+          "status": "advanced",
+          "to": "5a61e8481957cab491cf2ac6314d2819ea40a1e4"
+        },
+        {
+          "from": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+          "source_id": "runacapital",
+          "status": "unchanged"
+        },
+        {
+          "entries": [
+            100,
+            0
+          ],
+          "from": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+          "source_id": "opensaasdirectory",
+          "status": "parse_regression_kept_pin",
+          "to": "650082092a12e2f968b990d626636816e405ea4d",
+          "unparseable": [
+            0,
+            0
+          ]
+        },
+        {
+          "from": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
+          "source_id": "emmraan",
+          "status": "unchanged"
+        },
+        {
+          "from": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+          "source_id": "btwso",
+          "status": "unchanged"
+        },
+        {
+          "from": "5f0e38843c50e3c3036f9e843e5617c0860fcb9f",
+          "source_id": "diegoleme",
+          "status": "unchanged"
+        },
+        {
+          "from": "588139d853f9eab183368cfa2eaa8d6c1640fc74",
+          "source_id": "altstack",
+          "status": "unchanged"
+        },
+        {
+          "from": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+          "source_id": "fossalt",
+          "status": "unchanged"
+        }
+      ],
+      "id": "upstream_lists",
+      "kept": [
+        {
+          "detail": null,
+          "source_id": "opensaasdirectory",
+          "status": "parse_regression_kept_pin"
+        }
+      ],
+      "sources": 9,
+      "status": "degraded"
+    },
+    {
+      "admitted_entries": 1,
+      "id": "intake_ledger",
+      "ledger_version": "feb7d601b43d46fdbc692e43a3082998c61cc659",
+      "status": "ok"
+    },
+    {
+      "as_of": "2026-10-27T23:42:23Z",
+      "found": 1497,
+      "http_calls": 56,
+      "id": "light_refresh",
+      "repositories": 1513,
+      "retries": 0,
+      "status": "ok",
+      "still_failing": []
+    },
+    {
+      "errors": [],
+      "id": "discovery_search",
+      "known_in_corpus": 83,
+      "lanes": [
+        {
+          "id": "gh-topic-self-hosted-new",
+          "provider": "github_search",
+          "query": "topic:self-hosted created:>=2026-10-20 stars:>=50",
+          "returned": 14,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-open-source-alternative-new",
+          "provider": "github_search",
+          "query": "topic:open-source-alternative created:>=2026-10-20 stars:>=50",
+          "returned": 0,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-alternative-active",
+          "provider": "github_search",
+          "query": "topic:alternative pushed:>=2026-10-20 stars:>=50 archived:false",
+          "returned": 20,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-saas-alternative",
+          "provider": "github_search",
+          "query": "topic:saas-alternative stars:>=50 archived:false",
+          "returned": 2,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-selfhosted-active",
+          "provider": "github_search",
+          "query": "topic:selfhosted pushed:>=2026-10-20 stars:>=50 archived:false",
+          "returned": 186,
+          "status": "ok"
+        },
+        {
+          "id": "ecosystems-awesome-selfhosted",
+          "provider": "ecosystems_awesome",
+          "query": "https://github.com/awesome-selfhosted/awesome-selfhosted",
+          "returned": 230,
+          "status": "ok"
+        }
+      ],
+      "new_candidates": [
+        "github.com/codician-team/diffinery",
+        "github.com/deibler/openskycam",
+        "github.com/emanuele-em/kanzo",
+        "github.com/icookcloud/wecom-inbox",
+        "github.com/junwan666/astrbot-for-android",
+        "github.com/nilsteampassnet/teampass",
+        "github.com/serversathome/serversathome"
+      ],
+      "new_count": 7,
+      "pool_size": 638,
+      "returned": 452,
+      "seen_again": 354,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-27",
+      "degraded_providers": [],
+      "id": "corroboration",
+      "providers": {
+        "depsdev": {
+          "agreement": 0.9789,
+          "answered": 120,
+          "asked": 120,
+          "canonical_effect": "none: flags only; the host's own answer stays canonical",
+          "coverage": 0.7917,
+          "disagreeing_keys": {
+            "github.com/freecodecamp/devdocs": [
+              "licence"
+            ],
+            "github.com/mailchimp/mc-magento2": [
+              "licence"
+            ]
+          },
+          "disagreements_by_field": {
+            "licence": 2
+          },
+          "errors": 0,
+          "not_covered": [
+            "github.com/aashishh15/lexicon",
+            "github.com/apocas/restai",
+            "github.com/braedonsaunders/openbooks",
+            "github.com/ciddwd/overlay-translator",
+            "github.com/dexio-wiki/dexio",
+            "github.com/getlago/lago",
+            "github.com/gonzaroman/acornix",
+            "github.com/guillermolg00/morphicons",
+            "github.com/heigeai/heige-geo-seo",
+            "github.com/helicalinsight/helicalinsight",
+            "github.com/huanshere/videolingo",
+            "github.com/hydra-db/hydradb",
+            "github.com/ladybirdweb/faveo-helpdesk",
+            "github.com/pometry/raphtory",
+            "github.com/pouzor/homelable",
+            "github.com/ridemountainpig/subflow",
+            "github.com/roastslav/quickdrop",
+            "github.com/sortlist/signals-cli",
+            "github.com/talivia-group/talivia",
+            "github.com/tegridydev/auto-md",
+            "github.com/tracecohentech/ai-seo-playbook",
+            "github.com/uno-forge-hub/agency-landing-page-astrojs",
+            "github.com/useopendesk/opendesk",
+            "github.com/voidenhq/voiden",
+            "github.com/yuheshpandian/iconic"
+          ],
+          "reason": null,
+          "status": "ok",
+          "trusted_for": [
+            "existence",
+            "licence (SPDX)",
+            "star order of magnitude"
+          ]
+        },
+        "ecosystems": {
+          "agreement": 1.0,
+          "answered": 120,
+          "asked": 120,
+          "canonical_effect": "none: flags only; the host's own answer stays canonical",
+          "coverage": 1.0,
+          "disagreeing_keys": {},
+          "disagreements_by_field": {},
+          "errors": 0,
+          "not_covered": [],
+          "reason": null,
+          "status": "ok",
+          "trusted_for": [
+            "existence",
+            "archive state",
+            "licence",
+            "repository id (uuid = GitHub databaseId)",
+            "star order of magnitude"
+          ]
+        }
+      },
+      "sample": 120,
+      "status": "ok"
+    },
+    {
+      "by_class": {
+        "changed": 103,
+        "new": 1,
+        "stale": 848,
+        "unchanged": 561
+      },
+      "changed": [
+        {
+          "key": "github.com/acedatacloud/nexior",
+          "reasons": [
+            "release @acedatacloud/nexior_v3.381.0 -> @acedatacloud/nexior_v3.382.1"
+          ]
+        },
+        {
+          "key": "github.com/akaunting/akaunting",
+          "reasons": [
+            "release 3.2.4 -> 3.3.0"
+          ]
+        },
+        {
+          "key": "github.com/appbaseio/reactivesearch",
+          "reasons": [
+            "maintenance boundary: last meaningful activity 93 d ago, pushed since"
+          ]
+        },
+        {
+          "key": "github.com/arastey/arasclient",
+          "reasons": [
+            "release v1.8.2 -> v1.8.6"
+          ]
+        },
+        {
+          "key": "github.com/archivebox/archivebox",
+          "reasons": [
+            "release v0.9.73 -> v0.9.77"
+          ]
+        },
+        {
+          "key": "github.com/atomicbot-ai/atomic-agent",
+          "reasons": [
+            "release v0.6.11 -> v0.6.12"
+          ]
+        },
+        {
+          "key": "github.com/automattic/harper",
+          "reasons": [
+            "release v2.13.0 -> v3.0.0"
+          ]
+        },
+        {
+          "key": "github.com/azure/agent-landing-zone",
+          "reasons": [
+            "release v4.4.0 -> v5.3.0"
+          ]
+        },
+        {
+          "key": "github.com/azure/api-management-developer-portal",
+          "reasons": [
+            "release 2.35.0 -> 2.36.0"
+          ]
+        },
+        {
+          "key": "github.com/barre/zerofs",
+          "reasons": [
+            "release v2.3.5 -> v2.3.6"
+          ]
+        },
+        {
+          "key": "github.com/berriai/litellm",
+          "reasons": [
+            "release v1.106.4 -> v1.106.5"
+          ]
+        },
+        {
+          "key": "github.com/bruin-data/bruin",
+          "reasons": [
+            "release v0.11.798 -> v0.11.801"
+          ]
+        },
+        {
+          "key": "github.com/bruin-data/dac",
+          "reasons": [
+            "release v0.29.2 -> v0.29.3"
+          ]
+        },
+        {
+          "key": "github.com/chevereto/chevereto",
+          "reasons": [
+            "release 4.5.7 -> 4.5.8"
+          ]
+        },
+        {
+          "key": "github.com/claperco/claper",
+          "reasons": [
+            "release v3.1.2 -> v3.2.0"
+          ]
+        },
+        {
+          "key": "github.com/coffey-labs/ihasmail",
+          "reasons": [
+            "release v2026.10.22-g51b3648 -> v2026.10.27-g7823b4f"
+          ]
+        },
+        {
+          "key": "github.com/comfy-org/comfyui",
+          "reasons": [
+            "release v0.42.1 -> v0.43.0"
+          ]
+        },
+        {
+          "key": "github.com/coollabsio/coolify",
+          "reasons": [
+            "release v4.5.0 -> v4.5.1"
+          ]
+        },
+        {
+          "key": "github.com/corgicorner/bisibility",
+          "reasons": [
+            "release v0.43.0 -> v0.44.0"
+          ]
+        },
+        {
+          "key": "github.com/countly/countly-server",
+          "reasons": [
+            "release 25.03.57-LTS -> 25.03.58"
+          ]
+        },
+        {
+          "key": "github.com/croffasia/itsaplan",
+          "reasons": [
+            "release v1.8.0 -> v1.9.0"
+          ]
+        },
+        {
+          "key": "github.com/crowdsecurity/crowdsec",
+          "reasons": [
+            "release v1.8.1 -> v1.8.2"
+          ]
+        },
+        {
+          "key": "github.com/cube-js/cube.js",
+          "reasons": [
+            "release v1.8.13 -> v1.8.14"
+          ]
+        },
+        {
+          "key": "github.com/deckhouse/k8s-image-availability-exporter",
+          "reasons": [
+            "maintenance boundary: last meaningful activity 90 d ago, pushed since"
+          ]
+        },
+        {
+          "key": "github.com/deltachat/deltachat-android",
+          "reasons": [
+            "release v2.62.0 -> v2.64.0"
+          ]
+        },
+        {
+          "key": "github.com/deltachat/deltachat-desktop",
+          "reasons": [
+            "release v2.62.0 -> v2.65.0"
+          ]
+        },
+        {
+          "key": "github.com/devilcoolyue/agentbox",
+          "reasons": [
+            "release v0.1.17 -> v0.1.18"
+          ]
+        },
+        {
+          "key": "github.com/devops-ia/helm-opencti",
+          "reasons": [
+            "release v3.0.26 -> v3.0.27"
+          ]
+        },
+        {
+          "key": "github.com/directus/directus",
+          "reasons": [
+            "release v12.5.1 -> v12.6.0"
+          ]
+        },
+        {
+          "key": "github.com/django-crm/django-crm",
+          "reasons": [
+            "release v1.34.0 -> v1.37.0"
+          ]
+        },
+        {
+          "key": "github.com/element-hq/synapse",
+          "reasons": [
+            "release v1.163.2 -> v1.164.0"
+          ]
+        },
+        {
+          "key": "github.com/erxes/erxes",
+          "reasons": [
+            "release 3.4.1 -> 3.4.3"
+          ]
+        },
+        {
+          "key": "github.com/fleetbase/storefront-app",
+          "reasons": [
+            "release v0.1.1 -> v0.1.2"
+          ]
+        },
+        {
+          "key": "github.com/fluidgroup/brightroom",
+          "reasons": [
+            "release 6.0.0 -> 6.1.0"
+          ]
+        },
+        {
+          "key": "github.com/fluxerapp/fluxer",
+          "reasons": [
+            "release fluxer-release@2026.1026.223737 -> fluxer-release@2026.1027.212650"
+          ]
+        },
+        {
+          "key": "github.com/formbricks/formbricks",
+          "reasons": [
+            "release 6.1.1 -> 6.1.2"
+          ]
+        },
+        {
+          "key": "github.com/frappe/crm",
+          "reasons": [
+            "release v1.89.1 -> v1.89.2"
+          ]
+        },
+        {
+          "key": "github.com/freika/dawarich",
+          "reasons": [
+            "release 1.18.1 -> 1.19.0"
+          ]
+        },
+        {
+          "key": "github.com/gohugoio/hugo",
+          "reasons": [
+            "release v0.168.0 -> v0.169.0"
+          ]
+        },
+        {
+          "key": "github.com/gonzaroman/acornix",
+          "reasons": [
+            "release v2.2.0 -> v2.2.1"
+          ]
+        },
+        {
+          "key": "github.com/gotenberg/gotenberg",
+          "reasons": [
+            "release v8.38.1 -> v8.39.0"
+          ]
+        },
+        {
+          "key": "github.com/grafana/grafana",
+          "reasons": [
+            "release v13.2.4 -> v13.3.0"
+          ]
+        },
+        {
+          "key": "github.com/hbai-ltd/toonflow-app",
+          "reasons": [
+            "release v2.0.7 -> v2.0.8"
+          ]
+        },
+        {
+          "key": "github.com/healthchecks/healthchecks",
+          "reasons": [
+            "release v5.0.2 -> v5.0.3"
+          ]
+        },
+        {
+          "key": "github.com/huggingface/diffusers",
+          "reasons": [
+            "release v0.42.0 -> v0.42.1"
+          ]
+        },
+        {
+          "key": "github.com/humhub/humhub",
+          "reasons": [
+            "release v1.19.2 -> v1.19.3"
+          ]
+        },
+        {
+          "key": "github.com/inception-project/inception",
+          "reasons": [
+            "release inception-42.1 -> inception-42.2"
+          ]
+        },
+        {
+          "key": "github.com/jiangnangenius/floe-agent",
+          "reasons": [
+            "release v1.7.59 -> v1.7.61"
+          ]
+        },
+        {
+          "key": "github.com/keploy/keploy",
+          "reasons": [
+            "release v3.6.167 -> v3.6.169"
+          ]
+        },
+        {
+          "key": "github.com/l7mp/stunner",
+          "reasons": [
+            "release v1.2.1 -> v2.0.0"
+          ]
+        },
+        {
+          "key": "github.com/langchain-ai/open-swe",
+          "reasons": [
+            "release desktop-v0.3.9 -> desktop-v0.3.10"
+          ]
+        },
+        {
+          "key": "github.com/lightdash/lightdash",
+          "reasons": [
+            "release 3.61.0 -> 3.73.3"
+          ]
+        },
+        {
+          "key": "github.com/ljtn/epiq",
+          "reasons": [
+            "release v1.16.0 -> v1.16.1"
+          ]
+        },
+        {
+          "key": "github.com/lowdefy/lowdefy",
+          "reasons": [
+            "release v6.2.0 -> v7.1.0"
+          ]
+        },
+        {
+          "key": "github.com/metabase/metabase",
+          "reasons": [
+            "release v0.64.1 -> v0.64.3"
+          ]
+        },
+        {
+          "key": "github.com/mezonai/mezon",
+          "reasons": [
+            "release 2.0.7 -> 2.0.8"
+          ]
+        },
+        {
+          "key": "github.com/msgbyte/tianji",
+          "reasons": [
+            "release v1.33.12 -> v1.33.13"
+          ]
+        },
+        {
+          "key": "github.com/mulgadc/spinifex",
+          "reasons": [
+            "release v1.22.0 -> v1.23.0"
+          ]
+        },
+        {
+          "key": "github.com/multiwoven/multiwoven",
+          "reasons": [
+            "release v0.135.0 -> v0.136.0"
+          ]
+        },
+        {
+          "key": "github.com/n-ia-hane/esphome-intercom",
+          "reasons": [
+            "release v2026.10.1 -> v2026.11.0"
+          ]
+        },
+        {
+          "key": "github.com/n8n-io/n8n",
+          "reasons": [
+            "release n8n@2.44.7 -> n8n@2.45.4"
+          ]
+        },
+        {
+          "key": "github.com/neon-mmd/websurfx",
+          "reasons": [
+            "release v1.31.0 -> v1.31.1"
+          ]
+        },
+        {
+          "key": "github.com/nitishkgupta/seotoolsuite",
+          "reasons": [
+            "release v7.0.0 -> v8.0.0"
+          ]
+        },
+        {
+          "key": "github.com/nyakang/nyaterm",
+          "reasons": [
+            "release v1.3.1 -> v1.3.2"
+          ]
+        },
+        {
+          "key": "github.com/offen/docker-volume-backup",
+          "reasons": [
+            "release v2.49.3 -> v2.50.0"
+          ]
+        },
+        {
+          "key": "github.com/ollama/ollama",
+          "reasons": [
+            "release v0.40.11 -> v0.40.12"
+          ]
+        },
+        {
+          "key": "github.com/omnirise/linkbreeze",
+          "reasons": [
+            "release v1.5.0 -> v1.5.1"
+          ]
+        },
+        {
+          "key": "github.com/payloadcms/payload",
+          "reasons": [
+            "release v3.92.0 -> v3.92.1"
+          ]
+        },
+        {
+          "key": "github.com/pbek/qownnotes",
+          "reasons": [
+            "release v26.10.12 -> v26.10.13"
+          ]
+        },
+        {
+          "key": "github.com/pkissling/clock-weather-card",
+          "reasons": [
+            "release v3.0.0 -> v3.0.1"
+          ]
+        },
+        {
+          "key": "github.com/posthog/posthog",
+          "reasons": [
+            "release desktop-v0.61.844 -> desktop-v0.61.851"
+          ]
+        },
+        {
+          "key": "github.com/pydantic/pydantic-ai",
+          "reasons": [
+            "release v2.61.0 -> v2.62.0"
+          ]
+        },
+        {
+          "key": "github.com/rayfish/rayfish",
+          "reasons": [
+            "release v0.5.10 -> v0.5.11"
+          ]
+        },
+        {
+          "key": "github.com/riley-dorrington/job-board-aggregator",
+          "reasons": [
+            "release jobs-20261026-1524 -> jobs-20261027-1424"
+          ]
+        },
+        {
+          "key": "github.com/router-for-me/cliproxyapi",
+          "reasons": [
+            "release v8.0.44 -> v8.0.45"
+          ]
+        },
+        {
+          "key": "github.com/rudderlabs/rudder-server",
+          "reasons": [
+            "release v1.91.1 -> v1.92.0"
+          ]
+        },
+        {
+          "key": "github.com/serenedb/serenedb",
+          "reasons": [
+            "release v26.10.5 -> v26.10.6"
+          ]
+        },
+        {
+          "key": "github.com/shellhub-io/shellhub",
+          "reasons": [
+            "release v0.27.0 -> v0.27.4"
+          ]
+        },
+        {
+          "key": "github.com/snoopforms/snoophub",
+          "reasons": [
+            "release 6.1.1 -> 6.1.2"
+          ]
+        },
+        {
+          "key": "github.com/storj/storj",
+          "reasons": [
+            "release v1.165.5 -> v1.165.6"
+          ]
+        },
+        {
+          "key": "github.com/supabase/storage",
+          "reasons": [
+            "release v1.84.25 -> v1.84.32"
+          ]
+        },
+        {
+          "key": "github.com/tabler/tabler-icons",
+          "reasons": [
+            "release v3.49.0 -> v3.50.0"
+          ]
+        },
+        {
+          "key": "github.com/teableio/teable",
+          "reasons": [
+            "release release.2026-10-23T02-23-06Z.3549 -> release.2026-10-27T02-17-21Z.3593"
+          ]
+        },
+        {
+          "key": "github.com/telemetry-tracker/telemetry-tracker",
+          "reasons": [
+            "release v1.22.15 -> v1.22.19"
+          ]
+        },
+        {
+          "key": "github.com/thesnarkitecht/rembrandt",
+          "reasons": [
+            "release v0.3.23 -> v0.3.26"
+          ]
+        },
+        {
+          "key": "github.com/tinacms/tinacms",
+          "reasons": [
+            "release tinacms@3.15.0 -> @tinacms/mdx@2.4.1"
+          ]
+        },
+        {
+          "key": "github.com/tisfeng/easydict",
+          "reasons": [
+            "release 2.24.0 -> 2.25.0"
+          ]
+        },
+        {
+          "key": "github.com/tolgee/tolgee-platform",
+          "reasons": [
+            "release v3.240.3 -> v3.241.1"
+          ]
+        },
+        {
+          "key": "github.com/tooljet/tooljet",
+          "reasons": [
+            "release v3.20.250-lts -> v3.20.251-lts"
+          ]
+        },
+        {
+          "key": "github.com/trailbaseio/trailbase",
+          "reasons": [
+            "release v0.35.5 -> v0.35.6"
+          ]
+        },
+        {
+          "key": "github.com/tryghost/ghost",
+          "reasons": [
+            "release v6.72.0 -> v6.73.0"
+          ]
+        },
+        {
+          "key": "github.com/twentyhq/twenty",
+          "reasons": [
+            "release twenty/v2.51.0 -> twenty/v2.52.0"
+          ]
+        },
+        {
+          "key": "github.com/tymeslot/tymeslot",
+          "reasons": [
+            "release v1.31.0 -> v1.32.0"
+          ]
+        },
+        {
+          "key": "github.com/umbraco/umbraco-cms",
+          "reasons": [
+            "release release-18.2.1 -> release-18.2.2"
+          ]
+        },
+        {
+          "key": "github.com/unleash/unleash",
+          "reasons": [
+            "release v8.2.1 -> v8.3.0"
+          ]
+        },
+        {
+          "key": "github.com/vcaesar/riot",
+          "reasons": [
+            "release v1.30.0 -> v1.31.1"
+          ]
+        },
+        {
+          "key": "github.com/vector-im/element-web",
+          "reasons": [
+            "release v1.12.32 -> v1.12.33"
+          ]
+        },
+        {
+          "key": "github.com/vector-im/riot-web",
+          "reasons": [
+            "release v1.12.32 -> v1.12.33"
+          ]
+        },
+        {
+          "key": "github.com/vercel-labs/agent-browser",
+          "reasons": [
+            "release v0.39.4 -> v0.40.0"
+          ]
+        },
+        {
+          "key": "github.com/vladopajic/go-test-coverage",
+          "reasons": [
+            "release v2.20.1 -> v2.21.0"
+          ]
+        }
+      ],
+      "deferred_rotation": 802,
+      "http_calls": 518,
+      "id": "deep_enrichment",
+      "kept_previous_after_failure": [],
+      "retries": 0,
+      "selected": 150,
+      "status": "ok"
+    },
+    {
+      "deferred_to_next_cycle": 0,
+      "errors": [
+        "github.com/getbeton/inspector: pocus: no job definition for its category; Replacement Fit not scored",
+        "github.com/loootai/looot-intent: pocus: no job definition for its category; Replacement Fit not scored"
+      ],
+      "id": "new_pair_scoring",
+      "pairs_scored": 0,
+      "projects_scored": 2,
+      "status": "degraded"
+    },
+    {
+      "candidates": 98,
+      "deferred_to_next_cycle": 58,
+      "errors": [],
+      "id": "rescoring",
+      "projects": [
+        "github.com/acedatacloud/nexior",
+        "github.com/akaunting/akaunting",
+        "github.com/appbaseio/reactivesearch",
+        "github.com/arastey/arasclient",
+        "github.com/archivebox/archivebox",
+        "github.com/atomicbot-ai/atomic-agent",
+        "github.com/automattic/harper",
+        "github.com/azure/agent-landing-zone",
+        "github.com/azure/api-management-developer-portal",
+        "github.com/barre/zerofs",
+        "github.com/berriai/litellm",
+        "github.com/bruin-data/bruin",
+        "github.com/bruin-data/dac",
+        "github.com/chevereto/chevereto",
+        "github.com/claperco/claper",
+        "github.com/coffey-labs/ihasmail",
+        "github.com/comfy-org/comfyui",
+        "github.com/coollabsio/coolify",
+        "github.com/corgicorner/bisibility",
+        "github.com/croffasia/itsaplan",
+        "github.com/crowdsecurity/crowdsec",
+        "github.com/cube-js/cube",
+        "github.com/deckhouse/k8s-image-availability-exporter",
+        "github.com/deltachat/deltachat-android",
+        "github.com/deltachat/deltachat-desktop",
+        "github.com/devilcoolyue/agentbox",
+        "github.com/devops-ia/helm-opencti",
+        "github.com/directus/directus",
+        "github.com/django-crm/django-crm",
+        "github.com/element-hq/element-web",
+        "github.com/element-hq/synapse",
+        "github.com/erxes/erxes",
+        "github.com/fleetbase/storefront-app",
+        "github.com/fluidgroup/brightroom",
+        "github.com/fluxerapp/fluxer",
+        "github.com/formbricks/formbricks",
+        "github.com/frappe/crm",
+        "github.com/freika/dawarich",
+        "github.com/gohugoio/hugo",
+        "github.com/gonzaroman/acornix"
+      ],
+      "rescored": 40,
+      "status": "ok"
+    },
+    {
+      "day": "2026-10-28",
+      "days_held": 27,
+      "id": "history",
+      "pruned": [],
+      "rows": 1513,
+      "sha256": "be386fef2eda3a0dc607d6815a7c88e0244fd1311fe129d4828ef6b831ab27bd",
+      "status": "ok"
+    },
+    {
+      "id": "momentum",
+      "methodology_version": "1.0.0",
+      "on": "2026-10-28",
+      "status": "ok",
+      "windows": {
+        "1": {
+          "acceleration": "measured",
+          "acceleration_measurable_from": "2026-10-04",
+          "measurable_from": "2026-10-03",
+          "measured": 1496,
+          "status": "measured"
+        },
+        "30": {
+          "acceleration": "insufficient_history",
+          "acceleration_measurable_from": "2026-12-01",
+          "measurable_from": "2026-11-01",
+          "measured": 0,
+          "status": "insufficient_history"
+        },
+        "7": {
+          "acceleration": "measured",
+          "acceleration_measurable_from": "2026-10-16",
+          "measurable_from": "2026-10-09",
+          "measured": 1495,
+          "status": "measured"
+        },
+        "90": {
+          "acceleration": "insufficient_history",
+          "acceleration_measurable_from": "2027-03-31",
+          "measurable_from": "2026-12-31",
+          "measured": 0,
+          "status": "insufficient_history"
+        }
+      }
+    },
+    {
+      "candidates": [
+        {
+          "key": "github.com/openai/math",
+          "rank": 1,
+          "score": 17.4046,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/otya128/winevdm",
+          "rank": 2,
+          "score": 11.0869,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/jetbrains/thinkrail",
+          "rank": 3,
+          "score": 10.5068,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/forem/forem",
+          "rank": 4,
+          "score": 10.3087,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/heyputer/everything",
+          "rank": 5,
+          "score": 9.8875,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/microsoft/pylance-release",
+          "rank": 6,
+          "score": 7.7463,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/dilawarshafiq/nietzschian-debugger",
+          "rank": 7,
+          "score": 7.235,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/ihhub/fheroes2",
+          "rank": 8,
+          "score": 7.2213,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/frigadehq/hob",
+          "rank": 9,
+          "score": 6.5562,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/nvidia/openshell",
+          "rank": 10,
+          "score": 6.2497,
+          "status": "candidate"
+        }
+      ],
+      "counts": {
+        "candidates": 30,
+        "mentions_held": 640,
+        "mentions_in_window": 177,
+        "mentions_in_window_by_source": {
+          "bluesky": 93,
+          "forem": 30,
+          "hn": 54,
+          "instagram": 0,
+          "x": 0
+        },
+        "ranked": 50,
+        "ranked_by_status": {
+          "candidate": 30,
+          "canonical": 0,
+          "corpus": 1,
+          "not_found": 0,
+          "unresolved": 19
+        },
+        "repositories_mentioned": 168,
+        "resolutions_held": 309,
+        "stars": {
+          "radar_only_without_stars": 3,
+          "ranked_with_stars": 46,
+          "ranked_without_stars": 4,
+          "readings_held": 130
+        },
+        "truncated": 118
+      },
+      "id": "community_radar",
+      "methodology_version": "1.1.0",
+      "pool_added": [
+        "github.com/david-crespo/ah",
+        "github.com/otya128/winevdm",
+        "github.com/oxidecomputer/skepsis"
+      ],
+      "resolve": {
+        "asked": 5,
+        "deferred": 0,
+        "resolved": 5,
+        "transient_failures": []
+      },
+      "sources": {
+        "bluesky": {
+          "errors": [],
+          "gone": 0,
+          "http_calls": 2,
+          "items_read": 100,
+          "mentions": 59,
+          "status": "ok"
+        },
+        "forem": {
+          "errors": [],
+          "gone": 0,
+          "http_calls": 37,
+          "items_read": 31,
+          "mentions": 24,
+          "status": "ok"
+        },
+        "hn": {
+          "errors": [],
+          "gone": 0,
+          "http_calls": 303,
+          "items_read": 300,
+          "mentions": 21,
+          "status": "ok"
+        },
+        "instagram": {
+          "errors": [
+            "INSTAGRAM_ACCESS_TOKEN or INSTAGRAM_USER_ID is not set: Instagram is not asked"
+          ],
+          "gone": 0,
+          "http_calls": 0,
+          "items_read": 0,
+          "mentions": 0,
+          "status": "unconfigured"
+        },
+        "x": {
+          "errors": [
+            "X_BEARER_TOKEN is not set: X is not asked"
+          ],
+          "gone": 0,
+          "http_calls": 0,
+          "items_read": 0,
+          "mentions": 0,
+          "status": "unconfigured"
+        }
+      },
+      "stars": {
+        "asked": 3,
+        "error": null,
+        "found": 3,
+        "http_calls": 1,
+        "missing_before": 3,
+        "not_found": 0,
+        "status": "ok"
+      },
+      "status": "ok",
+      "top": [
+        {
+          "key": "github.com/openai/math",
+          "rank": 1,
+          "score": 17.4046,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/otya128/winevdm",
+          "rank": 2,
+          "score": 11.0869,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/jetbrains/thinkrail",
+          "rank": 3,
+          "score": 10.5068,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/forem/forem",
+          "rank": 4,
+          "score": 10.3087,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/heyputer/everything",
+          "rank": 5,
+          "score": 9.8875,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/microsoft/pylance-release",
+          "rank": 6,
+          "score": 7.7463,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/dilawarshafiq/nietzschian-debugger",
+          "rank": 7,
+          "score": 7.235,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/ihhub/fheroes2",
+          "rank": 8,
+          "score": 7.2213,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/frigadehq/hob",
+          "rank": 9,
+          "score": 6.5562,
+          "status": "candidate"
+        },
+        {
+          "key": "github.com/nvidia/openshell",
+          "rank": 10,
+          "score": 6.2497,
+          "status": "candidate"
+        }
+      ]
+    },
+    {
+      "admitted": 10,
+      "corpus_version_after": "4fbe6dda9dc536c1",
+      "dropped": {
+        "already_in_corpus": 593,
+        "already_in_corpus_after_rename": 3,
+        "archived": 4,
+        "fork_alias": 3,
+        "intake_noise:curated_list": 2,
+        "intake_noise:learning_material": 1,
+        "intake_noise:template_or_example": 1,
+        "repository_not_found": 3,
+        "stale_no_meaningful_activity_12_months": 21
+      },
+      "id": "corpus_admission",
+      "looked_up": 48,
+      "membership_as_of": "2026-10-27T23:42:23Z",
+      "pool_candidates": 641,
+      "status": "ok"
+    },
+    {
+      "baseline_dataset_version": "3275503f8976b0b5",
+      "constraint_violations": 0,
+      "errors": [],
+      "id": "golden_queries",
+      "negative_passed": 2,
+      "precision@5": 0.6826,
+      "queries": 48,
+      "recall@5": 0.6819,
+      "status": "ok"
+    }
+  ],
+  "timings_s": {
+    "build_validate": 188.9,
+    "canonical": 287.0,
+    "community_radar": 22.2,
+    "corpus_admission": 227.0,
+    "corroboration": 13.8,
+    "deep_enrichment": 56.8,
+    "discovery_search": 12.9,
+    "golden_queries": 6.8,
+    "history": 0.0,
+    "intake_ledger": 2.7,
+    "light_refresh": 104.5,
+    "momentum": 2.6,
+    "scoring": 315.2,
+    "upstream_lists": 10.5
+  },
+  "transitions": {
+    "became_recommendable": [],
+    "no_longer_recommendable": []
+  },
+  "trigger": "schedule"
+}

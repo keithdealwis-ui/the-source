@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "0bbe5c203ca361e3",
+  "dataset_version": "5e7d746d49fa5e3e",
   "last_checked": {
-    "newest": "2026-10-27T01:59:36Z",
-    "oldest": "2026-10-27T01:59:36Z"
+    "newest": "2026-10-27T23:42:23Z",
+    "oldest": "2026-10-27T23:42:23Z"
   },
   "more_available": 0,
   "provenance": {
@@ -34,13 +34,13 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-27T01:59:36Z"
+          "validated_as_of": "2026-10-27T23:42:23Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
           "dimensions": {
             "core_use_case_coverage": 100.0,
-            "deployment_ownership": 43.8,
+            "deployment_ownership": 68.8,
             "ease_of_adoption": 100.0,
             "economic_advantage": 45.0,
             "feature_equivalence": 100.0,
@@ -50,6 +50,7 @@
           },
           "evidence_families": [
             "api",
+            "data_ownership",
             "demo",
             "import",
             "multi_user",
@@ -64,13 +65,13 @@
         }
       },
       "github_url": "https://github.com/croffasia/itsaplan",
-      "last_meaningful_activity_at": "2026-10-23T23:54:40Z",
+      "last_meaningful_activity_at": "2026-10-27T21:41:13Z",
       "latest_release": {
-        "published_at": "2026-10-23T12:43:09Z",
-        "tag": "v1.8.0"
+        "published_at": "2026-10-27T21:41:13Z",
+        "tag": "v1.9.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-27T01:59:36Z",
+      "live_checked_at": "2026-10-27T23:42:23Z",
       "maintenance_status": "active",
       "name": "itsaplan",
       "note": {
@@ -86,14 +87,14 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 89.2,
-        "score": 85.9,
+        "score": 85.8,
         "trajectory": "Insufficient history"
       },
       "rank": 1,
       "replacement_fit": {
         "confidence": 84.5,
-        "evaluated_at": "2026-10-24T00:28:40Z",
-        "score": 88.3,
+        "evaluated_at": "2026-10-27T23:42:23Z",
+        "score": 90.8,
         "score_version": "1.2.0"
       },
       "repo_url": "https://github.com/croffasia/itsaplan",
@@ -104,7 +105,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 2005
+      "stars": 2035
     },
     {
       "evidence": {
@@ -118,7 +119,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-27T01:59:36Z"
+          "validated_as_of": "2026-10-27T23:42:23Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -147,13 +148,13 @@
         }
       },
       "github_url": "https://github.com/makeplane/plane",
-      "last_meaningful_activity_at": "2026-10-17T10:44:44Z",
+      "last_meaningful_activity_at": "2026-10-26T19:34:00Z",
       "latest_release": {
-        "published_at": "2026-10-06T08:29:42Z",
-        "tag": "v1.4.3-rc1"
+        "published_at": "2026-10-23T15:40:15Z",
+        "tag": "v1.4.3-rc2"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-27T01:59:36Z",
+      "live_checked_at": "2026-10-27T23:42:23Z",
       "maintenance_status": "active",
       "name": "Plane",
       "note": {
@@ -189,7 +190,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 61500
+      "stars": 61558
     },
     {
       "evidence": {
@@ -203,7 +204,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-27T01:59:36Z"
+          "validated_as_of": "2026-10-27T23:42:23Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -231,7 +232,7 @@
         "tag": "v1.2.56"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-27T01:59:36Z",
+      "live_checked_at": "2026-10-27T23:42:23Z",
       "maintenance_status": "active",
       "name": "Kanboard",
       "note": {
@@ -267,7 +268,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 9932
+      "stars": 9933
     },
     {
       "evidence": {
@@ -281,7 +282,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-27T01:59:36Z"
+          "validated_as_of": "2026-10-27T23:42:23Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -315,7 +316,7 @@
         "tag": "v17.9.4"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-27T01:59:36Z",
+      "live_checked_at": "2026-10-27T23:42:23Z",
       "maintenance_status": "active",
       "name": "OpenProject",
       "note": {
@@ -352,7 +353,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 16701
+      "stars": 16738
     }
   ],
   "saas": {
