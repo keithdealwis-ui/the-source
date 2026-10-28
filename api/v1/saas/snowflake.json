@@ -9,10 +9,10 @@
     ],
     "status": "partial"
   },
-  "dataset_version": "5e7d746d49fa5e3e",
+  "dataset_version": "adfccf11cae27e5f",
   "last_checked": {
-    "newest": "2026-10-27T23:42:23Z",
-    "oldest": "2026-10-27T23:42:23Z"
+    "newest": "2026-10-28T23:06:27Z",
+    "oldest": "2026-10-28T23:06:27Z"
   },
   "more_available": 0,
   "provenance": {
@@ -41,7 +41,7 @@
               "source_id": "btwso"
             }
           ],
-          "validated_as_of": "2026-10-27T23:42:23Z"
+          "validated_as_of": "2026-10-28T23:06:27Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -73,7 +73,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the Apache-2.0 core; enterprise features excluded (src/bendsave/, src/binaries/query/ee_main.rs, src/meta/ee/, src/query/ee/): attach table, backup, data mask, data sharing, fail safe, materialized view, resource management, restore, row access policy, storage encryption, stream, table ref; core-only build: databend-meta-oss, databend-query-oss (the repository's default image, docker/Dockerfile, ships the full build)",
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-27T23:42:23Z",
+      "live_checked_at": "2026-10-28T23:06:27Z",
       "maintenance_status": "active",
       "name": "Databend",
       "note": {
@@ -110,7 +110,7 @@
         "runacapital",
         "btwso"
       ],
-      "stars": 9484
+      "stars": 9487
     },
     {
       "evidence": {
@@ -124,7 +124,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-27T23:42:23Z"
+          "validated_as_of": "2026-10-28T23:06:27Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -153,7 +153,7 @@
         "tag": "v26.10.2.103-stable"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-27T23:42:23Z",
+      "live_checked_at": "2026-10-28T23:06:27Z",
       "maintenance_status": "active",
       "name": "ClickHouse",
       "note": {
@@ -187,7 +187,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 50634
+      "stars": 50656
     }
   ],
   "saas": {

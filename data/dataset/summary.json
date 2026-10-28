@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-27T23:42:23Z",
+  "as_of": "2026-10-28T23:06:27Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -23,7 +23,7 @@
         "entries_with_saas_claim": 88,
         "harvested": true,
         "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
-        "pinned_commit": "5a61e8481957cab491cf2ac6314d2819ea40a1e4",
+        "pinned_commit": "b708b46be10c6701a887b0e0508d6defb9160ae5",
         "relationship_claims": 149,
         "unparseable_files": 0
       },
@@ -423,8 +423,8 @@
     "oss_distinct_products": 618,
     "oss_projects": 619,
     "preserve_served": {
-      "kept": 366,
-      "not_kept": 0,
+      "kept": 365,
+      "not_kept": 1,
       "served_before": 366
     },
     "relationships": 1565,
@@ -1025,7 +1025,6 @@
       "plausibility_review:Email-sending library; unrelated to serverless compute": 1,
       "plausibility_review:Email/portal ticketing helpdesk; lacks Tidio's live-chat widget core": 1,
       "plausibility_review:Embeddable AI chatbot UI component; not an AI assistant product": 8,
-      "plausibility_review:Embeddable key-value storage library; not a managed database service": 13,
       "plausibility_review:Embeddable workflow designer component": 1,
       "plausibility_review:Embeddable workflow designer component; not a product": 2,
       "plausibility_review:Embeddable workflow-designer UI component; a library, not a platform like Power Apps": 1,
@@ -2327,7 +2326,7 @@
       "plausibility_review:inference server; not a multi-provider LLM API router": 1,
       "plausibility_review:infrastructure-as-code tool; not a platform that runs applications": 1,
       "plausibility_review:intranet tunneling reverse proxy; not a privacy VPN service": 1,
-      "plausibility_review:job match not yet desk-reviewed": 4,
+      "plausibility_review:job match not yet desk-reviewed": 17,
       "plausibility_review:layered image editor; not background removal": 1,
       "plausibility_review:layered photo/image editor; not template-based graphic design": 1,
       "plausibility_review:list of newsletter RSS feeds": 1,
@@ -2413,8 +2412,8 @@
   "schema_version": "1.0.0",
   "verified": {
     "maintenance_status": {
-      "active": 1243,
-      "maintained": 126,
+      "active": 1238,
+      "maintained": 131,
       "stale": 101,
       "unverified": 16
     },
