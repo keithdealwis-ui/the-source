@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-28T23:06:27Z",
+  "as_of": "2026-10-30T01:50:49Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -23,7 +23,7 @@
         "entries_with_saas_claim": 88,
         "harvested": true,
         "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
-        "pinned_commit": "b708b46be10c6701a887b0e0508d6defb9160ae5",
+        "pinned_commit": "b43a9a6aeeb47242eb04cec1be937ebc58b0be6c",
         "relationship_claims": 149,
         "unparseable_files": 0
       },
@@ -124,13 +124,13 @@
   "lanes": {
     "oss_projects": {
       "licence_exception": 16,
-      "recommendable": 1344,
-      "rejected": 126
+      "recommendable": 1345,
+      "rejected": 125
     },
     "relationships": {
       "licence_exception": 31,
-      "recommendable": 1994,
-      "rejected": 3063
+      "recommendable": 1992,
+      "rejected": 3065
     }
   },
   "launch": {
@@ -419,16 +419,16 @@
       "zoho-mail",
       "zuora"
     ],
-    "catalogue_served_relationships": 1199,
+    "catalogue_served_relationships": 1197,
     "oss_distinct_products": 618,
     "oss_projects": 619,
     "preserve_served": {
-      "kept": 365,
-      "not_kept": 1,
-      "served_before": 366
+      "kept": 366,
+      "not_kept": 3,
+      "served_before": 369
     },
-    "relationships": 1565,
-    "relationships_corroborated_by_2plus_sources": 182,
+    "relationships": 1563,
+    "relationships_corroborated_by_2plus_sources": 183,
     "relationships_share_alike_only": 0,
     "saas_added_beyond_floor": 18,
     "saas_named_by_a_single_source": 120,
@@ -481,11 +481,11 @@
       "host_unverifiable": 3,
       "identity_unverified": 4,
       "licence_not_open": 30,
-      "not_a_replacement": 2863,
+      "not_a_replacement": 2866,
       "not_a_repository": 21,
       "not_found": 13,
       "saas_not_in_catalogue": 152,
-      "unmaintained": 71
+      "unmaintained": 70
     },
     "by_reason": {
       "eligibility:archived": 6,
@@ -498,7 +498,7 @@
       "eligibility:no_recognised_open_source_licence;stale_no_meaningful_activity_12_months;repository_identity_changed_since_listed": 1,
       "eligibility:repository_identity_changed_since_listed": 2,
       "eligibility:repository_not_found": 13,
-      "eligibility:stale_no_meaningful_activity_12_months": 71,
+      "eligibility:stale_no_meaningful_activity_12_months": 70,
       "normalise:repo_url_not_a_repository": 21,
       "normalise:saas_not_in_catalogue": 152,
       "plausibility_review:.NET API docs static site generator; not an interactive API developer hub like ReadMe": 1,
@@ -826,9 +826,7 @@
       "plausibility_review:Code samples for a DevOps book; not a publishing platform": 1,
       "plausibility_review:Code-first headless CMS; not a visual drag-and-drop page builder": 1,
       "plausibility_review:Coding-agent video/motion-graphics agent; not a generative video model platform like Runway": 1,
-      "plausibility_review:Collaborative docs/knowledge base; not a team Q&A product": 1,
       "plausibility_review:Collaborative file-sharing drive; not document capture, archiving and workflow like DocuWare": 1,
-      "plausibility_review:Collaborative online doc editor/knowledge base; not document capture and archiving like DocuWare": 1,
       "plausibility_review:Columnar time-series analytics engine; not a cloud data warehouse": 1,
       "plausibility_review:CometChat UI kit sample app; client for CometChat": 2,
       "plausibility_review:ComfyUI custom node (plugin); not workflow automation like Pipedream": 1,
@@ -1955,13 +1953,8 @@
       "plausibility_review:Self-hosted photo library and backup; not a photo editor": 1,
       "plausibility_review:Self-hosted time-series database; not this managed database service": 13,
       "plausibility_review:Self-hosted time-series observability database; not a managed DB service": 19,
-      "plausibility_review:Semantic annotation platform; not a team knowledge base": 2,
       "plausibility_review:Semantic data modelling library; not a transformation platform": 1,
       "plausibility_review:Semantic diff tool on top of git; not a source control platform": 4,
-      "plausibility_review:Semantic text annotation platform; a different kind of software from Coda": 1,
-      "plausibility_review:Semantic text annotation platform; different kind of software": 1,
-      "plausibility_review:Semantic text annotation platform; not a collaborative docs/database workspace like Notion": 1,
-      "plausibility_review:Semantic text annotation platform; not a documentation platform": 1,
       "plausibility_review:Server monitoring agent; not a backend-as-a-service": 1,
       "plausibility_review:Server relaying SMS via Android phones; not a programmable comms API platform like Twilio": 1,
       "plausibility_review:Serverless image hosting on Cloudflare; not a file sync and sharing platform": 2,
@@ -2272,7 +2265,6 @@
       "plausibility_review:client app syncing photos to third-party storage; no self-hosted service": 1,
       "plausibility_review:cloud-native application delivery platform; not low-code": 1,
       "plausibility_review:code review tool; not repository hosting": 2,
-      "plausibility_review:collaborative docs/knowledge base; not metadata-driven document management": 1,
       "plausibility_review:comic/manga translator; different kind of software": 1,
       "plausibility_review:command-line client for a commercial service; not a replacement product": 1,
       "plausibility_review:consumer client for Ace Data Cloud APIs; not a self-hosted generator": 1,
@@ -2326,7 +2318,7 @@
       "plausibility_review:inference server; not a multi-provider LLM API router": 1,
       "plausibility_review:infrastructure-as-code tool; not a platform that runs applications": 1,
       "plausibility_review:intranet tunneling reverse proxy; not a privacy VPN service": 1,
-      "plausibility_review:job match not yet desk-reviewed": 17,
+      "plausibility_review:job match not yet desk-reviewed": 29,
       "plausibility_review:layered image editor; not background removal": 1,
       "plausibility_review:layered photo/image editor; not template-based graphic design": 1,
       "plausibility_review:list of newsletter RSS feeds": 1,
@@ -2402,7 +2394,7 @@
       "plausibility_review:workbench front end for third-party image model APIs": 1,
       "plausibility_review:workflow engine programmed in code; not a no-code automation product": 1
     },
-    "total": 3178
+    "total": 3180
   },
   "review_queue": {
     "open": 9,
@@ -2412,16 +2404,16 @@
   "schema_version": "1.0.0",
   "verified": {
     "maintenance_status": {
-      "active": 1238,
-      "maintained": 131,
-      "stale": 101,
+      "active": 1240,
+      "maintained": 130,
+      "stale": 100,
       "unverified": 16
     },
-    "oss_recommendable": 1344,
-    "oss_rejected": 142,
+    "oss_recommendable": 1345,
+    "oss_rejected": 141,
     "relationships_flagged_licence_exception": 31,
-    "relationships_rejected": 3063,
-    "relationships_validated": 1994,
+    "relationships_rejected": 3065,
+    "relationships_validated": 1992,
     "saas_with_validated_alternatives": 488
   }
 }

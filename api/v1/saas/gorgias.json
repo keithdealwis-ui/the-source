@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "adfccf11cae27e5f",
+  "dataset_version": "d1809f519a554dc1",
   "last_checked": {
-    "newest": "2026-10-28T23:06:27Z",
-    "oldest": "2026-10-28T23:06:27Z"
+    "newest": "2026-10-30T01:50:49Z",
+    "oldest": "2026-10-30T01:50:49Z"
   },
   "more_available": 1,
   "provenance": {
@@ -34,7 +34,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-28T23:06:27Z"
+          "validated_as_of": "2026-10-30T01:50:49Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -69,7 +69,7 @@
         "tag": "v2.9.1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-28T23:06:27Z",
+      "live_checked_at": "2026-10-30T01:50:49Z",
       "maintenance_status": "active",
       "name": "libredesk",
       "note": {
@@ -103,7 +103,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 3092
+      "stars": 3100
     },
     {
       "evidence": {
@@ -117,7 +117,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-28T23:06:27Z"
+          "validated_as_of": "2026-10-30T01:50:49Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -147,7 +147,7 @@
       "last_meaningful_activity_at": "2026-10-16T13:56:35Z",
       "latest_release": null,
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-28T23:06:27Z",
+      "live_checked_at": "2026-10-30T01:50:49Z",
       "maintenance_status": "active",
       "name": "Zammad",
       "note": {
@@ -181,7 +181,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 6050
+      "stars": 6054
     },
     {
       "evidence": {
@@ -195,7 +195,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-28T23:06:27Z"
+          "validated_as_of": "2026-10-30T01:50:49Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -228,7 +228,7 @@
         "tag": "v4.9.9"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-28T23:06:27Z",
+      "live_checked_at": "2026-10-30T01:50:49Z",
       "maintenance_status": "active",
       "name": "bytedesk",
       "note": {
@@ -264,7 +264,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 514
+      "stars": 516
     },
     {
       "evidence": {
@@ -278,7 +278,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-28T23:06:27Z"
+          "validated_as_of": "2026-10-30T01:50:49Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -314,7 +314,7 @@
         "tag": "1.8.248"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-28T23:06:27Z",
+      "live_checked_at": "2026-10-30T01:50:49Z",
       "maintenance_status": "active",
       "name": "FreeScout",
       "note": {
@@ -348,7 +348,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 4620
+      "stars": 4623
     },
     {
       "evidence": {
@@ -362,24 +362,25 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-28T23:06:27Z"
+          "validated_as_of": "2026-10-30T01:50:49Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 68.8,
-            "ease_of_adoption": 79.3,
+            "ease_of_adoption": 80.0,
             "economic_advantage": 60.0,
             "feature_equivalence": 61.7,
             "integrations_extensibility": 50.0,
-            "migration_friction": 33.3,
+            "migration_friction": 66.7,
             "production_commercial_readiness": 60.0
           },
           "evidence_families": [
             "api",
             "cloud_option",
             "demo",
+            "import",
             "plugins",
             "quickstart",
             "self_host",
@@ -389,38 +390,36 @@
         }
       },
       "github_url": "https://github.com/frappe/helpdesk",
-      "last_meaningful_activity_at": "2026-10-20T21:16:50Z",
+      "last_meaningful_activity_at": "2026-10-29T16:39:27Z",
       "latest_release": {
-        "published_at": "2026-10-14T21:08:24Z",
-        "tag": "v1.31.0"
+        "published_at": "2026-10-29T16:39:27Z",
+        "tag": "v1.31.1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-28T23:06:27Z",
+      "live_checked_at": "2026-10-30T01:50:49Z",
       "maintenance_status": "active",
       "name": "helpdesk",
       "note": {
-        "gaps": [
-          "migration path"
-        ],
+        "gaps": [],
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
           "ease of adoption"
         ],
-        "text": "Strongest on core use-case coverage and ease of adoption; weakest on migration path."
+        "text": "Strongest on core use-case coverage and ease of adoption."
       },
       "oss_id": "github.com/frappe/helpdesk",
       "project_health": {
-        "band": "Exceptional",
+        "band": "Healthy",
         "confidence": 95.0,
-        "score": 85.9,
+        "score": 84.6,
         "trajectory": "Rising"
       },
       "rank": 5,
       "replacement_fit": {
         "confidence": 84.5,
-        "evaluated_at": "2026-10-20T23:06:47Z",
-        "score": 70.4,
+        "evaluated_at": "2026-10-30T01:50:49Z",
+        "score": 73.8,
         "score_version": "1.2.0"
       },
       "repo_url": "https://github.com/frappe/helpdesk",
@@ -431,7 +430,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 3451
+      "stars": 3456
     }
   ],
   "saas": {

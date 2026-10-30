@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-28T23:06:27Z",
+  "as_of": "2026-10-30T01:50:49Z",
   "checks": [
     {
       "criterion": 1,
@@ -53,11 +53,11 @@
         "host_unverifiable": 3,
         "identity_unverified": 4,
         "licence_not_open": 30,
-        "not_a_replacement": 2863,
+        "not_a_replacement": 2866,
         "not_a_repository": 21,
         "not_found": 13,
         "saas_not_in_catalogue": 152,
-        "unmaintained": 71
+        "unmaintained": 70
       },
       "ok": true
     },
@@ -209,7 +209,7 @@
       "failures": 0,
       "id": "activity.recommended_within_12_months",
       "kind": "assertion",
-      "observed": 1344,
+      "observed": 1345,
       "ok": true
     },
     {
@@ -219,7 +219,7 @@
       "failures": 0,
       "id": "activity.evidence_is_not_docs_only",
       "kind": "assertion",
-      "observed": 4975,
+      "observed": 4977,
       "ok": true
     },
     {
@@ -249,7 +249,7 @@
       "failures": 0,
       "id": "licence.recommended_have_recognised_licence",
       "kind": "assertion",
-      "observed": 1344,
+      "observed": 1345,
       "ok": true
     },
     {
@@ -305,13 +305,13 @@
       "observed": {
         "oss_projects": {
           "licence_exception": 16,
-          "recommendable": 1344,
-          "rejected": 126
+          "recommendable": 1345,
+          "rejected": 125
         },
         "relationships": {
           "licence_exception": 31,
-          "recommendable": 1994,
-          "rejected": 3063
+          "recommendable": 1992,
+          "rejected": 3065
         }
       },
       "ok": true
@@ -334,9 +334,9 @@
       "id": "maintenance.classification_matches_definition",
       "kind": "assertion",
       "observed": {
-        "active": 1238,
-        "maintained": 131,
-        "stale": 101,
+        "active": 1240,
+        "maintained": 130,
+        "stale": 100,
         "unverified": 16
       },
       "ok": true
@@ -368,7 +368,7 @@
       "failures": 0,
       "id": "strategy.every_rejection_is_recorded",
       "kind": "assertion",
-      "observed": 142,
+      "observed": 141,
       "ok": true
     },
     {
@@ -434,7 +434,7 @@
       "failures": 0,
       "id": "dedupe.one_repository_per_product_per_saas",
       "kind": "assertion",
-      "observed": 1565,
+      "observed": 1563,
       "ok": true
     },
     {
@@ -444,7 +444,7 @@
       "failures": 0,
       "id": "launch.only_validated_edges",
       "kind": "assertion",
-      "observed": 1565,
+      "observed": 1563,
       "ok": true
     },
     {
@@ -481,7 +481,7 @@
       "observed": {
         "oss_distinct_products": 618,
         "oss_projects": 619,
-        "relationships": 1565,
+        "relationships": 1563,
         "saas_products": 400
       },
       "ok": true
@@ -505,13 +505,13 @@
       "kind": "observation",
       "observed": {
         "examples": [
-          "github.com/nomic-ai/gpt4all (77352 stars: stale_no_meaningful_activity_12_months)",
-          "github.com/pocketbase/pocketbase (61626 stars: archived)",
-          "github.com/minio/minio (61300 stars: archived,stale_no_meaningful_activity_12_months)",
-          "github.com/maybe-finance/maybe (54211 stars: archived,stale_no_meaningful_activity_12_months)",
-          "github.com/laion-ai/open-assistant (37368 stars: stale_no_meaningful_activity_12_months)"
+          "github.com/nomic-ai/gpt4all (77348 stars: stale_no_meaningful_activity_12_months)",
+          "github.com/pocketbase/pocketbase (61625 stars: archived)",
+          "github.com/minio/minio (61297 stars: archived,stale_no_meaningful_activity_12_months)",
+          "github.com/maybe-finance/maybe (54209 stars: archived,stale_no_meaningful_activity_12_months)",
+          "github.com/laion-ai/open-assistant (37364 stars: stale_no_meaningful_activity_12_months)"
         ],
-        "launch_projects_under_500_stars": 91,
+        "launch_projects_under_500_stars": 90,
         "rejected_with_10k_plus_stars": 22
       }
     },
@@ -523,10 +523,10 @@
       "observed": {
         "entries_read": 3423,
         "oss_candidates": 1486,
-        "oss_recommendable": 1344,
-        "rejections_recorded": 3178,
+        "oss_recommendable": 1345,
+        "rejections_recorded": 3180,
         "relationship_claims_read": 5739,
-        "relationships_validated": 1994
+        "relationships_validated": 1992
       }
     }
   ],
