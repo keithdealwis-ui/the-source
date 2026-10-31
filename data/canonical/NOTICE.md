@@ -124,7 +124,7 @@ SOFTWARE.
 
 ## diegoleme/awesome-open-source-alternatives
 
-- Source: https://github.com/diegoleme/awesome-open-source-alternatives at commit 5f0e38843c50e3c3036f9e843e5617c0860fcb9f
+- Source: https://github.com/diegoleme/awesome-open-source-alternatives at commit 404431356e82cc44b035c9d7b83b676b56830a46
 - Licence: MIT
 - Attribution: diegoleme/awesome-open-source-alternatives, Copyright (c) 2020 Diego Leme, MIT License
 

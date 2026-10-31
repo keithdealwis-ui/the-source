@@ -3,17 +3,17 @@
   "canonical_schema": "the-source.canonical/1",
   "catalogue": {
     "entries": 500,
-    "none_yet": 100,
-    "ok": 251,
-    "partial": 149,
+    "none_yet": 99,
+    "ok": 253,
+    "partial": 148,
     "path": "catalogue.json"
   },
-  "data_as_of": "2026-10-30T01:50:49Z",
-  "dataset_version": "d1809f519a554dc1",
+  "data_as_of": "2026-10-31T00:40:37Z",
+  "dataset_version": "bb97f68f56e92664",
   "domains": "domains.json",
   "live_checked_at": {
-    "newest": "2026-10-30T01:50:49Z",
-    "oldest": "2026-10-30T01:50:49Z"
+    "newest": "2026-10-31T00:40:37Z",
+    "oldest": "2026-10-31T00:40:37Z"
   },
   "supported_saas": [
     {
@@ -506,7 +506,7 @@
       "compare_path": "/open-source/otter-ai-alternatives",
       "name": "Otter.ai",
       "path": "saas/otter-ai.json",
-      "recommendations": 4,
+      "recommendations": 5,
       "saas_id": "otter-ai",
       "slug": "otter-ai",
       "status": "ok"
@@ -773,13 +773,13 @@
       "status": "ok"
     },
     {
-      "compare_path": null,
+      "compare_path": "/open-source/quizlet-alternatives",
       "name": "Quizlet",
       "path": "saas/quizlet.json",
-      "recommendations": 2,
+      "recommendations": 3,
       "saas_id": "quizlet",
       "slug": "quizlet",
-      "status": "insufficient_recommendations"
+      "status": "ok"
     },
     {
       "compare_path": "/open-source/attio-alternatives",
@@ -1754,13 +1754,13 @@
       "status": "ok"
     },
     {
-      "compare_path": null,
+      "compare_path": "/open-source/cloudflare-tunnel-alternatives",
       "name": "Cloudflare Tunnel",
       "path": "saas/cloudflare-tunnel.json",
-      "recommendations": 2,
+      "recommendations": 3,
       "saas_id": "cloudflare-tunnel",
       "slug": "cloudflare-tunnel",
-      "status": "insufficient_recommendations"
+      "status": "ok"
     },
     {
       "compare_path": "/open-source/klaviyo-alternatives",
@@ -2891,7 +2891,7 @@
       "compare_path": "/open-source/resend-alternatives",
       "name": "Resend",
       "path": "saas/resend.json",
-      "recommendations": 4,
+      "recommendations": 5,
       "saas_id": "resend",
       "slug": "resend",
       "status": "ok"
@@ -3128,6 +3128,15 @@
       "recommendations": 1,
       "saas_id": "crazy-egg",
       "slug": "crazy-egg",
+      "status": "insufficient_recommendations"
+    },
+    {
+      "compare_path": null,
+      "name": "Apollo.io",
+      "path": "saas/apollo-io.json",
+      "recommendations": 2,
+      "saas_id": "apollo-io",
+      "slug": "apollo-io",
       "status": "insufficient_recommendations"
     },
     {

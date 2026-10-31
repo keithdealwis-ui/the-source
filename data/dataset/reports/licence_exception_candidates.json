@@ -317,6 +317,35 @@
     "detected": {
       "closest_standard_licences": [],
       "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "apply",
+        "commercial",
+        "competing",
+        "except",
+        "functional source",
+        "non commercial"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "ingestr",
+    "oss_id": "github.com/bruin-data/ingestr",
+    "reason": "licence text contains source-available or use-restricted terms: functional source, non commercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/bruin-data/ingestr",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
       "host_licence_name": null,
       "host_spdx": null,
       "licence_files": [],
@@ -362,6 +391,28 @@
     "detected": {
       "closest_standard_licences": [],
       "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": []
+    },
+    "issue_category": "unrecognised",
+    "maintenance": "active",
+    "name": "VoiceInk",
+    "oss_id": "github.com/beingpax/voiceink",
+    "reason": "licence text is present and matches no reference licence closely enough",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://github.com/Beingpax/VoiceInk",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
       "host_licence_name": null,
       "host_spdx": null,
       "licence_files": [],
@@ -387,6 +438,59 @@
     "detected": {
       "closest_standard_licences": [],
       "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "commercial",
+        "evaluation",
+        "non commercial",
+        "source available"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Tabox",
+    "oss_id": "github.com/gilgold/tabox",
+    "reason": "licence text contains source-available or use-restricted terms: non commercial, source available",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://github.com/gilgold/tabox",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "BSD-2-Clause"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "may not"
+      ]
+    },
+    "issue_category": "restricted",
+    "maintenance": "active",
+    "name": "Lobsters",
+    "oss_id": "github.com/lobsters/lobsters",
+    "reason": "licence text adds or removes terms: may not",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://github.com/lobsters/lobsters",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
       "host_licence_name": null,
       "host_spdx": null,
       "licence_files": [],
@@ -400,6 +504,40 @@
     "recommendation_eligible": false,
     "relationships_flagged": 0,
     "repo_url": "https://github.com/Nexedi/erp5",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "MIT"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "as follows",
+        "directories",
+        "directory",
+        "license defined in",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "proprietary",
+        "resides under",
+        "saas"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Stirling PDF",
+    "oss_id": "github.com/stirling-tools/stirling-pdf",
+    "reason": "licence text scopes or splits the licence: as follows, directories, directory, license defined in, portions of, proprietary, resides under",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://github.com/Stirling-Tools/Stirling-PDF",
     "review_status": "flagged_retained_not_reviewed_individually",
     "upstream_claims": []
   },

@@ -4,14 +4,14 @@
   "counts": {
     "by_audience": {
       "b2b": {
-        "none_yet": 63,
-        "ok": 178,
+        "none_yet": 62,
+        "ok": 179,
         "partial": 96
       },
       "b2c": {
         "none_yet": 23,
-        "ok": 29,
-        "partial": 19
+        "ok": 30,
+        "partial": 18
       },
       "both": {
         "none_yet": 14,
@@ -20,12 +20,12 @@
       }
     },
     "entries": 500,
-    "none_yet": 100,
-    "ok": 251,
-    "partial": 149,
-    "support_records": 400
+    "none_yet": 99,
+    "ok": 253,
+    "partial": 148,
+    "support_records": 401
   },
-  "dataset_version": "d1809f519a554dc1",
+  "dataset_version": "bb97f68f56e92664",
   "demand": {
     "status": "available",
     "telemetry": "no_product_dimension"
@@ -177,7 +177,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 5,
+        "outside_launch": 6,
         "share_alike_only": 0
       },
       "match": [
@@ -1361,7 +1361,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 1,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -1394,7 +1394,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 2,
         "share_alike_only": 0
       },
       "match": [
@@ -1504,11 +1504,11 @@
       "name": "Miro",
       "path": "saas/miro.json",
       "rank": 43,
-      "reason": "5 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 5,
+      "recommended": 6,
       "saas_id": "miro",
       "status": "ok"
     },
@@ -1856,11 +1856,11 @@
       "name": "Otter.ai",
       "path": "saas/otter-ai.json",
       "rank": 54,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 6,
       "saas_id": "otter-ai",
       "status": "ok"
     },
@@ -1988,11 +1988,11 @@
       "name": "WeTransfer",
       "path": "saas/wetransfer.json",
       "rank": 58,
-      "reason": "7 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 7,
+      "recommended": 8,
       "saas_id": "wetransfer",
       "status": "ok"
     },
@@ -2548,7 +2548,7 @@
       "domain": "keep.google.com",
       "evidence": {
         "awaiting": 0,
-        "corpus_pairings": 0,
+        "corpus_pairings": 1,
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
@@ -2841,7 +2841,7 @@
     {
       "audience": "b2c",
       "category": "Online courses",
-      "compare_path": null,
+      "compare_path": "/open-source/quizlet-alternatives",
       "domain": "quizlet.com",
       "evidence": {
         "awaiting": 0,
@@ -2860,13 +2860,13 @@
       "name": "Quizlet",
       "path": "saas/quizlet.json",
       "rank": 84,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "saas_id": "quizlet",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -6115,7 +6115,7 @@
         "awaiting": 0,
         "corpus_pairings": 1,
         "job_defined": true,
-        "licence_review": 0,
+        "licence_review": 1,
         "not_recommended": 0,
         "outside_launch": 0,
         "share_alike_only": 0
@@ -6128,11 +6128,11 @@
       "name": "Fivetran",
       "path": "saas/fivetran.json",
       "rank": 183,
-      "reason": "5 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 5,
+      "recommended": 6,
       "saas_id": "fivetran",
       "status": "ok"
     },
@@ -6634,7 +6634,7 @@
     {
       "audience": "b2b",
       "category": "Networking & VPN",
-      "compare_path": null,
+      "compare_path": "/open-source/cloudflare-tunnel-alternatives",
       "domain": "cloudflare.com",
       "evidence": {
         "awaiting": 0,
@@ -6642,7 +6642,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 2,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -6654,14 +6654,13 @@
       "name": "Cloudflare Tunnel",
       "path": "saas/cloudflare-tunnel.json",
       "rank": 199,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 2 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "outside_launch_selection"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "saas_id": "cloudflare-tunnel",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",
@@ -8730,8 +8729,8 @@
         "corpus_pairings": 0,
         "job_defined": true,
         "licence_review": 0,
-        "not_recommended": 0,
-        "outside_launch": 1,
+        "not_recommended": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -11835,11 +11834,11 @@
       "name": "Resend",
       "path": "saas/resend.json",
       "rank": 356,
-      "reason": "4 recommendations passed the full evaluation",
+      "reason": "5 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 4,
+      "recommended": 5,
       "saas_id": "resend",
       "status": "ok"
     },
@@ -13128,15 +13127,15 @@
         }
       ],
       "name": "Apollo.io",
-      "path": null,
+      "path": "saas/apollo-io.json",
       "rank": 395,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 2,
       "saas_id": "apollo-io",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2c",

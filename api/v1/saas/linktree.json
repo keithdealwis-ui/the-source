@@ -9,15 +9,16 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "d1809f519a554dc1",
+  "dataset_version": "bb97f68f56e92664",
   "last_checked": {
-    "newest": "2026-10-30T01:50:49Z",
-    "oldest": "2026-10-30T01:50:49Z"
+    "newest": "2026-10-31T00:40:37Z",
+    "oldest": "2026-10-31T00:40:37Z"
   },
   "more_available": 0,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "diegoleme",
       "job_match",
       "solvohq"
     ]
@@ -33,9 +34,14 @@
               "locator": "README.md#L762",
               "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
               "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L213",
+              "source_commit": "404431356e82cc44b035c9d7b83b676b56830a46",
+              "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -69,7 +75,7 @@
         "tag": "v4.8.8"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
       "name": "LinkStack",
       "note": {
@@ -101,9 +107,10 @@
         "self_hostable": true
       },
       "sources": [
-        "solvohq"
+        "solvohq",
+        "diegoleme"
       ],
-      "stars": 3930
+      "stars": 3932
     },
     {
       "evidence": {
@@ -115,9 +122,14 @@
               "locator": "README.md#L763",
               "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
               "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L214",
+              "source_commit": "404431356e82cc44b035c9d7b83b676b56830a46",
+              "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -148,7 +160,7 @@
         "tag": "v3.11.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "maintained",
       "name": "LittleLink",
       "note": {
@@ -182,9 +194,10 @@
         "self_hostable": true
       },
       "sources": [
-        "solvohq"
+        "solvohq",
+        "diegoleme"
       ],
-      "stars": 3114
+      "stars": 3116
     },
     {
       "evidence": {
@@ -198,7 +211,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -233,7 +246,7 @@
         "tag": "v1.5.1"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
       "name": "LinkBreeze",
       "note": {
@@ -267,7 +280,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 262
+      "stars": 263
     }
   ],
   "saas": {

@@ -9,15 +9,16 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "d1809f519a554dc1",
+  "dataset_version": "bb97f68f56e92664",
   "last_checked": {
-    "newest": "2026-10-30T01:50:49Z",
-    "oldest": "2026-10-30T01:50:49Z"
+    "newest": "2026-10-31T00:40:37Z",
+    "oldest": "2026-10-31T00:40:37Z"
   },
   "more_available": 2,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "diegoleme",
       "fossalt",
       "job_match"
     ]
@@ -35,7 +36,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -70,7 +71,7 @@
         "tag": "v1.9.2-beta.1023"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
       "name": "Posnic POS",
       "note": {
@@ -118,7 +119,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -152,7 +153,7 @@
         "tag": "v6.3.0"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
       "name": "NexoPOS",
       "note": {
@@ -186,21 +187,26 @@
       "sources": [
         "fossalt"
       ],
-      "stars": 1297
+      "stars": 1299
     },
     {
       "evidence": {
         "relationship": {
-          "corroborated": false,
+          "corroborated": true,
           "evidence_class": "listed",
           "provenance": [
+            {
+              "locator": "README.md#L286",
+              "source_commit": "404431356e82cc44b035c9d7b83b676b56830a46",
+              "source_id": "diegoleme"
+            },
             {
               "locator": "README.md#L111",
               "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -234,7 +240,7 @@
         "tag": "3.4.3"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
       "name": "Open Source POS",
       "note": {
@@ -269,9 +275,10 @@
         "self_hostable": true
       },
       "sources": [
+        "diegoleme",
         "fossalt"
       ],
-      "stars": 4468
+      "stars": 4469
     },
     {
       "evidence": {
@@ -285,7 +292,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -321,7 +328,7 @@
         "tag": "v2.1.183"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
       "name": "pos",
       "note": {
@@ -355,7 +362,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 63
+      "stars": 64
     },
     {
       "evidence": {
@@ -369,7 +376,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -400,7 +407,7 @@
         "tag": "1.6.1"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
       "name": "InfoShop",
       "note": {

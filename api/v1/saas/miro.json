@@ -3,23 +3,23 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 43,
-    "reason": "5 recommendations passed the full evaluation",
+    "reason": "6 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "d1809f519a554dc1",
+  "dataset_version": "bb97f68f56e92664",
   "last_checked": {
-    "newest": "2026-10-30T01:50:49Z",
-    "oldest": "2026-10-30T01:50:49Z"
+    "newest": "2026-10-31T00:40:37Z",
+    "oldest": "2026-10-31T00:40:37Z"
   },
-  "more_available": 0,
+  "more_available": 1,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "diegoleme",
       "emmraan",
-      "job_match",
       "opensaasdirectory",
       "solvohq"
     ]
@@ -37,7 +37,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -61,13 +61,13 @@
         }
       },
       "github_url": "https://github.com/jgraph/drawio",
-      "last_meaningful_activity_at": "2026-10-23T17:45:16Z",
+      "last_meaningful_activity_at": "2026-10-30T21:29:30Z",
       "latest_release": {
-        "published_at": "2026-10-23T17:45:16Z",
-        "tag": "v32.6.1"
+        "published_at": "2026-10-30T21:29:30Z",
+        "tag": "v32.6.9"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
       "name": "drawio (diagrams.net)",
       "note": {
@@ -83,13 +83,13 @@
       "project_health": {
         "band": "Healthy",
         "confidence": 96.6,
-        "score": 83.7,
+        "score": 82.7,
         "trajectory": "Rising"
       },
       "rank": 1,
       "replacement_fit": {
         "confidence": 84.5,
-        "evaluated_at": "2026-10-19T01:03:51Z",
+        "evaluated_at": "2026-10-31T00:40:37Z",
         "score": 87.7,
         "score_version": "1.2.0"
       },
@@ -101,7 +101,89 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 9064
+      "stars": 9093
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L220",
+              "source_commit": "404431356e82cc44b035c9d7b83b676b56830a46",
+              "source_id": "diegoleme"
+            }
+          ],
+          "validated_as_of": "2026-10-31T00:40:37Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/tiko-run/tiko",
+      "last_meaningful_activity_at": "2026-10-25T12:07:57Z",
+      "latest_release": {
+        "published_at": "2026-10-22T16:01:40Z",
+        "tag": "v2026.10.24"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-10-31T00:40:37Z",
+      "maintenance_status": "active",
+      "name": "tiko",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/tiko-run/tiko",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 89.2,
+        "score": 78.7,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-31T00:40:37Z",
+        "score": 76.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/tiko-run/tiko",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "diegoleme"
+      ],
+      "stars": 19
     },
     {
       "evidence": {
@@ -125,7 +207,7 @@
               "source_id": "emmraan"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -155,7 +237,7 @@
         "tag": "v0.18.1"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
       "name": "Excalidraw",
       "note": {
@@ -177,7 +259,7 @@
         "score": 82.2,
         "trajectory": "Stable"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "confidence": 95.0,
         "evaluated_at": "2026-09-29T18:28:27Z",
@@ -194,7 +276,7 @@
         "opensaasdirectory",
         "emmraan"
       ],
-      "stars": 134812
+      "stars": 134881
     },
     {
       "evidence": {
@@ -208,7 +290,7 @@
               "source_id": "emmraan"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -244,7 +326,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the MIT core; parts under AFFiNE Enterprise Edition License are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
       "name": "AFFiNE",
       "note": {
@@ -263,7 +345,7 @@
         "score": 91.5,
         "trajectory": "Declining"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "confidence": 86.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
@@ -278,7 +360,7 @@
       "sources": [
         "emmraan"
       ],
-      "stars": 73969
+      "stars": 74001
     },
     {
       "evidence": {
@@ -292,7 +374,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -326,7 +408,7 @@
       },
       "licence_disclosure": "source-available: licensed under tldraw license, which is not an OSI-approved open-source licence",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
       "name": "tldraw",
       "note": {
@@ -347,7 +429,7 @@
         "score": 81.6,
         "trajectory": "Rising"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
@@ -362,90 +444,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 51149
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/lovasoa/whitebophir",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 43.8,
-            "ease_of_adoption": 80.0,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 61.7,
-            "integrations_extensibility": 0.0,
-            "migration_friction": 33.3,
-            "production_commercial_readiness": 80.0
-          },
-          "evidence_families": [
-            "demo",
-            "import",
-            "multi_user",
-            "quickstart",
-            "self_host",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/lovasoa/whitebophir",
-      "last_meaningful_activity_at": "2026-10-29T12:13:33Z",
-      "latest_release": {
-        "published_at": "2026-10-29T12:13:33Z",
-        "tag": "v2.18.31"
-      },
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-30T01:50:49Z",
-      "maintenance_status": "active",
-      "name": "whitebophir",
-      "note": {
-        "gaps": [
-          "integrations and extensibility",
-          "migration path"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption; weakest on integrations and extensibility and migration path."
-      },
-      "oss_id": "github.com/lovasoa/whitebophir",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 92.1,
-        "score": 73.3,
-        "trajectory": "Rising"
-      },
-      "rank": 5,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 65.0,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/lovasoa/whitebophir",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 2676
+      "stars": 51163
     }
   ],
   "saas": {

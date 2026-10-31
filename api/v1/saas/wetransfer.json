@@ -3,21 +3,22 @@
   "catalogue": {
     "audience": "both",
     "rank": 58,
-    "reason": "7 recommendations passed the full evaluation",
+    "reason": "8 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "d1809f519a554dc1",
+  "dataset_version": "bb97f68f56e92664",
   "last_checked": {
-    "newest": "2026-10-30T01:50:49Z",
-    "oldest": "2026-10-30T01:50:49Z"
+    "newest": "2026-10-31T00:40:37Z",
+    "oldest": "2026-10-31T00:40:37Z"
   },
-  "more_available": 2,
+  "more_available": 3,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "diegoleme",
       "job_match",
       "solvohq"
     ]
@@ -35,7 +36,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -72,7 +73,7 @@
         "tag": "v2.8.0"
       },
       "licence_spdx": "GPL-2.0",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
       "name": "ProjectSend",
       "note": {
@@ -106,7 +107,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 2037
+      "stars": 2038
     },
     {
       "evidence": {
@@ -120,7 +121,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -147,7 +148,7 @@
         "tag": "v2.7.1"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
       "name": "OnionShare",
       "note": {
@@ -183,7 +184,87 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 7196
+      "stars": 7198
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L304",
+              "source_commit": "404431356e82cc44b035c9d7b83b676b56830a46",
+              "source_id": "diegoleme"
+            }
+          ],
+          "validated_as_of": "2026-10-31T00:40:37Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 57.6,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/FileShot/FileShotZKE",
+      "last_meaningful_activity_at": "2026-05-09T23:28:48Z",
+      "latest_release": {
+        "published_at": "2026-03-07T20:34:56Z",
+        "tag": "v2026.03"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-31T00:40:37Z",
+      "maintenance_status": "maintained",
+      "name": "FileShot",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage"
+        ],
+        "text": "Strongest on core use-case coverage."
+      },
+      "oss_id": "github.com/fileshot/fileshotzke",
+      "project_health": {
+        "band": "Caution",
+        "confidence": 87.6,
+        "score": 43.8,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-31T00:40:37Z",
+        "score": 67.6,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/FileShot/FileShotZKE",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "diegoleme"
+      ],
+      "stars": 33
     },
     {
       "evidence": {
@@ -197,7 +278,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -230,7 +311,7 @@
         "tag": "v2.1.0"
       },
       "licence_spdx": "BSD-2-Clause",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
       "name": "pingvin-share-x",
       "note": {
@@ -249,7 +330,7 @@
         "score": 85.6,
         "trajectory": "Rising"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "confidence": 86.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
@@ -264,7 +345,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 546
+      "stars": 548
     },
     {
       "evidence": {
@@ -278,7 +359,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -311,7 +392,7 @@
         "tag": "v2.0.2"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
       "name": "quickdrop",
       "note": {
@@ -330,7 +411,7 @@
         "score": 84.0,
         "trajectory": "Rising"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-20T23:06:47Z",
@@ -346,87 +427,6 @@
         "job_match"
       ],
       "stars": 432
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/dutchcoders/transfer.sh",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 50.0,
-            "ease_of_adoption": 60.0,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 73.3,
-            "integrations_extensibility": 50.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 100.0
-          },
-          "evidence_families": [
-            "api",
-            "import",
-            "multi_user",
-            "quickstart",
-            "self_host",
-            "sso",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/dutchcoders/transfer.sh",
-      "last_meaningful_activity_at": "2026-09-28T04:54:35Z",
-      "latest_release": {
-        "published_at": "2023-12-04T05:58:41Z",
-        "tag": "v1.6.1"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-30T01:50:49Z",
-      "maintenance_status": "active",
-      "name": "transfer.sh",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "production readiness"
-        ],
-        "text": "Strongest on core use-case coverage and production readiness."
-      },
-      "oss_id": "github.com/dutchcoders/transfer.sh",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 96.6,
-        "score": 82.0,
-        "trajectory": "Rising"
-      },
-      "rank": 5,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 75.7,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/dutchcoders/transfer.sh",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 15905
     }
   ],
   "saas": {

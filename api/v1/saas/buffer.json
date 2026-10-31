@@ -9,15 +9,16 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "d1809f519a554dc1",
+  "dataset_version": "bb97f68f56e92664",
   "last_checked": {
-    "newest": "2026-10-30T01:50:49Z",
-    "oldest": "2026-10-30T01:50:49Z"
+    "newest": "2026-10-31T00:40:37Z",
+    "oldest": "2026-10-31T00:40:37Z"
   },
   "more_available": 1,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "diegoleme",
       "fossalt",
       "job_match",
       "opensaasdirectory",
@@ -29,16 +30,21 @@
     {
       "evidence": {
         "relationship": {
-          "corroborated": false,
+          "corroborated": true,
           "evidence_class": "listed",
           "provenance": [
+            {
+              "locator": "README.md#L111",
+              "source_commit": "404431356e82cc44b035c9d7b83b676b56830a46",
+              "source_id": "diegoleme"
+            },
             {
               "locator": "README.md#L101",
               "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -69,13 +75,13 @@
         }
       },
       "github_url": "https://github.com/getopenpost/openpost",
-      "last_meaningful_activity_at": "2026-10-29T23:47:33Z",
+      "last_meaningful_activity_at": "2026-10-30T17:24:06Z",
       "latest_release": {
-        "published_at": "2026-10-29T20:08:46Z",
-        "tag": "v7.34.2"
+        "published_at": "2026-10-30T17:24:06Z",
+        "tag": "v7.35.4"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
       "name": "OpenPost",
       "note": {
@@ -91,13 +97,13 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 93.7,
-        "score": 86.8,
+        "score": 86.4,
         "trajectory": "Insufficient history"
       },
       "rank": 1,
       "replacement_fit": {
-        "confidence": 86.5,
-        "evaluated_at": "2026-10-30T01:50:49Z",
+        "confidence": 92.5,
+        "evaluated_at": "2026-10-31T00:40:37Z",
         "score": 94.9,
         "score_version": "1.2.0"
       },
@@ -107,9 +113,10 @@
         "self_hostable": true
       },
       "sources": [
+        "diegoleme",
         "fossalt"
       ],
-      "stars": 836
+      "stars": 840
     },
     {
       "evidence": {
@@ -133,7 +140,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -170,7 +177,7 @@
         "tag": "v2.25.3"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
       "name": "Postiz",
       "note": {
@@ -206,7 +213,7 @@
         "runacapital",
         "opensaasdirectory"
       ],
-      "stars": 40122
+      "stars": 40238
     },
     {
       "evidence": {
@@ -220,7 +227,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -252,7 +259,7 @@
         "tag": "2.6.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "maintained",
       "name": "Mixpost",
       "note": {
@@ -286,7 +293,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 3885
+      "stars": 3892
     },
     {
       "evidence": {
@@ -300,7 +307,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -335,7 +342,7 @@
       "last_meaningful_activity_at": "2026-10-17T17:20:10Z",
       "latest_release": null,
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
       "name": "brightbean-studio",
       "note": {
@@ -369,7 +376,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 2595
+      "stars": 2597
     },
     {
       "evidence": {
@@ -378,29 +385,29 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/astablackclove/posthive",
+              "locator": "data/job_match/ledger.json#github.com/cogsend/cogsend",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-30T01:50:49Z"
+          "validated_as_of": "2026-10-31T00:40:37Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
           "dimensions": {
             "core_use_case_coverage": 100.0,
-            "deployment_ownership": 43.8,
-            "ease_of_adoption": 57.3,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 85.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 61.7,
             "integrations_extensibility": 75.0,
             "migration_friction": 66.7,
             "production_commercial_readiness": 80.0
           },
           "evidence_families": [
             "api",
+            "data_ownership",
             "import",
-            "multi_user",
             "plugins",
             "quickstart",
             "self_host",
@@ -410,40 +417,40 @@
           "scoring_path": "single_project"
         }
       },
-      "github_url": "https://github.com/AstaBlackClove/posthive",
-      "last_meaningful_activity_at": "2026-10-25T06:15:26Z",
+      "github_url": "https://github.com/cogsend/cogsend",
+      "last_meaningful_activity_at": "2026-10-30T20:26:26Z",
       "latest_release": {
-        "published_at": "2026-10-25T06:15:26Z",
-        "tag": "v0.10.0"
+        "published_at": "2026-10-30T20:26:26Z",
+        "tag": "v1.22.0"
       },
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-10-30T01:50:49Z",
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-10-31T00:40:37Z",
       "maintenance_status": "active",
-      "name": "posthive",
+      "name": "cogsend",
       "note": {
         "gaps": [],
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
-          "feature parity"
+          "cost advantage"
         ],
-        "text": "Strongest on core use-case coverage and feature parity."
+        "text": "Strongest on core use-case coverage and cost advantage."
       },
-      "oss_id": "github.com/astablackclove/posthive",
+      "oss_id": "github.com/cogsend/cogsend",
       "project_health": {
-        "band": "Developing",
-        "confidence": 87.6,
-        "score": 67.6,
+        "band": "Healthy",
+        "confidence": 92.9,
+        "score": 80.9,
         "trajectory": "Insufficient history"
       },
       "rank": 5,
       "replacement_fit": {
         "confidence": 84.5,
-        "evaluated_at": "2026-10-26T00:06:19Z",
-        "score": 75.9,
+        "evaluated_at": "2026-10-31T00:40:37Z",
+        "score": 76.9,
         "score_version": "1.2.0"
       },
-      "repo_url": "https://github.com/AstaBlackClove/posthive",
+      "repo_url": "https://github.com/cogsend/cogsend",
       "self_hosting": {
         "basis": "self-hosting documented in the project's README",
         "self_hostable": true
@@ -451,7 +458,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 22
+      "stars": 255
     }
   ],
   "saas": {
