@@ -188,3 +188,42 @@ than 2% of the corpus, commits nothing, opens or comments on a `corpus-refresh-f
 and is retried the next day; the MCP server keeps serving the previous layer and reports it
 stale after 10 days. Run one by hand with *Actions → Discovery corpus refresh → Run workflow*.
 See [`CORPUS.md`](CORPUS.md).
+
+## Human review digest (KEI-783)
+
+The daily cycle commits validated data straight to main; nobody has to approve it. Once a week
+`.github/workflows/review-digest.yml` (Mondays 06:17 UTC, or *Actions → Weekly review digest →
+Run workflow* with a window length) turns what those cycles committed into a **pull request for
+human review**, so a person sees the changes that matter without researching them:
+
+```
+python -m source_pipeline review-digest [--since-days 7] [--to REV] [--out reviews]
+```
+
+It compares two committed versions of the canonical dataset from git alone: the end is `--to`
+(default `HEAD`) and the start is the last commit that changed `data/canonical/MANIFEST.json` at
+least `--since-days` before the end's commit time (the first canonical version if the history is
+shorter). No wall clock and no network, so the same history gives the same digest. It writes
+`reviews/digest-YYYY-Www.md` (the ISO week of the end commit) and a JSON twin listing only:
+
+- recommendations that appeared, and those that went away with the reason (relationship
+  withdrawn; project archived, stale, off-licence or probably renamed; no longer publishable);
+- relationships scored for the first time but not recommended, and projects newly Health-scored;
+- canonical projects that dropped out, with the dataset's own reason;
+- Replacement Fit moves of 10 points or more on recommendations that stayed;
+- the largest 7-day momentum movers (`surging` and `declining`, 100 stars or more, from
+  `data/momentum/`);
+- intake acceptances (new `data/intake/outcomes/` with outcome `accepted`), and the window's corpus
+  admissions and any cycle that did not succeed (from `runs/`);
+- verdicts Keith recorded (`data/verdicts/`).
+
+Each list is capped (the caps and thresholds are in the JSON); the counts are always complete.
+The workflow then commits the two files to the branch `review/YYYY-Www` and opens a pull request
+titled *Review digest YYYY-Www* whose body is the digest. It is idempotent: a re-run in the same
+week updates that branch and pull request, or does nothing if the digest is unchanged; with no
+review items it opens nothing. The `review/*` branches belong to the workflow. Merging the pull
+request keeps the digest on record in `reviews/`; closing it is fine too. The dataset is
+already live either way: the digest proposes review, never data. Pull requests opened with
+`GITHUB_TOKEN` need the repository setting *Allow GitHub Actions to create and approve pull
+requests*, and do not trigger other workflows (CI), which is harmless here since a digest adds
+only `reviews/` files.
