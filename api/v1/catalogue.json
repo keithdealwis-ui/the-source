@@ -25,7 +25,7 @@
     "partial": 148,
     "support_records": 401
   },
-  "dataset_version": "bb97f68f56e92664",
+  "dataset_version": "39088fda55f7fff0",
   "demand": {
     "status": "available",
     "telemetry": "no_product_dimension"
@@ -75,7 +75,7 @@
         "job_defined": true,
         "licence_review": 1,
         "not_recommended": 0,
-        "outside_launch": 7,
+        "outside_launch": 6,
         "share_alike_only": 0
       },
       "match": [
@@ -805,7 +805,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 3,
+        "outside_launch": 2,
         "share_alike_only": 0
       },
       "match": [
@@ -1974,7 +1974,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -2183,7 +2183,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -4335,7 +4335,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -6447,7 +6447,7 @@
         "job_defined": true,
         "licence_review": 1,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -6461,10 +6461,9 @@
       "name": "Hotjar",
       "path": "saas/hotjar.json",
       "rank": 193,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision; 1 candidate relationships are waiting on a licence decision",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 candidate relationships are waiting on a licence decision",
       "reasons": [
         "fewer_than_minimum",
-        "outside_launch_selection",
         "licence_review"
       ],
       "recommended": 2,
@@ -7255,7 +7254,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -7269,10 +7268,9 @@
       "name": "Motion",
       "path": "saas/motion.json",
       "rank": 218,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "outside_launch_selection"
+        "fewer_than_minimum"
       ],
       "recommended": 1,
       "saas_id": "motion",
@@ -12156,7 +12154,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -14471,7 +14469,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -14485,9 +14483,9 @@
       "name": "Optimizely",
       "path": null,
       "rank": 436,
-      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "no open-source alternative has been found with relationship evidence yet",
       "reasons": [
-        "outside_launch_selection"
+        "no_relationship_evidence"
       ],
       "recommended": 0,
       "saas_id": "optimizely",
@@ -15011,7 +15009,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 1,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -15025,10 +15023,9 @@
       "name": "Appian",
       "path": "saas/appian.json",
       "rank": 452,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum",
-        "outside_launch_selection"
+        "fewer_than_minimum"
       ],
       "recommended": 1,
       "saas_id": "appian",

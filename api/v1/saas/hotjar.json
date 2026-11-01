@@ -3,18 +3,17 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 193,
-    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision; 1 candidate relationships are waiting on a licence decision",
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 candidate relationships are waiting on a licence decision",
     "reasons": [
       "fewer_than_minimum",
-      "outside_launch_selection",
       "licence_review"
     ],
     "status": "partial"
   },
-  "dataset_version": "bb97f68f56e92664",
+  "dataset_version": "39088fda55f7fff0",
   "last_checked": {
-    "newest": "2026-10-31T00:40:37Z",
-    "oldest": "2026-10-31T00:40:37Z"
+    "newest": "2026-11-01T02:05:53Z",
+    "oldest": "2026-11-01T02:05:53Z"
   },
   "more_available": 0,
   "provenance": {
@@ -37,7 +36,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-10-31T00:40:37Z"
+          "validated_as_of": "2026-11-01T02:05:53Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -75,7 +74,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the AGPL-3.0 core; parts under OpenReplay EE licence are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-10-31T00:40:37Z",
+      "live_checked_at": "2026-11-01T02:05:53Z",
       "maintenance_status": "active",
       "name": "OpenReplay",
       "note": {
@@ -109,7 +108,7 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 13080
+      "stars": 13083
     },
     {
       "evidence": {
@@ -123,7 +122,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-10-31T00:40:37Z"
+          "validated_as_of": "2026-11-01T02:05:53Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -158,7 +157,7 @@
         "tag": "v1.0.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-10-31T00:40:37Z",
+      "live_checked_at": "2026-11-01T02:05:53Z",
       "maintenance_status": "active",
       "name": "talivia",
       "note": {
