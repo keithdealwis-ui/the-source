@@ -161,6 +161,11 @@ def test_intake_report_follows_the_funnel_of_the_live_run():
     assert [r["count"] for r in reasons] == sorted((r["count"] for r in reasons), reverse=True)
     assert rep["manual_intake"]["submissions"] == len(list((ROOT / "data" / "intake" / "outcomes").glob("*.json")))
     committed = common.read_json(RUNS / "reports" / f"{rec['run_id']}.intake.json")
+    # The committed report names the version that run produced; a canonical change made outside a cycle (KEI-783
+    # regenerated the canonical files) moves the live version until the next cycle, and nothing else.
+    produced = (rec.get("canonical") or {}).get("dataset_version_after")
+    assert committed["dataset_version"] == produced
+    committed = json.loads(json.dumps(committed).replace(f'"{produced}"', f'"{manifest["dataset_version"]}"'))
     assert {k: v for k, v in committed.items() if k != "change_from_previous"} == rep
 
 
