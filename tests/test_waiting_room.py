@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import shutil
+import socket
 import subprocess
 import threading
 import urllib.error
@@ -305,8 +306,9 @@ def test_audit_log_never_holds_tokens_or_notes(env):
 def server(env):
     try:
         httpd = ThreadingHTTPServer(("127.0.0.1", 0), H.make_handler(env["store"], env["corpus"]))
-    except OSError as exc:  # pragma: no cover - sandboxes without loopback
-        pytest.skip(f"no loopback: {exc}")
+        socket.create_connection(httpd.server_address, timeout=2).close()
+    except OSError as exc:  # pragma: no cover - sandboxes whose loopback is down (the Alpha verifier netns)
+        pytest.skip(f"no working loopback: {exc}")
     t = threading.Thread(target=httpd.serve_forever, daemon=True)
     t.start()
     yield f"http://127.0.0.1:{httpd.server_address[1]}"
