@@ -1,0 +1,73 @@
+# The waiting room's daily consumer (KEI-932, docs/WAITING-ROOM.md).
+#
+# Fetches the batch the waiting room sealed today, verifies its OpenSSH signature against the
+# committed public key (config/waiting_room_allowed_signers), and runs every repository in it
+# through the existing intake assessment, exactly as the Intake workflow does for one URL. It
+# records only intake files (outcomes, ledger admissions, a batch receipt), which the daily
+# cycle never writes, and the cycle promotes accepted repositories into the canonical dataset.
+#
+# Scheduled at 22:15 UTC (02:15 Asia/Dubai): after the waiting room seals at 21:45 UTC and
+# before the 03:00 Dubai cycle. No secret is involved: the batch is public and signed, and the
+# job pushes with the workflow's own token.
+name: Waiting room
+
+on:
+  schedule:
+    - cron: "15 22 * * *"
+  workflow_dispatch:
+    inputs:
+      batch_url:
+        description: "Batch to consume (defaults to the live waiting room)"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: waiting-room
+  cancel-in-progress: false
+
+jobs:
+  consume:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Consume the latest sealed batch
+        env:
+          GITHUB_TOKEN: ${{ secrets.SOURCE_GITHUB_TOKEN || github.token }}
+          BATCH_URL: ${{ inputs.batch_url || 'https://source-mcp.de-alwis.com/intake/v1/batches/latest' }}
+        run: |
+          python -m source_pipeline waiting-room consume --url "$BATCH_URL" \
+            --signers config/waiting_room_allowed_signers --receipt-dir data/intake/waiting_room > consume.json
+          cat consume.json
+
+      - name: Record the outcomes
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          STATUS=$(python -c "import json;print(json.load(open('consume.json'))['status'])")
+          {
+            echo "## Waiting room: $STATUS"
+            echo '```json'
+            cat consume.json
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          [ "$STATUS" = processed ] || exit 0
+          BATCH=$(python -c "import json;print(json.load(open('consume.json'))['batch_id'])")
+          git config user.name "the-source-intake"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- data/intake
+          git commit -m "intake: waiting room $BATCH" || echo "nothing new to record"
+          git checkout -- . && git clean -fdq -- data   # records only intake files
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin "$BRANCH" && git push origin "HEAD:$BRANCH" && break
+            sleep $((i * 5))
+          done
+          git fetch origin "$BRANCH" && git merge-base --is-ancestor HEAD "origin/$BRANCH" || { echo "push failed"; exit 1; }

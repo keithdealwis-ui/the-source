@@ -52,6 +52,7 @@
     python -m source_pipeline research             advance upstream pins where the licence is unchanged
     python -m source_pipeline intake-assess --url URL --request-id ID [--saas-hint ID] [--submitted-by WHO]
     python -m source_pipeline intake-status --request-id ID
+    python -m source_pipeline waiting-room ...               KEI-932 shared producer intake (docs/WAITING-ROOM.md)
     python -m source_pipeline cycle --trigger schedule|manual   the daily intelligence cycle (KEI-848)
     python -m source_pipeline cycle-due            is a scheduled cycle due now, and why
     python -m source_pipeline runs-latest [--runs-dir DIR]   the newest runs/*.json cycle summary
@@ -275,6 +276,10 @@ def main(argv=None) -> int:
         from . import mcp_server
 
         return mcp_server.main(argv[1:])
+    if argv[:1] == ["waiting-room"]:
+        from . import waiting_room
+
+        return waiting_room.main(argv[1:])
     if argv[:1] == ["mcp-http"]:
         from . import mcp_http
 

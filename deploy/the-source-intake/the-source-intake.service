@@ -1,0 +1,33 @@
+[Unit]
+Description=The Source waiting room: authenticated producer intake (KEI-932)
+After=network-online.target
+
+[Service]
+User=the-source-intake
+Group=the-source-intake
+WorkingDirectory=/opt/the-source-intake/app
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=THE_SOURCE_ROOT=/var/lib/the-source-intake/repo
+ExecStart=/usr/bin/python3 -s -m source_pipeline waiting-room serve --state /var/lib/the-source-intake/state --corpus-root /var/lib/the-source-intake/repo --host 127.0.0.1 --port 8852
+Restart=on-failure
+RestartSec=5
+StateDirectory=the-source-intake
+StateDirectoryMode=0750
+UMask=0027
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryMax=256M
+TasksMax=32
+ReadOnlyPaths=/opt/the-source-intake /var/lib/the-source-intake/repo
+
+[Install]
+WantedBy=multi-user.target

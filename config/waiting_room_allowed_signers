@@ -1,0 +1,3 @@
+# Public key the Waiting room workflow verifies daily batches against (KEI-932, docs/WAITING-ROOM.md).
+# The private half is root-owned on the waiting-room host and handed only to the seal unit.
+waiting-room@the-source namespaces="the-source-waiting-room" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMvwr8E1X/jZQ2YCPl4Q4olQN3G2xQTeK52IMKiFfSma waiting-room@the-source

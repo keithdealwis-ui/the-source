@@ -1,0 +1,256 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "The Source waiting room",
+    "version": "1.0.0",
+    "description": "Authenticated intake for repositories found by approved producers (GitWatch/ChatGPT, Community Radar adapters, and others). A submission is a request for assessment by The Source's own pipeline, never a recommendation, endorsement or trending claim. See docs/WAITING-ROOM.md in github.com/keithdealwis-ui/the-source."
+  },
+  "servers": [
+    {
+      "url": "https://source-mcp.de-alwis.com"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "producer": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "A per-producer credential (swr_...)"
+      }
+    },
+    "schemas": {
+      "Submission": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "contract",
+          "repo_url",
+          "idempotency_key",
+          "source"
+        ],
+        "properties": {
+          "contract": {
+            "type": "string",
+            "const": "source-submission/1"
+          },
+          "repo_url": {
+            "type": "string",
+            "maxLength": 2048,
+            "description": "Repository URL on github.com, gitlab.com or codeberg.org"
+          },
+          "idempotency_key": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9._-]{6,80}$",
+            "description": "Chosen by the producer. Resending the same key and payload returns the recorded submission; the same key with a different payload is refused (409)."
+          },
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "provider",
+              "observed_at"
+            ],
+            "properties": {
+              "provider": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]{1,39}$",
+                "description": "Where the producer saw the repository, e.g. chatgpt, youtube, x, bluesky, keith"
+              },
+              "evidence_url": {
+                "type": "string",
+                "maxLength": 2048,
+                "description": "Optional URL of the post, video or conversation that mentioned it"
+              },
+              "observed_at": {
+                "type": "string",
+                "format": "date-time",
+                "description": "When it was observed (ISO 8601 with timezone)"
+              }
+            }
+          },
+          "provenance": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "note": {
+                "type": "string",
+                "maxLength": 500,
+                "description": "Private note; never published"
+              },
+              "on_behalf_of": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]{1,39}$"
+              }
+            }
+          },
+          "candidate": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "saas_hint": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]{0,79}$",
+                "description": "Catalogue id of the SaaS product it may replace (advisory only)"
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 300
+              },
+              "description": {
+                "type": "string",
+                "maxLength": 300
+              }
+            }
+          }
+        }
+      },
+      "Readback": {
+        "type": "object",
+        "description": "A submission and its repository's standing. repository.state is one of received, queued, accepted, canonical, rejected, held, already_known, failed_retry, dead_letter.",
+        "additionalProperties": true
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/intake/v1/submissions": {
+      "post": {
+        "operationId": "submitRepository",
+        "summary": "Submit a repository to The Source's waiting room",
+        "description": "Validates the submission, canonicalises the repository, deduplicates it across producers and against the corpus, and answers immediately with what The Source already knows. The repository is assessed in the next daily batch.",
+        "security": [
+          {
+            "producer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Submission"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Recorded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Readback"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Idempotent replay of a recorded submission",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Readback"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid; recorded with reason codes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Readback"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated"
+          },
+          "409": {
+            "description": "Idempotency conflict"
+          },
+          "413": {
+            "description": "Body too large"
+          },
+          "429": {
+            "description": "Rate limited"
+          }
+        }
+      }
+    },
+    "/intake/v1/submissions/{submission_id}": {
+      "get": {
+        "operationId": "getSubmission",
+        "summary": "Read back one of your submissions and its repository's current state",
+        "security": [
+          {
+            "producer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "submission_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^sub-[0-9a-f]{16}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The submission",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Readback"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours"
+          }
+        }
+      }
+    },
+    "/intake/v1/batches/latest": {
+      "get": {
+        "operationId": "getLatestBatch",
+        "summary": "The latest signed daily batch (public)",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Batch with its OpenSSH signature"
+          },
+          "404": {
+            "description": "No batch sealed yet"
+          }
+        }
+      }
+    },
+    "/intake/v1/healthz": {
+      "get": {
+        "operationId": "health",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    }
+  }
+}

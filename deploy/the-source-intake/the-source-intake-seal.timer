@@ -1,0 +1,9 @@
+[Unit]
+Description=Daily waiting-room batch, 21:45 UTC, before the Waiting room workflow at 22:15 UTC (KEI-932)
+
+[Timer]
+OnCalendar=*-*-* 21:45:00 UTC
+Persistent=true
+
+[Install]
+WantedBy=timers.target
