@@ -47,7 +47,9 @@ dataset. Clients can key caches on it.
     "replacement_fit": {"scoring_path": "full_lane", "core_gate": "passed",
                         "evidence_families": ["self_host", "api"], "dimensions": {"core_use_case_coverage": 100.0}}
   },
-  "live_checked_at": "2026-09-27T05:08:30Z"
+  "live_checked_at": "2026-09-27T05:08:30Z",
+  "keith_verdict": null,
+  "endorsement": {"keith_tested": false, "keith_endorsed": false, "editorial_recommendation": false}
 }
 ```
 
@@ -59,6 +61,14 @@ dataset. Clients can key caches on it.
   "no evidence found", not "not self-hostable".
 - `live_checked_at` is when the repository host was last asked. A client should show it,
   and may show a staleness hint if it is more than about 14 days old.
+- `keith_verdict` (KEI-783) is Keith's own verdict on this project for this product, or on the
+  project in general (`saas_id: null`): `verdict` (`recommended`, `conditional`,
+  `not_recommended`), `keith_tested`, `tested_at`, `notes`, `episode_url`, `recorded_by: "keith"`,
+  `recorded_at`. `null` when he has recorded none, which is every row today. It is human, never a
+  score: a client must show it apart from Replacement Fit and Project Health and label it as
+  Keith's. `endorsement` is derived from it alone (`keith_endorsed` means the verdict is
+  `recommended`). Older copies carry neither field; read them as `null` and all-false. See
+  `docs/SCORING.md`, Machine scores and Keith's verdicts.
 
 ## Ordering and determinism
 

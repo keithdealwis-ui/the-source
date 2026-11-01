@@ -15,7 +15,7 @@ from pathlib import Path
 
 import jsonschema
 
-from . import common, score_build
+from . import common, score_build, verdicts
 from .score_build import GRAPH, SCORE
 
 SCHEMA = common.SCHEMA / "the-source.score.schema.json"
@@ -353,12 +353,16 @@ def run() -> dict:
            "labelled": sum(1 for r in records if r["presentation_label"] == hl["label"])})
 
     # ---------------- AC6 never presented as Keith-tested / endorsed
-    end_bad = [r["project"] for r in records if r["endorsement"]["keith_tested"] or r["endorsement"]["keith_endorsed"]
-               or r["endorsement"]["editorial_recommendation"]]
+    # A flag may be true only where Keith's own verdict layer (data/verdicts/, KEI-783) says so; never from a score.
+    v_idx = verdicts.index(verdicts.load())
+    end_bad = [r["project"] for r in records if r["endorsement"]["editorial_recommendation"]
+               or {k: r["endorsement"][k] for k in ("keith_tested", "keith_endorsed")}
+               != {k: v for k, v in verdicts.endorsement(verdicts.for_project(v_idx, r["canonical"])).items()
+                   if k in ("keith_tested", "keith_endorsed")}]
     hits = []
     for name in ("records.jsonl", "project_health.jsonl", "replacement_fit.jsonl"):
         for line in open(SCORE / name, encoding="utf-8"):
-            body = line.replace(cfg["endorsement"]["statement"], "")
+            body = line.replace(cfg["endorsement"]["statement"], "").replace(verdicts.STATEMENT_WITH_VERDICT, "")
             m = FORBIDDEN.search(body)
             if m:
                 hits.append((name, m.group(0)))

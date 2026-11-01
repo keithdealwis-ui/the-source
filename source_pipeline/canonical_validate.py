@@ -98,6 +98,28 @@ def _catalogue_checks(root, check, cat, rels, docs, domains, served_ids, support
           f"{len(served_rules ^ want_rules)} differences")
 
 
+def _verdict_checks(root, check, oss, rels, docs) -> None:
+    """KEI-783 AC4. Every verdict is well formed and names a known project; the canonical rows and the read surface
+    show exactly the verdict that applies and an endorsement derived from it alone (so nothing machine-derived claims
+    an endorsement without a verdict row); and every machine score equals the scoring lane's own output."""
+    from . import canonical, verdicts
+
+    rows = verdicts.load()  # the file the build read: a staged root is built from the live inputs
+    errs = verdicts.schema_errors(rows)
+    check("schema_verdict", "KEI-783", not errs, "; ".join(errs) or f"{len(rows)} verdicts valid")
+    unknown = verdicts.unknown_references(rows, verdicts.known_projects(root) | verdicts.known_projects(),
+                                           verdicts.known_saas())
+    check("verdicts_reference_known_projects", "KEI-783", not unknown, f"{unknown[:5]}" if unknown
+          else f"{len(rows)} verdicts, every one names a canonical or corpus project")
+    bad = verdicts.surface_errors(rows, oss, rels, docs) if not errs else ["verdicts fail the schema"]
+    check("endorsement_only_from_verdicts", "KEI-783", not bad, f"{len(bad)} wrong, e.g. {bad[:3]}" if bad
+          else "every keith_verdict and endorsement is the verdict layer's; none without a verdict row")
+    fit, health = canonical._load_scores()
+    moved = verdicts.score_errors(rels, oss, docs, fit, health)
+    check("verdicts_never_alter_machine_scores", "KEI-783", not moved, f"{len(moved)} differ, e.g. {moved[:3]}"
+          if moved else "every Replacement Fit and Project Health equals data/scores/; recommended is the machine rule")
+
+
 def run(root: Path | None = None, determinism: bool = True) -> dict:
     root = Path(root) if root else common.ROOT
     canon = root / "data" / "canonical"
@@ -233,6 +255,9 @@ def run(root: Path | None = None, determinism: bool = True) -> dict:
         check("no_share_alike_only_leak", 7, not leaked, f"{len(leaked)} leaked, e.g. {leaked[:3]}")
     stale = [p["oss_id"] for p in oss if p["maintenance"]["status"] not in ("active", "maintained") or p["live"]["archived"]]
     check("no_stale_or_archived_projects", 7, not stale, f"{len(stale)} stale/archived")
+
+    # --- KEI-783 AC4: Keith's verdicts, kept apart from the machine scores
+    _verdict_checks(root, check, oss, rels, docs)
 
     # --- criterion 8: every output records when live metadata was last checked
     no_check = [p["oss_id"] for p in oss if not p["live"]["checked_at"]]

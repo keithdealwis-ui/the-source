@@ -34,6 +34,15 @@
     python -m source_pipeline catalogue-demand --kwi REPORT.json   import an aiq-kwi run as demand evidence
     python -m source_pipeline catalogue-validate   candidates, detection rules and selection checks
 
+  Keith's verdicts (KEI-783, docs/SCORING.md; only Keith runs this, never a pipeline stage or agent):
+    python -m source_pipeline verdict-add --oss-id ID --verdict recommended|conditional|not_recommended
+                              [--saas-id ID] [--tested [--tested-at YYYY-MM-DD]] [--notes TEXT] [--episode-url URL]
+                                                   append one row to data/verdicts/verdicts.jsonl; no network
+
+  Human review digest (KEI-783, docs/OPERATIONS.md):
+    python -m source_pipeline review-digest [--since-days 7] [--to REV] [--out DIR]
+                                                   what changed in the committed data, for a weekly review PR; no network
+
   Job-matched candidates (KEI-930, docs/JOB-MATCH.md; candidates only, the full evaluation decides):
     python -m source_pipeline job-match            rewrite data/job_match/ledger.json from the corpus; no network
     python -m source_pipeline job-match-observe    live-verify ledger projects the snapshot lacks (network)
@@ -311,6 +320,14 @@ def main(argv=None) -> int:
         from . import quick_score
 
         return quick_score.main(argv)
+    if argv[:1] and argv[0] in ("verdict-add",):
+        from . import verdicts
+
+        return verdicts.main(argv[1:])
+    if argv[:1] and argv[0] in ("review-digest",):
+        from . import review_digest
+
+        return review_digest.main(argv[1:])
     if argv[:1] and argv[0] in ("obs-telemetry-report",):
         from . import telemetry_report
 

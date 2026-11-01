@@ -156,7 +156,8 @@ Three separate outputs per project, never blended: **Project Health** (every ret
 project), **Replacement Fit** (only where a `REPLACES` edge exists, per SaaS product) and
 **Evidence Confidence** beside each. Keith's approved rubric lives in `config/scoring.yaml`
 and the category job definitions in `config/saas_jobs.yaml`. Automatic scoring is never
-presented as Keith-tested or endorsed. Method in `docs/SCORING.md`; criterion-by-criterion
+presented as Keith-tested or endorsed: Keith's own verdicts are a separate human-only layer
+(`data/verdicts/`, shown as `keith_verdict`, KEI-783). Method in `docs/SCORING.md`; criterion-by-criterion
 evidence in `docs/SCORING-ACCEPTANCE.md`.
 
 ```bash

@@ -14,7 +14,8 @@
     code and schema.
 
 Three outputs, never blended (rubric rule 3). Disqualifiers sit outside the numbers
-(rule 2). Scoring is automatic and is never represented as Keith-tested or endorsed (rule 8).
+(rule 2). Scoring is automatic and is never represented as Keith-tested or endorsed (rule 8): a record's
+endorsement flags come only from Keith's own verdict layer (verdicts.py, KEI-783), never from a score.
 """
 from __future__ import annotations
 
@@ -23,7 +24,7 @@ import re
 import statistics
 from datetime import datetime, timezone
 
-from . import common
+from . import common, verdicts
 
 SCORE = common.DATA / "score"
 GRAPH = common.DATA / "graph"
@@ -760,6 +761,7 @@ def score_all(ext, cfg, history_obs=None, overrides=None):
         for k, v in common.read_json(rpath)["records"].items():
             readme_text[k] = (v.get("text") or "").lower()
     health_rows, records, fit_rows = [], [], []
+    verdict_idx = verdicts.index(verdicts.load())
     by_project = {}
     for p in ext["projects"]:
         h = score_health(p, cfg)
@@ -800,7 +802,8 @@ def score_all(ext, cfg, history_obs=None, overrides=None):
         records.append({
             "project": pid, "canonical": p["canonical"], "name": row["name"], "url": row["url"],
             "lanes": row["lanes"], "score_version": cfg["version"], "evaluated_at": evaluated_at,
-            "endorsement": cfg["endorsement"],
+            "endorsement": verdicts.score_endorsement(cfg["endorsement"],
+                                                      verdicts.for_project(verdict_idx, p["canonical"])),
             "project_health": {"score": h["score"], "band": h["band"], "evidence_insufficient": h["evidence_insufficient"],
                                "band_note": cfg["project_health"]["band_note"]},
             "trajectory": tr["label"],

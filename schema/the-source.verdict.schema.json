@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/keithdealwis-ui/the-source/schema/the-source.verdict.schema.json",
+  "title": "The Source — Keith's personal verdict on a project (KEI-783)",
+  "description": "One line of data/verdicts/verdicts.jsonl. Human-only and append-only: written by `python -m source_pipeline verdict-add`, which only Keith runs. A verdict is never a machine score and never changes one; the canonical build shows it beside the scores as `keith_verdict`. Methodology: docs/SCORING.md, Machine scores and Keith's verdicts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["verdict_schema", "oss_id", "saas_id", "verdict", "keith_tested", "tested_at", "notes", "episode_url",
+               "recorded_by", "recorded_at"],
+  "properties": {
+    "verdict_schema": {"const": "the-source.verdict/1"},
+    "oss_id": {"type": "string", "pattern": "^[a-z0-9.-]+\\.[a-z]+/[^\\s]+$"},
+    "saas_id": {"type": ["string", "null"], "pattern": "^[a-z0-9][a-z0-9-]*$",
+                "description": "The SaaS product the verdict is about. null: the verdict is about the project in general."},
+    "verdict": {"enum": ["recommended", "conditional", "not_recommended"]},
+    "keith_tested": {"type": "boolean", "description": "Keith ran the project himself."},
+    "tested_at": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "notes": {"type": ["string", "null"], "maxLength": 2000},
+    "episode_url": {"type": ["string", "null"], "pattern": "^https://"},
+    "recorded_by": {"const": "keith"},
+    "recorded_at": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"}
+  },
+  "if": {"properties": {"keith_tested": {"const": true}}},
+  "then": {"properties": {"tested_at": {"type": "string"}}},
+  "else": {"properties": {"tested_at": {"type": "null"}}}
+}

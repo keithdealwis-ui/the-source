@@ -14,6 +14,10 @@ failed or repeated cycle be retried without duplicating or corrupting anything.
 
 Only relationships that pass the public export guard (export.py, KEI-805 criterion 15)
 become canonical, so nothing withheld for licence reasons can leak into a read surface.
+
+Keith's personal verdicts (verdicts.py, KEI-783) are read from data/verdicts/ and shown as
+`keith_verdict` beside the machine scores, never merged into them; `endorsement` is derived from
+the verdict alone and is all-false without one.
 """
 from __future__ import annotations
 
@@ -22,7 +26,7 @@ import shutil
 import tempfile
 from pathlib import Path
 
-from . import common, detect
+from . import common, detect, verdicts
 
 CANONICAL = common.DATA / "canonical"
 API = common.ROOT / "api" / "v1"
@@ -229,6 +233,11 @@ def _utc(ts: str | None) -> str | None:
     return iso(parse_ts(ts))
 
 
+def _verdict_fields(v: dict | None) -> dict:
+    """Keith's verdict and the endorsement derived from it, kept apart from every machine-derived field (KEI-783)."""
+    return {"keith_verdict": v, "endorsement": verdicts.endorsement(v)}
+
+
 def _sha(path: Path) -> str:
     return common.sha256_file(path)
 
@@ -379,6 +388,7 @@ def build(out_root: Path | None = None) -> dict:
     saas = {s["saas_id"]: s for s in common.read_jsonl(common.DATASET / "saas_products.jsonl")}
     edges = {(e["saas_id"], e["oss_id"]): e for e in common.read_jsonl(common.DATASET / "relationships.jsonl")}
     fit_all, health_all = _load_scores()
+    verdict_idx = verdicts.index(verdicts.load())
     supported = load_supported()
     supported_ids = [p["saas_id"] for p in supported["products"]]
     unknown = [s for s in supported_ids if s not in saas]
@@ -405,6 +415,7 @@ def build(out_root: Path | None = None) -> dict:
                 k: fit[k] for k in ("score", "credible_alternative", "publish", "core_gate", "confidence",
                                     "dimensions", "score_version", "evaluated_at", "scoring_path")},
             "recommended": bool(fit and fit["publish"] and fit["credible_alternative"]),
+            **_verdict_fields(verdicts.for_pair(verdict_idx, sid, oid)),
         })
         project_ids.add(oid)
     rel_rows.sort(key=lambda r: (r["saas_id"], r["oss_id"]))
@@ -440,6 +451,7 @@ def build(out_root: Path | None = None) -> dict:
             "project_health": None if h is None else {
                 k: h[k] for k in ("score", "band", "trajectory", "confidence", "watch_outs", "evidence_insufficient",
                                   "score_version", "evaluated_at", "scoring_path")},
+            **_verdict_fields(verdicts.for_project(verdict_idx, oid)),
         })
 
     # --- the catalogue (KEI-922): every selected product, its status from full evaluations alone
@@ -496,6 +508,7 @@ def build(out_root: Path | None = None) -> dict:
                 "sources": r["sources"],
                 "evidence": _evidence(r, fit),
                 "live_checked_at": p["live"]["checked_at"],
+                **_verdict_fields(verdicts.for_pair(verdict_idx, sid, r["oss_id"])),
                 **({"licence_disclosure": p["licence"]["open_core"]["disclosure"]}
                    if p["licence"].get("open_core") else
                    {"licence_disclosure": p["licence"]["exception"]["disclosure"]}

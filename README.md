@@ -133,4 +133,14 @@ GITHUB_TOKEN=... .venv/bin/python -m source_pipeline cycle --trigger local   # a
 - [`docs/SCHEMA.md`](docs/SCHEMA.md), [`docs/DISCOVER.md`](docs/DISCOVER.md) and [`docs/GRAPH.md`](docs/GRAPH.md): the research lanes
 
 Scores are computed automatically from public evidence. They are not an endorsement,
-and no project here has been tested by hand.
+and no project here has been tested by hand unless it carries a `keith_verdict`.
+
+### Machine scores and Keith's verdicts
+
+Every number here (Project Health, Replacement Fit, Evidence Confidence) and every
+`recommended` flag is machine-derived. Keith's own conclusions, when he has tested or reviewed
+a project himself, are a separate human-only layer in `data/verdicts/`, recorded by him alone
+with `python -m source_pipeline verdict-add`. The read surface shows a verdict as `keith_verdict`
+beside the scores, never merged into them, and derives `endorsement` from it alone: with no
+verdict, `keith_verdict` is `null` and every endorsement flag is `false`. Today no verdict has
+been recorded. See [`docs/SCORING.md`](docs/SCORING.md#machine-scores-and-keiths-verdicts-kei-783).

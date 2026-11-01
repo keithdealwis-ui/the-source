@@ -35,8 +35,8 @@
       "type": "object",
       "required": ["keith_tested", "keith_endorsed", "editorial_recommendation", "statement"],
       "properties": {
-        "keith_tested": {"const": false},
-        "keith_endorsed": {"const": false},
+        "keith_tested": {"type": "boolean", "description": "KEI-783: true only from Keith's own verdict (data/verdicts/); never from a score"},
+        "keith_endorsed": {"type": "boolean", "description": "KEI-783: true only when Keith's verdict is recommended"},
         "editorial_recommendation": {"const": false},
         "statement": {"type": "string", "minLength": 20}
       }

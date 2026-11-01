@@ -17,7 +17,48 @@ disagree, the YAML is what runs.
 `endorsement: {keith_tested: false, keith_endorsed: false, editorial_recommendation: false}`
 and the statement *"Automatically computed from public repository metadata. Not tested,
 reviewed or endorsed by Keith de Alwis, and not an editorial recommendation."* Health bands
-describe project health, not endorsement.
+describe project health, not endorsement. The flags can become true only through Keith's own
+verdict layer, below; never through a score.
+
+## Machine scores and Keith's verdicts (KEI-783)
+
+Two different kinds of judgement sit side by side, and are never mixed:
+
+| | Machine score | Keith's verdict |
+|---|---|---|
+| What | Project Health, Replacement Fit, Evidence Confidence, `recommended` | `recommended`, `conditional` or `not_recommended`, with notes |
+| Who | the pipeline, from public evidence, every cycle | Keith, by hand, after looking at (and with `keith_tested`, running) the project |
+| Where | `data/scores/`, and every score field of `data/canonical/` and `api/v1/` | `data/verdicts/verdicts.jsonl` (schema `schema/the-source.verdict.schema.json`), shown as `keith_verdict` |
+| Changes | when the evidence changes | only when Keith records a new verdict |
+
+**Recording one.** Only Keith runs this; no cycle, workflow, agent or intake path writes
+`data/verdicts/`, and every row carries `recorded_by: "keith"`:
+
+```
+python -m source_pipeline verdict-add --oss-id github.com/owner/repo --verdict recommended \
+    [--saas-id trello] [--tested [--tested-at 2026-11-01]] [--notes "..."] [--episode-url https://...]
+python -m source_pipeline canonical-build      # show it in data/canonical/ and api/v1/
+```
+
+The file is append-only: a changed mind is a new row, and for the same project (and product)
+the newest `recorded_at` wins. A verdict naming `--saas-id` applies to that relationship and its
+`api/v1` recommendation row; one without applies to the project record and to every relationship
+of it that has no verdict of its own. verdict-add refuses a project that is neither canonical nor
+in the discovery corpus, and a SaaS product the dataset does not know.
+
+**How it is shown.** Every canonical project, relationship and `api/v1` recommendation row
+carries `keith_verdict` (the verdict, or `null`) and `endorsement`
+(`keith_tested`, `keith_endorsed` = verdict is `recommended`, `editorial_recommendation`
+always `false`), derived from that verdict alone. A verdict never changes a score, a rank, a
+recommendation or a catalogue status. Records built before KEI-783 carry neither field; a
+missing field reads as `null` and all-false. `canonical-validate` checks that every verdict is
+well formed and names a known project (`schema_verdict`, `verdicts_reference_known_projects`),
+that every `keith_verdict` and `endorsement` is exactly what the verdict layer says, so no
+machine-derived row claims an endorsement without a verdict row (`endorsement_only_from_verdicts`),
+and that every Replacement Fit and Project Health equals the scoring lane's own output in
+`data/scores/` (`verdicts_never_alter_machine_scores`). In the full scoring lane, a scored
+record's endorsement flags likewise come only from a project-level verdict, and `score-validate`
+fails on any other.
 
 ## Commands
 
