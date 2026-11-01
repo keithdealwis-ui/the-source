@@ -1,6 +1,7 @@
 """The waiting room: shared, authenticated intake for every Source producer (KEI-932).
 
-    python -m source_pipeline waiting-room serve      --state DIR --corpus-root DIR [--port 8852]
+    python -m source_pipeline.waiting_room serve      --state DIR --corpus-root DIR [--port 8852]
+    (also `python -m source_pipeline waiting-room ...`; the units call the module directly)
     python -m source_pipeline waiting-room producer-add NAME --state DIR [--rate-hour N] [--rate-day N]
     python -m source_pipeline waiting-room producer-revoke NAME --state DIR
     python -m source_pipeline waiting-room producers  --state DIR
@@ -66,7 +67,7 @@ MAX_ATTEMPTS = 3              # assessments per repository before it is dead-let
 NO_OUTCOME_AFTER_H = 36       # a queued repository with no published outcome by then is retried
 DEFAULT_RATE_HOUR = 30
 DEFAULT_RATE_DAY = 200
-DEFAULT_BATCH_MAX = 50
+DEFAULT_BATCH_MAX = 200       # at least one producer's daily quota, so a backlog cannot build
 SUPPORTED_HOSTS = ("github.com", "gitlab.com", "codeberg.org")
 
 TOP_KEYS = {"contract", "repo_url", "idempotency_key", "source", "provenance", "candidate"}
@@ -76,8 +77,10 @@ CANDIDATE_KEYS = {"saas_hint", "name", "description"}
 
 # Waiting-room states of a repository (an "entity"). Terminal: canonical, rejected, held,
 # already_known, dead_letter. `accepted` waits for the daily cycle to promote it.
-ENTITY_STATES = ("received", "queued", "accepted", "canonical", "rejected", "held", "already_known",
-                 "failed_retry", "dead_letter")
+ENTITY_STATES = ("received", "queued", "accepted", "canonical", "not_promoted", "rejected", "held",
+                 "already_known", "failed_retry", "dead_letter")
+SEGMENT = re.compile(r"^[a-z0-9._-]+$")
+BATCH_ID = re.compile(r"^wr-\d{8}$")
 OUTCOME_STATE = {"accepted": "accepted", "rejected": "rejected", "needs_more_evidence": "held",
                  "already_known": "already_known", "failed": "failed_retry"}
 
@@ -171,6 +174,12 @@ def validate(payload) -> dict:
         elif canonical_id.split("/", 1)[0] not in SUPPORTED_HOSTS:
             reasons.append("host_not_supported")
             canonical_id = None
+        elif not all(SEGMENT.match(seg) and seg.strip(".") for seg in canonical_id.split("/")[1:]):
+            reasons.append("repo_url_not_a_repository")  # percent-encoding, dot tricks and the like
+            canonical_id = None
+        elif "@" in url.split("://", 1)[-1].split("/", 1)[0]:
+            reasons.append("repo_url_userinfo_not_allowed")
+            canonical_id = None
     src = payload.get("source")
     provider = evidence_url = observed_at = None
     if not isinstance(src, dict) or set(src) - SOURCE_KEYS:
@@ -241,7 +250,7 @@ class Corpus:
             with corpus.open() as fh:
                 for line in fh:
                     p = json.loads(line)
-                    rec = {"oss_id": p["id"], "lanes": p.get("lanes") or [], "canonical": False}
+                    rec = {"oss_id": p["id"], "lanes": p.get("lanes") or [], "canonical": False, "held_in": ["corpus"]}
                     idx[p["id"]] = rec
                     for a in p.get("aliases") or []:
                         idx.setdefault(str(a).lower(), rec)
@@ -249,13 +258,15 @@ class Corpus:
             with canon.open() as fh:
                 for line in fh:
                     p = json.loads(line)
-                    rec = idx.setdefault(p["oss_id"], {"oss_id": p["oss_id"], "lanes": [], "canonical": False})
+                    rec = idx.setdefault(p["oss_id"], {"oss_id": p["oss_id"], "lanes": [], "canonical": False, "held_in": []})
                     rec["canonical"] = True
+                    rec["held_in"].append("canonical")
         if dataset.exists():  # the Replace lane, including projects it excluded (as intake._known reads it)
             with dataset.open() as fh:
                 for line in fh:
                     p = json.loads(line)
-                    rec = idx.setdefault(p["oss_id"], {"oss_id": p["oss_id"], "lanes": [], "canonical": False})
+                    rec = idx.setdefault(p["oss_id"], {"oss_id": p["oss_id"], "lanes": [], "canonical": False, "held_in": []})
+                    rec["held_in"].append("dataset")
                     rec["lanes"] = sorted(set(rec["lanes"]) | {"replace:" + str((p.get("derived") or {}).get("lane"))})
                     for a in p.get("harvested_as") or []:
                         idx.setdefault(str(a).lower(), rec)
@@ -263,7 +274,8 @@ class Corpus:
         if ledger.exists():
             for f in ledger.glob("*.json"):
                 row = json.loads(f.read_text())
-                idx.setdefault(row["oss_id"], {"oss_id": row["oss_id"], "lanes": ["intake_ledger"], "canonical": False})
+                rec = idx.setdefault(row["oss_id"], {"oss_id": row["oss_id"], "lanes": [], "canonical": False, "held_in": []})
+                rec["held_in"].append("intake_ledger")
         self._index = idx
 
     def lookup(self, canonical_id: str) -> dict | None:
@@ -277,7 +289,13 @@ class Corpus:
                     self._load()
                     self._sig = sig
             hit = self._index.get(canonical_id)
-            return dict(hit) if hit else None
+            if not hit:
+                return None
+            hit = {**hit, "held_in": sorted(set(hit["held_in"]))}
+            # The discovery tier alone is not "known": like intake._known, only the dataset, the
+            # canonical layer and the ledger count, so a discovery-only project is still assessed.
+            hit["assessed"] = bool(set(hit["held_in"]) & {"canonical", "dataset", "intake_ledger"})
+            return hit
 
     def outcome(self, request_id: str) -> dict | None:
         p = self.root / "data" / "intake" / "outcomes" / f"{request_id}.json"
@@ -359,7 +377,7 @@ class Store:
         raw_key = payload.get("idempotency_key") if isinstance(payload, dict) else None
         digest = _sha(canonical_json(payload))
         with self._lock:
-            if isinstance(raw_key, str) and IDEMPOTENCY_KEY.match(raw_key):
+            if isinstance(raw_key, str) and IDEMPOTENCY_KEY.match(raw_key) and not raw_key.startswith("invalid-"):
                 prior = self.db.execute("SELECT * FROM submissions WHERE producer=? AND idempotency_key=?",
                                         (producer["name"], raw_key)).fetchone()
                 if prior is not None:
@@ -375,7 +393,7 @@ class Store:
             try:
                 f = validate(payload)
             except Invalid as exc:
-                key = raw_key if isinstance(raw_key, str) and IDEMPOTENCY_KEY.match(raw_key) else f"invalid-{sid}"
+                key = f"invalid-{sid}"  # never reserves the producer's key: a corrected payload may reuse it
                 url = payload.get("repo_url") if isinstance(payload, dict) and isinstance(payload.get("repo_url"), str) else None
                 self.db.execute(
                     "INSERT INTO submissions (submission_id, producer, idempotency_key, payload_sha256, received_at,"
@@ -389,7 +407,8 @@ class Store:
             duplicate = ent is not None
             if ent is None:
                 known = corpus.lookup(cid)
-                state, reasons = ("already_known", ["already in the corpus"]) if known else ("received", [])
+                state, reasons = (("already_known", ["already assessed by The Source"]) if known and known["assessed"]
+                                  else ("received", ["in the discovery tier, not yet assessed"] if known else []))
                 self.db.execute(
                     "INSERT INTO entities (canonical_id, repo_url, state, reasons, first_seen_at, updated_at, corpus)"
                     " VALUES (?,?,?,?,?,?,?)",
@@ -410,6 +429,7 @@ class Store:
             return self._readback(submission_id, producer)
 
     def _readback(self, submission_id: str, producer: str | None) -> dict | None:
+        """producer None is the operator's view: every observation, by producer."""
         q, args = "SELECT * FROM submissions WHERE submission_id=?", [submission_id]
         if producer is not None:
             q += " AND producer=?"
@@ -426,6 +446,9 @@ class Store:
             e = self.db.execute("SELECT * FROM entities WHERE canonical_id=?", (s["canonical_id"],)).fetchone()
             obs = self.db.execute("SELECT producer, provider, COUNT(*) n FROM submissions WHERE canonical_id=?"
                                   " GROUP BY producer, provider ORDER BY producer, provider", (s["canonical_id"],)).fetchall()
+            others = len({o["producer"] for o in obs if o["producer"] != producer}) if producer else None
+            if producer is not None:
+                obs = [o for o in obs if o["producer"] == producer]
             body["repository"] = {
                 "canonical_id": e["canonical_id"], "state": e["state"], "reasons": json.loads(e["reasons"]),
                 "first_seen_at": e["first_seen_at"], "updated_at": e["updated_at"], "attempts": e["attempts"],
@@ -433,6 +456,8 @@ class Store:
                 "corpus": json.loads(e["corpus"]) if e["corpus"] else None,
                 "outcome": json.loads(e["outcome"]) if e["outcome"] else None,
                 "observations": [{"producer": o["producer"], "provider": o["provider"], "count": o["n"]} for o in obs]}
+            if others is not None:
+                body["repository"]["other_producers"] = others
         body["notice"] = ("A submission is a request for assessment, never a recommendation, endorsement or "
                           "trending claim. The repository is judged by the same pipeline as scheduled discovery.")
         return body
@@ -488,18 +513,25 @@ class Store:
         """Give queued and accepted repositories their result from the published intake outcomes."""
         now = now or _now()
         counts = Counter()
-        rows = self.db.execute("SELECT * FROM entities WHERE state IN ('queued','accepted')").fetchall()
+        rows = self.db.execute("SELECT * FROM entities WHERE state IN ('queued','accepted','not_promoted')").fetchall()
         for e in rows:
             o = corpus.outcome(e["request_id"]) if e["request_id"] else None
             if o is None:
                 if e["state"] == "queued" and _parse_ts(e["queued_at"]) < now - timedelta(hours=NO_OUTCOME_AFTER_H):
-                    self._retry_or_dead(e, ["consumer_no_outcome"], now)
+                    # The consumer never ran on it: back in line under the same request id, which
+                    # costs no attempt (a late run is then answered from its recorded outcome).
+                    with self._lock:
+                        self.db.execute("UPDATE entities SET state='received', reasons=?, updated_at=? WHERE canonical_id=?",
+                                        (json.dumps(["consumer_no_outcome"]), _iso(now), e["canonical_id"]))
+                    self.audit("entity_result", canonical_id=e["canonical_id"], state="received", reasons=["consumer_no_outcome"])
                     counts["no_outcome"] += 1
                 continue
             canonical = (o.get("canonical") or {}).get("status")
             state = OUTCOME_STATE.get(o.get("outcome"), "failed_retry")
             if state == "accepted" and canonical == "canonical":
                 state = "canonical"
+            elif state == "accepted" and canonical == "not_promoted":
+                state = "not_promoted"  # the cycle's corpus controls held it back; its reasons are in the outcome
             summary = {"request_id": o.get("request_id"), "outcome": o.get("outcome"), "reasons": o.get("reasons"),
                        "oss_id": o.get("oss_id"), "canonical": o.get("canonical"), "assessed_at": o.get("assessed_at"),
                        "scores": None if not o.get("scores") else {
@@ -515,7 +547,8 @@ class Store:
             with self._lock:
                 self.db.execute("UPDATE entities SET state=?, reasons=?, outcome=?, attempts=attempts+?, updated_at=?"
                                 " WHERE canonical_id=?",
-                                (state, json.dumps(o.get("reasons") or []), json.dumps(summary),
+                                (state, json.dumps(((o.get("canonical") or {}).get("detail") or {}).get("reasons") or o.get("reasons") or []
+                                                   if state == "not_promoted" else o.get("reasons") or []), json.dumps(summary),
                                  1 if e["state"] == "queued" else 0, _iso(now), e["canonical_id"]))
             self.audit("entity_result", canonical_id=e["canonical_id"], state=state, request_id=e["request_id"])
             counts[state] += 1
@@ -576,6 +609,8 @@ def consume(batch: dict, signers_file: Path, max_age_hours=30, assess=None, now:
     body = json.loads(payload)
     if body.get("contract") != "source-waiting-room-batch/1":
         return {"status": "refused", "reason": "batch_contract_unsupported"}
+    if not BATCH_ID.match(str(body.get("batch_id"))) or not isinstance(body.get("items"), list):
+        return {"status": "refused", "reason": "batch_malformed"}
     sealed = _parse_ts(body.get("sealed_at") or "")
     if sealed is None or sealed < now - timedelta(hours=max_age_hours):
         return {"status": "skipped", "reason": "no_fresh_batch", "batch_id": body.get("batch_id"),
@@ -584,7 +619,10 @@ def consume(batch: dict, signers_file: Path, max_age_hours=30, assess=None, now:
         from . import intake
         assess = intake.assess
     results = []
-    for it in body.get("items") or []:
+    for it in body["items"]:
+        if not isinstance(it, dict):
+            results.append({"request_id": None, "outcome": "skipped", "reason": "item_malformed"})
+            continue
         rid, url = it.get("request_id"), it.get("repo_url")
         key, _ = repo_key(url or "")
         if not (isinstance(rid, str) and REQUEST_ID.match(rid) and rid.startswith("wr-")) or key != it.get("canonical_id"):
@@ -639,10 +677,16 @@ def main(argv=None) -> int:
             if not receipt.exists():
                 receipt.write_text(json.dumps({**out, "processed_at": _iso(_now())}, indent=2, sort_keys=True) + "\n")
         print(json.dumps(out, indent=2, sort_keys=True))
-        return 2 if out["status"] == "refused" else 0
+        # A refused or unreachable batch fails the job so it is seen; a stale one is a quiet skip.
+        return 2 if out["status"] == "refused" or out.get("reason", "").startswith("batch_unavailable") else 0
     if a.cmd == "serve":
+        if hasattr(os, "geteuid") and os.geteuid() == 0:
+            sys.exit("refusing to serve as root")
         from . import waiting_room_http
         return waiting_room_http.serve(Store(a.state), Corpus(a.corpus_root), a.host, a.port)
+    if hasattr(os, "geteuid") and os.geteuid() == 0:
+        sys.exit("refusing to run as root: files it creates would lock the service out. Use "
+                 "`runuser -u the-source-intake -- python3 -s -m source_pipeline.waiting_room ...`")
     store = Store(a.state)
     if a.cmd == "producer-add":
         token = store.add_producer(a.name, a.rate_hour, a.rate_day)

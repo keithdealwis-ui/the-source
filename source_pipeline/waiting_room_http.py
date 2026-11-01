@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 import threading
 import time
 from collections import defaultdict, deque
@@ -38,15 +39,28 @@ class AuthFailures:
     def __init__(self, per_min=AUTH_FAILURES_PER_MIN):
         self.per_min, self.hits, self.lock = per_min, defaultdict(deque), threading.Lock()
 
+    MAX_CLIENTS = 10000
+
     def blocked(self, client: str) -> bool:
         with self.lock:
-            q = self.hits[client]
+            q = self.hits.get(client)
+            if q is None:
+                return False
             while q and q[0] < time.monotonic() - 60:
                 q.popleft()
+            if not q:
+                del self.hits[client]
+                return False
             return len(q) >= self.per_min
 
     def fail(self, client: str):
         with self.lock:
+            if client not in self.hits and len(self.hits) >= self.MAX_CLIENTS:
+                cutoff = time.monotonic() - 60
+                for k in [k for k, q in self.hits.items() if not q or q[-1] < cutoff]:
+                    del self.hits[k]
+                if len(self.hits) >= self.MAX_CLIENTS:
+                    self.hits.pop(next(iter(self.hits)))
             self.hits[client].append(time.monotonic())
 
 
@@ -58,6 +72,7 @@ def make_handler(store: W.Store, corpus: W.Corpus):
     class Handler(BaseHTTPRequestHandler):
         server_version = "the-source-waiting-room"
         sys_version = ""
+        timeout = 15  # a slow or short body cannot hold a slot
 
         def log_message(self, fmt, *args):  # no request logging
             pass
@@ -77,14 +92,19 @@ def make_handler(store: W.Store, corpus: W.Corpus):
             peer = self.client_address[0]
             return (self.headers.get("X-Real-IP") or peer) if peer in ("127.0.0.1", "::1") else peer
 
-        def _producer(self):
+        def _producer(self, scope):
+            # A valid credential is never throttled by other clients' failures behind a shared address
+            # (ChatGPT Actions egress); only failures are counted and limited.
             client = self._client()
-            if failures.blocked(client):
-                self._send(429, {"error": "too_many_failed_authentications"})
-                return None
             auth = self.headers.get("Authorization") or ""
             token = auth[7:].strip() if auth[:7].lower() == "bearer " else None
             producer = store.authenticate(token)
+            if producer is not None and scope not in producer["scopes"].split(","):
+                self._send(403, {"error": "scope_missing"})
+                return None
+            if producer is None and failures.blocked(client):
+                self._send(429, {"error": "too_many_failed_authentications"})
+                return None
             if producer is None:
                 failures.fail(client)
                 self.send_response(401)
@@ -101,7 +121,9 @@ def make_handler(store: W.Store, corpus: W.Corpus):
                 return self._send(503, {"error": "busy"})
             try:
                 return fn()
-            except Exception:  # never leak internals
+            except Exception as exc:  # never leak internals; the journal gets the type and path only
+                print(f"waiting room: {type(exc).__name__} on {self.command} {self.path.split('?', 1)[0][:80]}",
+                      file=sys.stderr, flush=True)
                 return self._send(500, {"error": "internal_error"})
             finally:
                 gate.release()
@@ -119,7 +141,7 @@ def make_handler(store: W.Store, corpus: W.Corpus):
                     return self._send(200, b) if b else self._send(404, {"error": "no_batch_sealed_yet"})
                 m = SUBMISSION_PATH.match(path)
                 if m:
-                    producer = self._producer()
+                    producer = self._producer("read_own")
                     if producer is None:
                         return None
                     body = store.readback(m.group(1), producer["name"])
@@ -133,7 +155,7 @@ def make_handler(store: W.Store, corpus: W.Corpus):
             def run():
                 if path != "/intake/v1/submissions":
                     return self._send(404, {"error": "not_found"})
-                producer = self._producer()
+                producer = self._producer("submit")
                 if producer is None:
                     return None
                 ctype = (self.headers.get("Content-Type") or "").split(";")[0].strip().lower()

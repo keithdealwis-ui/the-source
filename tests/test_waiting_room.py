@@ -78,8 +78,10 @@ def test_two_producers_same_repository_one_entity_two_observations(env):
     assert b2["reasons"] == ["duplicate_of_existing_entity"]
     repo = b2["repository"]
     assert repo["state"] == "received"
-    assert repo["observations"] == [{"producer": "gitwatch", "provider": "chatgpt", "count": 1},
-                                    {"producer": "keith-cli", "provider": "keith", "count": 1}]
+    assert repo["observations"] == [{"producer": "keith-cli", "provider": "keith", "count": 1}]  # own only
+    assert repo["other_producers"] == 1
+    operator = s.readback(b2["submission_id"], None)["repository"]["observations"]
+    assert [o["producer"] for o in operator] == ["gitwatch", "keith-cli"]
     assert s.summary()["entities"] == {"received": 1}
 
 
@@ -153,6 +155,7 @@ def test_seal_dedupes_signs_and_is_idempotent(env):
 def test_consume_verifies_and_assesses_each_repository_once(env):
     env["store"].submit(producer(env, "gitwatch"), payload(), env["corpus"])
     env["store"].submit(producer(env, "keith-cli"), payload("github.com/owner/repo", key="cli-0001", provider="keith"), env["corpus"])
+    env["store"].submit(producer(env, "gitwatch"), payload("https://github.com/second/repo", key="gitwatch-0009"), env["corpus"])
     _seal(env)
     calls = []
 
@@ -161,8 +164,9 @@ def test_consume_verifies_and_assesses_each_repository_once(env):
         return {"oss_id": "github.com/owner/repo", "outcome": "accepted"}
 
     out = W.consume(env["store"].latest_batch(), env["signers"], assess=assess, now=NOW + timedelta(minutes=30))
-    assert out["status"] == "processed" and len(calls) == 1
-    assert calls[0][2] == "waiting-room:gitwatch,keith-cli" and calls[0][3] == "notion"
+    assert out["status"] == "processed" and len(calls) == 2 and len({c[1] for c in calls}) == 2
+    first = [c for c in calls if "owner/repo" in c[0]][0]
+    assert first[2] == "waiting-room:gitwatch,keith-cli" and first[3] == "notion"
 
 
 def test_consume_refuses_a_tampered_batch_and_skips_a_stale_one(env):
@@ -213,15 +217,81 @@ def test_held_rejected_and_dead_letter(env):
     assert s.summary()["entities"] == {"dead_letter": 1, "held": 1}
 
 
-def test_queued_with_no_outcome_is_retried_with_a_fresh_request_id(env):
+def test_queued_with_no_outcome_is_requeued_without_costing_an_attempt(env):
     s = env["store"]
     s.submit(producer(env, "gitwatch"), payload(), env["corpus"])
     _seal(env)
     s.reconcile(env["corpus"], now=NOW + timedelta(hours=W.NO_OUTCOME_AFTER_H + 1))
-    assert s.summary()["entities"] == {"failed_retry": 1}
+    assert s.summary()["entities"] == {"received": 1}
     _seal(env, now=NOW + timedelta(days=2))
     item = json.loads(s.latest_batch()["payload"])["items"][0]
+    assert item["request_id"] == W.request_id_for("github.com/owner/repo", 0) and item["attempt"] == 1
+
+
+def test_failed_assessment_retries_under_a_fresh_request_id(env):
+    s = env["store"]
+    s.submit(producer(env, "gitwatch"), payload(), env["corpus"])
+    _seal(env)
+    _outcome(env, W.request_id_for("github.com/owner/repo", 0), "failed")
+    s.reconcile(env["corpus"], now=NOW + timedelta(hours=1))
+    _seal(env, now=NOW + timedelta(days=1))
+    item = json.loads(s.latest_batch()["payload"])["items"][0]
     assert item["request_id"] == W.request_id_for("github.com/owner/repo", 1) and item["attempt"] == 2
+
+
+def test_a_corrected_payload_may_reuse_the_key_of_an_invalid_one(env):
+    s, p = env["store"], producer(env, "gitwatch")
+    assert s.submit(p, payload("https://example.com/a/b", key="gitwatch-fix1"), env["corpus"])[0] == 422
+    assert s.submit(p, payload("https://example.com/a/b", key="gitwatch-fix1"), env["corpus"])[0] == 422
+    code, body = s.submit(p, payload("https://github.com/a/b", key="gitwatch-fix1"), env["corpus"])
+    assert code == 202 and body["idempotency_key"] == "gitwatch-fix1"
+
+
+def test_a_discovery_tier_project_is_still_assessed(env):
+    corpus = env["root"] / "data" / "corpus" / "projects.jsonl"
+    corpus.write_text(corpus.read_text() + json.dumps({"id": "github.com/disc/only", "aliases": [], "lanes": ["discover"]}) + "\n")
+    code, body = env["store"].submit(producer(env, "gitwatch"), payload("https://github.com/disc/only"), env["corpus"])
+    assert code == 202 and body["repository"]["state"] == "received"
+    assert body["repository"]["corpus"]["held_in"] == ["corpus"] and not body["repository"]["corpus"]["assessed"]
+
+
+@pytest.mark.parametrize("url,reason", [("https://github.com/a/b%2F..%2Fc", "repo_url_not_a_repository"),
+                                        ("https://github.com/a/../../x", "repo_url_not_a_repository"),
+                                        ("https://user:pw@github.com/a/b", "repo_url_userinfo_not_allowed")])
+def test_hostile_urls_are_refused(url, reason):
+    with pytest.raises(W.Invalid) as e:
+        W.validate(payload(url))
+    assert reason in e.value.reasons
+
+
+def test_not_promoted_by_the_cycle_is_reported(env):
+    s = env["store"]
+    sid = s.submit(producer(env, "gitwatch"), payload(), env["corpus"])[1]["submission_id"]
+    _seal(env)
+    rid = W.request_id_for("github.com/owner/repo", 0)
+    (env["root"] / "data" / "intake" / "outcomes" / f"{rid}.json").write_text(json.dumps(
+        {"request_id": rid, "outcome": "accepted", "reasons": ["ok"], "oss_id": "github.com/owner/repo",
+         "canonical": {"status": "not_promoted", "detail": {"lane": "excluded", "reasons": ["noise_filter"]}}}))
+    s.reconcile(env["corpus"], now=NOW + timedelta(hours=1))
+    repo = s.readback(sid, "gitwatch")["repository"]
+    assert repo["state"] == "not_promoted" and repo["reasons"] == ["noise_filter"]
+
+
+def test_consume_refuses_a_malformed_batch_id(env):
+    env["store"].submit(producer(env, "gitwatch"), payload(), env["corpus"])
+    _seal(env)
+    b = env["store"].latest_batch()
+    body = json.loads(b["payload"]); body["batch_id"] = "../../etc/x"
+    forged = W.canonical_json(body)
+    out = W.consume({"payload": forged, "signature": W.ssh_sign(forged, env["key"])}, env["signers"], now=NOW,
+                    assess=lambda *a, **k: pytest.fail("assessed"))
+    assert out["reason"] == "batch_malformed"
+
+
+def test_cli_refuses_root(env, monkeypatch):
+    monkeypatch.setattr(W.os, "geteuid", lambda: 0)
+    with pytest.raises(SystemExit):
+        W.main(["status", "--state", str(env["store"].dir)])
 
 
 def test_audit_log_never_holds_tokens_or_notes(env):
@@ -276,3 +346,5 @@ def test_http_round_trip(env, server):
 def test_http_throttles_repeated_failed_authentication(env, server):
     codes = [_call(server + "/intake/v1/submissions", "POST", payload(), token="swr_guess")[0] for _ in range(H.AUTH_FAILURES_PER_MIN + 1)]
     assert codes[-1] == 429 and codes[0] == 401
+    # a valid producer behind the same address is not locked out by others' failures
+    assert _call(server + "/intake/v1/submissions", "POST", payload(), token=env["tokens"]["gitwatch"])[0] == 202

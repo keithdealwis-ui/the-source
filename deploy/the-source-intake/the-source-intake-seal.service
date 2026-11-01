@@ -10,11 +10,19 @@ Environment=PYTHONDONTWRITEBYTECODE=1
 Environment=THE_SOURCE_ROOT=/var/lib/the-source-intake/repo
 # The signing key is root-owned 0600; systemd hands it to this unit only, never to the server.
 LoadCredential=signing_key:/etc/the-source-intake/signing_key
-ExecStart=/bin/sh -c 'exec /usr/bin/python3 -s -m source_pipeline waiting-room seal --state /var/lib/the-source-intake/state --key "$CREDENTIALS_DIRECTORY/signing_key"'
+ExecStart=/bin/sh -c 'exec /usr/bin/python3 -s -m source_pipeline.waiting_room seal --state /var/lib/the-source-intake/state --key "$CREDENTIALS_DIRECTORY/signing_key"'
 StateDirectory=the-source-intake
+StateDirectoryMode=0750
 UMask=0027
 NoNewPrivileges=yes
 ProtectSystem=strict
 ProtectHome=yes
 PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_UNIX
 ReadOnlyPaths=/opt/the-source-intake

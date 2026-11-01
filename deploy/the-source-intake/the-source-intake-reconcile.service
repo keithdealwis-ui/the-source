@@ -9,11 +9,19 @@ WorkingDirectory=/opt/the-source-intake/app
 Environment=PYTHONDONTWRITEBYTECODE=1
 Environment=THE_SOURCE_ROOT=/var/lib/the-source-intake/repo
 ExecStartPre=/usr/bin/git -C /var/lib/the-source-intake/repo pull --ff-only --quiet
-ExecStart=/usr/bin/python3 -s -m source_pipeline waiting-room reconcile --state /var/lib/the-source-intake/state --corpus-root /var/lib/the-source-intake/repo
+ExecStart=/usr/bin/python3 -s -m source_pipeline.waiting_room reconcile --state /var/lib/the-source-intake/state --corpus-root /var/lib/the-source-intake/repo
 StateDirectory=the-source-intake
+StateDirectoryMode=0750
 UMask=0027
 NoNewPrivileges=yes
 ProtectSystem=strict
 ProtectHome=yes
 PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
 ReadOnlyPaths=/opt/the-source-intake

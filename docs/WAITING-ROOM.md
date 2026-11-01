@@ -78,6 +78,9 @@ Base URL: `https://source-mcp.de-alwis.com`. The OpenAPI 3.1 description is at
 | `GET /intake/v1/batches/latest` | public | the latest signed batch |
 | `GET /intake/v1/healthz` | public | `{"status": "ok"}` |
 
+A producer reads back only its own submissions. It sees its own observations, plus a count of
+how many other producers have seen the same repository.
+
 Every answer to a submission includes `submission_state`, `reasons`, `canonical_id`,
 `status_url` and, when the URL resolved, a `repository` block showing its `state`, its
 `observations` by producer and provider, and the corpus record if The Source already holds it.
@@ -93,13 +96,14 @@ A repository (entity) moves through these states:
 | State | Meaning |
 |---|---|
 | `received` | waiting for the next daily batch |
-| `already_known` | already in the corpus or ledger. It is answered at once and never re-ingested. |
+| `already_known` | already assessed by The Source (canonical layer, Replace-lane dataset or intake ledger). It is answered at once and never re-ingested. A project held only in the discovery tier is *not* known: it stays `received`, has its discovery record attached, and is assessed like any other. |
 | `queued` | in a sealed batch, waiting for its assessment |
 | `accepted` | passed the intake assessment, and its relationship is evidenced. Waiting for the cycle to promote it. |
 | `canonical` | promoted into the canonical dataset |
+| `not_promoted` | accepted by the intake, but the cycle's corpus controls held it back. The cycle's reasons are given. |
 | `held` | qualifies, but no SaaS relationship is evidenced (`needs_more_evidence`) |
 | `rejected` | fails a rule. The intake's reasons are kept, for example `licence_not_recognised`. |
-| `failed_retry` | the assessment failed, or no outcome was published within 36 hours. It is retried with a fresh request id. |
+| `failed_retry` | the assessment failed. It is retried in the next batch under a fresh request id. If no outcome is published within 36 hours (the consumer did not run), the repository goes back to `received` under the same request id, and that costs no attempt. |
 | `dead_letter` | three assessments failed. It stays visible, and no further automatic attempt is made. |
 
 Validation reason codes: `contract_unsupported`, `unknown_field`, `idempotency_key_invalid`,
@@ -113,10 +117,10 @@ Validation reason codes: `contract_unsupported`, `unknown_field`, `idempotency_k
 
 - **No unauthenticated writes.** Each producer has its own credential (`swr_…`), stored only as
   a SHA-256 hash. It is scoped to `submit` and `read_own`, and it can be revoked or rotated
-  individually (`waiting-room producer-revoke`, then `producer-add`).
+  individually (`producer-revoke`, then `producer-add`).
 - **Limits.** Each producer has an hourly quota (30 by default) and a daily quota (200).
   nginx enforces a per-address rate. Each address may fail authentication 10 times a minute
-  before it gets `429`. Bodies are limited to 8 KB.
+  before further failures get `429`. A valid credential is never throttled by other clients' failures. Bodies are limited to 8 KB.
 - **Audit.** The audit log (`audit.jsonl`) is append-only and records events, never tokens,
   payloads or notes.
 - **GitHub holds no secret.** The batch the GitHub workflow consumes is public and signed with
@@ -134,10 +138,13 @@ Validation reason codes: `contract_unsupported`, `unknown_field`, `idempotency_k
 
 ## Producer integration guide
 
-1. **Get a credential.** On the host, the operator runs:
+1. **Get a credential.** On the host, the operator runs this as the service user. The CLI refuses
+   to run as root, because files root creates would lock the service out:
    ```bash
-   python3 -s -m source_pipeline waiting-room producer-add <name> --state /var/lib/the-source-intake/state --token-out /root/<name>.token
+   cd /opt/the-source-intake/app && runuser -u the-source-intake -- python3 -s -m source_pipeline.waiting_room \
+     producer-add <name> --state /var/lib/the-source-intake/state --token-out /var/lib/the-source-intake/<name>.token
    ```
+   Move the file somewhere safe and delete it from the host.
    The credential is shown once. Store it in the producer's own secret store. Never put it
    in a repository, a ticket or a chat transcript.
 2. **Submit.**
@@ -155,9 +162,12 @@ Validation reason codes: `contract_unsupported`, `unknown_field`, `idempotency_k
 
 ### GitWatch (ChatGPT)
 
-GitWatch is the `gitwatch` producer. Set it up as a ChatGPT Action:
+GitWatch is the `gitwatch` producer. It needs no MCP server and no plugin, just one ChatGPT
+**Action**. Actions live in custom GPTs, not in ChatGPT Projects, so if GitWatch is a Project,
+create a small "GitWatch" custom GPT for submitting (Explore GPTs → Create → Configure).
 
-1. In the GPT or project that runs GitWatch, add an Action. Import the schema from
+1. In that GPT, choose **Configure → Actions → Create new action**, then **Import from URL**, and
+   enter
    `https://source-mcp.de-alwis.com/intake/v1/openapi.json`.
 2. For authentication, choose **API key → Bearer** and paste the `gitwatch` credential.
 3. Add this instruction: *"When Keith says 'add it' about a repository, call submitRepository
@@ -185,13 +195,16 @@ Units are installed by [`deploy/the-source-intake/install.sh`](../deploy/the-sou
 - `the-source-intake-reconcile.timer`: runs hourly at :20. It pulls a sparse clone of
   `data/corpus`, `data/canonical`, `data/dataset` and `data/intake`, then reconciles.
 
-Useful commands (run as `the-source-intake` from `/opt/the-source-intake/app`):
+Useful commands (run from `/opt/the-source-intake/app`, as `runuser -u the-source-intake --`):
 
 ```bash
-python3 -s -m source_pipeline waiting-room status    --state /var/lib/the-source-intake/state
-python3 -s -m source_pipeline waiting-room status    --state … --submission sub-…
-python3 -s -m source_pipeline waiting-room producers --state …
+python3 -s -m source_pipeline.waiting_room status    --state /var/lib/the-source-intake/state
+python3 -s -m source_pipeline.waiting_room status    --state … --submission sub-…
+python3 -s -m source_pipeline.waiting_room producers --state …
 ```
+
+The consumer fails its job when the batch cannot be fetched or is refused, so the failure shows
+up in Actions. A batch more than 30 hours old is skipped quietly.
 
 The GitHub side is `.github/workflows/waiting-room.yml`. It runs on a schedule, or on demand
 with an optional `batch_url`. Each processed batch leaves a receipt in

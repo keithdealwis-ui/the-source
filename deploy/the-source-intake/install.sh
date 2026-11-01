@@ -17,13 +17,15 @@ rm -rf /opt/the-source-intake/app.prev && { [ ! -d /opt/the-source-intake/app ] 
 mv /opt/the-source-intake/app.new /opt/the-source-intake/app
 rm -rf "$TMP"
 chown -R root:root /opt/the-source-intake/app && chmod -R a+rX,go-w /opt/the-source-intake/app
-if [ ! -d /var/lib/the-source-intake/repo/.git ]; then
-  git clone -q --filter=blob:none --sparse https://github.com/keithdealwis-ui/the-source.git /var/lib/the-source-intake/repo
-fi
-git -c safe.directory=/var/lib/the-source-intake/repo -C /var/lib/the-source-intake/repo \
-  sparse-checkout set data/corpus data/canonical data/dataset data/intake
 mkdir -p /var/lib/the-source-intake/state
-chown -R the-source-intake:the-source-intake /var/lib/the-source-intake && chmod 0750 /var/lib/the-source-intake
+chown the-source-intake:the-source-intake /var/lib/the-source-intake /var/lib/the-source-intake/state
+chmod 0750 /var/lib/the-source-intake /var/lib/the-source-intake/state
+# Git in the service-owned clone runs as the service user, never as root (no safe.directory override).
+AS="runuser -u the-source-intake --"
+if [ ! -d /var/lib/the-source-intake/repo/.git ]; then
+  $AS git clone -q --filter=blob:none --sparse https://github.com/keithdealwis-ui/the-source.git /var/lib/the-source-intake/repo
+fi
+$AS git -C /var/lib/the-source-intake/repo sparse-checkout set data/corpus data/canonical data/dataset data/intake
 # The batch signing key: generated here once, root-owned, handed only to the seal unit. Its public half is
 # committed to config/waiting_room_allowed_signers, which is what the Waiting room workflow verifies against.
 install -d -m 0700 /etc/the-source-intake

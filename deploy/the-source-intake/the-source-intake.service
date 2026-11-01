@@ -8,7 +8,7 @@ Group=the-source-intake
 WorkingDirectory=/opt/the-source-intake/app
 Environment=PYTHONDONTWRITEBYTECODE=1
 Environment=THE_SOURCE_ROOT=/var/lib/the-source-intake/repo
-ExecStart=/usr/bin/python3 -s -m source_pipeline waiting-room serve --state /var/lib/the-source-intake/state --corpus-root /var/lib/the-source-intake/repo --host 127.0.0.1 --port 8852
+ExecStart=/usr/bin/python3 -s -m source_pipeline.waiting_room serve --state /var/lib/the-source-intake/state --corpus-root /var/lib/the-source-intake/repo --host 127.0.0.1 --port 8852
 Restart=on-failure
 RestartSec=5
 StateDirectory=the-source-intake
