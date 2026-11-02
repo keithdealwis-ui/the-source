@@ -48,13 +48,20 @@ ACCESS_TTL = 3600
 REFRESH_TTL = 30 * 86400
 CODE_TTL = 300
 PENDING_TTL = 900
-LOGIN_FAILURES = 5                 # wrong passphrases per LOGIN_WINDOW before the form locks
+LOGIN_FAILURES = 5                 # wrong passphrases per address per LOGIN_WINDOW before it is locked out
 LOGIN_WINDOW = 900
-MAX_CLIENTS = 50
+LOGIN_GLOBAL = 100                 # wrong passphrases from all addresses per hour: the backstop
+FAMILY_MAX_AGE = 90 * 86400        # a connection re-authorises at least this often
+MAX_CLIENTS = 50                   # registered (RFC 7591) clients; idle ones are pruned first
+CLIENT_IDLE = 3600
+MAX_PENDING = 200
+MAX_STATE = 512
 MAX_BODY = 64 * 1024
 MAX_INFLIGHT = 16
 INTAKE_TIMEOUT = 20
 CHATGPT_REDIRECT_HOSTS = ("chatgpt.com", "chat.openai.com", "platform.openai.com")
+# ChatGPT's OAuth callbacks: connectors, and GPT Actions (/aip/<gpt id>/oauth/callback). Nothing else on those hosts.
+CHATGPT_REDIRECT_PATH = re.compile(r"^/(connector_platform_oauth_redirect|aip/[A-Za-z0-9_-]{1,128}/oauth/callback)$")
 PROTOCOL_VERSIONS = ("2025-11-25", "2025-06-18", "2025-03-26", "2024-11-05")
 SUBMISSION_ID = re.compile(r"^sub-[0-9a-f]{16}$")
 SAAS_ID = re.compile(r"^[a-z0-9][a-z0-9-]{0,79}$")
@@ -110,7 +117,8 @@ class Store:
                 code_challenge TEXT, scope TEXT, family TEXT, expires_at INTEGER, used INTEGER DEFAULT 0);
             CREATE TABLE IF NOT EXISTS tokens (token_hash TEXT PRIMARY KEY, kind TEXT, client_id TEXT, scope TEXT,
                 resource TEXT, subject TEXT, family TEXT, expires_at INTEGER, revoked INTEGER DEFAULT 0);
-            CREATE TABLE IF NOT EXISTS login_failures (at INTEGER);
+            CREATE TABLE IF NOT EXISTS login_attempts (at INTEGER, ip TEXT);
+            CREATE TABLE IF NOT EXISTS families (family TEXT PRIMARY KEY, created_at INTEGER);
         """)
 
     def audit(self, event: str, **fields) -> None:
@@ -131,8 +139,11 @@ class Store:
     # clients
     def add_client(self, name: str, redirect_uris: list[str], auth_method: str, host_pattern: bool = False):
         with self.lock:
-            if self.db.execute("SELECT COUNT(*) FROM clients").fetchone()[0] >= MAX_CLIENTS:
-                raise ValueError("too_many_clients")
+            if not host_pattern:  # prune registrations that never completed a connection
+                self.db.execute("DELETE FROM clients WHERE host_pattern=0 AND created_at < ? AND client_id NOT IN "
+                                "(SELECT client_id FROM codes UNION SELECT client_id FROM tokens)", (_now() - CLIENT_IDLE,))
+                if self.db.execute("SELECT COUNT(*) FROM clients WHERE host_pattern=0").fetchone()[0] >= MAX_CLIENTS:
+                    raise ValueError("too_many_clients")
             cid = "gw_" + secrets.token_urlsafe(16)
             secret = None if auth_method == "none" else "gws_" + secrets.token_urlsafe(32)
             self.db.execute("INSERT INTO clients VALUES (?,?,?,?,?,?,?)",
@@ -172,22 +183,36 @@ class Store:
             return None
         return row
 
-    def login_locked(self) -> bool:
-        since = _now() - LOGIN_WINDOW
+    def begin_attempt(self, ip: str):
+        """Record a passphrase attempt before checking it (so parallel guesses all count); None when locked."""
+        now = _now()
         with self.lock:
-            self.db.execute("DELETE FROM login_failures WHERE at < ?", (since,))
-            return self.db.execute("SELECT COUNT(*) FROM login_failures").fetchone()[0] >= LOGIN_FAILURES
+            self.db.execute("DELETE FROM login_attempts WHERE at < ?", (now - 3600,))
+            mine = self.db.execute("SELECT COUNT(*) FROM login_attempts WHERE ip=? AND at >= ?",
+                                   (ip, now - LOGIN_WINDOW)).fetchone()[0]
+            if mine >= LOGIN_FAILURES or self.db.execute("SELECT COUNT(*) FROM login_attempts").fetchone()[0] >= LOGIN_GLOBAL:
+                return None
+            return self.db.execute("INSERT INTO login_attempts VALUES (?,?)", (now, ip)).lastrowid
+
+    def attempt_succeeded(self, rowid: int) -> None:
+        with self.lock:
+            self.db.execute("DELETE FROM login_attempts WHERE rowid=?", (rowid,))
 
 
 def redirect_allowed(uri: str, hosts) -> bool:
+    # urlsplit silently drops CR, LF and tab, so anything at or below space is refused before parsing:
+    # the stored string is later written into a Location header.
+    if not isinstance(uri, str) or not uri.isascii() or any(ord(c) <= 0x20 or ord(c) == 0x7F for c in uri):
+        return False
     try:
         u = urllib.parse.urlsplit(uri)
+        port = u.port
     except ValueError:
         return False
-    if u.fragment or u.username or u.password:
+    if u.fragment or u.username or u.password or "\\" in uri:
         return False
-    if u.scheme == "https" and u.hostname in hosts:
-        return True
+    if u.scheme == "https" and u.hostname in hosts and port is None:
+        return bool(CHATGPT_REDIRECT_PATH.match(u.path))
     return u.scheme == "http" and u.hostname == "127.0.0.1" and "127.0.0.1" in hosts  # tests only
 
 
@@ -268,11 +293,17 @@ def build_submission(args: dict, today: datetime | None = None) -> dict:
     return body
 
 
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, *a, **k):  # never carry the credential to another address
+        return None
+
+
 class Intake:
     """The waiting room, reached on loopback with the gitwatch producer credential."""
 
     def __init__(self, base: str, credential: str):
         self.base, self._credential = base.rstrip("/"), credential
+        self._open = urllib.request.build_opener(urllib.request.ProxyHandler({}), _NoRedirect).open
 
     def call(self, method: str, path: str, body: dict | None = None) -> tuple[int, dict]:
         req = urllib.request.Request(self.base + path, method=method,
@@ -280,7 +311,7 @@ class Intake:
                                      headers={"Authorization": "Bearer " + self._credential,
                                               "Content-Type": "application/json"})
         try:
-            with urllib.request.urlopen(req, timeout=INTAKE_TIMEOUT) as r:
+            with self._open(req, timeout=INTAKE_TIMEOUT) as r:
                 return r.status, json.loads(r.read() or b"{}")
         except urllib.error.HTTPError as e:
             try:
@@ -367,10 +398,14 @@ class Handler(BaseHTTPRequestHandler):
 
     # plumbing
     def _send(self, status: int, body: bytes = b"", ctype: str = "application/json", headers: dict | None = None):
+        if status >= 400:
+            self.close_connection = True  # an unread or refused body is never parsed as a next request
         self.send_response(status)
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(body)))
         self.send_header("Cache-Control", "no-store")
+        if self.close_connection:
+            self.send_header("Connection", "close")
         for k, v in (headers or {}).items():
             self.send_header(k, v)
         self.end_headers()
@@ -381,10 +416,20 @@ class Handler(BaseHTTPRequestHandler):
         self._send(status, json.dumps(obj).encode(), headers=headers)
 
     def _redirect(self, url: str):
+        if "\r" in url or "\n" in url:
+            return self._send(400, b"Bad redirect address.", "text/plain; charset=utf-8")
         self._send(302, headers={"Location": url})
 
+    def _client_ip(self) -> str:
+        peer = self.client_address[0]
+        return (self.headers.get("X-Real-IP") or peer)[:64] if peer == "127.0.0.1" else peer
+
     def _body(self) -> bytes | None:
-        n = int(self.headers.get("Content-Length") or 0)
+        length = self.headers.get("Content-Length") or "0"
+        if self.headers.get("Transfer-Encoding") or not length.isdigit():
+            self._json(400, {"error": "bad_request"})
+            return None
+        n = int(length)
         if n > MAX_BODY:
             self._json(413, {"error": "too_large"})
             return None
@@ -464,7 +509,9 @@ class Handler(BaseHTTPRequestHandler):
 
     def _consent(self, pending: str, client, uri: str, error: str = "", status: int = 200):
         hosts = " ".join("http://127.0.0.1:*" if h == "127.0.0.1" else "https://" + h for h in self.server.redirect_hosts)
-        page = CONSENT.format(client=html.escape(client["name"] or "ChatGPT"),
+        page = CONSENT.format(client=html.escape(f'"{client["name"] or "ChatGPT"}" (self-declared name; client '
+                                                 f'{client["client_id"]}, registered '
+                                                 f'{datetime.fromtimestamp(client["created_at"], timezone.utc):%Y-%m-%d %H:%M} UTC)'),
                               host=html.escape(urllib.parse.urlsplit(uri).hostname or ""),
                               error=f'<p class="err">{html.escape(error)}</p>' if error else "",
                               action=OAUTH + "/authorize", pending=html.escape(pending))
@@ -480,6 +527,8 @@ class Handler(BaseHTTPRequestHandler):
         if client is None or not self._client_redirect_ok(client, uri):
             return self._send(400, b"Unknown client or redirect address.", "text/plain; charset=utf-8")
         state = q.get("state")
+        if state is not None and len(state) > MAX_STATE:
+            return self._redirect_error(uri, None, "invalid_request")
         if q.get("response_type") != "code":
             return self._redirect_error(uri, state, "unsupported_response_type")
         if q.get("code_challenge_method") != "S256" or not re.fullmatch(r"[A-Za-z0-9_-]{43,128}", q.get("code_challenge", "")):
@@ -495,6 +544,9 @@ class Handler(BaseHTTPRequestHandler):
         pid = secrets.token_urlsafe(24)
         with s.store.lock:
             s.store.db.execute("DELETE FROM pending WHERE created_at < ?", (_now() - PENDING_TTL,))
+            if s.store.db.execute("SELECT COUNT(*) FROM pending").fetchone()[0] >= MAX_PENDING:
+                return self._send(503, b"Too many authorisations in progress. Try again shortly.",
+                                  "text/plain; charset=utf-8")
             s.store.db.execute("INSERT INTO pending VALUES (?,?,?,?,?,?,?)",
                                (pid, client["client_id"], uri, state, q["code_challenge"], scope, _now()))
         self._consent(pid, client, uri)
@@ -508,25 +560,28 @@ class Handler(BaseHTTPRequestHandler):
             return self._send(400, b"This request has expired. Start the connection again from ChatGPT.",
                               "text/plain; charset=utf-8")
         client = s.store.client(p["client_id"])
+        if client is None:
+            return self._send(400, b"Unknown client.", "text/plain; charset=utf-8")
         if f.get("decision") != "approve":
             with s.store.lock:
                 s.store.db.execute("DELETE FROM pending WHERE id=?", (p["id"],))
             s.store.audit("authorization_denied", client_id=p["client_id"])
             return self._redirect_error(p["redirect_uri"], p["state"], "access_denied")
-        if s.store.login_locked():
+        attempt = s.store.begin_attempt(self._client_ip())
+        if attempt is None:
             s.store.audit("passphrase_locked")
             return self._consent(p["id"], client, p["redirect_uri"], "Too many attempts. Try again in 15 minutes.", 429)
         if not check_passphrase(f.get("passphrase", ""), s.store.setting("passphrase")):
-            with s.store.lock:
-                s.store.db.execute("INSERT INTO login_failures VALUES (?)", (_now(),))
             s.store.audit("passphrase_refused", client_id=p["client_id"])
             return self._consent(p["id"], client, p["redirect_uri"], "That passphrase is not right.", 401)
-        code = secrets.token_urlsafe(32)
+        s.store.attempt_succeeded(attempt)
+        code, family = secrets.token_urlsafe(32), secrets.token_hex(8)
         with s.store.lock:
             s.store.db.execute("DELETE FROM pending WHERE id=?", (p["id"],))
+            s.store.db.execute("INSERT INTO families VALUES (?,?)", (family, _now()))
             s.store.db.execute("INSERT INTO codes VALUES (?,?,?,?,?,?,?,0)",
                                (_sha(code), p["client_id"], p["redirect_uri"], p["code_challenge"], p["scope"],
-                                secrets.token_hex(8), _now() + CODE_TTL))
+                                family, _now() + CODE_TTL))
         s.store.audit("authorized", client_id=p["client_id"])
         q = {"code": code, "iss": s.issuer}
         if p["state"] is not None:
@@ -586,7 +641,9 @@ class Handler(BaseHTTPRequestHandler):
                 if row["revoked"]:  # reuse of a rotated refresh token: the family is compromised
                     s.store.revoke_family(row["family"])
                     return oauth_error("invalid_grant")
-                if row["expires_at"] < _now() or row["resource"] != s.resource:
+                born = s.store.db.execute("SELECT created_at FROM families WHERE family=?", (row["family"],)).fetchone()
+                if (row["expires_at"] < _now() or row["resource"] != s.resource or born is None
+                        or born["created_at"] + FAMILY_MAX_AGE < _now()):
                     return oauth_error("invalid_grant")
                 s.store.db.execute("UPDATE tokens SET revoked=1 WHERE family=? AND kind IN ('access','refresh')",
                                    (row["family"],))
@@ -653,6 +710,8 @@ class Handler(BaseHTTPRequestHandler):
         if "id" not in msg:  # a notification
             return self._send(202)
         rid, method, params = msg["id"], msg["method"], msg.get("params") or {}
+        if not isinstance(params, dict) or not isinstance(params.get("arguments", {}), dict):
+            return self._json(200, {"jsonrpc": "2.0", "id": rid, "error": {"code": -32602, "message": "invalid params"}})
         ok = lambda result: self._json(200, {"jsonrpc": "2.0", "id": rid, "result": result})  # noqa: E731
         if method == "initialize":
             asked = params.get("protocolVersion")

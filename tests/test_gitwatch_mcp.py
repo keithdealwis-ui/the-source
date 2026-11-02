@@ -107,7 +107,7 @@ def register(srv, method="none"):
     return out
 
 
-def authorize(srv, client, passphrase=PASS, **extra):
+def authorize(srv, client, passphrase=PASS, ip=None, **extra):
     verifier, challenge = pkce()
     q = {"response_type": "code", "client_id": client["client_id"], "redirect_uri": CB, "state": "st8",
          "code_challenge": challenge, "code_challenge_method": "S256", "scope": "gitwatch.submit offline_access",
@@ -118,7 +118,8 @@ def authorize(srv, client, passphrase=PASS, **extra):
     assert "frame-ancestors 'none'" in h["Content-Security-Policy"]
     pending = re.search(r'name="pending" value="([^"]+)"', page).group(1)
     st, h, _ = req(srv, "POST", "/gitwatch/oauth/authorize",
-                   {"pending": pending, "passphrase": passphrase, "decision": "approve"}, form=True)
+                   {"pending": pending, "passphrase": passphrase, "decision": "approve"},
+                   {"X-Real-IP": ip} if ip else None, form=True)
     return st, h, pending, verifier
 
 
@@ -309,3 +310,62 @@ def test_unknown_client_or_redirect_never_redirects(env):
 def test_foreign_origin_refused(env):
     _, tok = tokens(env)
     assert mcp(env, tok["access_token"], "ping", headers={"Origin": "https://evil.example"})[0] == 403
+
+
+def test_redirects_are_pinned_and_control_characters_refused():
+    hosts = G.CHATGPT_REDIRECT_HOSTS
+    assert G.redirect_allowed("https://chatgpt.com/connector_platform_oauth_redirect", hosts)
+    assert G.redirect_allowed("https://chat.openai.com/aip/g-abc123/oauth/callback", hosts)
+    for bad in ("https://chatgpt.com/connector_platform_oauth_redirect\r\nSet-Cookie: pwn=1",
+                "https://chatgpt.com/connector_platform_oauth_redirect\tx",
+                "https://chatgpt.com/other/path", "https://chatgpt.com:8443/connector_platform_oauth_redirect",
+                "https://evil.example/connector_platform_oauth_redirect",
+                "https://chatgpt.com@evil.example/connector_platform_oauth_redirect",
+                "https://chatgpt.com/connector_platform_oauth_redirect#x", "https://chatgpt.cöm/x",
+                "http://chatgpt.com/connector_platform_oauth_redirect"):
+        assert not G.redirect_allowed(bad, hosts), bad
+
+
+@needs_loopback
+def test_crlf_redirect_cannot_be_registered(env):
+    st, _, out = req(env, "POST", "/gitwatch/oauth/register", {"redirect_uris": [CB + "\r\nX-Injected: 1"]})
+    assert st == 400
+
+
+@needs_loopback
+def test_lockout_is_per_address(env):
+    client = register(env)
+    for _ in range(G.LOGIN_FAILURES):
+        assert authorize(env, client, passphrase="wrong", ip="203.0.113.9")[0] == 401
+    assert authorize(env, client, ip="203.0.113.9")[0] == 429
+    assert authorize(env, client, ip="198.51.100.7")[0] == 302  # Keith, elsewhere, is not locked out
+
+
+@needs_loopback
+def test_registration_flood_does_not_close_registration(env):
+    for _ in range(G.MAX_CLIENTS):
+        register(env)
+    st, _, out = req(env, "POST", "/gitwatch/oauth/register", {"redirect_uris": [CB]})
+    assert st == 400
+    env.store.db.execute("UPDATE clients SET created_at = created_at - ?", (G.CLIENT_IDLE + 10,))
+    register(env)  # idle registrations were pruned
+    cid, _ = env.store.add_client("cli", [], "none", host_pattern=True)
+    assert cid.startswith("gw_")
+
+
+@needs_loopback
+def test_malformed_bodies_and_params(env):
+    c = http.client.HTTPConnection("127.0.0.1", env.server_port, timeout=10)
+    c.putrequest("POST", "/gitwatch/oauth/token"); c.putheader("Content-Length", "-1"); c.endheaders()
+    assert c.getresponse().status == 400
+    _, tok = tokens(env)
+    st, _, out = mcp(env, tok["access_token"], "tools/call", ["not", "an", "object"])
+    assert out["error"]["code"] == -32602
+
+
+@needs_loopback
+def test_refresh_family_has_a_maximum_age(env):
+    client, tok = tokens(env)
+    env.store.db.execute("UPDATE families SET created_at = created_at - ?", (G.FAMILY_MAX_AGE + 10,))
+    form = {"grant_type": "refresh_token", "refresh_token": tok["refresh_token"], "client_id": client["client_id"]}
+    assert req(env, "POST", "/gitwatch/oauth/token", form, form=True)[2]["error"] == "invalid_grant"
