@@ -52,11 +52,11 @@ PENDING_TTL = 900
 LOGIN_FAILURES = 5                 # wrong passphrases per address per LOGIN_WINDOW before it is locked out
 LOGIN_WINDOW = 900
 LOGIN_GLOBAL = 100                 # wrong passphrases from all addresses per hour that raise an audit alert
-REGISTRATIONS_PER_ADDRESS = 5      # RFC 7591 registrations per address per hour
 FAMILY_MAX_AGE = 90 * 86400        # a connection re-authorises at least this often
 MAX_CLIENTS = 50                   # registered (RFC 7591) clients; idle ones are pruned first
 CLIENT_IDLE = 3600
-MAX_PENDING = 200
+MAX_PENDING = 1000                 # consent pages open at once; the oldest is dropped beyond this
+PENDING_PER_ADDRESS = 10           # per browser address; its own oldest is dropped beyond this
 MAX_STATE = 512
 MAX_BODY = 64 * 1024
 MAX_INFLIGHT = 16
@@ -113,14 +113,13 @@ class Store:
             CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT NOT NULL);
             CREATE TABLE IF NOT EXISTS clients (client_id TEXT PRIMARY KEY, secret_hash TEXT, auth_method TEXT NOT NULL,
                 redirect_uris TEXT NOT NULL, host_pattern INTEGER NOT NULL, name TEXT, created_at INTEGER NOT NULL);
-            CREATE TABLE IF NOT EXISTS pending (id TEXT PRIMARY KEY, client_id TEXT, redirect_uri TEXT, state TEXT,
-                code_challenge TEXT, scope TEXT, created_at INTEGER);
+            CREATE TABLE IF NOT EXISTS authz_pending (id TEXT PRIMARY KEY, client_id TEXT, redirect_uri TEXT,
+                state TEXT, code_challenge TEXT, scope TEXT, created_at INTEGER, ip TEXT);
             CREATE TABLE IF NOT EXISTS codes (code_hash TEXT PRIMARY KEY, client_id TEXT, redirect_uri TEXT,
                 code_challenge TEXT, scope TEXT, family TEXT, expires_at INTEGER, used INTEGER DEFAULT 0);
             CREATE TABLE IF NOT EXISTS tokens (token_hash TEXT PRIMARY KEY, kind TEXT, client_id TEXT, scope TEXT,
                 resource TEXT, subject TEXT, family TEXT, expires_at INTEGER, revoked INTEGER DEFAULT 0);
             CREATE TABLE IF NOT EXISTS login_attempts (at INTEGER, ip TEXT);
-            CREATE TABLE IF NOT EXISTS registrations (client_id TEXT PRIMARY KEY, ip TEXT, at INTEGER);
             CREATE TABLE IF NOT EXISTS families (family TEXT PRIMARY KEY, created_at INTEGER);
         """)
 
@@ -140,20 +139,20 @@ class Store:
             self.db.execute("INSERT OR REPLACE INTO settings VALUES (?,?)", (key, value))
 
     # clients
-    def add_client(self, name: str, redirect_uris: list[str], auth_method: str, host_pattern: bool = False,
-                   ip: str | None = None):
-        idle = ("host_pattern=0 AND client_id NOT IN (SELECT client_id FROM codes UNION SELECT client_id FROM tokens)")
+    def add_client(self, name: str, redirect_uris: list[str], auth_method: str, host_pattern: bool = False):
+        # Registration comes from ChatGPT's servers, not Keith's browser, so it is not limited per address
+        # (that would let other ChatGPT users exhaust a shared allowance). The cap is kept by evicting the
+        # oldest registration that never connected and has no consent page open.
+        idle = ("host_pattern=0 AND client_id NOT IN (SELECT client_id FROM codes UNION SELECT client_id FROM tokens"
+                " UNION SELECT client_id FROM authz_pending WHERE created_at >= ?)")
         with self.lock:
             if not host_pattern:
                 now = _now()
-                self.db.execute(f"DELETE FROM clients WHERE {idle} AND created_at < ?", (now - CLIENT_IDLE,))
-                self.db.execute("DELETE FROM registrations WHERE at < ?", (now - 3600,))
-                if ip is not None and self.db.execute("SELECT COUNT(*) FROM registrations WHERE ip=?",
-                                                      (ip,)).fetchone()[0] >= REGISTRATIONS_PER_ADDRESS:
-                    raise ValueError("too_many_registrations")
+                self.db.execute(f"DELETE FROM clients WHERE {idle} AND created_at < ?", (now - PENDING_TTL, now - CLIENT_IDLE))
                 if self.db.execute("SELECT COUNT(*) FROM clients WHERE host_pattern=0").fetchone()[0] >= MAX_CLIENTS:
                     # make room by evicting the oldest registration that never connected
-                    old = self.db.execute(f"SELECT client_id FROM clients WHERE {idle} ORDER BY created_at LIMIT 1").fetchone()
+                    old = self.db.execute(f"SELECT client_id FROM clients WHERE {idle} ORDER BY created_at LIMIT 1",
+                                          (now - PENDING_TTL,)).fetchone()
                     if old is None:
                         raise ValueError("too_many_clients")
                     self.db.execute("DELETE FROM clients WHERE client_id=?", (old["client_id"],))
@@ -162,8 +161,7 @@ class Store:
             self.db.execute("INSERT INTO clients VALUES (?,?,?,?,?,?,?)",
                             (cid, _sha(secret) if secret else None, auth_method, json.dumps(redirect_uris),
                              int(host_pattern), name, _now()))
-            if ip is not None:
-                self.db.execute("INSERT INTO registrations VALUES (?,?,?)", (cid, ip, _now()))
+
         self.audit("client_registered", client_id=cid, auth_method=auth_method, host_pattern=host_pattern)
         return cid, secret
 
@@ -568,19 +566,22 @@ class Handler(BaseHTTPRequestHandler):
         if not s.store.setting("passphrase"):
             return self._send(503, b"GitWatch is not ready: no passphrase is set.", "text/plain; charset=utf-8")
         pid = secrets.token_urlsafe(24)
-        with s.store.lock:
-            s.store.db.execute("DELETE FROM pending WHERE created_at < ?", (_now() - PENDING_TTL,))
-            if s.store.db.execute("SELECT COUNT(*) FROM pending").fetchone()[0] >= MAX_PENDING:
-                return self._send(503, b"Too many authorisations in progress. Try again shortly.",
-                                  "text/plain; charset=utf-8")
-            s.store.db.execute("INSERT INTO pending VALUES (?,?,?,?,?,?,?)",
-                               (pid, client["client_id"], uri, state, q["code_challenge"], scope, _now()))
+        ip = self._client_ip()
+        with s.store.lock:  # bounded by eviction, never by refusal, so open consents cannot lock Keith out
+            db = s.store.db
+            db.execute("DELETE FROM authz_pending WHERE created_at < ?", (_now() - PENDING_TTL,))
+            db.execute("DELETE FROM authz_pending WHERE id IN (SELECT id FROM authz_pending WHERE ip=? "
+                       "ORDER BY created_at DESC LIMIT -1 OFFSET ?)", (ip, PENDING_PER_ADDRESS - 1))
+            db.execute("DELETE FROM authz_pending WHERE id IN (SELECT id FROM authz_pending "
+                       "ORDER BY created_at DESC LIMIT -1 OFFSET ?)", (MAX_PENDING - 1,))
+            db.execute("INSERT INTO authz_pending VALUES (?,?,?,?,?,?,?,?)",
+                       (pid, client["client_id"], uri, state, q["code_challenge"], scope, _now(), ip))
         self._consent(pid, client, uri)
 
     def _authorize_post(self, raw: bytes):
         s, f = self.server, self._form(raw)
         with s.store.lock:
-            p = s.store.db.execute("SELECT * FROM pending WHERE id=? AND created_at >= ?",
+            p = s.store.db.execute("SELECT * FROM authz_pending WHERE id=? AND created_at >= ?",
                                    (f.get("pending", ""), _now() - PENDING_TTL)).fetchone()
         if p is None:
             return self._send(400, b"This request has expired. Start the connection again from ChatGPT.",
@@ -590,7 +591,7 @@ class Handler(BaseHTTPRequestHandler):
             return self._send(400, b"Unknown client.", "text/plain; charset=utf-8")
         if f.get("decision") != "approve":
             with s.store.lock:
-                s.store.db.execute("DELETE FROM pending WHERE id=?", (p["id"],))
+                s.store.db.execute("DELETE FROM authz_pending WHERE id=?", (p["id"],))
             s.store.audit("authorization_denied", client_id=p["client_id"])
             return self._redirect_error(p["redirect_uri"], p["state"], "access_denied")
         attempt = s.store.begin_attempt(self._client_ip())
@@ -603,7 +604,7 @@ class Handler(BaseHTTPRequestHandler):
         s.store.attempt_succeeded(attempt)
         code, family = secrets.token_urlsafe(32), secrets.token_hex(8)
         with s.store.lock:
-            s.store.db.execute("DELETE FROM pending WHERE id=?", (p["id"],))
+            s.store.db.execute("DELETE FROM authz_pending WHERE id=?", (p["id"],))
             s.store.db.execute("INSERT INTO families VALUES (?,?)", (family, _now()))
             s.store.db.execute("INSERT INTO codes VALUES (?,?,?,?,?,?,?,0)",
                                (_sha(code), p["client_id"], p["redirect_uri"], p["code_challenge"], p["scope"],
@@ -695,7 +696,7 @@ class Handler(BaseHTTPRequestHandler):
             return self._json(400, {"error": "invalid_client_metadata"})
         name = str(meta.get("client_name") or "ChatGPT")[:100]
         try:
-            cid, secret = s.store.add_client(name, uris, method, ip=self._client_ip())
+            cid, secret = s.store.add_client(name, uris, method)
         except ValueError:
             return self._json(429, {"error": "invalid_client_metadata", "error_description": "too many registrations"})
         out = {"client_id": cid, "client_id_issued_at": _now(), "client_name": name, "redirect_uris": uris,

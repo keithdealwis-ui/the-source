@@ -345,18 +345,29 @@ def test_lockout_is_per_address(env):
 
 @needs_loopback
 def test_registration_flood_does_not_close_registration(env):
-    for _ in range(G.REGISTRATIONS_PER_ADDRESS):
-        register(env, ip="203.0.113.50")
-    st, _, _ = req(env, "POST", "/gitwatch/oauth/register", {"redirect_uris": [CB]}, {"X-Real-IP": "203.0.113.50"})
-    assert st == 429  # one address cannot flood
-    for i in range(G.MAX_CLIENTS + 5):  # many addresses filling the cap evict the oldest idle registration
-        register(env, ip=f"198.18.{i // 200}.{i % 200 + 1}")
     connected, _ = tokens(env)
-    for i in range(G.MAX_CLIENTS):
-        register(env, ip=f"198.19.{i // 200}.{i % 200 + 1}")
+    keith = register(env)  # registered, consent page open, no code yet
+    _, _, page = req(env, "GET", "/gitwatch/oauth/authorize?" + urllib.parse.urlencode(
+        {"response_type": "code", "client_id": keith["client_id"], "redirect_uri": CB, "state": "st8",
+         "code_challenge": pkce()[1], "code_challenge_method": "S256"}))
+    assert 'name="pending"' in page
+    for i in range(G.MAX_CLIENTS + 10):  # a flood fills the cap; the oldest idle registrations are evicted
+        register(env, ip="203.0.113.50")
     assert env.store.client(connected["client_id"]) is not None  # a client with tokens is never evicted
+    assert env.store.client(keith["client_id"]) is not None      # nor one with a consent page open
     cid, _ = env.store.add_client("cli", [], "none", host_pattern=True)
     assert cid.startswith("gw_")
+
+
+@needs_loopback
+def test_open_consents_are_bounded_by_eviction_not_refusal(env):
+    client = register(env)
+    for _ in range(G.PENDING_PER_ADDRESS + 5):
+        assert req(env, "GET", "/gitwatch/oauth/authorize?" + urllib.parse.urlencode(
+            {"response_type": "code", "client_id": client["client_id"], "redirect_uri": CB,
+             "code_challenge": pkce()[1], "code_challenge_method": "S256"}), headers={"X-Real-IP": "203.0.113.77"})[0] == 200
+    assert env.store.db.execute("SELECT COUNT(*) FROM authz_pending WHERE ip='203.0.113.77'").fetchone()[0] == G.PENDING_PER_ADDRESS
+    assert authorize(env, client, ip="198.51.100.20")[0] == 302
 
 
 @needs_loopback
