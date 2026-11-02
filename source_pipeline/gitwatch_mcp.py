@@ -143,16 +143,19 @@ class Store:
         # Registration comes from ChatGPT's servers, not Keith's browser, so it is not limited per address
         # (that would let other ChatGPT users exhaust a shared allowance). The cap is kept by evicting the
         # oldest registration that never connected and has no consent page open.
-        idle = ("host_pattern=0 AND client_id NOT IN (SELECT client_id FROM codes UNION SELECT client_id FROM tokens"
-                " UNION SELECT client_id FROM authz_pending WHERE created_at >= ?)")
         with self.lock:
             if not host_pattern:
                 now = _now()
-                self.db.execute(f"DELETE FROM clients WHERE {idle} AND created_at < ?", (now - PENDING_TTL, now - CLIENT_IDLE))
+                self.db.execute(
+                    "DELETE FROM clients WHERE host_pattern=0 AND client_id NOT IN (SELECT client_id FROM codes"
+                    " UNION SELECT client_id FROM tokens UNION SELECT client_id FROM authz_pending WHERE created_at >= ?)"
+                    " AND created_at < ?", (now - PENDING_TTL, now - CLIENT_IDLE))
                 if self.db.execute("SELECT COUNT(*) FROM clients WHERE host_pattern=0").fetchone()[0] >= MAX_CLIENTS:
                     # make room by evicting the oldest registration that never connected
-                    old = self.db.execute(f"SELECT client_id FROM clients WHERE {idle} ORDER BY created_at LIMIT 1",
-                                          (now - PENDING_TTL,)).fetchone()
+                    old = self.db.execute(
+                        "SELECT client_id FROM clients WHERE host_pattern=0 AND client_id NOT IN (SELECT client_id"
+                        " FROM codes UNION SELECT client_id FROM tokens UNION SELECT client_id FROM authz_pending"
+                        " WHERE created_at >= ?) ORDER BY created_at LIMIT 1", (now - PENDING_TTL,)).fetchone()
                     if old is None:
                         raise ValueError("too_many_clients")
                     self.db.execute("DELETE FROM clients WHERE client_id=?", (old["client_id"],))
