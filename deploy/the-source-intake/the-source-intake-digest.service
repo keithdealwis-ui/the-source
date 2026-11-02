@@ -1,5 +1,7 @@
-# Morning email to Keith: what the waiting room decided in the last 24 hours (KEI-932).
-# Reads the state read-only; the Resend SMTP key arrives as a systemd credential.
+# Morning email to Keith: last night's cycle (new projects, rescoring), yesterday's MCP usage and
+# the waiting room's results (KEI-932). Reads everything read-only. The Resend SMTP key and the
+# MCP's aggregate telemetry arrive as systemd credentials; the root pre-step keeps only the day
+# and user agent of /mcp requests from the nginx log (no addresses) for the client counts.
 [Unit]
 Description=Email Keith the waiting room's daily results (KEI-932)
 After=network-online.target
@@ -12,7 +14,11 @@ Group=the-source-intake
 WorkingDirectory=/opt/the-source-intake/app
 Environment=PYTHONDONTWRITEBYTECODE=1
 LoadCredential=smtp_password:/etc/the-source-intake/resend.key
-ExecStart=/usr/bin/python3 -s -m source_pipeline.waiting_room_digest --state /var/lib/the-source-intake/state
+LoadCredential=mcp_telemetry:/var/lib/the-source-mcp/telemetry.json
+RuntimeDirectory=the-source-intake-digest
+ExecStartPre=+/usr/bin/python3 -s -m source_pipeline.waiting_room_digest extract-clients --out /run/the-source-intake-digest/clients.tsv /var/log/nginx/access.log.1 /var/log/nginx/access.log
+ExecStartPre=+/bin/chown the-source-intake: /run/the-source-intake-digest/clients.tsv
+ExecStart=/usr/bin/python3 -s -m source_pipeline.waiting_room_digest --state /var/lib/the-source-intake/state --clients /run/the-source-intake-digest/clients.tsv
 StateDirectory=the-source-intake
 StateDirectoryMode=0750
 UMask=0027
