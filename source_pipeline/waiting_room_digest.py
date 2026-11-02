@@ -120,7 +120,7 @@ def render(d: dict) -> tuple[str, str, str]:
         text.append(f"\n{title}")
         body.append(f"<h3 style='margin:16px 0 6px;font-size:15px'>{html.escape(title)}</h3><ul style='margin:0;padding-left:20px'>")
         for main, detail in rows:
-            text.append(f"  - {main}" + (f"  ({detail})" if detail else ""))
+            text.append(f"  - {main}" + (f": {detail}" if detail else ""))
             shown = f"<a href='{html.escape(main)}'>{html.escape(main)}</a>" if link and main.startswith("https://") else html.escape(main)
             body.append(f"<li>{shown}"
                         + (f"<br><span style='color:#666'>{html.escape(detail)}</span>" if detail else "") + "</li>")

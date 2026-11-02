@@ -122,6 +122,6 @@ def test_render_with_cycle_and_usage(env):
     d["cycle"], d["usage"] = D.summarise_cycle(RUN), D.usage_for(TELEMETRY, "2026-11-01")
     subject, text, html_body = D.render(d)
     assert subject.startswith("The Source daily: 6 new projects, 223 rescored, 12 MCP calls, 0 waiting-room results")
-    assert "Added to the corpus  (6 (corpus 25,107 to 25,113))" in text
+    assert "Added to the corpus: 6 (corpus 25,107 to 25,113)" in text
     assert "https://github.com/l0ng-ai/openidea" in html_body and "now recommendable" in text
-    assert "source_search  (8, 1 empty, 3 took over a second)" in text
+    assert "source_search: 8, 1 empty, 3 took over a second" in text
