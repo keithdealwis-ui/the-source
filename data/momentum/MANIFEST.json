@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-01T02:05:53Z",
+  "as_of": "2026-11-02T00:32:25Z",
   "counts": {
     "measured_any_window": 1525,
     "projects": 1541
@@ -8,40 +8,40 @@
     "1": {
       "acceleration": {
         "labels": {
-          "accelerating": 120,
-          "decelerating": 307,
-          "steady": 1070
+          "accelerating": 207,
+          "decelerating": 169,
+          "steady": 1149
         },
         "measurable_from": "2026-10-04",
         "prior_base": {
-          "base_day": "2026-10-30",
+          "base_day": "2026-10-31",
           "base_gap_days": 0,
           "exact": true,
-          "target_day": "2026-10-30"
+          "target_day": "2026-10-31"
         },
         "projects": {
           "identity_changed": 0,
           "insufficient_history": 0,
-          "measured": 1497,
-          "no_baseline": 28,
+          "measured": 1525,
+          "no_baseline": 0,
           "not_observed": 0
         },
         "status": "measured"
       },
       "base": {
-        "base_day": "2026-10-31",
+        "base_day": "2026-11-01",
         "base_gap_days": 0,
         "exact": true,
-        "target_day": "2026-10-31",
+        "target_day": "2026-11-01",
         "tolerance_days": 0
       },
       "calendar_days_in_window": 2,
       "measurable_from": "2026-10-03",
       "momentum": {
         "declining": 1,
-        "flat": 1186,
-        "rising": 278,
-        "surging": 60
+        "flat": 1194,
+        "rising": 284,
+        "surging": 46
       },
       "projects": {
         "identity_changed": 0,
@@ -58,12 +58,12 @@
         "labels": {},
         "measurable_from": "2026-12-01",
         "prior_base": {
-          "reason": "no snapshot on or before 2026-09-02; oldest held is 2026-10-02",
-          "target_day": "2026-09-02"
+          "reason": "no snapshot on or before 2026-09-03; oldest held is 2026-10-02",
+          "target_day": "2026-09-03"
         },
         "projects": {
           "identity_changed": 0,
-          "insufficient_history": 593,
+          "insufficient_history": 606,
           "measured": 0,
           "no_baseline": 0,
           "not_observed": 0
@@ -71,25 +71,25 @@
         "status": "insufficient_history"
       },
       "base": {
-        "base_day": "2026-10-02",
+        "base_day": "2026-10-03",
         "base_gap_days": 0,
         "exact": true,
-        "target_day": "2026-10-02",
+        "target_day": "2026-10-03",
         "tolerance_days": 3
       },
       "calendar_days_in_window": 31,
       "measurable_from": "2026-11-01",
       "momentum": {
         "declining": 2,
-        "flat": 373,
-        "rising": 209,
+        "flat": 380,
+        "rising": 215,
         "surging": 9
       },
       "projects": {
         "identity_changed": 0,
         "insufficient_history": 0,
-        "measured": 593,
-        "no_baseline": 932,
+        "measured": 606,
+        "no_baseline": 919,
         "not_observed": 16
       },
       "snapshots_in_window": 31,
@@ -98,39 +98,40 @@
     "7": {
       "acceleration": {
         "labels": {
-          "accelerating": 156,
-          "decelerating": 76,
-          "steady": 387
+          "accelerating": 119,
+          "decelerating": 111,
+          "steady": 390
         },
         "measurable_from": "2026-10-16",
         "prior_base": {
-          "base_day": "2026-10-18",
+          "base_day": "2026-10-19",
           "base_gap_days": 0,
           "exact": true,
-          "target_day": "2026-10-18"
+          "target_day": "2026-10-19"
         },
         "projects": {
           "identity_changed": 0,
           "insufficient_history": 0,
-          "measured": 619,
-          "no_baseline": 877,
+          "measured": 620,
+          "no_baseline": 876,
           "not_observed": 0
         },
         "status": "measured"
       },
       "base": {
-        "base_day": "2026-10-25",
+        "base_day": "2026-10-26",
         "base_gap_days": 0,
         "exact": true,
-        "target_day": "2026-10-25",
+        "target_day": "2026-10-26",
         "tolerance_days": 1
       },
       "calendar_days_in_window": 8,
       "measurable_from": "2026-10-09",
       "momentum": {
-        "flat": 909,
-        "rising": 500,
-        "surging": 87
+        "declining": 1,
+        "flat": 913,
+        "rising": 497,
+        "surging": 85
       },
       "projects": {
         "identity_changed": 0,
@@ -157,8 +158,8 @@
         "status": "insufficient_history"
       },
       "base": {
-        "reason": "no snapshot on or before 2026-08-03; oldest held is 2026-10-02",
-        "target_day": "2026-08-03",
+        "reason": "no snapshot on or before 2026-08-04; oldest held is 2026-10-02",
+        "target_day": "2026-08-04",
         "tolerance_days": 7
       },
       "calendar_days_in_window": null,
@@ -176,12 +177,11 @@
     }
   },
   "files": {
-    "projects.jsonl": "86d9cbd9ce71a0ab55573f66f74da48ba13136078727922dd3b8f5cc6afd9e83"
+    "projects.jsonl": "5c6122b6c573e9761a1db6dfa9caf4b08fd78ccb960d365fc9373906720ac6c8"
   },
   "history": {
-    "dataset_version": "39088fda55f7fff0",
+    "dataset_version": "d9843897216bee3c",
     "day_sha256": {
-      "2026-10-02": "c84bec1212e708518e23b7660977304ba82ccf02f4300bb7a9637c920af77e42",
       "2026-10-03": "1fa4fbc66dce0baa18d2137ccdf6d402a3ec0908597a199bcfdd5a3caf3267bb",
       "2026-10-04": "7d014f220b9ea1de9db075f9ef04e3369a31690da58b4d9f3b084e90f4fbe69d",
       "2026-10-05": "0e85ed8bcf6246b600c7644bf7a8a96f421501bc8aac3b0675d6a6589a27cf40",
@@ -211,11 +211,11 @@
       "2026-10-29": "4bd5dc32dd7f335666d7239beb69a9be68065c411e93cf4b21ad3ca48b7f289c",
       "2026-10-30": "a8e58b8ac5dcc85d7d9c454d988706e7e3c363a05cca7c9243ca5c1c38b91f99",
       "2026-10-31": "a9389f77ab3d5df86d2201121ec793d3a700310376d7aa8e70836916b87c2c29",
-      "2026-11-01": "9026e04413c05ef9730504a028e9d2da28e79182694460d288f366aa08f07bb4"
+      "2026-11-01": "9026e04413c05ef9730504a028e9d2da28e79182694460d288f366aa08f07bb4",
+      "2026-11-02": "63ac91f2e0e058bbbb6d4c7eda95237ec3061dcf6c60fe108912f6828ae4f2e0"
     },
-    "days_held": 31,
+    "days_held": 32,
     "days_read": [
-      "2026-10-02",
       "2026-10-03",
       "2026-10-04",
       "2026-10-05",
@@ -245,11 +245,12 @@
       "2026-10-29",
       "2026-10-30",
       "2026-10-31",
-      "2026-11-01"
+      "2026-11-01",
+      "2026-11-02"
     ],
-    "newest": "2026-11-01",
+    "newest": "2026-11-02",
     "oldest": "2026-10-02",
-    "run_id": "2026-11-01-schedule-a1"
+    "run_id": "2026-11-02-schedule-a1"
   },
   "methodology": {
     "doc": "docs/MOMENTUM.md",
@@ -257,7 +258,7 @@
     "parameters_sha256": "4a17d531344223f94617834263d8b41601adbd59539572cd41b0ebb0d96fabe3",
     "version": "1.0.0"
   },
-  "on": "2026-11-01",
+  "on": "2026-11-02",
   "schema": "the-source.momentum/1",
   "windows": [
     1,
