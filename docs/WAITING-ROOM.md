@@ -179,6 +179,29 @@ create a small "GitWatch" custom GPT for submitting (Explore GPTs → Create →
 The conversational assessment Keith reviews before saying "add it" is still advisory only, as
 in [`INTAKE.md`](INTAKE.md).
 
+### GitWatch as a ChatGPT connector (MCP)
+
+GitWatch can also reach the waiting room as a remote MCP connector instead of a GPT Action:
+`https://source-mcp.de-alwis.com/gitwatch/mcp`, with two tools, `submitRepository` and
+`getSubmission` (`source_pipeline/gitwatch_mcp.py`, deployed by
+`deploy/the-source-gitwatch-mcp/install.sh` on 127.0.0.1:8853).
+
+- **Access** is OAuth 2.1 for Keith alone: authorization code with PKCE (S256), rotating refresh
+  tokens (connections re-authorise at least every 90 days), dynamic registration limited to
+  ChatGPT's callback addresses, and metadata at
+  `/.well-known/oauth-protected-resource/gitwatch/mcp` and
+  `/.well-known/oauth-authorization-server/gitwatch` only (never at the host root, so the
+  anonymous `/mcp` is unaffected). Keith approves a connection with a passphrase; the server holds
+  only its scrypt hash. Tokens are opaque, bound to this resource, and useless anywhere else;
+  tokens from other issuers (OpenSEO's included) are unknown here.
+- **The producer credential** is the `gitwatch` one, held root-only at
+  `/etc/the-source-gitwatch-mcp/gitwatch.token` and given to the service as a systemd credential.
+  It never appears in a tool argument, a response or a log.
+- **Operations** (as `runuser -u the-source-gitwatch --`, from `/opt/the-source-gitwatch-mcp/app`):
+  `python3 -s -m source_pipeline.gitwatch_mcp revoke-all --state /var/lib/the-source-gitwatch-mcp`
+  disconnects every connection; `set-passphrase` (stdin) replaces the passphrase; `client-add`
+  pre-registers a public client for ChatGPT's "user-defined OAuth client" option; `clients` lists them.
+
 ### Adding a new producer
 
 Add the producer, give it a credential, and use the contract. No code change is needed. A
