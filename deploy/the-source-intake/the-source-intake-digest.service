@@ -1,0 +1,30 @@
+# Morning email to Keith: what the waiting room decided in the last 24 hours (KEI-932).
+# Reads the state read-only; the Resend SMTP key arrives as a systemd credential.
+[Unit]
+Description=Email Keith the waiting room's daily results (KEI-932)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=the-source-intake
+Group=the-source-intake
+WorkingDirectory=/opt/the-source-intake/app
+Environment=PYTHONDONTWRITEBYTECODE=1
+LoadCredential=smtp_password:/etc/the-source-intake/resend.key
+ExecStart=/usr/bin/python3 -s -m source_pipeline.waiting_room_digest --state /var/lib/the-source-intake/state
+StateDirectory=the-source-intake
+StateDirectoryMode=0750
+UMask=0027
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+ReadOnlyPaths=/opt/the-source-intake
