@@ -26,6 +26,7 @@ import base64
 import hashlib
 import hmac
 import html
+import ipaddress
 import json
 import os
 import re
@@ -50,7 +51,8 @@ CODE_TTL = 300
 PENDING_TTL = 900
 LOGIN_FAILURES = 5                 # wrong passphrases per address per LOGIN_WINDOW before it is locked out
 LOGIN_WINDOW = 900
-LOGIN_GLOBAL = 100                 # wrong passphrases from all addresses per hour: the backstop
+LOGIN_GLOBAL = 100                 # wrong passphrases from all addresses per hour that raise an audit alert
+REGISTRATIONS_PER_ADDRESS = 5      # RFC 7591 registrations per address per hour
 FAMILY_MAX_AGE = 90 * 86400        # a connection re-authorises at least this often
 MAX_CLIENTS = 50                   # registered (RFC 7591) clients; idle ones are pruned first
 CLIENT_IDLE = 3600
@@ -118,6 +120,7 @@ class Store:
             CREATE TABLE IF NOT EXISTS tokens (token_hash TEXT PRIMARY KEY, kind TEXT, client_id TEXT, scope TEXT,
                 resource TEXT, subject TEXT, family TEXT, expires_at INTEGER, revoked INTEGER DEFAULT 0);
             CREATE TABLE IF NOT EXISTS login_attempts (at INTEGER, ip TEXT);
+            CREATE TABLE IF NOT EXISTS registrations (client_id TEXT PRIMARY KEY, ip TEXT, at INTEGER);
             CREATE TABLE IF NOT EXISTS families (family TEXT PRIMARY KEY, created_at INTEGER);
         """)
 
@@ -137,18 +140,30 @@ class Store:
             self.db.execute("INSERT OR REPLACE INTO settings VALUES (?,?)", (key, value))
 
     # clients
-    def add_client(self, name: str, redirect_uris: list[str], auth_method: str, host_pattern: bool = False):
+    def add_client(self, name: str, redirect_uris: list[str], auth_method: str, host_pattern: bool = False,
+                   ip: str | None = None):
+        idle = ("host_pattern=0 AND client_id NOT IN (SELECT client_id FROM codes UNION SELECT client_id FROM tokens)")
         with self.lock:
-            if not host_pattern:  # prune registrations that never completed a connection
-                self.db.execute("DELETE FROM clients WHERE host_pattern=0 AND created_at < ? AND client_id NOT IN "
-                                "(SELECT client_id FROM codes UNION SELECT client_id FROM tokens)", (_now() - CLIENT_IDLE,))
+            if not host_pattern:
+                now = _now()
+                self.db.execute(f"DELETE FROM clients WHERE {idle} AND created_at < ?", (now - CLIENT_IDLE,))
+                self.db.execute("DELETE FROM registrations WHERE at < ?", (now - 3600,))
+                if ip is not None and self.db.execute("SELECT COUNT(*) FROM registrations WHERE ip=?",
+                                                      (ip,)).fetchone()[0] >= REGISTRATIONS_PER_ADDRESS:
+                    raise ValueError("too_many_registrations")
                 if self.db.execute("SELECT COUNT(*) FROM clients WHERE host_pattern=0").fetchone()[0] >= MAX_CLIENTS:
-                    raise ValueError("too_many_clients")
+                    # make room by evicting the oldest registration that never connected
+                    old = self.db.execute(f"SELECT client_id FROM clients WHERE {idle} ORDER BY created_at LIMIT 1").fetchone()
+                    if old is None:
+                        raise ValueError("too_many_clients")
+                    self.db.execute("DELETE FROM clients WHERE client_id=?", (old["client_id"],))
             cid = "gw_" + secrets.token_urlsafe(16)
             secret = None if auth_method == "none" else "gws_" + secrets.token_urlsafe(32)
             self.db.execute("INSERT INTO clients VALUES (?,?,?,?,?,?,?)",
                             (cid, _sha(secret) if secret else None, auth_method, json.dumps(redirect_uris),
                              int(host_pattern), name, _now()))
+            if ip is not None:
+                self.db.execute("INSERT INTO registrations VALUES (?,?,?)", (cid, ip, _now()))
         self.audit("client_registered", client_id=cid, auth_method=auth_method, host_pattern=host_pattern)
         return cid, secret
 
@@ -184,14 +199,19 @@ class Store:
         return row
 
     def begin_attempt(self, ip: str):
-        """Record a passphrase attempt before checking it (so parallel guesses all count); None when locked."""
+        """Record a passphrase attempt before checking it (so parallel guesses all count); None when this
+        address is locked out. There is deliberately no global lock: it would let anyone with many addresses
+        lock Keith out, and the passphrase (about 144 bits) makes distributed guessing pointless. A high
+        global failure rate is audited instead."""
         now = _now()
         with self.lock:
             self.db.execute("DELETE FROM login_attempts WHERE at < ?", (now - 3600,))
             mine = self.db.execute("SELECT COUNT(*) FROM login_attempts WHERE ip=? AND at >= ?",
                                    (ip, now - LOGIN_WINDOW)).fetchone()[0]
-            if mine >= LOGIN_FAILURES or self.db.execute("SELECT COUNT(*) FROM login_attempts").fetchone()[0] >= LOGIN_GLOBAL:
+            if mine >= LOGIN_FAILURES:
                 return None
+            if self.db.execute("SELECT COUNT(*) FROM login_attempts").fetchone()[0] == LOGIN_GLOBAL:
+                self.audit("passphrase_failures_high", per_hour=LOGIN_GLOBAL)
             return self.db.execute("INSERT INTO login_attempts VALUES (?,?)", (now, ip)).lastrowid
 
     def attempt_succeeded(self, rowid: int) -> None:
@@ -421,12 +441,18 @@ class Handler(BaseHTTPRequestHandler):
         self._send(302, headers={"Location": url})
 
     def _client_ip(self) -> str:
+        """The caller's address (from nginx), with IPv6 grouped by /64 so one host cannot rotate through it."""
         peer = self.client_address[0]
-        return (self.headers.get("X-Real-IP") or peer)[:64] if peer == "127.0.0.1" else peer
+        raw = (self.headers.get("X-Real-IP") or peer)[:64] if peer == "127.0.0.1" else peer
+        try:
+            a = ipaddress.ip_address(raw)
+        except ValueError:
+            return raw
+        return str(ipaddress.ip_network(f"{a}/64", strict=False)) if a.version == 6 else str(a)
 
     def _body(self) -> bytes | None:
         length = self.headers.get("Content-Length") or "0"
-        if self.headers.get("Transfer-Encoding") or not length.isdigit():
+        if self.headers.get("Transfer-Encoding") or not re.fullmatch(r"[0-9]{1,7}", length):
             self._json(400, {"error": "bad_request"})
             return None
         n = int(length)
@@ -669,9 +695,9 @@ class Handler(BaseHTTPRequestHandler):
             return self._json(400, {"error": "invalid_client_metadata"})
         name = str(meta.get("client_name") or "ChatGPT")[:100]
         try:
-            cid, secret = s.store.add_client(name, uris, method)
+            cid, secret = s.store.add_client(name, uris, method, ip=self._client_ip())
         except ValueError:
-            return self._json(400, {"error": "invalid_client_metadata", "error_description": "registration closed"})
+            return self._json(429, {"error": "invalid_client_metadata", "error_description": "too many registrations"})
         out = {"client_id": cid, "client_id_issued_at": _now(), "client_name": name, "redirect_uris": uris,
                "token_endpoint_auth_method": method, "grant_types": ["authorization_code", "refresh_token"],
                "response_types": ["code"], "scope": " ".join(SCOPES)}

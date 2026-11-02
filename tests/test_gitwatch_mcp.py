@@ -100,9 +100,11 @@ def pkce():
     return v, base64.urlsafe_b64encode(hashlib.sha256(v.encode()).digest()).rstrip(b"=").decode()
 
 
-def register(srv, method="none"):
+def register(srv, method="none", ip=None):
+    ip = ip or f"192.0.2.{secrets.randbelow(250) + 1}"
     st, _, out = req(srv, "POST", "/gitwatch/oauth/register",
-                     {"redirect_uris": [CB], "client_name": "ChatGPT", "token_endpoint_auth_method": method})
+                     {"redirect_uris": [CB], "client_name": "ChatGPT", "token_endpoint_auth_method": method},
+                     {"X-Real-IP": ip})
     assert st == 201, out
     return out
 
@@ -343,14 +345,34 @@ def test_lockout_is_per_address(env):
 
 @needs_loopback
 def test_registration_flood_does_not_close_registration(env):
-    for _ in range(G.MAX_CLIENTS):
-        register(env)
-    st, _, out = req(env, "POST", "/gitwatch/oauth/register", {"redirect_uris": [CB]})
-    assert st == 400
-    env.store.db.execute("UPDATE clients SET created_at = created_at - ?", (G.CLIENT_IDLE + 10,))
-    register(env)  # idle registrations were pruned
+    for _ in range(G.REGISTRATIONS_PER_ADDRESS):
+        register(env, ip="203.0.113.50")
+    st, _, _ = req(env, "POST", "/gitwatch/oauth/register", {"redirect_uris": [CB]}, {"X-Real-IP": "203.0.113.50"})
+    assert st == 429  # one address cannot flood
+    for i in range(G.MAX_CLIENTS + 5):  # many addresses filling the cap evict the oldest idle registration
+        register(env, ip=f"198.18.{i // 200}.{i % 200 + 1}")
+    connected, _ = tokens(env)
+    for i in range(G.MAX_CLIENTS):
+        register(env, ip=f"198.19.{i // 200}.{i % 200 + 1}")
+    assert env.store.client(connected["client_id"]) is not None  # a client with tokens is never evicted
     cid, _ = env.store.add_client("cli", [], "none", host_pattern=True)
     assert cid.startswith("gw_")
+
+
+@needs_loopback
+def test_many_addresses_cannot_lock_keith_out(env):
+    client = register(env)
+    for i in range(G.LOGIN_GLOBAL + 5):
+        assert authorize(env, client, passphrase="wrong", ip=f"198.51.{i // 200}.{i % 200 + 1}")[0] == 401
+    assert authorize(env, client, ip="192.0.2.200")[0] == 302
+
+
+@needs_loopback
+def test_ipv6_is_grouped_by_64(env):
+    client = register(env)
+    for i in range(G.LOGIN_FAILURES):
+        assert authorize(env, client, passphrase="wrong", ip=f"2001:db8:1:2::{i + 1}")[0] == 401
+    assert authorize(env, client, ip="2001:db8:1:2::ffff")[0] == 429
 
 
 @needs_loopback
