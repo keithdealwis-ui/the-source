@@ -1,0 +1,34 @@
+[Unit]
+Description=The Source GitWatch MCP adapter: Keith-only OAuth onto the waiting room (KEI-932)
+After=network-online.target the-source-intake.service
+
+[Service]
+User=the-source-gitwatch
+Group=the-source-gitwatch
+WorkingDirectory=/opt/the-source-gitwatch-mcp/app
+Environment=PYTHONDONTWRITEBYTECODE=1
+# The gitwatch producer credential: root-only on disk, handed to this unit alone.
+LoadCredential=gitwatch_token:/etc/the-source-gitwatch-mcp/gitwatch.token
+ExecStart=/usr/bin/python3 -s -m source_pipeline.gitwatch_mcp serve --state /var/lib/the-source-gitwatch-mcp --host 127.0.0.1 --port 8853
+Restart=on-failure
+RestartSec=5
+StateDirectory=the-source-gitwatch-mcp
+StateDirectoryMode=0700
+UMask=0077
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryMax=256M
+TasksMax=48
+ReadOnlyPaths=/opt/the-source-gitwatch-mcp
+
+[Install]
+WantedBy=multi-user.target

@@ -317,7 +317,7 @@ class Server(ThreadingHTTPServer):
         super().__init__(addr, Handler)
         self.store, self.intake = store, intake
         self.public = public_base.rstrip("/")
-        self.issuer = self.public
+        self.issuer = self.public + "/gitwatch"  # path-scoped: nothing is advertised for the rest of the host
         self.resource = self.public + MCP_PATH
         self.redirect_hosts = tuple(redirect_hosts)
         self.slots = threading.BoundedSemaphore(MAX_INFLIGHT)
@@ -421,9 +421,11 @@ class Handler(BaseHTTPRequestHandler):
     def _get(self):
         path = urllib.parse.urlsplit(self.path).path
         s = self.server
-        if path in ("/.well-known/oauth-authorization-server", "/.well-known/oauth-authorization-server/gitwatch"):
+        # Metadata only at the path-specific locations (RFC 8414 section 3.1, RFC 9728 section 3.1), so the
+        # anonymous /mcp on the same host is never presented as needing authorisation.
+        if path in ("/.well-known/oauth-authorization-server/gitwatch", "/gitwatch/.well-known/oauth-authorization-server"):
             return self._json(200, s.as_metadata())
-        if path in ("/.well-known/oauth-protected-resource", "/.well-known/oauth-protected-resource" + MCP_PATH):
+        if path == "/.well-known/oauth-protected-resource" + MCP_PATH:
             return self._json(200, s.pr_metadata())
         if path == "/gitwatch/healthz":
             return self._json(200, {"status": "ok", "ready": bool(s.store.setting("passphrase"))})

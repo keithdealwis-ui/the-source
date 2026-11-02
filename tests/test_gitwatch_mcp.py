@@ -124,7 +124,7 @@ def authorize(srv, client, passphrase=PASS, **extra):
 
 def code_of(location):
     q = urllib.parse.parse_qs(urllib.parse.urlsplit(location).query)
-    assert q["state"] == ["st8"] and q["iss"] == ["https://source-mcp.example"]
+    assert q["state"] == ["st8"] and q["iss"] == ["https://source-mcp.example/gitwatch"]
     return q["code"][0]
 
 
@@ -164,8 +164,10 @@ def test_passphrase_hash_round_trip():
 
 @needs_loopback
 def test_metadata_and_challenge(env):
-    st, _, asm = req(env, "GET", "/.well-known/oauth-authorization-server")
-    assert st == 200 and asm["issuer"] == "https://source-mcp.example" and asm["code_challenge_methods_supported"] == ["S256"]
+    assert req(env, "GET", "/.well-known/oauth-authorization-server")[0] == 404
+    assert req(env, "GET", "/.well-known/oauth-protected-resource")[0] == 404
+    st, _, asm = req(env, "GET", "/.well-known/oauth-authorization-server/gitwatch")
+    assert st == 200 and asm["issuer"] == "https://source-mcp.example/gitwatch" and asm["code_challenge_methods_supported"] == ["S256"]
     st, _, prm = req(env, "GET", "/.well-known/oauth-protected-resource/gitwatch/mcp")
     assert prm["resource"] == "https://source-mcp.example/gitwatch/mcp" and prm["authorization_servers"] == [asm["issuer"]]
     st, h, _ = req(env, "POST", "/gitwatch/mcp", {"jsonrpc": "2.0", "id": 1, "method": "tools/list"})
@@ -295,7 +297,8 @@ def test_wrong_passphrase_and_lockout(env):
 
 @needs_loopback
 def test_unknown_client_or_redirect_never_redirects(env):
-    _, _, page = req(env, "GET", "/gitwatch/oauth/authorize?client_id=nope&redirect_uri=" + urllib.parse.quote(CB))
+    st, h, _ = req(env, "GET", "/gitwatch/oauth/authorize?client_id=nope&redirect_uri=" + urllib.parse.quote(CB))
+    assert st == 400 and "Location" not in h
     client = register(env)
     st, h, _ = req(env, "GET", "/gitwatch/oauth/authorize?" + urllib.parse.urlencode(
         {"client_id": client["client_id"], "redirect_uri": "http://127.0.0.1:9/other", "response_type": "code"}))
