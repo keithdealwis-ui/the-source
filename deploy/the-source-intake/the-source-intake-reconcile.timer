@@ -1,0 +1,9 @@
+[Unit]
+Description=Hourly waiting-room results from the published intake outcomes (KEI-932)
+
+[Timer]
+OnCalendar=*-*-* *:20:00 UTC
+Persistent=true
+
+[Install]
+WantedBy=timers.target

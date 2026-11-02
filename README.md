@@ -99,6 +99,10 @@ assessment by a person or a chatbot is advisory only. Every submission gets one 
 outcome: accepted, rejected, already_known, needs_more_evidence or failed.
 Details: [`docs/INTAKE.md`](docs/INTAKE.md).
 
+Approved producers (GitWatch in ChatGPT, Community Radar adapters and others) submit through one
+shared, authenticated waiting room instead. It deduplicates across producers and feeds the same intake
+assessment once a day. Details: [`docs/WAITING-ROOM.md`](docs/WAITING-ROOM.md).
+
 ## Run it locally
 
 ```bash
@@ -127,6 +131,7 @@ GITHUB_TOKEN=... .venv/bin/python -m source_pipeline cycle --trigger local   # a
 - [`docs/OBSERVABILITY.md`](docs/OBSERVABILITY.md): intake reports, failure fingerprints and alerts, golden queries, MCP telemetry and weekly reports, dataset lineage (KEI-918)
 - [`docs/BUILD-VS-INGEST.md`](docs/BUILD-VS-INGEST.md): which upstream services are used, for what, under which terms, and why the rest are not
 - [`docs/INTAKE.md`](docs/INTAKE.md) and [`docs/INTAKE-POLICY.md`](docs/INTAKE-POLICY.md): manual intake
+- [`docs/WAITING-ROOM.md`](docs/WAITING-ROOM.md): the shared producer waiting room (contract, states, security, producer guide)
 - [`PROVENANCE.md`](PROVENANCE.md): where every fact comes from, and how to trace it
 - [`docs/LICENCE-REVIEW.md`](docs/LICENCE-REVIEW.md) and [`NOTICE.md`](NOTICE.md): upstream licences and attribution
 - [`CONTRIBUTING.md`](CONTRIBUTING.md): how to propose changes

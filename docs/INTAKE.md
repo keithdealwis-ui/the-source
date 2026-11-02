@@ -5,6 +5,10 @@ Keith spots himself, or one first discussed with ChatGPT. It uses the same pipel
 lands in the same corpus as scheduled discovery. The rules are in
 [`INTAKE-POLICY.md`](INTAKE-POLICY.md).
 
+Producers that submit routinely (GitWatch, Community Radar adapters, future community
+submissions) use the shared waiting room ([`WAITING-ROOM.md`](WAITING-ROOM.md)). It batches and
+deduplicates their submissions daily and then calls this same assessment.
+
 ## The intended flow
 
 1. Keith pastes a repository URL into a conversation and reviews a preliminary
