@@ -126,11 +126,11 @@ def render(d: dict) -> tuple[str, str, str]:
             else:
                 detail = {"already_known": "already in The Source", "received": "waiting",
                           "queued": "in tonight's batch"}.get(a["entity_state"], a["entity_state"] or "")
-            rows.append((a["repo_url"] or "(no URL)", f"{_when(a['received_at'])}, via {a['producer']}/{a['provider'] or '?'}: {detail}"))
+            rows.append((a["repo_url"] or "(no URL)", f"{_when(a['received_at'])}, via {a['producer']}" + (f"/{a['provider']}" if a['provider'] else "") + f": {detail}"))
         section(f"Submitted ({len(d['arrived'])})", rows)
 
     if d["waiting"]:
-        section(f"Still waiting ({len(d['waiting'])}), sealed into the next batch at {SEAL_TIME}",
+        section(f"Still waiting ({len(d['waiting'])}), go into the next daily batch (sealed at {SEAL_TIME})",
                 [(w["repo_url"], f"{'in a sealed batch' if w['state'] == 'queued' else 'waiting'} since {_when(w['since'])}")
                  for w in d["waiting"]])
 
