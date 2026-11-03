@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-03T01:31:19Z",
+  "as_of": "2026-11-03T23:12:46Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -23,7 +23,7 @@
         "entries_with_saas_claim": 91,
         "harvested": true,
         "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
-        "pinned_commit": "c3b91fe50930f52eb2893f91d9a872371d5a0ca6",
+        "pinned_commit": "ec80eed3d3f434efb3e58b3aea2b8fcd69c2b5c2",
         "relationship_claims": 146,
         "unparseable_files": 0
       },
@@ -2050,7 +2050,6 @@
       "plausibility_review:Svelte wrapper library for MapLibre; not a maps product": 1,
       "plausibility_review:TTS engine/CLI; not a voice generation product with cloning and studio": 1,
       "plausibility_review:TTS model for developers; not a voice generation product": 1,
-      "plausibility_review:TTS/STT library for Apple MLX; not a speech product": 4,
       "plausibility_review:TUI note-taking app; not a team knowledge base": 1,
       "plausibility_review:TUI note-taking app; not a team wiki": 1,
       "plausibility_review:Task manager; not an AI auto-scheduling calendar": 1,
@@ -2319,7 +2318,7 @@
       "plausibility_review:inference server; not a multi-provider LLM API router": 1,
       "plausibility_review:infrastructure-as-code tool; not a platform that runs applications": 1,
       "plausibility_review:intranet tunneling reverse proxy; not a privacy VPN service": 1,
-      "plausibility_review:job match not yet desk-reviewed": 29,
+      "plausibility_review:job match not yet desk-reviewed": 33,
       "plausibility_review:layered image editor; not background removal": 1,
       "plausibility_review:layered photo/image editor; not template-based graphic design": 1,
       "plausibility_review:list of newsletter RSS feeds": 1,
@@ -2405,8 +2404,8 @@
   "schema_version": "1.0.0",
   "verified": {
     "maintenance_status": {
-      "active": 1266,
-      "maintained": 130,
+      "active": 1268,
+      "maintained": 128,
       "stale": 100,
       "unverified": 17
     },

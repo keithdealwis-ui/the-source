@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-03T01:31:19Z",
+  "as_of": "2026-11-03T23:12:46Z",
   "checks": [
     {
       "criterion": 1,
@@ -219,7 +219,7 @@
       "failures": 0,
       "id": "activity.evidence_is_not_docs_only",
       "kind": "assertion",
-      "observed": 5047,
+      "observed": 5048,
       "ok": true
     },
     {
@@ -334,8 +334,8 @@
       "id": "maintenance.classification_matches_definition",
       "kind": "assertion",
       "observed": {
-        "active": 1266,
-        "maintained": 130,
+        "active": 1268,
+        "maintained": 128,
         "stale": 100,
         "unverified": 17
       },
@@ -505,11 +505,11 @@
       "kind": "observation",
       "observed": {
         "examples": [
-          "github.com/stirling-tools/stirling-pdf (95612 stars: no_recognised_open_source_licence)",
-          "github.com/nomic-ai/gpt4all (77346 stars: stale_no_meaningful_activity_12_months)",
-          "github.com/pocketbase/pocketbase (61610 stars: archived)",
-          "github.com/minio/minio (61288 stars: archived,stale_no_meaningful_activity_12_months)",
-          "github.com/maybe-finance/maybe (54204 stars: archived,stale_no_meaningful_activity_12_months)"
+          "github.com/stirling-tools/stirling-pdf (95689 stars: no_recognised_open_source_licence)",
+          "github.com/nomic-ai/gpt4all (77347 stars: stale_no_meaningful_activity_12_months)",
+          "github.com/pocketbase/pocketbase (61607 stars: archived)",
+          "github.com/minio/minio (61281 stars: archived,stale_no_meaningful_activity_12_months)",
+          "github.com/maybe-finance/maybe (54203 stars: archived,stale_no_meaningful_activity_12_months)"
         ],
         "launch_projects_under_500_stars": 97,
         "rejected_with_10k_plus_stars": 23

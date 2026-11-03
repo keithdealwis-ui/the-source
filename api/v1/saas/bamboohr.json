@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "9ec1ac59b0cc09fa",
+  "dataset_version": "c3b1da4ab6f87038",
   "last_checked": {
-    "newest": "2026-11-03T01:31:19Z",
-    "oldest": "2026-11-03T01:31:19Z"
+    "newest": "2026-11-03T23:12:46Z",
+    "oldest": "2026-11-03T23:12:46Z"
   },
   "more_available": 0,
   "provenance": {
@@ -35,7 +35,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-03T01:31:19Z"
+          "validated_as_of": "2026-11-03T23:12:46Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -69,7 +69,7 @@
         "tag": "v16.53.0"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-03T01:31:19Z",
+      "live_checked_at": "2026-11-03T23:12:46Z",
       "maintenance_status": "active",
       "name": "hrms",
       "note": {
@@ -105,7 +105,89 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 9012
+      "stars": 9015
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/horilla/horilla-hr",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-11-03T23:12:46Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 46.2,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/horilla/horilla-hr",
+      "last_meaningful_activity_at": "2026-11-03T18:42:07Z",
+      "latest_release": {
+        "published_at": "2026-11-03T17:56:21Z",
+        "tag": "2.3.0"
+      },
+      "licence_spdx": "LGPL-2.1",
+      "live_checked_at": "2026-11-03T23:12:46Z",
+      "maintenance_status": "active",
+      "name": "horilla-hr",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity."
+      },
+      "oss_id": "github.com/horilla/horilla-hr",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 95.0,
+        "score": 84.7,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-11-03T23:12:46Z",
+        "score": 81.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/horilla/horilla-hr",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 1487
     },
     {
       "evidence": {
@@ -119,7 +201,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-03T01:31:19Z"
+          "validated_as_of": "2026-11-03T23:12:46Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -149,7 +231,7 @@
         "tag": "v5.9"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-03T01:31:19Z",
+      "live_checked_at": "2026-11-03T23:12:46Z",
       "maintenance_status": "maintained",
       "name": "OrangeHRM",
       "note": {
@@ -170,7 +252,7 @@
         "score": 71.3,
         "trajectory": "Rising"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
@@ -186,89 +268,6 @@
         "job_match"
       ],
       "stars": 1160
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/horilla/horilla-hr",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-03T01:31:19Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 46.2,
-            "ease_of_adoption": 60.0,
-            "economic_advantage": 68.0,
-            "feature_equivalence": 100.0,
-            "integrations_extensibility": 50.0,
-            "migration_friction": 33.3,
-            "production_commercial_readiness": 100.0
-          },
-          "evidence_families": [
-            "import",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "sso",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/horilla/horilla-hr",
-      "last_meaningful_activity_at": "2026-10-21T16:37:44Z",
-      "latest_release": {
-        "published_at": "2026-10-21T16:37:44Z",
-        "tag": "2.2.0"
-      },
-      "licence_spdx": "LGPL-2.1",
-      "live_checked_at": "2026-11-03T01:31:19Z",
-      "maintenance_status": "active",
-      "name": "horilla-hr",
-      "note": {
-        "gaps": [
-          "migration path"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "feature parity"
-        ],
-        "text": "Strongest on core use-case coverage and feature parity; weakest on migration path."
-      },
-      "oss_id": "github.com/horilla/horilla-hr",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 96.6,
-        "score": 87.2,
-        "trajectory": "Rising"
-      },
-      "rank": 3,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-22T01:26:16Z",
-        "score": 75.4,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/horilla/horilla-hr",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 1485
     }
   ],
   "saas": {
