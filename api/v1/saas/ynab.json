@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "d9843897216bee3c",
+  "dataset_version": "9ec1ac59b0cc09fa",
   "last_checked": {
-    "newest": "2026-11-02T00:32:25Z",
-    "oldest": "2026-11-02T00:32:25Z"
+    "newest": "2026-11-03T01:31:19Z",
+    "oldest": "2026-11-03T01:31:19Z"
   },
   "more_available": 1,
   "provenance": {
@@ -35,39 +35,38 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-02T00:32:25Z"
+          "validated_as_of": "2026-11-03T01:31:19Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
           "dimensions": {
             "core_use_case_coverage": 62.5,
             "deployment_ownership": 100.0,
-            "ease_of_adoption": 74.2,
+            "ease_of_adoption": 74.0,
             "economic_advantage": 80.0,
             "feature_equivalence": 16.7,
-            "integrations_extensibility": 100.0,
+            "integrations_extensibility": null,
             "migration_friction": 100.0,
             "production_commercial_readiness": 100.0
           },
           "evidence_families": [
-            "api",
             "demo",
             "import",
             "quickstart",
             "self_host",
             "support"
           ],
-          "scoring_path": "full_lane"
+          "scoring_path": "single_project"
         }
       },
       "github_url": "https://github.com/actualbudget/actual",
-      "last_meaningful_activity_at": "2026-10-23T12:53:21Z",
+      "last_meaningful_activity_at": "2026-11-02T23:09:36Z",
       "latest_release": {
-        "published_at": "2026-10-02T15:32:36Z",
-        "tag": "v26.10.0"
+        "published_at": "2026-11-02T01:54:02Z",
+        "tag": "v26.11.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-02T00:32:25Z",
+      "live_checked_at": "2026-11-03T01:31:19Z",
       "maintenance_status": "active",
       "name": "Actual Budget",
       "note": {
@@ -77,22 +76,22 @@
         "origin": "derived",
         "strengths": [
           "self-hosting and data ownership",
-          "integrations and extensibility"
+          "migration path"
         ],
-        "text": "Strongest on self-hosting and data ownership and integrations and extensibility; weakest on feature parity."
+        "text": "Strongest on self-hosting and data ownership and migration path; weakest on feature parity."
       },
       "oss_id": "github.com/actualbudget/actual",
       "project_health": {
         "band": "Exceptional",
-        "confidence": 95.0,
-        "score": 94.6,
+        "confidence": 92.1,
+        "score": 94.7,
         "trajectory": "Stable"
       },
       "rank": 1,
       "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 73.3,
+        "confidence": 81.5,
+        "evaluated_at": "2026-11-03T01:31:19Z",
+        "score": 70.2,
         "score_version": "1.2.0"
       },
       "repo_url": "https://github.com/actualbudget/actual",
@@ -103,7 +102,7 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 29903
+      "stars": 29930
     },
     {
       "evidence": {
@@ -117,7 +116,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-02T00:32:25Z"
+          "validated_as_of": "2026-11-03T01:31:19Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -144,13 +143,13 @@
         }
       },
       "github_url": "https://github.com/firefly-iii/firefly-iii",
-      "last_meaningful_activity_at": "2026-10-18T09:30:54Z",
+      "last_meaningful_activity_at": "2026-11-01T09:08:47Z",
       "latest_release": {
-        "published_at": "2026-10-18T09:30:54Z",
-        "tag": "develop-20261018.1"
+        "published_at": "2026-10-11T19:16:51Z",
+        "tag": "v6.7.9"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-02T00:32:25Z",
+      "live_checked_at": "2026-11-03T01:31:19Z",
       "maintenance_status": "active",
       "name": "Firefly III",
       "note": {
@@ -185,7 +184,7 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 25054
+      "stars": 25063
     },
     {
       "evidence": {
@@ -199,7 +198,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-02T00:32:25Z"
+          "validated_as_of": "2026-11-03T01:31:19Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -235,7 +234,7 @@
         "tag": "v0.16.6"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-02T00:32:25Z",
+      "live_checked_at": "2026-11-03T01:31:19Z",
       "maintenance_status": "active",
       "name": "securo",
       "note": {
@@ -269,7 +268,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 4159
+      "stars": 4169
     },
     {
       "evidence": {
@@ -283,7 +282,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-02T00:32:25Z"
+          "validated_as_of": "2026-11-03T01:31:19Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -318,7 +317,7 @@
         "tag": "v2.1.1"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-02T00:32:25Z",
+      "live_checked_at": "2026-11-03T01:31:19Z",
       "maintenance_status": "active",
       "name": "ezbookkeeping",
       "note": {
@@ -352,7 +351,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 5928
+      "stars": 5949
     },
     {
       "evidence": {
@@ -366,7 +365,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-02T00:32:25Z"
+          "validated_as_of": "2026-11-03T01:31:19Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -396,7 +395,7 @@
       "last_meaningful_activity_at": "2026-10-11T16:00:31Z",
       "latest_release": null,
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-02T00:32:25Z",
+      "live_checked_at": "2026-11-03T01:31:19Z",
       "maintenance_status": "active",
       "name": "countinghouse",
       "note": {
