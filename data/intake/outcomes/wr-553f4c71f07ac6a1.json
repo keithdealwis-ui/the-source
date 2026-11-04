@@ -1,0 +1,84 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-04T02:18:45Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "Apache-2.0",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "Fei2411/DS-Bot",
+      "created_at": "2026-10-07T15:37:36Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-04T02:18:45Z",
+      "forks": 497,
+      "found": true,
+      "host_repo_id": 1409013846,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "Apache License 2.0",
+      "licence_spdx": "Apache-2.0",
+      "observed": {
+        "commits_in_12m_window": 1576,
+        "commits_inspected": 1,
+        "issues_closed_12m": 242,
+        "merged_prs_inspected": 10,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-03T14:57:52Z",
+      "stars": 5340
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a merged_pr",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-03T14:57:50Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 568,
+      "description": true,
+      "readme": true,
+      "topics": 4
+    }
+  },
+  "note": "waiting-room batch wr-20261103; 1 observation(s)",
+  "oss_id": "github.com/fei2411/ds-bot",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship"
+  ],
+  "repo_url": "https://github.com/fei2411/ds-bot",
+  "request_id": "wr-553f4c71f07ac6a1",
+  "saas_hint": null,
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Healthy",
+      "confidence": 89.2,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-04T02:18:45Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/fei2411/ds-bot",
+      "score": 73.7,
+      "score_version": "1.2.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "pre_1_0"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-03T16:27:36Z",
+  "submitted_by": "waiting-room:gitwatch"
+}

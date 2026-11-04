@@ -1,0 +1,167 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-04T02:18:50Z",
+  "canonical": {
+    "promoted_in_run": null,
+    "status": "pending_promotion"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "every-app/every-app",
+      "created_at": "2025-11-13T16:39:38Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-04T02:18:51Z",
+      "forks": 58,
+      "found": true,
+      "host_repo_id": 1095885370,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 917,
+        "commits_inspected": 1,
+        "issues_closed_12m": 5,
+        "merged_prs_inspected": 4,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-04T01:17:20Z",
+      "stars": 718
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a release",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-04T01:18:27Z",
+      "status": "active"
+    },
+    "saas_relationships": [
+      {
+        "category": "SEO",
+        "excerpt": "om/every-app/open-seo), the open source alternative to semrush and ahrefs (25k stars). ## why use everyapp? **secure by def",
+        "field": "readme",
+        "matched": "ahrefs",
+        "saas_id": "ahrefs",
+        "saas_name": "Ahrefs"
+      },
+      {
+        "category": "SEO",
+        "excerpt": "om/every-app/open-seo), the open source alternative to semrush and ahrefs (25k stars). ## why use everyapp? **secure by def",
+        "field": "readme",
+        "matched": "semrush",
+        "saas_id": "semrush",
+        "saas_name": "Semrush"
+      }
+    ],
+    "searched": {
+      "catalogue_products": 568,
+      "description": true,
+      "readme": true,
+      "topics": 6
+    }
+  },
+  "note": "waiting-room batch wr-20261103; 1 observation(s)",
+  "oss_id": "github.com/every-app/every-app",
+  "outcome": "accepted",
+  "reasons": [
+    "passes every rule; relationship evidenced"
+  ],
+  "repo_url": "https://github.com/every-app/every-app",
+  "request_id": "wr-d961410e17be64b5",
+  "saas_hint": null,
+  "scores": {
+    "errors": [],
+    "preliminary": true,
+    "project_health": {
+      "band": "Healthy",
+      "confidence": 89.7,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-04T02:18:51Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/every-app/every-app",
+      "score": 78.1,
+      "score_version": "1.2.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "open_core_markers",
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": [
+      {
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 50.0,
+          "deployment_ownership": 100.0,
+          "ease_of_adoption": 72.5,
+          "economic_advantage": 60.0,
+          "feature_equivalence": 16.7,
+          "integrations_extensibility": 100.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 100.0
+        },
+        "evaluated_at": "2026-11-04T02:18:51Z",
+        "evidence_families": [
+          "api",
+          "demo",
+          "import",
+          "multi_user",
+          "quickstart",
+          "self_host"
+        ],
+        "oss_id": "github.com/every-app/every-app",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "ahrefs",
+        "score": 68.9,
+        "score_version": "1.2.0",
+        "scoring_path": "single_project"
+      },
+      {
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 50.0,
+          "deployment_ownership": 100.0,
+          "ease_of_adoption": 72.5,
+          "economic_advantage": 60.0,
+          "feature_equivalence": 16.7,
+          "integrations_extensibility": 100.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 100.0
+        },
+        "evaluated_at": "2026-11-04T02:18:51Z",
+        "evidence_families": [
+          "api",
+          "demo",
+          "import",
+          "multi_user",
+          "quickstart",
+          "self_host"
+        ],
+        "oss_id": "github.com/every-app/every-app",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "semrush",
+        "score": 68.9,
+        "score_version": "1.2.0",
+        "scoring_path": "single_project"
+      }
+    ]
+  },
+  "submitted_at": "2026-11-03T17:17:14Z",
+  "submitted_by": "waiting-room:gitwatch"
+}

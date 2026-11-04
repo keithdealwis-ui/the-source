@@ -1,0 +1,168 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-04T02:18:22Z",
+  "canonical": {
+    "promoted_in_run": null,
+    "status": "pending_promotion"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "usekaneo/kaneo",
+      "created_at": "2024-12-31T08:25:09Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-04T02:18:22Z",
+      "forks": 930,
+      "found": true,
+      "host_repo_id": 910422636,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 3341,
+        "commits_inspected": 1,
+        "issues_closed_12m": 418,
+        "merged_prs_inspected": 10,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-03T22:10:35Z",
+      "stars": 9708
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a merged_pr",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-03T20:53:52Z",
+      "status": "active"
+    },
+    "saas_relationships": [
+      {
+        "category": "Project management",
+        "excerpt": "topic jira-alternative",
+        "field": "topics",
+        "matched": "jira-alternative",
+        "saas_id": "jira",
+        "saas_name": "Jira"
+      },
+      {
+        "category": "Project management",
+        "excerpt": "topic linear-alternative",
+        "field": "topics",
+        "matched": "linear-alternative",
+        "saas_id": "linear",
+        "saas_name": "Linear"
+      }
+    ],
+    "searched": {
+      "catalogue_products": 568,
+      "description": true,
+      "readme": true,
+      "topics": 11
+    }
+  },
+  "note": "waiting-room batch wr-20261103; 1 observation(s)",
+  "oss_id": "github.com/usekaneo/kaneo",
+  "outcome": "accepted",
+  "reasons": [
+    "passes every rule; relationship evidenced"
+  ],
+  "repo_url": "https://github.com/usekaneo/kaneo",
+  "request_id": "wr-6b2abcf4a0b28ffd",
+  "saas_hint": "jira",
+  "scores": {
+    "errors": [],
+    "preliminary": true,
+    "project_health": {
+      "band": "Exceptional",
+      "confidence": 95.0,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-04T02:18:22Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/usekaneo/kaneo",
+      "score": 90.4,
+      "score_version": "1.2.0",
+      "scoring_path": "single_project",
+      "trajectory": "Rising",
+      "watch_outs": []
+    },
+    "replacement_fit": [
+      {
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 100.0,
+          "ease_of_adoption": 75.6,
+          "economic_advantage": 80.0,
+          "feature_equivalence": 73.3,
+          "integrations_extensibility": 100.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 100.0
+        },
+        "evaluated_at": "2026-11-04T02:18:22Z",
+        "evidence_families": [
+          "api",
+          "demo",
+          "multi_user",
+          "plugins",
+          "quickstart",
+          "self_host",
+          "support",
+          "webhook"
+        ],
+        "oss_id": "github.com/usekaneo/kaneo",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "jira",
+        "score": 91.3,
+        "score_version": "1.2.0",
+        "scoring_path": "single_project"
+      },
+      {
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 100.0,
+          "ease_of_adoption": 75.6,
+          "economic_advantage": 80.0,
+          "feature_equivalence": 73.3,
+          "integrations_extensibility": 100.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 100.0
+        },
+        "evaluated_at": "2026-11-04T02:18:22Z",
+        "evidence_families": [
+          "api",
+          "demo",
+          "multi_user",
+          "plugins",
+          "quickstart",
+          "self_host",
+          "support",
+          "webhook"
+        ],
+        "oss_id": "github.com/usekaneo/kaneo",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "linear",
+        "score": 91.3,
+        "score_version": "1.2.0",
+        "scoring_path": "single_project"
+      }
+    ]
+  },
+  "submitted_at": "2026-11-02T04:53:36Z",
+  "submitted_by": "waiting-room:gitwatch"
+}
