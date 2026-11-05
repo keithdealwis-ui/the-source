@@ -303,57 +303,56 @@ def export(src: Path = CORPUS_SRC, out: Path = OUT) -> dict:
 
 
 def due(now: datetime | None = None, out: Path = OUT) -> dict:
+    """Is a refresh due, and is the layer already stale? A pass that a previous run left part-way
+    (`refresh.in_progress`, KEI-961) is always due: the next wake-up carries it on."""
     now = now or datetime.now(timezone.utc)
     cfg = load_cfg()["refresh"]
     try:
         m = common.read_json(out / "MANIFEST.json")
     except (OSError, ValueError):
-        return {"due": False, "reason": "no data/corpus layer to refresh; run corpus-export first"}
-    last = (m.get("refresh") or {}).get("last") or {}
+        return {"due": False, "stale": False, "reason": "no data/corpus layer to refresh; run corpus-export first"}
+    r = m.get("refresh") or {}
+    last = r.get("last") or {}
     at = last.get("at") or m.get("as_of")
     if not at:
-        return {"due": True, "reason": "never refreshed"}
+        return {"due": True, "stale": True, "reason": "never refreshed"}
     age = (now - _parse(at)).total_seconds() / 86400
-    return {"due": age >= cfg["due_after_days"], "last_refresh": at, "age_days": round(age, 2),
-            "due_after_days": cfg["due_after_days"]}
+    out_ = {"due": age >= cfg["due_after_days"], "last_refresh": at, "age_days": round(age, 2),
+            "due_after_days": cfg["due_after_days"], "stale": age > cfg["stale_after_days"],
+            "stale_after_days": cfg["stale_after_days"]}
+    prog = r.get("in_progress")
+    if prog:
+        out_.update(due=True, reason="a refresh pass is in progress; resume it",
+                    in_progress={k: prog.get(k) for k in ("started_at", "done", "total", "runs", "updated_at")})
+    return out_
 
 
-def refresh(now: datetime | None = None, out: Path = OUT, api=None) -> dict:
-    from .discover import Api, log
-
-    now = now or datetime.now(timezone.utc)
-    cfg = load_cfg()["refresh"]
-    m = common.read_json(out / "MANIFEST.json")
-    pre = validate(out)
-    if pre["failed_checks"]:
-        raise CorpusError(f"data/corpus does not validate before refresh: {pre['failed_checks']}")
-    projects = {p["id"]: p for p in common.read_jsonl(out / "projects.jsonl")}
-    live = {r["id"]: r for r in common.read_jsonl(out / "live.jsonl")}
-    slugs = {pid: (live[pid].get("full_name") or projects[pid]["full_name"]).lower()
-             for pid in projects if pid.startswith("github.com/")}
-    batches = -(-len(slugs) // cfg["batch_size"])
-    if batches > cfg["max_graphql_points"]:
-        raise CorpusError(f"{batches} batches would exceed max_graphql_points {cfg['max_graphql_points']}")
-    api = api or Api()
-    log(f"corpus-refresh: {len(slugs)} repositories in {batches} GraphQL batches")
-    meta = {f"github.com/{k}": v for k, v in api.meta_batch(sorted(set(slugs.values())), size=cfg["batch_size"]).items()}
-    slugs = {pid: f"github.com/{slug}" for pid, slug in slugs.items()}
-    # GitLab and Codeberg members (KEI-923) are re-read through hosts.py, one REST call (and GitLab GraphQL) each.
+def _refresh_rows(pids: list, projects: dict, live: dict, api, cfg: dict, pub: dict, stamp: str) -> tuple:
+    """Re-read one chunk of rows. Returns (new project rows, new live rows, stats); applies nothing."""
     from . import hosts
-    forge = {}
-    for pid in projects:
+
+    slugs, forge = {}, {}
+    for pid in pids:
         host = pid.split("/", 1)[0]
-        if host in ("gitlab.com", "codeberg.org"):
-            forge.setdefault(host, {})[pid] = (live[pid].get("full_name") or projects[pid]["full_name"]).lower()
+        slug = (live[pid].get("full_name") or projects[pid]["full_name"]).lower()
+        if host == "github.com":
+            slugs[pid] = slug
+        elif host in hosts.HOSTS:
+            forge.setdefault(host, {})[pid] = slug
+    meta = {}
+    if slugs:
+        got = api.meta_batch(sorted(set(slugs.values())), size=cfg["batch_size"])
+        meta.update({f"github.com/{k}": v for k, v in got.items()})
+    keyed = {pid: f"github.com/{slug}" for pid, slug in slugs.items()}
+    # GitLab and Codeberg members (KEI-923) are re-read through hosts.py, one REST call (and GitLab GraphQL) each.
     for host, rows in sorted(forge.items()):
         got = hosts.meta_batch(api.http, host, sorted(set(rows.values())))
         meta.update({f"{host}/{k}": {**v, "host": host} for k, v in got.items()})
-        slugs.update({pid: f"{host}/{slug}" for pid, slug in rows.items()})
-    stamp = _iso(now)
+        keyed.update({pid: f"{host}/{slug}" for pid, slug in rows.items()})
     stats = {"resolved": 0, "not_found": 0, "unresolved": 0, "renamed": 0, "changed_metadata": 0,
-             "not_on_github": len(projects) - len(slugs)}
-    pub = load_cfg()["publication"]
-    for pid, slug in slugs.items():
+             "not_on_github": len(pids) - len(keyed)}
+    new_p, new_l = {}, {}
+    for pid, slug in keyed.items():
         host = slug.split("/", 1)[0]
         got = meta.get(slug) or {"found": False, "error": "missing_from_response"}
         row = dict(live[pid])
@@ -382,28 +381,151 @@ def refresh(now: datetime | None = None, out: Path = OUT, api=None) -> dict:
             if any(p.get(k) != v for k, v in upd.items()):
                 stats["changed_metadata"] += 1
                 p.update(upd)
-                projects[pid] = p
+                new_p[pid] = p
         elif got.get("error") == "not_found":
             stats["not_found"] += 1
             row.update(found=False, observed_as_of=stamp, unresolved="not_found")
         else:
+            # Not read: the row keeps its last known facts and observed_as_of, and says why.
             stats["unresolved"] += 1
             row["unresolved"] = got.get("error") or "unknown"
-        live[pid] = row
-    share = stats["unresolved"] / max(len(slugs), 1)
-    if share > cfg["max_unresolved_share"]:
-        raise CorpusError(f"{stats['unresolved']} of {len(slugs)} repositories unresolved ({share:.1%}); "
-                          f"the previous layer is kept")
-    if api.http.failures:
-        log(f"corpus-refresh: {len(api.http.failures)} transient failures were retried")
+        new_l[pid] = row
+    return new_p, new_l, stats
+
+
+STAT_KEYS = ("resolved", "not_found", "unresolved", "renamed", "changed_metadata", "not_on_github",
+             "requests", "batches", "waited_seconds")
+
+
+def refresh(now: datetime | None = None, out: Path = OUT, api=None, budget_seconds: float | None = None) -> dict:
+    """Re-read every published row's live facts, in chunks, inside a wall-clock budget (KEI-961).
+
+    A full pass over ~25k rows does not reliably fit one job, so a pass is resumable: rows are taken
+    in id order, `chunk_size` at a time, and every chunk read in full is promoted. A run that reaches
+    its budget writes what it read and records the pass in MANIFEST `refresh.in_progress` (started_at,
+    cursor, running totals); the next wake-up carries on from the cursor. Each row's observed_as_of is
+    the moment it was actually read. `refresh.last` (what `corpus-due` and the MCP server's staleness
+    read) advances only when a pass has covered the whole corpus, and then records the pass's start,
+    so the layer is never presented as fresher than its oldest row in that pass.
+    """
+    import time
+
+    from .discover import Api, log
+
+    now = now or datetime.now(timezone.utc)
+    full_cfg = load_cfg()
+    cfg, pub = full_cfg["refresh"], full_cfg["publication"]
+    budget = float(budget_seconds if budget_seconds is not None else cfg.get("max_runtime_minutes", 40) * 60)
+    t0 = time.monotonic()
+    m = common.read_json(out / "MANIFEST.json")
+    pre = validate(out)
+    if pre["failed_checks"]:
+        raise CorpusError(f"data/corpus does not validate before refresh: {pre['failed_checks']}")
+    projects = {p["id"]: p for p in common.read_jsonl(out / "projects.jsonl")}
+    live = {r["id"]: r for r in common.read_jsonl(out / "live.jsonl")}
+    on_github = sum(1 for pid in projects if pid.startswith("github.com/"))
+    batches = -(-on_github // cfg["batch_size"])
+    if batches > cfg["max_graphql_points"]:
+        raise CorpusError(f"{batches} batches would exceed max_graphql_points {cfg['max_graphql_points']}")
+    stamp = _iso(now)
+    prog = dict((m.get("refresh") or {}).get("in_progress") or {})
+    if prog.get("cursor") and (now - _parse(prog["started_at"])).total_seconds() / 86400 >= cfg["due_after_days"]:
+        # A pass that has not finished within a refresh cycle is restarted rather than completed:
+        # finishing it would date a "full refresh" from rows a week old or more.
+        log(f"corpus-refresh: the pass started {prog['started_at']} is older than {cfg['due_after_days']} days; "
+            "starting a new pass")
+        prog = {}
+    if prog.get("cursor"):
+        log(f"corpus-refresh: resuming the pass started {prog['started_at']} after {prog['cursor']} "
+            f"({prog.get('done')}/{prog.get('total')} rows read)")
+    else:
+        prog = {"started_at": stamp, "cursor": None, "runs": 0, "stats": {k: 0 for k in STAT_KEYS}}
+    order = sorted(projects)
+    pending = [pid for pid in order if prog["cursor"] is None or pid > prog["cursor"]]
+    api = api or Api()
+    http = api.http
+    http.deadline = time.monotonic() + budget
+    http.max_sleep = float(cfg.get("max_wait_seconds", 120))
+
+    def expired() -> bool:
+        return time.monotonic() >= http.deadline
+
+    def waited() -> float:
+        return float(getattr(http, "waited", 0.0))
+    size = int(cfg.get("chunk_size", 2500))
+    log(f"corpus-refresh: {len(order)} rows ({on_github} on GitHub, {batches} GraphQL batches a pass); "
+        f"{len(pending)} to read; chunks of {size}; budget {budget / 60:.0f} min")
+    run = {k: 0 for k in STAT_KEYS}
+    slowest, stopped, chunks_done = 0.0, None, 0
+    for i in range(0, len(pending), size):
+        chunk = pending[i:i + size]
+        left = http.deadline - time.monotonic()
+        if chunks_done and left < 1.5 * slowest:
+            stopped = f"budget: {left / 60:.1f} min left, a chunk takes up to {slowest / 60:.1f} min"
+            break
+        t, calls0, waited0 = time.monotonic(), http.calls, waited()
+        new_p, new_l, st = _refresh_rows(chunk, projects, live, api, cfg, pub, stamp)
+        took = time.monotonic() - t
+        if expired():
+            # Lookups past the deadline were refused, not answered: this chunk is not promoted.
+            stopped = f"deadline reached during chunk {chunk[0]} .. {chunk[-1]}; it is read again next run"
+            break
+        # The bar is the whole pass's, as before chunking: at most max_unresolved_share of the corpus
+        # unread. Promoting a chunk with a few unread rows is harmless (they keep their last facts and
+        # say why); a chunk that would take the pass over the bar is not promoted.
+        unread = prog["stats"].get("unresolved", 0) + st["unresolved"]
+        share = unread / max(len(order), 1)
+        if share > cfg["max_unresolved_share"]:
+            msg = (f"{unread} of {len(order)} repositories unresolved in this pass ({share:.1%}), "
+                   f"{st['unresolved']} of {len(chunk)} in chunk {chunk[0]} .. {chunk[-1]}")
+            if not chunks_done:
+                raise CorpusError(f"{msg}; the previous layer is kept")
+            stopped = f"unresolved: {msg}; not promoted"
+            break
+        projects.update(new_p)
+        live.update(new_l)
+        st.update(requests=http.calls - calls0, batches=-(-sum(1 for p in chunk if p.startswith("github.com/"))
+                                                          // cfg["batch_size"]),
+                  waited_seconds=round(waited() - waited0))
+        for k in STAT_KEYS:
+            run[k] += st.get(k, 0)
+            prog["stats"][k] = prog["stats"].get(k, 0) + st.get(k, 0)
+        prog["cursor"] = chunk[-1]
+        chunks_done += 1
+        slowest = max(slowest, took)
+        done = sum(1 for pid in order if pid <= prog["cursor"])
+        log(f"corpus-refresh: chunk {chunks_done} done in {took:.0f}s, {done}/{len(order)} rows "
+            f"(unresolved {st['unresolved']}, waited {st['waited_seconds']}s, http calls {http.calls}, "
+            f"elapsed {(time.monotonic() - t0) / 60:.1f} min)")
+    if http.failures:
+        log(f"corpus-refresh: {len(http.failures)} lookups failed after retries")
+    complete = stopped is None
+    prog["runs"] = prog.get("runs", 0) + 1
+    method = (f"GitHub GraphQL, {cfg['batch_size']} repositories per request; REST only to follow a rename; "
+              "GitLab and Codeberg through hosts.py; resumable chunks of "
+              f"{size} rows inside a {budget / 60:.0f} min budget per run")
     extra = {k: m[k] for k in ("membership", "publication", "licence_classification", "edition_check") if k in m}
-    extra["refresh"] = {"cadence": cfg["cadence"], "stale_after_days": cfg["stale_after_days"],
-                        "last": {"at": stamp, "method": f"GitHub GraphQL, {cfg['batch_size']} repositories per "
-                                                        "request; REST only to follow a rename; GitLab and "
-                                                        "Codeberg through hosts.py",
-                                 "requests": api.http.calls, "batches": batches, **stats}}
+    refresh_block = {"cadence": cfg["cadence"], "stale_after_days": cfg["stale_after_days"],
+                     "last": (m.get("refresh") or {}).get("last")}
+    if complete:
+        totals = prog["stats"]
+        refresh_block["last"] = {"at": prog["started_at"], "completed_at": stamp, "method": method,
+                                 "runs": prog["runs"], **{k: totals[k] for k in STAT_KEYS}}
+        status = "complete"
+    else:
+        done = sum(1 for pid in order if prog["cursor"] and pid <= prog["cursor"])
+        refresh_block["in_progress"] = {"started_at": prog["started_at"], "updated_at": stamp,
+                                        "cursor": prog["cursor"], "done": done, "total": len(order),
+                                        "runs": prog["runs"], "method": method, "stopped": stopped,
+                                        "stats": prog["stats"]}
+        status = "partial"
+        log(f"corpus-refresh: stopped ({stopped}); {done}/{len(order)} rows of this pass read")
+    extra["refresh"] = refresh_block
     manifest = write_layer(out, list(projects.values()), list(live.values()), extra)
-    return {"refresh": extra["refresh"]["last"], "corpus_version": manifest["corpus_version"]}
+    return {"status": status, "this_run": {**run, "chunks": chunks_done, "stopped": stopped,
+                                           "elapsed_minutes": round((time.monotonic() - t0) / 60, 1)},
+            "refresh": refresh_block["last"] if complete else refresh_block["in_progress"],
+            "corpus_version": manifest["corpus_version"]}
 
 
 # -- validate
