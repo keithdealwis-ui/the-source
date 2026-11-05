@@ -79,6 +79,11 @@ jobs:
         run: |
           python -m source_pipeline quick-score | tee quick.json
           python -m source_pipeline quick-validate > /dev/null
+          # KEI-961: api/v1/catalogue.json counts corpus pairings per product, so a corpus refresh
+          # must rebuild the canonical layer too, or canonical-validate (rebuild_is_byte_identical)
+          # fails on main until the next daily cycle repairs it.
+          python -m source_pipeline canonical-build > /dev/null
+          python -m source_pipeline canonical-validate > /dev/null
 
       - name: Commit data/corpus
         if: steps.due.outputs.due == 'true'
@@ -87,7 +92,7 @@ jobs:
         run: |
           git config user.name "the-source-cycle"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/corpus data/quick
+          git add data/corpus data/quick data/canonical api/v1
           VERSION=$(python -c "import json;print(json.load(open('data/corpus/MANIFEST.json'))['corpus_version'])")
           # A part-pass is labelled as one: its rows are re-read, but the corpus refresh (refresh.last) has not advanced.
           WHAT=$(python -c "import json;r=json.load(open('refresh.json'));print('refresh live facts' if r['status']=='complete' else 'refresh live facts, pass in progress %s/%s rows' % (r['refresh']['done'], r['refresh']['total']))")
