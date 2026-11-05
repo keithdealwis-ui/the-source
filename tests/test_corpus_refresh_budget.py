@@ -237,3 +237,43 @@ def test_a_pass_older_than_a_refresh_cycle_is_restarted_not_finished(one_row_chu
     assert res["status"] == "complete" and res["this_run"]["chunks"] == 3
     last = common.read_json(out / "MANIFEST.json")["refresh"]["last"]
     assert last["at"] == "2026-10-17T12:00:00Z" and last["runs"] == 1 and last["resolved"] == 3
+
+
+# KEI-961 activation cycle: GitLab answers gitlab-org/gitlab releases with a plain 403 (quota left,
+# no Retry-After). That is an access rule, not throttling; it must not fail the whole deep enrichment.
+def _http_error(code, headers):
+    import email.message
+    import urllib.error
+    msg = email.message.Message()
+    for k, v in headers.items():
+        msg[k] = v
+    return urllib.error.HTTPError("https://gitlab.com/api/v4/x", code, "Forbidden", msg, None)
+
+
+def test_access_refusal_is_told_apart_from_throttling():
+    from source_pipeline.enrich import _is_access_refusal
+    assert _is_access_refusal(_http_error(403, {"RateLimit-Remaining": "498"}).headers)
+    assert _is_access_refusal(_http_error(403, {}).headers)
+    assert not _is_access_refusal(_http_error(403, {"Retry-After": "60"}).headers)
+    assert not _is_access_refusal(_http_error(403, {"X-RateLimit-Remaining": "0"}).headers)
+    assert not _is_access_refusal(_http_error(403, {"RateLimit-Remaining": "0"}).headers)
+    assert not _is_access_refusal(_http_error(403, {"cf-mitigated": "challenge"}).headers)
+
+
+def test_forbidden_is_an_answer_only_when_asked(monkeypatch):
+    import urllib.request
+    from source_pipeline import enrich
+    calls = []
+
+    def refuse(req, timeout=None):
+        calls.append(req.full_url)
+        raise _http_error(403, {"RateLimit-Remaining": "498"})
+
+    monkeypatch.setattr(urllib.request, "urlopen", refuse)
+    monkeypatch.setattr(enrich.common, "refuse_network", lambda url: None)
+    h = enrich.Http()
+    h.max_sleep = 0  # never sleep in a test: a retry wait beyond max_sleep gives up at once
+    assert h.call("https://gitlab.com/api/v4/x/releases", forbidden_is_answer=True) == (403, None)
+    assert h.failures == [] and len(calls) == 1
+    assert h.call("https://gitlab.com/api/v4/x/releases") == (403, None)
+    assert h.failures == ["403 https://gitlab.com/api/v4/x/releases"]

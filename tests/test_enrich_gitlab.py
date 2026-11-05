@@ -23,7 +23,7 @@ class FakeHttp:
     def __init__(self, routes):
         self.routes, self.seen, self.failures, self.calls = routes, [], [], 0
 
-    def call(self, url, data=None, auth=False, tries=5):
+    def call(self, url, data=None, auth=False, tries=5, forbidden_is_answer=False):
         self.calls += 1
         self.seen.append(url)
         for prefix, resp in self.routes:

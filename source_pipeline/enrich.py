@@ -56,6 +56,17 @@ query($owner:String!,$name:String!,$since:GitTimestamp!,$sinceDT:DateTime!,$n:In
 """
 
 
+def _is_access_refusal(headers) -> bool:
+    """A 403 that is an access rule, not throttling: no Retry-After, no exhausted quota
+    (GitHub X-RateLimit-Remaining or GitLab RateLimit-Remaining), no Cloudflare challenge."""
+    if headers.get("Retry-After") or headers.get("cf-mitigated") == "challenge":
+        return False
+    for h in ("X-RateLimit-Remaining", "RateLimit-Remaining"):
+        if (headers.get(h) or "").strip() == "0":
+            return False
+    return True
+
+
 class Http:
     """HTTP with retry. Transient failures are counted: a run with any is not trusted."""
 
@@ -95,9 +106,13 @@ class Http:
         time.sleep(seconds)
         return True
 
-    def call(self, url, data=None, auth=False, tries=5, token=None):
+    def call(self, url, data=None, auth=False, tries=5, token=None, forbidden_is_answer=False):
         """`auth` sends the cycle's GitHub token; `token` sends another operator's bearer
-        token (an X or Instagram credential, KEI-913) for that call only. Neither is logged."""
+        token (an X or Instagram credential, KEI-913) for that call only. Neither is logged.
+        `forbidden_is_answer` (KEI-961): a 403 that carries no rate-limit signal (no Retry-After,
+        remaining quota not exhausted, no Cloudflare challenge) is the host's access rule for that
+        resource, e.g. GitLab withholding gitlab-org/gitlab releases from anonymous callers. It is
+        returned as a real answer instead of being retried and recorded as a lookup failure."""
         common.refuse_network(url)
         if self.expired():
             with self._lock:
@@ -127,6 +142,8 @@ class Http:
                 status = err.code
                 if err.code in (404, 410, 451, 409, 422):
                     return err.code, None  # a real answer, not a failure
+                if forbidden_is_answer and err.code == 403 and _is_access_refusal(err.headers):
+                    return 403, None
                 if err.headers.get("cf-mitigated") == "challenge":
                     # A Cloudflare managed challenge wants a browser, not a retry (KEI-914).
                     # Still a failure: the answer is unknown, not absent.
@@ -547,7 +564,9 @@ def gitlab(http: Http, key: str, since: datetime, rules: Rules, policy: dict, fe
     obs = {"commits": [], "merged_prs": [], "releases": [], "tags": []}
     n = int(policy["maintenance"]["commit_lookback"])
     obs["commits"] = _gitlab_commits(http, api, repo.get("default_branch"), since, n, rules)
-    st, rels = http.call(f"{api}/releases?per_page=3")
+    # KEI-961: some projects (gitlab-org/gitlab) refuse anonymous release reads with a plain 403;
+    # that is "no releases visible", not an unknown answer. Tags below still date the project.
+    st, rels = http.call(f"{api}/releases?per_page=3", forbidden_is_answer=True)
     for r in rels or []:
         obs["releases"].append({"ref": r.get("tag_name"), "at": r.get("released_at"), "draft": False,
                                 "commit": (r.get("commit") or {}).get("id")})
