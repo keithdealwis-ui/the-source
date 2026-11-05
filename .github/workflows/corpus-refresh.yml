@@ -2,14 +2,19 @@ name: Discovery corpus refresh
 
 # KEI-912. Re-reads every published discovery project's live facts (stars, forks, pushed_at,
 # archived, latest release, the licence the host reports, description, topics, languages)
-# from GitHub and commits data/corpus/ if the result validates. The cron is a daily wake-up;
-# `corpus-due` decides whether a refresh is due (config/corpus.yaml: weekly, due after 6
-# days), so a missed or failed run is retried the next day without hammering the API.
+# from GitHub, GitLab and Codeberg and commits data/corpus/ if the result validates. The cron
+# is a daily wake-up; `corpus-due` decides whether a refresh is due (config/corpus.yaml: weekly,
+# due after 6 days), so a missed or failed run is retried the next day without hammering the API.
 #
-# Cost: ~190 GraphQL requests of 50 repositories each (plus REST only to follow a rename),
-# well inside the job token's hourly budget; Actions minutes on a public repository are free.
-# A refresh that would exceed config/corpus.yaml max_graphql_points, or that cannot read
-# more than max_unresolved_share of the corpus, stops and keeps the previous layer.
+# KEI-961. A pass over ~25k rows is ~500 GraphQL batches (one rate-limit point each) and about
+# 30 minutes, too close to the job timeout to be done in one go reliably. corpus-refresh reads
+# in chunks inside config/corpus.yaml max_runtime_minutes (40), promotes every chunk it read in
+# full, and records an unfinished pass as MANIFEST refresh.in_progress; the next wake-up resumes
+# it (corpus-due is true while a pass is in progress). refresh.last, which the MCP server's
+# staleness reads, advances only when a pass covers the whole corpus. No back-off wait is longer
+# than max_wait_seconds, and every long wait is logged. Every wake-up, due or not, checks the
+# corpus age against stale_after_days and opens a corpus-stale issue when it is exceeded.
+# A refresh that cannot read more than max_unresolved_share of a chunk stops there.
 
 on:
   schedule:
@@ -59,6 +64,13 @@ jobs:
         run: |
           python -m source_pipeline corpus-refresh | tee refresh.json
           python -m source_pipeline corpus-validate
+          STATUS=$(python -c 'import json;print(json.load(open("refresh.json"))["status"])')
+          STOPPED=$(python -c 'import json;print(json.load(open("refresh.json"))["this_run"]["stopped"] or "")')
+          echo "status=$STATUS" >> "$GITHUB_OUTPUT"
+          if [ "$STATUS" = "partial" ]; then
+            echo "::notice::Corpus refresh pass not finished this run ($STOPPED); the next daily wake-up resumes it."
+          fi
+          case "$STOPPED" in unresolved*) echo "::warning::Corpus refresh stopped on an unreadable chunk: $STOPPED";; esac
 
       - name: Quick scores, incremental (KEI-921; no network, never a recommendation)
         if: steps.due.outputs.due == 'true'
@@ -77,14 +89,16 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/corpus data/quick
           VERSION=$(python -c "import json;print(json.load(open('data/corpus/MANIFEST.json'))['corpus_version'])")
-          git commit -m "corpus: refresh live facts (corpus $VERSION)" || { echo "nothing to commit"; exit 0; }
+          # A part-pass is labelled as one: its rows are re-read, but the corpus refresh (refresh.last) has not advanced.
+          WHAT=$(python -c "import json;r=json.load(open('refresh.json'));print('refresh live facts' if r['status']=='complete' else 'refresh live facts, pass in progress %s/%s rows' % (r['refresh']['done'], r['refresh']['total']))")
+          git commit -m "corpus: $WHAT (corpus $VERSION)" || { echo "nothing to commit"; exit 0; }
           for i in 1 2 3 4 5; do
             git pull --rebase origin "$BRANCH" && git push origin "HEAD:$BRANCH" && break
             sleep $((i * 10))
           done
           git fetch origin "$BRANCH" && git merge-base --is-ancestor HEAD "origin/$BRANCH" || { echo "push failed"; exit 1; }
           {
-            echo "## Corpus refresh: corpus $VERSION"
+            echo "## Corpus $WHAT: corpus $VERSION"
             echo
             echo '```json'
             cat refresh.json
@@ -97,19 +111,49 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Surface the outcome durably
-        if: always() && steps.due.outputs.due == 'true'
+        if: always() && steps.due.outputs.due != 'false'
         env:
           GH_TOKEN: ${{ github.token }}
           OUTCOME: ${{ job.status }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
+          # job.status is "cancelled" when the runner kills the job at its timeout: that is a failure too.
           gh label create corpus-refresh-failure --color B60205 --description "Discovery corpus refresh failed" 2>/dev/null || true
           OPEN=$(gh issue list --label corpus-refresh-failure --state open --json number --jq '.[0].number')
           if [ "$OUTCOME" != "success" ]; then
-            BODY="The discovery corpus refresh failed ($RUN_URL). data/corpus is unchanged; the MCP server keeps serving it and reports it stale after config/corpus.yaml stale_after_days. The next daily wake-up retries."
+            BODY="The discovery corpus refresh ended **$OUTCOME** ($RUN_URL). Chunks promoted before the failure are kept; the rest of data/corpus is unchanged. The MCP server keeps serving it and reports it stale after config/corpus.yaml stale_after_days. The next daily wake-up retries."
             if [ -n "$OPEN" ]; then gh issue comment "$OPEN" --body "$BODY"
             else gh issue create --title "Discovery corpus refresh failing" --label corpus-refresh-failure --body "$BODY"; fi
             exit 1
           elif [ -n "$OPEN" ]; then
             gh issue close "$OPEN" --comment "Recovered: $RUN_URL"
+          fi
+
+      # KEI-961: staleness is checked on every wake-up, whether or not a refresh was due or ran, so a
+      # refresh that silently stops happening (cancelled, skipped, disabled) is still noticed.
+      - name: Staleness alert
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python -m source_pipeline corpus-due > due-after.json || cp due.json due-after.json
+          read -r STALE AGE LAST LIMIT <<< "$(python -c 'import json;d=json.load(open("due-after.json"));print(str(d.get("stale")).lower(), d.get("age_days"), d.get("last_refresh"), d.get("stale_after_days"))')"
+          PROGRESS=$(python -c 'import json;p=json.load(open("due-after.json")).get("in_progress");print("pass in progress since %s: %s/%s rows read in %s run(s)" % (p["started_at"], p["done"], p["total"], p["runs"]) if p else "no pass in progress")')
+          {
+            echo "## Discovery corpus freshness"
+            echo
+            echo "- last full refresh: $LAST (age $AGE days; stale after $LIMIT)"
+            echo "- $PROGRESS"
+            echo "- stale: **$STALE**"
+          } >> "$GITHUB_STEP_SUMMARY"
+          gh label create corpus-stale --color D93F0B --description "Discovery corpus older than stale_after_days" 2>/dev/null || true
+          OPEN=$(gh issue list --label corpus-stale --state open --json number --jq '.[0].number')
+          if [ "$STALE" = "true" ]; then
+            echo "::error::Discovery corpus is stale: last full refresh $LAST, $AGE days ago (stale after $LIMIT days)"
+            BODY="The discovery corpus is stale: last full refresh $LAST, $AGE days ago (config/corpus.yaml stale_after_days $LIMIT). $PROGRESS. The MCP server marks the discovery tier stale. Checked by $RUN_URL."
+            if [ -n "$OPEN" ]; then gh issue comment "$OPEN" --body "$BODY"
+            else gh issue create --title "Discovery corpus is stale" --label corpus-stale --body "$BODY"; fi
+          elif [ -n "$OPEN" ]; then
+            gh issue close "$OPEN" --comment "Fresh again: last full refresh $LAST ($AGE days). $RUN_URL"
           fi
