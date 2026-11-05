@@ -120,10 +120,16 @@ class Api:
                 parts.append(f"r{i}: repository(owner:{json.dumps(owner)}, name:{json.dumps(name)}){{{META_FIELDS}}}")
             st, doc = self.gql("query{" + "\n".join(parts) + " rateLimit{cost remaining}}")
             if st != 200 or not isinstance(doc, dict) or doc.get("data") is None:
-                if len(chunk) > 1:  # a heavy batch can time out; halve it rather than give up
+                errs = (doc.get("errors") or []) if isinstance(doc, dict) else []
+                limited = st in (401, 403, 429) or any(isinstance(e, dict) and e.get("type") == "RATE_LIMITED"
+                                                       for e in errs)
+                # A heavy batch can time out; halve it rather than give up. A rate-limited, refused or
+                # out-of-time batch is not heavy: halving it only multiplies the requests that will be
+                # refused (KEI-961), so every repository in it is reported as failed instead.
+                if len(chunk) > 1 and not limited and not self.http.expired():
                     half = len(chunk) // 2
                     return {**one(chunk[:half]), **one(chunk[half:])}
-                return {chunk[0]: {"found": False, "error": f"graphql_http_{st}"}}
+                return {slug: {"found": False, "error": f"graphql_http_{st}"} for slug in chunk}
             data = doc["data"]
             errors = {tuple(e.get("path") or [])[:1]: e.get("type") for e in doc.get("errors") or []}
             res = {}
@@ -139,11 +145,15 @@ class Api:
         with ThreadPoolExecutor(max_workers=4) as pool:
             for n, res in enumerate(pool.map(one, chunks), 1):
                 out.update(res)
-                if n % 25 == 0:
-                    log(f"  metadata {n * size}/{len(slugs)}")
+                if n % 25 == 0 or (n == len(chunks) and n >= 25):
+                    log(f"  metadata {min(n * size, len(slugs))}/{len(slugs)} (http calls {self.http.calls}, "
+                        f"failures {len(self.http.failures)})")
         # GraphQL follows most renames but not every transfer; REST follows the rest.
+        gone = sorted(s for s, m in out.items() if m.get("error") == "not_found")
+        if len(gone) >= 25:
+            log(f"  following {len(gone)} not-found repositories over REST")
         for slug, m in sorted(out.items()):
-            if m.get("error") == "not_found":
+            if m.get("error") == "not_found" and not self.http.expired():
                 st, rest = self.rest(f"repos/{slug}")
                 moved = (rest or {}).get("full_name") if st == 200 else None
                 if moved and moved.lower() != slug:

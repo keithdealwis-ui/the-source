@@ -108,14 +108,36 @@ Each cycle's run record (`runs/<run_id>.json`) carries a `corpus` block (`corpus
 
 **Live facts** are refreshed without the Mac by `.github/workflows/corpus-refresh.yml`: a daily
 wake-up that refreshes when `corpus-due` says so (weekly: due after 6 days,
-`config/corpus.yaml`). One GraphQL request carries 50 repositories, so a full refresh is about
-190 requests plus a REST call for each rename, roughly 8 minutes. That is inside the job token's
-hourly budget, and Actions minutes on a public repository are free, so there is no new spend. A
-refresh stops and keeps the previous layer if it would exceed `max_graphql_points`, or if it
-cannot read more than 2% of the corpus. A repository that has gone (deleted, made private) stays
-listed with `found: false` and its last known facts. A renamed one keeps its `id`; the new key
-is added to `aliases`, so both resolve. Failures open a `corpus-refresh-failure` issue, as the
-daily cycle does.
+`config/corpus.yaml`). One GraphQL request carries 50 repositories and costs one rate-limit
+point, so a pass over the ~25k corpus is ~500 requests and, measured in Actions, about 30
+minutes, plus a REST call for each rename and a few calls per GitLab or Codeberg member.
+Actions minutes on a public repository are free, so there is no new spend.
+
+A pass is resumable (KEI-961). Rows are read in id order, `chunk_size` (2,500) at a time, and
+every chunk read in full is promoted, each row with the moment it was actually read as its
+`observed_as_of`. A run stops on its own clock at `max_runtime_minutes` (40, inside the job's
+60-minute timeout) and records the unfinished pass in `MANIFEST.refresh.in_progress`
+(`started_at`, `cursor`, `done`/`total`, running totals, why it stopped); `corpus-due` is true
+while a pass is in progress, so the next daily wake-up carries on from the cursor.
+`MANIFEST.refresh.last`, which `corpus-due` and the MCP server's staleness read, advances only
+when a pass has covered the whole corpus, and is dated from the pass's start (`at`, with
+`completed_at` and `runs`), so the layer never claims to be fresher than its oldest row.
+
+No back-off wait is longer than `max_wait_seconds` (120): a host that asks for longer is
+recorded as unresolved for that row (it keeps its last known facts and says why, e.g.
+`http_429`), not waited on. Every wait of 10 seconds or more is logged, as is each chunk. A
+refresh stops and keeps the previous layer if it would exceed `max_graphql_points`; a pass that
+cannot read more than 2% of the corpus stops at the chunk that would cross that bar. A
+repository that has gone (deleted, made private) stays listed with `found: false` and its last
+known facts. A renamed one keeps its `id`; the new key is added to `aliases`, so both resolve.
+A failed or cancelled run opens or comments on a `corpus-refresh-failure` issue, as the daily
+cycle does, and every wake-up, due or not, opens a `corpus-stale` issue (and an error in the
+job summary) when the last full refresh is older than `stale_after_days`.
+
+Why (KEI-961, 2026-10-29 to 11-04): every due run was cancelled at the 60-minute timeout.
+After the GitHub batches (~33 min), GitLab's anonymous API answered 429 with `Retry-After`
+~1,160 s (`ratelimit-name: unauthenticated_traffic_per_ip`; Actions runners share IPs), and the
+HTTP client slept on it, silently, up to 30 minutes a retry, five tries a call, four threads.
 
 ## Identity: renames, forks, mirrors, siblings
 

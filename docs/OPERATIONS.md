@@ -181,10 +181,12 @@ The next successful run closes the issue. Scheduled runs ignore the drill settin
 `.github/workflows/corpus-refresh.yml` keeps `data/corpus/` fresh, separately from the daily
 cycle and in the same `canonical-writer` concurrency group. It wakes daily at 04:41 UTC and
 refreshes when `python -m source_pipeline corpus-due` says a refresh is due (weekly; due after 6
-days). A refresh re-reads every published project from GitHub in batches of 50 (about 190
-GraphQL requests, about 8 minutes), validates, and commits `data/corpus/` as
-`corpus: refresh live facts (corpus <version>)`. A refresh that fails, or that cannot read more
-than 2% of the corpus, commits nothing, opens or comments on a `corpus-refresh-failure` issue,
-and is retried the next day; the MCP server keeps serving the previous layer and reports it
-stale after 10 days. Run one by hand with *Actions → Discovery corpus refresh → Run workflow*.
-See [`CORPUS.md`](CORPUS.md).
+days, or whenever a pass is in progress). A pass re-reads every published project in GraphQL
+batches of 50 (~500 requests, about 30 minutes for ~25k rows) in resumable chunks inside a
+40-minute budget: what it read is validated and committed (`corpus: refresh live facts (corpus
+<version>)`, or `..., pass in progress N/M rows` for a part-pass), and the next wake-up resumes an
+unfinished pass. `refresh.last` advances only when a pass covers the whole corpus. A failed or
+cancelled run opens or comments on a `corpus-refresh-failure` issue and is retried the next day;
+every wake-up opens a `corpus-stale` issue when the last full refresh is older than 10 days (the
+MCP server reports the tier stale then too). Run one by hand with *Actions → Discovery corpus
+refresh → Run workflow*. See [`CORPUS.md`](CORPUS.md).

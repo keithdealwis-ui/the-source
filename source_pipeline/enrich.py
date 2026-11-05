@@ -22,6 +22,18 @@ from .harvest import _token
 
 UA = "the-source-verify/1.0"
 
+
+def _log(msg: str) -> None:
+    import sys
+
+    print(f"[{datetime.now(timezone.utc).strftime('%H:%M:%S')}] {msg}", file=sys.stderr, flush=True)
+
+
+def _where(url: str) -> str:
+    """Host and path of a URL, never its query (which can carry a search or a token)."""
+    p = urllib.parse.urlsplit(url)
+    return p.netloc + p.path
+
 GQL = """
 query($owner:String!,$name:String!,$since:GitTimestamp!,$sinceDT:DateTime!,$n:Int!,$prs:Int!){
   repository(owner:$owner,name:$name){
@@ -54,11 +66,43 @@ class Http:
         self.failures: list[str] = []
         self.calls = 0
         self._lock = threading.Lock()
+        # KEI-961: bounds for long unattended jobs. `deadline` (time.monotonic()) ends every
+        # retry and refuses new requests once passed, so a job stops on its own clock instead
+        # of being killed by the runner; `max_sleep` caps one back-off wait (a rate-limit reset
+        # further away than that is a failure, not a wait); `timeout` bounds one request.
+        self.deadline: float | None = None
+        self.max_sleep = 1800.0
+        self.timeout = 60
+        self.waited = 0.0  # seconds spent in back-off, reported by the job that owns this client
+
+    def expired(self) -> bool:
+        return self.deadline is not None and time.monotonic() >= self.deadline
+
+    def _wait(self, seconds: float, why: str, url: str, attempt: int, tries: int) -> bool:
+        """Sleep before a retry, unless the wait breaks a bound. Long waits are logged: a job
+        that is backing off must say so in its log, never sit silent (KEI-961)."""
+        if seconds > self.max_sleep:
+            _log(f"http: {why} from {_where(url)}; wait {seconds:.0f}s exceeds max_sleep "
+                 f"{self.max_sleep:.0f}s, giving up on this request")
+            return False
+        if self.deadline is not None and time.monotonic() + seconds >= self.deadline:
+            _log(f"http: {why} from {_where(url)}; wait {seconds:.0f}s would pass the job deadline, giving up")
+            return False
+        if seconds >= 10:
+            _log(f"http: {why} from {_where(url)}; waiting {seconds:.0f}s (attempt {attempt + 1}/{tries})")
+        with self._lock:
+            self.waited += seconds
+        time.sleep(seconds)
+        return True
 
     def call(self, url, data=None, auth=False, tries=5, token=None):
         """`auth` sends the cycle's GitHub token; `token` sends another operator's bearer
         token (an X or Instagram credential, KEI-913) for that call only. Neither is logged."""
         common.refuse_network(url)
+        if self.expired():
+            with self._lock:
+                self.failures.append(f"deadline {url.split('?')[0]}")
+            return 0, None
         headers = {"User-Agent": UA, "Accept": "application/json"}
         if token:
             headers["Authorization"] = f"Bearer {token}"
@@ -74,7 +118,10 @@ class Http:
             with self._lock:
                 self.calls += 1
             try:
-                with urllib.request.urlopen(req, timeout=60) as resp:
+                timeout = self.timeout
+                if self.deadline is not None:
+                    timeout = max(1.0, min(timeout, self.deadline - time.monotonic()))
+                with urllib.request.urlopen(req, timeout=timeout) as resp:
                     return resp.status, json.loads(resp.read().decode("utf-8") or "null")
             except urllib.error.HTTPError as err:
                 status = err.code
@@ -85,19 +132,23 @@ class Http:
                     # Still a failure: the answer is unknown, not absent.
                     break
                 if attempt < tries - 1:
-                    wait = delay
+                    wait, why = delay, f"HTTP {err.code}"
                     if err.headers.get("X-RateLimit-Remaining") == "0" and err.headers.get("X-RateLimit-Reset"):
                         wait = max(1.0, float(err.headers["X-RateLimit-Reset"]) - time.time() + 2)
+                        why = f"HTTP {err.code} rate limit exhausted"
                     elif (err.headers.get("Retry-After") or "").isdigit():
                         wait = float(err.headers["Retry-After"])
-                    time.sleep(min(wait, 1800))
+                        why = f"HTTP {err.code} Retry-After"
+                    if not self._wait(min(wait, 1800), why, url, attempt, tries):
+                        break
                     delay *= 2
                     continue
             except (urllib.error.URLError, TimeoutError, ConnectionError, json.JSONDecodeError,
-                    http.client.HTTPException):  # a truncated body (IncompleteRead) is transient too
+                    http.client.HTTPException) as err:  # a truncated body (IncompleteRead) is transient too
                 status = 0
                 if attempt < tries - 1:
-                    time.sleep(delay)
+                    if not self._wait(delay, type(err).__name__, url, attempt, tries):
+                        break
                     delay *= 2
                     continue
         with self._lock:

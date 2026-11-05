@@ -35,10 +35,21 @@ refresh:
   # GitHub offers for metadata: batch, never one request per repository).
   batch_size: 50
   # Hard ceiling on GraphQL rate-limit points a refresh may spend; it stops and keeps the
-  # previous layer rather than exceed it. A full refresh of ~9.4k repositories costs ~190.
+  # previous layer rather than exceed it. A full refresh costs one point per batch: ~500 for ~25k.
   max_graphql_points: 1500
-  # A refresh that cannot read more than this share of the corpus is not promoted.
+  # A refresh that cannot read more than this share of the corpus is not promoted (KEI-961: counted
+  # over the whole pass; the chunk that would cross it is not promoted and the pass stops there).
   max_unresolved_share: 0.02
+  # KEI-961. A full pass (~25k rows, ~500 GraphQL batches, ~30 min) does not reliably fit one job,
+  # so it is resumable: rows are read `chunk_size` at a time in id order, every chunk read in full
+  # is promoted, and a run stops cleanly at `max_runtime_minutes` (inside the job's 60-minute
+  # timeout) with the pass recorded as MANIFEST refresh.in_progress; the next daily wake-up resumes
+  # it. refresh.last (staleness, due) advances only when a pass covers the whole corpus.
+  chunk_size: 2500
+  max_runtime_minutes: 40
+  # Longest single back-off wait. A host that asks for longer (GitLab's anonymous per-IP limit
+  # answers 429 with Retry-After ~20 min) is recorded as unresolved for that row, not waited on.
+  max_wait_seconds: 120
 
 admission:
   # New members (source_pipeline/corpus_admit.py), every daily cycle: discovery-pool candidates
