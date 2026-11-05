@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-05T10:24:46Z",
+  "as_of": "2026-11-05T12:23:19Z",
   "counts": {
     "measured_any_window": 1497,
     "projects": 1590
@@ -8,9 +8,9 @@
     "1": {
       "acceleration": {
         "labels": {
-          "accelerating": 255,
-          "decelerating": 211,
-          "steady": 1031
+          "accelerating": 280,
+          "decelerating": 210,
+          "steady": 1007
         },
         "measurable_from": "2026-10-04",
         "prior_base": {
@@ -40,9 +40,9 @@
       "measurable_from": "2026-10-03",
       "momentum": {
         "declining": 7,
-        "flat": 1067,
-        "rising": 359,
-        "surging": 64
+        "flat": 1050,
+        "rising": 372,
+        "surging": 68
       },
       "projects": {
         "identity_changed": 1,
@@ -84,8 +84,8 @@
       "measurable_from": "2026-11-01",
       "momentum": {
         "declining": 2,
-        "flat": 348,
-        "rising": 220,
+        "flat": 347,
+        "rising": 221,
         "surging": 12
       },
       "projects": {
@@ -102,9 +102,9 @@
     "7": {
       "acceleration": {
         "labels": {
-          "accelerating": 244,
-          "decelerating": 276,
-          "steady": 947
+          "accelerating": 243,
+          "decelerating": 271,
+          "steady": 953
         },
         "measurable_from": "2026-10-16",
         "prior_base": {
@@ -134,9 +134,9 @@
       "measurable_from": "2026-10-09",
       "momentum": {
         "declining": 7,
-        "flat": 880,
+        "flat": 879,
         "rising": 490,
-        "surging": 92
+        "surging": 93
       },
       "projects": {
         "identity_changed": 1,
@@ -185,11 +185,11 @@
     }
   },
   "files": {
-    "live.json": "a1281bfb7f16bd8bb905beb3c38b6dd52e63d750815250b743d6182bd43d4c47",
-    "projects.jsonl": "7c33dfad2e87a6b1dc7310a1f25a74c83a1deddebb48ff5de7045a0faa7d7d9e"
+    "live.json": "96ef8b1635469a4210855cc4b39af4e77fd673c4f6d226c5d7f9fbb9b6ffd94a",
+    "projects.jsonl": "578e0479924df7b6e0d0b62843d005ae7cd2a54cd897a2b2cea0e7a6deaac653"
   },
   "history": {
-    "dataset_version": "da679aa830d7b3b1",
+    "dataset_version": "07ab9c39ee0547fc",
     "day_sha256": {
       "2026-10-05": "0e85ed8bcf6246b600c7644bf7a8a96f421501bc8aac3b0675d6a6589a27cf40",
       "2026-10-06": "732cfe7b8b49f8495d603994d4f22ec243e12c46fab8b0f9fe284e2fe0b430ec",
@@ -222,7 +222,7 @@
       "2026-11-02": "63ac91f2e0e058bbbb6d4c7eda95237ec3061dcf6c60fe108912f6828ae4f2e0",
       "2026-11-03": "dba1f3bdfaa236425c95bff8064ffaa9b44a5c6f4c86abc46fd6779d75f52eb2",
       "2026-11-04": "ae7b93962d0a937a3854d400c0938632215b19c7ffc4053fb308038b38b86123",
-      "2026-11-05": "9800d282d300ad5653cd96c9b854b28199c06165866392275fb0ee15cd18de31"
+      "2026-11-05": "dfd0b72337ad5e7800c8944fff2c4549b7d0f39fd9ed01545d50da2593735455"
     },
     "days_held": 35,
     "days_read": [
@@ -261,7 +261,7 @@
     ],
     "newest": "2026-11-05",
     "oldest": "2026-10-02",
-    "run_id": "manual-20261105T102445Z-manual-a1"
+    "run_id": "manual-20261105T122318Z-manual-a1"
   },
   "methodology": {
     "doc": "docs/MOMENTUM.md",
@@ -272,11 +272,11 @@
   "on": "2026-11-05",
   "sanity": {
     "live": {
-      "as_of": "2026-11-05T10:24:46Z",
-      "endpoint_as_of": "2026-11-05T10:24:46Z",
+      "as_of": "2026-11-05T12:23:19Z",
+      "endpoint_as_of": "2026-11-05T12:23:19Z",
       "lag_hours": 0.0,
       "max_lag_hours": 6,
-      "sha256": "6947077ce7994cc7c816cec7c5eae6ce843d9277594cb737081ca12f527a1a7a",
+      "sha256": "8d983873b5b71a8c67a3ab57caf7549905dac4a1c7fbdce498ecbb69d25731ae",
       "status": "compared"
     },
     "parameters": {

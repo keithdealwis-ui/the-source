@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-05T10:24:46Z",
+  "as_of": "2026-11-05T12:23:19Z",
   "checks": [
     {
       "criterion": 1,
@@ -219,7 +219,7 @@
       "failures": 0,
       "id": "activity.evidence_is_not_docs_only",
       "kind": "assertion",
-      "observed": 5231,
+      "observed": 5232,
       "ok": true
     },
     {
@@ -334,8 +334,8 @@
       "id": "maintenance.classification_matches_definition",
       "kind": "assertion",
       "observed": {
-        "active": 1319,
-        "maintained": 134,
+        "active": 1321,
+        "maintained": 132,
         "stale": 93,
         "unverified": 19
       },
@@ -434,7 +434,7 @@
       "failures": 0,
       "id": "dedupe.one_repository_per_product_per_saas",
       "kind": "assertion",
-      "observed": 1607,
+      "observed": 1609,
       "ok": true
     },
     {
@@ -444,7 +444,7 @@
       "failures": 0,
       "id": "launch.only_validated_edges",
       "kind": "assertion",
-      "observed": 1607,
+      "observed": 1609,
       "ok": true
     },
     {
@@ -479,9 +479,9 @@
       "id": "launch.targets",
       "kind": "assertion",
       "observed": {
-        "oss_distinct_products": 650,
-        "oss_projects": 651,
-        "relationships": 1607,
+        "oss_distinct_products": 651,
+        "oss_projects": 652,
+        "relationships": 1609,
         "saas_products": 405
       },
       "ok": true
@@ -505,13 +505,13 @@
       "kind": "observation",
       "observed": {
         "examples": [
-          "github.com/stirling-tools/stirling-pdf (95778 stars: no_recognised_open_source_licence)",
-          "github.com/opendatalab/mineru (83171 stars: no_recognised_open_source_licence)",
+          "github.com/stirling-tools/stirling-pdf (95786 stars: no_recognised_open_source_licence)",
+          "github.com/opendatalab/mineru (83174 stars: no_recognised_open_source_licence)",
           "github.com/nomic-ai/gpt4all (77341 stars: stale_no_meaningful_activity_12_months)",
-          "github.com/pi-hole/pi-hole (61668 stars: no_recognised_open_source_licence)",
-          "github.com/pocketbase/pocketbase (61606 stars: archived)"
+          "github.com/pi-hole/pi-hole (61667 stars: no_recognised_open_source_licence)",
+          "github.com/pocketbase/pocketbase (61607 stars: archived)"
         ],
-        "launch_projects_under_500_stars": 94,
+        "launch_projects_under_500_stars": 95,
         "rejected_with_10k_plus_stars": 29
       }
     },
