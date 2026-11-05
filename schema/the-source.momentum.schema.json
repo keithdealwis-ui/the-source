@@ -5,16 +5,20 @@
   "description": "data/momentum/MANIFEST.json and data/momentum/projects.jsonl. Methodology: docs/MOMENTUM.md.",
   "$defs": {
     "day": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
-    "status": {"enum": ["measured", "insufficient_history", "no_baseline", "not_observed", "identity_changed"]},
+    "status": {"enum": ["measured", "insufficient_history", "no_baseline", "not_observed", "identity_changed", "suppressed"]},
     "not_measured": {
       "type": "object",
       "required": ["status", "reason"],
       "properties": {
-        "status": {"enum": ["insufficient_history", "no_baseline", "not_observed", "identity_changed"]},
+        "status": {"enum": ["insufficient_history", "no_baseline", "not_observed", "identity_changed", "suppressed"]},
+        "check": {"enum": ["live_identity_mismatch", "live_disagreement", "unconfirmed_jump", "transient_spike"]},
         "reason": {"type": "string", "minLength": 1},
         "base_day": {"$ref": "#/$defs/day"},
         "prior_base_day": {"$ref": "#/$defs/day"}
       },
+      "if": {"properties": {"status": {"const": "suppressed"}}},
+      "then": {"required": ["check"]},
+      "else": {"not": {"required": ["check"]}},
       "additionalProperties": false
     },
     "acceleration_measured": {
@@ -91,7 +95,7 @@
     },
     "manifest": {
       "type": "object",
-      "required": ["schema", "methodology", "on", "as_of", "history", "windows", "coverage", "counts", "files"],
+      "required": ["schema", "methodology", "on", "as_of", "history", "windows", "coverage", "sanity", "counts", "files"],
       "properties": {
         "schema": {"const": "the-source.momentum/1"},
         "methodology": {
@@ -129,6 +133,20 @@
               "status": {"enum": ["measured", "insufficient_history"]},
               "measurable_from": {"$ref": "#/$defs/day"}
             }
+          }
+        },
+        "sanity": {
+          "type": "object",
+          "required": ["live", "parameters", "suppressed"],
+          "properties": {
+            "live": {
+              "type": "object",
+              "required": ["status"],
+              "properties": {"status": {"enum": ["compared", "skipped"]}, "reason": {"type": "string"},
+                             "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+            },
+            "parameters": {"type": "object", "required": ["live", "jump"]},
+            "suppressed": {"type": "object"}
           }
         },
         "counts": {"type": "object", "required": ["projects", "measured_any_window"]},

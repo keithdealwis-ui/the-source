@@ -18,11 +18,20 @@ is `no_baseline`; one not found now or then is `not_observed`; one whose host re
 id changed is `identity_changed`. Each measured value carries the base and current
 observations it came from and a one-line explanation, so it can be checked by hand.
 
-    data/momentum/MANIFEST.json    methodology version and fingerprint, history used,
-                                   per-window coverage, counts, file hashes
-    data/momentum/projects.jsonl   one record per repository, every window
+Sanity gate (KEI-961, `sanity` in the config): before a window is published as measured,
+its endpoint must agree with the newest live star count the pipeline holds
+(data/live/snapshot.json) and every step inside it must be plausible: a sudden jump is
+published only once a later observation confirms it. A window that fails is `suppressed`
+with the check and the reason, never a figure.
 
-Deterministic: a pure function of data/history/ and config/momentum.yaml; no wall clock.
+    data/momentum/MANIFEST.json    methodology version and fingerprint, history used,
+                                   per-window coverage, sanity gate, counts, file hashes
+    data/momentum/projects.jsonl   one record per repository, every window
+    data/momentum/live.json        the live star counts the sanity gate compared against
+                                   (copied from data/live/snapshot.json at build time)
+
+Deterministic: a pure function of data/history/, data/momentum/live.json and
+config/momentum.yaml; no wall clock.
 It never touches data/canonical/ or api/v1/, so the canonical dataset version is
 unaffected.
 """
@@ -38,7 +47,8 @@ from . import common, daily
 from .activity import parse_ts
 
 SCHEMA = "the-source.momentum/1"
-STATUSES = ("measured", "insufficient_history", "no_baseline", "not_observed", "identity_changed")
+STATUSES = ("measured", "insufficient_history", "no_baseline", "not_observed", "identity_changed", "suppressed")
+CHECKS = ("live_identity_mismatch", "live_disagreement", "unconfirmed_jump", "transient_spike")
 
 
 def _dir() -> Path:
@@ -173,8 +183,9 @@ def _activity(key: str, days: list[str], snaps: dict, base_day: str, on: str) ->
 
 
 def measure(key: str, window: int, on: str, base: dict, prior: dict | None, snaps: dict, days: list[str],
-            index: dict, cfg: dict) -> dict:
-    """One project, one window. `base` and `prior` come from resolve_base."""
+            index: dict, cfg: dict, live: dict | None = None) -> dict:
+    """One project, one window. `base` and `prior` come from resolve_base; `live` is the
+    project's live verdict from live_verdict (None: not compared)."""
     if not base["ok"]:
         return {"status": "insufficient_history", "reason": base["reason"]}
     bday = base["base_day"]
@@ -206,15 +217,132 @@ def measure(key: str, window: int, on: str, base: dict, prior: dict | None, snap
     if abs(delta) < mcfg["min_abs_change"]:
         expl += f" (|change| under {mcfg['min_abs_change']} stars)"
     rec["explanation"] = [expl]
-    if note:
-        rec["notes"] = [note]
-    rec["acceleration"] = _acceleration(key, window, bday, per_day, delta, prior, snaps, index, cfg)
+    notes = [note] if note else []
+    # ---- sanity gate (KEI-961): only a figure that passes it is published
+    if live and not live["ok"]:
+        return _suppressed(live["check"], live["reason"], bday)
+    jump = scan_jumps(key, days, snaps, bday, on, on, cfg)
+    if jump["check"]:
+        return _suppressed(jump["check"], jump["reason"], bday)
+    notes += jump["notes"]
+    if notes:
+        rec["notes"] = notes
+    rec["acceleration"] = _acceleration(key, window, bday, per_day, delta, prior, snaps, index, cfg, days, on)
     if rec["acceleration"]["status"] == "measured":
         rec["explanation"].append(rec["acceleration"]["explanation"])
     return rec
 
 
-def _acceleration(key, window, mid, rate_now, delta_now, prior, snaps, index, cfg) -> dict:
+def _suppressed(check: str, reason: str, base_day: str | None = None, prior_base_day: str | None = None) -> dict:
+    out = {"status": "suppressed", "check": check, "reason": reason}
+    if base_day:
+        out["base_day"] = base_day
+    if prior_base_day:
+        out["prior_base_day"] = prior_base_day
+    return out
+
+
+# ---------------------------------------------------------------- sanity gate (KEI-961)
+
+def _jump_threshold(prev: int, cfg: dict) -> float:
+    j = cfg["sanity"]["jump"]
+    return max(j["min_abs_stars"], j["relative"] * max(prev, cfg["momentum"]["relative_floor_stars"]))
+
+
+def scan_jumps(key: str, days: list[str], snaps: dict, start: str, end: str, on: str, cfg: dict) -> dict:
+    """Every step between consecutive observations of `key` from `start` to `end` must be
+    plausible, and so must the step into the `start` observation (a base that was itself a
+    spike is no base). A step at or over the jump threshold counts only if the observations
+    after it, up to `on` (never later history), keep at least confirm_retained of it.
+    Returns {check: None | "unconfirmed_jump" | "transient_spike", reason, notes}."""
+    def stars(d):
+        r = snaps[d].get(key) or {}
+        return r.get("stars") if r.get("found") else None
+
+    seen = [(d, stars(d)) for d in days if d <= on and stars(d) is not None]
+    first = next((i for i, (d, _) in enumerate(seen) if d >= start), len(seen))
+    obs = seen[max(0, first - 1):]
+    keep = cfg["sanity"]["jump"]["confirm_retained"]
+    notes = []
+    for (da, sa), (db, sb) in zip(obs, obs[1:]):
+        if db > end:
+            break
+        step, threshold = sb - sa, _jump_threshold(sa, cfg)
+        if abs(step) < threshold:
+            continue
+        what = f"stars {sa} -> {sb} ({step:+d}) between the {da} and {db} observations (jump threshold {threshold:g})"
+        later = [(d, s) for d, s in obs if d > db]
+        if not later:
+            return {"check": "unconfirmed_jump", "notes": [],
+                    "reason": f"{what} is the newest observation; held until a later observation confirms it"}
+        retained = min((s - sa) / step for _, s in later)
+        if retained < keep:
+            low = min(later, key=lambda x: (x[1] - sa) / step)
+            return {"check": "transient_spike", "notes": [],
+                    "reason": f"{what} reverted: {low[1]} on {low[0]} keeps {retained:.0%} of it "
+                              f"(at least {keep:.0%} needed)"}
+        notes.append(f"sudden jump: {what}, confirmed by {len(later)} later observation(s) "
+                     f"({later[-1][1]} on {later[-1][0]})")
+    return {"check": None, "reason": None, "notes": notes}
+
+
+LIVE_FIELDS = ("found", "stars", "host_repo_id", "fetched_at")
+
+
+def live_view(keys=None) -> dict:
+    """The newest live star counts the pipeline holds (data/live/snapshot.json, written by
+    enrich.write_snapshot in the cycle's step 6), cut down to `keys`. The build keeps this
+    copy in data/momentum/live.json, so the gate's result can be rebuilt and checked even
+    after the live snapshot moves on."""
+    p = common.DATA / "live" / "snapshot.json"
+    if not p.exists():
+        return {"as_of": None, "sha256": None, "projects": {}}
+    snap = common.read_json(p)
+    rows = snap.get("projects") or {}
+    want = sorted(rows) if keys is None else sorted(k for k in keys if k in rows)
+    return {"as_of": snap.get("as_of"), "sha256": common.sha256_file(p),
+            "projects": {k: {f: rows[k].get(f) for f in LIVE_FIELDS} for k in want}}
+
+
+def live_comparable(view: dict, on_as_of: str, cfg: dict) -> dict:
+    """The manifest's sanity.live block: whether the endpoint is compared with the live
+    snapshot and why not."""
+    if not view.get("as_of"):
+        return {"status": "skipped", "reason": "no live snapshot at data/live/snapshot.json"}
+    lag = _elapsed_days(on_as_of, view["as_of"])
+    max_lag = cfg["sanity"]["live"]["max_lag_hours"]
+    out = {"as_of": view["as_of"], "sha256": view["sha256"], "endpoint_as_of": on_as_of,
+           "lag_hours": None if lag is None else _r(lag * 24, 2), "max_lag_hours": max_lag}
+    if lag is None or abs(lag * 24) > max_lag:
+        return {**out, "status": "skipped",
+                "reason": f"live snapshot as_of {view['as_of']} is not within {max_lag} h of the endpoint "
+                          f"({on_as_of}); not compared"}
+    return {**out, "status": "compared"}
+
+
+def live_verdict(row: dict | None, live_row: dict | None, cfg: dict) -> dict:
+    """Does today's history observation agree with the live record for the same key?"""
+    if not row or not row.get("found") or row.get("stars") is None:
+        return {"ok": True}  # nothing will be measured anyway
+    if not live_row or not live_row.get("found") or live_row.get("stars") is None:
+        return {"ok": False, "check": "live_disagreement",
+                "reason": "the endpoint has stars but the live snapshot has no star count for this key"}
+    hid, lid = row.get("host_repo_id"), live_row.get("host_repo_id")
+    if hid and lid and hid != lid:
+        return {"ok": False, "check": "live_identity_mismatch",
+                "reason": f"history observation is host repository id {hid}, the live record is {lid}: "
+                          "not the same repository"}
+    lc = cfg["sanity"]["live"]
+    allowed = max(lc["stars_absolute"], lc["stars_relative"] * live_row["stars"])
+    diff = row["stars"] - live_row["stars"]
+    if abs(diff) > allowed:
+        return {"ok": False, "check": "live_disagreement",
+                "reason": f"endpoint stars {row['stars']} disagree with live stars {live_row['stars']} "
+                          f"(fetched {live_row.get('fetched_at')}) by {diff:+d}, more than {allowed:g}"}
+    return {"ok": True}
+
+
+def _acceleration(key, window, mid, rate_now, delta_now, prior, snaps, index, cfg, days, on) -> dict:
     if prior is None or not prior["ok"]:
         return {"status": "insufficient_history",
                 "reason": (prior or {}).get("reason") or f"needs {2 * window} d of history"}
@@ -229,6 +357,9 @@ def _acceleration(key, window, mid, rate_now, delta_now, prior, snaps, index, cf
         return {"status": "insufficient_history", "prior_base_day": pday,
                 "reason": f"prior window {pday} -> {mid}: only {_r(span or 0, 2)} d elapsed "
                           f"(at least {min_span:g} d needed)"}
+    jump = scan_jumps(key, days, snaps, pday, mid, on, cfg)
+    if jump["check"]:
+        return _suppressed(jump["check"], f"prior window {pday} -> {mid}: {jump['reason']}", prior_base_day=pday)
     acfg = cfg["acceleration"]
     floor = cfg["momentum"]["min_abs_change"]
     rate_prior = delta / span
@@ -249,8 +380,9 @@ def _acceleration(key, window, mid, rate_now, delta_now, prior, snaps, index, cf
 
 # ---------------------------------------------------------------- build
 
-def compute(on: str | None = None, cfg: dict | None = None) -> dict:
-    """{manifest, projects} for `on` (default: the newest history day). Reads history only."""
+def compute(on: str | None = None, cfg: dict | None = None, live: dict | None = None) -> dict:
+    """{manifest, projects, live} for `on` (default: the newest history day). Reads history,
+    and `live` (a live_view; default: the current data/live/snapshot.json)."""
     cfg = cfg or load_config()
     errors = check_version(cfg)
     if errors:
@@ -273,20 +405,28 @@ def compute(on: str | None = None, cfg: dict | None = None) -> dict:
         resolved[w] = (base, prior)
     needed = {on} | {r["base_day"] for b, p in resolved.values() for r in (b, p) if r and r.get("ok")}
     lookback = min(needed)
+    # one snapshot before the oldest base, so the sanity gate sees the step into every base
+    lookback = max((d for d in held if d < lookback), default=lookback)
     days = [d for d in held if d >= lookback]
     snaps = {d: daily.load_day(d) for d in days}
+    live = live if live is not None else live_view(snaps[on])
+    live_info = live_comparable(live, index[on]["as_of"], cfg)
+    live_rows = live["projects"] if live_info["status"] == "compared" else None
 
     projects = []
     for key in sorted(snaps[on]):
         row = snaps[on][key]
         rec = {"key": key, "canonical_id": row.get("canonical_id"), "canonical_name": row.get("canonical_name"),
                "on": on, "stars": row.get("stars"), "windows": {}}
+        verdict = None if live_rows is None else live_verdict(row, live_rows.get(key), cfg)
         for w in windows:
             base, prior = resolved[w]
-            rec["windows"][str(w)] = measure(key, w, on, base, prior, snaps, days, index, cfg)
+            rec["windows"][str(w)] = measure(key, w, on, base, prior, snaps, days, index, cfg, verdict)
         projects.append(rec)
 
     coverage = {}
+    suppressed = {str(w): {"momentum": {c: 0 for c in CHECKS}, "acceleration": {c: 0 for c in CHECKS}}
+                  for w in windows}
     for w in windows:
         base, prior = resolved[w]
         counts = {s: 0 for s in STATUSES}
@@ -295,6 +435,10 @@ def compute(on: str | None = None, cfg: dict | None = None) -> dict:
         for p in projects:
             m = p["windows"][str(w)]
             counts[m["status"]] += 1
+            if m["status"] == "suppressed":
+                suppressed[str(w)]["momentum"][m["check"]] += 1
+            elif m["status"] == "measured" and m["acceleration"]["status"] == "suppressed":
+                suppressed[str(w)]["acceleration"][m["acceleration"]["check"]] += 1
             if m["status"] == "measured":
                 bands[m["momentum"]] = bands.get(m["momentum"], 0) + 1
                 a = m["acceleration"]
@@ -329,11 +473,12 @@ def compute(on: str | None = None, cfg: dict | None = None) -> dict:
                     "dataset_version": index[on].get("dataset_version"), "run_id": index[on].get("run_id")},
         "windows": windows,
         "coverage": coverage,
+        "sanity": {"live": live_info, "parameters": cfg["sanity"], "suppressed": suppressed},
         "counts": {"projects": len(projects),
                    "measured_any_window": sum(1 for p in projects
                                               if any(v["status"] == "measured" for v in p["windows"].values()))},
     }
-    return {"manifest": manifest, "projects": projects}
+    return {"manifest": manifest, "projects": projects, "live": live}
 
 
 def write(result: dict, out: Path | None = None) -> dict:
@@ -342,8 +487,9 @@ def write(result: dict, out: Path | None = None) -> dict:
         shutil.rmtree(out)
     out.mkdir(parents=True)
     common.write_jsonl(out / "projects.jsonl", result["projects"])
+    common.write_json(out / "live.json", result["live"])
     manifest = dict(result["manifest"])
-    manifest["files"] = {"projects.jsonl": common.sha256_file(out / "projects.jsonl")}
+    manifest["files"] = {f: common.sha256_file(out / f) for f in ("projects.jsonl", "live.json")}
     common.write_json(out / "MANIFEST.json", manifest)
     return manifest
 
@@ -375,7 +521,8 @@ def validate() -> dict:
           manifest["methodology"]["version"] == cfg["methodology"]["version"]
           and manifest["methodology"]["parameters_sha256"] == parameters_sha256(cfg),
           manifest["methodology"])
-    check("files_hash", common.sha256_file(d / "projects.jsonl") == manifest["files"]["projects.jsonl"])
+    check("files_hash", all((d / f).exists() and common.sha256_file(d / f) == h for f, h in manifest["files"].items())
+          and "live.json" in manifest["files"])
     schema = common.read_json(common.SCHEMA / "the-source.momentum.schema.json")
     bad = []
     for name, obj in [("manifest", manifest)] + [(r["key"], r) for r in rows]:
@@ -385,11 +532,31 @@ def validate() -> dict:
     honest = [r["key"] for r in rows for w, v in r["windows"].items()
               if v["status"] != "measured" and not v.get("reason")]
     check("unmeasured_windows_say_why", not honest, honest[:10])
+    # KEI-961: no measured endpoint may disagree with the live counts it was checked against,
+    # and that copy must be what the live snapshot said (while it is still the same snapshot)
+    kept = common.read_json(d / "live.json") if (d / "live.json").exists() else None
+    lv = (manifest.get("sanity") or {}).get("live") or {}
+    if kept is not None and lv.get("status") == "compared":
+        stale = []
+        for r in rows:
+            if any(v["status"] == "measured" for v in r["windows"].values()):
+                v = live_verdict({"found": True, "stars": r["stars"]}, kept["projects"].get(r["key"]), cfg)
+                if not v["ok"]:
+                    stale.append(f"{r['key']}: {v['reason']}")
+        check("measured_endpoints_agree_with_live", not stale, stale[:10])
+    if kept is not None and kept.get("as_of"):
+        now = live_view(kept["projects"])
+        if now["as_of"] == kept["as_of"]:
+            diff = sorted(k for k, v in kept["projects"].items() if now["projects"].get(k) != v)
+            check("live_copy_matches_live_snapshot", not diff, diff[:10])
+        else:
+            check("live_copy_matches_live_snapshot", True,
+                  f"live snapshot has moved on ({kept['as_of']} -> {now['as_of']}); momentum keeps its own copy")
     if not errs:
         with tempfile.TemporaryDirectory() as tmp:
-            again = write(compute(manifest["on"], cfg), Path(tmp) / "momentum")
+            again = write(compute(manifest["on"], cfg, live=kept), Path(tmp) / "momentum")
             same = all((Path(tmp) / "momentum" / f).read_bytes() == (d / f).read_bytes()
-                       for f in ("MANIFEST.json", "projects.jsonl"))
+                       for f in ("MANIFEST.json", "projects.jsonl", "live.json"))
         check("rebuild_is_byte_identical", same, {"on": manifest["on"], "files": again["files"]})
         check("built_on_newest_history_day", manifest["on"] == daily.history_days()[-1],
               {"on": manifest["on"], "newest": daily.history_days()[-1]})
