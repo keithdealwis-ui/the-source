@@ -13,10 +13,11 @@ schema: the-source.momentum-config/1
 
 methodology:
   id: the-source.momentum
-  version: "1.0.0"
+  version: "1.1.0"
   doc: docs/MOMENTUM.md
   released:
     "1.0.0": 4a17d531344223f94617834263d8b41601adbd59539572cd41b0ebb0d96fabe3
+    "1.1.0": 01af1682dfe9465e76bead08cab61e44e88e95f3301671879d98082dd94a8e65   # KEI-961: sanity gate
 
 windows: [1, 7, 30, 90]          # days; each one is measured, or says why it is not
 
@@ -43,3 +44,26 @@ acceleration:
   # history are needed. Change is in stars/day; it counts only above both thresholds.
   relative: 0.25                  # |change| >= this share of |prior stars/day| ...
   min_rate_change_per_day: 0.5    # ... and >= this many stars/day
+
+sanity:
+  # Pre-publication check (KEI-961, methodology 1.1.0). Runs inside momentum-build, so the
+  # daily cycle's step 12 applies it before anything is promoted. A measured window that
+  # fails it is published as `suppressed` with the check and the reason, never as a figure.
+  live:
+    # The endpoint (today's stars) must agree with the newest live star count the pipeline
+    # holds: data/live/snapshot.json, the enrichment snapshot the canonical record's
+    # live.stars comes from. Same repository id, and stars within max(absolute,
+    # relative x live stars). A live snapshot further than max_lag_hours from the
+    # endpoint's day is not compared (the manifest says so).
+    stars_absolute: 25
+    stars_relative: 0.02
+    max_lag_hours: 6
+  jump:
+    # A step between two consecutive observations of at least max(min_abs_stars,
+    # relative x max(earlier stars, momentum.relative_floor_stars)) is a jump. A window
+    # (or a prior window, for acceleration) containing a jump is published only once a
+    # later observation keeps at least confirm_retained of it: a jump on the newest
+    # observation is held as `unconfirmed_jump`, one that reverts is a `transient_spike`.
+    min_abs_stars: 100
+    relative: 1.0
+    confirm_retained: 0.5

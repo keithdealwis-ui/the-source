@@ -151,7 +151,7 @@ def test_identity_new_and_missing_projects_are_not_compared(fx):
         assert _w(fx, "github.com/fx/gone", win)["status"] == "not_observed"
     counts = fx["manifest"]["coverage"]["7"]["projects"]
     assert counts == {"measured": 6, "insufficient_history": 0, "no_baseline": 1, "not_observed": 1,
-                      "identity_changed": 1}
+                      "identity_changed": 1, "suppressed": 0}
 
 
 def test_pushes_are_compared_as_instants_not_strings():
@@ -326,3 +326,138 @@ def test_methodology_doc_names_the_version_and_every_label():
     for word in ("surging", "rising", "flat", "declining", "accelerating", "steady", "decelerating",
                  *momentum.STATUSES):
         assert f"`{word}`" in doc, word
+
+
+# ---------------------------------------------------------------- sanity gate (KEI-961)
+
+# github.com/sneg55/warpdrive as the daily history observed it (repository id 1297733801
+# throughout); GitHub's own API said 482 stars, 11 forks on 2026-11-05.
+WARPDRIVE = [("2026-10-27", "2026-10-27T01:59:36Z", 74), ("2026-10-28", "2026-10-27T23:42:23Z", 74),
+             ("2026-10-29", "2026-10-28T23:06:27Z", 74), ("2026-10-30", "2026-10-30T01:50:49Z", 74),
+             ("2026-10-31", "2026-10-31T00:40:37Z", 74), ("2026-11-01", "2026-11-01T02:05:53Z", 74),
+             ("2026-11-02", "2026-11-02T00:32:25Z", 74), ("2026-11-03", "2026-11-03T01:31:19Z", 93),
+             ("2026-11-04", "2026-11-03T23:12:46Z", 352), ("2026-11-05", "2026-11-05T02:13:56Z", 479)]
+WD = "github.com/sneg55/warpdrive"
+
+
+def _row(stars, at, repo_id=1297733801, key=WD):
+    return {"found": True, "error": None, "fetched_at": at, "canonical_id": key, "canonical_name": key[11:],
+            "host_repo_id": repo_id, "archived": False, "disabled": False, "licence_spdx": "MIT", "stars": stars,
+            "forks": 5, "open_issues": 0, "pushed_at": at, "latest_release": None, "head": None}
+
+
+def _series(points, until=None, steady=True):
+    """Write a history of (day, as_of, stars) for WD, plus a steady neighbour."""
+    for i, (day, as_of, stars) in enumerate(points):
+        if until and day > until:
+            break
+        projects = {WD: _row(stars, as_of)}
+        if steady:
+            projects["github.com/fx/steady"] = _row(1000 + 2 * i, as_of, 7, "github.com/fx/steady")
+        daily.write_history(day, {"as_of": as_of, "projects": projects}, {}, "fixture", f"run-{day}")
+
+
+def _live(root, rows: dict, as_of: str):
+    p = root / "data" / "live" / "snapshot.json"
+    p.parent.mkdir(parents=True, exist_ok=True)
+    common.write_json(p, {"as_of": as_of, "projects": rows})
+
+
+def test_warpdrive_jump_is_held_on_the_day_it_appears(root):
+    _series(WARPDRIVE, until="2026-11-04")
+    _live(root, {WD: _row(352, "2026-11-03T23:12:46Z"),
+                 "github.com/fx/steady": _row(1016, "2026-11-03T23:12:46Z", 7, "github.com/fx/steady")},
+          "2026-11-03T23:12:46Z")
+    r = momentum.compute("2026-11-04")
+    assert r["manifest"]["sanity"]["live"]["status"] == "compared"
+    for win in (1, 7):
+        w = _w(r, WD, win)
+        assert w["status"] == "suppressed" and w["check"] == "unconfirmed_jump", w
+        assert "93 -> 352 (+259)" in w["reason"] and "stars_now" not in w
+    assert _w(r, "github.com/fx/steady", 7)["status"] == "measured"
+    assert r["manifest"]["sanity"]["suppressed"]["7"]["momentum"]["unconfirmed_jump"] == 1
+    assert r["manifest"]["coverage"]["7"]["projects"]["suppressed"] == 1
+    momentum.write(r)
+    assert momentum.retrieve(window=7, sort="growth")["matched"] == 1  # warpdrive is not ranked
+
+
+def test_warpdrive_jump_confirmed_next_day_is_published_with_a_note(root):
+    _series(WARPDRIVE)
+    _live(root, {WD: _row(479, "2026-11-05T02:13:56Z"),
+                 "github.com/fx/steady": _row(1018, "2026-11-05T02:13:56Z", 7, "github.com/fx/steady")},
+          "2026-11-05T02:13:56Z")
+    r = momentum.compute()
+    w = _w(r, WD, 7)
+    assert w["status"] == "measured" and (w["stars_base"], w["stars_now"]) == (74, 479)
+    assert "sudden jump: stars 93 -> 352" in w["notes"][0] and "479 on 2026-11-05" in w["notes"][0]
+    one = _w(r, WD, 1)  # 352 -> 479 is under the threshold (352); the step into its base is the confirmed jump
+    assert one["status"] == "measured" and one["acceleration"]["status"] == "measured"
+    assert "sudden jump: stars 93 -> 352" in one["notes"][0]
+
+
+def test_a_spike_that_reverts_is_suppressed(root):
+    pts = [(d, a, s) for d, a, s in WARPDRIVE[:9]] + [("2026-11-05", "2026-11-05T02:13:56Z", 95)]
+    _series(pts)
+    r = momentum.compute()
+    w = _w(r, WD, 7)
+    assert w["status"] == "suppressed" and w["check"] == "transient_spike" and "reverted: 95 on 2026-11-05" in w["reason"]
+    one = _w(r, WD, 1)  # 352 -> 95 is under the jump threshold, but its base (352) was the spike itself
+    assert one["status"] == "suppressed" and one["check"] == "transient_spike" and "93 -> 352" in one["reason"]
+    assert r["manifest"]["sanity"]["live"]["status"] == "skipped"
+
+
+def test_endpoint_must_agree_with_the_live_snapshot(root):
+    _series(WARPDRIVE[:8])  # 74 ... 93: no jump
+    as_of = WARPDRIVE[7][1]
+    _live(root, {WD: _row(93 + 26, as_of), "github.com/fx/steady": _row(1014, as_of, 8, "github.com/fx/steady")}, as_of)
+    r = momentum.compute()
+    w = _w(r, WD, 7)
+    assert w["status"] == "suppressed" and w["check"] == "live_disagreement" and "by -26, more than 25" in w["reason"]
+    s = _w(r, "github.com/fx/steady", 7)
+    assert s["status"] == "suppressed" and s["check"] == "live_identity_mismatch" and "7, the live record is 8" in s["reason"]
+    _live(root, {WD: _row(93 + 25, as_of), "github.com/fx/steady": _row(1014, as_of, 7, "github.com/fx/steady")}, as_of)
+    r = momentum.compute()
+    assert _w(r, WD, 7)["status"] == "measured" and _w(r, "github.com/fx/steady", 7)["status"] == "measured"
+
+
+def test_a_live_snapshot_from_another_time_is_not_compared(root):
+    _series(WARPDRIVE[:8])
+    _live(root, {WD: _row(5000, "2026-11-05T02:13:56Z")}, "2026-11-05T02:13:56Z")
+    r = momentum.compute()
+    live = r["manifest"]["sanity"]["live"]
+    assert live["status"] == "skipped" and "not within 6 h" in live["reason"]
+    assert _w(r, WD, 7)["status"] == "measured"
+
+
+def test_validate_keeps_its_own_copy_of_the_live_counts(root):
+    _series(WARPDRIVE[:8])
+    as_of = WARPDRIVE[7][1]
+    _live(root, {WD: _row(93, as_of), "github.com/fx/steady": _row(1014, as_of, 7, "github.com/fx/steady"),
+                 "github.com/other/not-in-history": _row(5, as_of, 99, "github.com/other/not-in-history")}, as_of)
+    momentum.build()
+    kept = common.read_json(root / "data/momentum/live.json")
+    assert sorted(kept["projects"]) == ["github.com/fx/steady", WD] and kept["as_of"] == as_of
+    assert momentum.validate()["ok"]
+    # the same live snapshot rewritten with different counts: the copy no longer matches it
+    _live(root, {WD: _row(900, as_of), "github.com/fx/steady": _row(1014, as_of, 7, "github.com/fx/steady")}, as_of)
+    bad = {c["id"] for c in momentum.validate()["checks"] if not c["ok"]}
+    assert bad == {"live_copy_matches_live_snapshot"}
+    # a newer live snapshot (a later enrichment): momentum still rebuilds from its own copy
+    _live(root, {WD: _row(900, "2026-11-04T01:00:00Z")}, "2026-11-04T01:00:00Z")
+    assert momentum.validate()["ok"]
+    # a hand edit that publishes a figure the live counts contradict is caught
+    p = root / "data/momentum/projects.jsonl"
+    p.write_text(p.read_text().replace('"stars":93,', '"stars":930,', 1))
+    bad = {c["id"] for c in momentum.validate()["checks"] if not c["ok"]}
+    assert "measured_endpoints_agree_with_live" in bad and "rebuild_is_byte_identical" in bad
+
+
+def test_committed_momentum_was_checked_against_live():
+    m = common.read_json(common.DATA / "momentum" / "MANIFEST.json")
+    assert m["sanity"]["live"]["status"] == "compared", m["sanity"]["live"]
+    rows = {r["key"]: r for r in common.read_jsonl(common.DATA / "momentum" / "projects.jsonl")}
+    live = common.read_json(common.DATA / "momentum" / "live.json")["projects"]
+    cfg = momentum.load_config()
+    for key, r in rows.items():
+        if any(w["status"] == "measured" for w in r["windows"].values()):
+            assert momentum.live_verdict({"found": True, "stars": r["stars"]}, live.get(key), cfg)["ok"], key

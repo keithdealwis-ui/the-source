@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import inspect
 import shutil
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 
 from source_pipeline import common, cycle, daily, momentum, radar
 from test_radar import AS_OF, _world
@@ -24,7 +24,9 @@ def _momentum_day(tmp_data):
     last = daily.history_days()[-1]
     today = (date.fromisoformat(last) + timedelta(days=1)).isoformat()
     rows = daily.load_day(last)
-    as_of = f"{last}T23:40:00Z"
+    # a full day after the last snapshot's own as_of, whatever time it ran (KEI-929)
+    last_as_of = common.read_json(tmp_data / "history" / "INDEX.json")["days"][last]["as_of"]
+    as_of = (datetime.strptime(last_as_of, "%Y-%m-%dT%H:%M:%SZ") + timedelta(days=1)).strftime("%Y-%m-%dT%H:%M:%SZ")
     projects = {k: {**r, "fetched_at": as_of, "stars": (r["stars"] + 3) if r.get("stars") is not None else None}
                 for k, r in rows.items()}
     daily.write_history(today, {"as_of": as_of, "projects": projects}, {}, "next", "run-next")

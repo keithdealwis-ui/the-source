@@ -1,6 +1,6 @@
 # Repository momentum and acceleration (KEI-849)
 
-Methodology `the-source.momentum`, version `1.0.0`. Parameters: `config/momentum.yaml`.
+Methodology `the-source.momentum`, version `1.1.0`. Parameters: `config/momentum.yaml`.
 Code: `source_pipeline/momentum.py`. Schema: `schema/the-source.momentum.schema.json`.
 
 Momentum shows how fast a repository is gaining (or losing) adoption right now.
@@ -41,6 +41,7 @@ A window is either `measured` or says why it is not, with a `reason`:
 | `no_baseline` | The repository was not in the base snapshot. It joined the corpus after the base day. |
 | `not_observed` | Not found, or no star count, today or at the base. |
 | `identity_changed` | The host repository id differs between the base and today. The name now points at a different repository, so the two are not compared. A rename under the **same** id is compared, with a `notes` entry. |
+| `suppressed` | The window could be computed but failed the pre-publication sanity gate (below). It carries the failed `check` and a `reason` with the numbers; no figure is published. |
 
 Acceleration has the same statuses for its prior window.
 
@@ -57,6 +58,34 @@ is not: the 2026-10-02 snapshot was taken 0.35 d before the 2026-10-03 one. The 
 90-day windows become measurable from 2026-10-09, 2026-11-01 and 2026-12-31, and their
 acceleration from 2026-10-16, 2026-12-01 and 2027-03-31.
 
+## Sanity gate (KEI-961)
+
+Before a window is published as `measured` it passes two checks (`sanity` in
+`config/momentum.yaml`). A window that fails is published as `suppressed` with the failed
+`check`; acceleration whose prior window fails is `suppressed` the same way.
+
+| Check | Rule |
+|---|---|
+| `live_identity_mismatch` | Today's history observation and the newest live record the pipeline holds (`data/live/snapshot.json`, which the canonical `live.stars` comes from) name different host repository ids. |
+| `live_disagreement` | Today's stars differ from that live record by more than `max(25, 2 % of live stars)`, or the live record has no star count. Compared only when the live snapshot is within 6 h of the endpoint's `as_of`; otherwise `MANIFEST.json` → `sanity.live` says `skipped` and why. |
+| `unconfirmed_jump` | A step between two consecutive observations inside the window of at least `max(100 stars, 100 % of max(earlier stars, 100))`, on the newest observation. It is held until a later observation confirms it, so a one-day spike is never published as a trend. |
+| `transient_spike` | Such a jump that a later observation (up to the window's day, never later history) reverts: it keeps under 50 % of the step. |
+
+A jump that later observations keep (at least 50 %) is genuine growth: the window is
+measured with a `notes` entry naming the jump. `MANIFEST.json` → `sanity` records the live
+snapshot's `as_of` and sha256, the parameters and per-window suppression counts. The build
+keeps the live counts it compared against in `data/momentum/live.json` (stars, repository
+id, `fetched_at` per corpus key), so the result rebuilds byte for byte after the live
+snapshot moves on. `momentum-validate` (and so the daily cycle, step 12, before promotion)
+also fails if a measured endpoint disagrees with that copy, or if the copy differs from
+the live snapshot while that snapshot still has the same `as_of`.
+
+Case that prompted it: `github.com/sneg55/warpdrive` went from 93 stars (2026-11-03
+01:31Z) to 352 (2026-11-03 23:12Z) to 479 (2026-11-05 02:13Z) under one repository id;
+GitHub reported 482 stars and 11 forks on 2026-11-05. Under 1.0.0 the 2026-11-04 build
+published the 352 endpoint the same day. Under 1.1.0 that build holds Warpdrive's 1, 7 and
+30-day windows as `unconfirmed_jump`; the 2026-11-05 build publishes them with the jump noted.
+
 ## Explainability
 
 Every measured window carries the observations it came from (`base_day`, `span_days`,
@@ -68,8 +97,9 @@ stars 1054 -> 1090 (+36) over 0.97 d (2026-10-03 -> 2026-10-04): +36.95/day, +10
 +25.00/day (2026-09-27 -> now) vs +5.00/day (2026-09-20 -> 2026-09-27): change +20.00/day, threshold +/-1.25 -> accelerating
 ```
 
-The manifest records the sha256 of every history day it read. Anyone can recompute any
-value from `data/history/` alone.
+The manifest records the sha256 of every history day it read (and of the live snapshot the
+sanity gate compared against). Anyone can recompute any value from `data/history/` and
+`data/momentum/live.json`.
 
 ## Versioning
 
@@ -84,6 +114,7 @@ fails. Version history:
 | Version | Date | Change |
 |---|---|---|
 | `1.0.0` | 2026-10-06 | First release: stars-based momentum and acceleration over 1/7/30/90 days. |
+| `1.1.0` | 2026-11-05 | Sanity gate (KEI-961): endpoint checked against the live snapshot; sudden jumps published only once confirmed; new status `suppressed`. |
 
 ## Where it runs and how to read it
 
