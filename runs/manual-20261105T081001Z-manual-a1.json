@@ -1,0 +1,279 @@
+{
+  "anomalies": [],
+  "attempt": 1,
+  "canonical": {
+    "changed": false,
+    "commit_tag": null,
+    "dataset_version_after": "1e8c37ae5796a82e",
+    "dataset_version_before": "1e8c37ae5796a82e"
+  },
+  "counts": {},
+  "cycle_key": "manual-20261105T081001Z",
+  "ended_at": "2026-11-05T08:14:51Z",
+  "error": "CycleError: 1 new repositories could not be deep-enriched after 2 retries (e.g. ['gitlab.com/gitlab-org/gitlab']); nothing promoted",
+  "failed_step": "deep_enrichment",
+  "failures": [],
+  "retries": {
+    "deep_enrichment": 2,
+    "light_refresh": 0
+  },
+  "run_id": "manual-20261105T081001Z-manual-a1",
+  "schedule": {
+    "cadence": "daily",
+    "time": "03:00",
+    "timezone": "Asia/Dubai",
+    "weekday": null,
+    "window_hours": 4
+  },
+  "started_at": "2026-11-05T08:10:01Z",
+  "status": "failed",
+  "strategies": [
+    {
+      "advanced": 3,
+      "detail": [
+        {
+          "from": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+          "source_id": "solvohq",
+          "status": "unchanged"
+        },
+        {
+          "entries": [
+            1360,
+            1360
+          ],
+          "from": "b09d561636933e477a572b543f462a37206c2813",
+          "source_id": "awesome-selfhosted",
+          "status": "advanced",
+          "to": "cbde4464c9701d45860e35eebf345a01ee4ec239"
+        },
+        {
+          "from": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+          "source_id": "runacapital",
+          "status": "unchanged"
+        },
+        {
+          "entries": [
+            100,
+            103
+          ],
+          "from": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+          "source_id": "opensaasdirectory",
+          "status": "advanced",
+          "to": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78"
+        },
+        {
+          "from": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
+          "source_id": "emmraan",
+          "status": "unchanged"
+        },
+        {
+          "from": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+          "source_id": "btwso",
+          "status": "unchanged"
+        },
+        {
+          "entries": [
+            156,
+            271
+          ],
+          "from": "404431356e82cc44b035c9d7b83b676b56830a46",
+          "source_id": "diegoleme",
+          "status": "advanced",
+          "to": "401bc408a04e8442ed9370156be98b408cfade16"
+        },
+        {
+          "from": "588139d853f9eab183368cfa2eaa8d6c1640fc74",
+          "source_id": "altstack",
+          "status": "unchanged"
+        },
+        {
+          "from": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+          "source_id": "fossalt",
+          "status": "unchanged"
+        }
+      ],
+      "id": "upstream_lists",
+      "kept": [],
+      "sources": 9,
+      "status": "ok"
+    },
+    {
+      "admitted_entries": 3,
+      "id": "intake_ledger",
+      "ledger_version": "097eee3ac8b1d5d8724062d07573f873d59a62a7",
+      "status": "ok"
+    },
+    {
+      "as_of": "2026-11-05T08:10:01Z",
+      "found": 1571,
+      "http_calls": 59,
+      "id": "light_refresh",
+      "repositories": 1590,
+      "retries": 0,
+      "status": "ok",
+      "still_failing": []
+    },
+    {
+      "errors": [],
+      "id": "discovery_search",
+      "known_in_corpus": 87,
+      "lanes": [
+        {
+          "id": "gh-topic-self-hosted-new",
+          "provider": "github_search",
+          "query": "topic:self-hosted created:>=2026-10-29 stars:>=50",
+          "returned": 8,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-open-source-alternative-new",
+          "provider": "github_search",
+          "query": "topic:open-source-alternative created:>=2026-10-29 stars:>=50",
+          "returned": 0,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-alternative-active",
+          "provider": "github_search",
+          "query": "topic:alternative pushed:>=2026-10-29 stars:>=50 archived:false",
+          "returned": 21,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-saas-alternative",
+          "provider": "github_search",
+          "query": "topic:saas-alternative stars:>=50 archived:false",
+          "returned": 2,
+          "status": "ok"
+        },
+        {
+          "id": "gh-topic-selfhosted-active",
+          "provider": "github_search",
+          "query": "topic:selfhosted pushed:>=2026-10-29 stars:>=50 archived:false",
+          "returned": 184,
+          "status": "ok"
+        },
+        {
+          "id": "ecosystems-awesome-selfhosted",
+          "provider": "ecosystems_awesome",
+          "query": "https://github.com/awesome-selfhosted/awesome-selfhosted",
+          "returned": 230,
+          "status": "ok"
+        }
+      ],
+      "new_candidates": [],
+      "new_count": 0,
+      "pool_size": 718,
+      "returned": 445,
+      "seen_again": 352,
+      "status": "ok"
+    },
+    {
+      "day": "2026-11-05",
+      "degraded_providers": [],
+      "id": "corroboration",
+      "providers": {
+        "depsdev": {
+          "agreement": 0.9884,
+          "answered": 120,
+          "asked": 120,
+          "canonical_effect": "none: flags only; the host's own answer stays canonical",
+          "coverage": 0.7167,
+          "disagreeing_keys": {
+            "github.com/openbao/openbao": [
+              "licence"
+            ]
+          },
+          "disagreements_by_field": {
+            "licence": 1
+          },
+          "errors": 0,
+          "not_covered": [
+            "github.com/any4ai/anycrawl",
+            "github.com/automatisch/automatisch",
+            "github.com/brightbeanxyz/brightbean-studio",
+            "github.com/bytedesk/bytedesk",
+            "github.com/casejs/case",
+            "github.com/chaos-genius/chaos_genius",
+            "github.com/cloudflare/agentic-inbox",
+            "github.com/corgicorner/bisibility",
+            "github.com/degoog-org/degoog",
+            "github.com/dotpm/obsidian-pm",
+            "github.com/fluvio-community/fluvio",
+            "github.com/getbeton/inspector",
+            "github.com/infiniv/voiceflow",
+            "github.com/jankeesvw/omarchy-meeting-recorder",
+            "github.com/jonradoff/lastsaas",
+            "github.com/leaperone/multipost-extension",
+            "github.com/list-jonas/shadcn-ui-big-calendar",
+            "github.com/metriql/metriql",
+            "github.com/ogkalu2/comic-translate",
+            "github.com/openfn/lightning",
+            "github.com/oso95/scroll-world",
+            "github.com/osohq/oso",
+            "github.com/posnic/pos",
+            "github.com/rbbydotdev/someday",
+            "github.com/repsyio/repsy",
+            "github.com/reville/lighttable-digital-darkroom",
+            "github.com/rodyherrera/quantum",
+            "github.com/serenedb/serenedb",
+            "github.com/shesha-io/shesha-framework",
+            "github.com/starcat-app/starcat",
+            "github.com/storytold/vectorcraft",
+            "github.com/tldraw/tldraw",
+            "github.com/tuva-health/tuva-core",
+            "github.com/zachlatta/freeflow"
+          ],
+          "reason": null,
+          "status": "ok",
+          "trusted_for": [
+            "existence",
+            "licence (SPDX)",
+            "star order of magnitude"
+          ]
+        },
+        "ecosystems": {
+          "agreement": 0.9833,
+          "answered": 120,
+          "asked": 120,
+          "canonical_effect": "none: flags only; the host's own answer stays canonical",
+          "coverage": 1.0,
+          "disagreeing_keys": {
+            "github.com/leaperone/multipost-extension": [
+              "stars"
+            ],
+            "github.com/oso95/scroll-world": [
+              "stars"
+            ]
+          },
+          "disagreements_by_field": {
+            "stars": 2
+          },
+          "errors": 0,
+          "not_covered": [],
+          "reason": null,
+          "status": "ok",
+          "trusted_for": [
+            "existence",
+            "archive state",
+            "licence",
+            "repository id (uuid = GitHub databaseId)",
+            "star order of magnitude"
+          ]
+        }
+      },
+      "sample": 120,
+      "status": "ok"
+    }
+  ],
+  "timings_s": {
+    "corroboration": 13.0,
+    "deep_enrichment": 143.2,
+    "discovery_search": 12.1,
+    "intake_ledger": 2.7,
+    "light_refresh": 106.6,
+    "upstream_lists": 11.4
+  },
+  "transitions": {},
+  "trigger": "manual"
+}
