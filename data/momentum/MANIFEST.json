@@ -24,7 +24,8 @@
           "insufficient_history": 0,
           "measured": 1522,
           "no_baseline": 0,
-          "not_observed": 0
+          "not_observed": 0,
+          "suppressed": 0
         },
         "status": "measured"
       },
@@ -48,7 +49,8 @@
         "insufficient_history": 0,
         "measured": 1522,
         "no_baseline": 2,
-        "not_observed": 18
+        "not_observed": 18,
+        "suppressed": 0
       },
       "snapshots_in_window": 2,
       "status": "measured"
@@ -66,7 +68,8 @@
           "insufficient_history": 607,
           "measured": 0,
           "no_baseline": 0,
-          "not_observed": 0
+          "not_observed": 0,
+          "suppressed": 0
         },
         "status": "insufficient_history"
       },
@@ -90,7 +93,8 @@
         "insufficient_history": 0,
         "measured": 607,
         "no_baseline": 918,
-        "not_observed": 18
+        "not_observed": 18,
+        "suppressed": 0
       },
       "snapshots_in_window": 31,
       "status": "measured"
@@ -114,7 +118,8 @@
           "insufficient_history": 0,
           "measured": 1492,
           "no_baseline": 2,
-          "not_observed": 0
+          "not_observed": 0,
+          "suppressed": 0
         },
         "status": "measured"
       },
@@ -138,7 +143,8 @@
         "insufficient_history": 0,
         "measured": 1494,
         "no_baseline": 30,
-        "not_observed": 18
+        "not_observed": 18,
+        "suppressed": 0
       },
       "snapshots_in_window": 8,
       "status": "measured"
@@ -153,7 +159,8 @@
           "insufficient_history": 0,
           "measured": 0,
           "no_baseline": 0,
-          "not_observed": 0
+          "not_observed": 0,
+          "suppressed": 0
         },
         "status": "insufficient_history"
       },
@@ -170,18 +177,21 @@
         "insufficient_history": 1543,
         "measured": 0,
         "no_baseline": 0,
-        "not_observed": 0
+        "not_observed": 0,
+        "suppressed": 0
       },
       "snapshots_in_window": 0,
       "status": "insufficient_history"
     }
   },
   "files": {
-    "projects.jsonl": "3f6c1d0016259fbe035c946851cab715696bf0d1f0c4ebf6fe6fa557dfffdf3f"
+    "live.json": "0481f29392c3d5b2510a69c921a651146e861695da10c550bb0ea2db78510c25",
+    "projects.jsonl": "1f2db7abd73ebac5fbc3bb7e6688c2fc705575d2f82d817f65d6debc2b622cec"
   },
   "history": {
     "dataset_version": "28d4405a7c40c325",
     "day_sha256": {
+      "2026-10-05": "0e85ed8bcf6246b600c7644bf7a8a96f421501bc8aac3b0675d6a6589a27cf40",
       "2026-10-06": "732cfe7b8b49f8495d603994d4f22ec243e12c46fab8b0f9fe284e2fe0b430ec",
       "2026-10-07": "5eacab70e9aba853157d171edd1e8f34472ef5b13cb11a54407715191e459265",
       "2026-10-08": "34af132680cde4a0b3cd73bbab419fedef6c44d31bf6aff5456a962b86bba895",
@@ -216,6 +226,7 @@
     },
     "days_held": 35,
     "days_read": [
+      "2026-10-05",
       "2026-10-06",
       "2026-10-07",
       "2026-10-08",
@@ -255,10 +266,90 @@
   "methodology": {
     "doc": "docs/MOMENTUM.md",
     "id": "the-source.momentum",
-    "parameters_sha256": "4a17d531344223f94617834263d8b41601adbd59539572cd41b0ebb0d96fabe3",
-    "version": "1.0.0"
+    "parameters_sha256": "01af1682dfe9465e76bead08cab61e44e88e95f3301671879d98082dd94a8e65",
+    "version": "1.1.0"
   },
   "on": "2026-11-05",
+  "sanity": {
+    "live": {
+      "as_of": "2026-11-05T02:13:56Z",
+      "endpoint_as_of": "2026-11-05T02:13:56Z",
+      "lag_hours": 0.0,
+      "max_lag_hours": 6,
+      "sha256": "b1a0cf20f970c7215bcb87b38702aa8431f09e1ad2a3ec05fa125e7e1f27a813",
+      "status": "compared"
+    },
+    "parameters": {
+      "jump": {
+        "confirm_retained": 0.5,
+        "min_abs_stars": 100,
+        "relative": 1.0
+      },
+      "live": {
+        "max_lag_hours": 6,
+        "stars_absolute": 25,
+        "stars_relative": 0.02
+      }
+    },
+    "suppressed": {
+      "1": {
+        "acceleration": {
+          "live_disagreement": 0,
+          "live_identity_mismatch": 0,
+          "transient_spike": 0,
+          "unconfirmed_jump": 0
+        },
+        "momentum": {
+          "live_disagreement": 0,
+          "live_identity_mismatch": 0,
+          "transient_spike": 0,
+          "unconfirmed_jump": 0
+        }
+      },
+      "30": {
+        "acceleration": {
+          "live_disagreement": 0,
+          "live_identity_mismatch": 0,
+          "transient_spike": 0,
+          "unconfirmed_jump": 0
+        },
+        "momentum": {
+          "live_disagreement": 0,
+          "live_identity_mismatch": 0,
+          "transient_spike": 0,
+          "unconfirmed_jump": 0
+        }
+      },
+      "7": {
+        "acceleration": {
+          "live_disagreement": 0,
+          "live_identity_mismatch": 0,
+          "transient_spike": 0,
+          "unconfirmed_jump": 0
+        },
+        "momentum": {
+          "live_disagreement": 0,
+          "live_identity_mismatch": 0,
+          "transient_spike": 0,
+          "unconfirmed_jump": 0
+        }
+      },
+      "90": {
+        "acceleration": {
+          "live_disagreement": 0,
+          "live_identity_mismatch": 0,
+          "transient_spike": 0,
+          "unconfirmed_jump": 0
+        },
+        "momentum": {
+          "live_disagreement": 0,
+          "live_identity_mismatch": 0,
+          "transient_spike": 0,
+          "unconfirmed_jump": 0
+        }
+      }
+    }
+  },
   "schema": "the-source.momentum/1",
   "windows": [
     1,
