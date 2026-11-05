@@ -35,7 +35,7 @@ def score(key: str, live: dict, licence: dict, pairs: list[dict], as_of: str, ht
     live     the project's live observation (enrich), for licence status and repo id
     licence  build.licence_verdict output ({"spdx", "status", ...})
     pairs    [{"saas_id", "status", "source_count", "corroborated", "reviewed", "evidence_class"?}]
-    Returns {"health": row|None, "fit": [rows], "errors": [..]}.
+    Returns {"health": row|None, "fit": [rows], "errors": [..], "unscorable": [pairs with no job definition]}.
     """
     if not key.startswith("github.com/"):
         return {"health": None, "fit": [], "errors": ["single-project scoring supports github.com only"]}
@@ -77,13 +77,18 @@ def score(key: str, live: dict, licence: dict, pairs: list[dict], as_of: str, ht
     health = canonical._health_summary(health_full, "single_project")
 
     saas = {s["saas_id"]: s for s in common.read_jsonl(common.DATASET / "saas_products.jsonl")}
-    fits, errors = [], []
+    fits, errors, unscorable = [], [], []
     open_core = any(w["id"] == "open_core_markers" for w in wo)
     for pr in pairs:
         s = saas.get(pr["saas_id"])
-        job = jobs.get(s["category"]) if s else None
+        if not s:
+            errors.append(f"{pr['saas_id']}: not in the SaaS catalogue; Replacement Fit not scored")
+            continue
+        job = jobs.get(s["category"])
         if not job:
-            errors.append(f"{pr['saas_id']}: no job definition for its category; Replacement Fit not scored")
+            # A deliberate gap, not a failure (config/saas_jobs.yaml leaves some categories undefined on purpose,
+            # e.g. Sales intelligence): the pair is reported, never scored, and never degrades the run (KEI-961).
+            unscorable.append({"saas_id": pr["saas_id"], "category": s["category"], "reason": "no_job_definition"})
             continue
         edge = {"id": f"{project_id}|REPLACES|saas:{pr['saas_id']}", "to": f"saas:{pr['saas_id']}",
                 "confidence": _replaces_confidence(pr.get("source_count") or 1, pr.get("reviewed", False)),
@@ -97,7 +102,7 @@ def score(key: str, live: dict, licence: dict, pairs: list[dict], as_of: str, ht
         fr = sb.score_pair(pair, h, dq, as_of, cfg, job=job)
         fr.update({"score_version": cfg["version"], "evaluated_at": as_of})
         fits.append(canonical._fit_summary(fr, "single_project"))
-    return {"health": health, "fit": fits, "errors": errors,
+    return {"health": health, "fit": fits, "errors": errors, "unscorable": unscorable,
             "readme_available": bool(readme_rec and readme_rec.get("text")),
             "description": (meta[key].get("repo") or {}).get("description"),
             "topics": sorted(n["topic"]["name"] for n in ((meta[key].get("repo") or {}).get("repositoryTopics") or {}).get("nodes") or []),

@@ -172,3 +172,23 @@ launch:
   # kept are those with the most independent sources, then the most recent
   # meaningful activity, then id. Stars take no part in any ordering.
   max_edges_per_saas: null   # null = computed: largest cap that keeps edges <= edges_max
+
+# Recommendation gate (KEI-961; source_pipeline/rec_gate.py). A relationship is recommended when its Replacement Fit
+# is publishable and a credible alternative (config/scoring.yaml thresholds, unchanged) AND its score clears the floor
+# for the evidence behind the pairing. Before KEI-961 the floor was the credible_alternative minimum (60) for every
+# pairing, and 1,534 of 1,578 canonical relationships (97.2%) passed: for job-matched pairs the core gate is circular
+# (job_match.py selects on the same defining phrases, so core coverage is 100 and its 25 points come free), and the
+# scored population was already filtered to positive claims that passed validation. Floors rise as evidence thins:
+#   corroborated   two or more independent listing sources name the pairing
+#   single_source  one upstream list, or the project's own intake submission (self_described)
+#   job_matched    no list or repository names the pairing; the project only says it does the category's job
+# Rebuilt on the 2026-11-05 layer: 1,218 of 1,577 scored relationships pass (77.2%, was 97.2%); 294 job-matched pairs
+# fall below 75 and 22 single-source pairs below 65. Catalogue ok 255 -> 203, none_yet 99 -> 130 (31 products lose
+# their last recommendation and their api/v1/saas page); golden recall@5 0.687 -> 0.662, precision@5 0.663 -> 0.678.
+# enabled: false restores the pre-KEI-961 rule exactly.
+recommendation_gate:
+  enabled: true
+  replacement_fit_min:
+    corroborated: 60
+    single_source: 65
+    job_matched: 75
