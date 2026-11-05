@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "28d4405a7c40c325",
+  "dataset_version": "1e20f5ef0822b56a",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
@@ -39,7 +39,15 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "readme_names_product"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 93.8,
@@ -94,10 +102,11 @@
       },
       "rank": 1,
       "replacement_fit": {
+        "caps": [],
         "confidence": 86.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
         "score": 90.0,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/teamhanko/hanko",
       "self_hosting": {
@@ -124,7 +133,19 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Clerk as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 100.0,
@@ -172,10 +193,17 @@
       },
       "rank": 2,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Clerk as what it replaces"
+          }
+        ],
         "confidence": 84.5,
         "evaluated_at": "2026-10-14T01:06:00Z",
-        "score": 86.6,
-        "score_version": "1.2.0"
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/keycloak/keycloak",
       "self_hosting": {
@@ -202,7 +230,13 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 100.0,
@@ -258,10 +292,11 @@
       },
       "rank": 3,
       "replacement_fit": {
+        "caps": [],
         "confidence": 84.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
         "score": 70.3,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/supabase/supabase",
       "self_hosting": {
@@ -288,7 +323,15 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "readme_names_product"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 75.0,
@@ -343,10 +386,11 @@
       },
       "rank": 4,
       "replacement_fit": {
+        "caps": [],
         "confidence": 86.5,
         "evaluated_at": "2026-10-23T01:24:19Z",
         "score": 96.5,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/authgear/authgear-server",
       "self_hosting": {
@@ -373,7 +417,19 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Clerk as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 75.0,
@@ -428,10 +484,17 @@
       },
       "rank": 5,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Clerk as what it replaces"
+          }
+        ],
         "confidence": 84.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 81.9,
-        "score_version": "1.2.0"
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/logto-io/logto",
       "self_hosting": {
@@ -455,7 +518,7 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.2.0"
+      "1.3.0"
     ]
   },
   "status": "ok"

@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "28d4405a7c40c325",
+  "dataset_version": "1e20f5ef0822b56a",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
@@ -26,91 +26,6 @@
     ]
   },
   "recommendations": [
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
-              "locator": "README.md#L101",
-              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
-              "source_id": "fossalt"
-            }
-          ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 68.8,
-            "ease_of_adoption": 100.0,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 100.0,
-            "integrations_extensibility": 100.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 100.0
-          },
-          "evidence_families": [
-            "api",
-            "cloud_option",
-            "demo",
-            "import",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "sso",
-            "support",
-            "webhook"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/getopenpost/openpost",
-      "last_meaningful_activity_at": "2026-11-02T22:14:53Z",
-      "latest_release": {
-        "published_at": "2026-11-02T22:14:53Z",
-        "tag": "v7.37.1"
-      },
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
-      "maintenance_status": "active",
-      "name": "OpenPost",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption."
-      },
-      "oss_id": "github.com/getopenpost/openpost",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 93.7,
-        "score": 86.4,
-        "trajectory": "Insufficient history"
-      },
-      "rank": 1,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-31T00:40:37Z",
-        "score": 91.5,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/getopenpost/openpost",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "fossalt"
-      ],
-      "stars": 872
-    },
     {
       "evidence": {
         "relationship": {
@@ -131,7 +46,15 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "second_upstream_source"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 93.8,
@@ -184,12 +107,13 @@
         "score": 80.3,
         "trajectory": "Rising"
       },
-      "rank": 2,
+      "rank": 1,
       "replacement_fit": {
+        "caps": [],
         "confidence": 95.0,
         "evaluated_at": "2026-10-24T23:05:38Z",
         "score": 88.0,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/gitroomhq/postiz-app",
       "self_hosting": {
@@ -209,6 +133,110 @@
           "evidence_class": "listed",
           "provenance": [
             {
+              "locator": "README.md#L101",
+              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-11-05T02:13:56Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Hootsuite as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/getopenpost/openpost",
+      "last_meaningful_activity_at": "2026-11-02T22:14:53Z",
+      "latest_release": {
+        "published_at": "2026-11-02T22:14:53Z",
+        "tag": "v7.37.1"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-11-05T02:13:56Z",
+      "maintenance_status": "active",
+      "name": "OpenPost",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/getopenpost/openpost",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 93.7,
+        "score": 86.4,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Hootsuite as what it replaces"
+          }
+        ],
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-31T00:40:37Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/getopenpost/openpost",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "fossalt"
+      ],
+      "stars": 872
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
               "locator": "data/tools.json#slug=mixpost;named_by=hootsuite",
               "source_commit": "588139d853f9eab183368cfa2eaa8d6c1640fc74",
               "source_id": "altstack"
@@ -217,7 +245,19 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Hootsuite as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 100.0,
@@ -267,10 +307,17 @@
       },
       "rank": 3,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Hootsuite as what it replaces"
+          }
+        ],
         "confidence": 84.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 84.7,
-        "score_version": "1.2.0"
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/inovector/mixpost",
       "self_hosting": {
@@ -297,7 +344,19 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Hootsuite as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 93.8,
@@ -350,10 +409,17 @@
       },
       "rank": 4,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Hootsuite as what it replaces"
+          }
+        ],
         "confidence": 84.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 88.5,
-        "score_version": "1.2.0"
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/brightbeanxyz/brightbean-studio",
       "self_hosting": {
@@ -380,7 +446,13 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 75.0,
@@ -432,10 +504,11 @@
       },
       "rank": 5,
       "replacement_fit": {
+        "caps": [],
         "confidence": 84.5,
         "evaluated_at": "2026-11-03T01:31:19Z",
         "score": 76.9,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/cogsend/cogsend",
       "self_hosting": {
@@ -459,7 +532,7 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.2.0"
+      "1.3.0"
     ]
   },
   "status": "ok"

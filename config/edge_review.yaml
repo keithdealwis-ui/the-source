@@ -53,3 +53,7 @@ rejected:
   - {saas: fivetran, oss: github.com/dagster-io/dagster, reason: "orchestrator; supplies no managed connectors"}
   - {saas: fivetran, oss: github.com/prefecthq/prefect, reason: "orchestrator; supplies no managed connectors"}
   - {saas: fivetran, oss: github.com/kestra-io/kestra, reason: "orchestrator; supplies no managed connectors"}
+  # KEI-961 (claude-code, 2026-11-05): a single uncorroborated upstream line (fossalt README.md#L128 @ 34df100) paired
+  # Warpdrive with Salesforce. Its own README calls it a Pipedrive alternative and rules out forecasting, workflow
+  # automation, multi-currency, products and invoicing; it is re-paired with Pipedrive (diegoleme), which stands.
+  - {saas: salesforce, oss: github.com/sneg55/warpdrive, reason: "self-described Pipedrive alternative for BD teams; its README rules out forecasting, workflow automation, multi-currency, products and invoicing, so not a Salesforce replacement"}

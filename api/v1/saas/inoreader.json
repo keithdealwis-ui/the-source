@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "28d4405a7c40c325",
+  "dataset_version": "1e20f5ef0822b56a",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
@@ -29,7 +29,7 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/0x2e/fusion",
+              "locator": "data/job_match/ledger.json#github.com/freshrss/freshrss",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
@@ -37,21 +37,35 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Inoreader as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
-            "deployment_ownership": 100.0,
-            "ease_of_adoption": 92.9,
-            "economic_advantage": 80.0,
+            "deployment_ownership": 43.8,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 45.0,
             "feature_equivalence": 73.3,
-            "integrations_extensibility": 100.0,
-            "migration_friction": 100.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
             "production_commercial_readiness": 100.0
           },
           "evidence_families": [
             "api",
+            "demo",
             "import",
             "multi_user",
+            "plugins",
             "quickstart",
             "self_host",
             "sso",
@@ -60,116 +74,47 @@
           "scoring_path": "single_project"
         }
       },
-      "github_url": "https://github.com/0x2E/fusion",
-      "last_meaningful_activity_at": "2026-10-07T13:48:14Z",
+      "github_url": "https://github.com/FreshRSS/FreshRSS",
+      "last_meaningful_activity_at": "2026-10-21T20:53:14Z",
       "latest_release": {
-        "published_at": "2026-10-07T09:53:47Z",
-        "tag": "v1.3.0"
+        "published_at": "2026-10-21T20:45:47Z",
+        "tag": "1.30.4"
       },
-      "licence_spdx": "MIT",
+      "licence_spdx": "AGPL-3.0",
       "live_checked_at": "2026-11-05T02:13:56Z",
       "maintenance_status": "active",
-      "name": "fusion",
+      "name": "FreshRSS",
       "note": {
         "gaps": [],
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
-          "self-hosting and data ownership"
+          "ease of adoption"
         ],
-        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+        "text": "Strongest on core use-case coverage and ease of adoption."
       },
-      "oss_id": "github.com/0x2e/fusion",
+      "oss_id": "github.com/freshrss/freshrss",
       "project_health": {
-        "band": "Healthy",
-        "confidence": 96.6,
-        "score": 77.8,
-        "trajectory": "Declining"
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 96.5,
+        "trajectory": "Rising"
       },
       "rank": 1,
       "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 93.9,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/0x2E/fusion",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 2208
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/nkanaev/yarr",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 100.0,
-            "ease_of_adoption": 52.9,
-            "economic_advantage": 80.0,
-            "feature_equivalence": null,
-            "integrations_extensibility": null,
-            "migration_friction": null,
-            "production_commercial_readiness": 100.0
-          },
-          "evidence_families": [
-            "demo",
-            "self_host"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/nkanaev/yarr",
-      "last_meaningful_activity_at": "2026-10-30T23:28:30Z",
-      "latest_release": {
-        "published_at": "2026-09-07T09:35:31Z",
-        "tag": "v2.9"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
-      "maintenance_status": "active",
-      "name": "yarr",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "self-hosting and data ownership"
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Inoreader as what it replaces"
+          }
         ],
-        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-22T01:26:16Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
-      "oss_id": "github.com/nkanaev/yarr",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 96.6,
-        "score": 79.4,
-        "trajectory": "Rising"
-      },
-      "rank": 2,
-      "replacement_fit": {
-        "confidence": 74.0,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 87.6,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/nkanaev/yarr",
+      "repo_url": "https://github.com/FreshRSS/FreshRSS",
       "self_hosting": {
         "basis": "self-hosting documented in the project's README",
         "self_hostable": true
@@ -177,7 +122,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 4085
+      "stars": 16508
     },
     {
       "evidence": {
@@ -194,7 +139,19 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Inoreader as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 75.0,
@@ -245,12 +202,19 @@
         "score": 88.8,
         "trajectory": "Stable"
       },
-      "rank": 3,
+      "rank": 2,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Inoreader as what it replaces"
+          }
+        ],
         "confidence": 84.5,
         "evaluated_at": "2026-10-20T12:30:08Z",
-        "score": 87.2,
-        "score_version": "1.2.0"
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/miniflux/v2",
       "self_hosting": {
@@ -269,83 +233,6 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/stringer-rss/stringer",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 100.0,
-            "ease_of_adoption": 95.2,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 50.0,
-            "integrations_extensibility": 100.0,
-            "migration_friction": 100.0,
-            "production_commercial_readiness": 66.7
-          },
-          "evidence_families": [
-            "api",
-            "demo",
-            "multi_user",
-            "quickstart",
-            "self_host",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/stringer-rss/stringer",
-      "last_meaningful_activity_at": "2026-10-31T15:00:29Z",
-      "latest_release": null,
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
-      "maintenance_status": "active",
-      "name": "stringer",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "self-hosting and data ownership"
-        ],
-        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
-      },
-      "oss_id": "github.com/stringer-rss/stringer",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 94.2,
-        "score": 83.9,
-        "trajectory": "Rising"
-      },
-      "rank": 4,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 86.4,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/stringer-rss/stringer",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 4127
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
               "locator": "data/job_match/ledger.json#github.com/pietheinstrengholt/rssmonster",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
@@ -354,7 +241,19 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Inoreader as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 50.0,
@@ -405,12 +304,19 @@
         "score": 87.2,
         "trajectory": "Rising"
       },
-      "rank": 5,
+      "rank": 3,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Inoreader as what it replaces"
+          }
+        ],
         "confidence": 84.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 86.2,
-        "score_version": "1.2.0"
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/pietheinstrengholt/rssmonster",
       "self_hosting": {
@@ -421,6 +327,197 @@
         "job_match"
       ],
       "stars": 573
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/stringer-rss/stringer",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-11-05T02:13:56Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Inoreader as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 95.2,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 66.7
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/stringer-rss/stringer",
+      "last_meaningful_activity_at": "2026-10-31T15:00:29Z",
+      "latest_release": null,
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-05T02:13:56Z",
+      "maintenance_status": "active",
+      "name": "stringer",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/stringer-rss/stringer",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 94.2,
+        "score": 83.9,
+        "trajectory": "Rising"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Inoreader as what it replaces"
+          }
+        ],
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/stringer-rss/stringer",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 4127
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/nkanaev/yarr",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-11-05T02:13:56Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Inoreader as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 52.9,
+            "economic_advantage": 80.0,
+            "feature_equivalence": null,
+            "integrations_extensibility": null,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "demo",
+            "self_host"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/nkanaev/yarr",
+      "last_meaningful_activity_at": "2026-10-30T23:28:30Z",
+      "latest_release": {
+        "published_at": "2026-09-07T09:35:31Z",
+        "tag": "v2.9"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-05T02:13:56Z",
+      "maintenance_status": "active",
+      "name": "yarr",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/nkanaev/yarr",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 79.4,
+        "trajectory": "Rising"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Inoreader as what it replaces"
+          }
+        ],
+        "confidence": 74.0,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/nkanaev/yarr",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 4085
     }
   ],
   "saas": {
@@ -434,7 +531,7 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.2.0"
+      "1.3.0"
     ]
   },
   "status": "ok"

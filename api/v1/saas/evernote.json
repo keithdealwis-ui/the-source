@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "28d4405a7c40c325",
+  "dataset_version": "1e20f5ef0822b56a",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
@@ -45,13 +45,31 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 75.0,
+              "dimension": "feature_equivalence",
+              "excluded_features": [
+                "markdown"
+              ],
+              "id": "feature_out_of_scope",
+              "reason": "Feature equivalence capped at 75: the project's README lists 1 of Evernote's features as out of scope or not supported (markdown)"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "second_upstream_source"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 68.8,
             "ease_of_adoption": 100.0,
             "economic_advantage": 45.0,
-            "feature_equivalence": 92.5,
+            "feature_equivalence": 75.0,
             "integrations_extensibility": 75.0,
             "migration_friction": 66.7,
             "production_commercial_readiness": 100.0
@@ -99,10 +117,21 @@
       },
       "rank": 1,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 75.0,
+            "dimension": "feature_equivalence",
+            "excluded_features": [
+              "markdown"
+            ],
+            "id": "feature_out_of_scope",
+            "reason": "Feature equivalence capped at 75: the project's README lists 1 of Evernote's features as out of scope or not supported (markdown)"
+          }
+        ],
         "confidence": 90.5,
         "evaluated_at": "2026-10-20T12:30:08Z",
-        "score": 87.2,
-        "score_version": "1.2.0"
+        "score": 84.5,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/siyuan-note/siyuan",
       "self_hosting": {
@@ -130,7 +159,13 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 62.5,
             "deployment_ownership": 43.8,
@@ -183,10 +218,11 @@
       },
       "rank": 2,
       "replacement_fit": {
+        "caps": [],
         "confidence": 86.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
         "score": 77.8,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/TriliumNext/Trilium",
       "self_hosting": {
@@ -223,7 +259,15 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "second_upstream_source"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 68.8,
@@ -274,10 +318,11 @@
       },
       "rank": 3,
       "replacement_fit": {
+        "caps": [],
         "confidence": 95.0,
         "evaluated_at": "2026-10-08T01:46:58Z",
         "score": 76.8,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/logseq/logseq",
       "self_hosting": {
@@ -316,7 +361,16 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "second_upstream_source",
+              "readme_names_product"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 62.5,
             "deployment_ownership": 95.0,
@@ -366,10 +420,11 @@
       },
       "rank": 4,
       "replacement_fit": {
+        "caps": [],
         "confidence": 95.0,
         "evaluated_at": "2026-10-07T01:24:34Z",
         "score": 76.5,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/streetwriters/notesnook",
       "self_hosting": {
@@ -398,7 +453,13 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 46.2,
@@ -450,10 +511,11 @@
       },
       "rank": 5,
       "replacement_fit": {
+        "caps": [],
         "confidence": 84.5,
         "evaluated_at": "2026-11-02T00:32:25Z",
         "score": 72.4,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/codexu/note-gen",
       "self_hosting": {
@@ -477,7 +539,7 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.2.0"
+      "1.3.0"
     ]
   },
   "status": "ok"

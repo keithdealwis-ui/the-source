@@ -129,8 +129,8 @@
     },
     "relationships": {
       "licence_exception": 32,
-      "recommendable": 2007,
-      "rejected": 3064
+      "recommendable": 2006,
+      "rejected": 3065
     }
   },
   "launch": {
@@ -418,12 +418,12 @@
       "zoho-mail",
       "zuora"
     ],
-    "catalogue_served_relationships": 1208,
-    "oss_distinct_products": 631,
-    "oss_projects": 632,
+    "catalogue_served_relationships": 1209,
+    "oss_distinct_products": 630,
+    "oss_projects": 631,
     "preserve_served": {
-      "kept": 370,
-      "not_kept": 0,
+      "kept": 369,
+      "not_kept": 1,
       "served_before": 370
     },
     "relationships": 1578,
@@ -482,7 +482,7 @@
       "host_unverifiable": 3,
       "identity_unverified": 4,
       "licence_not_open": 35,
-      "not_a_replacement": 2866,
+      "not_a_replacement": 2867,
       "not_a_repository": 22,
       "not_found": 15,
       "saas_not_in_catalogue": 166,
@@ -2362,6 +2362,7 @@
       "plausibility_review:scanned-book PDF conversion tool; not a PDF toolkit": 1,
       "plausibility_review:screenshot/OCR utility; not a translation service": 1,
       "plausibility_review:search library; not a product": 1,
+      "plausibility_review:self-described Pipedrive alternative for BD teams; its README rules out forecasting, workflow automation, multi-currency, products and invoicing, so not a Salesforce replacement": 1,
       "plausibility_review:simple kanban boards; not full work management": 1,
       "plausibility_review:social network; not a tool for scheduling posts to other networks": 1,
       "plausibility_review:spreadsheet engine library for frontend apps": 1,
@@ -2394,7 +2395,7 @@
       "plausibility_review:workbench front end for third-party image model APIs": 1,
       "plausibility_review:workflow engine programmed in code; not a no-code automation product": 1
     },
-    "total": 3202
+    "total": 3203
   },
   "review_queue": {
     "open": 9,
@@ -2412,8 +2413,8 @@
     "oss_recommendable": 1367,
     "oss_rejected": 148,
     "relationships_flagged_licence_exception": 32,
-    "relationships_rejected": 3064,
-    "relationships_validated": 2007,
+    "relationships_rejected": 3065,
+    "relationships_validated": 2006,
     "saas_with_validated_alternatives": 489
   }
 }

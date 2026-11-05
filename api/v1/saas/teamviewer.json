@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "28d4405a7c40c325",
+  "dataset_version": "1e20f5ef0822b56a",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
@@ -25,85 +25,6 @@
     ]
   },
   "recommendations": [
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
-              "locator": "README.md#L291",
-              "source_commit": "404431356e82cc44b035c9d7b83b676b56830a46",
-              "source_id": "diegoleme"
-            }
-          ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 100.0,
-            "ease_of_adoption": 93.2,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 33.3,
-            "integrations_extensibility": 100.0,
-            "migration_friction": null,
-            "production_commercial_readiness": 100.0
-          },
-          "evidence_families": [
-            "quickstart",
-            "sso",
-            "support"
-          ],
-          "scoring_path": "full_lane"
-        }
-      },
-      "github_url": "https://github.com/Ylianst/MeshCentral",
-      "last_meaningful_activity_at": "2026-10-23T16:59:57Z",
-      "latest_release": {
-        "published_at": "2026-10-23T16:59:57Z",
-        "tag": "1.3.1"
-      },
-      "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
-      "maintenance_status": "active",
-      "name": "MeshCentral",
-      "note": {
-        "gaps": [
-          "feature parity"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "self-hosting and data ownership"
-        ],
-        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
-      },
-      "oss_id": "github.com/ylianst/meshcentral",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 96.0,
-        "score": 89.9,
-        "trajectory": "Stable"
-      },
-      "rank": 1,
-      "replacement_fit": {
-        "confidence": 81.5,
-        "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 86.6,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/Ylianst/MeshCentral",
-      "self_hosting": {
-        "basis": "container image or self-hosting evidence found",
-        "self_hostable": true
-      },
-      "sources": [
-        "diegoleme"
-      ],
-      "stars": 7617
-    },
     {
       "evidence": {
         "relationship": {
@@ -124,7 +45,16 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "second_upstream_source",
+              "readme_names_product"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 68.8,
@@ -175,12 +105,13 @@
         "score": 94.9,
         "trajectory": "Stable"
       },
-      "rank": 2,
+      "rank": 1,
       "replacement_fit": {
+        "caps": [],
         "confidence": 92.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
         "score": 81.4,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/rustdesk/rustdesk",
       "self_hosting": {
@@ -197,6 +128,104 @@
       "evidence": {
         "relationship": {
           "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L291",
+              "source_commit": "404431356e82cc44b035c9d7b83b676b56830a46",
+              "source_id": "diegoleme"
+            }
+          ],
+          "validated_as_of": "2026-11-05T02:13:56Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name TeamViewer as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 93.2,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "quickstart",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/Ylianst/MeshCentral",
+      "last_meaningful_activity_at": "2026-10-23T16:59:57Z",
+      "latest_release": {
+        "published_at": "2026-10-23T16:59:57Z",
+        "tag": "1.3.1"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-11-05T02:13:56Z",
+      "maintenance_status": "active",
+      "name": "MeshCentral",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
+      },
+      "oss_id": "github.com/ylianst/meshcentral",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.0,
+        "score": 89.9,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name TeamViewer as what it replaces"
+          }
+        ],
+        "confidence": 81.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/Ylianst/MeshCentral",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "diegoleme"
+      ],
+      "stars": 7617
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
           "evidence_class": "job_matched",
           "provenance": [
             {
@@ -208,7 +237,13 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 85.0,
@@ -257,10 +292,11 @@
       },
       "rank": 3,
       "replacement_fit": {
+        "caps": [],
         "confidence": 80.5,
         "evaluated_at": "2026-11-03T01:31:19Z",
         "score": 71.5,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/dchapyshev/aspia",
       "self_hosting": {
@@ -284,7 +320,7 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.2.0"
+      "1.3.0"
     ]
   },
   "status": "ok"

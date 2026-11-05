@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "28d4405a7c40c325",
+  "dataset_version": "1e20f5ef0822b56a",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
@@ -31,85 +31,6 @@
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "README.md#L469",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
-              "source_id": "opensaasdirectory"
-            }
-          ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 100.0,
-            "ease_of_adoption": 90.8,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 50.0,
-            "integrations_extensibility": 100.0,
-            "migration_friction": null,
-            "production_commercial_readiness": 100.0
-          },
-          "evidence_families": [
-            "cloud_option",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "support"
-          ],
-          "scoring_path": "full_lane"
-        }
-      },
-      "github_url": "https://github.com/jitsi/jitsi-meet",
-      "last_meaningful_activity_at": "2026-10-27T21:54:45Z",
-      "latest_release": {
-        "published_at": "2026-09-14T13:07:11Z",
-        "tag": "stable/jitsi-meet_11248"
-      },
-      "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
-      "maintenance_status": "active",
-      "name": "Jitsi Meet",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "self-hosting and data ownership"
-        ],
-        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
-      },
-      "oss_id": "github.com/jitsi/jitsi-meet",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 95.0,
-        "score": 94.8,
-        "trajectory": "Stable"
-      },
-      "rank": 1,
-      "replacement_fit": {
-        "confidence": 81.5,
-        "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 89.0,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/jitsi/jitsi-meet",
-      "self_hosting": {
-        "basis": "container image or self-hosting evidence found",
-        "self_hostable": true
-      },
-      "sources": [
-        "opensaasdirectory"
-      ],
-      "stars": 30200
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
               "locator": "README.md#L485",
               "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
               "source_id": "opensaasdirectory"
@@ -118,7 +39,19 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Teams as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 100.0,
@@ -167,12 +100,19 @@
         "score": 94.9,
         "trajectory": "Stable"
       },
-      "rank": 2,
+      "rank": 1,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Teams as what it replaces"
+          }
+        ],
         "confidence": 81.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 86.7,
-        "score_version": "1.2.0"
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/zulip/zulip",
       "self_hosting": {
@@ -183,6 +123,104 @@
         "opensaasdirectory"
       ],
       "stars": 26172
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L469",
+              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-11-05T02:13:56Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Teams as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 90.8,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "cloud_option",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/jitsi/jitsi-meet",
+      "last_meaningful_activity_at": "2026-10-27T21:54:45Z",
+      "latest_release": {
+        "published_at": "2026-09-14T13:07:11Z",
+        "tag": "stable/jitsi-meet_11248"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-11-05T02:13:56Z",
+      "maintenance_status": "active",
+      "name": "Jitsi Meet",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/jitsi/jitsi-meet",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 94.8,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Teams as what it replaces"
+          }
+        ],
+        "confidence": 81.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/jitsi/jitsi-meet",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "opensaasdirectory"
+      ],
+      "stars": 30200
     },
     {
       "evidence": {
@@ -204,7 +242,15 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "second_upstream_source"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 75.0,
@@ -258,10 +304,11 @@
       },
       "rank": 3,
       "replacement_fit": {
+        "caps": [],
         "confidence": 90.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
         "score": 74.1,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/RocketChat/Rocket.Chat",
       "self_hosting": {
@@ -289,7 +336,13 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 46.2,
@@ -342,10 +395,11 @@
       },
       "rank": 4,
       "replacement_fit": {
+        "caps": [],
         "confidence": 84.5,
         "evaluated_at": "2026-10-20T23:06:47Z",
         "score": 64.7,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/aozorae/Edgechat",
       "self_hosting": {
@@ -369,7 +423,7 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.2.0"
+      "1.3.0"
     ]
   },
   "status": "ok"
