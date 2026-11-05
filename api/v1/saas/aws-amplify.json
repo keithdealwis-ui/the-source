@@ -3,13 +3,13 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 361,
-    "reason": "4 recommendations passed the full evaluation",
+    "reason": "3 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "1e20f5ef0822b56a",
+  "dataset_version": "1e8c37ae5796a82e",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
@@ -323,95 +323,6 @@
         "job_match"
       ],
       "stars": 910
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/piku/piku",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
-        },
-        "replacement_fit": {
-          "caps": [],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 50.0,
-            "ease_of_adoption": 77.2,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 73.3,
-            "integrations_extensibility": 25.0,
-            "migration_friction": 0.0,
-            "production_commercial_readiness": 60.0
-          },
-          "evidence_families": [
-            "demo",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/piku/piku",
-      "last_meaningful_activity_at": "2026-08-10T03:04:24Z",
-      "latest_release": {
-        "published_at": "2024-04-06T16:16:43Z",
-        "tag": "v1.0.0"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
-      "maintenance_status": "active",
-      "name": "piku",
-      "note": {
-        "gaps": [
-          "migration path",
-          "integrations and extensibility"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "cost advantage"
-        ],
-        "text": "Strongest on core use-case coverage and cost advantage; weakest on migration path and integrations and extensibility."
-      },
-      "oss_id": "github.com/piku/piku",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 96.6,
-        "score": 73.5,
-        "trajectory": "Rising"
-      },
-      "rank": 4,
-      "replacement_fit": {
-        "caps": [],
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-20T23:06:47Z",
-        "score": 65.1,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/piku/piku",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 6604
     }
   ],
   "saas": {

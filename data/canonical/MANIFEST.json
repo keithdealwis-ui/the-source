@@ -2,18 +2,21 @@
   "canonical_schema": "the-source.canonical/1",
   "counts": {
     "catalogue_entries": 500,
-    "catalogue_none_yet": 99,
-    "catalogue_ok": 255,
-    "catalogue_partial": 146,
+    "catalogue_none_yet": 130,
+    "catalogue_ok": 203,
+    "catalogue_partial": 167,
     "oss_projects": 631,
-    "recommended_relationships": 1534,
+    "recommendation_gate_evaluated": 1577,
+    "recommendation_gate_failed": 359,
+    "recommendation_gate_passed": 1218,
+    "recommended_relationships": 1218,
     "relationships": 1578,
     "saas_products": 401,
-    "supported_saas": 401,
-    "supported_saas_ok": 255
+    "supported_saas": 370,
+    "supported_saas_ok": 203
   },
   "data_as_of": "2026-11-05T02:13:56Z",
-  "dataset_version": "1e20f5ef0822b56a",
+  "dataset_version": "1e8c37ae5796a82e",
   "export_guard": {
     "export_licence_constraint": "none beyond attribution notices",
     "relationships_exported": 1578,
@@ -22,12 +25,50 @@
   "files": {
     "NOTICE.md": "06ad52548dd7d2ae61b42a7495378203ca275b3795a934e16cc1378665f78a5f",
     "oss_projects.jsonl": "122906d1c3279d9f74dde69a8576fc66c414ef2bf9a9a722c9f1caff696810ed",
-    "relationships.jsonl": "adff2508cf7371eded31a76b7facfe0c4a60f116447034a759a02b566fc2ddfc",
-    "saas_products.jsonl": "eb32bca08d4f83f3a63bb8722083e6b7328d33f0d0215587b31ef3b0d1022e9c"
+    "relationships.jsonl": "e724e7fa8dd4a43a98fc28d8e474f0ececd285189d73bf318ee92cc7ff52494a",
+    "saas_products.jsonl": "620f0506af474f1954c23947ddb44edbc525f99dd75ce4efd46a096973a08c02"
   },
   "live_checked_at": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
+  },
+  "recommendation_gate": {
+    "by_tier": {
+      "corroborated": {
+        "evaluated": 192,
+        "pass_rate": 0.9323,
+        "passed": 179
+      },
+      "job_matched": {
+        "evaluated": 1002,
+        "pass_rate": 0.7056,
+        "passed": 707
+      },
+      "single_source": {
+        "evaluated": 383,
+        "pass_rate": 0.8668,
+        "passed": 332
+      }
+    },
+    "evaluated": 1577,
+    "failed": 359,
+    "failed_by_reason": {
+      "fit_below_job_matched_floor": 294,
+      "fit_below_single_source_floor": 22,
+      "not_credible": 43,
+      "not_publishable": 22,
+      "not_scored": 1
+    },
+    "not_scored": 1,
+    "pass_rate": 0.7724,
+    "passed": 1218,
+    "relationships": 1578,
+    "replacement_fit_min": {
+      "corroborated": 60,
+      "job_matched": 75,
+      "single_source": 65
+    },
+    "rule": "the-source.recommendation-gate/1"
   },
   "sources": {
     "altstack": {

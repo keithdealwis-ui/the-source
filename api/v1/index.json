@@ -3,13 +3,13 @@
   "canonical_schema": "the-source.canonical/1",
   "catalogue": {
     "entries": 500,
-    "none_yet": 99,
-    "ok": 255,
-    "partial": 146,
+    "none_yet": 130,
+    "ok": 203,
+    "partial": 167,
     "path": "catalogue.json"
   },
   "data_as_of": "2026-11-05T02:13:56Z",
-  "dataset_version": "1e20f5ef0822b56a",
+  "dataset_version": "1e8c37ae5796a82e",
   "domains": "domains.json",
   "live_checked_at": {
     "newest": "2026-11-05T02:13:56Z",
@@ -236,7 +236,7 @@
       "compare_path": "/open-source/youtube-alternatives",
       "name": "YouTube",
       "path": "saas/youtube.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "youtube",
       "slug": "youtube",
       "status": "ok"
@@ -332,19 +332,19 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/reddit-alternatives",
+      "compare_path": null,
       "name": "Reddit",
       "path": "saas/reddit.json",
-      "recommendations": 3,
+      "recommendations": 1,
       "saas_id": "reddit",
       "slug": "reddit",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/github-copilot-alternatives",
       "name": "GitHub Copilot",
       "path": "saas/github-copilot.json",
-      "recommendations": 5,
+      "recommendations": 3,
       "saas_id": "github-copilot",
       "slug": "github-copilot",
       "status": "ok"
@@ -359,22 +359,22 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/slack-alternatives",
+      "compare_path": null,
       "name": "Slack",
       "path": "saas/slack.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "slack",
       "slug": "slack",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/spotify-alternatives",
+      "compare_path": null,
       "name": "Spotify",
       "path": "saas/spotify.json",
-      "recommendations": 4,
+      "recommendations": 1,
       "saas_id": "spotify",
       "slug": "spotify",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/okta-alternatives",
@@ -470,28 +470,28 @@
       "compare_path": "/open-source/google-photos-alternatives",
       "name": "Google Photos",
       "path": "saas/google-photos.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "google-photos",
       "slug": "google-photos",
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/openai-api-alternatives",
+      "compare_path": null,
       "name": "OpenAI API",
       "path": "saas/openai-api.json",
-      "recommendations": 4,
+      "recommendations": 2,
       "saas_id": "openai-api",
       "slug": "openai-api",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/medium-alternatives",
+      "compare_path": null,
       "name": "Medium",
       "path": "saas/medium.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "medium",
       "slug": "medium",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/github-alternatives",
@@ -551,7 +551,7 @@
       "compare_path": "/open-source/ynab-alternatives",
       "name": "YNAB",
       "path": "saas/ynab.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "ynab",
       "slug": "ynab",
       "status": "ok"
@@ -596,7 +596,7 @@
       "compare_path": "/open-source/mailchimp-alternatives",
       "name": "Mailchimp",
       "path": "saas/mailchimp.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "mailchimp",
       "slug": "mailchimp",
       "status": "ok"
@@ -611,19 +611,19 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/twilio-alternatives",
+      "compare_path": null,
       "name": "Twilio",
       "path": "saas/twilio.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "twilio",
       "slug": "twilio",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/grammarly-alternatives",
       "name": "Grammarly",
       "path": "saas/grammarly.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "grammarly",
       "slug": "grammarly",
       "status": "ok"
@@ -650,7 +650,7 @@
       "compare_path": "/open-source/gmail-alternatives",
       "name": "Gmail",
       "path": "saas/gmail.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "gmail",
       "slug": "gmail",
       "status": "ok"
@@ -659,25 +659,25 @@
       "compare_path": "/open-source/microsoft-planner-alternatives",
       "name": "Microsoft Planner",
       "path": "saas/microsoft-planner.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "microsoft-planner",
       "slug": "microsoft-planner",
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/teamviewer-alternatives",
+      "compare_path": null,
       "name": "TeamViewer",
       "path": "saas/teamviewer.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "teamviewer",
       "slug": "teamviewer",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/power-bi-alternatives",
       "name": "Power BI",
       "path": "saas/power-bi.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "power-bi",
       "slug": "power-bi",
       "status": "ok"
@@ -695,7 +695,7 @@
       "compare_path": "/open-source/google-keep-alternatives",
       "name": "Google Keep",
       "path": "saas/google-keep.json",
-      "recommendations": 5,
+      "recommendations": 3,
       "saas_id": "google-keep",
       "slug": "google-keep",
       "status": "ok"
@@ -704,7 +704,7 @@
       "compare_path": "/open-source/confluence-alternatives",
       "name": "Confluence",
       "path": "saas/confluence.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "confluence",
       "slug": "confluence",
       "status": "ok"
@@ -722,7 +722,7 @@
       "compare_path": "/open-source/clipchamp-alternatives",
       "name": "Clipchamp",
       "path": "saas/clipchamp.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "clipchamp",
       "slug": "clipchamp",
       "status": "ok"
@@ -773,13 +773,13 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/quizlet-alternatives",
+      "compare_path": null,
       "name": "Quizlet",
       "path": "saas/quizlet.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "quizlet",
       "slug": "quizlet",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/attio-alternatives",
@@ -794,19 +794,19 @@
       "compare_path": "/open-source/google-docs-alternatives",
       "name": "Google Docs",
       "path": "saas/google-docs.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "google-docs",
       "slug": "google-docs",
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/midjourney-alternatives",
+      "compare_path": null,
       "name": "Midjourney",
       "path": "saas/midjourney.json",
-      "recommendations": 4,
+      "recommendations": 1,
       "saas_id": "midjourney",
       "slug": "midjourney",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/railway-alternatives",
@@ -863,13 +863,13 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/gitbook-alternatives",
+      "compare_path": null,
       "name": "GitBook",
       "path": "saas/gitbook.json",
-      "recommendations": 4,
+      "recommendations": 2,
       "saas_id": "gitbook",
       "slug": "gitbook",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/microsoft-dynamics-365-alternatives",
@@ -935,13 +935,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/semrush-alternatives",
+      "compare_path": null,
       "name": "Semrush",
       "path": "saas/semrush.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "semrush",
       "slug": "semrush",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
@@ -974,7 +974,7 @@
       "compare_path": "/open-source/microsoft-teams-alternatives",
       "name": "Microsoft Teams",
       "path": "saas/microsoft-teams.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "microsoft-teams",
       "slug": "microsoft-teams",
       "status": "ok"
@@ -1001,7 +1001,7 @@
       "compare_path": "/open-source/tigergraph-alternatives",
       "name": "TigerGraph",
       "path": "saas/tigergraph.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "tigergraph",
       "slug": "tigergraph",
       "status": "ok"
@@ -1019,7 +1019,7 @@
       "compare_path": "/open-source/bigcommerce-alternatives",
       "name": "BigCommerce",
       "path": "saas/bigcommerce.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "bigcommerce",
       "slug": "bigcommerce",
       "status": "ok"
@@ -1059,15 +1059,6 @@
       "saas_id": "elevenlabs",
       "slug": "elevenlabs",
       "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": "/open-source/youtube-music-alternatives",
-      "name": "YouTube Music",
-      "path": "saas/youtube-music.json",
-      "recommendations": 3,
-      "saas_id": "youtube-music",
-      "slug": "youtube-music",
-      "status": "ok"
     },
     {
       "compare_path": "/open-source/sanity-alternatives",
@@ -1154,7 +1145,7 @@
       "compare_path": "/open-source/workos-alternatives",
       "name": "WorkOS",
       "path": "saas/workos.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "workos",
       "slug": "workos",
       "status": "ok"
@@ -1208,7 +1199,7 @@
       "compare_path": "/open-source/messenger-alternatives",
       "name": "Messenger",
       "path": "saas/messenger.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "messenger",
       "slug": "messenger",
       "status": "ok"
@@ -1217,7 +1208,7 @@
       "compare_path": "/open-source/kit-alternatives",
       "name": "Kit",
       "path": "saas/kit.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "kit",
       "slug": "kit",
       "status": "ok"
@@ -1232,13 +1223,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/ahrefs-alternatives",
+      "compare_path": null,
       "name": "Ahrefs",
       "path": "saas/ahrefs.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "ahrefs",
       "slug": "ahrefs",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
@@ -1259,13 +1250,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/adobe-firefly-alternatives",
+      "compare_path": null,
       "name": "Adobe Firefly",
       "path": "saas/adobe-firefly.json",
-      "recommendations": 4,
+      "recommendations": 1,
       "saas_id": "adobe-firefly",
       "slug": "adobe-firefly",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/pingdom-alternatives",
@@ -1280,7 +1271,7 @@
       "compare_path": "/open-source/freshbooks-alternatives",
       "name": "FreshBooks",
       "path": "saas/freshbooks.json",
-      "recommendations": 5,
+      "recommendations": 3,
       "saas_id": "freshbooks",
       "slug": "freshbooks",
       "status": "ok"
@@ -1289,7 +1280,7 @@
       "compare_path": "/open-source/basecamp-alternatives",
       "name": "Basecamp",
       "path": "saas/basecamp.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "basecamp",
       "slug": "basecamp",
       "status": "ok"
@@ -1307,7 +1298,7 @@
       "compare_path": "/open-source/proton-mail-alternatives",
       "name": "Proton Mail",
       "path": "saas/proton-mail.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "proton-mail",
       "slug": "proton-mail",
       "status": "ok"
@@ -1334,19 +1325,10 @@
       "compare_path": "/open-source/looker-studio-alternatives",
       "name": "Looker Studio",
       "path": "saas/looker-studio.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "looker-studio",
       "slug": "looker-studio",
       "status": "ok"
-    },
-    {
-      "compare_path": null,
-      "name": "Replit",
-      "path": "saas/replit.json",
-      "recommendations": 1,
-      "saas_id": "replit",
-      "slug": "replit",
-      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
@@ -1361,7 +1343,7 @@
       "compare_path": null,
       "name": "Lucidchart",
       "path": "saas/lucidchart.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "lucidchart",
       "slug": "lucidchart",
       "status": "insufficient_recommendations"
@@ -1376,13 +1358,13 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/wave-alternatives",
+      "compare_path": null,
       "name": "Wave",
       "path": "saas/wave.json",
-      "recommendations": 4,
+      "recommendations": 2,
       "saas_id": "wave",
       "slug": "wave",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
@@ -1397,7 +1379,7 @@
       "compare_path": "/open-source/brevo-alternatives",
       "name": "Brevo",
       "path": "saas/brevo.json",
-      "recommendations": 5,
+      "recommendations": 3,
       "saas_id": "brevo",
       "slug": "brevo",
       "status": "ok"
@@ -1412,13 +1394,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/anydesk-alternatives",
+      "compare_path": null,
       "name": "AnyDesk",
       "path": "saas/anydesk.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "anydesk",
       "slug": "anydesk",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/logrocket-alternatives",
@@ -1430,13 +1412,13 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/teachable-alternatives",
+      "compare_path": null,
       "name": "Teachable",
       "path": "saas/teachable.json",
-      "recommendations": 3,
+      "recommendations": 1,
       "saas_id": "teachable",
       "slug": "teachable",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
@@ -1457,13 +1439,13 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/rocket-money-alternatives",
+      "compare_path": null,
       "name": "Rocket Money",
       "path": "saas/rocket-money.json",
-      "recommendations": 3,
+      "recommendations": 1,
       "saas_id": "rocket-money",
       "slug": "rocket-money",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/docker-hub-alternatives",
@@ -1478,7 +1460,7 @@
       "compare_path": "/open-source/monarch-money-alternatives",
       "name": "Monarch Money",
       "path": "saas/monarch-money.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "monarch-money",
       "slug": "monarch-money",
       "status": "ok"
@@ -1496,7 +1478,7 @@
       "compare_path": "/open-source/make-alternatives",
       "name": "Make",
       "path": "saas/make.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "make",
       "slug": "make",
       "status": "ok"
@@ -1532,7 +1514,7 @@
       "compare_path": "/open-source/clockify-alternatives",
       "name": "Clockify",
       "path": "saas/clockify.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "clockify",
       "slug": "clockify",
       "status": "ok"
@@ -1547,13 +1529,13 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/microsoft-365-alternatives",
+      "compare_path": null,
       "name": "Microsoft 365",
       "path": "saas/microsoft-365.json",
-      "recommendations": 3,
+      "recommendations": 1,
       "saas_id": "microsoft-365",
       "slug": "microsoft-365",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/prismic-alternatives",
@@ -1577,18 +1559,9 @@
       "compare_path": null,
       "name": "Descript",
       "path": "saas/descript.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "descript",
       "slug": "descript",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "Snyk",
-      "path": "saas/snyk.json",
-      "recommendations": 2,
-      "saas_id": "snyk",
-      "slug": "snyk",
       "status": "insufficient_recommendations"
     },
     {
@@ -1619,13 +1592,13 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/leonardo-ai-alternatives",
+      "compare_path": null,
       "name": "Leonardo.Ai",
       "path": "saas/leonardo-ai.json",
-      "recommendations": 4,
+      "recommendations": 1,
       "saas_id": "leonardo-ai",
       "slug": "leonardo-ai",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/front-alternatives",
@@ -1646,13 +1619,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/deepl-alternatives",
+      "compare_path": null,
       "name": "DeepL",
       "path": "saas/deepl.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "deepl",
       "slug": "deepl",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
@@ -1691,13 +1664,13 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/xero-alternatives",
+      "compare_path": null,
       "name": "Xero",
       "path": "saas/xero.json",
-      "recommendations": 4,
+      "recommendations": 2,
       "saas_id": "xero",
       "slug": "xero",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
@@ -1709,19 +1682,19 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/voiceflow-alternatives",
+      "compare_path": null,
       "name": "Voiceflow",
       "path": "saas/voiceflow.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "voiceflow",
       "slug": "voiceflow",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
       "name": "Google Translate",
       "path": "saas/google-translate.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "google-translate",
       "slug": "google-translate",
       "status": "insufficient_recommendations"
@@ -1730,28 +1703,19 @@
       "compare_path": "/open-source/sage-intacct-alternatives",
       "name": "Sage Intacct",
       "path": "saas/sage-intacct.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "sage-intacct",
       "slug": "sage-intacct",
       "status": "ok"
     },
     {
       "compare_path": null,
-      "name": "Imgur",
-      "path": "saas/imgur.json",
-      "recommendations": 2,
-      "saas_id": "imgur",
-      "slug": "imgur",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": "/open-source/scrapingbee-alternatives",
       "name": "ScrapingBee",
       "path": "saas/scrapingbee.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "scrapingbee",
       "slug": "scrapingbee",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/cloudflare-tunnel-alternatives",
@@ -1763,19 +1727,19 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/klaviyo-alternatives",
+      "compare_path": null,
       "name": "Klaviyo",
       "path": "saas/klaviyo.json",
-      "recommendations": 4,
+      "recommendations": 2,
       "saas_id": "klaviyo",
       "slug": "klaviyo",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/m-files-alternatives",
       "name": "M-Files",
       "path": "saas/m-files.json",
-      "recommendations": 5,
+      "recommendations": 3,
       "saas_id": "m-files",
       "slug": "m-files",
       "status": "ok"
@@ -1793,19 +1757,19 @@
       "compare_path": null,
       "name": "GitHub Actions",
       "path": "saas/github-actions.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "github-actions",
       "slug": "github-actions",
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/flickr-alternatives",
+      "compare_path": null,
       "name": "Flickr",
       "path": "saas/flickr.json",
-      "recommendations": 3,
+      "recommendations": 1,
       "saas_id": "flickr",
       "slug": "flickr",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
@@ -1826,31 +1790,22 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/chrome-remote-desktop-alternatives",
+      "compare_path": null,
       "name": "Chrome Remote Desktop",
       "path": "saas/chrome-remote-desktop.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "chrome-remote-desktop",
       "slug": "chrome-remote-desktop",
-      "status": "ok"
-    },
-    {
-      "compare_path": null,
-      "name": "Upstash",
-      "path": "saas/upstash.json",
-      "recommendations": 2,
-      "saas_id": "upstash",
-      "slug": "upstash",
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/lastpass-alternatives",
+      "compare_path": null,
       "name": "LastPass",
       "path": "saas/lastpass.json",
-      "recommendations": 3,
+      "recommendations": 1,
       "saas_id": "lastpass",
       "slug": "lastpass",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/datocms-alternatives",
@@ -1874,7 +1829,7 @@
       "compare_path": "/open-source/acumatica-alternatives",
       "name": "Acumatica",
       "path": "saas/acumatica.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "acumatica",
       "slug": "acumatica",
       "status": "ok"
@@ -1883,7 +1838,7 @@
       "compare_path": "/open-source/amazon-ses-alternatives",
       "name": "Amazon SES",
       "path": "saas/amazon-ses.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "amazon-ses",
       "slug": "amazon-ses",
       "status": "ok"
@@ -1892,7 +1847,7 @@
       "compare_path": "/open-source/backblaze-b2-alternatives",
       "name": "Backblaze B2",
       "path": "saas/backblaze-b2.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "backblaze-b2",
       "slug": "backblaze-b2",
       "status": "ok"
@@ -1955,7 +1910,7 @@
       "compare_path": null,
       "name": "Google Search",
       "path": "saas/google-search.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "google-search",
       "slug": "google-search",
       "status": "insufficient_recommendations"
@@ -1964,37 +1919,37 @@
       "compare_path": "/open-source/gorgias-alternatives",
       "name": "Gorgias",
       "path": "saas/gorgias.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "gorgias",
       "slug": "gorgias",
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/constant-contact-alternatives",
+      "compare_path": null,
       "name": "Constant Contact",
       "path": "saas/constant-contact.json",
-      "recommendations": 4,
+      "recommendations": 2,
       "saas_id": "constant-contact",
       "slug": "constant-contact",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/mailerlite-alternatives",
+      "compare_path": null,
       "name": "MailerLite",
       "path": "saas/mailerlite.json",
-      "recommendations": 4,
+      "recommendations": 2,
       "saas_id": "mailerlite",
       "slug": "mailerlite",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/splashtop-alternatives",
+      "compare_path": null,
       "name": "Splashtop",
       "path": "saas/splashtop.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "splashtop",
       "slug": "splashtop",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
@@ -2003,24 +1958,6 @@
       "recommendations": 1,
       "saas_id": "fireflies-ai",
       "slug": "fireflies-ai",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "Smallpdf",
-      "path": "saas/smallpdf.json",
-      "recommendations": 2,
-      "saas_id": "smallpdf",
-      "slug": "smallpdf",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "Google Slides",
-      "path": "saas/google-slides.json",
-      "recommendations": 1,
-      "saas_id": "google-slides",
-      "slug": "google-slides",
       "status": "insufficient_recommendations"
     },
     {
@@ -2060,58 +1997,40 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/cloudconvert-alternatives",
+      "compare_path": null,
       "name": "CloudConvert",
       "path": "saas/cloudconvert.json",
-      "recommendations": 5,
+      "recommendations": 2,
       "saas_id": "cloudconvert",
       "slug": "cloudconvert",
-      "status": "ok"
-    },
-    {
-      "compare_path": null,
-      "name": "iLovePDF",
-      "path": "saas/ilovepdf.json",
-      "recommendations": 2,
-      "saas_id": "ilovepdf",
-      "slug": "ilovepdf",
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/connectwise-screenconnect-alternatives",
+      "compare_path": null,
       "name": "ConnectWise ScreenConnect",
       "path": "saas/connectwise-screenconnect.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "connectwise-screenconnect",
       "slug": "connectwise-screenconnect",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
       "name": "Photopea",
       "path": "saas/photopea.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "photopea",
       "slug": "photopea",
       "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
-      "name": "Gamma",
-      "path": "saas/gamma.json",
-      "recommendations": 1,
-      "saas_id": "gamma",
-      "slug": "gamma",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": "/open-source/beehiiv-alternatives",
       "name": "beehiiv",
       "path": "saas/beehiiv.json",
-      "recommendations": 5,
+      "recommendations": 2,
       "saas_id": "beehiiv",
       "slug": "beehiiv",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/craft-alternatives",
@@ -2150,13 +2069,13 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/zoho-books-alternatives",
+      "compare_path": null,
       "name": "Zoho Books",
       "path": "saas/zoho-books.json",
-      "recommendations": 4,
+      "recommendations": 2,
       "saas_id": "zoho-books",
       "slug": "zoho-books",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/raindrop-io-alternatives",
@@ -2187,36 +2106,27 @@
     },
     {
       "compare_path": null,
-      "name": "Prezi",
-      "path": "saas/prezi.json",
-      "recommendations": 1,
-      "saas_id": "prezi",
-      "slug": "prezi",
+      "name": "ActiveCampaign",
+      "path": "saas/activecampaign.json",
+      "recommendations": 2,
+      "saas_id": "activecampaign",
+      "slug": "activecampaign",
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/activecampaign-alternatives",
-      "name": "ActiveCampaign",
-      "path": "saas/activecampaign.json",
-      "recommendations": 4,
-      "saas_id": "activecampaign",
-      "slug": "activecampaign",
-      "status": "ok"
-    },
-    {
-      "compare_path": "/open-source/roam-research-alternatives",
+      "compare_path": null,
       "name": "Roam Research",
       "path": "saas/roam-research.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "roam-research",
       "slug": "roam-research",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/zoho-desk-alternatives",
       "name": "Zoho Desk",
       "path": "saas/zoho-desk.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "zoho-desk",
       "slug": "zoho-desk",
       "status": "ok"
@@ -2225,7 +2135,7 @@
       "compare_path": "/open-source/commercetools-alternatives",
       "name": "commercetools",
       "path": "saas/commercetools.json",
-      "recommendations": 5,
+      "recommendations": 3,
       "saas_id": "commercetools",
       "slug": "commercetools",
       "status": "ok"
@@ -2288,7 +2198,7 @@
       "compare_path": "/open-source/cloudflare-r2-alternatives",
       "name": "Cloudflare R2",
       "path": "saas/cloudflare-r2.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "cloudflare-r2",
       "slug": "cloudflare-r2",
       "status": "ok"
@@ -2351,7 +2261,7 @@
       "compare_path": "/open-source/chargebee-alternatives",
       "name": "Chargebee",
       "path": "saas/chargebee.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "chargebee",
       "slug": "chargebee",
       "status": "ok"
@@ -2367,36 +2277,18 @@
     },
     {
       "compare_path": null,
-      "name": "CodeSandbox",
-      "path": "saas/codesandbox.json",
-      "recommendations": 1,
-      "saas_id": "codesandbox",
-      "slug": "codesandbox",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
       "name": "Salesforce Marketing Cloud",
       "path": "saas/salesforce-marketing-cloud.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "salesforce-marketing-cloud",
       "slug": "salesforce-marketing-cloud",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "Braze",
-      "path": "saas/braze.json",
-      "recommendations": 1,
-      "saas_id": "braze",
-      "slug": "braze",
       "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/capcut-alternatives",
       "name": "CapCut",
       "path": "saas/capcut.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "capcut",
       "slug": "capcut",
       "status": "ok"
@@ -2412,15 +2304,6 @@
     },
     {
       "compare_path": null,
-      "name": "Coda",
-      "path": "saas/coda.json",
-      "recommendations": 1,
-      "saas_id": "coda",
-      "slug": "coda",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
       "name": "Cloudinary",
       "path": "saas/cloudinary.json",
       "recommendations": 1,
@@ -2430,48 +2313,30 @@
     },
     {
       "compare_path": null,
-      "name": "Wistia",
-      "path": "saas/wistia.json",
-      "recommendations": 1,
-      "saas_id": "wistia",
-      "slug": "wistia",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": "/open-source/box-alternatives",
       "name": "Box",
       "path": "saas/box.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "box",
       "slug": "box",
-      "status": "ok"
-    },
-    {
-      "compare_path": "/open-source/mega-alternatives",
-      "name": "MEGA",
-      "path": "saas/mega.json",
-      "recommendations": 3,
-      "saas_id": "mega",
-      "slug": "mega",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
-      "name": "remove.bg",
-      "path": "saas/remove-bg.json",
+      "name": "MEGA",
+      "path": "saas/mega.json",
       "recommendations": 2,
-      "saas_id": "remove-bg",
-      "slug": "remove-bg",
+      "saas_id": "mega",
+      "slug": "mega",
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/cloudflare-access-alternatives",
+      "compare_path": null,
       "name": "Cloudflare Access",
       "path": "saas/cloudflare-access.json",
-      "recommendations": 4,
+      "recommendations": 2,
       "saas_id": "cloudflare-access",
       "slug": "cloudflare-access",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/digitalocean-app-platform-alternatives",
@@ -2486,7 +2351,7 @@
       "compare_path": "/open-source/microsoft-onedrive-alternatives",
       "name": "Microsoft OneDrive",
       "path": "saas/microsoft-onedrive.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "microsoft-onedrive",
       "slug": "microsoft-onedrive",
       "status": "ok"
@@ -2511,18 +2376,9 @@
     },
     {
       "compare_path": null,
-      "name": "Iterable",
-      "path": "saas/iterable.json",
-      "recommendations": 1,
-      "saas_id": "iterable",
-      "slug": "iterable",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
       "name": "Mintlify",
       "path": "saas/mintlify.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "mintlify",
       "slug": "mintlify",
       "status": "insufficient_recommendations"
@@ -2537,19 +2393,19 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/noun-project-alternatives",
+      "compare_path": null,
       "name": "Noun Project",
       "path": "saas/noun-project.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "noun-project",
       "slug": "noun-project",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/shortcut-alternatives",
       "name": "Shortcut",
       "path": "saas/shortcut.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "shortcut",
       "slug": "shortcut",
       "status": "ok"
@@ -2594,7 +2450,7 @@
       "compare_path": null,
       "name": "Whimsical",
       "path": "saas/whimsical.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "whimsical",
       "slug": "whimsical",
       "status": "insufficient_recommendations"
@@ -2621,7 +2477,7 @@
       "compare_path": null,
       "name": "Microsoft Power Automate",
       "path": "saas/microsoft-power-automate.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "microsoft-power-automate",
       "slug": "microsoft-power-automate",
       "status": "insufficient_recommendations"
@@ -2636,13 +2492,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/adobe-acrobat-sign-alternatives",
+      "compare_path": null,
       "name": "Adobe Acrobat Sign",
       "path": "saas/adobe-acrobat-sign.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "adobe-acrobat-sign",
       "slug": "adobe-acrobat-sign",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
@@ -2672,28 +2528,19 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/workato-alternatives",
+      "compare_path": null,
       "name": "Workato",
       "path": "saas/workato.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "workato",
       "slug": "workato",
-      "status": "ok"
-    },
-    {
-      "compare_path": null,
-      "name": "Mentimeter",
-      "path": "saas/mentimeter.json",
-      "recommendations": 1,
-      "saas_id": "mentimeter",
-      "slug": "mentimeter",
       "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
       "name": "Dashlane",
       "path": "saas/dashlane.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "dashlane",
       "slug": "dashlane",
       "status": "insufficient_recommendations"
@@ -2702,7 +2549,7 @@
       "compare_path": null,
       "name": "Guru",
       "path": "saas/guru.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "guru",
       "slug": "guru",
       "status": "insufficient_recommendations"
@@ -2711,7 +2558,7 @@
       "compare_path": "/open-source/tray-io-alternatives",
       "name": "Tray.io",
       "path": "saas/tray-io.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "tray-io",
       "slug": "tray-io",
       "status": "ok"
@@ -2729,7 +2576,7 @@
       "compare_path": "/open-source/apigee-alternatives",
       "name": "Apigee",
       "path": "saas/apigee.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "apigee",
       "slug": "apigee",
       "status": "ok"
@@ -2741,15 +2588,6 @@
       "recommendations": 1,
       "saas_id": "trakt",
       "slug": "trakt",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "Marketing Cloud Account Engagement",
-      "path": "saas/marketing-cloud-account-engagement.json",
-      "recommendations": 1,
-      "saas_id": "marketing-cloud-account-engagement",
-      "slug": "marketing-cloud-account-engagement",
       "status": "insufficient_recommendations"
     },
     {
@@ -2783,7 +2621,7 @@
       "compare_path": null,
       "name": "ServiceNow",
       "path": "saas/servicenow.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "servicenow",
       "slug": "servicenow",
       "status": "insufficient_recommendations"
@@ -2807,21 +2645,12 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/pcloud-alternatives",
+      "compare_path": null,
       "name": "pCloud",
       "path": "saas/pcloud.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "pcloud",
       "slug": "pcloud",
-      "status": "ok"
-    },
-    {
-      "compare_path": null,
-      "name": "Mural",
-      "path": "saas/mural.json",
-      "recommendations": 1,
-      "saas_id": "mural",
-      "slug": "mural",
       "status": "insufficient_recommendations"
     },
     {
@@ -2837,7 +2666,7 @@
       "compare_path": "/open-source/qlik-cloud-alternatives",
       "name": "Qlik Cloud",
       "path": "saas/qlik-cloud.json",
-      "recommendations": 5,
+      "recommendations": 3,
       "saas_id": "qlik-cloud",
       "slug": "qlik-cloud",
       "status": "ok"
@@ -2853,38 +2682,20 @@
     },
     {
       "compare_path": null,
-      "name": "Slido",
-      "path": "saas/slido.json",
-      "recommendations": 1,
-      "saas_id": "slido",
-      "slug": "slido",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": "/open-source/ringcentral-alternatives",
       "name": "RingCentral",
       "path": "saas/ringcentral.json",
-      "recommendations": 3,
+      "recommendations": 1,
       "saas_id": "ringcentral",
       "slug": "ringcentral",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
       "name": "Google Chat",
       "path": "saas/google-chat.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "google-chat",
       "slug": "google-chat",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "FigJam",
-      "path": "saas/figjam.json",
-      "recommendations": 1,
-      "saas_id": "figjam",
-      "slug": "figjam",
       "status": "insufficient_recommendations"
     },
     {
@@ -2906,13 +2717,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/campaign-monitor-alternatives",
+      "compare_path": null,
       "name": "Campaign Monitor",
       "path": "saas/campaign-monitor.json",
-      "recommendations": 4,
+      "recommendations": 2,
       "saas_id": "campaign-monitor",
       "slug": "campaign-monitor",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
@@ -2936,7 +2747,7 @@
       "compare_path": "/open-source/aws-amplify-alternatives",
       "name": "AWS Amplify",
       "path": "saas/aws-amplify.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "aws-amplify",
       "slug": "aws-amplify",
       "status": "ok"
@@ -2951,13 +2762,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/fastmail-alternatives",
+      "compare_path": null,
       "name": "Fastmail",
       "path": "saas/fastmail.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "fastmail",
       "slug": "fastmail",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
@@ -2999,7 +2810,7 @@
       "compare_path": null,
       "name": "Pipedream",
       "path": "saas/pipedream.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "pipedream",
       "slug": "pipedream",
       "status": "insufficient_recommendations"
@@ -3032,13 +2843,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/zoho-mail-alternatives",
+      "compare_path": null,
       "name": "Zoho Mail",
       "path": "saas/zoho-mail.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "zoho-mail",
       "slug": "zoho-mail",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
@@ -3078,15 +2889,6 @@
     },
     {
       "compare_path": null,
-      "name": "Google Classroom",
-      "path": "saas/google-classroom.json",
-      "recommendations": 1,
-      "saas_id": "google-classroom",
-      "slug": "google-classroom",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
       "name": "Disqus",
       "path": "saas/disqus.json",
       "recommendations": 1,
@@ -3113,13 +2915,13 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/document360-alternatives",
+      "compare_path": null,
       "name": "Document360",
       "path": "saas/document360.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "document360",
       "slug": "document360",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
@@ -3140,13 +2942,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/amazon-photos-alternatives",
+      "compare_path": null,
       "name": "Amazon Photos",
       "path": "saas/amazon-photos.json",
-      "recommendations": 5,
+      "recommendations": 2,
       "saas_id": "amazon-photos",
       "slug": "amazon-photos",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/any-do-alternatives",
@@ -3156,15 +2958,6 @@
       "saas_id": "any-do",
       "slug": "any-do",
       "status": "ok"
-    },
-    {
-      "compare_path": null,
-      "name": "Customer.io",
-      "path": "saas/customer-io.json",
-      "recommendations": 1,
-      "saas_id": "customer-io",
-      "slug": "customer-io",
-      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
@@ -3206,19 +2999,10 @@
       "compare_path": "/open-source/statuscake-alternatives",
       "name": "StatusCake",
       "path": "saas/statuscake.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "statuscake",
       "slug": "statuscake",
       "status": "ok"
-    },
-    {
-      "compare_path": null,
-      "name": "ShipStation",
-      "path": "saas/shipstation.json",
-      "recommendations": 1,
-      "saas_id": "shipstation",
-      "slug": "shipstation",
-      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
@@ -3233,7 +3017,7 @@
       "compare_path": "/open-source/recurly-alternatives",
       "name": "Recurly",
       "path": "saas/recurly.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "recurly",
       "slug": "recurly",
       "status": "ok"
@@ -3242,7 +3026,7 @@
       "compare_path": "/open-source/zuora-alternatives",
       "name": "Zuora",
       "path": "saas/zuora.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "zuora",
       "slug": "zuora",
       "status": "ok"
@@ -3275,28 +3059,28 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/yahoo-mail-alternatives",
+      "compare_path": null,
       "name": "Yahoo Mail",
       "path": "saas/yahoo-mail.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "yahoo-mail",
       "slug": "yahoo-mail",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/toast-alternatives",
+      "compare_path": null,
       "name": "Toast",
       "path": "saas/toast.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "toast",
       "slug": "toast",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
       "name": "Keeper",
       "path": "saas/keeper.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "keeper",
       "slug": "keeper",
       "status": "insufficient_recommendations"
@@ -3305,7 +3089,7 @@
       "compare_path": "/open-source/cloudflare-pages-alternatives",
       "name": "Cloudflare Pages",
       "path": "saas/cloudflare-pages.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "cloudflare-pages",
       "slug": "cloudflare-pages",
       "status": "ok"
@@ -3314,7 +3098,7 @@
       "compare_path": null,
       "name": "Slite",
       "path": "saas/slite.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "slite",
       "slug": "slite",
       "status": "insufficient_recommendations"
@@ -3350,7 +3134,7 @@
       "compare_path": null,
       "name": "Travis CI",
       "path": "saas/travis-ci.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "travis-ci",
       "slug": "travis-ci",
       "status": "insufficient_recommendations"
@@ -3386,7 +3170,7 @@
       "compare_path": "/open-source/instatus-alternatives",
       "name": "Instatus",
       "path": "saas/instatus.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "instatus",
       "slug": "instatus",
       "status": "ok"
@@ -3420,15 +3204,6 @@
     },
     {
       "compare_path": null,
-      "name": "Amazon DynamoDB",
-      "path": "saas/amazon-dynamodb.json",
-      "recommendations": 1,
-      "saas_id": "amazon-dynamodb",
-      "slug": "amazon-dynamodb",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
       "name": "Appian",
       "path": "saas/appian.json",
       "recommendations": 1,
@@ -3438,38 +3213,11 @@
     },
     {
       "compare_path": null,
-      "name": "Pitch",
-      "path": "saas/pitch.json",
-      "recommendations": 1,
-      "saas_id": "pitch",
-      "slug": "pitch",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
       "name": "Freshservice",
       "path": "saas/freshservice.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "freshservice",
       "slug": "freshservice",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "Codecov",
-      "path": "saas/codecov.json",
-      "recommendations": 1,
-      "saas_id": "codecov",
-      "slug": "codecov",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "Docebo",
-      "path": "saas/docebo.json",
-      "recommendations": 1,
-      "saas_id": "docebo",
-      "slug": "docebo",
       "status": "insufficient_recommendations"
     },
     {
@@ -3539,7 +3287,7 @@
       "compare_path": null,
       "name": "Jira Service Management",
       "path": "saas/jira-service-management.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "jira-service-management",
       "slug": "jira-service-management",
       "status": "insufficient_recommendations"
@@ -3575,37 +3323,10 @@
       "compare_path": "/open-source/mode-analytics-alternatives",
       "name": "Mode Analytics",
       "path": "saas/mode-analytics.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "mode-analytics",
       "slug": "mode-analytics",
       "status": "ok"
-    },
-    {
-      "compare_path": null,
-      "name": "TalentLMS",
-      "path": "saas/talentlms.json",
-      "recommendations": 1,
-      "saas_id": "talentlms",
-      "slug": "talentlms",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "Luma",
-      "path": "saas/luma.json",
-      "recommendations": 1,
-      "saas_id": "luma",
-      "slug": "luma",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "Shogun",
-      "path": "saas/shogun.json",
-      "recommendations": 1,
-      "saas_id": "shogun",
-      "slug": "shogun",
-      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,
@@ -3620,7 +3341,7 @@
       "compare_path": "/open-source/stripe-billing-alternatives",
       "name": "Stripe Billing",
       "path": "saas/stripe-billing.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "stripe-billing",
       "slug": "stripe-billing",
       "status": "ok"
