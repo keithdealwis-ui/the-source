@@ -9,16 +9,17 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "last_checked": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "more_available": 1,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
       "altstack",
+      "diegoleme",
       "fossalt",
       "job_match",
       "opensaasdirectory",
@@ -38,12 +39,12 @@
               "source_id": "runacapital"
             },
             {
-              "locator": "README.md#L1679",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L1310",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -88,7 +89,7 @@
         "tag": "v2.25.3"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Postiz",
       "note": {
@@ -124,21 +125,26 @@
         "runacapital",
         "opensaasdirectory"
       ],
-      "stars": 40918
+      "stars": 40945
     },
     {
       "evidence": {
         "relationship": {
-          "corroborated": false,
+          "corroborated": true,
           "evidence_class": "listed",
           "provenance": [
+            {
+              "locator": "README.md#L584",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
+            },
             {
               "locator": "README.md#L101",
               "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -187,7 +193,7 @@
         "tag": "v7.37.1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "OpenPost",
       "note": {
@@ -226,9 +232,10 @@
         "self_hostable": true
       },
       "sources": [
+        "diegoleme",
         "fossalt"
       ],
-      "stars": 872
+      "stars": 873
     },
     {
       "evidence": {
@@ -242,7 +249,7 @@
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -286,7 +293,7 @@
         "tag": "2.6.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "maintained",
       "name": "Mixpost",
       "note": {
@@ -327,7 +334,7 @@
       "sources": [
         "altstack"
       ],
-      "stars": 3905
+      "stars": 3907
     },
     {
       "evidence": {
@@ -341,7 +348,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -388,7 +395,7 @@
       "last_meaningful_activity_at": "2026-10-25T11:02:40Z",
       "latest_release": null,
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "brightbean-studio",
       "note": {
@@ -429,7 +436,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 2619
+      "stars": 2620
     },
     {
       "evidence": {
@@ -443,7 +450,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -483,7 +490,7 @@
         "tag": "v1.27.1"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "cogsend",
       "note": {

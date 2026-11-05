@@ -9,15 +9,16 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "last_checked": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "more_available": 2,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "diegoleme",
       "opensaasdirectory",
       "solvohq"
     ]
@@ -35,12 +36,12 @@
               "source_id": "solvohq"
             },
             {
-              "locator": "README.md#L177",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L185",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -85,7 +86,7 @@
         "tag": "v0.8.8"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "LibreChat",
       "note": {
@@ -121,7 +122,7 @@
         "solvohq",
         "opensaasdirectory"
       ],
-      "stars": 46752
+      "stars": 46764
     },
     {
       "evidence": {
@@ -130,12 +131,12 @@
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "README.md#L129",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L158",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -182,7 +183,7 @@
         "tag": "v1.19.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "AnythingLLM",
       "note": {
@@ -223,7 +224,7 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 67951
+      "stars": 67963
     },
     {
       "evidence": {
@@ -237,12 +238,12 @@
               "source_id": "solvohq"
             },
             {
-              "locator": "README.md#L161",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L176",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -283,7 +284,7 @@
         "tag": "v0.8.8"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Jan",
       "note": {
@@ -319,7 +320,7 @@
         "solvohq",
         "opensaasdirectory"
       ],
-      "stars": 45462
+      "stars": 45478
     },
     {
       "evidence": {
@@ -328,12 +329,12 @@
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "README.md#L145",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L167",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -372,7 +373,7 @@
         "tag": "v1.23.5"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Chatbox",
       "note": {
@@ -410,7 +411,7 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 42254
+      "stars": 42256
     },
     {
       "evidence": {
@@ -424,12 +425,17 @@
               "source_id": "solvohq"
             },
             {
-              "locator": "README.md#L97",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L140",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "README.md#L157",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -474,7 +480,7 @@
       },
       "licence_disclosure": "source-available: licensed under the Open WebUI License (BSD-3-Clause with a branding-retention requirement), which is not an OSI-approved open-source licence",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Open WebUI",
       "note": {
@@ -490,7 +496,7 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 92.1,
-        "score": 88.8,
+        "score": 86.1,
         "trajectory": "Stable"
       },
       "rank": 5,
@@ -508,9 +514,10 @@
       },
       "sources": [
         "solvohq",
-        "opensaasdirectory"
+        "opensaasdirectory",
+        "diegoleme"
       ],
-      "stars": 157802
+      "stars": 157826
     }
   ],
   "saas": {

@@ -3,16 +3,17 @@
   "catalogue": {
     "audience": "both",
     "rank": 164,
-    "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
     "reasons": [
-      "fewer_than_minimum"
+      "fewer_than_minimum",
+      "outside_launch_selection"
     ],
     "status": "partial"
   },
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "last_checked": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "more_available": 0,
   "provenance": {
@@ -34,7 +35,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -82,7 +83,7 @@
         "tag": "desktop-preview-v0.3.27.1"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "sandboxd",
       "note": {
@@ -137,7 +138,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -177,7 +178,7 @@
         "tag": "v1.5.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "vibesdk",
       "note": {
@@ -215,7 +216,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 5454
+      "stars": 5455
     }
   ],
   "saas": {

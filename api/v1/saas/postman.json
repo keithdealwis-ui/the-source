@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "last_checked": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "more_available": 1,
   "provenance": {
@@ -39,8 +39,8 @@
               "source_id": "solvohq"
             },
             {
-              "locator": "README.md#L585",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L469",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
             },
             {
@@ -49,7 +49,7 @@
               "source_id": "btwso"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -93,7 +93,7 @@
         "tag": "core@13.4.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Insomnia",
       "note": {
@@ -130,7 +130,7 @@
         "opensaasdirectory",
         "btwso"
       ],
-      "stars": 40124
+      "stars": 40126
     },
     {
       "evidence": {
@@ -149,8 +149,8 @@
               "source_id": "runacapital"
             },
             {
-              "locator": "README.md#L569",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L460",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
             },
             {
@@ -159,8 +159,8 @@
               "source_id": "btwso"
             },
             {
-              "locator": "README.md#L243",
-              "source_commit": "404431356e82cc44b035c9d7b83b676b56830a46",
+              "locator": "README.md#L496",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
               "source_id": "diegoleme"
             },
             {
@@ -169,7 +169,7 @@
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -214,7 +214,7 @@
         "tag": "2026.10.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Hoppscotch",
       "note": {
@@ -254,7 +254,7 @@
         "diegoleme",
         "altstack"
       ],
-      "stars": 80749
+      "stars": 80756
     },
     {
       "evidence": {
@@ -263,12 +263,12 @@
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "README.md#L601",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L478",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -310,7 +310,7 @@
         "tag": "release-2026-10-30-66ba1d7"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Scalar",
       "note": {
@@ -345,7 +345,7 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 16372
+      "stars": 16376
     },
     {
       "evidence": {
@@ -354,12 +354,12 @@
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "README.md#L244",
-              "source_commit": "404431356e82cc44b035c9d7b83b676b56830a46",
+              "locator": "README.md#L497",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
               "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -401,7 +401,7 @@
         "tag": "v2.4.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Voiden",
       "note": {
@@ -438,21 +438,26 @@
       "sources": [
         "diegoleme"
       ],
-      "stars": 1788
+      "stars": 1777
     },
     {
       "evidence": {
         "relationship": {
-          "corroborated": false,
+          "corroborated": true,
           "evidence_class": "listed",
           "provenance": [
             {
               "locator": "README.md#L398",
               "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
               "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L495",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -493,7 +498,7 @@
         "tag": "v4.3.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Bruno",
       "note": {
@@ -528,9 +533,10 @@
         "self_hostable": true
       },
       "sources": [
-        "solvohq"
+        "solvohq",
+        "diegoleme"
       ],
-      "stars": 48161
+      "stars": 48188
     }
   ],
   "saas": {

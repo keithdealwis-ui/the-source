@@ -9,16 +9,17 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "last_checked": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "more_available": 0,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
       "altstack",
+      "diegoleme",
       "solvohq"
     ]
   },
@@ -35,12 +36,17 @@
               "source_id": "solvohq"
             },
             {
+              "locator": "README.md#L163",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
+            },
+            {
               "locator": "data/tools.json#slug=continue-dev;named_by=github-copilot",
               "source_commit": "588139d853f9eab183368cfa2eaa8d6c1640fc74",
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -75,7 +81,7 @@
         "tag": "v2.0.0-vscode"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "maintained",
       "name": "Continue",
       "note": {
@@ -111,9 +117,10 @@
       },
       "sources": [
         "solvohq",
+        "diegoleme",
         "altstack"
       ],
-      "stars": 36406
+      "stars": 36408
     },
     {
       "evidence": {
@@ -127,7 +134,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -164,7 +171,7 @@
         "tag": "v0.86.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "maintained",
       "name": "Aider",
       "note": {
@@ -201,7 +208,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 49951
+      "stars": 49960
     },
     {
       "evidence": {
@@ -215,12 +222,17 @@
               "source_id": "solvohq"
             },
             {
+              "locator": "README.md#L164",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
+            },
+            {
               "locator": "data/tools.json#slug=tabby;named_by=github-copilot",
               "source_commit": "588139d853f9eab183368cfa2eaa8d6c1640fc74",
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -264,7 +276,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the Apache-2.0 core; parts under Tabby EE licence are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "maintained",
       "name": "Tabby",
       "note": {
@@ -298,9 +310,10 @@
       },
       "sources": [
         "solvohq",
+        "diegoleme",
         "altstack"
       ],
-      "stars": 33920
+      "stars": 33918
     }
   ],
   "saas": {

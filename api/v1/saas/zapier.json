@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "last_checked": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "more_available": 1,
   "provenance": {
@@ -39,12 +39,12 @@
               "source_id": "solvohq"
             },
             {
-              "locator": "README.md#L321",
-              "source_commit": "404431356e82cc44b035c9d7b83b676b56830a46",
+              "locator": "README.md#L406",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
               "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -81,13 +81,13 @@
         }
       },
       "github_url": "https://github.com/huginn/huginn",
-      "last_meaningful_activity_at": "2026-11-04T19:46:12Z",
+      "last_meaningful_activity_at": "2026-11-05T04:24:39Z",
       "latest_release": {
-        "published_at": "2026-11-04T18:37:11Z",
-        "tag": "v2026.11.05"
+        "published_at": "2026-11-05T04:24:39Z",
+        "tag": "v2026.11.05.2"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Huginn",
       "note": {
@@ -123,7 +123,7 @@
         "solvohq",
         "diegoleme"
       ],
-      "stars": 50292
+      "stars": 50294
     },
     {
       "evidence": {
@@ -137,7 +137,7 @@
               "source_id": "btwso"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -178,7 +178,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the AGPL-3.0 core; parts under Automatisch Enterprise License are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "maintained",
       "name": "Automatisch",
       "note": {
@@ -239,12 +239,17 @@
               "source_id": "btwso"
             },
             {
+              "locator": "README.md#L405",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
+            },
+            {
               "locator": "data/tools.json#slug=activepieces;named_by=zapier",
               "source_commit": "588139d853f9eab183368cfa2eaa8d6c1640fc74",
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -287,7 +292,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the MIT core; parts under Activepieces EE licence are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Activepieces",
       "note": {
@@ -325,9 +330,10 @@
         "solvohq",
         "runacapital",
         "btwso",
+        "diegoleme",
         "altstack"
       ],
-      "stars": 25376
+      "stars": 25381
     },
     {
       "evidence": {
@@ -346,13 +352,13 @@
               "source_id": "runacapital"
             },
             {
-              "locator": "README.md#L1787",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L242",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
             },
             {
-              "locator": "README.md#L322",
-              "source_commit": "404431356e82cc44b035c9d7b83b676b56830a46",
+              "locator": "README.md#L407",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
               "source_id": "diegoleme"
             },
             {
@@ -361,7 +367,7 @@
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -402,7 +408,7 @@
       },
       "licence_disclosure": "source-available: licensed under Sustainable Use License, which is not an OSI-approved open-source licence",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "n8n",
       "note": {
@@ -441,7 +447,7 @@
         "diegoleme",
         "altstack"
       ],
-      "stars": 209577
+      "stars": 209602
     },
     {
       "evidence": {
@@ -455,7 +461,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -495,7 +501,7 @@
       "latest_release": null,
       "licence_disclosure": "source-available: licensed under Pipedream Source Available License, which is not an OSI-approved open-source licence",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Pipedream",
       "note": {

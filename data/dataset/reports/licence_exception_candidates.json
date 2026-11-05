@@ -346,6 +346,28 @@
     "detected": {
       "closest_standard_licences": [],
       "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "COPYING"
+      ],
+      "restriction_markers": []
+    },
+    "issue_category": "unrecognised",
+    "maintenance": "active",
+    "name": "Collabora Online",
+    "oss_id": "github.com/collaboraonline/online",
+    "reason": "licence text is present and matches no reference licence closely enough",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/CollaboraOnline/online",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
       "host_licence_name": null,
       "host_spdx": null,
       "licence_files": [],
@@ -359,6 +381,33 @@
     "recommendation_eligible": false,
     "relationships_flagged": 1,
     "repo_url": "https://github.com/mezonai/mezon",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "EUPL-1.2"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "applies",
+        "except"
+      ]
+    },
+    "issue_category": "restricted",
+    "maintenance": "active",
+    "name": "Pi-hole",
+    "oss_id": "github.com/pi-hole/pi-hole",
+    "reason": "licence text adds or removes terms: applies, except",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/pi-hole/pi-hole",
     "review_status": "flagged_retained_not_reviewed_individually",
     "upstream_claims": []
   },
@@ -386,6 +435,42 @@
         "value": "AGPL-3.0"
       }
     ]
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.txt"
+      ],
+      "restriction_markers": [
+        "apply",
+        "commercial",
+        "different license",
+        "except",
+        "hosted",
+        "licensed under something that is not a recognised open licence",
+        "may not",
+        "must not",
+        "only",
+        "proprietary",
+        "provided that you",
+        "required",
+        "unless"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "HunyuanVideo",
+    "oss_id": "github.com/tencent-hunyuan/hunyuanvideo",
+    "reason": "licence text scopes or splits the licence: commercial, different license, proprietary",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/Tencent-Hunyuan/HunyuanVideo",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
   },
   {
     "detected": {
@@ -509,6 +594,61 @@
   },
   {
     "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "additional terms",
+        "commercial",
+        "except",
+        "required",
+        "revenue"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "MinerU",
+    "oss_id": "github.com/opendatalab/mineru",
+    "reason": "licence text scopes or splits the licence: commercial",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://github.com/opendatalab/MinerU",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "COPYING"
+      ],
+      "restriction_markers": [
+        "directory",
+        "exception",
+        "files in",
+        "only"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Scribus",
+    "oss_id": "github.com/scribusproject/scribus",
+    "reason": "licence text scopes or splits the licence: directory, files in",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://github.com/scribusproject/scribus",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
       "closest_standard_licences": [
         "MIT"
       ],
@@ -538,6 +678,56 @@
     "recommendation_eligible": false,
     "relationships_flagged": 0,
     "repo_url": "https://github.com/Stirling-Tools/Stirling-PDF",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE.md"
+      ],
+      "restriction_markers": [
+        "commons clause",
+        "licensed under something that is not a recognised open licence",
+        "portions of",
+        "required",
+        "restriction"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "Tandoor",
+    "oss_id": "github.com/tandoorrecipes/recipes",
+    "reason": "licence text contains source-available or use-restricted terms: commons clause",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://github.com/TandoorRecipes/recipes",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": null,
+      "licence_files": [],
+      "restriction_markers": []
+    },
+    "issue_category": "undetermined",
+    "maintenance": "active",
+    "name": "Inkscape",
+    "oss_id": "gitlab.com/inkscape/inkscape",
+    "reason": "the repository's licence files could not be read on this host",
+    "recommendation_eligible": false,
+    "relationships_flagged": 0,
+    "repo_url": "https://gitlab.com/inkscape/inkscape",
     "review_status": "flagged_retained_not_reviewed_individually",
     "upstream_claims": []
   },

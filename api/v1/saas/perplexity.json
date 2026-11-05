@@ -3,26 +3,127 @@
   "catalogue": {
     "audience": "both",
     "rank": 158,
-    "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation",
     "reasons": [
-      "fewer_than_minimum",
-      "outside_launch_selection"
+      "fewer_than_minimum"
     ],
     "status": "partial"
   },
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "last_checked": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "more_available": 0,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "diegoleme",
       "job_match"
     ]
   },
   "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L174",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
+            }
+          ],
+          "validated_as_of": "2026-11-05T10:24:46Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Perplexity as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/ItzCrazyKns/Vane",
+      "last_meaningful_activity_at": "2026-04-11T14:21:16Z",
+      "latest_release": {
+        "published_at": "2026-04-10T13:30:52Z",
+        "tag": "v1.12.2"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-05T10:24:46Z",
+      "maintenance_status": "maintained",
+      "name": "Vane",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/itzcrazykns/vane",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 76.9,
+        "trajectory": "Declining"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Perplexity as what it replaces"
+          }
+        ],
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/ItzCrazyKns/Vane",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "diegoleme"
+      ],
+      "stars": 38037
+    },
     {
       "evidence": {
         "relationship": {
@@ -35,7 +136,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -83,7 +184,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the MIT core; parts under Onyx Enterprise License are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "onyx",
       "note": {
@@ -104,7 +205,7 @@
         "score": 95.2,
         "trajectory": "Rising"
       },
-      "rank": 1,
+      "rank": 2,
       "replacement_fit": {
         "caps": [
           {
@@ -126,7 +227,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 33217
+      "stars": 33227
     }
   ],
   "saas": {

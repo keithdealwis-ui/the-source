@@ -1,6 +1,6 @@
 {
   "api_version": "v1",
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "match_semantics": "Lowercase the page hostname and strip one leading \"www.\". A rule matches when its host equals the hostname (or the hostname ends with its host_suffix) and, if it has a path_prefix, the URL path equals the prefix or continues it at a \"/\" (a prefix that ends in \"/\" is a plain prefix). When several rules match, the most specific wins: one with a path_prefix beats one without, a longer path_prefix beats a shorter one, an exact host beats a host_suffix, a longer host_suffix beats a shorter one; remaining ties go to the first rule in file order.",
   "rules": [
     {
@@ -788,6 +788,10 @@
     {
       "host": "app.netlify.com",
       "saas_id": "netlify"
+    },
+    {
+      "host": "app.outreach.io",
+      "saas_id": "outreach"
     },
     {
       "host": "app.pandadoc.com",
@@ -1716,6 +1720,10 @@
       "saas_id": "fullstory"
     },
     {
+      "host": "gamma.app",
+      "saas_id": "gamma"
+    },
+    {
       "host": "gemini.google.com",
       "saas_id": "google-gemini"
     },
@@ -1870,6 +1878,10 @@
     {
       "host": "insights.hotjar.com",
       "saas_id": "hotjar"
+    },
+    {
+      "host": "instagram.com",
+      "saas_id": "instagram"
     },
     {
       "host": "instapaper.com",
@@ -2313,6 +2325,10 @@
       "saas_id": "microsoft-outlook"
     },
     {
+      "host": "outreach.io",
+      "saas_id": "outreach"
+    },
+    {
       "host": "outsystems.com",
       "saas_id": "outsystems"
     },
@@ -2482,6 +2498,10 @@
       "saas_id": "chrome-remote-desktop"
     },
     {
+      "host": "remove.bg",
+      "saas_id": "remove-bg"
+    },
+    {
       "host": "render.com",
       "saas_id": "render"
     },
@@ -2615,6 +2635,15 @@
     {
       "host": "snowflake.com",
       "saas_id": "snowflake"
+    },
+    {
+      "host": "sonarcloud.io",
+      "saas_id": "sonarqube-cloud"
+    },
+    {
+      "host": "sonarsource.com",
+      "path_prefix": "/products/sonarcloud",
+      "saas_id": "sonarqube-cloud"
     },
     {
       "host": "splashtop.com",

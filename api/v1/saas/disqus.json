@@ -3,16 +3,16 @@
   "catalogue": {
     "audience": "both",
     "rank": 385,
-    "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation",
     "reasons": [
       "fewer_than_minimum"
     ],
     "status": "partial"
   },
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "last_checked": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "more_available": 0,
   "provenance": {
@@ -29,12 +29,116 @@
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "README.md#L131",
-              "source_commit": "404431356e82cc44b035c9d7b83b676b56830a46",
+              "locator": "README.md#L413",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
               "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Disqus as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 92.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "data_ownership",
+            "demo",
+            "import",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/umputun/remark42",
+      "last_meaningful_activity_at": "2026-10-31T08:05:16Z",
+      "latest_release": {
+        "published_at": "2026-10-11T19:24:03Z",
+        "tag": "v1.18.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-05T10:24:46Z",
+      "maintenance_status": "active",
+      "name": "Remark42",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
+      },
+      "oss_id": "github.com/umputun/remark42",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 91.2,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Disqus as what it replaces"
+          }
+        ],
+        "confidence": 86.5,
+        "evaluated_at": "2026-11-05T10:24:46Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/umputun/remark42",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "diegoleme"
+      ],
+      "stars": 5646
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L412",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
+            }
+          ],
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -72,7 +176,7 @@
         "tag": "0.14.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Isso",
       "note": {
@@ -93,7 +197,7 @@
         "score": 87.8,
         "trajectory": "Rising"
       },
-      "rank": 1,
+      "rank": 2,
       "replacement_fit": {
         "caps": [],
         "confidence": 83.5,

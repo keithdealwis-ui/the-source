@@ -9,15 +9,16 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "last_checked": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "more_available": 0,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "diegoleme",
       "job_match",
       "opensaasdirectory",
       "solvohq"
@@ -36,12 +37,17 @@
               "source_id": "solvohq"
             },
             {
-              "locator": "README.md#L1611",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L1600",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "README.md#L355",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -83,7 +89,7 @@
         "tag": "v3.4.0-rc.2"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Immich",
       "note": {
@@ -117,9 +123,10 @@
       },
       "sources": [
         "solvohq",
-        "opensaasdirectory"
+        "opensaasdirectory",
+        "diegoleme"
       ],
-      "stars": 118268
+      "stars": 118287
     },
     {
       "evidence": {
@@ -131,9 +138,14 @@
               "locator": "README.md#L887",
               "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
               "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L356",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -172,7 +184,7 @@
         "tag": "1.5.1"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "LibrePhotos",
       "note": {
@@ -207,9 +219,10 @@
         "self_hostable": true
       },
       "sources": [
-        "solvohq"
+        "solvohq",
+        "diegoleme"
       ],
-      "stars": 8129
+      "stars": 8131
     },
     {
       "evidence": {
@@ -223,7 +236,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -267,7 +280,7 @@
         "tag": "16.4.0"
       },
       "licence_spdx": "GPL-2.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Piwigo",
       "note": {
@@ -322,7 +335,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -364,7 +377,7 @@
         "tag": "v1.0.2"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "maintained",
       "name": "lynavo-drive",
       "note": {

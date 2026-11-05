@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "last_checked": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "more_available": 3,
   "provenance": {
@@ -20,6 +20,7 @@
     "sources": [
       "altstack",
       "btwso",
+      "diegoleme",
       "emmraan",
       "intake",
       "opensaasdirectory",
@@ -40,7 +41,7 @@
               "source_id": "intake"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -82,7 +83,7 @@
         "tag": "v2.49.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "kaneo",
       "note": {
@@ -117,7 +118,7 @@
       "sources": [
         "intake"
       ],
-      "stars": 9717
+      "stars": 9719
     },
     {
       "evidence": {
@@ -131,7 +132,7 @@
               "source_id": "btwso"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -175,7 +176,7 @@
         "tag": "v3.13.2"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Leantime",
       "note": {
@@ -210,7 +211,7 @@
       "sources": [
         "btwso"
       ],
-      "stars": 11962
+      "stars": 11964
     },
     {
       "evidence": {
@@ -229,8 +230,8 @@
               "source_id": "runacapital"
             },
             {
-              "locator": "README.md#L719",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L985",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
             },
             {
@@ -244,12 +245,17 @@
               "source_id": "btwso"
             },
             {
+              "locator": "README.md#L484",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
+            },
+            {
               "locator": "data/tools.json#slug=plane;named_by=jira",
               "source_commit": "588139d853f9eab183368cfa2eaa8d6c1640fc74",
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -293,7 +299,7 @@
         "tag": "v1.4.3"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Plane",
       "note": {
@@ -331,9 +337,10 @@
         "opensaasdirectory",
         "emmraan",
         "btwso",
+        "diegoleme",
         "altstack"
       ],
-      "stars": 61988
+      "stars": 62006
     },
     {
       "evidence": {
@@ -347,7 +354,7 @@
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -395,7 +402,7 @@
         "tag": "2026.11.01"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Orbit",
       "note": {
@@ -436,7 +443,7 @@
       "sources": [
         "altstack"
       ],
-      "stars": 77
+      "stars": 78
     },
     {
       "evidence": {
@@ -453,9 +460,14 @@
               "locator": "data/products.json#/164/slug=openproject",
               "source_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
               "source_id": "emmraan"
+            },
+            {
+              "locator": "README.md#L483",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -498,7 +510,7 @@
         "tag": "v17.9.6"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "OpenProject",
       "note": {
@@ -535,9 +547,10 @@
       },
       "sources": [
         "solvohq",
-        "emmraan"
+        "emmraan",
+        "diegoleme"
       ],
-      "stars": 16992
+      "stars": 17011
     }
   ],
   "saas": {

@@ -1,6 +1,6 @@
 [
   {
-    "claims": 7,
+    "claims": 8,
     "key": "sap",
     "sources": [
       "diegoleme",
@@ -13,6 +13,17 @@
   },
   {
     "claims": 6,
+    "key": "adobephotoshop",
+    "sources": [
+      "altstack",
+      "diegoleme"
+    ],
+    "spellings": [
+      "Adobe Photoshop"
+    ]
+  },
+  {
+    "claims": 6,
     "key": "skype",
     "sources": [
       "btwso",
@@ -20,6 +31,17 @@
     ],
     "spellings": [
       "Skype"
+    ]
+  },
+  {
+    "claims": 5,
+    "key": "adobeacrobat",
+    "sources": [
+      "diegoleme",
+      "fossalt"
+    ],
+    "spellings": [
+      "Adobe Acrobat"
     ]
   },
   {
@@ -44,6 +66,17 @@
   },
   {
     "claims": 5,
+    "key": "pocket",
+    "sources": [
+      "diegoleme",
+      "solvohq"
+    ],
+    "spellings": [
+      "Pocket"
+    ]
+  },
+  {
+    "claims": 5,
     "key": "wisprflow",
     "sources": [
       "diegoleme"
@@ -53,14 +86,14 @@
     ]
   },
   {
-    "claims": 3,
-    "key": "adobeacrobat",
+    "claims": 4,
+    "key": "adobepremierepro",
     "sources": [
-      "diegoleme",
-      "fossalt"
+      "altstack",
+      "diegoleme"
     ],
     "spellings": [
-      "Adobe Acrobat"
+      "Adobe Premiere Pro"
     ]
   },
   {
@@ -81,6 +114,16 @@
     ],
     "spellings": [
       "Cloudflare DNS"
+    ]
+  },
+  {
+    "claims": 3,
+    "key": "cpanel",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "cPanel"
     ]
   },
   {
@@ -115,6 +158,26 @@
   },
   {
     "claims": 3,
+    "key": "kling",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "Kling"
+    ]
+  },
+  {
+    "claims": 3,
+    "key": "mathpix",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "Mathpix"
+    ]
+  },
+  {
+    "claims": 3,
     "key": "mint",
     "sources": [
       "solvohq"
@@ -135,22 +198,42 @@
   },
   {
     "claims": 3,
-    "key": "pocket",
+    "key": "opusclip",
     "sources": [
-      "solvohq"
+      "diegoleme"
     ],
     "spellings": [
-      "Pocket"
+      "Opus Clip"
     ]
   },
   {
     "claims": 2,
-    "key": "adobephotoshop",
+    "key": "adobeaftereffects",
     "sources": [
-      "altstack"
+      "diegoleme"
     ],
     "spellings": [
-      "Adobe Photoshop"
+      "Adobe After Effects"
+    ]
+  },
+  {
+    "claims": 2,
+    "key": "adobeillustrator",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "Adobe Illustrator"
+    ]
+  },
+  {
+    "claims": 2,
+    "key": "adobeindesign",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "Adobe InDesign"
     ]
   },
   {
@@ -161,6 +244,26 @@
     ],
     "spellings": [
       "AutoCAD"
+    ]
+  },
+  {
+    "claims": 2,
+    "key": "cursor",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "Cursor"
+    ]
+  },
+  {
+    "claims": 2,
+    "key": "dalle",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "DALL·E"
     ]
   },
   {
@@ -176,6 +279,16 @@
   },
   {
     "claims": 2,
+    "key": "did",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "D-ID"
+    ]
+  },
+  {
+    "claims": 2,
     "key": "elasticsearch",
     "sources": [
       "awesome-selfhosted",
@@ -183,6 +296,17 @@
     ],
     "spellings": [
       "Elasticsearch"
+    ]
+  },
+  {
+    "claims": 2,
+    "key": "googlehome",
+    "sources": [
+      "diegoleme",
+      "opensaasdirectory"
+    ],
+    "spellings": [
+      "Google Home"
     ]
   },
   {
@@ -198,6 +322,26 @@
   },
   {
     "claims": 2,
+    "key": "heygen",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "HeyGen"
+    ]
+  },
+  {
+    "claims": 2,
+    "key": "kindleunlimited",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "Kindle Unlimited"
+    ]
+  },
+  {
+    "claims": 2,
     "key": "lmstudio",
     "sources": [
       "altstack"
@@ -208,12 +352,42 @@
   },
   {
     "claims": 2,
+    "key": "meshy",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "Meshy"
+    ]
+  },
+  {
+    "claims": 2,
+    "key": "notebooklm",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "NotebookLM"
+    ]
+  },
+  {
+    "claims": 2,
     "key": "odoo",
     "sources": [
       "runacapital"
     ],
     "spellings": [
       "Odoo"
+    ]
+  },
+  {
+    "claims": 2,
+    "key": "paprika",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "Paprika"
     ]
   },
   {
@@ -258,16 +432,6 @@
   },
   {
     "claims": 1,
-    "key": "adobepremierepro",
-    "sources": [
-      "altstack"
-    ],
-    "spellings": [
-      "Adobe Premiere Pro"
-    ]
-  },
-  {
-    "claims": 1,
     "key": "airflow",
     "sources": [
       "fossalt"
@@ -284,6 +448,16 @@
     ],
     "spellings": [
       "Akeneo PIM (Enterprise)"
+    ]
+  },
+  {
+    "claims": 1,
+    "key": "alexa",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "Alexa"
     ]
   },
   {
@@ -398,6 +572,26 @@
   },
   {
     "claims": 1,
+    "key": "bolt",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "Bolt"
+    ]
+  },
+  {
+    "claims": 1,
+    "key": "characterai",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "Character.ai"
+    ]
+  },
+  {
+    "claims": 1,
     "key": "chromecast",
     "sources": [
       "awesome-selfhosted"
@@ -418,6 +612,16 @@
   },
   {
     "claims": 1,
+    "key": "codecademy",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "Codecademy"
+    ]
+  },
+  {
+    "claims": 1,
     "key": "commsor",
     "sources": [
       "runacapital"
@@ -428,22 +632,22 @@
   },
   {
     "claims": 1,
-    "key": "cpanel",
-    "sources": [
-      "diegoleme"
-    ],
-    "spellings": [
-      "cPanel"
-    ]
-  },
-  {
-    "claims": 1,
     "key": "dbeaver",
     "sources": [
       "awesome-selfhosted"
     ],
     "spellings": [
       "DBeaver"
+    ]
+  },
+  {
+    "claims": 1,
+    "key": "devin",
+    "sources": [
+      "opensaasdirectory"
+    ],
+    "spellings": [
+      "Devin"
     ]
   },
   {
@@ -538,6 +742,16 @@
   },
   {
     "claims": 1,
+    "key": "githubcopilotcodingagent",
+    "sources": [
+      "opensaasdirectory"
+    ],
+    "spellings": [
+      "GitHub Copilot coding agent"
+    ]
+  },
+  {
+    "claims": 1,
     "key": "githubdependabot",
     "sources": [
       "runacapital"
@@ -558,12 +772,12 @@
   },
   {
     "claims": 1,
-    "key": "googlehome",
+    "key": "googlemapstimeline",
     "sources": [
-      "opensaasdirectory"
+      "diegoleme"
     ],
     "spellings": [
-      "Google Home"
+      "Google Maps Timeline"
     ]
   },
   {
@@ -584,16 +798,6 @@
     ],
     "spellings": [
       "Google Timeline a.k.a. Google Location History"
-    ]
-  },
-  {
-    "claims": 1,
-    "key": "granthub",
-    "sources": [
-      "diegoleme"
-    ],
-    "spellings": [
-      "GrantHub"
     ]
   },
   {
@@ -628,6 +832,16 @@
   },
   {
     "claims": 1,
+    "key": "lalalai",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "Lalal.ai"
+    ]
+  },
+  {
+    "claims": 1,
     "key": "landingfolio",
     "sources": [
       "runacapital"
@@ -638,12 +852,32 @@
   },
   {
     "claims": 1,
+    "key": "leetcode",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "LeetCode"
+    ]
+  },
+  {
+    "claims": 1,
     "key": "logtail",
     "sources": [
       "emmraan"
     ],
     "spellings": [
       "Logtail"
+    ]
+  },
+  {
+    "claims": 1,
+    "key": "mailtrap",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "Mailtrap"
     ]
   },
   {
@@ -744,16 +978,6 @@
     ],
     "spellings": [
       "OpenVPN Access Server"
-    ]
-  },
-  {
-    "claims": 1,
-    "key": "opusclip",
-    "sources": [
-      "diegoleme"
-    ],
-    "spellings": [
-      "Opus Clip"
     ]
   },
   {
@@ -908,6 +1132,16 @@
   },
   {
     "claims": 1,
+    "key": "ring",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "Ring"
+    ]
+  },
+  {
+    "claims": 1,
     "key": "romm",
     "sources": [
       "awesome-selfhosted"
@@ -998,6 +1232,16 @@
   },
   {
     "claims": 1,
+    "key": "speechify",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "Speechify"
+    ]
+  },
+  {
+    "claims": 1,
     "key": "sshd",
     "sources": [
       "awesome-selfhosted"
@@ -1074,6 +1318,36 @@
     ],
     "spellings": [
       "Tenable Nessus"
+    ]
+  },
+  {
+    "claims": 1,
+    "key": "testrail",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "TestRail"
+    ]
+  },
+  {
+    "claims": 1,
+    "key": "toby",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "Toby"
+    ]
+  },
+  {
+    "claims": 1,
+    "key": "topazphotoai",
+    "sources": [
+      "diegoleme"
+    ],
+    "spellings": [
+      "Topaz Photo AI"
     ]
   },
   {

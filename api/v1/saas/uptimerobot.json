@@ -9,15 +9,16 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "last_checked": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "more_available": 3,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "diegoleme",
       "emmraan",
       "job_match",
       "opensaasdirectory",
@@ -37,7 +38,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -86,7 +87,7 @@
         "tag": "v5.0.3"
       },
       "licence_spdx": "BSD-3-Clause",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Healthchecks.io (self-hosted)",
       "note": {
@@ -127,7 +128,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 10498
+      "stars": 10499
     },
     {
       "evidence": {
@@ -136,12 +137,12 @@
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "README.md#L405",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L400",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -189,7 +190,7 @@
         "tag": "v3.13.1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Checkmate",
       "note": {
@@ -230,7 +231,7 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 11024
+      "stars": 11027
     },
     {
       "evidence": {
@@ -239,12 +240,12 @@
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "README.md#L421",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L436",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -281,7 +282,7 @@
         "tag": "v0.43.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "SolidPing",
       "note": {
@@ -333,17 +334,22 @@
               "source_id": "solvohq"
             },
             {
-              "locator": "README.md#L357",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L373",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
             },
             {
               "locator": "data/products.json#/76/slug=uptime-kuma",
               "source_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
               "source_id": "emmraan"
+            },
+            {
+              "locator": "README.md#L513",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -382,7 +388,7 @@
         "tag": "2.5.9"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Uptime Kuma",
       "note": {
@@ -420,9 +426,10 @@
       "sources": [
         "solvohq",
         "opensaasdirectory",
-        "emmraan"
+        "emmraan",
+        "diegoleme"
       ],
-      "stars": 93267
+      "stars": 93272
     },
     {
       "evidence": {
@@ -436,7 +443,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -484,7 +491,7 @@
         "tag": "v1.11.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "maintenant",
       "note": {

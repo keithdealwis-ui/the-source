@@ -9,15 +9,16 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "last_checked": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "more_available": 0,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "diegoleme",
       "job_match",
       "runacapital",
       "solvohq"
@@ -41,7 +42,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -84,7 +85,7 @@
         "tag": "v0.82.0"
       },
       "licence_spdx": "BSD-3-Clause",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Netbird",
       "note": {
@@ -120,21 +121,26 @@
         "solvohq",
         "runacapital"
       ],
-      "stars": 30684
+      "stars": 30701
     },
     {
       "evidence": {
         "relationship": {
-          "corroborated": false,
+          "corroborated": true,
           "evidence_class": "listed",
           "provenance": [
             {
               "locator": "README.md#L1060",
               "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
               "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L453",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -173,7 +179,7 @@
         "tag": "v0.29.7"
       },
       "licence_spdx": "BSD-3-Clause",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Headscale",
       "note": {
@@ -209,9 +215,10 @@
         "self_hostable": true
       },
       "sources": [
-        "solvohq"
+        "solvohq",
+        "diegoleme"
       ],
-      "stars": 45374
+      "stars": 45393
     },
     {
       "evidence": {
@@ -225,7 +232,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -272,7 +279,7 @@
         "tag": "v0.20.0"
       },
       "licence_spdx": "MPL-2.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "awl",
       "note": {
@@ -315,7 +322,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 724
+      "stars": 726
     },
     {
       "evidence": {
@@ -329,7 +336,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -372,7 +379,7 @@
         "tag": "v0.5.15"
       },
       "licence_spdx": "MPL-2.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "rayfish",
       "note": {
@@ -413,7 +420,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 776
+      "stars": 777
     }
   ],
   "saas": {

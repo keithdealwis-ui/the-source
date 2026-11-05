@@ -9,15 +9,16 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "last_checked": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "more_available": 0,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "diegoleme",
       "job_match",
       "opensaasdirectory"
     ]
@@ -26,16 +27,21 @@
     {
       "evidence": {
         "relationship": {
-          "corroborated": false,
+          "corroborated": true,
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "README.md#L1041",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L1571",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "README.md#L698",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -72,7 +78,7 @@
         "tag": "v26.11.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Actual Budget",
       "note": {
@@ -107,23 +113,29 @@
         "self_hostable": true
       },
       "sources": [
-        "opensaasdirectory"
+        "opensaasdirectory",
+        "diegoleme"
       ],
-      "stars": 29978
+      "stars": 29990
     },
     {
       "evidence": {
         "relationship": {
-          "corroborated": false,
+          "corroborated": true,
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "README.md#L1057",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L1580",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "README.md#L699",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -162,7 +174,7 @@
         "tag": "v6.7.9"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Firefly III",
       "note": {
@@ -196,9 +208,10 @@
         "self_hostable": true
       },
       "sources": [
-        "opensaasdirectory"
+        "opensaasdirectory",
+        "diegoleme"
       ],
-      "stars": 25074
+      "stars": 25076
     },
     {
       "evidence": {
@@ -212,7 +225,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -260,7 +273,7 @@
         "tag": "v0.17.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "securo",
       "note": {
@@ -301,7 +314,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 4186
+      "stars": 4188
     },
     {
       "evidence": {
@@ -315,7 +328,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -356,7 +369,7 @@
         "tag": "v2.1.1"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "ezbookkeeping",
       "note": {
@@ -391,7 +404,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 5990
+      "stars": 5993
     }
   ],
   "saas": {

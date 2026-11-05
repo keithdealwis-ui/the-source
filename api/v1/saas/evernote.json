@@ -9,16 +9,17 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "last_checked": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "more_available": 2,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
       "btwso",
+      "diegoleme",
       "fossalt",
       "runacapital",
       "solvohq"
@@ -42,7 +43,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -96,7 +97,7 @@
         "tag": "v3.8.9"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "SiYuan",
       "note": {
@@ -142,21 +143,26 @@
         "btwso",
         "fossalt"
       ],
-      "stars": 47087
+      "stars": 47089
     },
     {
       "evidence": {
         "relationship": {
-          "corroborated": false,
+          "corroborated": true,
           "evidence_class": "listed",
           "provenance": [
             {
               "locator": "submissions/Trilium.cc.yaml",
               "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
               "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L374",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -191,15 +197,15 @@
         }
       },
       "github_url": "https://github.com/TriliumNext/Trilium",
-      "last_meaningful_activity_at": "2026-10-24T00:23:40Z",
+      "last_meaningful_activity_at": "2026-11-04T23:04:52Z",
       "latest_release": {
         "published_at": "2026-10-23T21:07:15Z",
         "tag": "v0.106.1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
-      "name": "Trilium.cc",
+      "name": "Trilium",
       "note": {
         "gaps": [],
         "origin": "derived",
@@ -230,9 +236,10 @@
         "self_hostable": true
       },
       "sources": [
-        "runacapital"
+        "runacapital",
+        "diegoleme"
       ],
-      "stars": 38704
+      "stars": 38706
     },
     {
       "evidence": {
@@ -256,7 +263,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -297,7 +304,7 @@
         "tag": "nightly"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Logseq",
       "note": {
@@ -334,7 +341,7 @@
         "btwso",
         "fossalt"
       ],
-      "stars": 45480
+      "stars": 45483
     },
     {
       "evidence": {
@@ -358,7 +365,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -399,7 +406,7 @@
         "tag": "v3.4.12"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Notesnook",
       "note": {
@@ -436,7 +443,7 @@
         "btwso",
         "fossalt"
       ],
-      "stars": 14886
+      "stars": 14887
     },
     {
       "evidence": {
@@ -450,7 +457,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -490,7 +497,7 @@
         "tag": "note-gen-v0.39.2"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "NoteGen",
       "note": {

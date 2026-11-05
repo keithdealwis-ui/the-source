@@ -1,16 +1,16 @@
 {
-  "as_of": "2026-11-05T02:13:56Z",
+  "as_of": "2026-11-05T10:24:46Z",
   "counts": {
-    "measured_any_window": 1522,
-    "projects": 1543
+    "measured_any_window": 1497,
+    "projects": 1590
   },
   "coverage": {
     "1": {
       "acceleration": {
         "labels": {
-          "accelerating": 231,
-          "decelerating": 220,
-          "steady": 1071
+          "accelerating": 255,
+          "decelerating": 211,
+          "steady": 1031
         },
         "measurable_from": "2026-10-04",
         "prior_base": {
@@ -22,7 +22,7 @@
         "projects": {
           "identity_changed": 0,
           "insufficient_history": 0,
-          "measured": 1522,
+          "measured": 1497,
           "no_baseline": 0,
           "not_observed": 0,
           "suppressed": 0
@@ -39,17 +39,17 @@
       "calendar_days_in_window": 2,
       "measurable_from": "2026-10-03",
       "momentum": {
-        "declining": 5,
-        "flat": 1116,
-        "rising": 339,
-        "surging": 62
+        "declining": 7,
+        "flat": 1067,
+        "rising": 359,
+        "surging": 64
       },
       "projects": {
         "identity_changed": 1,
         "insufficient_history": 0,
-        "measured": 1522,
-        "no_baseline": 2,
-        "not_observed": 18,
+        "measured": 1497,
+        "no_baseline": 73,
+        "not_observed": 19,
         "suppressed": 0
       },
       "snapshots_in_window": 2,
@@ -65,7 +65,7 @@
         },
         "projects": {
           "identity_changed": 0,
-          "insufficient_history": 607,
+          "insufficient_history": 582,
           "measured": 0,
           "no_baseline": 0,
           "not_observed": 0,
@@ -84,16 +84,16 @@
       "measurable_from": "2026-11-01",
       "momentum": {
         "declining": 2,
-        "flat": 372,
-        "rising": 221,
+        "flat": 348,
+        "rising": 220,
         "surging": 12
       },
       "projects": {
         "identity_changed": 0,
         "insufficient_history": 0,
-        "measured": 607,
-        "no_baseline": 918,
-        "not_observed": 18,
+        "measured": 582,
+        "no_baseline": 989,
+        "not_observed": 19,
         "suppressed": 0
       },
       "snapshots_in_window": 31,
@@ -102,9 +102,9 @@
     "7": {
       "acceleration": {
         "labels": {
-          "accelerating": 251,
-          "decelerating": 282,
-          "steady": 959
+          "accelerating": 244,
+          "decelerating": 276,
+          "steady": 947
         },
         "measurable_from": "2026-10-16",
         "prior_base": {
@@ -116,7 +116,7 @@
         "projects": {
           "identity_changed": 0,
           "insufficient_history": 0,
-          "measured": 1492,
+          "measured": 1467,
           "no_baseline": 2,
           "not_observed": 0,
           "suppressed": 0
@@ -134,16 +134,16 @@
       "measurable_from": "2026-10-09",
       "momentum": {
         "declining": 7,
-        "flat": 913,
-        "rising": 483,
-        "surging": 91
+        "flat": 880,
+        "rising": 490,
+        "surging": 92
       },
       "projects": {
         "identity_changed": 1,
         "insufficient_history": 0,
-        "measured": 1494,
-        "no_baseline": 30,
-        "not_observed": 18,
+        "measured": 1469,
+        "no_baseline": 101,
+        "not_observed": 19,
         "suppressed": 0
       },
       "snapshots_in_window": 8,
@@ -174,7 +174,7 @@
       "momentum": {},
       "projects": {
         "identity_changed": 0,
-        "insufficient_history": 1543,
+        "insufficient_history": 1590,
         "measured": 0,
         "no_baseline": 0,
         "not_observed": 0,
@@ -185,11 +185,11 @@
     }
   },
   "files": {
-    "live.json": "0481f29392c3d5b2510a69c921a651146e861695da10c550bb0ea2db78510c25",
-    "projects.jsonl": "1f2db7abd73ebac5fbc3bb7e6688c2fc705575d2f82d817f65d6debc2b622cec"
+    "live.json": "a1281bfb7f16bd8bb905beb3c38b6dd52e63d750815250b743d6182bd43d4c47",
+    "projects.jsonl": "7c33dfad2e87a6b1dc7310a1f25a74c83a1deddebb48ff5de7045a0faa7d7d9e"
   },
   "history": {
-    "dataset_version": "28d4405a7c40c325",
+    "dataset_version": "da679aa830d7b3b1",
     "day_sha256": {
       "2026-10-05": "0e85ed8bcf6246b600c7644bf7a8a96f421501bc8aac3b0675d6a6589a27cf40",
       "2026-10-06": "732cfe7b8b49f8495d603994d4f22ec243e12c46fab8b0f9fe284e2fe0b430ec",
@@ -222,7 +222,7 @@
       "2026-11-02": "63ac91f2e0e058bbbb6d4c7eda95237ec3061dcf6c60fe108912f6828ae4f2e0",
       "2026-11-03": "dba1f3bdfaa236425c95bff8064ffaa9b44a5c6f4c86abc46fd6779d75f52eb2",
       "2026-11-04": "ae7b93962d0a937a3854d400c0938632215b19c7ffc4053fb308038b38b86123",
-      "2026-11-05": "9bdc7420a396040326993aa608bf6f65e624144461cc46ee38c4f2dfa34586ea"
+      "2026-11-05": "9800d282d300ad5653cd96c9b854b28199c06165866392275fb0ee15cd18de31"
     },
     "days_held": 35,
     "days_read": [
@@ -261,7 +261,7 @@
     ],
     "newest": "2026-11-05",
     "oldest": "2026-10-02",
-    "run_id": "2026-11-05-schedule-a1"
+    "run_id": "manual-20261105T102445Z-manual-a1"
   },
   "methodology": {
     "doc": "docs/MOMENTUM.md",
@@ -272,11 +272,11 @@
   "on": "2026-11-05",
   "sanity": {
     "live": {
-      "as_of": "2026-11-05T02:13:56Z",
-      "endpoint_as_of": "2026-11-05T02:13:56Z",
+      "as_of": "2026-11-05T10:24:46Z",
+      "endpoint_as_of": "2026-11-05T10:24:46Z",
       "lag_hours": 0.0,
       "max_lag_hours": 6,
-      "sha256": "b1a0cf20f970c7215bcb87b38702aa8431f09e1ad2a3ec05fa125e7e1f27a813",
+      "sha256": "6947077ce7994cc7c816cec7c5eae6ce843d9277594cb737081ca12f527a1a7a",
       "status": "compared"
     },
     "parameters": {

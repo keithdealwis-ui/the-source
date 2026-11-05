@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "last_checked": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "more_available": 0,
   "provenance": {
@@ -45,8 +45,8 @@
               "source_id": "runacapital"
             },
             {
-              "locator": "README.md#L921",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L650",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
             },
             {
@@ -60,12 +60,17 @@
               "source_id": "btwso"
             },
             {
+              "locator": "README.md#L522",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
+            },
+            {
               "locator": "README.md#L238",
               "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -109,7 +114,7 @@
         "tag": "v30.2"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Typesense",
       "note": {
@@ -147,23 +152,29 @@
         "opensaasdirectory",
         "emmraan",
         "btwso",
+        "diegoleme",
         "fossalt"
       ],
-      "stars": 27084
+      "stars": 27086
     },
     {
       "evidence": {
         "relationship": {
-          "corroborated": false,
+          "corroborated": true,
           "evidence_class": "listed",
           "provenance": [
             {
               "locator": "README.md#L544",
               "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
               "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L520",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -203,7 +214,7 @@
         "tag": "2.19.7"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "OpenSearch",
       "note": {
@@ -242,9 +253,10 @@
         "self_hostable": true
       },
       "sources": [
-        "solvohq"
+        "solvohq",
+        "diegoleme"
       ],
-      "stars": 13958
+      "stars": 13961
     },
     {
       "evidence": {
@@ -253,8 +265,8 @@
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "README.md#L87",
-              "source_commit": "404431356e82cc44b035c9d7b83b676b56830a46",
+              "locator": "README.md#L521",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
               "source_id": "diegoleme"
             },
             {
@@ -263,7 +275,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -305,7 +317,7 @@
         "tag": "v1.10.2"
       },
       "licence_spdx": "MPL-2.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Sonic",
       "note": {
@@ -343,7 +355,7 @@
         "diegoleme",
         "fossalt"
       ],
-      "stars": 21377
+      "stars": 21378
     },
     {
       "evidence": {
@@ -362,8 +374,8 @@
               "source_id": "runacapital"
             },
             {
-              "locator": "README.md#L905",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L641",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
             },
             {
@@ -372,8 +384,8 @@
               "source_id": "emmraan"
             },
             {
-              "locator": "README.md#L86",
-              "source_commit": "404431356e82cc44b035c9d7b83b676b56830a46",
+              "locator": "README.md#L519",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
               "source_id": "diegoleme"
             },
             {
@@ -382,7 +394,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -427,7 +439,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the MIT core; parts under BUSL-1.1 (Meilisearch EE) are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Meilisearch",
       "note": {
@@ -467,7 +479,7 @@
         "diegoleme",
         "fossalt"
       ],
-      "stars": 59786
+      "stars": 59788
     },
     {
       "evidence": {
@@ -481,7 +493,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -529,7 +541,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the BSD-3-Clause core; parts under Weaviate enterprise licence are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Weaviate",
       "note": {

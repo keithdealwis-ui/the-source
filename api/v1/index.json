@@ -3,17 +3,17 @@
   "canonical_schema": "the-source.canonical/1",
   "catalogue": {
     "entries": 500,
-    "none_yet": 130,
-    "ok": 203,
-    "partial": 167,
+    "none_yet": 125,
+    "ok": 207,
+    "partial": 168,
     "path": "catalogue.json"
   },
-  "data_as_of": "2026-11-05T02:13:56Z",
-  "dataset_version": "1e8c37ae5796a82e",
+  "data_as_of": "2026-11-05T10:24:46Z",
+  "dataset_version": "da679aa830d7b3b1",
   "domains": "domains.json",
   "live_checked_at": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "supported_saas": [
     {
@@ -398,7 +398,7 @@
       "compare_path": "/open-source/ngrok-alternatives",
       "name": "ngrok",
       "path": "saas/ngrok.json",
-      "recommendations": 4,
+      "recommendations": 5,
       "saas_id": "ngrok",
       "slug": "ngrok",
       "status": "ok"
@@ -485,13 +485,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": null,
+      "compare_path": "/open-source/medium-alternatives",
       "name": "Medium",
       "path": "saas/medium.json",
-      "recommendations": 2,
+      "recommendations": 3,
       "saas_id": "medium",
       "slug": "medium",
-      "status": "insufficient_recommendations"
+      "status": "ok"
     },
     {
       "compare_path": "/open-source/github-alternatives",
@@ -524,7 +524,7 @@
       "compare_path": "/open-source/claude-alternatives",
       "name": "Claude",
       "path": "saas/claude.json",
-      "recommendations": 3,
+      "recommendations": 5,
       "saas_id": "claude",
       "slug": "claude",
       "status": "ok"
@@ -803,7 +803,7 @@
       "compare_path": null,
       "name": "Midjourney",
       "path": "saas/midjourney.json",
-      "recommendations": 1,
+      "recommendations": 2,
       "saas_id": "midjourney",
       "slug": "midjourney",
       "status": "insufficient_recommendations"
@@ -992,7 +992,7 @@
       "compare_path": "/open-source/wix-alternatives",
       "name": "Wix",
       "path": "saas/wix.json",
-      "recommendations": 4,
+      "recommendations": 5,
       "saas_id": "wix",
       "slug": "wix",
       "status": "ok"
@@ -1052,13 +1052,13 @@
       "status": "ok"
     },
     {
-      "compare_path": null,
+      "compare_path": "/open-source/elevenlabs-alternatives",
       "name": "ElevenLabs",
       "path": "saas/elevenlabs.json",
-      "recommendations": 2,
+      "recommendations": 5,
       "saas_id": "elevenlabs",
       "slug": "elevenlabs",
-      "status": "insufficient_recommendations"
+      "status": "ok"
     },
     {
       "compare_path": "/open-source/sanity-alternatives",
@@ -1368,9 +1368,18 @@
     },
     {
       "compare_path": null,
+      "name": "Instagram",
+      "path": "saas/instagram.json",
+      "recommendations": 1,
+      "saas_id": "instagram",
+      "slug": "instagram",
+      "status": "insufficient_recommendations"
+    },
+    {
+      "compare_path": null,
       "name": "Perplexity",
       "path": "saas/perplexity.json",
-      "recommendations": 1,
+      "recommendations": 2,
       "saas_id": "perplexity",
       "slug": "perplexity",
       "status": "insufficient_recommendations"
@@ -1673,13 +1682,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": null,
+      "compare_path": "/open-source/hotjar-alternatives",
       "name": "Hotjar",
       "path": "saas/hotjar.json",
-      "recommendations": 2,
+      "recommendations": 3,
       "saas_id": "hotjar",
       "slug": "hotjar",
-      "status": "insufficient_recommendations"
+      "status": "ok"
     },
     {
       "compare_path": null,
@@ -1757,7 +1766,7 @@
       "compare_path": null,
       "name": "GitHub Actions",
       "path": "saas/github-actions.json",
-      "recommendations": 1,
+      "recommendations": 2,
       "saas_id": "github-actions",
       "slug": "github-actions",
       "status": "insufficient_recommendations"
@@ -1880,13 +1889,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": null,
+      "compare_path": "/open-source/suno-alternatives",
       "name": "Suno",
       "path": "saas/suno.json",
-      "recommendations": 1,
+      "recommendations": 3,
       "saas_id": "suno",
       "slug": "suno",
-      "status": "insufficient_recommendations"
+      "status": "ok"
     },
     {
       "compare_path": "/open-source/sap-business-one-alternatives",
@@ -2021,6 +2030,15 @@
       "recommendations": 1,
       "saas_id": "photopea",
       "slug": "photopea",
+      "status": "insufficient_recommendations"
+    },
+    {
+      "compare_path": null,
+      "name": "Gamma",
+      "path": "saas/gamma.json",
+      "recommendations": 1,
+      "saas_id": "gamma",
+      "slug": "gamma",
       "status": "insufficient_recommendations"
     },
     {
@@ -2331,6 +2349,15 @@
     },
     {
       "compare_path": null,
+      "name": "remove.bg",
+      "path": "saas/remove-bg.json",
+      "recommendations": 1,
+      "saas_id": "remove-bg",
+      "slug": "remove-bg",
+      "status": "insufficient_recommendations"
+    },
+    {
+      "compare_path": null,
       "name": "Cloudflare Access",
       "path": "saas/cloudflare-access.json",
       "recommendations": 2,
@@ -2369,7 +2396,7 @@
       "compare_path": "/open-source/npm-alternatives",
       "name": "npm",
       "path": "saas/npm.json",
-      "recommendations": 4,
+      "recommendations": 5,
       "saas_id": "npm",
       "slug": "npm",
       "status": "ok"
@@ -2504,7 +2531,7 @@
       "compare_path": null,
       "name": "Google Calendar",
       "path": "saas/google-calendar.json",
-      "recommendations": 1,
+      "recommendations": 2,
       "saas_id": "google-calendar",
       "slug": "google-calendar",
       "status": "insufficient_recommendations"
@@ -2603,7 +2630,7 @@
       "compare_path": null,
       "name": "Runway",
       "path": "saas/runway.json",
-      "recommendations": 1,
+      "recommendations": 2,
       "saas_id": "runway",
       "slug": "runway",
       "status": "insufficient_recommendations"
@@ -2891,7 +2918,7 @@
       "compare_path": null,
       "name": "Disqus",
       "path": "saas/disqus.json",
-      "recommendations": 1,
+      "recommendations": 2,
       "saas_id": "disqus",
       "slug": "disqus",
       "status": "insufficient_recommendations"
@@ -3116,7 +3143,7 @@
       "compare_path": "/open-source/wordpress-com-alternatives",
       "name": "WordPress.com",
       "path": "saas/wordpress-com.json",
-      "recommendations": 3,
+      "recommendations": 4,
       "saas_id": "wordpress-com",
       "slug": "wordpress-com",
       "status": "ok"
@@ -3222,6 +3249,15 @@
     },
     {
       "compare_path": null,
+      "name": "Outreach",
+      "path": "saas/outreach.json",
+      "recommendations": 2,
+      "saas_id": "outreach",
+      "slug": "outreach",
+      "status": "insufficient_recommendations"
+    },
+    {
+      "compare_path": null,
       "name": "Cronometer",
       "path": "saas/cronometer.json",
       "recommendations": 2,
@@ -3314,7 +3350,7 @@
       "compare_path": null,
       "name": "Instapaper",
       "path": "saas/instapaper.json",
-      "recommendations": 1,
+      "recommendations": 2,
       "saas_id": "instapaper",
       "slug": "instapaper",
       "status": "insufficient_recommendations"
@@ -3335,6 +3371,15 @@
       "recommendations": 1,
       "saas_id": "stack-overflow-for-teams",
       "slug": "stack-overflow-for-teams",
+      "status": "insufficient_recommendations"
+    },
+    {
+      "compare_path": null,
+      "name": "SonarQube Cloud",
+      "path": "saas/sonarqube-cloud.json",
+      "recommendations": 1,
+      "saas_id": "sonarqube-cloud",
+      "slug": "sonarqube-cloud",
       "status": "insufficient_recommendations"
     },
     {

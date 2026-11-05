@@ -9,15 +9,16 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "last_checked": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "more_available": 3,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "diegoleme",
       "emmraan",
       "opensaasdirectory",
       "runacapital",
@@ -42,17 +43,22 @@
               "source_id": "runacapital"
             },
             {
-              "locator": "README.md#L669",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L409",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
             },
             {
               "locator": "data/products.json#/72/slug=grafana",
               "source_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
               "source_id": "emmraan"
+            },
+            {
+              "locator": "README.md#L463",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -91,7 +97,7 @@
         "tag": "v13.2.5"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Grafana",
       "note": {
@@ -127,9 +133,10 @@
         "solvohq",
         "runacapital",
         "opensaasdirectory",
-        "emmraan"
+        "emmraan",
+        "diegoleme"
       ],
-      "stars": 77699
+      "stars": 77709
     },
     {
       "evidence": {
@@ -143,12 +150,12 @@
               "source_id": "runacapital"
             },
             {
-              "locator": "README.md#L685",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L418",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -192,7 +199,7 @@
         "tag": "v2.12.3"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Netdata",
       "note": {
@@ -228,7 +235,7 @@
         "runacapital",
         "opensaasdirectory"
       ],
-      "stars": 81276
+      "stars": 81283
     },
     {
       "evidence": {
@@ -242,7 +249,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -291,7 +298,7 @@
         "tag": "v1.2.0-rc1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "OpenObserve",
       "note": {
@@ -332,7 +339,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 22802
+      "stars": 22812
     },
     {
       "evidence": {
@@ -346,7 +353,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [
@@ -391,7 +398,7 @@
         "tag": "v2.1.0-rc.2"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Uptrace",
       "note": {
@@ -446,7 +453,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -484,7 +491,7 @@
         "tag": "v1.155.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "VictoriaMetrics",
       "note": {
@@ -519,7 +526,7 @@
       "sources": [
         "runacapital"
       ],
-      "stars": 18015
+      "stars": 18018
     }
   ],
   "saas": {

@@ -9,16 +9,17 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "last_checked": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "more_available": 0,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
       "altstack",
+      "diegoleme",
       "emmraan",
       "job_match",
       "opensaasdirectory",
@@ -44,7 +45,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -85,7 +86,7 @@
         "tag": "0.40.2"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Keila",
       "note": {
@@ -135,8 +136,8 @@
               "source_id": "solvohq"
             },
             {
-              "locator": "README.md#L1419",
-              "source_commit": "c0a87b192104dab3d456f57c61e94d26fb56e382",
+              "locator": "README.md#L1251",
+              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
               "source_id": "opensaasdirectory"
             },
             {
@@ -145,12 +146,17 @@
               "source_id": "emmraan"
             },
             {
+              "locator": "README.md#L597",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
+            },
+            {
               "locator": "data/tools.json#slug=listmonk;named_by=mailchimp",
               "source_commit": "588139d853f9eab183368cfa2eaa8d6c1640fc74",
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -187,7 +193,7 @@
         "tag": "v7.0.0-beta.1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Listmonk",
       "note": {
@@ -225,9 +231,10 @@
         "solvohq",
         "opensaasdirectory",
         "emmraan",
+        "diegoleme",
         "altstack"
       ],
-      "stars": 24150
+      "stars": 24153
     },
     {
       "evidence": {
@@ -246,7 +253,7 @@
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -287,7 +294,7 @@
         "tag": "7.2.2"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Mautic",
       "note": {
@@ -325,7 +332,7 @@
         "solvohq",
         "altstack"
       ],
-      "stars": 10936
+      "stars": 10939
     },
     {
       "evidence": {
@@ -339,7 +346,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -380,7 +387,7 @@
         "tag": "v3.6.17"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "phplist3",
       "note": {

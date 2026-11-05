@@ -9,15 +9,16 @@
     ],
     "status": "partial"
   },
-  "dataset_version": "1e8c37ae5796a82e",
+  "dataset_version": "da679aa830d7b3b1",
   "last_checked": {
-    "newest": "2026-11-05T02:13:56Z",
-    "oldest": "2026-11-05T02:13:56Z"
+    "newest": "2026-11-05T10:24:46Z",
+    "oldest": "2026-11-05T10:24:46Z"
   },
   "more_available": 0,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "diegoleme",
       "solvohq"
     ]
   },
@@ -34,7 +35,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -73,7 +74,7 @@
         "tag": "v0.21.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "OvenMediaEngine",
       "note": {
@@ -110,21 +111,26 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 3297
+      "stars": 3299
     },
     {
       "evidence": {
         "relationship": {
-          "corroborated": false,
+          "corroborated": true,
           "evidence_class": "listed",
           "provenance": [
             {
               "locator": "README.md#L823",
               "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
               "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L329",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
+          "validated_as_of": "2026-11-05T10:24:46Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -162,7 +168,7 @@
         "tag": "v0.3.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
+      "live_checked_at": "2026-11-05T10:24:46Z",
       "maintenance_status": "active",
       "name": "Owncast",
       "note": {
@@ -198,9 +204,10 @@
         "self_hostable": true
       },
       "sources": [
-        "solvohq"
+        "solvohq",
+        "diegoleme"
       ],
-      "stars": 11645
+      "stars": 11646
     }
   ],
   "saas": {
