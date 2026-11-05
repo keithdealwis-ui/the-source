@@ -495,16 +495,25 @@ def catalogue_serve(sel: dict, edges: list[dict], projects: dict, policy: dict, 
     the key is absent or not enabled: the dr-KEI-805-507e4f70 selection, unchanged. Recommendations come from the
     scores the build finds (data/scores/), so a pair fully evaluated after this build is served by the next one.
     With launch.preserve_served, a relationship served this way in `before` (the previous build) that still qualifies
-    keeps its place: a newly evaluated, higher-scoring candidate takes only the room that is left."""
+    keeps its place: a newly evaluated, higher-scoring candidate takes only the room that is left.
+    With catalogue_serving.gate_first (KEI-961, Keith gate-KEI-961-aa90748c), relationships that pass the
+    recommendation gate (rec_gate, config/policy.yaml recommendation_gate) are placed before any that fail it, so a
+    preserved slot held by a gate-failing relationship yields to an unserved gate-passing one. Preserved gate-passing
+    relationships still come before new ones, so no recommended relationship is displaced."""
     cs = policy["launch"].get("catalogue_serving") or {}
     sel["catalogue_served"] = []
     if not cs.get("enabled"):
         return
     from . import canonical, catalogue
 
+    from . import rec_gate
+
     selection = catalogue.load_selection()
     fit, _ = canonical._load_scores()
     cap, budget = int(cs["max_per_saas"]), int(cs["edges_max"])
+    gate_first = bool(cs.get("gate_first"))
+    gate = rec_gate.load(policy) if gate_first else None
+    sel["catalogue_gate_first"] = gate_first
     picked = sel["edge_picks"]
     sel["catalogue_served_relationships"] = 0
     by_saas: dict[str, list] = {}
@@ -514,15 +523,18 @@ def catalogue_serve(sel: dict, edges: list[dict], projects: dict, policy: dict, 
         if (e["validation"]["status"] == "validated" and not e["share_alike_only"] and f and f["publish"]
                 and f["credible_alternative"] and f.get("scoring_path") in catalogue.FULL_PATHS
                 and None not in (live.get("stars"), live.get("licence_spdx"), live.get("pushed_at"))):
-            by_saas.setdefault(e["saas_id"], []).append((f["score"], e))
+            passes = (rec_gate.verdict(f, e.get("evidence_class"), e["corroborated"], gate)["recommended"]
+                      if gate_first else True)
+            by_saas.setdefault(e["saas_id"], []).append((f["score"], e, passes))
     rank = {sid: i for i, sid in enumerate(sel["saas_ranked"], 1)}
     for sid in (selection or {}).get("selected", []):
         if sid not in by_saas:
             continue
         have = [e for e in edges if e["saas_id"] == sid and e["edge_id"] in picked]
         groups = {projects[e["oss_id"]]["product_group"] for e in have}
-        room = cap - sum(1 for _, e in by_saas[sid] if e["edge_id"] in picked)
-        for _, e in sorted(by_saas[sid], key=lambda x: ((sid, x[1]["oss_id"]) not in before, -x[0], x[1]["oss_id"])):
+        room = cap - sum(1 for _, e, _ in by_saas[sid] if e["edge_id"] in picked)
+        for _, e, _ in sorted(by_saas[sid], key=lambda x: (not x[2], (sid, x[1]["oss_id"]) not in before,
+                                                              -x[0], x[1]["oss_id"])):
             if room <= 0 or sel["catalogue_served_relationships"] >= budget:
                 break
             g = projects[e["oss_id"]]["product_group"]

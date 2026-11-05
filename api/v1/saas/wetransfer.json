@@ -3,18 +3,18 @@
   "catalogue": {
     "audience": "both",
     "rank": 58,
-    "reason": "6 recommendations passed the full evaluation",
+    "reason": "7 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "da679aa830d7b3b1",
+  "dataset_version": "af231a582d7714c7",
   "last_checked": {
     "newest": "2026-11-05T10:24:46Z",
     "oldest": "2026-11-05T10:24:46Z"
   },
-  "more_available": 1,
+  "more_available": 2,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -231,6 +231,90 @@
           "evidence_class": "listed",
           "provenance": [
             {
+              "locator": "README.md#L896",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-11-05T10:24:46Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 95.6,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": null,
+            "production_commercial_readiness": 0.0
+          },
+          "evidence_families": [
+            "cloud_option",
+            "plugins",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/timvisee/send",
+      "last_meaningful_activity_at": "2026-10-24T13:34:09Z",
+      "latest_release": null,
+      "licence_spdx": "MPL-2.0",
+      "live_checked_at": "2026-11-05T10:24:46Z",
+      "maintenance_status": "active",
+      "name": "Send (Timvisee fork)",
+      "note": {
+        "gaps": [
+          "production readiness"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on production readiness."
+      },
+      "oss_id": "github.com/timvisee/send",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 94.2,
+        "score": 68.1,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 81.5,
+        "evaluated_at": "2026-11-01T02:05:53Z",
+        "score": 77.6,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/timvisee/send",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 5948
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
               "locator": "README.md#L360",
               "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
               "source_id": "diegoleme"
@@ -293,7 +377,7 @@
         "score": 43.8,
         "trajectory": "Insufficient history"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "caps": [],
         "confidence": 84.5,
@@ -383,7 +467,7 @@
         "score": 85.6,
         "trajectory": "Rising"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "caps": [],
         "confidence": 86.5,
@@ -400,106 +484,6 @@
         "job_match"
       ],
       "stars": 564
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/roastslav/quickdrop",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-05T10:24:46Z"
-        },
-        "replacement_fit": {
-          "caps": [
-            {
-              "cap": 80.0,
-              "id": "uncorroborated_pairing",
-              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name WeTransfer as what it replaces"
-            }
-          ],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 50.0,
-            "ease_of_adoption": 100.0,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 92.5,
-            "integrations_extensibility": 50.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 60.0
-          },
-          "evidence_families": [
-            "api",
-            "demo",
-            "import",
-            "quickstart",
-            "self_host",
-            "support",
-            "webhook"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/RoastSlav/quickdrop",
-      "last_meaningful_activity_at": "2026-09-25T13:02:39Z",
-      "latest_release": {
-        "published_at": "2026-09-24T21:00:58Z",
-        "tag": "v2.0.2"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T10:24:46Z",
-      "maintenance_status": "active",
-      "name": "quickdrop",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption."
-      },
-      "oss_id": "github.com/roastslav/quickdrop",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 96.6,
-        "score": 84.0,
-        "trajectory": "Rising"
-      },
-      "rank": 5,
-      "replacement_fit": {
-        "caps": [
-          {
-            "cap": 80.0,
-            "id": "uncorroborated_pairing",
-            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name WeTransfer as what it replaces"
-          }
-        ],
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-20T23:06:47Z",
-        "score": 80.0,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/RoastSlav/quickdrop",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 432
     }
   ],
   "saas": {

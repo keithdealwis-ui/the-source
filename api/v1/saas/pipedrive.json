@@ -3,27 +3,157 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 39,
-    "reason": "6 recommendations passed the full evaluation",
+    "reason": "7 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "da679aa830d7b3b1",
+  "dataset_version": "af231a582d7714c7",
   "last_checked": {
     "newest": "2026-11-05T10:24:46Z",
     "oldest": "2026-11-05T10:24:46Z"
   },
-  "more_available": 1,
+  "more_available": 2,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
       "altstack",
+      "diegoleme",
       "job_match",
       "solvohq"
     ]
   },
   "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L641",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
+            }
+          ],
+          "validated_as_of": "2026-11-05T10:24:46Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 52.6,
+              "dimension": "feature_equivalence",
+              "excluded_features": [
+                "chatbot",
+                "forecast",
+                "marketplace",
+                "mobile app",
+                "multi-currency",
+                "products",
+                "projects",
+                "web form",
+                "workflow automation"
+              ],
+              "id": "feature_out_of_scope",
+              "reason": "Feature equivalence capped at 52.6: the project's README lists 9 of Pipedrive's features as out of scope or not supported (chatbot, forecast, marketplace, mobile app, multi-currency, products, projects, web form, workflow automation)"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "readme_names_product"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 98.5,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 52.6,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/sneg55/warpdrive",
+      "last_meaningful_activity_at": "2026-11-04T18:01:50Z",
+      "latest_release": {
+        "published_at": "2026-11-04T18:01:50Z",
+        "tag": "v2.0.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-05T10:24:46Z",
+      "maintenance_status": "active",
+      "name": "Warpdrive",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "migration path"
+        ],
+        "text": "Strongest on core use-case coverage and migration path."
+      },
+      "oss_id": "github.com/sneg55/warpdrive",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 84.3,
+        "score": 68.4,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 52.6,
+            "dimension": "feature_equivalence",
+            "excluded_features": [
+              "chatbot",
+              "forecast",
+              "marketplace",
+              "mobile app",
+              "multi-currency",
+              "products",
+              "projects",
+              "web form",
+              "workflow automation"
+            ],
+            "id": "feature_out_of_scope",
+            "reason": "Feature equivalence capped at 52.6: the project's README lists 9 of Pipedrive's features as out of scope or not supported (chatbot, forecast, marketplace, mobile app, multi-currency, products, projects, web form, workflow automation)"
+          }
+        ],
+        "confidence": 86.5,
+        "evaluated_at": "2026-10-31T00:40:37Z",
+        "score": 86.7,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/sneg55/warpdrive",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "diegoleme"
+      ],
+      "stars": 509
+    },
     {
       "evidence": {
         "relationship": {
@@ -94,7 +224,7 @@
         "score": 83.5,
         "trajectory": "Stable"
       },
-      "rank": 1,
+      "rank": 2,
       "replacement_fit": {
         "caps": [],
         "confidence": 81.5,
@@ -189,7 +319,7 @@
         "score": 71.3,
         "trajectory": "Insufficient history"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "caps": [],
         "confidence": 86.5,
@@ -281,7 +411,7 @@
         "score": 88.4,
         "trajectory": "Rising"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "caps": [],
         "confidence": 86.5,
@@ -379,7 +509,7 @@
         "score": 94.2,
         "trajectory": "Rising"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "caps": [
           {
@@ -402,108 +532,6 @@
         "job_match"
       ],
       "stars": 7831
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/djangocrm/django-crm",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-05T10:24:46Z"
-        },
-        "replacement_fit": {
-          "caps": [
-            {
-              "cap": 80.0,
-              "id": "uncorroborated_pairing",
-              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Pipedrive as what it replaces"
-            }
-          ],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 43.8,
-            "ease_of_adoption": 80.0,
-            "economic_advantage": 45.0,
-            "feature_equivalence": 100.0,
-            "integrations_extensibility": 75.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 100.0
-          },
-          "evidence_families": [
-            "api",
-            "demo",
-            "import",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "sso",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/DjangoCRM/django-crm",
-      "last_meaningful_activity_at": "2026-11-01T19:04:31Z",
-      "latest_release": {
-        "published_at": "2026-10-17T11:03:07Z",
-        "tag": "v3.1.0"
-      },
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T10:24:46Z",
-      "maintenance_status": "active",
-      "name": "django-crm",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "feature parity"
-        ],
-        "text": "Strongest on core use-case coverage and feature parity."
-      },
-      "oss_id": "github.com/djangocrm/django-crm",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 96.6,
-        "score": 85.6,
-        "trajectory": "Declining"
-      },
-      "rank": 5,
-      "replacement_fit": {
-        "caps": [
-          {
-            "cap": 80.0,
-            "id": "uncorroborated_pairing",
-            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Pipedrive as what it replaces"
-          }
-        ],
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 80.0,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/DjangoCRM/django-crm",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 648
     }
   ],
   "saas": {

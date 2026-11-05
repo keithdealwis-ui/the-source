@@ -251,3 +251,45 @@ def test_rescoring_queue_drops_projects_that_left_the_lane(tmp_path, monkeypatch
     assert cycle._rescore([], 5, res, day="2026-11-05") == []
     assert res["strategies"][0]["queue"]["dropped_unscorable"] == 1 and calls == []
     assert json.loads(cycle.RESCORE_QUEUE.read_text())["queue"] == {}
+
+
+# KEI-961 AC2 (Keith gate-KEI-961-aa90748c, option A): catalogue serving places gate-passing relationships before
+# gate-failing ones, so a preserved gate-failing slot yields, and no recommended relationship is displaced.
+def test_gate_first_is_on_and_documented():
+    import yaml
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[1]
+    cs = yaml.safe_load((root / "config/policy.yaml").read_text())["launch"]["catalogue_serving"]
+    assert cs.get("gate_first") is True
+
+
+def test_warpdrive_is_served_under_pipedrive_not_salesforce():
+    import json
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[1]
+    rels = [json.loads(l) for l in (root / "data/canonical/relationships.jsonl").read_text().splitlines() if l.strip()]
+    w = {r["saas_id"]: r for r in rels if r["oss_id"] == "github.com/sneg55/warpdrive"}
+    assert "salesforce" not in w
+    assert w["pipedrive"]["recommended"] is True
+
+
+def test_no_saas_serves_a_gate_failing_relationship_while_a_passing_one_waits():
+    """Within catalogue serving, for every product, each served gate-failing catalogue pick ranks below every
+    gate-passing pick (the sort places all passing candidates first)."""
+    import json
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[1]
+    ds = [json.loads(l) for l in (root / "data/dataset/relationships.jsonl").read_text().splitlines() if l.strip()]
+    rels = {(r["saas_id"], r["oss_id"]): r for r in
+            map(json.loads, (root / "data/canonical/relationships.jsonl").read_text().splitlines())}
+    by = {}
+    for e in ds:
+        lp = e.get("launch_position") or {}
+        if lp.get("via") == "catalogue_serving":
+            by.setdefault(e["saas_id"], []).append((lp["position"], rels[(e["saas_id"], e["oss_id"])]["recommended"]))
+    for sid, picks in by.items():
+        picks.sort()
+        seen_fail = False
+        for _, ok in picks:
+            seen_fail |= not ok
+            assert not (seen_fail and ok), sid

@@ -3,18 +3,18 @@
   "catalogue": {
     "audience": "both",
     "rank": 20,
-    "reason": "7 recommendations passed the full evaluation",
+    "reason": "8 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "da679aa830d7b3b1",
+  "dataset_version": "af231a582d7714c7",
   "last_checked": {
     "newest": "2026-11-05T10:24:46Z",
     "oldest": "2026-11-05T10:24:46Z"
   },
-  "more_available": 2,
+  "more_available": 3,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -321,6 +321,103 @@
     {
       "evidence": {
         "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L349",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
+            }
+          ],
+          "validated_as_of": "2026-11-05T10:24:46Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Google Drive as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 66.7,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": null,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "import",
+            "quickstart"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/syncthing/syncthing",
+      "last_meaningful_activity_at": "2026-10-21T06:09:14Z",
+      "latest_release": {
+        "published_at": "2026-10-21T06:09:14Z",
+        "tag": "v2.1.7"
+      },
+      "licence_spdx": "MPL-2.0",
+      "live_checked_at": "2026-11-05T10:24:46Z",
+      "maintenance_status": "active",
+      "name": "Syncthing",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
+      },
+      "oss_id": "github.com/syncthing/syncthing",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 88.7,
+        "trajectory": "Stable"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Google Drive as what it replaces"
+          }
+        ],
+        "confidence": 81.5,
+        "evaluated_at": "2026-11-05T10:24:46Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/syncthing/syncthing",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "diegoleme"
+      ],
+      "stars": 90112
+    },
+    {
+      "evidence": {
+        "relationship": {
           "corroborated": true,
           "evidence_class": "listed",
           "provenance": [
@@ -414,7 +511,7 @@
         "score": 94.6,
         "trajectory": "Rising"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "caps": [],
         "confidence": 95.0,
@@ -435,93 +532,6 @@
         "diegoleme"
       ],
       "stars": 37423
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
-              "locator": "submissions/Filestash.yaml",
-              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
-              "source_id": "runacapital"
-            }
-          ],
-          "validated_as_of": "2026-11-05T10:24:46Z"
-        },
-        "replacement_fit": {
-          "caps": [],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 68.8,
-            "ease_of_adoption": 80.0,
-            "economic_advantage": 45.0,
-            "feature_equivalence": 61.7,
-            "integrations_extensibility": 50.0,
-            "migration_friction": 33.3,
-            "production_commercial_readiness": 50.0
-          },
-          "evidence_families": [
-            "api",
-            "data_ownership",
-            "demo",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "support"
-          ],
-          "scoring_path": "full_lane"
-        }
-      },
-      "github_url": "https://github.com/mickael-kerjean/filestash",
-      "last_meaningful_activity_at": "2026-10-21T15:49:35Z",
-      "latest_release": null,
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T10:24:46Z",
-      "maintenance_status": "active",
-      "name": "Filestash",
-      "note": {
-        "gaps": [
-          "migration path"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption; weakest on migration path."
-      },
-      "oss_id": "github.com/mickael-kerjean/filestash",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 94.2,
-        "score": 74.4,
-        "trajectory": "Stable"
-      },
-      "rank": 5,
-      "replacement_fit": {
-        "caps": [],
-        "confidence": 84.5,
-        "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 68.7,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/mickael-kerjean/filestash",
-      "self_hosting": {
-        "basis": "no self-hosting evidence found; not evidence of absence",
-        "self_hostable": null
-      },
-      "sources": [
-        "runacapital"
-      ],
-      "stars": 14872
     }
   ],
   "saas": {
