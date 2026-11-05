@@ -3,18 +3,18 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 99,
-    "reason": "7 recommendations passed the full evaluation",
+    "reason": "6 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "28d4405a7c40c325",
+  "dataset_version": "9b7742146c1e5d34",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
   },
-  "more_available": 2,
+  "more_available": 1,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -114,89 +114,6 @@
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "README.md#L462",
-              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
-              "source_id": "solvohq"
-            }
-          ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 43.8,
-            "ease_of_adoption": 77.7,
-            "economic_advantage": 45.0,
-            "feature_equivalence": 61.7,
-            "integrations_extensibility": 25.0,
-            "migration_friction": 0.0,
-            "production_commercial_readiness": 80.0
-          },
-          "evidence_families": [
-            "demo",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/grafana/tempo",
-      "last_meaningful_activity_at": "2026-10-21T18:46:17Z",
-      "latest_release": {
-        "published_at": "2026-10-21T17:02:10Z",
-        "tag": "v3.1.1"
-      },
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
-      "maintenance_status": "active",
-      "name": "Grafana Tempo",
-      "note": {
-        "gaps": [
-          "migration path",
-          "integrations and extensibility"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "production readiness"
-        ],
-        "text": "Strongest on core use-case coverage and production readiness; weakest on migration path and integrations and extensibility."
-      },
-      "oss_id": "github.com/grafana/tempo",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 95.0,
-        "score": 92.0,
-        "trajectory": "Stable"
-      },
-      "rank": 2,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-22T01:26:16Z",
-        "score": 63.0,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/grafana/tempo",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "solvohq"
-      ],
-      "stars": 5555
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
               "locator": "README.md#L460",
               "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
               "source_id": "solvohq"
@@ -257,7 +174,7 @@
         "score": 92.5,
         "trajectory": "Rising"
       },
-      "rank": 3,
+      "rank": 2,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
@@ -335,7 +252,7 @@
         "score": 87.2,
         "trajectory": "Stable"
       },
-      "rank": 4,
+      "rank": 3,
       "replacement_fit": {
         "confidence": 81.5,
         "evaluated_at": "2026-11-05T02:13:56Z",
@@ -414,7 +331,7 @@
         "score": 96.4,
         "trajectory": "Stable"
       },
-      "rank": 5,
+      "rank": 4,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
@@ -430,6 +347,91 @@
         "job_match"
       ],
       "stars": 77699
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/openobserve/openobserve",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-11-05T02:13:56Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 93.8,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/openobserve/openobserve",
+      "last_meaningful_activity_at": "2026-11-05T01:57:42Z",
+      "latest_release": {
+        "published_at": "2026-11-04T12:34:57Z",
+        "tag": "v1.2.0-rc1"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-11-05T02:13:56Z",
+      "maintenance_status": "active",
+      "name": "OpenObserve",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity."
+      },
+      "oss_id": "github.com/openobserve/openobserve",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 93.8,
+        "trajectory": "Rising"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T12:30:08Z",
+        "score": 87.8,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/openobserve/openobserve",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 22802
     }
   ],
   "saas": {

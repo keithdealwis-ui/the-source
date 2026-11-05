@@ -3,13 +3,16 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 36,
-    "reason": "3 recommendations passed the full evaluation",
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 3 fully evaluated relationships did not qualify as recommendations; 3 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision; 1 candidate relationships are waiting on a licence decision",
     "reasons": [
-      "full_evaluation"
+      "fewer_than_minimum",
+      "evaluated_not_recommended",
+      "outside_launch_selection",
+      "licence_review"
     ],
-    "status": "ok"
+    "status": "partial"
   },
-  "dataset_version": "28d4405a7c40c325",
+  "dataset_version": "9b7742146c1e5d34",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
@@ -22,7 +25,6 @@
       "btwso",
       "diegoleme",
       "fossalt",
-      "job_match",
       "opensaasdirectory",
       "runacapital",
       "solvohq"
@@ -259,94 +261,11 @@
         "fossalt"
       ],
       "stars": 46372
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/aozorae/edgechat",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 46.2,
-            "ease_of_adoption": 100.0,
-            "economic_advantage": 68.0,
-            "feature_equivalence": 16.7,
-            "integrations_extensibility": 25.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 50.0
-          },
-          "evidence_families": [
-            "api",
-            "demo",
-            "import",
-            "multi_user",
-            "quickstart",
-            "self_host"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/aozorae/Edgechat",
-      "last_meaningful_activity_at": "2026-11-02T15:26:01Z",
-      "latest_release": {
-        "published_at": "2026-09-05T02:32:06Z",
-        "tag": "android-v0.2.0-beta.1"
-      },
-      "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
-      "maintenance_status": "active",
-      "name": "Edgechat",
-      "note": {
-        "gaps": [
-          "feature parity",
-          "integrations and extensibility"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption; weakest on feature parity and integrations and extensibility."
-      },
-      "oss_id": "github.com/aozorae/edgechat",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 92.7,
-        "score": 75.5,
-        "trajectory": "Insufficient history"
-      },
-      "rank": 3,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-20T23:06:47Z",
-        "score": 64.7,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/aozorae/Edgechat",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 1402
     }
   ],
   "saas": {
     "category": "Team chat",
-    "compare_path": "/open-source/slack-alternatives",
+    "compare_path": null,
     "domain": "slack.com",
     "name": "Slack",
     "saas_id": "slack",
@@ -358,5 +277,5 @@
       "1.2.0"
     ]
   },
-  "status": "ok"
+  "status": "insufficient_recommendations"
 }

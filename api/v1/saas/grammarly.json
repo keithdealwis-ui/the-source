@@ -3,13 +3,13 @@
   "catalogue": {
     "audience": "both",
     "rank": 67,
-    "reason": "4 recommendations passed the full evaluation",
+    "reason": "3 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "28d4405a7c40c325",
+  "dataset_version": "9b7742146c1e5d34",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
@@ -181,87 +181,6 @@
       "evidence": {
         "relationship": {
           "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
-              "locator": "README.md#L216",
-              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
-              "source_id": "solvohq"
-            }
-          ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 50.0,
-            "ease_of_adoption": 60.0,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 61.7,
-            "integrations_extensibility": 25.0,
-            "migration_friction": 0.0,
-            "production_commercial_readiness": 80.0
-          },
-          "evidence_families": [
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "support"
-          ],
-          "scoring_path": "full_lane"
-        }
-      },
-      "github_url": "https://github.com/vale-cli/vale",
-      "last_meaningful_activity_at": "2026-10-31T19:10:41Z",
-      "latest_release": {
-        "published_at": "2026-10-31T15:08:45Z",
-        "tag": "v3.26.0"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
-      "maintenance_status": "active",
-      "name": "Vale",
-      "note": {
-        "gaps": [
-          "migration path",
-          "integrations and extensibility"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "cost advantage"
-        ],
-        "text": "Strongest on core use-case coverage and cost advantage; weakest on migration path and integrations and extensibility."
-      },
-      "oss_id": "github.com/vale-cli/vale",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 96.6,
-        "score": 90.5,
-        "trajectory": "Rising"
-      },
-      "rank": 3,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 62.8,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/vale-cli/vale",
-      "self_hosting": {
-        "basis": "no self-hosting evidence found; not evidence of absence",
-        "self_hostable": null
-      },
-      "sources": [
-        "solvohq"
-      ],
-      "stars": 6328
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
           "evidence_class": "job_matched",
           "provenance": [
             {
@@ -325,7 +244,7 @@
         "score": 72.0,
         "trajectory": "Insufficient history"
       },
-      "rank": 4,
+      "rank": 3,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-20T23:06:47Z",

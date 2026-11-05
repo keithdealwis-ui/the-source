@@ -136,6 +136,23 @@ jobs:
             echo '```'
             python -c "import json;r=json.load(open('runs/$RUN.json'));[print(s['id'], s.get('status')) for s in r['strategies']]"
             echo '```'
+            echo
+            echo '### Recommendation gate (KEI-961)'
+            echo
+            python - "$RUN" <<'PY'
+          import json, sys
+          r = json.load(open(f"runs/{sys.argv[1]}.json"))
+          g = next((s for s in r["strategies"] if s["id"] == "recommendation_gate"), None)
+          if not g:
+              print("not evaluated (the cycle stopped before the canonical build)")
+          else:
+              rate = "n/a" if g.get("pass_rate") is None else f"{100 * g['pass_rate']:.1f}%"
+              print(f"{g['passed']} of {g['evaluated']} scored relationships recommended ({rate}); {g['failed']} failed, "
+                    f"{g['not_scored']} not yet scored. Rule: {g['rule']} {g.get('replacement_fit_min') or ''}")
+              print()
+              for k, v in (g.get("failed_by_reason") or {}).items():
+                  print(f"- {k}: {v}")
+          PY
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Surface the outcome durably (one issue per failure fingerprint, KEI-918)

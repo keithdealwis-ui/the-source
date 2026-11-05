@@ -3,13 +3,15 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 246,
-    "reason": "5 recommendations passed the full evaluation",
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 3 fully evaluated relationships did not qualify as recommendations; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
     "reasons": [
-      "full_evaluation"
+      "fewer_than_minimum",
+      "evaluated_not_recommended",
+      "outside_launch_selection"
     ],
-    "status": "ok"
+    "status": "partial"
   },
-  "dataset_version": "28d4405a7c40c325",
+  "dataset_version": "9b7742146c1e5d34",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
@@ -183,252 +185,11 @@
         "job_match"
       ],
       "stars": 24150
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/billionmail/billionmail",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 68.8,
-            "ease_of_adoption": 97.1,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 61.7,
-            "integrations_extensibility": 50.0,
-            "migration_friction": 33.3,
-            "production_commercial_readiness": 60.0
-          },
-          "evidence_families": [
-            "api",
-            "data_ownership",
-            "demo",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/Billionmail/BillionMail",
-      "last_meaningful_activity_at": "2026-06-11T06:42:43Z",
-      "latest_release": {
-        "published_at": "2025-12-11T10:37:13Z",
-        "tag": "v4.9"
-      },
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
-      "maintenance_status": "maintained",
-      "name": "BillionMail",
-      "note": {
-        "gaps": [
-          "migration path"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption; weakest on migration path."
-      },
-      "oss_id": "github.com/billionmail/billionmail",
-      "project_health": {
-        "band": "Developing",
-        "confidence": 94.7,
-        "score": 60.2,
-        "trajectory": "Declining"
-      },
-      "rank": 3,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-20T23:06:47Z",
-        "score": 73.0,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/Billionmail/BillionMail",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 16189
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/skerkour/markdown-ninja",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 87.5,
-            "ease_of_adoption": 90.2,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 16.7,
-            "integrations_extensibility": 100.0,
-            "migration_friction": 100.0,
-            "production_commercial_readiness": 0.0
-          },
-          "evidence_families": [
-            "api",
-            "demo",
-            "quickstart",
-            "self_host"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/skerkour/markdown-ninja",
-      "last_meaningful_activity_at": "2026-10-15T09:43:52Z",
-      "latest_release": null,
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
-      "maintenance_status": "active",
-      "name": "markdown-ninja",
-      "note": {
-        "gaps": [
-          "production readiness",
-          "feature parity"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "integrations and extensibility"
-        ],
-        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on production readiness and feature parity."
-      },
-      "oss_id": "github.com/skerkour/markdown-ninja",
-      "project_health": {
-        "band": "Developing",
-        "confidence": 91.0,
-        "score": 63.9,
-        "trajectory": "Declining"
-      },
-      "rank": 4,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-20T23:06:47Z",
-        "score": 72.8,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/skerkour/markdown-ninja",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 418
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/mettle/sendportal",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 100.0,
-            "ease_of_adoption": 37.7,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 16.7,
-            "integrations_extensibility": null,
-            "migration_friction": null,
-            "production_commercial_readiness": 100.0
-          },
-          "evidence_families": [
-            "multi_user",
-            "quickstart",
-            "self_host"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/mettle/sendportal",
-      "last_meaningful_activity_at": "2026-10-22T10:32:50Z",
-      "latest_release": {
-        "published_at": "2026-10-22T10:32:50Z",
-        "tag": "v4.0.0.1"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
-      "maintenance_status": "active",
-      "name": "sendportal",
-      "note": {
-        "gaps": [
-          "feature parity",
-          "ease of adoption"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "self-hosting and data ownership"
-        ],
-        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity and ease of adoption."
-      },
-      "oss_id": "github.com/mettle/sendportal",
-      "project_health": {
-        "band": "Developing",
-        "confidence": 96.6,
-        "score": 69.3,
-        "trajectory": "Insufficient history"
-      },
-      "rank": 5,
-      "replacement_fit": {
-        "confidence": 78.5,
-        "evaluated_at": "2026-10-20T23:06:47Z",
-        "score": 71.4,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/mettle/sendportal",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 2188
     }
   ],
   "saas": {
     "category": "Email marketing",
-    "compare_path": "/open-source/beehiiv-alternatives",
+    "compare_path": null,
     "domain": "beehiiv.com",
     "name": "beehiiv",
     "saas_id": "beehiiv",
@@ -440,5 +201,5 @@
       "1.2.0"
     ]
   },
-  "status": "ok"
+  "status": "insufficient_recommendations"
 }

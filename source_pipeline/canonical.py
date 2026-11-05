@@ -22,7 +22,7 @@ import shutil
 import tempfile
 from pathlib import Path
 
-from . import common, detect
+from . import common, detect, rec_gate
 
 CANONICAL = common.DATA / "canonical"
 API = common.ROOT / "api" / "v1"
@@ -33,7 +33,8 @@ CANONICAL_SCHEMA = "the-source.canonical/1"
 CATALOGUE_SCHEMA = "the-source.catalogue/1"
 API_VERSION = "v1"
 STATUS_RULE = ("ok: at least {minimum} recommendations that passed the full evaluation (export-guarded relationship, "
-               "Replacement Fit publishable and a credible alternative). partial: 1 to {minimum} minus 1. none_yet: none. "
+               "Replacement Fit publishable and a credible alternative, above the recommendation gate's floor for its "
+               "evidence). partial: 1 to {minimum} minus 1. none_yet: none. "
                "Quick scores, corpus pairings and demand never change a status.")
 
 DIMENSION_LABELS = {
@@ -386,11 +387,14 @@ def build(out_root: Path | None = None) -> dict:
         raise ValueError(f"supported_saas.yaml names SaaS ids not in the catalogue: {unknown}")
 
     # --- relationships and the projects they reference
-    rel_rows, project_ids = [], set()
+    gate = rec_gate.load()
+    rel_rows, project_ids, verdicts = [], set(), []
     for row in exported:
         sid, oid = row["saas"]["id"], row["oss"]["id"]
         e = edges[(sid, oid)]
         fit = fit_all.get((sid, oid))
+        v = rec_gate.verdict(fit, e.get("evidence_class", "listed"), e["corroborated"], gate)
+        verdicts.append(v)
         rel_rows.append({
             "edge_id": e["edge_id"],
             "saas_id": sid,
@@ -404,7 +408,8 @@ def build(out_root: Path | None = None) -> dict:
             "replacement_fit": None if fit is None else {
                 k: fit[k] for k in ("score", "credible_alternative", "publish", "core_gate", "confidence",
                                     "dimensions", "score_version", "evaluated_at", "scoring_path")},
-            "recommended": bool(fit and fit["publish"] and fit["credible_alternative"]),
+            "recommended": v["recommended"],
+            "recommendation_gate": {"tier": v["tier"], "fails": v["fails"]},
         })
         project_ids.add(oid)
     rel_rows.sort(key=lambda r: (r["saas_id"], r["oss_id"]))
@@ -563,6 +568,7 @@ def build(out_root: Path | None = None) -> dict:
         "catalogue": {"path": "catalogue.json", **{k: counts[k] for k in ("entries", "ok", "partial", "none_yet")}},
     })
 
+    gate_summary = rec_gate.summarise(verdicts, gate)
     manifest = {
         "canonical_schema": CANONICAL_SCHEMA,
         "dataset_version": dataset_version,
@@ -573,7 +579,11 @@ def build(out_root: Path | None = None) -> dict:
                    "supported_saas": len(index_rows),
                    "supported_saas_ok": sum(1 for r in index_rows if r["status"] == "ok"),
                    "catalogue_entries": counts["entries"], "catalogue_ok": counts["ok"],
-                   "catalogue_partial": counts["partial"], "catalogue_none_yet": counts["none_yet"]},
+                   "catalogue_partial": counts["partial"], "catalogue_none_yet": counts["none_yet"],
+                   "recommendation_gate_evaluated": gate_summary["evaluated"],
+                   "recommendation_gate_passed": gate_summary["passed"],
+                   "recommendation_gate_failed": gate_summary["failed"]},
+        "recommendation_gate": gate_summary,
         "export_guard": {k: guard[k] for k in ("relationships_exported", "relationships_withheld_share_alike_only",
                                                 "export_licence_constraint")},
         "sources": {sid: {"pinned_commit": sources[sid]["pinned_commit"], "decision": sources[sid]["decision"]}

@@ -3,13 +3,15 @@
   "catalogue": {
     "audience": "b2c",
     "rank": 364,
-    "reason": "3 recommendations passed the full evaluation",
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
     "reasons": [
-      "full_evaluation"
+      "fewer_than_minimum",
+      "evaluated_not_recommended",
+      "outside_launch_selection"
     ],
-    "status": "ok"
+    "status": "partial"
   },
-  "dataset_version": "28d4405a7c40c325",
+  "dataset_version": "9b7742146c1e5d34",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
@@ -184,86 +186,11 @@
         "job_match"
       ],
       "stars": 5931
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/foxcpp/maddy",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 92.5,
-            "ease_of_adoption": 77.5,
-            "economic_advantage": 68.0,
-            "feature_equivalence": 33.3,
-            "integrations_extensibility": null,
-            "migration_friction": null,
-            "production_commercial_readiness": 50.0
-          },
-          "evidence_families": [],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/foxcpp/maddy",
-      "last_meaningful_activity_at": "2026-10-20T06:32:41Z",
-      "latest_release": {
-        "published_at": "2026-10-03T22:57:58Z",
-        "tag": "v0.9.6"
-      },
-      "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
-      "maintenance_status": "active",
-      "name": "maddy",
-      "note": {
-        "gaps": [
-          "feature parity"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "self-hosting and data ownership"
-        ],
-        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
-      },
-      "oss_id": "github.com/foxcpp/maddy",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 96.6,
-        "score": 84.8,
-        "trajectory": "Stable"
-      },
-      "rank": 3,
-      "replacement_fit": {
-        "confidence": 78.5,
-        "evaluated_at": "2026-10-20T23:06:47Z",
-        "score": 74.1,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/foxcpp/maddy",
-      "self_hosting": {
-        "basis": "no self-hosting evidence found; not evidence of absence",
-        "self_hostable": null
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 6120
     }
   ],
   "saas": {
     "category": "Email",
-    "compare_path": "/open-source/fastmail-alternatives",
+    "compare_path": null,
     "domain": "fastmail.com",
     "name": "Fastmail",
     "saas_id": "fastmail",
@@ -275,5 +202,5 @@
       "1.2.0"
     ]
   },
-  "status": "ok"
+  "status": "insufficient_recommendations"
 }

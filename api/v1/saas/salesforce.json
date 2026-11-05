@@ -3,18 +3,18 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 22,
-    "reason": "8 recommendations passed the full evaluation",
+    "reason": "7 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "28d4405a7c40c325",
+  "dataset_version": "9b7742146c1e5d34",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
   },
-  "more_available": 3,
+  "more_available": 2,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -191,89 +191,6 @@
     {
       "evidence": {
         "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
-              "locator": "data/tools.json#slug=erpnext;named_by=salesforce,sap,quickbooks",
-              "source_commit": "588139d853f9eab183368cfa2eaa8d6c1640fc74",
-              "source_id": "altstack"
-            }
-          ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 46.2,
-            "ease_of_adoption": 59.1,
-            "economic_advantage": 68.0,
-            "feature_equivalence": 50.0,
-            "integrations_extensibility": 25.0,
-            "migration_friction": 33.3,
-            "production_commercial_readiness": 80.0
-          },
-          "evidence_families": [
-            "api",
-            "demo",
-            "multi_user",
-            "quickstart",
-            "self_host",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/frappe/erpnext",
-      "last_meaningful_activity_at": "2026-11-05T01:28:13Z",
-      "latest_release": {
-        "published_at": "2026-11-04T06:31:21Z",
-        "tag": "v15.124.5"
-      },
-      "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
-      "maintenance_status": "active",
-      "name": "ERPNext",
-      "note": {
-        "gaps": [
-          "integrations and extensibility",
-          "migration path"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "production readiness"
-        ],
-        "text": "Strongest on core use-case coverage and production readiness; weakest on integrations and extensibility and migration path."
-      },
-      "oss_id": "github.com/frappe/erpnext",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 92.1,
-        "score": 89.8,
-        "trajectory": "Rising"
-      },
-      "rank": 3,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-11-05T02:13:56Z",
-        "score": 63.2,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/frappe/erpnext",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "altstack"
-      ],
-      "stars": 40946
-    },
-    {
-      "evidence": {
-        "relationship": {
           "corroborated": true,
           "evidence_class": "listed",
           "provenance": [
@@ -350,7 +267,7 @@
         "score": 71.3,
         "trajectory": "Insufficient history"
       },
-      "rank": 4,
+      "rank": 3,
       "replacement_fit": {
         "confidence": 95.0,
         "evaluated_at": "2026-10-28T23:06:27Z",
@@ -435,7 +352,7 @@
         "score": 88.4,
         "trajectory": "Rising"
       },
-      "rank": 5,
+      "rank": 4,
       "replacement_fit": {
         "confidence": 86.5,
         "evaluated_at": "2026-11-01T02:05:53Z",
@@ -451,6 +368,91 @@
         "job_match"
       ],
       "stars": 2463
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/dolibarr/dolibarr",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-11-05T02:13:56Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 96.2,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 51.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/Dolibarr/dolibarr",
+      "last_meaningful_activity_at": "2026-10-25T21:51:34Z",
+      "latest_release": {
+        "published_at": "2026-09-07T12:58:22Z",
+        "tag": "24.0.1"
+      },
+      "licence_spdx": "GPL-3.0",
+      "live_checked_at": "2026-11-05T02:13:56Z",
+      "maintenance_status": "active",
+      "name": "Dolibarr",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness."
+      },
+      "oss_id": "github.com/dolibarr/dolibarr",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 94.2,
+        "trajectory": "Rising"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 87.2,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/Dolibarr/dolibarr",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 7831
     }
   ],
   "saas": {
