@@ -104,8 +104,25 @@
         "core_gate": {"type": "string"}, "confidence": {"$ref": "#/$defs/score"},
         "dimensions": {"type": "object", "additionalProperties": {"$ref": "#/$defs/score"}},
         "score_version": {"type": "string"}, "evaluated_at": {"$ref": "#/$defs/ts"},
-        "scoring_path": {"$ref": "#/$defs/scoring_path"}
+        "scoring_path": {"$ref": "#/$defs/scoring_path"},
+        "caps": {"$ref": "#/$defs/caps"}
       }
+    },
+
+    "caps": {
+      "description": "KEI-961: the evidence caps that lowered a Replacement Fit, each with the reason a reader can disclose.",
+      "type": "array",
+      "items": {"type": "object", "additionalProperties": false, "required": ["id", "cap", "reason"],
+        "properties": {"id": {"enum": ["feature_out_of_scope", "uncorroborated_pairing"]}, "cap": {"type": "number"},
+                       "reason": {"type": "string", "minLength": 20}, "dimension": {"type": "string"},
+                       "excluded_features": {"type": "array", "items": {"type": "string"}}}}
+    },
+
+    "corroboration": {
+      "anyOf": [{"type": "null"}, {"type": "object", "additionalProperties": false,
+        "required": ["corroborated", "basis", "readme_checked"],
+        "properties": {"corroborated": {"type": "boolean"}, "readme_checked": {"type": "boolean"},
+                       "basis": {"type": "array", "items": {"enum": ["second_upstream_source", "self_described", "readme_names_product"]}}}}]
     },
 
     "relationship": {
@@ -141,7 +158,8 @@
         "maintenance_status": {"$ref": "#/$defs/maintenance_status"},
         "last_meaningful_activity_at": {"$ref": "#/$defs/ts"},
         "latest_release": {"type": ["object", "null"]},
-        "replacement_fit": {"type": "object", "required": ["score", "confidence", "score_version", "evaluated_at"]},
+        "replacement_fit": {"type": "object", "required": ["score", "confidence", "score_version", "evaluated_at"],
+                            "properties": {"caps": {"$ref": "#/$defs/caps"}}},
         "project_health": {"type": ["object", "null"]},
         "self_hosting": {"type": "object", "required": ["self_hostable", "basis"]},
         "note": {"type": "object", "required": ["strengths", "gaps", "text", "origin"], "properties": {"origin": {"const": "derived"}}},
@@ -160,7 +178,8 @@
               "required": ["scoring_path", "core_gate", "evidence_families", "dimensions"],
               "properties": {"scoring_path": {"enum": ["full_lane", "single_project"]}, "core_gate": {"type": "string"},
                              "evidence_families": {"type": "array", "items": {"type": "string"}},
-                             "dimensions": {"type": "object"}}}}},
+                             "dimensions": {"type": "object"},
+                             "caps": {"$ref": "#/$defs/caps"}, "corroboration": {"$ref": "#/$defs/corroboration"}}}}},
         "live_checked_at": {"$ref": "#/$defs/ts"}
       }
     },

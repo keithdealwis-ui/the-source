@@ -13,7 +13,7 @@
 # A signal whose evidence is missing is UNKNOWN, never zero: its weight is dropped from the
 # dimension and the gap is charged to Evidence Confidence instead (rubric rule 1).
 
-version: "1.2.0"
+version: "1.3.0"
 approved_rubric: "Keith, 29 Sep 2026 (KEI-806 description)"
 
 endorsement:
@@ -185,6 +185,35 @@ replacement_fit:
     base_self_hostable: 80
     base_hosted_only: 40
     open_core_penalty: 20
+  # KEI-961 (v1.3.0). Two evidence caps, each recorded on the row (`caps`: id, cap, reason) so the read layer
+  # and the MCP can disclose why a number is what it is. Both only ever lower a score.
+  #
+  # Feature equivalence when the project's README rules features out. Statements are read only in explicit
+  # forms: a line under one of `headings`, a line (clause) containing one of `markers`, or a table row whose
+  # status cell starts with a symbol the README's own legend defines with a marker ("➖ intentionally out of
+  # scope"). A checklist feature (the category's `features` plus the product's `scope_features`,
+  # config/saas_jobs.yaml) named in such a statement is not a feature hit, and Feature equivalence is capped at
+  # min(cap_any, 100 x (1 - excluded / checklist)).
+  feature_scope:
+    enabled: true
+    cap_any: 75
+    markers: ["out of scope", "out-of-scope", "not supported", "unsupported", "no plans to", "not planned",
+              "non-goal", "not a goal", "won't support", "will not support", "won't implement", "will not implement",
+              "not in scope", "intentionally left out", "deliberately left out", "not included"]
+    headings: ["non-goals", "non goals", "out of scope", "out-of-scope", "not supported", "unsupported",
+               "what it is not", "what this is not", "what it doesn't do", "what it does not do", "not planned"]
+  # No Replacement Fit above `cap` without corroboration. Corroborated = a second independent upstream source
+  # (two or more non-job-match sources), a self-described relationship (the intake ledger), or the project's
+  # own README/description naming the product within `window_chars` of an `alternative_context` phrase.
+  # A job-matched pairing (the project only says it does the category's job) is not corroboration of a
+  # pairing with one specific product.
+  corroboration_cap:
+    enabled: true
+    cap: 80
+    window_chars: 80
+    alternative_context: ["alternative", "replacement for", "replace ", "replaces ", "instead of", "switch from",
+                          "switching from", "migrate from", "migrating from", "move from", "moving from",
+                          "clone", " vs ", " vs. ", "versus"]
   # Relationship confidence from the graph REPLACES edge (0-1) is carried through as-is.
 
 evidence_confidence:

@@ -212,7 +212,7 @@ def assess(url: str, request_id: str, submitted_by: str | None = None, saas_hint
                        "canonical": {"status": "not_admitted"}})
 
     pairs = [{"saas_id": e["saas_id"], "status": "validated", "source_count": 1, "corroborated": False,
-              "reviewed": False} for e in evid]
+              "reviewed": False, "evidence_class": "self_described"} for e in evid]
     # Preliminary scores are reported in the outcome only. The shared score history
     # (data/scores/) is written by the cycle that promotes the repository, through the
     # same scoring path, so intake never writes a file the cycle also writes.

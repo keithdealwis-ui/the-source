@@ -34,7 +34,7 @@ def score(key: str, live: dict, licence: dict, pairs: list[dict], as_of: str, ht
 
     live     the project's live observation (enrich), for licence status and repo id
     licence  build.licence_verdict output ({"spdx", "status", ...})
-    pairs    [{"saas_id", "status", "source_count", "corroborated", "reviewed"}]
+    pairs    [{"saas_id", "status", "source_count", "corroborated", "reviewed", "evidence_class"?}]
     Returns {"health": row|None, "fit": [rows], "errors": [..]}.
     """
     if not key.startswith("github.com/"):
@@ -88,6 +88,7 @@ def score(key: str, live: dict, licence: dict, pairs: list[dict], as_of: str, ht
         edge = {"id": f"{project_id}|REPLACES|saas:{pr['saas_id']}", "to": f"saas:{pr['saas_id']}",
                 "confidence": _replaces_confidence(pr.get("source_count") or 1, pr.get("reviewed", False)),
                 "attrs": {"kei805_status": pr.get("status"), "corroborated": pr.get("corroborated", False),
+                          "evidence_class": pr.get("evidence_class"),
                           "source_count": pr.get("source_count") or 1,
                           "recommendation_eligible": pr.get("status") == "validated"},
                 "evidence": None}
@@ -113,7 +114,7 @@ def store(result: dict) -> int:
             health[h["oss_id"]] = h
     for f in result.get("fit") or []:
         k = (f["saas_id"], f["oss_id"])
-        if k not in fit or fit[k]["evaluated_at"] <= f["evaluated_at"]:
+        if canonical.supersedes(f, fit.get(k)):
             fit[k] = f
     canonical._write_scores(fit, health)
     return canonical.append_score_history(result.get("fit") or [], [result["health"]] if result.get("health") else [])

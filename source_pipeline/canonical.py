@@ -58,6 +58,10 @@ def _fit_summary(r: dict, path: str) -> dict:
         "saas_id": r["saas"].split(":", 1)[1],
         "oss_id": r["canonical"],
         "score": r["score"],
+        "uncapped_score": r.get("uncapped_score"),
+        # KEI-961: why the score is lower than its dimensions alone would give, for disclosure
+        "caps": r.get("caps") or [],
+        "corroboration": r.get("corroboration"),
         "credible_alternative": bool(r["credible_alternative"]),
         "publish": bool(r["publish"]),
         "core_gate": r["core_gate"],
@@ -103,7 +107,7 @@ def extract_scores() -> dict:
         if r["canonical"] in oss:
             s = _fit_summary(r, "full_lane")
             key = (s["saas_id"], s["oss_id"])
-            if key not in fit or fit[key]["evaluated_at"] <= s["evaluated_at"]:
+            if supersedes(s, fit.get(key)):
                 fit[key] = s
                 n_fit += 1
     for line in open(score_dir / "project_health.jsonl", encoding="utf-8"):
@@ -116,6 +120,23 @@ def extract_scores() -> dict:
     _write_scores(fit, health)
     return {"fit_rows": len(fit), "health_rows": len(health), "fit_from_full_lane": n_fit,
             "health_from_full_lane": n_health}
+
+
+def _version(v: str | None) -> tuple:
+    try:
+        return tuple(int(x) for x in (v or "0").split("."))
+    except ValueError:
+        return (0,)
+
+
+def supersedes(new: dict, old: dict | None) -> bool:
+    """Newest evaluation wins; at the same evaluation time a row under a newer rubric is never replaced by one under
+    an older rubric (a stale full-lane extract must not undo a KEI-961 recap)."""
+    if old is None:
+        return True
+    if new["evaluated_at"] != old["evaluated_at"]:
+        return new["evaluated_at"] > old["evaluated_at"]
+    return _version(new.get("score_version")) >= _version(old.get("score_version"))
 
 
 def _load_scores() -> tuple[dict, dict]:
@@ -235,6 +256,12 @@ def _sha(path: Path) -> str:
 
 # ---------------------------------------------------------------- catalogue (KEI-922)
 
+def _caps(fit: dict) -> list:
+    """KEI-961: the caps that lowered this Replacement Fit, each with its reason, for disclosure. Empty when none."""
+    return [{k: c[k] for k in ("id", "cap", "reason", "dimension", "excluded_features") if k in c}
+            for c in fit.get("caps") or []]
+
+
 def _evidence(rel: dict, fit: dict) -> dict:
     """What a recommendation rests on: the relationship's upstream evidence and the full evaluation's evidence."""
     return {
@@ -244,7 +271,8 @@ def _evidence(rel: dict, fit: dict) -> dict:
                                         for p in rel["provenance"]]},
         "replacement_fit": {"scoring_path": fit["scoring_path"], "core_gate": fit["core_gate"],
                             "evidence_families": fit["evidence_families"],
-                            "dimensions": fit["dimensions"]},
+                            "dimensions": fit["dimensions"],
+                            "caps": _caps(fit), "corroboration": fit.get("corroboration")},
     }
 
 
@@ -402,8 +430,9 @@ def build(out_root: Path | None = None) -> dict:
             "provenance": [p for p in e["provenance"] if p["source_id"] in row["sources"]],
             "validated_as_of": e["validation"]["validated_as_of"],
             "replacement_fit": None if fit is None else {
-                k: fit[k] for k in ("score", "credible_alternative", "publish", "core_gate", "confidence",
-                                    "dimensions", "score_version", "evaluated_at", "scoring_path")},
+                **{k: fit[k] for k in ("score", "credible_alternative", "publish", "core_gate", "confidence",
+                                       "dimensions", "score_version", "evaluated_at", "scoring_path")},
+                "caps": _caps(fit)},
             "recommended": bool(fit and fit["publish"] and fit["credible_alternative"]),
         })
         project_ids.add(oid)
@@ -488,7 +517,8 @@ def build(out_root: Path | None = None) -> dict:
                 "replacement_fit": {"score": r["replacement_fit"]["score"],
                                     "confidence": r["replacement_fit"]["confidence"],
                                     "score_version": r["replacement_fit"]["score_version"],
-                                    "evaluated_at": r["replacement_fit"]["evaluated_at"]},
+                                    "evaluated_at": r["replacement_fit"]["evaluated_at"],
+                                    "caps": r["replacement_fit"]["caps"]},
                 "project_health": None if p["project_health"] is None else {
                     k: p["project_health"][k] for k in ("score", "band", "trajectory", "confidence")},
                 "self_hosting": _self_hosting(fit),

@@ -279,7 +279,7 @@ def _score_new(budget: int, res: dict) -> None:
             continue
         todo.setdefault(e["oss_id"], []).append({
             "saas_id": e["saas_id"], "status": "validated", "source_count": e["source_count"],
-            "corroborated": e["corroborated"],
+            "corroborated": e["corroborated"], "evidence_class": e.get("evidence_class"),
             "reviewed": e["validation"]["plausibility_review"]["outcome"] != "not reviewed"})
     for oid, p in oss.items():
         if p["derived"]["lane"] == "recommendable" and p["host"] == "github.com" and oid not in health:
@@ -318,7 +318,7 @@ def _rescore(keys: list[str], budget: int, res: dict) -> list[str]:
         if e["validation"]["status"] == "validated":
             pairs.setdefault(e["oss_id"], []).append({
                 "saas_id": e["saas_id"], "status": "validated", "source_count": e["source_count"],
-                "corroborated": e["corroborated"],
+                "corroborated": e["corroborated"], "evidence_class": e.get("evidence_class"),
                 "reviewed": e["validation"]["plausibility_review"]["outcome"] != "not reviewed"})
     todo = []
     for key in keys:

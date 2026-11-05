@@ -513,3 +513,17 @@ categories:
   Search engine:
     core: [["metasearch engine", "web search engine", "private search engine", "privacy-respecting search", "search engine for the web", "self-hosted search engine"], ["search", "result", "query", "privacy", "index"]]
     features: ["privacy", "self-host", "engine", "result", "image", "news", "api", "instance", "filter", "proxy"]
+
+# KEI-961: product-specific features, beyond the category checklist, that a project may explicitly rule out.
+# Read ONLY by the out-of-scope check (config/scoring.yaml replacement_fit.feature_scope): a project whose README
+# lists one of these (or a category feature) as out of scope / not supported has Feature equivalence capped
+# against that product. They never add feature hits, so a pair whose README rules nothing out is unchanged.
+# Desk-authored from each product's public feature pages (claude-code, 2026-11-05); add a product when a
+# pairing needs it. Terms match like every other term (prefix stems, separators interchangeable).
+products:
+  salesforce:
+    scope_features: [forecast, "workflow automation", "multi-currency", products, quote, territor, approval, "web form", marketplace, "mobile app"]
+  pipedrive:
+    scope_features: [forecast, "workflow automation", "multi-currency", products, projects, "web form", chatbot, marketplace, "mobile app"]
+  hubspot:
+    scope_features: [forecast, "workflow automation", "multi-currency", products, quote, "web form", chatbot, "marketing automation", "mobile app"]

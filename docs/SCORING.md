@@ -26,6 +26,7 @@ describe project health, not endorsement.
 .venv/bin/python -m source_pipeline score-harvest --refresh  # re-observe everything under a new as_of (weekly refresh)
 .venv/bin/python -m source_pipeline score-build              # no network: extract signals, score, append history, validate
 .venv/bin/python -m source_pipeline score-validate           # no network: acceptance checks + calibration set
+.venv/bin/python -m source_pipeline scores-recap             # network (README reads): apply a newer rubric's caps to stored data/scores/ rows (KEI-961)
 .venv/bin/python scripts/run_score_tests.py                  # unit tests, stdlib runner, no network
 .venv/bin/python scripts/score_refresh_probe.py              # AC11/AC12 probe: refresh a sample in an isolated copy
 ```
@@ -142,7 +143,7 @@ rescore, not a re-harvest.
 | Dimension | Weight | Evidence |
 |---|---|---|
 | Core use-case coverage | 25 | credited share of the category's core groups: 1.0 for a group found in the project's *identity text* (description, topics, upstream category, first 2,000 chars of README), 0.25 for a group found only deeper in the README, where long READMEs mention everything |
-| Feature equivalence | 15 | share of the category's feature checklist evidenced |
+| Feature equivalence | 15 | share of the category's feature checklist evidenced; capped when the README rules features out (KEI-961, below) |
 | Ease of adoption | 15 | quick-start/install section; demo/screenshots; container files; docs; README depth |
 | Deployment & ownership | 10 | self-host evidence or container files; cloud option; data-ownership language; licence usability |
 | Migration friction | 10 | import/export/migration language; the incumbent named within 120 chars of import/migrate/switch/alternative; API |
@@ -169,6 +170,36 @@ a product-analytics replacement for Mixpanel, Grafana is not an uptime monitor l
 Stack, and GIMP is not Canva. A project that cannot be shown to do
 the incumbent's main job never reads as a strong replacement for it. The uncapped figure is
 kept in `uncapped_score` for inspection.
+
+**Evidence caps (KEI-961, rubric v1.3.0).** Two further caps, configured in
+`config/scoring.yaml` (`replacement_fit.feature_scope`, `replacement_fit.corroboration_cap`). Each one
+that lowers a number is recorded on the row in `caps` (`id`, `cap`, `reason`), carried into
+`data/canonical/relationships.jsonl`, every `api/v1` recommendation and the MCP relationship verdict,
+so a reader can always say why a score is what it is. Both only ever lower a score.
+
+- *Out-of-scope features* (`feature_out_of_scope`). When the project's own README rules
+  features out, they are not counted as feature hits, and Feature equivalence is capped at
+  `min(cap_any, 100 × (1 − excluded ÷ checklist))`. The checklist is the category's `features`
+  plus the product's own `scope_features` (`config/saas_jobs.yaml` → `products`). Only explicit
+  statements are read: a line under a heading such as *Non-goals* / *Out of scope* / *Not supported*;
+  a clause containing *out of scope*, *not supported*, *no plans to*, *not planned*, *non-goal* and
+  similar; or a comparison-table row whose status cell starts with a symbol that the README's own
+  legend defines as out of scope (for a table row only the feature cell is read). The trigger was
+  Warpdrive: its comparison table listed *Products, Projects, Invoicing, Forecast — Out of scope*, and
+  those very words had been counted as feature hits.
+- *Uncorroborated pairing* (`uncorroborated_pairing`). No Replacement Fit above 80 without
+  corroboration. A pairing is corroborated by a second independent upstream source (two or more
+  non-job-match sources), by being self-described (the intake ledger admits a pair only on the
+  project's own statement), or by the project's own README or description naming the product within
+  80 characters of an alternative/replacement phrase ("a Pipedrive alternative", "instead of Jira").
+  A job-matched pairing (the project only says it does the category's job) is not corroboration of
+  a pairing with one specific product. Each row records `corroboration: {corroborated, basis,
+  readme_checked}`.
+
+Rows scored before v1.3.0 are brought under these caps by `scores-recap`, which applies the same
+functions to the stored dimensions, the relationship's corroboration and the project's README read
+at recap time (`recap.readme_observed_at`), without a full rescore. The next scoring of a pair
+supersedes its recap.
 
 Replacement Fit takes no Health input (tested by perturbing Health: the Fit is identical).
 AC4 is checked symmetrically about the Healthy band edge. There must be Healthy projects
