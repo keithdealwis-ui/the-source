@@ -57,7 +57,17 @@ def parse_solvohq(src: Path, parse_path: str):
             }
 
 
+OSD_HTML_ENTRY = re.compile(r'<strong>\s*<a href="(https?://[^"]+)">([^<]+)</a>\s*</strong>', re.I)
+OSD_HTML_ALT = re.compile(r"<b>\s*Open-source alternative to\s*:?\s*([^<]+)</b>", re.I)
+
+
 def parse_opensaasdirectory(src: Path, parse_path: str):
+    """Two layouts of the same export. Up to 2026-10 (pin c0a87b19): `## Category`, one
+    `### [Name](repo)` per project and a `**Open-source alternative to:** A, B` line. From
+    2026-11-01 (23581adb, KEI-961): `### <emoji> Category` with HTML table rows
+    `<strong><a href="repo">Name</a></strong>` and `💡 <b>Open-source alternative to A & B</b>`."""
+    import html
+
     path = src / parse_path
     category = None
     current = None
@@ -68,7 +78,17 @@ def parse_opensaasdirectory(src: Path, parse_path: str):
             continue
         if line.startswith("### "):
             m = MD_LINK.search(line)
-            current = {"name": m.group(1).strip(), "url": m.group(2).strip()} if m else None
+            if m:
+                current = {"name": m.group(1).strip(), "url": m.group(2).strip()}
+            else:  # the 2026-11 layout: a sub-category heading, emoji first
+                current = None
+                label = re.sub(r"^[^\w(]+", "", line[4:], flags=re.U).strip()
+                if label:
+                    category = label
+            continue
+        h = OSD_HTML_ENTRY.search(line)
+        if h:
+            current = {"name": html.unescape(h.group(2)).strip(), "url": h.group(1).strip()}
             continue
         m = re.match(r"^\*\*.*?alternative to:\*\*\s*(.+)$", line, re.I)
         if m and current:
@@ -80,6 +100,18 @@ def parse_opensaasdirectory(src: Path, parse_path: str):
                 "saas_names": [s.strip() for s in m.group(1).split(",") if s.strip()],
                 "locator": f"{parse_path}#L{n}",
             }
+            continue
+        m = OSD_HTML_ALT.search(line)
+        if m and current:
+            yield {
+                "oss_name": current["name"],
+                "repo_url": current["url"],
+                "declared_licence": None,
+                "category": category,
+                "saas_names": _split_names(re.sub(r",\s*(?:and|or)\s+", ", ", html.unescape(m.group(1)))),
+                "locator": f"{parse_path}#L{n}",
+            }
+            current = None
 
 
 def parse_runacapital(src: Path, parse_path: str):
@@ -173,20 +205,26 @@ def parse_btwso(src: Path, parse_path: str):
             }
 
 
+DIEGOLEME_NOT_LISTS = {"apps", "contents", "contributing", "license", "licence", "table of contents"}
+
+
 def parse_diegoleme(src: Path, parse_path: str):
+    """Up to 2026-11-03 the list was one `## Resources` section of `### [SaaS](url)` blocks. Commit 401bc408
+    (KEI-961) split it into 18 `## <Category>` sections of the same blocks, and a heading may name several
+    products (`### [ChatGPT](..) / [Claude](..)`). Every section is read except the navigation ones."""
     path = src / parse_path
     saas = None
-    in_resources = False
+    in_list = False
     for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
         if line.startswith("## "):
-            in_resources = line[3:].strip().lower() == "resources"
+            in_list = line[3:].strip().lower() not in DIEGOLEME_NOT_LISTS
             saas = None
             continue
-        if not in_resources:
+        if not in_list:
             continue
         if line.startswith("### "):
-            m = MD_LINK.search(line)
-            saas = (m.group(1) if m else line[4:]).strip()
+            links = MD_LINK.findall(line)
+            saas = [t.strip() for t, _ in links if t.strip()] if links else _split_names(line[4:])
             continue
         m = re.match(r"^\s*[-*]\s*\[([^\]]+)\]\((https?://[^)\s]+)\)", line)
         if m and saas:
@@ -195,7 +233,7 @@ def parse_diegoleme(src: Path, parse_path: str):
                 "repo_url": m.group(2).strip(),
                 "declared_licence": None,
                 "category": None,
-                "saas_names": _split_names(saas),
+                "saas_names": [x for s in saas for x in _split_names(s)],
                 "locator": f"{parse_path}#L{n}",
             }
 
