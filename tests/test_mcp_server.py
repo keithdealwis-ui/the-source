@@ -157,14 +157,15 @@ def test_alternatives_for_supported_products_equal_the_published_page():
     assert len(index["supported_saas"]) >= 1
     for row in index["supported_saas"]:
         page = _api("saas", f"{row['saas_id']}.json")
-        got = _ok(s, "source_get_alternatives", saas=row["saas_id"], limit=5)
+        got = _ok(s, "source_get_alternatives", saas=row["saas_id"], limit=5, detail="full")
         assert got["surface"] == f"api/v1/saas/{row['saas_id']}.json"
         assert got["recommendations"] == page["recommendations"]
         assert got["status"] == page["status"] and got["more_available"] == page["more_available"]
         assert got["provenance"] == page["provenance"] and got["last_checked"] == page["last_checked"]
-        assert _ok(s, "source_get_alternatives", saas=row["name"])["recommendations"] == page["recommendations"]
+        assert _ok(s, "source_get_alternatives", saas=row["name"], detail="full")["recommendations"] == \
+            page["recommendations"]
         # the page is the top of the canonical ranking, so rows past it continue the same order
-        more = _ok(s, "source_get_alternatives", saas=row["saas_id"], limit=50)
+        more = _ok(s, "source_get_alternatives", saas=row["saas_id"], limit=50, detail="full")
         assert more["recommendations"][:len(page["recommendations"])] == page["recommendations"]
         extra = more["recommendations"][len(page["recommendations"]):]
         assert len(extra) == page["more_available"] and all(r["beyond_published_page"] for r in extra)
@@ -176,7 +177,7 @@ def test_alternatives_for_supported_products_equal_the_published_page():
 def test_limit_trims_and_counts_the_rest():
     s = _server()
     page = _api("saas", "notion.json")
-    got = _ok(s, "source_get_alternatives", saas="notion", limit=2)
+    got = _ok(s, "source_get_alternatives", saas="notion", limit=2, detail="full")
     assert got["recommendations"] == page["recommendations"][:2]
     assert got["more_available"] == page["more_available"] + len(page["recommendations"]) - 2
 

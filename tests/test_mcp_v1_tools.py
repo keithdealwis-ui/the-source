@@ -66,7 +66,8 @@ def test_six_capability_groups_have_tools():
 # -- comparison
 
 def test_compare_keeps_the_four_measures_separate():
-    r = _ok(S, "source_compare_projects", projects=["Docmost", "github.com/appflowy-io/appflowy"])
+    r = _ok(S, "source_compare_projects", projects=["Docmost", "github.com/appflowy-io/appflowy"],
+            detail="full")
     assert [p["oss_id"] for p in r["projects"]] == ["github.com/docmost/docmost", "github.com/appflowy-io/appflowy"]
     assert set(r["measures"]) == {"project_health", "replacement_fit", "repository_momentum", "community_momentum"}
     for p in r["projects"]:
