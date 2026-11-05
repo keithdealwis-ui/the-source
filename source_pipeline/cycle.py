@@ -266,16 +266,23 @@ def _lanes(path: Path) -> dict:
 
 
 def _score_new(budget: int, res: dict) -> None:
-    from . import canonical, score_one
+    from . import canonical, score_build, score_one
 
     fit, health = canonical._load_scores()
     oss = {p["oss_id"]: p for p in common.read_jsonl(common.DATASET / "oss_projects.jsonl")}
     snap = common.read_json(common.LIVE / "snapshot.json")["projects"]
-    todo = {}
+    jobs = score_build.load_jobs()
+    category = {s["saas_id"]: s["category"] for s in common.read_jsonl(common.DATASET / "saas_products.jsonl")}
+    todo, no_job = {}, []
     for e in common.read_jsonl(common.DATASET / "relationships.jsonl"):
         p = oss[e["oss_id"]]
         if (e["validation"]["status"] != "validated" or p["derived"]["lane"] != "recommendable"
                 or p["host"] != "github.com" or (e["saas_id"], e["oss_id"]) in fit):
+            continue
+        if category.get(e["saas_id"]) not in jobs:
+            # config/saas_jobs.yaml leaves some categories undefined on purpose (Sales intelligence, ...): such a pair
+            # can never be scored, so it is reported, never retried, and never degrades the strategy (KEI-961).
+            no_job.append({"saas_id": e["saas_id"], "oss_id": e["oss_id"], "category": category.get(e["saas_id"])})
             continue
         todo.setdefault(e["oss_id"], []).append({
             "saas_id": e["saas_id"], "status": "validated", "source_count": e["source_count"],
@@ -302,14 +309,33 @@ def _score_new(budget: int, res: dict) -> None:
     res["strategies"].append({"id": "new_pair_scoring", "status": "ok" if not errors else "degraded",
                               "projects_scored": len(keys) - len([e for e in errors if "no live" in e]),
                               "pairs_scored": scored_pairs, "deferred_to_next_cycle": max(0, len(todo) - budget),
+                              "not_scorable_no_job_definition": len(no_job),
+                              "not_scorable": sorted(no_job, key=lambda x: (x["saas_id"], x["oss_id"]))[:20],
                               "errors": errors[:20]})
 
 
-def _rescore(keys: list[str], budget: int, res: dict) -> list[str]:
+RESCORE_QUEUE = common.STATE / "rescore_queue.json"
+RELEASE_ONLY = ("release ",)
+
+
+def _release_only(reasons: list[str]) -> bool:
+    return bool(reasons) and all(r.startswith(RELEASE_ONLY) for r in reasons)
+
+
+def _rescore(keys: list[str], budget: int, res: dict, reasons: dict | None = None, day: str | None = None,
+             release_interval_days: int = 7) -> list[str]:
     """Re-score projects whose light refresh showed a material change (KEI-848). Only
-    projects that already hold a score are re-scored here; unscored ones are _score_new's."""
+    projects that already hold a score are re-scored here; unscored ones are _score_new's.
+
+    KEI-961: what the budget leaves is carried in data/state/rescore_queue.json and asked first next cycle (before
+    KEI-961 it was dropped: a change is detected once, so "deferred_to_next_cycle" never came back, and the
+    alphabetical cut starved the same projects every day). A change other than a new release goes first; a
+    release-only change waits until the project's Health is release_interval_days old, so a project that releases
+    daily is re-scored once a week, not daily. Nothing is ever dropped while the project stays scorable."""
     from . import canonical, score_one
 
+    reasons = reasons or {}
+    today = day or datetime.now(timezone.utc).date().isoformat()
     fit, health = canonical._load_scores()
     oss = {p["oss_id"]: p for p in common.read_jsonl(common.DATASET / "oss_projects.jsonl")}
     snap = common.read_json(common.LIVE / "snapshot.json")["projects"]
@@ -320,26 +346,54 @@ def _rescore(keys: list[str], budget: int, res: dict) -> list[str]:
                 "saas_id": e["saas_id"], "status": "validated", "source_count": e["source_count"],
                 "corroborated": e["corroborated"],
                 "reviewed": e["validation"]["plausibility_review"]["outcome"] != "not reviewed"})
-    todo = []
+    queue = (common.read_json(RESCORE_QUEUE).get("queue") or {}) if RESCORE_QUEUE.exists() else {}
+    carried = len(queue)
     for key in keys:
         live = snap.get(key) or {}
         oid = live.get("canonical_id") or key
+        why = list(reasons.get(key) or [])
+        q = queue.setdefault(oid, {"queued_on": today, "reasons": []})
+        q["reasons"] = sorted(set(q["reasons"]) | set(why))[-10:]
+    eligible, waiting, dropped = [], 0, 0
+    for oid in sorted(queue):
+        live = snap.get(oid) or next((v for k, v in snap.items() if v.get("canonical_id") == oid), None)
         p = oss.get(oid)
-        if p and p["host"] == "github.com" and p["derived"]["lane"] == "recommendable" and oid in health:
-            todo.append((oid, live, p))
-    todo = sorted({t[0]: t for t in todo}.values(), key=lambda t: t[0])  # one per canonical project
+        if not (live and p and p["host"] == "github.com" and p["derived"]["lane"] == "recommendable" and oid in health):
+            queue.pop(oid)  # no longer scorable here (left the lane, or now _score_new's)
+            dropped += 1
+            continue
+        q = queue[oid]
+        if _release_only(q["reasons"]):
+            at = (health[oid].get("evaluated_at") or "")[:10]
+            try:
+                age = (datetime.fromisoformat(today) - datetime.fromisoformat(at)).days if at else None
+            except ValueError:
+                age = None
+            if age is not None and age < release_interval_days:
+                waiting += 1
+                continue
+        eligible.append((0 if not _release_only(q["reasons"]) else 1, q["queued_on"], oid, live, p))
+    eligible.sort(key=lambda t: t[:3])
     done, errors = [], []
-    for oid, live, p in todo[:budget]:
+    for _, _, oid, live, p in eligible[:budget]:
         r = score_one.score(oid, live, p["derived"]["licence"], pairs.get(oid, []), p["derived"]["evaluated_as_of"])
         if r["health"] is None:
             errors.append(f"{oid}: {r['errors']}")
             continue
         score_one.store(r)
         done.append(oid)
+        queue.pop(oid, None)
         errors += [f"{oid}: {e}" for e in r["errors"]]
+    common.write_json(RESCORE_QUEUE, {"schema": "the-source.rescore-queue/1", "as_of": today,
+                                      "release_interval_days": release_interval_days,
+                                      "queue": dict(sorted(queue.items()))})
+    oldest = min((q["queued_on"] for q in queue.values()), default=None)
     res["strategies"].append({"id": "rescoring", "status": "ok" if not errors else "degraded",
-                              "candidates": len(todo), "rescored": len(done), "projects": done[:50],
-                              "deferred_to_next_cycle": max(0, len(todo) - budget), "errors": errors[:20]})
+                              "candidates": len(eligible), "rescored": len(done), "projects": done[:50],
+                              "queue": {"carried_in": carried, "detected_today": len(keys), "dropped_unscorable": dropped,
+                                        "waiting_release_interval": waiting, "carried_out": len(queue),
+                                        "oldest_queued_on": oldest},
+                              "deferred_to_next_cycle": max(0, len(eligible) - budget), "errors": errors[:20]})
     return done
 
 
@@ -485,7 +539,10 @@ def work(run_id: str, result_path: Path) -> int:
         # 6. deep enrichment only where it can change something
         step("deep_enrichment")
         classes = daily.classify(light, prev_snap.get("projects") or {}, cfg["deep"], policy, as_of, last_activity)
-        selected, deferred = daily.select_deep(classes, int(cfg["deep"]["max_per_cycle"]))
+        deep_report: dict = {}
+        rmin = cfg["deep"].get("release_deep_min_age_days")
+        selected, deferred = daily.select_deep(classes, int(cfg["deep"]["max_per_cycle"]),
+                                               None if rmin is None else int(rmin), deep_report)
         deep = enrich.observe(selected, as_of=as_of_dt) if selected else {"projects": {}, "failed_keys": [],
                                                                           "http_calls": 0, "lookup_failures": []}
         dtries = 0
@@ -512,6 +569,8 @@ def work(run_id: str, result_path: Path) -> int:
                                   "selected": len(selected), "http_calls": deep.get("http_calls", 0),
                                   "retries": dtries, "kept_previous_after_failure": kept_prior[:20],
                                   "deferred_rotation": len(deferred),
+                                  "release_coalesced": deep_report.get("release_coalesced", 0),
+                                  "max_age_days": int(cfg["deep"]["max_age_days"]),
                                   "by_class": {c: len(v) for c, v in sorted(by_class.items())},
                                   "changed": [{"key": k, "reasons": classes[k]["reasons"]}
                                               for k in sorted(by_class.get("changed", []))][:100]})
@@ -543,6 +602,7 @@ def work(run_id: str, result_path: Path) -> int:
             "deep_enriched": len(selected) - len(kept_prior),
             "failed": len(kept_prior),
             "deferred": len(deferred),
+            "deferred_deep_rotation": len(deferred),
             "stale_or_abandoned_detected": len(dropped),
         })
         if failed:
@@ -552,10 +612,14 @@ def work(run_id: str, result_path: Path) -> int:
         step("scoring")
         fit_before = common.sha256_file(SCORES_FIT) if SCORES_FIT.exists() else None
         _score_new(cfg["scoring"]["max_new_projects_per_cycle"], res)
-        rescored = _rescore(changed_keys, int(cfg["scoring"].get("max_rescored_per_cycle", 40)), res)
+        rescored = _rescore(changed_keys, int(cfg["scoring"].get("max_rescored_per_cycle", 40)), res,
+                            reasons={k: classes[k]["reasons"] for k in changed_keys}, day=day,
+                            release_interval_days=int(cfg["scoring"].get("release_rescore_interval_days", 7)))
         res["counts"]["rescored"] = len(rescored)
-        res["counts"]["deferred"] += next(s for s in res["strategies"] if s["id"] == "rescoring")["deferred_to_next_cycle"]
-        res["counts"]["deferred"] += next(s for s in res["strategies"] if s["id"] == "new_pair_scoring")["deferred_to_next_cycle"]
+        res["counts"]["deferred_rescoring"] = next(s for s in res["strategies"] if s["id"] == "rescoring")["deferred_to_next_cycle"]
+        res["counts"]["deferred_new_pair_scoring"] = next(s for s in res["strategies"]
+                                                          if s["id"] == "new_pair_scoring")["deferred_to_next_cycle"]
+        res["counts"]["deferred"] += res["counts"]["deferred_rescoring"] + res["counts"]["deferred_new_pair_scoring"]
         # launch.catalogue_serving (KEI-930) serves from the scores the build finds, so once scoring has moved them the
         # dataset is rebuilt; otherwise the committed data lags its own rebuild by a cycle and CI's rebuild check fails.
         if common.sha256_file(SCORES_FIT) != fit_before:
@@ -572,6 +636,10 @@ def work(run_id: str, result_path: Path) -> int:
         if not crep["ok"]:
             raise CycleError(f"canonical validation failed: {[c['id'] for c in crep['checks'] if not c['ok']]}")
         manifest = common.read_json(common.DATA / "canonical" / "MANIFEST.json")
+        gate = manifest.get("recommendation_gate") or {}
+        res["strategies"].append({"id": "recommendation_gate", "status": "ok", **gate})
+        res["counts"].update({"recommendation_evaluated": gate.get("evaluated"),
+                              "recommendation_passed": gate.get("passed"), "recommendation_failed": gate.get("failed")})
         _drill("canonical")
 
         # 10. intake outcomes learn whether they were promoted

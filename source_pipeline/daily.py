@@ -204,6 +204,9 @@ def classify(light: dict, previous: dict, deep_cfg: dict, policy: dict, as_of: s
     now = parse_ts(as_of)
     active, maintained = int(policy["maintenance"]["active_days"]), int(policy["maintenance"]["maintained_days"])
     max_age = int(deep_cfg["max_age_days"])
+    # The maintenance-boundary window was max_age_days until KEI-961 lengthened the rotation; it keeps its own value
+    # so a longer rotation does not widen what counts as a material change.
+    window = int(deep_cfg.get("maintenance_boundary_days", max_age))
     rel_stars = float(deep_cfg["material_star_change"]["relative"])
     abs_stars = int(deep_cfg["material_star_change"]["absolute"])
     out = {}
@@ -243,7 +246,7 @@ def classify(light: dict, previous: dict, deep_cfg: dict, policy: dict, as_of: s
             pushed_since = (parse_ts(cur.get("pushed_at")) or now) > (deep_at or now)
             if last and pushed_since:
                 days = (now - last).days
-                if any(b - max_age <= days <= b + max_age for b in (active, maintained)):
+                if any(b - window <= days <= b + window for b in (active, maintained)):
                     reasons.append(f"maintenance boundary: last meaningful activity {days} d ago, pushed since")
         if reasons:
             out[key] = {"class": "changed", "reasons": reasons, "deep_age_days": age}
@@ -263,14 +266,30 @@ def _newest_release(prev: dict) -> str | None:
     return prev.get("latest_release_tag")
 
 
-def select_deep(classes: dict, budget: int) -> tuple[list[str], list[str]]:
+def select_deep(classes: dict, budget: int, release_min_age_days: int | None = None,
+                report: dict | None = None) -> tuple[list[str], list[str]]:
     """New and changed always go deep (they are what the cycle exists to catch). Stale
-    rotation fills the remaining budget, oldest first; the rest is deferred, never lost."""
-    must = sorted(k for k, c in classes.items() if c["class"] in ("new", "changed"))
-    stale = sorted((k for k, c in classes.items() if c["class"] == "stale"),
-                   key=lambda k: (-(classes[k].get("deep_age_days") or 10 ** 6), k))
+    rotation fills the remaining budget, oldest first; the rest is deferred, never lost.
+
+    release_min_age_days (KEI-961): a change that is ONLY a new release tag goes deep at once only when the deep
+    observation is at least this old; otherwise it joins the rotation by age (the light refresh already carries the
+    new tag, and the change still reaches re-scoring). Without it, ~110 frequent releasers took ~110 of the 150 deep
+    reads every day and the other ~1,400 projects waited three weeks. `report`, when given, receives the count of
+    release-only changes coalesced this way. Returns (selected, deferred), deferred being stale projects only."""
+    def coalesce(c):
+        return (release_min_age_days is not None and c["class"] == "changed" and c.get("reasons")
+                and all(r.startswith("release ") for r in c["reasons"])
+                and c.get("deep_age_days") is not None and c["deep_age_days"] < release_min_age_days)
+
+    coalesced = {k for k, c in classes.items() if coalesce(c)}
+    must = sorted(k for k, c in classes.items() if c["class"] in ("new", "changed") and k not in coalesced)
+    rotation = sorted((k for k, c in classes.items() if c["class"] == "stale" or k in coalesced),
+                      key=lambda k: (-(classes[k].get("deep_age_days") or 10 ** 6), k))
     room = max(0, budget - len(must))
-    return must + stale[:room], stale[room:]
+    picked = rotation[:room]
+    if report is not None:
+        report["release_coalesced"] = len(coalesced - set(picked))
+    return must + picked, [k for k in rotation[room:] if k not in coalesced]
 
 
 def merge_snapshot(previous: dict, light: dict, deep: dict | None, keys: list[str]) -> dict:

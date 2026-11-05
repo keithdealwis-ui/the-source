@@ -37,7 +37,18 @@ refresh:
   retry_failed_lookups: 2     # re-ask only the repositories whose lookup failed, this many times
 
 deep:
-  max_age_days: 7             # rotation: every project is deep-enriched at least this often
+  # Rotation: every project is deep-enriched at least this often. 7 -> 14 (KEI-961): at 7 days a corpus of ~1,540
+  # needs ~220 deep reads a day against max_per_cycle 150, so ~800 projects sat stale-and-deferred every cycle from
+  # 2026-10-26 on. At 14 days, with release coalescing below, the same 150 covers ~2,100 projects at no extra API
+  # cost; the light refresh still reads stars, push, release, licence and archive state for every project daily, and
+  # any material change other than a new release still goes deep the same day.
+  max_age_days: 14
+  maintenance_boundary_days: 7  # a project this close to a maintenance boundary and pushed since goes deep (was max_age)
+  # A change that is only a new release tag goes deep at once only when the deep observation is at least this old;
+  # otherwise it joins the rotation (KEI-961). ~110 frequent releasers were taking ~110 of the 150 deep reads a day.
+  # Simulated on the 2026-11-05 snapshot (1,543 projects, 110 release changes/day from a pool of 575): 396 projects
+  # overdue at 14 days on day 1, 0 from about the 6th cycle on (14 days without coalescing: still ~450 overdue).
+  release_deep_min_age_days: 7
   max_per_cycle: 150          # new + changed always go; rotation fills the rest, oldest first
   material_star_change:       # a star change is material at max(absolute, relative x previous)
     absolute: 500
@@ -45,7 +56,9 @@ deep:
 
 scoring:
   max_new_projects_per_cycle: 60   # single-project scoring of unscored projects; the rest wait a day
-  max_rescored_per_cycle: 40       # re-scoring of materially changed projects; the rest wait a day
+  max_rescored_per_cycle: 40       # re-scoring of materially changed projects; the rest wait in
+                                   # data/state/rescore_queue.json and go first next cycle (KEI-961)
+  release_rescore_interval_days: 7 # a release-only change re-scores a project at most this often (KEI-961)
 
 history:
   retain_days: 400                 # enough for 90-day deltas with a year of look-back
