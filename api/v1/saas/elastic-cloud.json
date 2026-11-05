@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "28d4405a7c40c325",
+  "dataset_version": "1e20f5ef0822b56a",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
@@ -30,82 +30,6 @@
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "README.md#L572",
-              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
-              "source_id": "solvohq"
-            }
-          ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 100.0,
-            "ease_of_adoption": 52.9,
-            "economic_advantage": 40.0,
-            "feature_equivalence": null,
-            "integrations_extensibility": 100.0,
-            "migration_friction": 100.0,
-            "production_commercial_readiness": 100.0
-          },
-          "evidence_families": [
-            "api",
-            "support"
-          ],
-          "scoring_path": "full_lane"
-        }
-      },
-      "github_url": "https://github.com/opensearch-project/OpenSearch",
-      "last_meaningful_activity_at": "2026-10-29T21:26:55Z",
-      "latest_release": {
-        "published_at": "2026-10-20T22:16:56Z",
-        "tag": "2.19.7"
-      },
-      "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
-      "maintenance_status": "active",
-      "name": "OpenSearch",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "self-hosting and data ownership"
-        ],
-        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
-      },
-      "oss_id": "github.com/opensearch-project/opensearch",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 95.0,
-        "score": 90.3,
-        "trajectory": "Rising"
-      },
-      "rank": 1,
-      "replacement_fit": {
-        "confidence": 80.0,
-        "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 88.2,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/opensearch-project/OpenSearch",
-      "self_hosting": {
-        "basis": "container image or self-hosting evidence found",
-        "self_hostable": true
-      },
-      "sources": [
-        "solvohq"
-      ],
-      "stars": 13958
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
               "locator": "submissions/Manticore_Search.yaml",
               "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
               "source_id": "runacapital"
@@ -114,7 +38,19 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Elastic Cloud as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 71.2,
@@ -165,12 +101,19 @@
         "score": 91.5,
         "trajectory": "Stable"
       },
-      "rank": 2,
+      "rank": 1,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Elastic Cloud as what it replaces"
+          }
+        ],
         "confidence": 84.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 82.9,
-        "score_version": "1.2.0"
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/manticoresoftware/manticoresearch",
       "self_hosting": {
@@ -189,6 +132,101 @@
           "evidence_class": "listed",
           "provenance": [
             {
+              "locator": "README.md#L572",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-11-05T02:13:56Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Elastic Cloud as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 52.9,
+            "economic_advantage": 40.0,
+            "feature_equivalence": null,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/opensearch-project/OpenSearch",
+      "last_meaningful_activity_at": "2026-10-29T21:26:55Z",
+      "latest_release": {
+        "published_at": "2026-10-20T22:16:56Z",
+        "tag": "2.19.7"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-11-05T02:13:56Z",
+      "maintenance_status": "active",
+      "name": "OpenSearch",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/opensearch-project/opensearch",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 90.3,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Elastic Cloud as what it replaces"
+          }
+        ],
+        "confidence": 80.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/opensearch-project/OpenSearch",
+      "self_hosting": {
+        "basis": "container image or self-hosting evidence found",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 13958
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
               "locator": "README.md#L574",
               "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
               "source_id": "solvohq"
@@ -197,7 +235,19 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Elastic Cloud as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 71.2,
@@ -250,10 +300,17 @@
       },
       "rank": 3,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Elastic Cloud as what it replaces"
+          }
+        ],
         "confidence": 84.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 82.2,
-        "score_version": "1.2.0"
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/typesense/typesense",
       "self_hosting": {
@@ -280,7 +337,13 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 75.0,
@@ -333,10 +396,11 @@
       },
       "rank": 4,
       "replacement_fit": {
+        "caps": [],
         "confidence": 84.5,
         "evaluated_at": "2026-10-16T23:27:37Z",
         "score": 66.7,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/quickwit-oss/quickwit",
       "self_hosting": {
@@ -363,7 +427,13 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 50.0,
@@ -415,10 +485,11 @@
       },
       "rank": 5,
       "replacement_fit": {
+        "caps": [],
         "confidence": 84.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
         "score": 62.8,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/zincsearch/zincsearch",
       "self_hosting": {
@@ -442,7 +513,7 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.2.0"
+      "1.3.0"
     ]
   },
   "status": "ok"

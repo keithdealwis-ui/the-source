@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "28d4405a7c40c325",
+  "dataset_version": "1e20f5ef0822b56a",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
@@ -38,7 +38,19 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Dynamics 365 as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 96.2,
@@ -93,10 +105,17 @@
       },
       "rank": 1,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Dynamics 365 as what it replaces"
+          }
+        ],
         "confidence": 84.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 87.2,
-        "score_version": "1.2.0"
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/Dolibarr/dolibarr",
       "self_hosting": {
@@ -123,7 +142,19 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Dynamics 365 as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 100.0,
@@ -176,10 +207,17 @@
       },
       "rank": 2,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Dynamics 365 as what it replaces"
+          }
+        ],
         "confidence": 84.5,
         "evaluated_at": "2026-11-01T02:05:53Z",
-        "score": 90.9,
-        "score_version": "1.2.0"
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/Django-CRM/Django-CRM",
       "self_hosting": {
@@ -198,87 +236,6 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/arnasdon/wacrm",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 75.0,
-            "ease_of_adoption": 100.0,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 100.0,
-            "integrations_extensibility": 75.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 50.0
-          },
-          "evidence_families": [
-            "api",
-            "data_ownership",
-            "demo",
-            "import",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "support",
-            "webhook"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/ArnasDon/wacrm",
-      "last_meaningful_activity_at": "2026-10-30T09:26:39Z",
-      "latest_release": null,
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-05T02:13:56Z",
-      "maintenance_status": "active",
-      "name": "wacrm",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption."
-      },
-      "oss_id": "github.com/arnasdon/wacrm",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 89.7,
-        "score": 77.1,
-        "trajectory": "Insufficient history"
-      },
-      "rank": 3,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 85.7,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/ArnasDon/wacrm",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 2673
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
               "locator": "data/job_match/ledger.json#github.com/djangocrm/django-crm",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
@@ -287,7 +244,19 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Dynamics 365 as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 43.8,
@@ -338,12 +307,19 @@
         "score": 85.6,
         "trajectory": "Declining"
       },
-      "rank": 4,
+      "rank": 3,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Dynamics 365 as what it replaces"
+          }
+        ],
         "confidence": 84.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 82.8,
-        "score_version": "1.2.0"
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/DjangoCRM/django-crm",
       "self_hosting": {
@@ -370,7 +346,19 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Dynamics 365 as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 100.0,
@@ -419,12 +407,19 @@
         "score": 81.9,
         "trajectory": "Stable"
       },
-      "rank": 5,
+      "rank": 4,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Dynamics 365 as what it replaces"
+          }
+        ],
         "confidence": 81.5,
         "evaluated_at": "2026-10-20T23:06:47Z",
-        "score": 80.8,
-        "score_version": "1.2.0"
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/lsfusion-solutions/mycompany",
       "self_hosting": {
@@ -435,6 +430,106 @@
         "job_match"
       ],
       "stars": 370
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/arnasdon/wacrm",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-11-05T02:13:56Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Dynamics 365 as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 50.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/ArnasDon/wacrm",
+      "last_meaningful_activity_at": "2026-10-30T09:26:39Z",
+      "latest_release": null,
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-05T02:13:56Z",
+      "maintenance_status": "active",
+      "name": "wacrm",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/arnasdon/wacrm",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 89.7,
+        "score": 77.1,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Dynamics 365 as what it replaces"
+          }
+        ],
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/ArnasDon/wacrm",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 2673
     }
   ],
   "saas": {
@@ -448,7 +543,7 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.2.0"
+      "1.3.0"
     ]
   },
   "status": "ok"

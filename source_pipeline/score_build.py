@@ -110,6 +110,171 @@ def load_jobs():
     return common.load_yaml(JOBS_PATH)["categories"]
 
 
+def load_product_scope():
+    """Product-specific features beyond the category checklist (config/saas_jobs.yaml `products`), keyed by saas id.
+    Read only by the out-of-scope check (KEI-961); they never add feature hits."""
+    return {k: list((v or {}).get("scope_features") or [])
+            for k, v in ((common.load_yaml(JOBS_PATH) or {}).get("products") or {}).items()}
+
+
+# ---------------------------------------------------------------- KEI-961: evidence caps on Replacement Fit
+#
+# Two deterministic caps, both configured in config/scoring.yaml (replacement_fit.feature_scope and
+# replacement_fit.corroboration_cap) and both recorded on the row (`caps`) so a reader can disclose them.
+#   feature_out_of_scope   the project's README itself lists features the SaaS product has as out of scope /
+#                          not supported / not planned: those features are not hits, and Feature equivalence is
+#                          capped by the excluded share of the checklist.
+#   uncorroborated_pairing a pairing named by one upstream source only, that the project's own words do not name
+#                          the product as what it replaces, cannot score above the cap (80 by default).
+
+_TABLE_SEP = re.compile(r"^\|?\s*:?-{2,}")
+_SEPARATORS = {"=", ":", "-", "·", "|", "—", "–", "/", "*", "**"}
+_FILLER = {"is", "are", "was", "be", "being", "currently", "yet", "still", "also", "now", "explicitly", "intentionally",
+           "deliberately", "considered", "and", "or", "support", "supporting", "add", "adding", "implement", "offer", ":"}
+_FORWARD = {"no plans to", "not planned", "won't support", "will not support", "won't implement", "will not implement"}
+_CLAUSES = re.compile(r"(?<=[.;!?])\s+|\s+but\s+|,\s*(?:while|whereas)\s+", re.I)
+
+
+def _scope_rx(cfg):
+    fs = cfg["replacement_fit"]["feature_scope"]
+    key = ("scope", tuple(fs["markers"]), tuple(fs["headings"]))
+    rx = _TERM_CACHE.get(key)
+    if rx is None:
+        rx = _TERM_CACHE[key] = (
+            re.compile("|".join(re.escape(m) for m in fs["markers"]), re.I),
+            re.compile(r"^\s{0,3}#{1,6}\s*(?:" + "|".join(re.escape(h) for h in fs["headings"]) + r")", re.I))
+    return rx
+
+
+def out_of_scope_statements(text: str, cfg) -> list[str]:
+    """Lines of a README in which the project rules something out. Three explicit forms, nothing inferred:
+      1. a line under a heading such as "Non-goals", "Out of scope", "Not supported" (to the next heading):
+         its first `section_lead_words` words, where a list item names what it rules out;
+      2. a clause that itself says "out of scope", "not supported", "no plans to", ...: only a subject of at
+         most `subject_max_words` words before the marker, or a short list right after it;
+      3. a table row whose first status cell starts with a symbol that a legend line of the same README defines
+         as out of scope (e.g. "➖ intentionally out of scope").
+    For a table row only the first cell (the feature's name) is returned, so a note in the status cell
+    ("Email scheduling only") is never read as a feature being excluded."""
+    if not text:
+        return []
+    marker, heading = _scope_rx(cfg)
+    fs = cfg["replacement_fit"]["feature_scope"]
+    lead, subject = int(fs["section_lead_words"]), int(fs["subject_max_words"])
+    lines = text.splitlines()
+    legend = set()
+    for ln in lines:
+        m = marker.search(ln)
+        if m and not ln.lstrip().startswith("|"):
+            for tok in reversed(ln[:m.start()].split()[-3:]):
+                if not re.search(r"[a-z0-9]", tok, re.I) and tok not in _SEPARATORS:
+                    legend.add(tok)
+                    break
+    out, in_section = [], False
+    for ln in lines:
+        s = ln.strip()
+        if re.match(r"^\s{0,3}#{1,6}\s", ln):
+            in_section = bool(heading.match(ln))
+            continue
+        if not s or _TABLE_SEP.match(s):
+            continue
+        if s.startswith("|"):
+            cells = [c.strip() for c in s.strip("|").split("|")]
+            status = cells[1] if len(cells) > 1 else ""
+            if in_section or marker.search(status) or any(status.startswith(sym) for sym in legend):
+                out.append(cells[0])
+            continue
+        if in_section:
+            # a list item names what is ruled out in its first words ("- POP3"); its explanation is not read
+            out.append(" ".join(re.sub(r"^[\s\-*+>#\d.)]+", "", s).split()[:lead]))
+        else:
+            # only what the marker is about, in its own clause: a short subject before it ("invoicing is out of
+            # scope"), or a short list after it ("Not supported: forecasting, invoicing"; "no plans to add SSO").
+            # A qualified subject ("sync through third-party disks is not supported") is too long to read safely.
+            for c in _CLAUSES.split(s):
+                for m in marker.finditer(c):
+                    before = [w for w in re.sub(r"^[\s\-*+>#\d.)]+", "", c[:m.start()]).split()
+                              if w.strip("*_`") not in _FILLER]
+                    after = [w for w in c[m.end():].split() if w.strip(":*_`") not in _FILLER | {"to"}]
+                    words = before if 0 < len(before) <= subject else []
+                    if not before or m.group(0).lower() in _FORWARD:
+                        words = words + after[:lead + 1]
+                    if words:
+                        out.append(" ".join(words))
+    return out
+
+
+def excluded_features(text: str, checklist: list, cfg) -> list:
+    """Checklist features (category features + the product's scope features) that the README rules out. A feature
+    must stand as its own word: "va-api" or "sub.domain" never rules out "api" / "domain"."""
+    stmts = "\n".join(out_of_scope_statements(text, cfg)).lower()
+    if not stmts:
+        return []
+    return sorted({f for f in checklist
+                   if re.search(r"(?<![\w\-./])" + term_re(f).pattern.removeprefix("(?<![a-z0-9])"), stmts)})
+
+
+def feature_scope_cap(excluded: list, checklist: list, cfg) -> float | None:
+    """The ceiling on Feature equivalence when the README excludes product features; None when nothing is excluded."""
+    fs = cfg["replacement_fit"]["feature_scope"]
+    if not fs.get("enabled") or not excluded or not checklist:
+        return None
+    return round(min(float(fs["cap_any"]), 100.0 * (1 - len(excluded) / len(checklist))), 1)
+
+
+def names_product_as_alternative(text: str, names: list, cfg) -> bool:
+    """The project's own words (README, description) name the product as what it replaces: the product's name or an
+    alias within `window_chars` of an alternative/replacement phrase ("Pipedrive alternative", "instead of Jira")."""
+    cc = cfg["replacement_fit"]["corroboration_cap"]
+    if not text:
+        return False
+    ctx = re.compile("|".join(re.escape(t) for t in cc["alternative_context"]))
+    w = int(cc["window_chars"])
+    for name in names:
+        n = (name or "").lower().strip()
+        if len(n) <= 2:
+            continue
+        for m in term_re(n).finditer(text):
+            if ctx.search(text[max(0, m.start() - w): m.end() + w]):
+                return True
+    return False
+
+
+def corroboration(rel: dict, own_named: bool | None, cfg) -> dict:
+    """Is the pairing corroborated? Bases, any of which suffices: a second independent upstream source
+    (relationship.corroborated: two or more non-job-match sources), a self-described relationship (the intake
+    ledger admits a pair only on the project's own statement), or the project's own README/description naming the
+    product as what it replaces. `own_named` None means the README was not available to check."""
+    basis = []
+    if rel.get("corroborated"):
+        basis.append("second_upstream_source")
+    if rel.get("evidence_class") == "self_described":
+        basis.append("self_described")
+    if own_named:
+        basis.append("readme_names_product")
+    return {"corroborated": bool(basis), "basis": basis,
+            "readme_checked": own_named is not None}
+
+
+def corroboration_cap(score, corr: dict, saas_name: str, cfg):
+    """(score, cap entry or None). Applied after the core gate; only ever lowers a score."""
+    cc = cfg["replacement_fit"]["corroboration_cap"]
+    if not cc.get("enabled") or score is None or corr["corroborated"] or score <= cc["cap"]:
+        return score, None
+    why = ("pairing rests on a single upstream source and "
+           + ("the project's own README does not name " if corr["readme_checked"] else "no README was available to confirm ")
+           + f"{saas_name} as what it replaces")
+    return float(cc["cap"]), {"id": "uncorroborated_pairing", "cap": float(cc["cap"]), "score_before": r1(score),
+                              "reason": f"Replacement Fit capped at {cc['cap']:g}: {why}"}
+
+
+def feature_cap_entry(before, cap, excluded, saas_name):
+    return {"id": "feature_out_of_scope", "dimension": "feature_equivalence", "cap": cap, "score_before": r1(before),
+            "excluded_features": excluded,
+            "reason": (f"Feature equivalence capped at {cap:g}: the project's README lists {len(excluded)} of "
+                       f"{saas_name}'s features as out of scope or not supported ({', '.join(excluded)})")}
+
+
 def load_overrides():
     if OVERRIDES_PATH.exists():
         return common.load_yaml(OVERRIDES_PATH) or {}
@@ -379,14 +544,19 @@ def extract_pair(edge, proj, row, readme_rec, saas, job, upstream_cats, graph_te
     return {
         "edge": edge["id"], "project": proj["project"], "canonical": proj["canonical"],
         "saas": edge["to"], "saas_name": saas["name"], "category": saas["category"],
+        "saas_aliases": list(saas.get("aliases") or []),
         "relationship": {"confidence": edge["confidence"], "status": edge["attrs"].get("kei805_status"),
                          "corroborated": edge["attrs"].get("corroborated"), "source_count": edge["attrs"].get("source_count"),
+                         "evidence_class": edge["attrs"].get("evidence_class"),
                          "recommendation_eligible": edge["attrs"].get("recommendation_eligible"),
                          "ref": "graph:edges.jsonl#" + edge["id"], "evidence": edge.get("evidence")},
         "text": {"readme_available": readme_ok, "readme_ref": rref if readme_ok else None,
                  "readme_chars": len((readme_rec or {}).get("text") or "") if readme_ok else 0,
                  "readme_observed_at": (readme_rec or {}).get("observed_at"),
-                 "identity": ident, "full": _text_blob(readme_rec, facts, upstream_cats, graph_terms)},
+                 "identity": ident, "full": _text_blob(readme_rec, facts, upstream_cats, graph_terms),
+                 # the project's own words only (README, description), line structure kept: read by the KEI-961
+                 # out-of-scope check and the README corroboration check, never by term matching
+                 "own": "\n".join([(readme_rec or {}).get("text") or "", facts.get("description") or ""]).lower()},
         "structural": {k: val(k) for k in ("container_present", "docs_present", "readme_bytes", "version_stable",
                                            "release_count", "licence_usability", "homepage_present")},
     }
@@ -408,7 +578,18 @@ def match_pair(pair, job, cfg):
             if re.search(r"import|migrat|export|switch from|move from|alternative", window):
                 migration = True
                 break
-    return {"core_groups": core_groups, "feature_hits": hits(job["features"]), "feature_total": len(job["features"]),
+    # KEI-961: a feature the README itself rules out is not a hit, however often its name appears
+    own = pair["text"].get("own")
+    if own is None:
+        own = text if pair["text"]["readme_available"] else ""
+    product_scope = (_product_scope().get(pair["saas"].split(":", 1)[-1]) or []) if pair.get("saas") else []
+    checklist = list(dict.fromkeys(list(job["features"]) + list(product_scope)))
+    excluded = excluded_features(own, checklist, cfg) if pair["text"]["readme_available"] else []
+    own_named = (names_product_as_alternative(own, [pair["saas_name"]] + list(pair.get("saas_aliases") or []), cfg)
+                 if pair["text"]["readme_available"] else None)
+    return {"core_groups": core_groups, "feature_hits": [f for f in hits(job["features"]) if f not in excluded],
+            "feature_total": len(job["features"]),
+            "feature_checklist": checklist, "features_out_of_scope": excluded, "own_names_product": own_named,
             "families": {k: hits(v) for k, v in T.items()}, "incumbent_mentioned": incumbent,
             "migration_from_incumbent": migration}
 
@@ -419,6 +600,12 @@ def rejob(pair, job, category):
 
 
 _JOBS_CACHE = {}
+
+
+def _product_scope():
+    if "products" not in _JOBS_CACHE:
+        _JOBS_CACHE["products"] = load_product_scope()
+    return _JOBS_CACHE["products"]
 
 
 def _job_for(pair):
@@ -632,6 +819,11 @@ def score_pair(pair, proj_health, disq, evaluated_at, cfg, job=None):
     feat = curve([[0, 0], [0.3, 50], [0.6, 85], [0.8, 100]], feat_share) if (readme or pair["feature_hits"]) else None
     if feat is not None and not full_doc and not pair["feature_hits"]:
         feat = None
+    caps = []
+    fcap = feature_scope_cap(pair["features_out_of_scope"], pair["feature_checklist"], cfg)
+    if fcap is not None and feat is not None and feat > fcap:  # a cap only ever lowers; unknown stays unknown
+        caps.append(feature_cap_entry(feat, fcap, pair["features_out_of_scope"], pair["saas_name"]))
+        feat = fcap
     lic = st.get("licence_usability")
     dims = {
         "core_use_case_coverage": core,
@@ -671,6 +863,10 @@ def score_pair(pair, proj_health, disq, evaluated_at, cfg, job=None):
         gate_state = "failed"
     if gate_state != "passed" and score is not None:
         score = min(score, gate["gate_cap"])
+    corr = corroboration(pair["relationship"], pair["own_names_product"], cfg)
+    score, ccap = corroboration_cap(score, corr, pair["saas_name"], cfg)
+    if ccap:
+        caps.append(ccap)
     # --- confidence
     ec = cfg["evidence_confidence"]
     q = ec["source_quality"]
@@ -707,10 +903,11 @@ def score_pair(pair, proj_health, disq, evaluated_at, cfg, job=None):
         "edge": pair["edge"], "project": pair["project"], "canonical": pair["canonical"], "saas": pair["saas"],
         "saas_name": pair["saas_name"], "category": pair["category"],
         "score": r1(score), "uncapped_score": r1(raw), "core_gate": gate_state,
+        "caps": caps, "corroboration": corr,
         "dimensions": {k: {"score": r1(v), "weight": weights[k]} for k, v in dims.items()},
         "core_coverage": {"score": r1(core), "defining_group_in_identity": defining_ok,
                           "groups": [{**g, "credit": credit(g)} for g in pair["core_groups"]]},
-        "feature_hits": pair["feature_hits"],
+        "feature_hits": pair["feature_hits"], "features_out_of_scope": pair["features_out_of_scope"],
         "confidence": {"score": conf, "components": {k: r1(v) for k, v in comps.items()}},
         "credible_alternative": credible, "publish": not refusals, "refusal_reasons": refusals,
         "presentation_label": label,

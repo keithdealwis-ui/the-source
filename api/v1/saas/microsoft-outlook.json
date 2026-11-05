@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "28d4405a7c40c325",
+  "dataset_version": "1e20f5ef0822b56a",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
@@ -38,7 +38,19 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Outlook as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 92.5,
@@ -86,10 +98,17 @@
       },
       "rank": 1,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Outlook as what it replaces"
+          }
+        ],
         "confidence": 81.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 83.2,
-        "score_version": "1.2.0"
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/mailcow/mailcow-dockerized",
       "self_hosting": {
@@ -116,7 +135,19 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Outlook as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 100.0,
@@ -165,10 +196,17 @@
       },
       "rank": 2,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Outlook as what it replaces"
+          }
+        ],
         "confidence": 84.5,
         "evaluated_at": "2026-10-20T23:06:47Z",
-        "score": 91.9,
-        "score_version": "1.2.0"
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/docker-mailserver/docker-mailserver",
       "self_hosting": {
@@ -187,6 +225,104 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
+              "locator": "data/job_match/ledger.json#github.com/cypht-org/cypht",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-11-05T02:13:56Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Outlook as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 92.5,
+            "ease_of_adoption": 87.3,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/cypht-org/cypht",
+      "last_meaningful_activity_at": "2026-11-04T14:45:44Z",
+      "latest_release": {
+        "published_at": "2026-11-04T14:45:44Z",
+        "tag": "v2.13.1"
+      },
+      "licence_spdx": "LGPL-2.1",
+      "live_checked_at": "2026-11-05T02:13:56Z",
+      "maintenance_status": "active",
+      "name": "cypht",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity."
+      },
+      "oss_id": "github.com/cypht-org/cypht",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 91.8,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Outlook as what it replaces"
+          }
+        ],
+        "confidence": 81.5,
+        "evaluated_at": "2026-11-05T02:13:56Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/cypht-org/cypht",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 1787
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
               "locator": "data/job_match/ledger.json#github.com/mjl-/mox",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
@@ -195,7 +331,19 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Outlook as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 75.0,
@@ -247,12 +395,19 @@
         "score": 79.2,
         "trajectory": "Rising"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Outlook as what it replaces"
+          }
+        ],
         "confidence": 86.5,
         "evaluated_at": "2026-10-20T23:06:47Z",
-        "score": 88.2,
-        "score_version": "1.2.0"
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/mjl-/mox",
       "self_hosting": {
@@ -271,85 +426,6 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/cypht-org/cypht",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 92.5,
-            "ease_of_adoption": 87.3,
-            "economic_advantage": 68.0,
-            "feature_equivalence": 33.3,
-            "integrations_extensibility": 100.0,
-            "migration_friction": null,
-            "production_commercial_readiness": 100.0
-          },
-          "evidence_families": [
-            "plugins",
-            "quickstart",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/cypht-org/cypht",
-      "last_meaningful_activity_at": "2026-11-04T14:45:44Z",
-      "latest_release": {
-        "published_at": "2026-11-04T14:45:44Z",
-        "tag": "v2.13.1"
-      },
-      "licence_spdx": "LGPL-2.1",
-      "live_checked_at": "2026-11-05T02:13:56Z",
-      "maintenance_status": "active",
-      "name": "cypht",
-      "note": {
-        "gaps": [
-          "feature parity"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "integrations and extensibility"
-        ],
-        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity."
-      },
-      "oss_id": "github.com/cypht-org/cypht",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 96.6,
-        "score": 91.8,
-        "trajectory": "Stable"
-      },
-      "rank": 4,
-      "replacement_fit": {
-        "confidence": 81.5,
-        "evaluated_at": "2026-11-05T02:13:56Z",
-        "score": 84.2,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/cypht-org/cypht",
-      "self_hosting": {
-        "basis": "no self-hosting evidence found; not evidence of absence",
-        "self_hostable": null
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 1787
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
               "locator": "data/job_match/ledger.json#github.com/foundry376/mailspring",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
@@ -358,7 +434,13 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 85.0,
@@ -410,10 +492,11 @@
       },
       "rank": 5,
       "replacement_fit": {
+        "caps": [],
         "confidence": 84.5,
         "evaluated_at": "2026-10-20T23:06:47Z",
         "score": 79.2,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/Foundry376/Mailspring",
       "self_hosting": {
@@ -437,7 +520,7 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.2.0"
+      "1.3.0"
     ]
   },
   "status": "ok"

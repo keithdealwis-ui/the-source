@@ -49,6 +49,8 @@
     python -m source_pipeline canonical-build      data/canonical/ + api/v1/ from the dataset; no network
     python -m source_pipeline canonical-validate   schema, integrity, read-surface and determinism checks
     python -m source_pipeline scores-extract       compact the KEI-806 lane's scores into data/scores/
+    python -m source_pipeline scores-recap         re-apply the rubric's evidence caps to older stored fit rows
+                                                   (KEI-961; network: reads each project's README)
     python -m source_pipeline research             advance upstream pins where the licence is unchanged
     python -m source_pipeline intake-assess --url URL --request-id ID [--saas-hint ID] [--submitted-by WHO]
     python -m source_pipeline intake-status --request-id ID
@@ -210,6 +212,11 @@ def _canonical(args) -> int:
     if c == "scores-extract":
         print(json.dumps(canonical.extract_scores(), indent=2, sort_keys=True))
         return 0
+    if c == "scores-recap":
+        from . import score_recap
+
+        print(json.dumps(score_recap.recap(), indent=2, sort_keys=True))
+        return 0
     if c == "research":
         print(json.dumps(research.advance_pins(), indent=2, sort_keys=True))
         return 0
@@ -326,7 +333,7 @@ def main(argv=None) -> int:
                                         "discover-harvest", "discover-verify", "discover-build",
                                         "discover-validate", "graph-build", "graph-validate", "graph-query",
                                         "score-harvest", "score-build", "score-validate",
-                                        "canonical-build", "canonical-validate", "scores-extract", "research",
+                                        "canonical-build", "canonical-validate", "scores-extract", "scores-recap", "research",
                                         "intake-assess", "intake-status", "cycle", "cycle-due", "cycle-work",
                                         "runs-latest",
                                         "history-days", "history-delta", "discovery-pool",
@@ -416,7 +423,7 @@ def main(argv=None) -> int:
             return 1
         print(json.dumps(out, indent=2, sort_keys=True))
         return 0
-    if args.command.startswith(("canonical-", "intake-", "cycle")) or args.command in ("scores-extract", "research"):
+    if args.command.startswith(("canonical-", "intake-", "cycle")) or args.command in ("scores-extract", "scores-recap", "research"):
         return _canonical(args)
     if args.command.startswith("score-"):
         return _score(args)

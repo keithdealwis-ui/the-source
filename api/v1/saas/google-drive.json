@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "28d4405a7c40c325",
+  "dataset_version": "1e20f5ef0822b56a",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
@@ -46,7 +46,15 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "second_upstream_source"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 92.5,
@@ -96,10 +104,11 @@
       },
       "rank": 1,
       "replacement_fit": {
+        "caps": [],
         "confidence": 87.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
         "score": 90.1,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/haiwen/seafile",
       "self_hosting": {
@@ -111,6 +120,101 @@
         "diegoleme"
       ],
       "stars": 15424
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Owncloud.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            },
+            {
+              "locator": "README.md#L176",
+              "source_commit": "404431356e82cc44b035c9d7b83b676b56830a46",
+              "source_id": "diegoleme"
+            }
+          ],
+          "validated_as_of": "2026-11-05T02:13:56Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "second_upstream_source"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 87.5,
+            "ease_of_adoption": 44.9,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "import",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/owncloud/core",
+      "last_meaningful_activity_at": "2026-11-03T16:38:41Z",
+      "latest_release": {
+        "published_at": "2026-11-03T09:51:47Z",
+        "tag": "v11.1.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-11-05T02:13:56Z",
+      "maintenance_status": "active",
+      "name": "Owncloud",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/owncloud/core",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 91.0,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 90.5,
+        "evaluated_at": "2026-10-07T01:24:34Z",
+        "score": 86.2,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/owncloud/core",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital",
+        "diegoleme"
+      ],
+      "stars": 8839
     },
     {
       "evidence": {
@@ -127,7 +231,19 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Google Drive as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 75.0,
@@ -178,12 +294,19 @@
         "score": 88.9,
         "trajectory": "Declining"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Google Drive as what it replaces"
+          }
+        ],
         "confidence": 84.5,
         "evaluated_at": "2026-10-03T00:23:01Z",
-        "score": 86.4,
-        "score_version": "1.2.0"
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/owncloud/ocis",
       "self_hosting": {
@@ -194,92 +317,6 @@
         "solvohq"
       ],
       "stars": 2176
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": true,
-          "evidence_class": "listed",
-          "provenance": [
-            {
-              "locator": "submissions/Owncloud.yaml",
-              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
-              "source_id": "runacapital"
-            },
-            {
-              "locator": "README.md#L176",
-              "source_commit": "404431356e82cc44b035c9d7b83b676b56830a46",
-              "source_id": "diegoleme"
-            }
-          ],
-          "validated_as_of": "2026-11-05T02:13:56Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 87.5,
-            "ease_of_adoption": 44.9,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 85.0,
-            "integrations_extensibility": 100.0,
-            "migration_friction": 100.0,
-            "production_commercial_readiness": 100.0
-          },
-          "evidence_families": [
-            "api",
-            "import",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/owncloud/core",
-      "last_meaningful_activity_at": "2026-11-03T16:38:41Z",
-      "latest_release": {
-        "published_at": "2026-11-03T09:51:47Z",
-        "tag": "v11.1.0"
-      },
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T02:13:56Z",
-      "maintenance_status": "active",
-      "name": "Owncloud",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "integrations and extensibility"
-        ],
-        "text": "Strongest on core use-case coverage and integrations and extensibility."
-      },
-      "oss_id": "github.com/owncloud/core",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 96.6,
-        "score": 91.0,
-        "trajectory": "Rising"
-      },
-      "rank": 3,
-      "replacement_fit": {
-        "confidence": 90.5,
-        "evaluated_at": "2026-10-07T01:24:34Z",
-        "score": 86.2,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/owncloud/core",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "runacapital",
-        "diegoleme"
-      ],
-      "stars": 8839
     },
     {
       "evidence": {
@@ -316,7 +353,15 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "second_upstream_source"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 93.8,
@@ -371,10 +416,11 @@
       },
       "rank": 4,
       "replacement_fit": {
+        "caps": [],
         "confidence": 95.0,
         "evaluated_at": "2026-10-16T01:10:28Z",
         "score": 76.3,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/nextcloud/server",
       "self_hosting": {
@@ -405,7 +451,13 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 68.8,
@@ -455,10 +507,11 @@
       },
       "rank": 5,
       "replacement_fit": {
+        "caps": [],
         "confidence": 84.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
         "score": 68.7,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/mickael-kerjean/filestash",
       "self_hosting": {
@@ -482,7 +535,7 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.2.0"
+      "1.3.0"
     ]
   },
   "status": "ok"

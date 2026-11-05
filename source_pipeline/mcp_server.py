@@ -1124,8 +1124,9 @@ def _rel_summary(layer, r):
     return {
         "edge_id": r["edge_id"], "saas_id": r["saas_id"], "saas_name": layer.saas[r["saas_id"]]["name"],
         "oss_id": r["oss_id"], "recommended": r["recommended"],
-        "replacement_fit": {k: fit.get(k) for k in ("score", "confidence", "credible_alternative", "publish",
-                                                     "core_gate", "score_version")},
+        "replacement_fit": {**{k: fit.get(k) for k in ("score", "confidence", "credible_alternative", "publish",
+                                                        "core_gate", "score_version")},
+                            "caps": fit.get("caps") or []},
         "sources": r["sources"],
     }
 
@@ -1143,7 +1144,8 @@ def _canonical_rec(layer, r):
         "maintenance_status": p["maintenance"]["status"],
         "last_meaningful_activity_at": p["maintenance"]["last_meaningful_activity_at"],
         "latest_release": p["live"]["latest_release"],
-        "replacement_fit": {k: fit[k] for k in ("score", "confidence", "score_version", "evaluated_at")},
+        "replacement_fit": {**{k: fit[k] for k in ("score", "confidence", "score_version", "evaluated_at")},
+                            "caps": fit.get("caps") or []},
         "project_health": None if h is None else {k: h[k] for k in ("score", "band", "trajectory", "confidence")},
         "sources": r["sources"], "evidence_class": r.get("evidence_class", "listed"),
         "live_checked_at": p["live"]["checked_at"],
@@ -1753,6 +1755,9 @@ def tool_get_relationship(layer, args, server):
         if not fit.get("credible_alternative"):
             reasons.append("not a credible alternative")
         verdict = "not recommended: " + ("; ".join(reasons) or "below the recommendation threshold")
+    caps = fit.get("caps") or []
+    if caps:  # KEI-961: always disclose why a Replacement Fit was capped
+        verdict += ". " + " ".join(c["reason"].rstrip(".") + "." for c in caps)
     return {"relationship": r, "saas": _saas_view(layer, sid), "project": _project_view(layer.projects[pid]),
             "verdict": verdict,
             "evidence_note": "provenance names each upstream list, the pinned commit and the line the claim was read "

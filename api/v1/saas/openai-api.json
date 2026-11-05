@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "28d4405a7c40c325",
+  "dataset_version": "1e20f5ef0822b56a",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
@@ -44,7 +44,15 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "second_upstream_source"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 62.5,
             "deployment_ownership": 100.0,
@@ -94,10 +102,11 @@
       },
       "rank": 1,
       "replacement_fit": {
+        "caps": [],
         "confidence": 90.5,
         "evaluated_at": "2026-10-19T01:03:51Z",
         "score": 73.1,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/vllm-project/vllm",
       "self_hosting": {
@@ -125,7 +134,13 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 75.0,
@@ -182,10 +197,11 @@
       },
       "rank": 2,
       "replacement_fit": {
+        "caps": [],
         "confidence": 86.5,
         "evaluated_at": "2026-11-05T02:13:56Z",
         "score": 77.2,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/BerriAI/litellm",
       "self_hosting": {
@@ -212,7 +228,13 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 50.0,
@@ -263,10 +285,11 @@
       },
       "rank": 3,
       "replacement_fit": {
+        "caps": [],
         "confidence": 86.5,
         "evaluated_at": "2026-10-20T23:06:47Z",
         "score": 68.7,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/Michael-A-Kuykendall/shimmy",
       "self_hosting": {
@@ -293,7 +316,13 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 50.0,
@@ -345,10 +374,11 @@
       },
       "rank": 4,
       "replacement_fit": {
+        "caps": [],
         "confidence": 86.5,
         "evaluated_at": "2026-10-20T23:06:47Z",
         "score": 65.7,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/superlinked/sie",
       "self_hosting": {
@@ -372,7 +402,7 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.2.0"
+      "1.3.0"
     ]
   },
   "status": "ok"

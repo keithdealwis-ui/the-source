@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "28d4405a7c40c325",
+  "dataset_version": "1e20f5ef0822b56a",
   "last_checked": {
     "newest": "2026-11-05T02:13:56Z",
     "oldest": "2026-11-05T02:13:56Z"
@@ -39,7 +39,15 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "readme_names_product"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 75.0,
@@ -93,10 +101,11 @@
       },
       "rank": 1,
       "replacement_fit": {
+        "caps": [],
         "confidence": 86.5,
         "evaluated_at": "2026-10-24T00:28:40Z",
         "score": 92.0,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/evergreen-it-dev/folio",
       "self_hosting": {
@@ -123,7 +132,16 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "second_upstream_source",
+              "readme_names_product"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 91.7,
@@ -173,10 +191,11 @@
       },
       "rank": 2,
       "replacement_fit": {
+        "caps": [],
         "confidence": 89.5,
         "evaluated_at": "2026-10-26T00:06:19Z",
         "score": 83.7,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/docmost/docmost",
       "self_hosting": {
@@ -203,7 +222,19 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Notion as what it replaces"
+            }
+          ],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 68.8,
@@ -256,10 +287,17 @@
       },
       "rank": 3,
       "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Notion as what it replaces"
+          }
+        ],
         "confidence": 84.5,
         "evaluated_at": "2026-10-14T23:51:42Z",
-        "score": 81.6,
-        "score_version": "1.2.0"
+        "score": 80.0,
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/dexio-wiki/dexio",
       "self_hosting": {
@@ -286,7 +324,13 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 93.8,
@@ -334,10 +378,11 @@
       },
       "rank": 4,
       "replacement_fit": {
+        "caps": [],
         "confidence": 83.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
         "score": 78.6,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/churichard/notabase",
       "self_hosting": {
@@ -364,7 +409,13 @@
           "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
+          "caps": [],
           "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 85.0,
@@ -414,10 +465,11 @@
       },
       "rank": 5,
       "replacement_fit": {
+        "caps": [],
         "confidence": 84.5,
         "evaluated_at": "2026-10-19T23:32:37Z",
         "score": 78.5,
-        "score_version": "1.2.0"
+        "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/xwiki/xwiki-platform",
       "self_hosting": {
@@ -441,7 +493,7 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.2.0"
+      "1.3.0"
     ]
   },
   "status": "ok"

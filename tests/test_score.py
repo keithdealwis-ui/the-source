@@ -332,3 +332,179 @@ class TestRedaction:  # evidence hygiene: secret-shaped README content is never 
         from source_pipeline.score_harvest import redact
         t, n = redact("use ghp_" + "a" * 36 + " and AKIA" + "B" * 16)
         assert "ghp_" not in t and "AKIA" not in t and n == {"github_token": 1, "aws_access_key": 1}
+
+
+# ---------------------------------------------------------------- KEI-961: evidence caps on Replacement Fit
+
+CRM_README = (
+    "# warpdrive\nAn open-source, self-hosted <b>Pipedrive alternative</b> for business-development teams.\n"
+    "Self-host with docker compose. Quick start below; live demo and screenshots.\n"
+    "## Features\nSales pipeline kanban board with deals and custom stages. Contact management for people and "
+    "organisations with custom fields. Two-way email over Gmail. Tasks and activity timeline. Pipeline reports. "
+    "CSV import. REST API and webhooks, plugins. Teams, roles and permissions, SSO via OIDC. Commercial support.\n"
+    "## warpdrive vs Pipedrive\nwarpdrive covers the core BD loop and deliberately leaves the rest out of scope.\n"
+    "|  | warpdrive | Pipedrive |\n|---|:---:|:---:|\n"
+    "| Kanban pipeline + custom stages | ✅ | ✅ |\n"
+    "| Products, Projects, Invoicing, Forecast | ➖ Out of scope | ✅ |\n"
+    "| Multi-currency | ➖ Out of scope | ✅ |\n"
+    "| Workflow automation | ➖ Email scheduling only | ✅ |\n"
+    "| Web forms / chatbot / marketplace | ➖ Out of scope | ✅ |\n"
+    "| Native mobile apps | ➖ Web app | ✅ |\n\n"
+    "✅ supported · ➖ intentionally out of scope\n")
+SALESFORCE = {"name": "Salesforce", "category": "CRM"}
+PIPEDRIVE = {"name": "Pipedrive", "category": "CRM"}
+
+
+def crm_pair(readme=CRM_README, saas=SALESFORCE, saas_id="saas:salesforce", sources=1, cfg=CFG):
+    p = extract(repo(description="Self-hosted CRM for BD teams", repositoryTopics={"nodes": [{"topic": {"name": "crm"}}]}))
+    rr = {"text": readme, "observed_at": AS_OF} if readme else None
+    return sb.extract_pair(edge(saas=saas_id, sources=sources), p, None, rr, saas, JOBS["CRM"], ["CRM"], [], cfg)
+
+
+class TestOutOfScopeStatements:  # KEI-961 item 2: explicit forms only, deterministic
+    def test_table_rows_marker_and_legend(self):
+        st = sb.out_of_scope_statements(CRM_README.lower(), CFG)
+        assert "products, projects, invoicing, forecast" in st and "multi-currency" in st
+        # the legend defines ➖ as out of scope, so its rows count; only the feature cell is read
+        assert "workflow automation" in st and "native mobile apps" in st
+        assert not any("email scheduling" in s for s in st)
+        assert "kanban pipeline + custom stages" not in st
+
+    def test_heading_section_and_clause(self):
+        text = ("# x\nDeals and pipelines are supported, but invoicing is out of scope.\n"
+                "## Non-goals\n- Forecasting\n- Multi-currency\n## Install\nRun docker compose. Pipelines.\n").lower()
+        st = sb.out_of_scope_statements(text, CFG)
+        assert st == ["invoicing", "forecasting", "multi-currency"]
+        ex = sb.excluded_features(text, ["deal", "pipeline", "invoic", "forecast", "multi-currency"], CFG)
+        assert ex == ["forecast", "invoic", "multi-currency"]  # the supported clause never excludes deal/pipeline
+
+    def test_explanations_and_caveats_are_not_exclusions(self):
+        text = ("## Not supported/planned\n- Functioning as an SMTP relay without authentication\n- POP3\n"
+                "## API\nSupported/unsupported events are listed in the docs. The GPU driver is deliberately left out.\n"
+                "A long sentence that mentions voice calls and many other words before it says this is out of scope.\n").lower()
+        assert sb.excluded_features(text, ["smtp", "pop3", "event", "gpu", "voice"], CFG) == ["pop3"]
+        qualified = ("Synchronization through third-party synchronization disks is not supported.\n"
+                     "VA-API, Quick Sync, or OpenCL is not supported for AI inference today.\n").lower()
+        assert sb.excluded_features(qualified, ["sync", "api"], CFG) == []
+
+    def test_lists_after_a_marker(self):
+        text = "Not supported: forecasting, multi-currency.\nThere are no plans to add SSO or webhooks.\n".lower()
+        assert sb.excluded_features(text, ["forecast", "multi-currency", "sso", "webhook", "email"], CFG) == \
+            ["forecast", "multi-currency", "sso", "webhook"]
+
+    def test_no_statement_no_exclusion(self):
+        assert sb.out_of_scope_statements(README.lower(), CFG) == []
+        assert sb.feature_scope_cap([], ["a"], CFG) is None
+
+
+class TestFeatureScopeCap:  # KEI-961 item 2
+    def test_ruled_out_features_cap_feature_equivalence(self):
+        f = sb.score_pair(crm_pair(), {"score": 85}, [], AS_OF, CFG)
+        cap = next(c for c in f["caps"] if c["id"] == "feature_out_of_scope")
+        assert {"forecast", "multi-currency", "workflow automation", "products"} <= set(cap["excluded_features"])
+        assert f["dimensions"]["feature_equivalence"]["score"] == cap["cap"] <= CFG["replacement_fit"]["feature_scope"]["cap_any"]
+        assert "out of scope" in cap["reason"] and "Salesforce" in cap["reason"]
+
+    def test_ruled_out_feature_is_not_a_hit(self):
+        text = CRM_README.replace("Tasks and activity timeline.", "") + "\n| Tasks | ❌ not supported | ✅ |\n"
+        f = sb.score_pair(crm_pair(readme=text), {"score": 85}, [], AS_OF, CFG)
+        assert "task" in f["features_out_of_scope"] and "task" not in f["feature_hits"]
+
+    def test_readme_ruling_nothing_out_is_unchanged(self):
+        f = sb.score_pair(pair(), {"score": 85}, [], AS_OF, CFG)
+        assert f["caps"] == [] and f["features_out_of_scope"] == []
+
+    def test_switch_off(self):
+        cfg = copy.deepcopy(CFG)
+        cfg["replacement_fit"]["feature_scope"]["enabled"] = False
+        f = sb.score_pair(crm_pair(cfg=cfg), {"score": 85}, [], AS_OF, cfg)
+        assert not any(c["id"] == "feature_out_of_scope" for c in f["caps"])
+
+
+class TestCorroborationCap:  # KEI-961 item 1: no Replacement Fit above 80 without corroboration
+    def test_single_source_not_named_by_readme_caps_at_80(self):
+        f = sb.score_pair(crm_pair(), {"score": 85}, [], AS_OF, CFG)
+        assert not f["corroboration"]["corroborated"] and f["corroboration"]["readme_checked"]
+        assert f["uncapped_score"] > 80 and f["score"] == CFG["replacement_fit"]["corroboration_cap"]["cap"] == 80
+        c = next(c for c in f["caps"] if c["id"] == "uncorroborated_pairing")
+        assert "Salesforce" in c["reason"] and "single upstream source" in c["reason"]
+
+    def test_readme_naming_the_product_corroborates(self):
+        f = sb.score_pair(crm_pair(saas=PIPEDRIVE, saas_id="saas:pipedrive"), {"score": 85}, [], AS_OF, CFG)
+        assert f["corroboration"]["basis"] == ["readme_names_product"]
+        assert not any(c["id"] == "uncorroborated_pairing" for c in f["caps"])
+        # the README still rules out Pipedrive features, so Feature equivalence is capped against it too
+        assert any(c["id"] == "feature_out_of_scope" for c in f["caps"])
+
+    def test_second_source_corroborates(self):
+        f = sb.score_pair(crm_pair(sources=2), {"score": 85}, [], AS_OF, CFG)
+        assert f["corroboration"]["basis"] == ["second_upstream_source"] and f["score"] > 80
+
+    def test_mention_without_alternative_context_does_not_corroborate(self):
+        text = CRM_README.replace("Pipedrive alternative", "CRM") + "\nSyncs contacts with Salesforce through its API.\n"
+        assert not sb.names_product_as_alternative(text.lower(), ["Salesforce"], CFG)
+        assert sb.names_product_as_alternative("a self-hosted salesforce alternative", ["Salesforce"], CFG)
+
+    def test_cap_is_configurable(self):
+        cfg = copy.deepcopy(CFG)
+        cfg["replacement_fit"]["corroboration_cap"]["cap"] = 70
+        assert sb.score_pair(crm_pair(cfg=cfg), {"score": 85}, [], AS_OF, cfg)["score"] == 70
+        cfg["replacement_fit"]["corroboration_cap"]["enabled"] = False
+        f = sb.score_pair(crm_pair(cfg=cfg), {"score": 85}, [], AS_OF, cfg)
+        assert f["score"] > 80 and not any(c["id"] == "uncorroborated_pairing" for c in f["caps"])
+
+    def test_self_described_corroborates(self):
+        corr = sb.corroboration({"evidence_class": "self_described"}, False, CFG)
+        assert corr["corroborated"] and corr["basis"] == ["self_described"]
+
+    def test_no_readme_is_uncorroborated(self):
+        corr = sb.corroboration({"corroborated": False}, None, CFG)
+        score, cap = sb.corroboration_cap(92.0, corr, "Salesforce", CFG)
+        assert score == 80 and "no README was available" in cap["reason"]
+
+
+class TestRecap:  # KEI-961 item 4: stored rows under the new caps, without a full rescore
+    ROW = {"saas_id": "salesforce", "oss_id": "github.com/sneg55/warpdrive", "score": 90.4, "core_gate": "passed",
+           "credible_alternative": True, "publish": True, "confidence": 84.5,
+           "dimensions": {"core_use_case_coverage": 100.0, "deployment_ownership": 75.0, "ease_of_adoption": 98.5,
+                          "economic_advantage": 80.0, "feature_equivalence": 100.0, "integrations_extensibility": 75.0,
+                          "migration_friction": 66.7, "production_commercial_readiness": 100.0},
+           "evidence_families": [], "refusal_reasons": [], "score_version": "1.2.0",
+           "evaluated_at": "2026-10-03T23:46:08Z", "scoring_path": "single_project"}
+
+    def recap(self, saas_id="salesforce", name="Salesforce", rel=None, readme=CRM_README):
+        from source_pipeline import score_recap
+        row = {**self.ROW, "saas_id": saas_id}
+        return score_recap.recap_row(row, rel or {"corroborated": False, "evidence_class": "listed"},
+                                     {"text": readme, "observed_at": AS_OF} if readme else None, None,
+                                     {"name": name, "aliases": []}, JOBS["CRM"], sb.load_product_scope().get(saas_id), CFG)
+
+    def test_warpdrive_salesforce_row(self):
+        r = self.recap()
+        assert r["score"] == 80 and r["score_version"] == CFG["version"] and r["recap"]["from_version"] == "1.2.0"
+        assert r["dimensions"]["feature_equivalence"] < 100 and r["uncapped_score"] > 80
+        assert [c["id"] for c in r["caps"]] == ["feature_out_of_scope", "uncorroborated_pairing"]
+        assert r["credible_alternative"]  # 80 is still credible; it is just no longer above 80
+
+    def test_warpdrive_pipedrive_row(self):
+        r = self.recap(saas_id="pipedrive", name="Pipedrive")
+        assert [c["id"] for c in r["caps"]] == ["feature_out_of_scope"] and 80 < r["score"] < 90.4
+
+    def test_untouched_row_keeps_its_score(self):
+        r = self.recap(rel={"corroborated": True}, readme=README)
+        assert r["score"] == self.ROW["score"] and r["caps"] == []
+
+    def test_cap_can_end_credibility(self):
+        row = {**self.ROW, "score": 62.0}
+        from source_pipeline import score_recap
+        cfg = copy.deepcopy(CFG)
+        cfg["replacement_fit"]["corroboration_cap"]["cap"] = 55
+        r = score_recap.recap_row(row, {}, None, None, {"name": "Salesforce"}, JOBS["CRM"], [], cfg)
+        assert r["score"] == 55 and not r["credible_alternative"]
+
+    def test_newer_rubric_row_is_not_replaced_by_an_older_one(self):
+        from source_pipeline import canonical
+        new = {"evaluated_at": "2026-10-03T23:46:08Z", "score_version": "1.3.0"}
+        old = {"evaluated_at": "2026-10-03T23:46:08Z", "score_version": "1.2.0"}
+        assert not canonical.supersedes(old, new) and canonical.supersedes(new, old)
+        assert canonical.supersedes({**old, "evaluated_at": "2026-11-01T00:00:00Z"}, new)
