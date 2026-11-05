@@ -129,6 +129,9 @@ def load_product_scope():
 
 _TABLE_SEP = re.compile(r"^\|?\s*:?-{2,}")
 _SEPARATORS = {"=", ":", "-", "·", "|", "—", "–", "/", "*", "**"}
+_FILLER = {"is", "are", "was", "be", "being", "currently", "yet", "still", "also", "now", "explicitly", "intentionally",
+           "deliberately", "considered", "and", "or", "support", "supporting", "add", "adding", "implement", "offer", ":"}
+_FORWARD = {"no plans to", "not planned", "won't support", "will not support", "won't implement", "will not implement"}
 _CLAUSES = re.compile(r"(?<=[.;!?])\s+|\s+but\s+|,\s*(?:while|whereas)\s+", re.I)
 
 
@@ -145,8 +148,10 @@ def _scope_rx(cfg):
 
 def out_of_scope_statements(text: str, cfg) -> list[str]:
     """Lines of a README in which the project rules something out. Three explicit forms, nothing inferred:
-      1. any line under a heading such as "Non-goals", "Out of scope", "Not supported" (to the next heading);
-      2. a line that itself says "out of scope", "not supported", "no plans to", ...;
+      1. a line under a heading such as "Non-goals", "Out of scope", "Not supported" (to the next heading):
+         its first `section_lead_words` words, where a list item names what it rules out;
+      2. a clause that itself says "out of scope", "not supported", "no plans to", ...: only a subject of at
+         most `subject_max_words` words before the marker, or a short list right after it;
       3. a table row whose first status cell starts with a symbol that a legend line of the same README defines
          as out of scope (e.g. "➖ intentionally out of scope").
     For a table row only the first cell (the feature's name) is returned, so a note in the status cell
@@ -154,6 +159,8 @@ def out_of_scope_statements(text: str, cfg) -> list[str]:
     if not text:
         return []
     marker, heading = _scope_rx(cfg)
+    fs = cfg["replacement_fit"]["feature_scope"]
+    lead, subject = int(fs["section_lead_words"]), int(fs["subject_max_words"])
     lines = text.splitlines()
     legend = set()
     for ln in lines:
@@ -178,17 +185,33 @@ def out_of_scope_statements(text: str, cfg) -> list[str]:
                 out.append(cells[0])
             continue
         if in_section:
-            out.append(s)
-        elif marker.search(s):
-            # only the clause that rules something out: "Deals are supported, but invoicing is out of scope"
-            out += [c for c in _CLAUSES.split(s) if marker.search(c)]
+            # a list item names what is ruled out in its first words ("- POP3"); its explanation is not read
+            out.append(" ".join(re.sub(r"^[\s\-*+>#\d.)]+", "", s).split()[:lead]))
+        else:
+            # only what the marker is about, in its own clause: a short subject before it ("invoicing is out of
+            # scope"), or a short list after it ("Not supported: forecasting, invoicing"; "no plans to add SSO").
+            # A qualified subject ("sync through third-party disks is not supported") is too long to read safely.
+            for c in _CLAUSES.split(s):
+                for m in marker.finditer(c):
+                    before = [w for w in re.sub(r"^[\s\-*+>#\d.)]+", "", c[:m.start()]).split()
+                              if w.strip("*_`") not in _FILLER]
+                    after = [w for w in c[m.end():].split() if w.strip(":*_`") not in _FILLER | {"to"}]
+                    words = before if 0 < len(before) <= subject else []
+                    if not before or m.group(0).lower() in _FORWARD:
+                        words = words + after[:lead + 1]
+                    if words:
+                        out.append(" ".join(words))
     return out
 
 
 def excluded_features(text: str, checklist: list, cfg) -> list:
-    """Checklist features (category features + the product's scope features) that the README rules out."""
+    """Checklist features (category features + the product's scope features) that the README rules out. A feature
+    must stand as its own word: "va-api" or "sub.domain" never rules out "api" / "domain"."""
     stmts = "\n".join(out_of_scope_statements(text, cfg)).lower()
-    return sorted({f for f in checklist if stmts and has_term(stmts, f)})
+    if not stmts:
+        return []
+    return sorted({f for f in checklist
+                   if re.search(r"(?<![\w\-./])" + term_re(f).pattern.removeprefix("(?<![a-z0-9])"), stmts)})
 
 
 def feature_scope_cap(excluded: list, checklist: list, cfg) -> float | None:

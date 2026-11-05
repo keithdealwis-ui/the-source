@@ -115,8 +115,9 @@ def recap(http=None, readmes: dict | None = None) -> dict:
         fit[k] = recap_row(fit[k], rels.get(k), readmes.get(oid), desc.get(oid), s,
                            jobs.get((s or {}).get("category")), scope.get(sid) or [], cfg)
     canonical._write_scores(fit, health)
-    added = canonical.append_score_history([fit[k] for k in todo], [])
     changed = [k for k in todo if fit[k]["score"] != before[k]["score"]]
+    # history records numbers that changed; a row the caps left alone keeps its history entry
+    added = canonical.append_score_history([fit[k] for k in changed], [])
     return {
         "score_version": cfg["version"], "rows_recapped": len(todo), "projects": len(keys),
         "readme_unavailable": sorted(k for k in keys if not (readmes.get(k) or {}).get("text"))[:50],
@@ -124,7 +125,7 @@ def recap(http=None, readmes: dict | None = None) -> dict:
         "score_changed": len(changed),
         "capped_uncorroborated": sum(1 for k in todo if any(c["id"] == "uncorroborated_pairing" for c in fit[k]["caps"])),
         "capped_feature_scope": sum(1 for k in todo if any(c["id"] == "feature_out_of_scope" for c in fit[k]["caps"])),
-        "crossed_below_80": sum(1 for k in todo if (before[k]["score"] or 0) > 80 >= (fit[k]["score"] or 0)),
+        "no_longer_above_80": sum(1 for k in todo if (before[k]["score"] or 0) > 80 >= (fit[k]["score"] or 0)),
         "lost_credible": sum(1 for k in todo if before[k]["credible_alternative"] and not fit[k]["credible_alternative"]),
         "history_rows_added": added,
         "http_failures": len(getattr(http, "failures", []) or []),

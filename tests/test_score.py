@@ -374,9 +374,23 @@ class TestOutOfScopeStatements:  # KEI-961 item 2: explicit forms only, determin
         text = ("# x\nDeals and pipelines are supported, but invoicing is out of scope.\n"
                 "## Non-goals\n- Forecasting\n- Multi-currency\n## Install\nRun docker compose. Pipelines.\n").lower()
         st = sb.out_of_scope_statements(text, CFG)
-        assert st == ["invoicing is out of scope.", "- forecasting", "- multi-currency"]
+        assert st == ["invoicing", "forecasting", "multi-currency"]
         ex = sb.excluded_features(text, ["deal", "pipeline", "invoic", "forecast", "multi-currency"], CFG)
         assert ex == ["forecast", "invoic", "multi-currency"]  # the supported clause never excludes deal/pipeline
+
+    def test_explanations_and_caveats_are_not_exclusions(self):
+        text = ("## Not supported/planned\n- Functioning as an SMTP relay without authentication\n- POP3\n"
+                "## API\nSupported/unsupported events are listed in the docs. The GPU driver is deliberately left out.\n"
+                "A long sentence that mentions voice calls and many other words before it says this is out of scope.\n").lower()
+        assert sb.excluded_features(text, ["smtp", "pop3", "event", "gpu", "voice"], CFG) == ["pop3"]
+        qualified = ("Synchronization through third-party synchronization disks is not supported.\n"
+                     "VA-API, Quick Sync, or OpenCL is not supported for AI inference today.\n").lower()
+        assert sb.excluded_features(qualified, ["sync", "api"], CFG) == []
+
+    def test_lists_after_a_marker(self):
+        text = "Not supported: forecasting, multi-currency.\nThere are no plans to add SSO or webhooks.\n".lower()
+        assert sb.excluded_features(text, ["forecast", "multi-currency", "sso", "webhook", "email"], CFG) == \
+            ["forecast", "multi-currency", "sso", "webhook"]
 
     def test_no_statement_no_exclusion(self):
         assert sb.out_of_scope_statements(README.lower(), CFG) == []
