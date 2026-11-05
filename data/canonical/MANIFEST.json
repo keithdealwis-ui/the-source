@@ -3,31 +3,31 @@
   "counts": {
     "catalogue_entries": 500,
     "catalogue_none_yet": 99,
-    "catalogue_ok": 253,
-    "catalogue_partial": 148,
-    "oss_projects": 630,
-    "recommended_relationships": 1530,
-    "relationships": 1574,
+    "catalogue_ok": 255,
+    "catalogue_partial": 146,
+    "oss_projects": 632,
+    "recommended_relationships": 1534,
+    "relationships": 1578,
     "saas_products": 401,
     "supported_saas": 401,
-    "supported_saas_ok": 253
+    "supported_saas_ok": 255
   },
-  "data_as_of": "2026-11-03T23:12:46Z",
-  "dataset_version": "c3b1da4ab6f87038",
+  "data_as_of": "2026-11-05T02:13:56Z",
+  "dataset_version": "28d4405a7c40c325",
   "export_guard": {
     "export_licence_constraint": "none beyond attribution notices",
-    "relationships_exported": 1574,
+    "relationships_exported": 1578,
     "relationships_withheld_share_alike_only": 0
   },
   "files": {
-    "NOTICE.md": "0fb7f96246b8a8be940377ab2b808db3652581a9b9a7feb0ae58870e28f40f4c",
-    "oss_projects.jsonl": "71ccd7da17f4c1da6f8a3a1872fde3fc320b989746e18de469d189a2fd029e8e",
-    "relationships.jsonl": "e2f2df4d660a5a487fc3cd36de4c3435c23ab9d11c94b5f8eb47a0dbd801c85b",
-    "saas_products.jsonl": "a9f1a45111b27c4cbad762ecdb5b310c559a3f09ac4596551a51edc8ed9292ec"
+    "NOTICE.md": "06ad52548dd7d2ae61b42a7495378203ca275b3795a934e16cc1378665f78a5f",
+    "oss_projects.jsonl": "e6ce2f37ae844bbf8394c0d3263bcce49deebc0239143845e3742e036e6f3876",
+    "relationships.jsonl": "4b897c34453cdbd4c2cc6bc955cbc71c18a4bfebe49c19ea4484096ea17e50fe",
+    "saas_products.jsonl": "eb32bca08d4f83f3a63bb8722083e6b7328d33f0d0215587b31ef3b0d1022e9c"
   },
   "live_checked_at": {
-    "newest": "2026-11-03T23:12:46Z",
-    "oldest": "2026-11-03T23:12:46Z"
+    "newest": "2026-11-05T02:13:56Z",
+    "oldest": "2026-11-05T02:13:56Z"
   },
   "sources": {
     "altstack": {
@@ -52,7 +52,7 @@
     },
     "intake": {
       "decision": "allow",
-      "pinned_commit": "feb7d601b43d46fdbc692e43a3082998c61cc659"
+      "pinned_commit": "097eee3ac8b1d5d8724062d07573f873d59a62a7"
     },
     "job_match": {
       "decision": "allow",

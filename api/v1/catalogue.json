@@ -5,8 +5,8 @@
     "by_audience": {
       "b2b": {
         "none_yet": 62,
-        "ok": 179,
-        "partial": 96
+        "ok": 181,
+        "partial": 94
       },
       "b2c": {
         "none_yet": 23,
@@ -21,11 +21,11 @@
     },
     "entries": 500,
     "none_yet": 99,
-    "ok": 253,
-    "partial": 148,
+    "ok": 255,
+    "partial": 146,
     "support_records": 401
   },
-  "dataset_version": "c3b1da4ab6f87038",
+  "dataset_version": "28d4405a7c40c325",
   "demand": {
     "status": "available",
     "telemetry": "no_product_dimension"
@@ -417,11 +417,11 @@
       "name": "Jira",
       "path": "saas/jira.json",
       "rank": 11,
-      "reason": "7 recommendations passed the full evaluation",
+      "reason": "8 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 7,
+      "recommended": 8,
       "saas_id": "jira",
       "status": "ok"
     },
@@ -1669,11 +1669,11 @@
       "name": "Linear",
       "path": "saas/linear.json",
       "rank": 48,
-      "reason": "5 recommendations passed the full evaluation",
+      "reason": "6 recommendations passed the full evaluation",
       "reasons": [
         "full_evaluation"
       ],
-      "recommended": 5,
+      "recommended": 6,
       "saas_id": "linear",
       "status": "ok"
     },
@@ -3470,7 +3470,7 @@
     {
       "audience": "b2b",
       "category": "SEO",
-      "compare_path": null,
+      "compare_path": "/open-source/semrush-alternatives",
       "domain": "semrush.com",
       "evidence": {
         "awaiting": 0,
@@ -3489,13 +3489,13 @@
       "name": "Semrush",
       "path": "saas/semrush.json",
       "rank": 103,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "saas_id": "semrush",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "both",
@@ -4596,7 +4596,7 @@
     {
       "audience": "b2b",
       "category": "SEO",
-      "compare_path": null,
+      "compare_path": "/open-source/ahrefs-alternatives",
       "domain": "ahrefs.com",
       "evidence": {
         "awaiting": 0,
@@ -4618,13 +4618,13 @@
       "name": "Ahrefs",
       "path": "saas/ahrefs.json",
       "rank": 137,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "3 recommendations passed the full evaluation",
       "reasons": [
-        "fewer_than_minimum"
+        "full_evaluation"
       ],
-      "recommended": 2,
+      "recommended": 3,
       "saas_id": "ahrefs",
-      "status": "partial"
+      "status": "ok"
     },
     {
       "audience": "b2b",

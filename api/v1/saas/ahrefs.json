@@ -3,25 +3,108 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 137,
-    "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+    "reason": "3 recommendations passed the full evaluation",
     "reasons": [
-      "fewer_than_minimum"
+      "full_evaluation"
     ],
-    "status": "partial"
+    "status": "ok"
   },
-  "dataset_version": "c3b1da4ab6f87038",
+  "dataset_version": "28d4405a7c40c325",
   "last_checked": {
-    "newest": "2026-11-03T23:12:46Z",
-    "oldest": "2026-11-03T23:12:46Z"
+    "newest": "2026-11-05T02:13:56Z",
+    "oldest": "2026-11-05T02:13:56Z"
   },
   "more_available": 0,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "intake",
       "job_match"
     ]
   },
   "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "self_described",
+          "provenance": [
+            {
+              "locator": "data/intake/admitted/wr-d961410e17be64b5.json",
+              "source_commit": "097eee3ac8b1d5d8724062d07573f873d59a62a7",
+              "source_id": "intake"
+            }
+          ],
+          "validated_as_of": "2026-11-05T02:13:56Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 50.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 72.5,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/every-app/every-app",
+      "last_meaningful_activity_at": "2026-11-04T19:28:47Z",
+      "latest_release": {
+        "published_at": "2026-11-04T19:28:47Z",
+        "tag": "gateway-v0.3.0-rc.15"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-05T02:13:56Z",
+      "maintenance_status": "active",
+      "name": "every-app",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "self-hosting and data ownership",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on self-hosting and data ownership and integrations and extensibility; weakest on feature parity."
+      },
+      "oss_id": "github.com/every-app/every-app",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 89.7,
+        "score": 78.4,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-11-05T02:13:56Z",
+        "score": 68.9,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/every-app/every-app",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "intake"
+      ],
+      "stars": 742
+    },
     {
       "evidence": {
         "relationship": {
@@ -34,7 +117,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-03T23:12:46Z"
+          "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -69,7 +152,7 @@
         "tag": "v0.45.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-03T23:12:46Z",
+      "live_checked_at": "2026-11-05T02:13:56Z",
       "maintenance_status": "active",
       "name": "bisibility",
       "note": {
@@ -88,7 +171,7 @@
         "score": 77.5,
         "trajectory": "Insufficient history"
       },
-      "rank": 1,
+      "rank": 2,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-11-02T00:32:25Z",
@@ -103,7 +186,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 594
+      "stars": 595
     },
     {
       "evidence": {
@@ -117,7 +200,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-03T23:12:46Z"
+          "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -148,7 +231,7 @@
         "tag": "v8.0.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-03T23:12:46Z",
+      "live_checked_at": "2026-11-05T02:13:56Z",
       "maintenance_status": "active",
       "name": "seotoolsuite",
       "note": {
@@ -169,7 +252,7 @@
         "score": 74.8,
         "trajectory": "Insufficient history"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "confidence": 86.5,
         "evaluated_at": "2026-10-18T02:47:20Z",
@@ -189,7 +272,7 @@
   ],
   "saas": {
     "category": "SEO",
-    "compare_path": null,
+    "compare_path": "/open-source/ahrefs-alternatives",
     "domain": "ahrefs.com",
     "name": "Ahrefs",
     "saas_id": "ahrefs",
@@ -201,5 +284,5 @@
       "1.2.0"
     ]
   },
-  "status": "insufficient_recommendations"
+  "status": "ok"
 }

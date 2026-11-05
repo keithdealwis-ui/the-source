@@ -3,24 +3,25 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 11,
-    "reason": "7 recommendations passed the full evaluation",
+    "reason": "8 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "c3b1da4ab6f87038",
+  "dataset_version": "28d4405a7c40c325",
   "last_checked": {
-    "newest": "2026-11-03T23:12:46Z",
-    "oldest": "2026-11-03T23:12:46Z"
+    "newest": "2026-11-05T02:13:56Z",
+    "oldest": "2026-11-05T02:13:56Z"
   },
-  "more_available": 2,
+  "more_available": 3,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
       "altstack",
       "btwso",
       "emmraan",
+      "intake",
       "opensaasdirectory",
       "runacapital",
       "solvohq"
@@ -39,7 +40,7 @@
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-03T23:12:46Z"
+          "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -75,7 +76,7 @@
         "tag": "2026.11.01"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-03T23:12:46Z",
+      "live_checked_at": "2026-11-05T02:13:56Z",
       "maintenance_status": "active",
       "name": "Orbit",
       "note": {
@@ -109,7 +110,89 @@
       "sources": [
         "altstack"
       ],
-      "stars": 76
+      "stars": 77
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "self_described",
+          "provenance": [
+            {
+              "locator": "data/intake/admitted/wr-6b2abcf4a0b28ffd.json",
+              "source_commit": "097eee3ac8b1d5d8724062d07573f873d59a62a7",
+              "source_id": "intake"
+            }
+          ],
+          "validated_as_of": "2026-11-05T02:13:56Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 75.6,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/usekaneo/kaneo",
+      "last_meaningful_activity_at": "2026-11-04T04:56:14Z",
+      "latest_release": {
+        "published_at": "2026-11-02T18:58:29Z",
+        "tag": "v2.49.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-05T02:13:56Z",
+      "maintenance_status": "active",
+      "name": "kaneo",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/usekaneo/kaneo",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 89.1,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-11-05T02:13:56Z",
+        "score": 91.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/usekaneo/kaneo",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "intake"
+      ],
+      "stars": 9717
     },
     {
       "evidence": {
@@ -123,7 +206,7 @@
               "source_id": "btwso"
             }
           ],
-          "validated_as_of": "2026-11-03T23:12:46Z"
+          "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -159,7 +242,7 @@
         "tag": "v3.13.2"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-03T23:12:46Z",
+      "live_checked_at": "2026-11-05T02:13:56Z",
       "maintenance_status": "active",
       "name": "Leantime",
       "note": {
@@ -178,7 +261,7 @@
         "score": 85.0,
         "trajectory": "Stable"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "confidence": 86.5,
         "evaluated_at": "2026-11-01T02:05:53Z",
@@ -193,7 +276,7 @@
       "sources": [
         "btwso"
       ],
-      "stars": 11959
+      "stars": 11962
     },
     {
       "evidence": {
@@ -232,7 +315,7 @@
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-03T23:12:46Z"
+          "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -267,7 +350,7 @@
         "tag": "v1.4.3"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-03T23:12:46Z",
+      "live_checked_at": "2026-11-05T02:13:56Z",
       "maintenance_status": "active",
       "name": "Plane",
       "note": {
@@ -286,7 +369,7 @@
         "score": 87.2,
         "trajectory": "Declining"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "confidence": 95.0,
         "evaluated_at": "2026-09-29T18:28:27Z",
@@ -306,7 +389,7 @@
         "btwso",
         "altstack"
       ],
-      "stars": 61917
+      "stars": 61988
     },
     {
       "evidence": {
@@ -325,7 +408,7 @@
               "source_id": "emmraan"
             }
           ],
-          "validated_as_of": "2026-11-03T23:12:46Z"
+          "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -359,7 +442,7 @@
         "tag": "v17.9.6"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-03T23:12:46Z",
+      "live_checked_at": "2026-11-05T02:13:56Z",
       "maintenance_status": "active",
       "name": "OpenProject",
       "note": {
@@ -381,7 +464,7 @@
         "score": 96.2,
         "trajectory": "Rising"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "confidence": 92.5,
         "evaluated_at": "2026-10-16T01:10:28Z",
@@ -397,86 +480,7 @@
         "solvohq",
         "emmraan"
       ],
-      "stars": 16964
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
-              "locator": "data/tools.json#slug=taiga;named_by=jira",
-              "source_commit": "588139d853f9eab183368cfa2eaa8d6c1640fc74",
-              "source_id": "altstack"
-            }
-          ],
-          "validated_as_of": "2026-11-03T23:12:46Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 50.0,
-            "deployment_ownership": 100.0,
-            "ease_of_adoption": 91.8,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 33.3,
-            "integrations_extensibility": 100.0,
-            "migration_friction": 100.0,
-            "production_commercial_readiness": 50.0
-          },
-          "evidence_families": [
-            "api",
-            "demo",
-            "import",
-            "quickstart",
-            "self_host",
-            "support"
-          ],
-          "scoring_path": "full_lane"
-        }
-      },
-      "github_url": "https://github.com/taigaio/taiga-back",
-      "last_meaningful_activity_at": "2026-10-30T13:22:07Z",
-      "latest_release": null,
-      "licence_spdx": "MPL-2.0",
-      "live_checked_at": "2026-11-03T23:12:46Z",
-      "maintenance_status": "active",
-      "name": "Taiga",
-      "note": {
-        "gaps": [
-          "feature parity"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "self-hosting and data ownership",
-          "integrations and extensibility"
-        ],
-        "text": "Strongest on self-hosting and data ownership and integrations and extensibility; weakest on feature parity."
-      },
-      "oss_id": "github.com/taigaio/taiga-back",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 94.2,
-        "score": 78.9,
-        "trajectory": "Rising"
-      },
-      "rank": 5,
-      "replacement_fit": {
-        "confidence": 84.5,
-        "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 70.3,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/taigaio/taiga-back",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "altstack"
-      ],
-      "stars": 858
+      "stars": 16992
     }
   ],
   "saas": {

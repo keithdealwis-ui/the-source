@@ -3,22 +3,23 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 48,
-    "reason": "5 recommendations passed the full evaluation",
+    "reason": "6 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "c3b1da4ab6f87038",
+  "dataset_version": "28d4405a7c40c325",
   "last_checked": {
-    "newest": "2026-11-03T23:12:46Z",
-    "oldest": "2026-11-03T23:12:46Z"
+    "newest": "2026-11-05T02:13:56Z",
+    "oldest": "2026-11-05T02:13:56Z"
   },
-  "more_available": 0,
+  "more_available": 1,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
       "emmraan",
+      "intake",
       "job_match",
       "opensaasdirectory",
       "runacapital",
@@ -26,6 +27,88 @@
     ]
   },
   "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "self_described",
+          "provenance": [
+            {
+              "locator": "data/intake/admitted/wr-6b2abcf4a0b28ffd.json",
+              "source_commit": "097eee3ac8b1d5d8724062d07573f873d59a62a7",
+              "source_id": "intake"
+            }
+          ],
+          "validated_as_of": "2026-11-05T02:13:56Z"
+        },
+        "replacement_fit": {
+          "core_gate": "passed",
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 75.6,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/usekaneo/kaneo",
+      "last_meaningful_activity_at": "2026-11-04T04:56:14Z",
+      "latest_release": {
+        "published_at": "2026-11-02T18:58:29Z",
+        "tag": "v2.49.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-05T02:13:56Z",
+      "maintenance_status": "active",
+      "name": "kaneo",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/usekaneo/kaneo",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 89.1,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "confidence": 86.5,
+        "evaluated_at": "2026-11-05T02:13:56Z",
+        "score": 91.3,
+        "score_version": "1.2.0"
+      },
+      "repo_url": "https://github.com/usekaneo/kaneo",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "intake"
+      ],
+      "stars": 9717
+    },
     {
       "evidence": {
         "relationship": {
@@ -53,7 +136,7 @@
               "source_id": "emmraan"
             }
           ],
-          "validated_as_of": "2026-11-03T23:12:46Z"
+          "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -88,7 +171,7 @@
         "tag": "v1.4.3"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-03T23:12:46Z",
+      "live_checked_at": "2026-11-05T02:13:56Z",
       "maintenance_status": "active",
       "name": "Plane",
       "note": {
@@ -107,7 +190,7 @@
         "score": 87.2,
         "trajectory": "Declining"
       },
-      "rank": 1,
+      "rank": 2,
       "replacement_fit": {
         "confidence": 95.0,
         "evaluated_at": "2026-09-29T18:28:27Z",
@@ -125,7 +208,7 @@
         "opensaasdirectory",
         "emmraan"
       ],
-      "stars": 61917
+      "stars": 61988
     },
     {
       "evidence": {
@@ -139,7 +222,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-11-03T23:12:46Z"
+          "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -173,7 +256,7 @@
         "tag": "v0.7.426"
       },
       "licence_spdx": "EPL-2.0",
-      "live_checked_at": "2026-11-03T23:12:46Z",
+      "live_checked_at": "2026-11-05T02:13:56Z",
       "maintenance_status": "active",
       "name": "Huly",
       "note": {
@@ -192,7 +275,7 @@
         "score": 84.0,
         "trajectory": "Declining"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "confidence": 92.5,
         "evaluated_at": "2026-09-29T18:28:27Z",
@@ -207,7 +290,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 28043
+      "stars": 28048
     },
     {
       "evidence": {
@@ -221,7 +304,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-11-03T23:12:46Z"
+          "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -255,7 +338,7 @@
         "tag": "v17.9.6"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-03T23:12:46Z",
+      "live_checked_at": "2026-11-05T02:13:56Z",
       "maintenance_status": "active",
       "name": "OpenProject",
       "note": {
@@ -277,7 +360,7 @@
         "score": 96.2,
         "trajectory": "Rising"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "confidence": 84.5,
         "evaluated_at": "2026-10-16T01:10:28Z",
@@ -292,7 +375,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 16964
+      "stars": 16992
     },
     {
       "evidence": {
@@ -306,7 +389,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-03T23:12:46Z"
+          "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -337,13 +420,13 @@
         }
       },
       "github_url": "https://github.com/croffasia/itsaplan",
-      "last_meaningful_activity_at": "2026-10-27T21:41:13Z",
+      "last_meaningful_activity_at": "2026-11-05T00:50:33Z",
       "latest_release": {
-        "published_at": "2026-10-27T21:41:13Z",
-        "tag": "v1.9.0"
+        "published_at": "2026-11-05T00:50:33Z",
+        "tag": "v1.10.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-03T23:12:46Z",
+      "live_checked_at": "2026-11-05T02:13:56Z",
       "maintenance_status": "active",
       "name": "itsaplan",
       "note": {
@@ -359,13 +442,13 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 89.2,
-        "score": 85.8,
+        "score": 86.3,
         "trajectory": "Insufficient history"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "confidence": 86.5,
-        "evaluated_at": "2026-10-27T23:42:23Z",
+        "evaluated_at": "2026-11-05T02:13:56Z",
         "score": 94.1,
         "score_version": "1.2.0"
       },
@@ -377,85 +460,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 2154
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/kanboard/kanboard",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-03T23:12:46Z"
-        },
-        "replacement_fit": {
-          "core_gate": "passed",
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 100.0,
-            "ease_of_adoption": 61.3,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 16.7,
-            "integrations_extensibility": null,
-            "migration_friction": null,
-            "production_commercial_readiness": 100.0
-          },
-          "evidence_families": [
-            "quickstart",
-            "self_host"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/kanboard/kanboard",
-      "last_meaningful_activity_at": "2026-10-31T00:52:06Z",
-      "latest_release": {
-        "published_at": "2026-10-31T00:52:06Z",
-        "tag": "v1.2.57"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-03T23:12:46Z",
-      "maintenance_status": "active",
-      "name": "Kanboard",
-      "note": {
-        "gaps": [
-          "feature parity"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "self-hosting and data ownership"
-        ],
-        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
-      },
-      "oss_id": "github.com/kanboard/kanboard",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 96.6,
-        "score": 90.1,
-        "trajectory": "Rising"
-      },
-      "rank": 5,
-      "replacement_fit": {
-        "confidence": 78.5,
-        "evaluated_at": "2026-11-01T02:05:53Z",
-        "score": 75.9,
-        "score_version": "1.2.0"
-      },
-      "repo_url": "https://github.com/kanboard/kanboard",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 9938
+      "stars": 2173
     }
   ],
   "saas": {

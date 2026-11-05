@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "c3b1da4ab6f87038",
+  "dataset_version": "28d4405a7c40c325",
   "last_checked": {
-    "newest": "2026-11-03T23:12:46Z",
-    "oldest": "2026-11-03T23:12:46Z"
+    "newest": "2026-11-05T02:13:56Z",
+    "oldest": "2026-11-05T02:13:56Z"
   },
   "more_available": 0,
   "provenance": {
@@ -41,7 +41,7 @@
               "source_id": "emmraan"
             }
           ],
-          "validated_as_of": "2026-11-03T23:12:46Z"
+          "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -71,7 +71,7 @@
         "tag": "v0.33.0rc3"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-03T23:12:46Z",
+      "live_checked_at": "2026-11-05T02:13:56Z",
       "maintenance_status": "active",
       "name": "vLLM",
       "note": {
@@ -108,7 +108,7 @@
         "solvohq",
         "emmraan"
       ],
-      "stars": 96237
+      "stars": 96341
     },
     {
       "evidence": {
@@ -122,14 +122,14 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-11-03T23:12:46Z"
+          "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 75.0,
-            "ease_of_adoption": 80.0,
+            "ease_of_adoption": 100.0,
             "economic_advantage": 60.0,
             "feature_equivalence": 16.7,
             "integrations_extensibility": 75.0,
@@ -152,14 +152,14 @@
         }
       },
       "github_url": "https://github.com/BerriAI/litellm",
-      "last_meaningful_activity_at": "2026-10-28T23:03:09Z",
+      "last_meaningful_activity_at": "2026-11-05T02:07:31Z",
       "latest_release": {
-        "published_at": "2026-10-28T23:03:09Z",
-        "tag": "v1.106.6"
+        "published_at": "2026-11-05T02:06:31Z",
+        "tag": "v1.107.0-rc.3"
       },
       "licence_disclosure": "open core: recommendation covers the MIT core; parts under LiteLLM Enterprise licence are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-03T23:12:46Z",
+      "live_checked_at": "2026-11-05T02:13:56Z",
       "maintenance_status": "active",
       "name": "LiteLLM",
       "note": {
@@ -169,22 +169,22 @@
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
-          "production readiness"
+          "ease of adoption"
         ],
-        "text": "Strongest on core use-case coverage and production readiness; weakest on feature parity."
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on feature parity."
       },
       "oss_id": "github.com/berriai/litellm",
       "project_health": {
         "band": "Exceptional",
         "confidence": 92.1,
-        "score": 96.6,
+        "score": 98.2,
         "trajectory": "Rising"
       },
       "rank": 2,
       "replacement_fit": {
         "confidence": 86.5,
-        "evaluated_at": "2026-10-28T23:06:27Z",
-        "score": 74.2,
+        "evaluated_at": "2026-11-05T02:13:56Z",
+        "score": 77.2,
         "score_version": "1.2.0"
       },
       "repo_url": "https://github.com/BerriAI/litellm",
@@ -195,7 +195,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 62645
+      "stars": 62722
     },
     {
       "evidence": {
@@ -209,7 +209,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-03T23:12:46Z"
+          "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -240,7 +240,7 @@
         "tag": "v2.6.5"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-03T23:12:46Z",
+      "live_checked_at": "2026-11-05T02:13:56Z",
       "maintenance_status": "active",
       "name": "shimmy",
       "note": {
@@ -276,7 +276,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 6007
+      "stars": 6010
     },
     {
       "evidence": {
@@ -290,7 +290,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-03T23:12:46Z"
+          "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -316,13 +316,13 @@
         }
       },
       "github_url": "https://github.com/superlinked/sie",
-      "last_meaningful_activity_at": "2026-10-20T07:02:45Z",
+      "last_meaningful_activity_at": "2026-11-04T08:55:29Z",
       "latest_release": {
-        "published_at": "2026-10-13T23:10:41Z",
-        "tag": "v0.10.1"
+        "published_at": "2026-11-04T08:55:29Z",
+        "tag": "v0.11.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-03T23:12:46Z",
+      "live_checked_at": "2026-11-05T02:13:56Z",
       "maintenance_status": "active",
       "name": "sie",
       "note": {
@@ -358,7 +358,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 3463
+      "stars": 3476
     }
   ],
   "saas": {

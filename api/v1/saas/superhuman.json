@@ -10,10 +10,10 @@
     ],
     "status": "partial"
   },
-  "dataset_version": "c3b1da4ab6f87038",
+  "dataset_version": "28d4405a7c40c325",
   "last_checked": {
-    "newest": "2026-11-03T23:12:46Z",
-    "oldest": "2026-11-03T23:12:46Z"
+    "newest": "2026-11-05T02:13:56Z",
+    "oldest": "2026-11-05T02:13:56Z"
   },
   "more_available": 0,
   "provenance": {
@@ -35,22 +35,21 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-03T23:12:46Z"
+          "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 92.5,
-            "ease_of_adoption": 90.7,
+            "ease_of_adoption": 87.3,
             "economic_advantage": 68.0,
-            "feature_equivalence": 50.0,
+            "feature_equivalence": 33.3,
             "integrations_extensibility": 100.0,
             "migration_friction": null,
             "production_commercial_readiness": 100.0
           },
           "evidence_families": [
-            "demo",
             "plugins",
             "quickstart",
             "support"
@@ -59,36 +58,38 @@
         }
       },
       "github_url": "https://github.com/cypht-org/cypht",
-      "last_meaningful_activity_at": "2026-10-16T01:36:10Z",
+      "last_meaningful_activity_at": "2026-11-04T14:45:44Z",
       "latest_release": {
-        "published_at": "2026-10-16T01:36:10Z",
-        "tag": "v2.13.0"
+        "published_at": "2026-11-04T14:45:44Z",
+        "tag": "v2.13.1"
       },
       "licence_spdx": "LGPL-2.1",
-      "live_checked_at": "2026-11-03T23:12:46Z",
+      "live_checked_at": "2026-11-05T02:13:56Z",
       "maintenance_status": "active",
       "name": "cypht",
       "note": {
-        "gaps": [],
+        "gaps": [
+          "feature parity"
+        ],
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
           "integrations and extensibility"
         ],
-        "text": "Strongest on core use-case coverage and integrations and extensibility."
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity."
       },
       "oss_id": "github.com/cypht-org/cypht",
       "project_health": {
         "band": "Exceptional",
         "confidence": 96.6,
-        "score": 92.1,
+        "score": 91.8,
         "trajectory": "Stable"
       },
       "rank": 1,
       "replacement_fit": {
         "confidence": 81.5,
-        "evaluated_at": "2026-10-20T23:06:47Z",
-        "score": 87.5,
+        "evaluated_at": "2026-11-05T02:13:56Z",
+        "score": 84.2,
         "score_version": "1.2.0"
       },
       "repo_url": "https://github.com/cypht-org/cypht",
@@ -99,7 +100,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 1786
+      "stars": 1787
     },
     {
       "evidence": {
@@ -113,7 +114,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-03T23:12:46Z"
+          "validated_as_of": "2026-11-05T02:13:56Z"
         },
         "replacement_fit": {
           "core_gate": "passed",
@@ -144,7 +145,7 @@
         "tag": "1.26.2"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-03T23:12:46Z",
+      "live_checked_at": "2026-11-05T02:13:56Z",
       "maintenance_status": "active",
       "name": "Mailspring",
       "note": {
@@ -181,7 +182,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 17994
+      "stars": 17996
     }
   ],
   "saas": {

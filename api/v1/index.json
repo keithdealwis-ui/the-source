@@ -4,16 +4,16 @@
   "catalogue": {
     "entries": 500,
     "none_yet": 99,
-    "ok": 253,
-    "partial": 148,
+    "ok": 255,
+    "partial": 146,
     "path": "catalogue.json"
   },
-  "data_as_of": "2026-11-03T23:12:46Z",
-  "dataset_version": "c3b1da4ab6f87038",
+  "data_as_of": "2026-11-05T02:13:56Z",
+  "dataset_version": "28d4405a7c40c325",
   "domains": "domains.json",
   "live_checked_at": {
-    "newest": "2026-11-03T23:12:46Z",
-    "oldest": "2026-11-03T23:12:46Z"
+    "newest": "2026-11-05T02:13:56Z",
+    "oldest": "2026-11-05T02:13:56Z"
   },
   "supported_saas": [
     {
@@ -935,13 +935,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": null,
+      "compare_path": "/open-source/semrush-alternatives",
       "name": "Semrush",
       "path": "saas/semrush.json",
-      "recommendations": 2,
+      "recommendations": 3,
       "saas_id": "semrush",
       "slug": "semrush",
-      "status": "insufficient_recommendations"
+      "status": "ok"
     },
     {
       "compare_path": null,
@@ -1232,13 +1232,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": null,
+      "compare_path": "/open-source/ahrefs-alternatives",
       "name": "Ahrefs",
       "path": "saas/ahrefs.json",
-      "recommendations": 2,
+      "recommendations": 3,
       "saas_id": "ahrefs",
       "slug": "ahrefs",
-      "status": "insufficient_recommendations"
+      "status": "ok"
     },
     {
       "compare_path": null,
