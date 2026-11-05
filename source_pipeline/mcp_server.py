@@ -129,7 +129,9 @@ INSTRUCTIONS = (
     "machine-derived, not editorial. Every project carries a tier: recommended, scored, or discovery "
     "(discovered, not scored: never present a discovery project as a recommendation). "
     "Show live_checked_at or observed_as_of with any live figure. A project that is not under a recognised "
-    "open-source licence carries a licence_disclosure: always show it with that project."
+    "open-source licence carries a licence_disclosure: always show it with that project. Answers are compact by "
+    "default (state, explanatory and evidence blocks left out, trust fields always kept); pass detail \"full\", "
+    "or include named blocks, for the rest."
 )
 
 
@@ -2247,7 +2249,8 @@ TOOLS = [
     ("source_get_alternatives", "Open-source alternatives to a SaaS product",
      "Ranked, evidence-backed open-source alternatives to one SaaS product (a source-available one carries a "
      "licence_disclosure). 'saas' may be a saas_id, a name, "
-     "an alias, a domain or a URL. For supported products this is exactly the published api/v1 page.",
+     "an alias, a domain or a URL. For supported products this is exactly the published api/v1 page (with detail "
+     "full; compact cuts each row's evidence block to its dates).",
      _obj({"saas": {"type": "string", "description": "saas_id, name, alias, domain or URL, e.g. 'Notion'"},
            "limit": {**LIMIT, "description": "how many recommendations (default 5)"},
            "include_discovery": {"type": "boolean", "description": "also return a separate, labelled "
@@ -2340,7 +2343,6 @@ TOOLS = [
      _obj({"project": {"type": "string", "description": "oss_id, repository URL or name"}}, ["project"]),
      tool_get_momentum),
 ]
-TOOL_BY_NAME = {t[0]: t for t in TOOLS}
 
 
 def _check_args(schema, args):
@@ -2364,6 +2366,136 @@ def _check_args(schema, args):
             raise ToolError(f"{k} must be a list of at most {prop.get('maxItems', 20)} strings")
         if want == "boolean" and not isinstance(v, bool):
             raise ToolError(f"{k} must be true or false")
+
+
+# --------------------------------------------------------------------------- response detail (KEI-961)
+
+# Agents asked for shorter answers. A compact answer (the default) leaves out the blocks below unless the call names
+# them in include; detail "full" returns every block, exactly as before. include name -> the keys it covers.
+DETAIL_MODES = ("compact", "full")
+COMPACT_BLOCKS = {
+    "meta": ("meta",),  # cut to dataset_version, data_as_of, licence, attribution, notice (snapshot_current if false)
+    "signals": ("signals",),  # signal-layer state: reduced to status, reason, as_of, age and stale
+    "corpus": ("corpus",),  # discovery-corpus state: reduced to the same freshness fields
+    "quick_scores": ("quick_scores",),  # the quick-scoring layer's state (it names its layer); a row's own are kept
+    "notes": ("note", "why", "rule", "evidence_note", "provenance_note", "confidence_meaning", "match_rule",
+              "match_semantics", "ranking", "tiers", "measures", "serves", "does_not_serve"),
+    "explanations": ("explanation",),  # momentum / radar derivations (the labels and figures are kept)
+    "retrieval": ("retrieval", "matched", "score_components", "semantic_terms", "graph_path", "graph_seeds"),
+    "evidence": ("evidence",),  # a row's Replacement Fit dimensions and upstream provenance detail
+    "topics": ("topics",),
+    "links": ("github_url", "path", "slug", "compare_path"),  # github_url only where it repeats repo_url
+}
+_BLOCK_OF = {k: name for name, keys in COMPACT_BLOCKS.items() for k in keys}
+# Only at the answer's top level and one level down (the state blocks of discovery_candidates and the like).
+_TOP_ONLY = {"ranking", "tiers", "measures", "serves", "does_not_serve", "graph_seeds",
+             "match_rule", "match_semantics"}
+_STRING_ONLY = {"note", "why", "rule", "evidence_note", "provenance_note", "confidence_meaning"}  # a structured
+# note (a Replacement Fit note: text, strengths, gaps, origin) is content and is kept
+_WHOLE = {"notes", "explanations"}  # explanatory text: left out whole, never cut down to fields
+TOOL_KEEPS = {"source_get_relationship": {"evidence", "notes"}, "source_get_project": {"evidence"},
+              "source_get_momentum": {"explanations"}, "source_dataset_info": {"notes", "corpus"}}
+# Fields a compact answer never loses, by name, wherever they sit (including inside a block it leaves out): the
+# trust obligations in INSTRUCTIONS (tier, recommended flags, licence and its disclosure, attribution, freshness
+# beside any live figure) and any reason, cap or suppression, so fields added later under those names survive.
+_TRUST_KEY = re.compile(r"(^|_)(reason|reasons|disclosure|suppressed|suppression|capped|cap|tier|recommended|"
+                        r"recommendation|warning|caveat|shortfall|degraded|uncertainty|verdict|label|attribution|"
+                        r"licence|status|stale)($|_)|_as_of$|checked_at$|^as_of$|^age_(hours|days)$|^last_refresh$")
+DETAIL_DESC = (" Answers are compact by default: blocks named in include (signals, corpus and meta state, notes, "
+               "explanations, retrieval, evidence, topics, links) are left out or cut to their status and freshness "
+               "fields, and the answer's response.left_out lists them; tier, recommended flags, licence_disclosure, "
+               "live_checked_at / observed_as_of, attribution and any *_reason, capped or suppressed field are always "
+               "kept. Pass detail \"full\" for every block, or include to bring named blocks back.")
+DETAIL_PROPS = {
+    "detail": {"type": "string", "enum": list(DETAIL_MODES),
+               "description": "compact (default): leave out state, explanatory and evidence blocks; full: every block"},
+    "include": {"type": "array", "items": {"type": "string", "enum": sorted(COMPACT_BLOCKS)},
+                "maxItems": len(COMPACT_BLOCKS),
+                "description": "compact only: blocks to keep, e.g. ['signals', 'evidence']"},
+}
+
+
+def _trust_key(key) -> bool:
+    return isinstance(key, str) and bool(_TRUST_KEY.search(key))
+
+
+def _trust_only(node):
+    """What a left-out block keeps: its trust and freshness fields, at any depth; None when it holds none."""
+    if isinstance(node, dict):
+        out = {}
+        for k, v in node.items():
+            if _trust_key(k):
+                out[k] = v
+            else:
+                sub = _trust_only(v)
+                if sub not in (None, {}, []):
+                    out[k] = sub
+        return out or None
+    if isinstance(node, list):
+        rows = [r for r in (_trust_only(v) for v in node) if r not in (None, {}, [])]
+        return rows or None
+    return None
+
+
+def _compact(node, omit, left_out, depth=0):
+    if isinstance(node, list):
+        return [_compact(v, omit, left_out, depth + 1) for v in node]
+    if not isinstance(node, dict):
+        return node
+    out = {}
+    for k, v in node.items():
+        block = _BLOCK_OF.get(k)
+        if block in omit and not _trust_key(k) and not (k in _TOP_ONLY and depth > 1) \
+                and not (k in _STRING_ONLY and not isinstance(v, str)) \
+                and not (k == "github_url" and v != node.get("repo_url")) \
+                and not (k == "quick_scores" and not (isinstance(v, dict) and "layer" in v)):
+            left_out.add(block)
+            kept = None if block in _WHOLE else _trust_only(v)
+            if kept is not None:
+                out[k] = kept
+            continue
+        # a trust field is kept whole (a licence with its edition check); a row in a top-level list sits at depth 2
+        out[k] = v if _trust_key(k) else _compact(v, omit, left_out, depth + 1)
+    return out
+
+
+def _detail_args(name, args):
+    detail = args.get("detail", None)
+    if detail is not None and detail not in DETAIL_MODES:
+        raise ToolError("detail must be compact or full")
+    include = args.get("include") or []
+    unknown = sorted(set(include) - set(COMPACT_BLOCKS))
+    if unknown:
+        raise ToolError(f"include: unknown block(s) {', '.join(unknown)}; known: {', '.join(sorted(COMPACT_BLOCKS))}")
+    if name == "source_search" and args.get("mode") == "hybrid":
+        include = [*include, "retrieval"]  # asking for hybrid is asking for its score components
+    return detail, set(include)
+
+
+def compact_payload(tool: str, payload: dict, include=()) -> dict:
+    """A compact answer: the blocks in COMPACT_BLOCKS left out (or cut to their trust and freshness fields) unless
+    included, with response.left_out naming each one that was. Trust fields are never dropped (_TRUST_KEY)."""
+    omit = set(COMPACT_BLOCKS) - set(include) - TOOL_KEEPS.get(tool, set())
+    left_out = set()
+    out = {"result": _compact(payload["result"], omit, left_out)}
+    meta = payload["meta"]
+    if "meta" in omit:
+        out["meta"] = {k: meta[k] for k in ("dataset_version", "data_as_of", "licence", "attribution", "notice")
+                       if k in meta}
+        if not meta.get("snapshot_current", True):
+            out["meta"]["snapshot_current"] = False
+        left_out.add("meta")
+    else:
+        out["meta"] = meta
+    out["response"] = {"detail": "compact", "left_out": sorted(left_out),
+                       "full": "pass detail \"full\" for every block, or include: [names] for some"}
+    return out
+
+
+# KEI-961: every tool takes detail and include, and says so.
+TOOLS = [(n, title, desc + DETAIL_DESC, {**schema, "properties": {**schema["properties"], **DETAIL_PROPS}}, fn)
+         for n, title, desc, schema, fn in TOOLS]
+TOOL_BY_NAME = {t[0]: t for t in TOOLS}
 
 
 # --------------------------------------------------------------------------- server
@@ -2447,9 +2579,13 @@ class Telemetry:
 
 
 class Server:
-    def __init__(self, root: Path, now: datetime | None = None, telemetry: bool = False):
+    def __init__(self, root: Path, now: datetime | None = None, telemetry: bool = False,
+                 default_detail: str = "compact"):
+        if default_detail not in DETAIL_MODES:
+            raise ValueError(f"default_detail must be one of {DETAIL_MODES}")
         self.root = Path(root)
         self._now = now
+        self.default_detail = default_detail  # KEI-961: what a call that names no detail gets
         self.layer = Layer(self.root)  # refuse to start on a layer that does not verify
         self.reload_error = None
         self.initialized = False
@@ -2549,7 +2685,9 @@ class Server:
         started = time.monotonic()
         try:
             _check_args(schema, args)
-            payload = {"result": disclose(self.layer, fn(self.layer, args, self)), "meta": self.meta()}
+            detail, include = _detail_args(name, args)
+            tool_args = {k: v for k, v in args.items() if k not in DETAIL_PROPS}
+            payload = {"result": disclose(self.layer, fn(self.layer, tool_args, self)), "meta": self.meta()}
         except ToolError as exc:
             self._count(name, "tool_error", started)
             return _ok(mid, {"content": [{"type": "text", "text": f"{name}: {exc}"}], "isError": True})
@@ -2557,7 +2695,11 @@ class Server:
             self._count(name, "internal_error", started)
             raise
         self._count(name, "ok", started, answer_is_empty(name, payload["result"]))
-        text = json.dumps(payload, sort_keys=True, ensure_ascii=False, indent=1)
+        if (detail or self.default_detail) == "compact":
+            payload = compact_payload(name, payload, include)
+            text = json.dumps(payload, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
+        else:
+            text = json.dumps(payload, sort_keys=True, ensure_ascii=False, indent=1)
         result = {"content": [{"type": "text", "text": text}], "isError": False}
         if self.protocol >= "2025-06-18":
             result["structuredContent"] = payload
@@ -2645,12 +2787,14 @@ def main(argv=None) -> int:
                     help="repository root holding data/canonical/ and api/v1/ (default: this checkout)")
     ap.add_argument("--now", help="pin the clock used for freshness (YYYY-MM-DDTHH:MM:SSZ)")
     ap.add_argument("--check", action="store_true", help="verify the read layer, print a summary and exit")
+    ap.add_argument("--default-detail", choices=DETAIL_MODES, default="compact",
+                    help="response detail for calls that name none (KEI-961; default compact)")
     a = ap.parse_args(argv)
     now = None
     if a.now:
         now = datetime.strptime(a.now, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
     try:
-        server = Server(Path(a.root), now)
+        server = Server(Path(a.root), now, default_detail=a.default_detail)
     except Exception as exc:  # a layer that cannot be loaded and verified is never served
         print(f"the-source-mcp: refusing to serve: {exc}", file=sys.stderr)
         return 2

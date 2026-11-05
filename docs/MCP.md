@@ -157,6 +157,25 @@ set `additionalProperties: false`.
 | `source_emerging_projects` | `window` (1, 7, 30 days), `momentum` labels, `accelerating_only`, `min_stars`, `max_stars`, `query`, `limit`: repositories by star growth, and the Community Radar ranking, with window coverage and every degradation stated |
 | `source_get_momentum` | `project` (canonical or any tracked repository): every momentum window with its explanation, and each counted community mention with its permalink |
 
+### Response detail (KEI-961)
+
+Every tool also takes `detail` (`compact`, the default, or `full`) and `include` (a list of
+block names). A compact answer leaves out, or cuts to their status and freshness fields, these
+blocks: `meta` (kept: dataset_version, data_as_of, licence, attribution, notice), `signals`,
+`corpus` and `quick_scores` state, `notes` (ranking, tier and measure definitions, boilerplate
+notes), `explanations` (momentum derivations), `retrieval` (score components, matched terms),
+`evidence` (per-row Replacement Fit dimensions and provenance detail), `topics` and `links`.
+`response.left_out` names the blocks left out; `include` brings named ones back, and
+`detail: "full"` returns the answer exactly as before. Hybrid search keeps its score
+components; `source_get_relationship` and `source_get_project` keep their evidence.
+
+Compact never drops a trust field, wherever it sits: `tier`, recommended flags,
+`licence*` and `licence_disclosure`, `warning`, `caveat`, `live_checked_at`, `observed_as_of`
+and other `*_as_of`, `status`, `attribution`, and any `*_reason`, `capped`, `cap` or
+`suppressed` field (matched by name, so fields added later survive). Answers are roughly half
+the size (`source_list_supported_saas` 117 KB to 56 KB of text). Operators can restore the old
+default with `--default-detail full` on `mcp_server.py` or `mcp_http.py`.
+
 The four measures are never folded into one another: **Project Health** (is the project
 healthy), **Replacement Fit** (does it replace this product), **Repository Momentum** (is its
 star growth rising or accelerating) and **Community Momentum** (is it being discussed now).

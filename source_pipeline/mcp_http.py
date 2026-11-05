@@ -239,9 +239,11 @@ def main(argv=None) -> int:
     ap.add_argument("--telemetry", help="write aggregate usage counters to this JSON file")
     ap.add_argument("--allow-origin", action="append", default=[], help="browser Origin allowed to call /mcp")
     ap.add_argument("--rate-per-min", type=int, default=RATE_PER_MIN)
+    ap.add_argument("--default-detail", choices=M.DETAIL_MODES, default="compact",
+                    help="response detail for calls that name none (KEI-961; full restores the old default)")
     a = ap.parse_args(argv)
     try:
-        server = M.Server(Path(a.root))
+        server = M.Server(Path(a.root), default_detail=a.default_detail)
     except Exception as exc:  # a layer that cannot be loaded and verified is never served
         print(f"the-source-mcp: refusing to serve: {exc}", file=sys.stderr)
         return 2
