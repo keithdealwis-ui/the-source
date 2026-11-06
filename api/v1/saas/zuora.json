@@ -3,16 +3,16 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 422,
-    "reason": "3 recommendations passed the full evaluation",
+    "reason": "4 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "07ab9c39ee0547fc",
+  "dataset_version": "6eefabe4a88f0e73",
   "last_checked": {
-    "newest": "2026-11-05T12:23:19Z",
-    "oldest": "2026-11-05T12:23:19Z"
+    "newest": "2026-11-06T00:04:22Z",
+    "oldest": "2026-11-06T00:04:22Z"
   },
   "more_available": 0,
   "provenance": {
@@ -34,7 +34,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-05T12:23:19Z"
+          "validated_as_of": "2026-11-06T00:04:22Z"
         },
         "replacement_fit": {
           "caps": [
@@ -81,7 +81,7 @@
         "tag": "v1.56.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T12:23:19Z",
+      "live_checked_at": "2026-11-06T00:04:22Z",
       "maintenance_status": "active",
       "name": "Lago",
       "note": {
@@ -97,7 +97,7 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 96.6,
-        "score": 88.0,
+        "score": 89.4,
         "trajectory": "Stable"
       },
       "rank": 1,
@@ -110,7 +110,7 @@
           }
         ],
         "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
+        "evaluated_at": "2026-11-06T00:04:22Z",
         "score": 80.0,
         "score_version": "1.3.0"
       },
@@ -122,7 +122,111 @@
       "sources": [
         "job_match"
       ],
-      "stars": 10760
+      "stars": 10768
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/meteroid-oss/meteroid",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-11-06T00:04:22Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Zuora as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/meteroid-oss/meteroid",
+      "last_meaningful_activity_at": "2026-11-05T23:16:16Z",
+      "latest_release": {
+        "published_at": "2026-11-05T18:47:43Z",
+        "tag": "v2.1.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-11-06T00:04:22Z",
+      "maintenance_status": "active",
+      "name": "meteroid",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity."
+      },
+      "oss_id": "github.com/meteroid-oss/meteroid",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 86.9,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Zuora as what it replaces"
+          }
+        ],
+        "confidence": 84.5,
+        "evaluated_at": "2026-11-06T00:04:22Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/meteroid-oss/meteroid",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 1353
     },
     {
       "evidence": {
@@ -136,7 +240,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-05T12:23:19Z"
+          "validated_as_of": "2026-11-06T00:04:22Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -171,13 +275,13 @@
         }
       },
       "github_url": "https://github.com/flexprice/flexprice",
-      "last_meaningful_activity_at": "2026-11-04T20:24:41Z",
+      "last_meaningful_activity_at": "2026-11-05T14:50:00Z",
       "latest_release": {
-        "published_at": "2026-11-04T07:45:09Z",
-        "tag": "v2.1.47"
+        "published_at": "2026-11-05T14:50:00Z",
+        "tag": "v2.1.48"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-05T12:23:19Z",
+      "live_checked_at": "2026-11-06T00:04:22Z",
       "maintenance_status": "active",
       "name": "flexprice",
       "note": {
@@ -196,7 +300,7 @@
         "score": 81.4,
         "trajectory": "Rising"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "caps": [],
         "confidence": 84.5,
@@ -226,7 +330,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-05T12:23:19Z"
+          "validated_as_of": "2026-11-06T00:04:22Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -258,13 +362,13 @@
         }
       },
       "github_url": "https://github.com/openmeterio/openmeter",
-      "last_meaningful_activity_at": "2026-10-20T12:34:27Z",
+      "last_meaningful_activity_at": "2026-11-05T16:33:46Z",
       "latest_release": {
         "published_at": "2026-10-09T14:41:52Z",
         "tag": "v1.0.0-beta.236"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-05T12:23:19Z",
+      "live_checked_at": "2026-11-06T00:04:22Z",
       "maintenance_status": "active",
       "name": "openmeter",
       "note": {
@@ -283,7 +387,7 @@
         "score": 90.8,
         "trajectory": "Stable"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "caps": [],
         "confidence": 84.5,
@@ -299,7 +403,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 2434
+      "stars": 2437
     }
   ],
   "saas": {

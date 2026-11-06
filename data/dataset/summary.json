@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-05T12:23:19Z",
+  "as_of": "2026-11-06T00:04:22Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -129,8 +129,8 @@
     },
     "relationships": {
       "licence_exception": 35,
-      "recommendable": 2059,
-      "rejected": 3045
+      "recommendable": 2058,
+      "rejected": 3046
     }
   },
   "launch": {
@@ -419,15 +419,15 @@
       "zoho-mail",
       "zuora"
     ],
-    "catalogue_served_relationships": 1234,
-    "oss_distinct_products": 651,
-    "oss_projects": 652,
+    "catalogue_served_relationships": 1232,
+    "oss_distinct_products": 650,
+    "oss_projects": 651,
     "preserve_served": {
       "kept": 375,
-      "not_kept": 0,
-      "served_before": 375
+      "not_kept": 1,
+      "served_before": 376
     },
-    "relationships": 1609,
+    "relationships": 1607,
     "relationships_corroborated_by_2plus_sources": 215,
     "relationships_share_alike_only": 0,
     "saas_added_beyond_floor": 23,
@@ -483,7 +483,7 @@
       "host_unverifiable": 7,
       "identity_unverified": 3,
       "licence_not_open": 44,
-      "not_a_replacement": 2863,
+      "not_a_replacement": 2864,
       "not_a_repository": 8,
       "not_found": 12,
       "saas_not_in_catalogue": 225,
@@ -601,10 +601,6 @@
       "plausibility_review:Account/scheduler dashboard for MiroTalk instances; a companion, not the conferencing product": 1,
       "plausibility_review:Account/scheduling dashboard for MiroTalk services; companion, not conferencing like Zoom": 1,
       "plausibility_review:Account/scheduling front end for other MiroTalk servers; not a conferencing server itself": 1,
-      "plausibility_review:Accounting app only; just the financials slice of Acumatica's ERP": 1,
-      "plausibility_review:Accounting app only; just the financials slice of Oracle Fusion ERP": 1,
-      "plausibility_review:Accounting application only; not a full ERP suite": 1,
-      "plausibility_review:Accounting application; not a full ERP suite": 1,
       "plausibility_review:Ad hoc web file server; not a synced cloud drive": 4,
       "plausibility_review:Admin UI for Meilisearch; companion for another product": 1,
       "plausibility_review:Admin dashboard HTML template; not an internal-tools builder": 1,
@@ -2246,7 +2242,6 @@
       "plausibility_review:YouTube client front end": 1,
       "plausibility_review:YouTube front-end client; not a video hosting platform": 1,
       "plausibility_review:Zero-code enterprise app builder; not a financial ERP": 1,
-      "plausibility_review:accounting application only; not an ERP suite": 1,
       "plausibility_review:alert management queue; not uptime monitoring": 1,
       "plausibility_review:application backend on SQLite; not a document database": 1,
       "plausibility_review:application framework/CMS; not a visual headless page builder": 1,
@@ -2316,7 +2311,7 @@
       "plausibility_review:inference server; not a multi-provider LLM API router": 1,
       "plausibility_review:infrastructure-as-code tool; not a platform that runs applications": 1,
       "plausibility_review:intranet tunneling reverse proxy; not a privacy VPN service": 1,
-      "plausibility_review:job match not yet desk-reviewed": 33,
+      "plausibility_review:job match not yet desk-reviewed": 39,
       "plausibility_review:layered image editor; not background removal": 1,
       "plausibility_review:layered photo/image editor; not template-based graphic design": 1,
       "plausibility_review:list of newsletter RSS feeds": 1,
@@ -2393,7 +2388,7 @@
       "plausibility_review:workbench front end for third-party image model APIs": 1,
       "plausibility_review:workflow engine programmed in code; not a no-code automation product": 1
     },
-    "total": 3243
+    "total": 3244
   },
   "review_queue": {
     "open": 9,
@@ -2411,8 +2406,8 @@
     "oss_recommendable": 1418,
     "oss_rejected": 147,
     "relationships_flagged_licence_exception": 35,
-    "relationships_rejected": 3045,
-    "relationships_validated": 2059,
+    "relationships_rejected": 3046,
+    "relationships_validated": 2058,
     "saas_with_validated_alternatives": 493
   }
 }

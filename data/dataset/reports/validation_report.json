@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-05T12:23:19Z",
+  "as_of": "2026-11-06T00:04:22Z",
   "checks": [
     {
       "criterion": 1,
@@ -53,7 +53,7 @@
         "host_unverifiable": 7,
         "identity_unverified": 3,
         "licence_not_open": 44,
-        "not_a_replacement": 2863,
+        "not_a_replacement": 2864,
         "not_a_repository": 8,
         "not_found": 12,
         "saas_not_in_catalogue": 225,
@@ -219,7 +219,7 @@
       "failures": 0,
       "id": "activity.evidence_is_not_docs_only",
       "kind": "assertion",
-      "observed": 5232,
+      "observed": 5234,
       "ok": true
     },
     {
@@ -310,8 +310,8 @@
         },
         "relationships": {
           "licence_exception": 35,
-          "recommendable": 2059,
-          "rejected": 3045
+          "recommendable": 2058,
+          "rejected": 3046
         }
       },
       "ok": true
@@ -434,7 +434,7 @@
       "failures": 0,
       "id": "dedupe.one_repository_per_product_per_saas",
       "kind": "assertion",
-      "observed": 1609,
+      "observed": 1607,
       "ok": true
     },
     {
@@ -444,7 +444,7 @@
       "failures": 0,
       "id": "launch.only_validated_edges",
       "kind": "assertion",
-      "observed": 1609,
+      "observed": 1607,
       "ok": true
     },
     {
@@ -479,9 +479,9 @@
       "id": "launch.targets",
       "kind": "assertion",
       "observed": {
-        "oss_distinct_products": 651,
-        "oss_projects": 652,
-        "relationships": 1609,
+        "oss_distinct_products": 650,
+        "oss_projects": 651,
+        "relationships": 1607,
         "saas_products": 405
       },
       "ok": true
@@ -505,11 +505,11 @@
       "kind": "observation",
       "observed": {
         "examples": [
-          "github.com/stirling-tools/stirling-pdf (95786 stars: no_recognised_open_source_licence)",
-          "github.com/opendatalab/mineru (83174 stars: no_recognised_open_source_licence)",
-          "github.com/nomic-ai/gpt4all (77341 stars: stale_no_meaningful_activity_12_months)",
-          "github.com/pi-hole/pi-hole (61667 stars: no_recognised_open_source_licence)",
-          "github.com/pocketbase/pocketbase (61607 stars: archived)"
+          "github.com/stirling-tools/stirling-pdf (95803 stars: no_recognised_open_source_licence)",
+          "github.com/opendatalab/mineru (83190 stars: no_recognised_open_source_licence)",
+          "github.com/nomic-ai/gpt4all (77339 stars: stale_no_meaningful_activity_12_months)",
+          "github.com/pi-hole/pi-hole (61680 stars: no_recognised_open_source_licence)",
+          "github.com/pocketbase/pocketbase (61606 stars: archived)"
         ],
         "launch_projects_under_500_stars": 95,
         "rejected_with_10k_plus_stars": 29
@@ -524,9 +524,9 @@
         "entries_read": 3590,
         "oss_candidates": 1565,
         "oss_recommendable": 1418,
-        "rejections_recorded": 3243,
+        "rejections_recorded": 3244,
         "relationship_claims_read": 5940,
-        "relationships_validated": 2059
+        "relationships_validated": 2058
       }
     }
   ],
