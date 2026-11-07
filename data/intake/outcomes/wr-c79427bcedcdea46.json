@@ -1,0 +1,59 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-07T01:56:16Z",
+  "canonical": {
+    "status": "licence_exception"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": false,
+      "spdx": "NOASSERTION",
+      "status": "issue"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "gjovanov/roomler-ai",
+      "created_at": "2026-02-07T23:03:32Z",
+      "default_branch": "master",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-07T01:56:16Z",
+      "forks": 4,
+      "found": true,
+      "host_repo_id": 1152465447,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "Other",
+      "licence_spdx": "NOASSERTION",
+      "observed": {
+        "commits_in_12m_window": 4257,
+        "commits_inspected": 2,
+        "issues_closed_12m": 359,
+        "merged_prs_inspected": 10,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-06T23:51:39Z",
+      "stars": 12
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a release",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-06T23:51:27Z",
+      "status": "active"
+    }
+  },
+  "note": "waiting-room batch wr-20261106; 1 observation(s)",
+  "oss_id": "github.com/gjovanov/roomler-ai",
+  "outcome": "rejected",
+  "reasons": [
+    "no_recognised_open_source_licence"
+  ],
+  "repo_url": "https://github.com/gjovanov/roomler-ai",
+  "request_id": "wr-c79427bcedcdea46",
+  "saas_hint": "teamviewer",
+  "scores": null,
+  "submitted_at": "2026-11-06T20:43:53Z",
+  "submitted_by": "waiting-room:grokbot"
+}

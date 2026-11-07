@@ -1,0 +1,85 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-07T01:54:44Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "Apache-2.0",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "reason-machines/aspen",
+      "created_at": "2026-11-05T06:35:27Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-07T01:54:44Z",
+      "forks": 6,
+      "found": true,
+      "host_repo_id": 1446630535,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "Apache License 2.0",
+      "licence_spdx": "Apache-2.0",
+      "observed": {
+        "commits_in_12m_window": 5,
+        "commits_inspected": 3,
+        "issues_closed_12m": 1,
+        "merged_prs_inspected": 4,
+        "releases_seen": 0,
+        "tags_seen": 0
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-06T17:47:05Z",
+      "stars": 60
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a merged_pr",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-06T17:47:05Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 6
+    }
+  },
+  "note": "waiting-room batch wr-20261106; 1 observation(s)",
+  "oss_id": "github.com/reason-machines/aspen",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship",
+    "hinted SaaS 'github' is not evidenced by the repository itself"
+  ],
+  "repo_url": "https://github.com/reason-machines/aspen",
+  "request_id": "wr-6cbe92f95d74896c",
+  "saas_hint": "github",
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Developing",
+      "confidence": 86.8,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-07T01:54:44Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/reason-machines/aspen",
+      "score": 57.8,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "no_releases"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-06T16:48:14Z",
+  "submitted_by": "waiting-room:grokbot"
+}

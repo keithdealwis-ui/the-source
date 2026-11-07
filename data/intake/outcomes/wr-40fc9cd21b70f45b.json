@@ -1,0 +1,85 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-07T01:55:07Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "hex2f/gash",
+      "created_at": "2026-11-06T11:21:13Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-07T01:55:07Z",
+      "forks": 4,
+      "found": true,
+      "host_repo_id": 1448173935,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 43,
+        "commits_inspected": 1,
+        "issues_closed_12m": 3,
+        "merged_prs_inspected": 10,
+        "releases_seen": 2,
+        "tags_seen": 2
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-06T20:13:02Z",
+      "stars": 62
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a merged_pr",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-06T20:13:03Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 0
+    }
+  },
+  "note": "waiting-room batch wr-20261106; 1 observation(s)",
+  "oss_id": "github.com/hex2f/gash",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship"
+  ],
+  "repo_url": "https://github.com/hex2f/gash",
+  "request_id": "wr-40fc9cd21b70f45b",
+  "saas_hint": null,
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Developing",
+      "confidence": 89.2,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-07T01:55:07Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/hex2f/gash",
+      "score": 61.1,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "pre_1_0",
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-06T16:48:21Z",
+  "submitted_by": "waiting-room:grokbot"
+}
