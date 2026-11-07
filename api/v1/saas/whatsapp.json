@@ -3,22 +3,22 @@
   "catalogue": {
     "audience": "b2c",
     "rank": 343,
-    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+    "reason": "3 recommendations passed the full evaluation",
     "reasons": [
-      "fewer_than_minimum",
-      "outside_launch_selection"
+      "full_evaluation"
     ],
-    "status": "partial"
+    "status": "ok"
   },
-  "dataset_version": "6eefabe4a88f0e73",
+  "dataset_version": "286d7660a5b52a80",
   "last_checked": {
-    "newest": "2026-11-06T00:04:22Z",
-    "oldest": "2026-11-06T00:04:22Z"
+    "newest": "2026-11-07T00:51:19Z",
+    "oldest": "2026-11-07T00:51:19Z"
   },
   "more_available": 0,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "fossalt",
       "job_match",
       "runacapital"
     ]
@@ -36,7 +36,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-11-06T00:04:22Z"
+          "validated_as_of": "2026-11-07T00:51:19Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -77,7 +77,7 @@
         "tag": "v0.25.3"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-06T00:04:22Z",
+      "live_checked_at": "2026-11-07T00:51:19Z",
       "maintenance_status": "active",
       "name": "Tinode",
       "note": {
@@ -112,7 +112,98 @@
       "sources": [
         "runacapital"
       ],
-      "stars": 13554
+      "stars": 13555
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L33",
+              "source_commit": "ba429396104b79baf2febf8a58d427432e585606",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-11-07T00:51:19Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 40.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/irislib/iris-chat-rs",
+      "last_meaningful_activity_at": "2026-11-05T11:14:30Z",
+      "latest_release": {
+        "published_at": "2026-11-04T09:15:02Z",
+        "tag": "v2026.11.3"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-07T00:51:19Z",
+      "maintenance_status": "active",
+      "name": "Iris Chat",
+      "note": {
+        "gaps": [
+          "integrations and extensibility",
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on integrations and extensibility and migration path."
+      },
+      "oss_id": "github.com/irislib/iris-chat-rs",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 90.0,
+        "score": 74.9,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 84.5,
+        "evaluated_at": "2026-11-07T00:51:19Z",
+        "score": 69.3,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/irislib/iris-chat-rs",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "fossalt"
+      ],
+      "stars": 2
     },
     {
       "evidence": {
@@ -126,7 +217,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-06T00:04:22Z"
+          "validated_as_of": "2026-11-07T00:51:19Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -164,7 +255,7 @@
         "tag": "v1.1.1021"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-06T00:04:22Z",
+      "live_checked_at": "2026-11-07T00:51:19Z",
       "maintenance_status": "maintained",
       "name": "databag",
       "note": {
@@ -185,7 +276,7 @@
         "score": 67.4,
         "trajectory": "Declining"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "caps": [],
         "confidence": 84.5,
@@ -201,12 +292,12 @@
       "sources": [
         "job_match"
       ],
-      "stars": 1512
+      "stars": 1513
     }
   ],
   "saas": {
     "category": "Messaging",
-    "compare_path": null,
+    "compare_path": "/open-source/whatsapp-alternatives",
     "domain": "whatsapp.com",
     "name": "WhatsApp",
     "saas_id": "whatsapp",
@@ -218,5 +309,5 @@
       "1.3.0"
     ]
   },
-  "status": "insufficient_recommendations"
+  "status": "ok"
 }

@@ -3,16 +3,16 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 98,
-    "reason": "4 recommendations passed the full evaluation",
+    "reason": "3 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "6eefabe4a88f0e73",
+  "dataset_version": "286d7660a5b52a80",
   "last_checked": {
-    "newest": "2026-11-06T00:04:22Z",
-    "oldest": "2026-11-06T00:04:22Z"
+    "newest": "2026-11-07T00:51:19Z",
+    "oldest": "2026-11-07T00:51:19Z"
   },
   "more_available": 0,
   "provenance": {
@@ -34,7 +34,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-06T00:04:22Z"
+          "validated_as_of": "2026-11-07T00:51:19Z"
         },
         "replacement_fit": {
           "caps": [
@@ -77,7 +77,7 @@
         "tag": "v13.2.5"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-06T00:04:22Z",
+      "live_checked_at": "2026-11-07T00:51:19Z",
       "maintenance_status": "active",
       "name": "Grafana",
       "note": {
@@ -118,7 +118,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 77724
+      "stars": 77732
     },
     {
       "evidence": {
@@ -132,7 +132,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-06T00:04:22Z"
+          "validated_as_of": "2026-11-07T00:51:19Z"
         },
         "replacement_fit": {
           "caps": [
@@ -181,7 +181,7 @@
         "tag": "v1.2.0-rc1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-06T00:04:22Z",
+      "live_checked_at": "2026-11-07T00:51:19Z",
       "maintenance_status": "active",
       "name": "OpenObserve",
       "note": {
@@ -222,110 +222,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 22825
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/hyperdxio/hyperdx",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-06T00:04:22Z"
-        },
-        "replacement_fit": {
-          "caps": [
-            {
-              "cap": 80.0,
-              "id": "uncorroborated_pairing",
-              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Dynatrace as what it replaces"
-            }
-          ],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 75.0,
-            "ease_of_adoption": 100.0,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 92.5,
-            "integrations_extensibility": 50.0,
-            "migration_friction": 33.3,
-            "production_commercial_readiness": 80.0
-          },
-          "evidence_families": [
-            "api",
-            "cloud_option",
-            "demo",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/hyperdxio/hyperdx",
-      "last_meaningful_activity_at": "2026-11-01T21:20:30Z",
-      "latest_release": {
-        "published_at": "2026-11-01T21:10:06Z",
-        "tag": "@hyperdx/app@2.43.1"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-06T00:04:22Z",
-      "maintenance_status": "active",
-      "name": "hyperdx",
-      "note": {
-        "gaps": [
-          "migration path"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption; weakest on migration path."
-      },
-      "oss_id": "github.com/hyperdxio/hyperdx",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 95.0,
-        "score": 89.7,
-        "trajectory": "Rising"
-      },
-      "rank": 3,
-      "replacement_fit": {
-        "caps": [
-          {
-            "cap": 80.0,
-            "id": "uncorroborated_pairing",
-            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Dynatrace as what it replaces"
-          }
-        ],
-        "confidence": 84.5,
-        "evaluated_at": "2026-11-02T00:32:25Z",
-        "score": 80.0,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/hyperdxio/hyperdx",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 9992
+      "stars": 22848
     },
     {
       "evidence": {
@@ -339,7 +236,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-06T00:04:22Z"
+          "validated_as_of": "2026-11-07T00:51:19Z"
         },
         "replacement_fit": {
           "caps": [
@@ -381,7 +278,7 @@
         "tag": "v1.29.2"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-06T00:04:22Z",
+      "live_checked_at": "2026-11-07T00:51:19Z",
       "maintenance_status": "active",
       "name": "Coroot",
       "note": {
@@ -400,7 +297,7 @@
         "score": 87.2,
         "trajectory": "Stable"
       },
-      "rank": 4,
+      "rank": 3,
       "replacement_fit": {
         "caps": [
           {
@@ -422,7 +319,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 8000
+      "stars": 8002
     }
   ],
   "saas": {

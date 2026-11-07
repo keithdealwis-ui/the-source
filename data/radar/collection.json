@@ -1,18 +1,22 @@
 {
-  "as_of": "2026-11-03T23:12:46Z",
+  "as_of": "2026-11-07T00:51:19Z",
   "resolve": {
-    "asked": 14,
+    "asked": 25,
     "deferred": 0,
     "pool_added": [
-      "github.com/atifcodesalot/pywolf3d",
-      "github.com/finic-ai/kairos",
-      "github.com/jiafeimiao-k-cat/discimagestudio",
-      "github.com/muvon/octomind",
-      "github.com/nvidia/auto-ontology",
-      "github.com/pigeon-labs-stack/v100-sxm2-reference",
-      "github.com/postmanlabs/postman-app-support"
+      "github.com/aggib/stroq",
+      "github.com/anomalyco/rune",
+      "github.com/anthropics/claude-code",
+      "github.com/dsx-ai-factory/nvke",
+      "github.com/matthewmrichter/mooftcp",
+      "github.com/ppmpreetham/bui",
+      "github.com/privsec-dev/banking-apps-compat-report",
+      "github.com/rivet-dev/rivet",
+      "github.com/saragordic/window-sweaters",
+      "github.com/tharun208/cloneguard",
+      "github.com/thesayfulla/pylings"
     ],
-    "resolved": 14,
+    "resolved": 25,
     "transient_failures": []
   },
   "sources": {
@@ -23,16 +27,16 @@
       "http_calls": 2,
       "items_read": 100,
       "listed": 100,
-      "mentions": 61,
+      "mentions": 52,
       "status": "ok"
     },
     "forem": {
       "errors": [],
       "gone": 0,
-      "http_calls": 40,
-      "items_read": 35,
-      "listed": 35,
-      "mentions": 27,
+      "http_calls": 29,
+      "items_read": 23,
+      "listed": 23,
+      "mentions": 18,
       "status": "ok"
     },
     "hn": {
@@ -40,8 +44,8 @@
       "gone": 0,
       "http_calls": 303,
       "items_read": 300,
-      "listed": 348,
-      "mentions": 28,
+      "listed": 352,
+      "mentions": 22,
       "status": "ok"
     },
     "instagram": {
@@ -68,11 +72,11 @@
     }
   },
   "stars": {
-    "asked": 0,
+    "asked": 24,
     "error": null,
-    "found": 0,
-    "http_calls": 0,
-    "missing_before": 0,
+    "found": 24,
+    "http_calls": 1,
+    "missing_before": 1,
     "not_found": 0,
     "status": "ok"
   }

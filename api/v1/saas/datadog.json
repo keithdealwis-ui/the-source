@@ -3,18 +3,18 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 9,
-    "reason": "9 recommendations passed the full evaluation",
+    "reason": "8 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "6eefabe4a88f0e73",
+  "dataset_version": "286d7660a5b52a80",
   "last_checked": {
-    "newest": "2026-11-06T00:04:22Z",
-    "oldest": "2026-11-06T00:04:22Z"
+    "newest": "2026-11-07T00:51:19Z",
+    "oldest": "2026-11-07T00:51:19Z"
   },
-  "more_available": 4,
+  "more_available": 3,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -59,7 +59,7 @@
               "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-06T00:04:22Z"
+          "validated_as_of": "2026-11-07T00:51:19Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -98,7 +98,7 @@
         "tag": "v13.2.5"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-06T00:04:22Z",
+      "live_checked_at": "2026-11-07T00:51:19Z",
       "maintenance_status": "active",
       "name": "Grafana",
       "note": {
@@ -137,7 +137,7 @@
         "emmraan",
         "diegoleme"
       ],
-      "stars": 77724
+      "stars": 77732
     },
     {
       "evidence": {
@@ -156,7 +156,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-06T00:04:22Z"
+          "validated_as_of": "2026-11-07T00:51:19Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -200,7 +200,7 @@
         "tag": "v2.12.3"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-06T00:04:22Z",
+      "live_checked_at": "2026-11-07T00:51:19Z",
       "maintenance_status": "active",
       "name": "Netdata",
       "note": {
@@ -236,7 +236,7 @@
         "runacapital",
         "opensaasdirectory"
       ],
-      "stars": 81287
+      "stars": 81295
     },
     {
       "evidence": {
@@ -255,7 +255,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-11-06T00:04:22Z"
+          "validated_as_of": "2026-11-07T00:51:19Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -296,7 +296,7 @@
         "tag": "v2.1.0-rc.2"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-06T00:04:22Z",
+      "live_checked_at": "2026-11-07T00:51:19Z",
       "maintenance_status": "active",
       "name": "Uptrace",
       "note": {
@@ -341,115 +341,12 @@
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "README.md#L273",
-              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
+              "locator": "README.md#L289",
+              "source_commit": "ba429396104b79baf2febf8a58d427432e585606",
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-11-06T00:04:22Z"
-        },
-        "replacement_fit": {
-          "caps": [
-            {
-              "cap": 80.0,
-              "id": "uncorroborated_pairing",
-              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Datadog as what it replaces"
-            }
-          ],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 75.0,
-            "ease_of_adoption": 100.0,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 92.5,
-            "integrations_extensibility": 50.0,
-            "migration_friction": 33.3,
-            "production_commercial_readiness": 80.0
-          },
-          "evidence_families": [
-            "api",
-            "cloud_option",
-            "demo",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/hyperdxio/hyperdx",
-      "last_meaningful_activity_at": "2026-11-01T21:20:30Z",
-      "latest_release": {
-        "published_at": "2026-11-01T21:10:06Z",
-        "tag": "@hyperdx/app@2.43.1"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-06T00:04:22Z",
-      "maintenance_status": "active",
-      "name": "hyperdx",
-      "note": {
-        "gaps": [
-          "migration path"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption; weakest on migration path."
-      },
-      "oss_id": "github.com/hyperdxio/hyperdx",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 95.0,
-        "score": 89.7,
-        "trajectory": "Rising"
-      },
-      "rank": 4,
-      "replacement_fit": {
-        "caps": [
-          {
-            "cap": 80.0,
-            "id": "uncorroborated_pairing",
-            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Datadog as what it replaces"
-          }
-        ],
-        "confidence": 84.5,
-        "evaluated_at": "2026-11-02T00:32:25Z",
-        "score": 80.0,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/hyperdxio/hyperdx",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "fossalt"
-      ],
-      "stars": 9992
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
-              "locator": "README.md#L272",
-              "source_commit": "34df100643acb67cd646d56a92a06cbe3f5b5102",
-              "source_id": "fossalt"
-            }
-          ],
-          "validated_as_of": "2026-11-06T00:04:22Z"
+          "validated_as_of": "2026-11-07T00:51:19Z"
         },
         "replacement_fit": {
           "caps": [
@@ -491,7 +388,7 @@
         "tag": "v1.29.2"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-06T00:04:22Z",
+      "live_checked_at": "2026-11-07T00:51:19Z",
       "maintenance_status": "active",
       "name": "Coroot",
       "note": {
@@ -510,7 +407,7 @@
         "score": 87.2,
         "trajectory": "Stable"
       },
-      "rank": 5,
+      "rank": 4,
       "replacement_fit": {
         "caps": [
           {
@@ -532,7 +429,111 @@
       "sources": [
         "fossalt"
       ],
-      "stars": 8000
+      "stars": 8002
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L294",
+              "source_commit": "ba429396104b79baf2febf8a58d427432e585606",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-11-07T00:51:19Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Datadog as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/Telemetry-Tracker/telemetry-tracker",
+      "last_meaningful_activity_at": "2026-11-04T11:44:56Z",
+      "latest_release": {
+        "published_at": "2026-11-04T11:44:56Z",
+        "tag": "v1.22.27"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-07T00:51:19Z",
+      "maintenance_status": "active",
+      "name": "Telemetry Tracker",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/telemetry-tracker/telemetry-tracker",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 89.2,
+        "score": 80.7,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Datadog as what it replaces"
+          }
+        ],
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/Telemetry-Tracker/telemetry-tracker",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "fossalt"
+      ],
+      "stars": 34
     }
   ],
   "saas": {
