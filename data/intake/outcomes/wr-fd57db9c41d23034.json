@@ -1,0 +1,86 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-08T01:26:37Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "nikhil25803/reaper",
+      "created_at": "2026-10-28T06:23:39Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-08T01:26:37Z",
+      "forks": 0,
+      "found": true,
+      "host_repo_id": 1436688015,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 26,
+        "commits_inspected": 1,
+        "issues_closed_12m": 0,
+        "merged_prs_inspected": 4,
+        "releases_seen": 1,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-06T16:50:08Z",
+      "stars": 1
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a release",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-07T03:22:19Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 9
+    }
+  },
+  "note": "waiting-room batch wr-20261107; 1 observation(s)",
+  "oss_id": "github.com/nikhil25803/reaper",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship",
+    "hinted SaaS 'sonarqube' is not evidenced by the repository itself"
+  ],
+  "repo_url": "https://github.com/nikhil25803/reaper",
+  "request_id": "wr-fd57db9c41d23034",
+  "saas_hint": "sonarqube",
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Developing",
+      "confidence": 90.0,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-08T01:26:37Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/nikhil25803/reaper",
+      "score": 67.5,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "pre_1_0",
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-07T04:45:45Z",
+  "submitted_by": "waiting-room:grokbot"
+}

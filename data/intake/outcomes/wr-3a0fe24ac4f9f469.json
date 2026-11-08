@@ -1,0 +1,199 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-08T01:29:09Z",
+  "canonical": {
+    "promoted_in_run": null,
+    "status": "pending_promotion"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "PersonaliAI/chatty",
+      "created_at": "2026-08-18T09:40:34Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-08T01:29:09Z",
+      "forks": 3,
+      "found": true,
+      "host_repo_id": 1338232250,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 1569,
+        "commits_inspected": 1,
+        "issues_closed_12m": 0,
+        "merged_prs_inspected": 10,
+        "releases_seen": 2,
+        "tags_seen": 2
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-07T17:45:37Z",
+      "stars": 12
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a code_commit",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-07T17:45:32Z",
+      "status": "active"
+    },
+    "saas_relationships": [
+      {
+        "category": "Customer support",
+        "excerpt": "open-source, self-hostable zendesk and intercom alternative for ai customer support: chat widget, s",
+        "field": "description",
+        "matched": "intercom alternative",
+        "saas_id": "intercom",
+        "saas_name": "Intercom"
+      },
+      {
+        "category": "Customer support",
+        "excerpt": "topic zendesk-alternative",
+        "field": "topics",
+        "matched": "zendesk-alternative",
+        "saas_id": "zendesk",
+        "saas_name": "Zendesk"
+      }
+    ],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 20
+    }
+  },
+  "note": "waiting-room batch wr-20261107; 1 observation(s)",
+  "oss_id": "github.com/personaliai/chatty",
+  "outcome": "accepted",
+  "reasons": [
+    "passes every rule; relationship evidenced"
+  ],
+  "repo_url": "https://github.com/personaliai/chatty",
+  "request_id": "wr-3a0fe24ac4f9f469",
+  "saas_hint": "intercom",
+  "scores": {
+    "errors": [],
+    "preliminary": true,
+    "project_health": {
+      "band": "Healthy",
+      "confidence": 90.0,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-08T01:29:09Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/personaliai/chatty",
+      "score": 72.3,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "open_core_markers",
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": [
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described",
+            "readme_names_product"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 100.0,
+          "ease_of_adoption": 100.0,
+          "economic_advantage": 60.0,
+          "feature_equivalence": 100.0,
+          "integrations_extensibility": 100.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 100.0
+        },
+        "evaluated_at": "2026-11-08T01:29:09Z",
+        "evidence_families": [
+          "api",
+          "cloud_option",
+          "data_ownership",
+          "demo",
+          "import",
+          "multi_user",
+          "plugins",
+          "quickstart",
+          "self_host",
+          "sso",
+          "support",
+          "webhook"
+        ],
+        "oss_id": "github.com/personaliai/chatty",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "intercom",
+        "score": 98.0,
+        "score_version": "1.3.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 98.0
+      },
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described",
+            "readme_names_product"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 100.0,
+          "ease_of_adoption": 100.0,
+          "economic_advantage": 60.0,
+          "feature_equivalence": 100.0,
+          "integrations_extensibility": 100.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 100.0
+        },
+        "evaluated_at": "2026-11-08T01:29:09Z",
+        "evidence_families": [
+          "api",
+          "cloud_option",
+          "data_ownership",
+          "demo",
+          "import",
+          "multi_user",
+          "plugins",
+          "quickstart",
+          "self_host",
+          "sso",
+          "support",
+          "webhook"
+        ],
+        "oss_id": "github.com/personaliai/chatty",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "zendesk",
+        "score": 98.0,
+        "score_version": "1.3.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 98.0
+      }
+    ]
+  },
+  "submitted_at": "2026-11-07T20:40:33Z",
+  "submitted_by": "waiting-room:grokbot"
+}

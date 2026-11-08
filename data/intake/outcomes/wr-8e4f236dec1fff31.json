@@ -1,0 +1,85 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-08T01:25:55Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "MaxRenaud/trout",
+      "created_at": "2026-10-28T19:08:31Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-08T01:25:55Z",
+      "forks": 3,
+      "found": true,
+      "host_repo_id": 1437519913,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 156,
+        "commits_inspected": 1,
+        "issues_closed_12m": 0,
+        "merged_prs_inspected": 2,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-07T19:29:20Z",
+      "stars": 19
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a release",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-07T19:35:01Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 9
+    }
+  },
+  "note": "waiting-room batch wr-20261107; 1 observation(s)",
+  "oss_id": "github.com/maxrenaud/trout",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship"
+  ],
+  "repo_url": "https://github.com/maxrenaud/trout",
+  "request_id": "wr-8e4f236dec1fff31",
+  "saas_hint": null,
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Developing",
+      "confidence": 87.6,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-08T01:25:55Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/maxrenaud/trout",
+      "score": 65.6,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "pre_1_0",
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-07T00:43:55Z",
+  "submitted_by": "waiting-room:grokbot"
+}

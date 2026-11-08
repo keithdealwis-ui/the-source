@@ -1,0 +1,136 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-08T01:28:55Z",
+  "canonical": {
+    "promoted_in_run": null,
+    "status": "pending_promotion"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "anand34577/ferry",
+      "created_at": "2026-09-26T11:43:13Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-08T01:28:55Z",
+      "forks": 0,
+      "found": true,
+      "host_repo_id": 1389109773,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 45,
+        "commits_inspected": 1,
+        "issues_closed_12m": 0,
+        "merged_prs_inspected": 3,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-10-25T12:49:47Z",
+      "stars": 0
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a release",
+      "days_since_meaningful_activity": 13,
+      "last_meaningful_activity_at": "2026-10-25T12:56:54Z",
+      "status": "active"
+    },
+    "saas_relationships": [
+      {
+        "category": "File transfer",
+        "excerpt": "topic wetransfer-alternative",
+        "field": "topics",
+        "matched": "wetransfer-alternative",
+        "saas_id": "wetransfer",
+        "saas_name": "WeTransfer"
+      }
+    ],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 9
+    }
+  },
+  "note": "waiting-room batch wr-20261107; 1 observation(s)",
+  "oss_id": "github.com/anand34577/ferry",
+  "outcome": "accepted",
+  "reasons": [
+    "passes every rule; relationship evidenced"
+  ],
+  "repo_url": "https://github.com/anand34577/ferry",
+  "request_id": "wr-4ccf50e2914c4b93",
+  "saas_hint": "wetransfer",
+  "scores": {
+    "errors": [],
+    "preliminary": true,
+    "project_health": {
+      "band": "Healthy",
+      "confidence": 90.0,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-08T01:28:55Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/anand34577/ferry",
+      "score": 74.2,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": [
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 100.0,
+          "ease_of_adoption": 94.0,
+          "economic_advantage": 80.0,
+          "feature_equivalence": 73.3,
+          "integrations_extensibility": 100.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 100.0
+        },
+        "evaluated_at": "2026-11-08T01:28:55Z",
+        "evidence_families": [
+          "api",
+          "data_ownership",
+          "demo",
+          "quickstart",
+          "self_host",
+          "sso"
+        ],
+        "oss_id": "github.com/anand34577/ferry",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "wetransfer",
+        "score": 94.1,
+        "score_version": "1.3.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 94.1
+      }
+    ]
+  },
+  "submitted_at": "2026-11-07T16:44:47Z",
+  "submitted_by": "waiting-room:grokbot"
+}

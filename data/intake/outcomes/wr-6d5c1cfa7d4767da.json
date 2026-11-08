@@ -1,0 +1,85 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-08T01:28:24Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "DevX-star/MacSweep",
+      "created_at": "2026-11-07T07:33:07Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-08T01:28:24Z",
+      "forks": 0,
+      "found": true,
+      "host_repo_id": 1449133865,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 14,
+        "commits_inspected": 5,
+        "issues_closed_12m": 0,
+        "merged_prs_inspected": 0,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-07T11:04:07Z",
+      "stars": 1
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a release",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-07T08:30:45Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 7
+    }
+  },
+  "note": "waiting-room batch wr-20261107; 1 observation(s)",
+  "oss_id": "github.com/devx-star/macsweep",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship",
+    "hinted SaaS 'cleanmymac' is not evidenced by the repository itself"
+  ],
+  "repo_url": "https://github.com/devx-star/macsweep",
+  "request_id": "wr-6d5c1cfa7d4767da",
+  "saas_hint": "cleanmymac",
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Developing",
+      "confidence": 87.6,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-08T01:28:24Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/devx-star/macsweep",
+      "score": 60.0,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-07T12:43:42Z",
+  "submitted_by": "waiting-room:grokbot"
+}

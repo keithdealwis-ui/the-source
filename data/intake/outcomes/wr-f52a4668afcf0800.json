@@ -1,0 +1,85 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-08T01:26:26Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "Apache-2.0",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "otaviobarros/hobbots",
+      "created_at": "2026-10-28T18:51:44Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-08T01:26:26Z",
+      "forks": 0,
+      "found": true,
+      "host_repo_id": 1437502746,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "Apache License 2.0",
+      "licence_spdx": "Apache-2.0",
+      "observed": {
+        "commits_in_12m_window": 547,
+        "commits_inspected": 1,
+        "issues_closed_12m": 561,
+        "merged_prs_inspected": 10,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-08T01:14:28Z",
+      "stars": 1
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a merged_pr",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-07T22:36:14Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 10
+    }
+  },
+  "note": "waiting-room batch wr-20261107; 1 observation(s)",
+  "oss_id": "github.com/otaviobarros/hobbots",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship"
+  ],
+  "repo_url": "https://github.com/otaviobarros/hobbots",
+  "request_id": "wr-f52a4668afcf0800",
+  "saas_hint": null,
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Healthy",
+      "confidence": 89.2,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-08T01:26:26Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/otaviobarros/hobbots",
+      "score": 72.1,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "pre_1_0",
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-07T00:44:03Z",
+  "submitted_by": "waiting-room:grokbot"
+}

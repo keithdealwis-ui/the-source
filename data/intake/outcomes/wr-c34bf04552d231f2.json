@@ -1,0 +1,86 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-08T01:27:21Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "Apache-2.0",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "joaopanucci/autodock",
+      "created_at": "2026-11-06T04:39:27Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-08T01:27:21Z",
+      "forks": 2,
+      "found": true,
+      "host_repo_id": 1447834935,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "Apache License 2.0",
+      "licence_spdx": "Apache-2.0",
+      "observed": {
+        "commits_in_12m_window": 98,
+        "commits_inspected": 1,
+        "issues_closed_12m": 4,
+        "merged_prs_inspected": 10,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-08T01:24:21Z",
+      "stars": 9
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a merged_pr",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-08T01:24:19Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 12
+    }
+  },
+  "note": "waiting-room batch wr-20261107; 1 observation(s)",
+  "oss_id": "github.com/joaopanucci/autodock",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship",
+    "hinted SaaS 'docker' is not evidenced by the repository itself"
+  ],
+  "repo_url": "https://github.com/joaopanucci/autodock",
+  "request_id": "wr-c34bf04552d231f2",
+  "saas_hint": "docker",
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Developing",
+      "confidence": 89.2,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-08T01:27:21Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/joaopanucci/autodock",
+      "score": 68.1,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "pre_1_0",
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-07T04:45:59Z",
+  "submitted_by": "waiting-room:grokbot"
+}

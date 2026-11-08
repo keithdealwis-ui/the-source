@@ -1,0 +1,85 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-08T01:28:34Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "Apache-2.0",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "Video-Rebirth/hyperflow-h3-flash",
+      "created_at": "2026-11-06T08:31:59Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-08T01:28:34Z",
+      "forks": 2,
+      "found": true,
+      "host_repo_id": 1448016137,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "Apache License 2.0",
+      "licence_spdx": "Apache-2.0",
+      "observed": {
+        "commits_in_12m_window": 1,
+        "commits_inspected": 1,
+        "issues_closed_12m": 0,
+        "merged_prs_inspected": 0,
+        "releases_seen": 0,
+        "tags_seen": 0
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-06T12:52:55Z",
+      "stars": 91
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a code_commit",
+      "days_since_meaningful_activity": 1,
+      "last_meaningful_activity_at": "2026-11-06T12:52:01Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 7
+    }
+  },
+  "note": "waiting-room batch wr-20261107; 1 observation(s)",
+  "oss_id": "github.com/video-rebirth/hyperflow-h3-flash",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship"
+  ],
+  "repo_url": "https://github.com/video-rebirth/hyperflow-h3-flash",
+  "request_id": "wr-a18f8efb06897396",
+  "saas_hint": null,
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Caution",
+      "confidence": 81.9,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-08T01:28:34Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/video-rebirth/hyperflow-h3-flash",
+      "score": 44.9,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "no_releases",
+        "open_core_markers"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-07T16:44:43Z",
+  "submitted_by": "waiting-room:grokbot"
+}
