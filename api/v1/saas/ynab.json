@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "286d7660a5b52a80",
+  "dataset_version": "a47f8b707c15e42d",
   "last_checked": {
-    "newest": "2026-11-07T00:51:19Z",
-    "oldest": "2026-11-07T00:51:19Z"
+    "newest": "2026-11-08T02:18:54Z",
+    "oldest": "2026-11-08T02:18:54Z"
   },
   "more_available": 0,
   "provenance": {
@@ -31,8 +31,8 @@
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "README.md#L1571",
-              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
+              "locator": "README.md#L1580",
+              "source_commit": "9eb6e1420094d5dceb60752fe688d01da52a8d5e",
               "source_id": "opensaasdirectory"
             },
             {
@@ -41,7 +41,7 @@
               "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -78,7 +78,7 @@
         "tag": "v26.11.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "Actual Budget",
       "note": {
@@ -116,7 +116,7 @@
         "opensaasdirectory",
         "diegoleme"
       ],
-      "stars": 30043
+      "stars": 30072
     },
     {
       "evidence": {
@@ -125,8 +125,8 @@
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "README.md#L1580",
-              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
+              "locator": "README.md#L1589",
+              "source_commit": "9eb6e1420094d5dceb60752fe688d01da52a8d5e",
               "source_id": "opensaasdirectory"
             },
             {
@@ -135,7 +135,7 @@
               "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -174,7 +174,7 @@
         "tag": "v6.7.9"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "Firefly III",
       "note": {
@@ -211,7 +211,7 @@
         "opensaasdirectory",
         "diegoleme"
       ],
-      "stars": 25142
+      "stars": 25166
     },
     {
       "evidence": {
@@ -225,16 +225,10 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
-          "caps": [
-            {
-              "cap": 80.0,
-              "id": "uncorroborated_pairing",
-              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name YNAB as what it replaces"
-            }
-          ],
+          "caps": [],
           "core_gate": "passed",
           "corroboration": {
             "basis": [],
@@ -243,17 +237,15 @@
           },
           "dimensions": {
             "core_use_case_coverage": 100.0,
-            "deployment_ownership": 93.8,
-            "ease_of_adoption": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 97.0,
             "economic_advantage": 60.0,
             "feature_equivalence": 100.0,
-            "integrations_extensibility": 50.0,
-            "migration_friction": 66.7,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 33.3,
             "production_commercial_readiness": 80.0
           },
           "evidence_families": [
-            "api",
-            "cloud_option",
             "data_ownership",
             "demo",
             "import",
@@ -273,37 +265,34 @@
         "tag": "v0.17.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "securo",
       "note": {
-        "gaps": [],
+        "gaps": [
+          "integrations and extensibility",
+          "migration path"
+        ],
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
-          "ease of adoption"
+          "feature parity"
         ],
-        "text": "Strongest on core use-case coverage and ease of adoption."
+        "text": "Strongest on core use-case coverage and feature parity; weakest on integrations and extensibility and migration path."
       },
       "oss_id": "github.com/securo-finance/securo",
       "project_health": {
         "band": "Healthy",
-        "confidence": 92.1,
+        "confidence": 89.2,
         "score": 82.6,
         "trajectory": "Insufficient history"
       },
       "rank": 3,
       "replacement_fit": {
-        "caps": [
-          {
-            "cap": 80.0,
-            "id": "uncorroborated_pairing",
-            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name YNAB as what it replaces"
-          }
-        ],
+        "caps": [],
         "confidence": 84.5,
-        "evaluated_at": "2026-10-20T23:06:47Z",
-        "score": 80.0,
+        "evaluated_at": "2026-11-08T02:18:54Z",
+        "score": 78.3,
         "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/securo-finance/securo",
@@ -314,7 +303,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 4207
+      "stars": 4217
     },
     {
       "evidence": {
@@ -328,7 +317,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -363,13 +352,13 @@
         }
       },
       "github_url": "https://github.com/mayswind/ezbookkeeping",
-      "last_meaningful_activity_at": "2026-10-23T16:04:22Z",
+      "last_meaningful_activity_at": "2026-11-07T16:06:34Z",
       "latest_release": {
         "published_at": "2026-10-23T16:04:22Z",
         "tag": "v2.1.1"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "ezbookkeeping",
       "note": {
@@ -404,7 +393,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 6014
+      "stars": 6023
     }
   ],
   "saas": {

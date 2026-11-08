@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "286d7660a5b52a80",
+  "dataset_version": "a47f8b707c15e42d",
   "last_checked": {
-    "newest": "2026-11-07T00:51:19Z",
-    "oldest": "2026-11-07T00:51:19Z"
+    "newest": "2026-11-08T02:18:54Z",
+    "oldest": "2026-11-08T02:18:54Z"
   },
   "more_available": 3,
   "provenance": {
@@ -29,12 +29,114 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
+              "locator": "data/job_match/ledger.json#github.com/sintan1729/chhoto-url",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-11-08T02:18:54Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Bitly as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/SinTan1729/chhoto-url",
+      "last_meaningful_activity_at": "2026-11-02T03:37:56Z",
+      "latest_release": {
+        "published_at": "2026-11-02T03:37:56Z",
+        "tag": "7.10.7"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-08T02:18:54Z",
+      "maintenance_status": "active",
+      "name": "chhoto-url",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/sintan1729/chhoto-url",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 96.6,
+        "score": 84.4,
+        "trajectory": "Rising"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Bitly as what it replaces"
+          }
+        ],
+        "confidence": 84.5,
+        "evaluated_at": "2026-11-08T02:18:54Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/SinTan1729/chhoto-url",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 1003
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
               "locator": "data/job_match/ledger.json#github.com/miantiao-me/sink",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [
@@ -81,7 +183,7 @@
         "tag": "v0.3.1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "Sink",
       "note": {
@@ -100,7 +202,7 @@
         "score": 81.2,
         "trajectory": "Stable"
       },
-      "rank": 1,
+      "rank": 2,
       "replacement_fit": {
         "caps": [
           {
@@ -122,7 +224,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 7254
+      "stars": 7255
     },
     {
       "evidence": {
@@ -136,7 +238,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [
@@ -177,7 +279,7 @@
         "tag": "1.7.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "bit",
       "note": {
@@ -198,7 +300,7 @@
         "score": 76.8,
         "trajectory": "Stable"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "caps": [
           {
@@ -234,7 +336,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [
@@ -276,7 +378,7 @@
         "tag": "v1.20.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "maintained",
       "name": "urlhub",
       "note": {
@@ -295,7 +397,7 @@
         "score": 65.9,
         "trajectory": "Declining"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "caps": [
           {
@@ -326,103 +428,12 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/sintan1729/chhoto-url",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
-        },
-        "replacement_fit": {
-          "caps": [],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 75.0,
-            "ease_of_adoption": 100.0,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 73.3,
-            "integrations_extensibility": 25.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 80.0
-          },
-          "evidence_families": [
-            "api",
-            "data_ownership",
-            "demo",
-            "import",
-            "multi_user",
-            "quickstart",
-            "self_host",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/SinTan1729/chhoto-url",
-      "last_meaningful_activity_at": "2026-11-02T03:37:56Z",
-      "latest_release": {
-        "published_at": "2026-11-02T03:37:56Z",
-        "tag": "7.10.7"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-07T00:51:19Z",
-      "maintenance_status": "active",
-      "name": "chhoto-url",
-      "note": {
-        "gaps": [
-          "integrations and extensibility"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption; weakest on integrations and extensibility."
-      },
-      "oss_id": "github.com/sintan1729/chhoto-url",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 96.6,
-        "score": 84.8,
-        "trajectory": "Rising"
-      },
-      "rank": 4,
-      "replacement_fit": {
-        "caps": [],
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 79.7,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/SinTan1729/chhoto-url",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 1003
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
               "locator": "data/job_match/ledger.json#github.com/yourselfhosted/slash",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -460,7 +471,7 @@
         "tag": "v0.5.3"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "slash",
       "note": {

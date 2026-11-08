@@ -3,25 +3,131 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 85,
-    "reason": "4 recommendations passed the full evaluation",
+    "reason": "5 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "286d7660a5b52a80",
+  "dataset_version": "a47f8b707c15e42d",
   "last_checked": {
-    "newest": "2026-11-07T00:51:19Z",
-    "oldest": "2026-11-07T00:51:19Z"
+    "newest": "2026-11-08T02:18:54Z",
+    "oldest": "2026-11-08T02:18:54Z"
   },
   "more_available": 0,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
-      "job_match"
+      "job_match",
+      "opensaasdirectory"
     ]
   },
   "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L1382",
+              "source_commit": "9eb6e1420094d5dceb60752fe688d01da52a8d5e",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-11-08T02:18:54Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Attio as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/customermates/customermates",
+      "last_meaningful_activity_at": "2026-10-28T16:10:52Z",
+      "latest_release": {
+        "published_at": "2026-03-27T13:16:42Z",
+        "tag": "v.1.1.0"
+      },
+      "licence_disclosure": "open core: recommendation covers the AGPL-3.0-only core; parts under Customermates Commercial License are excluded",
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-11-08T02:18:54Z",
+      "maintenance_status": "active",
+      "name": "Customermates",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/customermates/customermates",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 88.4,
+        "score": 71.4,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Attio as what it replaces"
+          }
+        ],
+        "confidence": 84.5,
+        "evaluated_at": "2026-11-08T02:18:54Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/customermates/customermates",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "opensaasdirectory"
+      ],
+      "stars": 221
+    },
     {
       "evidence": {
         "relationship": {
@@ -34,7 +140,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [
@@ -83,7 +189,7 @@
         "tag": "24.0.1"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "Dolibarr",
       "note": {
@@ -102,7 +208,7 @@
         "score": 94.2,
         "trajectory": "Rising"
       },
-      "rank": 1,
+      "rank": 2,
       "replacement_fit": {
         "caps": [
           {
@@ -124,7 +230,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 7836
+      "stars": 7840
     },
     {
       "evidence": {
@@ -138,7 +244,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [
@@ -185,7 +291,7 @@
         "tag": "v1.44.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "Django-CRM",
       "note": {
@@ -204,7 +310,7 @@
         "score": 88.4,
         "trajectory": "Rising"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "caps": [
           {
@@ -240,7 +346,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [
@@ -287,7 +393,7 @@
         "tag": "v3.1.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "django-crm",
       "note": {
@@ -306,7 +412,7 @@
         "score": 85.6,
         "trajectory": "Declining"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "caps": [
           {
@@ -342,7 +448,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [
@@ -387,7 +493,7 @@
       "last_meaningful_activity_at": "2026-10-30T09:26:39Z",
       "latest_release": null,
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "wacrm",
       "note": {
@@ -406,7 +512,7 @@
         "score": 77.1,
         "trajectory": "Insufficient history"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "caps": [
           {
@@ -428,7 +534,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 2687
+      "stars": 2691
     }
   ],
   "saas": {

@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-11-07T00:51:19Z",
+  "as_of": "2026-11-08T02:18:54Z",
   "attribution": "The Source (github.com/keithdealwis-ui/the-source), by Keith de Alwis",
-  "corpus_version": "64fe03822e0d56ef",
+  "corpus_version": "cbb795cedc73c5f5",
   "counts": {
     "archived": 62,
     "by_lane": {
-      "discover": 24845,
+      "discover": 24851,
       "replace": 485
     },
     "host_not_found": 90,
@@ -37,10 +37,10 @@
       "eligible": 49,
       "not_eligible": 1410
     },
-    "licence_issue": 4232,
+    "licence_issue": 4234,
     "maintainer_seeded": 68,
-    "projects": 25145,
-    "with_description": 24690
+    "projects": 25151,
+    "with_description": 24696
   },
   "edition_check": {
     "generated_exceptions": "config/licence_exceptions.generated.yaml",
@@ -55,8 +55,8 @@
     "scope": "rows classified open_core"
   },
   "files": {
-    "live.jsonl": "4d56b89778a82bb2acb173d4d88615d111204647f0938931534507d367a2e88f",
-    "projects.jsonl": "537945a6664cd4854344136728a0c22beaceea659f3dedde536b188784e1a646"
+    "live.jsonl": "4232240d99cb5346879f2e13282d41ffa8a8857372e19fbb82840f8091f72fdc",
+    "projects.jsonl": "41b6dc31d517a92b5b9050e02af22e110a4c7089a0e46eb640ecce604715bf04"
   },
   "identity": {
     "facts": {
@@ -76,18 +76,18 @@
     "scope": "rows with licence.status == 'issue'"
   },
   "live_observed_as_of": {
-    "newest": "2026-11-07T00:51:19Z",
+    "newest": "2026-11-08T02:18:54Z",
     "oldest": "2026-10-23T09:33:53Z"
   },
   "membership": {
     "admission": {
       "last": {
-        "admitted": 9,
-        "at": "2026-11-07T00:51:19Z"
+        "admitted": 6,
+        "at": "2026-11-08T02:18:54Z"
       },
       "method": "the-source.corpus-admit/1: source_pipeline/corpus_admit.py; the Discover lane prefilter and licence bar, maintenance read from pushed_at"
     },
-    "as_of": "2026-11-07T00:51:19Z",
+    "as_of": "2026-11-08T02:18:54Z",
     "expansion": {
       "last": {
         "admitted": 1,

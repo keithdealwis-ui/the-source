@@ -3,28 +3,125 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 119,
-    "reason": "5 recommendations passed the full evaluation",
+    "reason": "6 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "286d7660a5b52a80",
+  "dataset_version": "a47f8b707c15e42d",
   "last_checked": {
-    "newest": "2026-11-07T00:51:19Z",
-    "oldest": "2026-11-07T00:51:19Z"
+    "newest": "2026-11-08T02:18:54Z",
+    "oldest": "2026-11-08T02:18:54Z"
   },
-  "more_available": 0,
+  "more_available": 1,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
       "altstack",
       "diegoleme",
+      "intake",
       "job_match",
       "runacapital"
     ]
   },
   "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "self_described",
+          "provenance": [
+            {
+              "locator": "data/intake/admitted/wr-3a0fe24ac4f9f469.json",
+              "source_commit": "12a4db7974749484e8201edbbc6f1b04d9a6a548",
+              "source_id": "intake"
+            }
+          ],
+          "validated_as_of": "2026-11-08T02:18:54Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "self_described",
+              "readme_names_product"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/PersonaliAI/chatty",
+      "last_meaningful_activity_at": "2026-11-07T17:45:32Z",
+      "latest_release": {
+        "published_at": "2026-10-19T17:14:35Z",
+        "tag": "v2.1.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-08T02:18:54Z",
+      "maintenance_status": "active",
+      "name": "chatty",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+      },
+      "oss_id": "github.com/personaliai/chatty",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 90.0,
+        "score": 72.3,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 86.5,
+        "evaluated_at": "2026-11-08T02:18:54Z",
+        "score": 98.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/PersonaliAI/chatty",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "intake"
+      ],
+      "stars": 12
+    },
     {
       "evidence": {
         "relationship": {
@@ -47,7 +144,7 @@
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -91,7 +188,7 @@
       },
       "licence_disclosure": "source-available: licensed under Commons Clause + AGPL-3.0, which is not an OSI-approved open-source licence",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "maintained",
       "name": "Chaskiq",
       "note": {
@@ -112,7 +209,7 @@
         "score": 65.8,
         "trajectory": "Insufficient history"
       },
-      "rank": 1,
+      "rank": 2,
       "replacement_fit": {
         "caps": [],
         "confidence": 95.0,
@@ -144,7 +241,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -187,7 +284,7 @@
         "tag": "v2.9.2"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "libredesk",
       "note": {
@@ -206,7 +303,7 @@
         "score": 81.5,
         "trajectory": "Rising"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "caps": [],
         "confidence": 86.5,
@@ -222,7 +319,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 3127
+      "stars": 3130
     },
     {
       "evidence": {
@@ -236,7 +333,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [
@@ -278,7 +375,7 @@
       "last_meaningful_activity_at": "2026-10-30T22:19:36Z",
       "latest_release": null,
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "Zammad",
       "note": {
@@ -297,7 +394,7 @@
         "score": 82.9,
         "trajectory": "Rising"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "caps": [
           {
@@ -319,7 +416,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 6089
+      "stars": 6091
     },
     {
       "evidence": {
@@ -333,7 +430,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [
@@ -380,7 +477,7 @@
         "tag": "v0.4.7"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "opendesk",
       "note": {
@@ -395,11 +492,11 @@
       "oss_id": "github.com/useopendesk/opendesk",
       "project_health": {
         "band": "Healthy",
-        "confidence": 89.2,
-        "score": 78.3,
+        "confidence": 92.1,
+        "score": 82.9,
         "trajectory": "Insufficient history"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "caps": [
           {
@@ -409,7 +506,7 @@
           }
         ],
         "confidence": 84.5,
-        "evaluated_at": "2026-10-20T23:06:47Z",
+        "evaluated_at": "2026-11-08T02:18:54Z",
         "score": 80.0,
         "score_version": "1.3.0"
       },
@@ -421,97 +518,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 491
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/bytedesk/bytedesk",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
-        },
-        "replacement_fit": {
-          "caps": [],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [
-              "readme_names_product"
-            ],
-            "corroborated": true,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 43.8,
-            "ease_of_adoption": 80.0,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 100.0,
-            "integrations_extensibility": 50.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 80.0
-          },
-          "evidence_families": [
-            "api",
-            "demo",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/Bytedesk/bytedesk",
-      "last_meaningful_activity_at": "2026-11-05T02:11:21Z",
-      "latest_release": {
-        "published_at": "2026-11-04T13:27:13Z",
-        "tag": "v5.0.3"
-      },
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-07T00:51:19Z",
-      "maintenance_status": "active",
-      "name": "bytedesk",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "feature parity"
-        ],
-        "text": "Strongest on core use-case coverage and feature parity."
-      },
-      "oss_id": "github.com/bytedesk/bytedesk",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 96.6,
-        "score": 74.6,
-        "trajectory": "Declining"
-      },
-      "rank": 5,
-      "replacement_fit": {
-        "caps": [],
-        "confidence": 86.5,
-        "evaluated_at": "2026-11-05T02:13:56Z",
-        "score": 79.0,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/Bytedesk/bytedesk",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 533
+      "stars": 493
     }
   ],
   "saas": {

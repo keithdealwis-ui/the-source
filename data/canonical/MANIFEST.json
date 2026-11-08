@@ -5,64 +5,64 @@
     "catalogue_none_yet": 125,
     "catalogue_ok": 208,
     "catalogue_partial": 167,
-    "oss_projects": 652,
-    "recommendation_gate_evaluated": 1595,
-    "recommendation_gate_failed": 347,
-    "recommendation_gate_passed": 1248,
-    "recommended_relationships": 1248,
-    "relationships": 1596,
+    "oss_projects": 653,
+    "recommendation_gate_evaluated": 1597,
+    "recommendation_gate_failed": 346,
+    "recommendation_gate_passed": 1251,
+    "recommended_relationships": 1251,
+    "relationships": 1598,
     "saas_products": 405,
     "supported_saas": 375,
     "supported_saas_ok": 208
   },
-  "data_as_of": "2026-11-07T00:51:19Z",
-  "dataset_version": "286d7660a5b52a80",
+  "data_as_of": "2026-11-08T02:18:54Z",
+  "dataset_version": "a47f8b707c15e42d",
   "export_guard": {
     "export_licence_constraint": "none beyond attribution notices",
-    "relationships_exported": 1596,
+    "relationships_exported": 1598,
     "relationships_withheld_share_alike_only": 0
   },
   "files": {
-    "NOTICE.md": "33f711c5fbb0ee76e2305675000cbc8441abfbec1bd7b779c928a20860bdc881",
-    "oss_projects.jsonl": "ecd90ce1927ad5f9ead183fcd7fa096348895b0eb9f5867906faf82bd4814c6d",
-    "relationships.jsonl": "041f7e7b41065cbdd15937aaeedbad2b9a8978a5579d197920bd8394333fc7da",
+    "NOTICE.md": "3030f74bc8e06b546cc50611f2560b98bad83bacc9c0a1461a917556df117f0d",
+    "oss_projects.jsonl": "8b7591cbdfcc3cceadad397914da812ae03656f6fc188e25e9c88d892dfcf53f",
+    "relationships.jsonl": "cadc7a0fb27c785b4e8502e1f0f6d2ba5cf961f9e81a4457a5f612f74cbaf390",
     "saas_products.jsonl": "d79dbe2d803b060dccf41b4c3ac4381ec1eb822d7f046d3d2dc0f9d6f9bf8729"
   },
   "live_checked_at": {
-    "newest": "2026-11-07T00:51:19Z",
-    "oldest": "2026-11-07T00:51:19Z"
+    "newest": "2026-11-08T02:18:54Z",
+    "oldest": "2026-11-08T02:18:54Z"
   },
   "recommendation_gate": {
     "by_tier": {
       "corroborated": {
-        "evaluated": 214,
-        "pass_rate": 0.9346,
-        "passed": 200
+        "evaluated": 216,
+        "pass_rate": 0.9352,
+        "passed": 202
       },
       "job_matched": {
-        "evaluated": 980,
-        "pass_rate": 0.7133,
+        "evaluated": 979,
+        "pass_rate": 0.714,
         "passed": 699
       },
       "single_source": {
-        "evaluated": 401,
-        "pass_rate": 0.8703,
-        "passed": 349
+        "evaluated": 402,
+        "pass_rate": 0.8706,
+        "passed": 350
       }
     },
-    "evaluated": 1595,
-    "failed": 347,
+    "evaluated": 1597,
+    "failed": 346,
     "failed_by_reason": {
-      "fit_below_job_matched_floor": 279,
+      "fit_below_job_matched_floor": 278,
       "fit_below_single_source_floor": 23,
       "not_credible": 45,
       "not_publishable": 22,
       "not_scored": 1
     },
     "not_scored": 1,
-    "pass_rate": 0.7824,
-    "passed": 1248,
-    "relationships": 1596,
+    "pass_rate": 0.7833,
+    "passed": 1251,
+    "relationships": 1598,
     "replacement_fit_min": {
       "corroborated": 60,
       "job_matched": 75,
@@ -93,7 +93,7 @@
     },
     "intake": {
       "decision": "allow",
-      "pinned_commit": "097eee3ac8b1d5d8724062d07573f873d59a62a7"
+      "pinned_commit": "12a4db7974749484e8201edbbc6f1b04d9a6a548"
     },
     "job_match": {
       "decision": "allow",
@@ -101,7 +101,7 @@
     },
     "opensaasdirectory": {
       "decision": "allow",
-      "pinned_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78"
+      "pinned_commit": "9eb6e1420094d5dceb60752fe688d01da52a8d5e"
     },
     "runacapital": {
       "decision": "allow",

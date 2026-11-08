@@ -12,10 +12,10 @@
     ],
     "status": "partial"
   },
-  "dataset_version": "286d7660a5b52a80",
+  "dataset_version": "a47f8b707c15e42d",
   "last_checked": {
-    "newest": "2026-11-07T00:51:19Z",
-    "oldest": "2026-11-07T00:51:19Z"
+    "newest": "2026-11-08T02:18:54Z",
+    "oldest": "2026-11-08T02:18:54Z"
   },
   "more_available": 0,
   "provenance": {
@@ -49,7 +49,7 @@
             },
             {
               "locator": "README.md#L965",
-              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
+              "source_commit": "9eb6e1420094d5dceb60752fe688d01da52a8d5e",
               "source_id": "opensaasdirectory"
             },
             {
@@ -68,7 +68,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -85,7 +85,7 @@
             "deployment_ownership": 100.0,
             "ease_of_adoption": 93.5,
             "economic_advantage": 80.0,
-            "feature_equivalence": 33.3,
+            "feature_equivalence": 16.7,
             "integrations_extensibility": 100.0,
             "migration_friction": null,
             "production_commercial_readiness": 100.0
@@ -97,7 +97,7 @@
             "self_host",
             "support"
           ],
-          "scoring_path": "full_lane"
+          "scoring_path": "single_project"
         }
       },
       "github_url": "https://github.com/zulip/zulip",
@@ -107,7 +107,7 @@
         "tag": "13.0-rc1"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "Zulip",
       "note": {
@@ -125,15 +125,15 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 95.0,
-        "score": 94.9,
+        "score": 96.4,
         "trajectory": "Stable"
       },
       "rank": 1,
       "replacement_fit": {
         "caps": [],
         "confidence": 92.0,
-        "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 86.7,
+        "evaluated_at": "2026-11-08T02:18:54Z",
+        "score": 83.9,
         "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/zulip/zulip",
@@ -149,7 +149,7 @@
         "diegoleme",
         "fossalt"
       ],
-      "stars": 26181
+      "stars": 26190
     },
     {
       "evidence": {
@@ -169,7 +169,7 @@
             },
             {
               "locator": "README.md#L938",
-              "source_commit": "23581adb5f3ee2e36305917ffc1a03fb6b6cab78",
+              "source_commit": "9eb6e1420094d5dceb60752fe688d01da52a8d5e",
               "source_id": "opensaasdirectory"
             },
             {
@@ -193,7 +193,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -235,7 +235,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the MIT core; parts under Rocket.Chat EE licence are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "Rocket.Chat",
       "note": {
@@ -253,14 +253,14 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 92.1,
-        "score": 97.3,
-        "trajectory": "Stable"
+        "score": 97.0,
+        "trajectory": "Rising"
       },
       "rank": 2,
       "replacement_fit": {
         "caps": [],
         "confidence": 95.0,
-        "evaluated_at": "2026-10-18T02:47:20Z",
+        "evaluated_at": "2026-11-08T02:18:54Z",
         "score": 74.1,
         "score_version": "1.3.0"
       },

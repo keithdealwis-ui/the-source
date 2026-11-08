@@ -40,7 +40,7 @@ SOFTWARE.
 
 ## open-saas-directory/awesome-saas-directory
 
-- Source: https://github.com/open-saas-directory/awesome-saas-directory at commit 23581adb5f3ee2e36305917ffc1a03fb6b6cab78
+- Source: https://github.com/open-saas-directory/awesome-saas-directory at commit 9eb6e1420094d5dceb60752fe688d01da52a8d5e
 - Licence: MIT
 - Attribution: open-saas-directory/awesome-saas-directory, Copyright (c) 2026 Open SaaS Directory, MIT License
 
@@ -164,7 +164,7 @@ SOFTWARE.
 
 ## keithdealwis-ui/the-source
 
-- Source: https://github.com/keithdealwis-ui/the-source/blob/main/data/intake/admitted/ at commit 097eee3ac8b1d5d8724062d07573f873d59a62a7
+- Source: https://github.com/keithdealwis-ui/the-source/blob/main/data/intake/admitted/ at commit 12a4db7974749484e8201edbbc6f1b04d9a6a548
 - Licence: n/a (The Source's own assessment record)
 - Attribution: The Source intake ledger (data/intake/admitted/): relationships stated by each project in its own public repository and assessed by The Source
 

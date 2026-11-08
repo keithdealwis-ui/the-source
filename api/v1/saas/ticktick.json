@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "286d7660a5b52a80",
+  "dataset_version": "a47f8b707c15e42d",
   "last_checked": {
-    "newest": "2026-11-07T00:51:19Z",
-    "oldest": "2026-11-07T00:51:19Z"
+    "newest": "2026-11-08T02:18:54Z",
+    "oldest": "2026-11-08T02:18:54Z"
   },
   "more_available": 0,
   "provenance": {
@@ -34,7 +34,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [
@@ -75,7 +75,7 @@
         "tag": "v3.5.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "taskwarrior",
       "note": {
@@ -116,7 +116,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 6155
+      "stars": 6156
     },
     {
       "evidence": {
@@ -130,7 +130,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [
@@ -175,7 +175,7 @@
         "tag": "v2.8.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "Vikunja",
       "note": {
@@ -216,7 +216,95 @@
       "sources": [
         "job_match"
       ],
-      "stars": 5979
+      "stars": 5993
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/super-productivity/super-productivity",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-11-08T02:18:54Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/super-productivity/super-productivity",
+      "last_meaningful_activity_at": "2026-11-06T23:01:43Z",
+      "latest_release": {
+        "published_at": "2026-11-06T21:02:15Z",
+        "tag": "v20.0.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-08T02:18:54Z",
+      "maintenance_status": "active",
+      "name": "Super Productivity",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/super-productivity/super-productivity",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 95.5,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 84.5,
+        "evaluated_at": "2026-11-08T02:18:54Z",
+        "score": 79.2,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/super-productivity/super-productivity",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 23492
     },
     {
       "evidence": {
@@ -230,7 +318,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -271,7 +359,7 @@
         "tag": "v4.20.0"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "planify",
       "note": {
@@ -290,7 +378,7 @@
         "score": 87.5,
         "trajectory": "Stable"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "caps": [],
         "confidence": 84.5,
@@ -306,95 +394,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 5787
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/super-productivity/super-productivity",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
-        },
-        "replacement_fit": {
-          "caps": [],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 75.0,
-            "ease_of_adoption": 100.0,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 61.7,
-            "integrations_extensibility": 50.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 60.0
-          },
-          "evidence_families": [
-            "api",
-            "data_ownership",
-            "demo",
-            "import",
-            "plugins",
-            "quickstart",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/super-productivity/super-productivity",
-      "last_meaningful_activity_at": "2026-11-06T23:01:43Z",
-      "latest_release": {
-        "published_at": "2026-11-06T21:02:15Z",
-        "tag": "v20.0.0"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-07T00:51:19Z",
-      "maintenance_status": "active",
-      "name": "Super Productivity",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption."
-      },
-      "oss_id": "github.com/super-productivity/super-productivity",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 92.1,
-        "score": 95.7,
-        "trajectory": "Stable"
-      },
-      "rank": 4,
-      "replacement_fit": {
-        "caps": [],
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 77.4,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/super-productivity/super-productivity",
-      "self_hosting": {
-        "basis": "no self-hosting evidence found; not evidence of absence",
-        "self_hostable": null
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 23457
+      "stars": 5790
     },
     {
       "evidence": {
@@ -408,7 +408,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-07T00:51:19Z"
+          "validated_as_of": "2026-11-08T02:18:54Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -444,7 +444,7 @@
         "tag": "0.16"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-07T00:51:19Z",
+      "live_checked_at": "2026-11-08T02:18:54Z",
       "maintenance_status": "active",
       "name": "topydo",
       "note": {
@@ -482,7 +482,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 943
+      "stars": 944
     }
   ],
   "saas": {
