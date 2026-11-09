@@ -40,7 +40,7 @@ SOFTWARE.
 
 ## open-saas-directory/awesome-saas-directory
 
-- Source: https://github.com/open-saas-directory/awesome-saas-directory at commit 9eb6e1420094d5dceb60752fe688d01da52a8d5e
+- Source: https://github.com/open-saas-directory/awesome-saas-directory at commit e246633fa768e0b44091e5f1ff0b6041386dab73
 - Licence: MIT
 - Attribution: open-saas-directory/awesome-saas-directory, Copyright (c) 2026 Open SaaS Directory, MIT License
 

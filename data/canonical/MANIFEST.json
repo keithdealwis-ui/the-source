@@ -5,32 +5,32 @@
     "catalogue_none_yet": 125,
     "catalogue_ok": 208,
     "catalogue_partial": 167,
-    "oss_projects": 653,
-    "recommendation_gate_evaluated": 1597,
+    "oss_projects": 652,
+    "recommendation_gate_evaluated": 1596,
     "recommendation_gate_failed": 346,
-    "recommendation_gate_passed": 1251,
-    "recommended_relationships": 1251,
-    "relationships": 1598,
+    "recommendation_gate_passed": 1250,
+    "recommended_relationships": 1250,
+    "relationships": 1597,
     "saas_products": 405,
     "supported_saas": 375,
     "supported_saas_ok": 208
   },
-  "data_as_of": "2026-11-08T02:18:54Z",
-  "dataset_version": "a47f8b707c15e42d",
+  "data_as_of": "2026-11-09T00:43:48Z",
+  "dataset_version": "d0cfbb10ad718609",
   "export_guard": {
     "export_licence_constraint": "none beyond attribution notices",
-    "relationships_exported": 1598,
+    "relationships_exported": 1597,
     "relationships_withheld_share_alike_only": 0
   },
   "files": {
-    "NOTICE.md": "3030f74bc8e06b546cc50611f2560b98bad83bacc9c0a1461a917556df117f0d",
-    "oss_projects.jsonl": "8b7591cbdfcc3cceadad397914da812ae03656f6fc188e25e9c88d892dfcf53f",
-    "relationships.jsonl": "cadc7a0fb27c785b4e8502e1f0f6d2ba5cf961f9e81a4457a5f612f74cbaf390",
+    "NOTICE.md": "98e18b69752b8f81e3b5644b21e5355116f370c9170cb0c8146d24ae4ed6b6b6",
+    "oss_projects.jsonl": "bfeb207ed039163eb8c5b8ad8fd61334ace3438ac7c00cd44183bca1af7658cc",
+    "relationships.jsonl": "d69e29a9a614214f8402f518f36aa2cdff5ad4c48f5c0caa087eada25c7c3f12",
     "saas_products.jsonl": "d79dbe2d803b060dccf41b4c3ac4381ec1eb822d7f046d3d2dc0f9d6f9bf8729"
   },
   "live_checked_at": {
-    "newest": "2026-11-08T02:18:54Z",
-    "oldest": "2026-11-08T02:18:54Z"
+    "newest": "2026-11-09T00:43:48Z",
+    "oldest": "2026-11-09T00:43:48Z"
   },
   "recommendation_gate": {
     "by_tier": {
@@ -45,12 +45,12 @@
         "passed": 699
       },
       "single_source": {
-        "evaluated": 402,
-        "pass_rate": 0.8706,
-        "passed": 350
+        "evaluated": 401,
+        "pass_rate": 0.8703,
+        "passed": 349
       }
     },
-    "evaluated": 1597,
+    "evaluated": 1596,
     "failed": 346,
     "failed_by_reason": {
       "fit_below_job_matched_floor": 278,
@@ -60,9 +60,9 @@
       "not_scored": 1
     },
     "not_scored": 1,
-    "pass_rate": 0.7833,
-    "passed": 1251,
-    "relationships": 1598,
+    "pass_rate": 0.7832,
+    "passed": 1250,
+    "relationships": 1597,
     "replacement_fit_min": {
       "corroborated": 60,
       "job_matched": 75,
@@ -101,7 +101,7 @@
     },
     "opensaasdirectory": {
       "decision": "allow",
-      "pinned_commit": "9eb6e1420094d5dceb60752fe688d01da52a8d5e"
+      "pinned_commit": "e246633fa768e0b44091e5f1ff0b6041386dab73"
     },
     "runacapital": {
       "decision": "allow",

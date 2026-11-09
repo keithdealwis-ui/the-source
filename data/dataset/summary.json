@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-08T02:18:54Z",
+  "as_of": "2026-11-09T00:43:48Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -23,7 +23,7 @@
         "entries_with_saas_claim": 92,
         "harvested": true,
         "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
-        "pinned_commit": "d9b5eb9bc5ffb5cee9ea68a4a5de005250551f74",
+        "pinned_commit": "16d488af6af3b1eeb2f34d8dd60e7a83f18daf52",
         "relationship_claims": 147,
         "unparseable_files": 0
       },
@@ -89,12 +89,12 @@
       },
       "opensaasdirectory": {
         "decision": "allow",
-        "entries": 104,
-        "entries_with_saas_claim": 104,
+        "entries": 105,
+        "entries_with_saas_claim": 105,
         "harvested": true,
         "licence_file_sha256": "cdfd14ebf0763fce15d9fe27398b6138e1d92186b7be997aa64e9eccaa2c13c8",
-        "pinned_commit": "9eb6e1420094d5dceb60752fe688d01da52a8d5e",
-        "relationship_claims": 188,
+        "pinned_commit": "e246633fa768e0b44091e5f1ff0b6041386dab73",
+        "relationship_claims": 189,
         "unparseable_files": 0
       },
       "runacapital": {
@@ -118,18 +118,18 @@
         "unparseable_files": 0
       }
     },
-    "entries_read": 3603,
-    "relationship_claims_read": 5962
+    "entries_read": 3604,
+    "relationship_claims_read": 5963
   },
   "lanes": {
     "oss_projects": {
       "licence_exception": 28,
-      "recommendable": 1425,
+      "recommendable": 1426,
       "rejected": 122
     },
     "relationships": {
       "licence_exception": 35,
-      "recommendable": 2060,
+      "recommendable": 2061,
       "rejected": 3052
     }
   },
@@ -419,15 +419,15 @@
       "zoho-mail",
       "zuora"
     ],
-    "catalogue_served_relationships": 1224,
-    "oss_distinct_products": 652,
-    "oss_projects": 653,
+    "catalogue_served_relationships": 1223,
+    "oss_distinct_products": 651,
+    "oss_projects": 652,
     "preserve_served": {
       "kept": 374,
       "not_kept": 0,
       "served_before": 374
     },
-    "relationships": 1598,
+    "relationships": 1597,
     "relationships_corroborated_by_2plus_sources": 217,
     "relationships_share_alike_only": 0,
     "saas_added_beyond_floor": 23,
@@ -471,9 +471,9 @@
   },
   "publication_status": "public",
   "reconciled": {
-    "oss_candidates": 1575,
-    "oss_candidates_before_identity_merge": 1600,
-    "relationship_candidates": 5147,
+    "oss_candidates": 1576,
+    "oss_candidates_before_identity_merge": 1601,
+    "relationship_candidates": 5148,
     "renamed_or_duplicate_repositories_merged": 25,
     "saas_products_named": 569
   },
@@ -1733,8 +1733,6 @@
       "plausibility_review:Personal subscription spending tracker; not merchant billing like Paddle": 1,
       "plausibility_review:Personal subscription spending tracker; not merchant subscription billing like Chargebee": 1,
       "plausibility_review:Personal web file server; no sync or collaboration": 2,
-      "plausibility_review:Personal-life CRM; not a sales pipeline CRM": 1,
-      "plausibility_review:Personal-life contact CRM; not a sales CRM platform like Salesforce": 1,
       "plausibility_review:Photo backup and file-access app; not a photo editing/cataloguing tool like Lightroom": 1,
       "plausibility_review:Photo editor; background removal is only a side feature": 1,
       "plausibility_review:Photo management app for Nextcloud; plugin": 1,
@@ -2309,7 +2307,7 @@
       "plausibility_review:inference server; not a multi-provider LLM API router": 1,
       "plausibility_review:infrastructure-as-code tool; not a platform that runs applications": 1,
       "plausibility_review:intranet tunneling reverse proxy; not a privacy VPN service": 1,
-      "plausibility_review:job match not yet desk-reviewed": 47,
+      "plausibility_review:job match not yet desk-reviewed": 51,
       "plausibility_review:layered image editor; not background removal": 1,
       "plausibility_review:layered photo/image editor; not template-based graphic design": 1,
       "plausibility_review:list of newsletter RSS feeds": 1,
@@ -2341,8 +2339,6 @@
       "plausibility_review:p2p encrypted storage/social protocol; not a photo-sharing network": 1,
       "plausibility_review:p2p mesh VPN; not a privacy VPN service": 1,
       "plausibility_review:personal media server; not video hosting for publishing": 1,
-      "plausibility_review:personal-life CRM; not a business CRM/ERP suite": 1,
-      "plausibility_review:personal-life CRM; not a marketing/sales CRM platform": 1,
       "plausibility_review:policy administration layer; not an identity provider": 2,
       "plausibility_review:real-time analytics database; not a distributed OLTP database": 1,
       "plausibility_review:real-time screen OCR translator; different kind of software": 1,
@@ -2395,16 +2391,16 @@
   "schema_version": "1.0.0",
   "verified": {
     "maintenance_status": {
-      "active": 1331,
+      "active": 1332,
       "maintained": 131,
       "stale": 94,
       "unverified": 19
     },
-    "oss_recommendable": 1425,
+    "oss_recommendable": 1426,
     "oss_rejected": 150,
     "relationships_flagged_licence_exception": 35,
     "relationships_rejected": 3052,
-    "relationships_validated": 2060,
+    "relationships_validated": 2061,
     "saas_with_validated_alternatives": 493
   }
 }
