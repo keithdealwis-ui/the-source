@@ -1,0 +1,59 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-09T01:46:49Z",
+  "canonical": {
+    "status": "licence_exception"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": false,
+      "spdx": "NOASSERTION",
+      "status": "issue"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "kuafuai/andee",
+      "created_at": "2026-09-17T13:20:59Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-09T01:46:49Z",
+      "forks": 276,
+      "found": true,
+      "host_repo_id": 1374472673,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "Other",
+      "licence_spdx": "NOASSERTION",
+      "observed": {
+        "commits_in_12m_window": 333,
+        "commits_inspected": 1,
+        "issues_closed_12m": 10,
+        "merged_prs_inspected": 10,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-07T12:04:07Z",
+      "stars": 3898
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a merged_pr",
+      "days_since_meaningful_activity": 1,
+      "last_meaningful_activity_at": "2026-11-07T12:04:07Z",
+      "status": "active"
+    }
+  },
+  "note": "waiting-room batch wr-20261108; 1 observation(s)",
+  "oss_id": "github.com/kuafuai/andee",
+  "outcome": "rejected",
+  "reasons": [
+    "no_recognised_open_source_licence"
+  ],
+  "repo_url": "https://github.com/kuafuai/andee",
+  "request_id": "wr-6cf89ffc46e84ff7",
+  "saas_hint": null,
+  "scores": null,
+  "submitted_at": "2026-11-08T18:50:23Z",
+  "submitted_by": "waiting-room:gitwatch"
+}

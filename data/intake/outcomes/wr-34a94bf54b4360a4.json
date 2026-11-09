@@ -1,0 +1,143 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-09T01:44:34Z",
+  "canonical": {
+    "promoted_in_run": null,
+    "status": "pending_promotion"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "Apache-2.0",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "himadrijunior/Dhara",
+      "created_at": "2026-11-07T18:14:09Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-09T01:44:34Z",
+      "forks": 0,
+      "found": true,
+      "host_repo_id": 1449619536,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "Apache License 2.0",
+      "licence_spdx": "Apache-2.0",
+      "observed": {
+        "commits_in_12m_window": 6,
+        "commits_inspected": 2,
+        "issues_closed_12m": 0,
+        "merged_prs_inspected": 0,
+        "releases_seen": 0,
+        "tags_seen": 0
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-08T09:12:08Z",
+      "stars": 1
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a code_commit",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-08T09:11:01Z",
+      "status": "active"
+    },
+    "saas_relationships": [
+      {
+        "category": "Backend as a service",
+        "excerpt": "ra — open-source self-hosted supabase & firebase alternative **the open-source backend-as-a-service",
+        "field": "readme",
+        "matched": "firebase alternative",
+        "saas_id": "firebase",
+        "saas_name": "Firebase"
+      }
+    ],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 18
+    }
+  },
+  "note": "waiting-room batch wr-20261108; 1 observation(s)",
+  "oss_id": "github.com/himadrijunior/dhara",
+  "outcome": "accepted",
+  "reasons": [
+    "passes every rule; relationship evidenced"
+  ],
+  "repo_url": "https://github.com/himadrijunior/dhara",
+  "request_id": "wr-34a94bf54b4360a4",
+  "saas_hint": "firebase",
+  "scores": {
+    "errors": [],
+    "preliminary": true,
+    "project_health": {
+      "band": "Developing",
+      "confidence": 85.1,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-09T01:44:34Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/himadrijunior/dhara",
+      "score": 56.3,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "no_releases",
+        "open_core_markers",
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": [
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described",
+            "readme_names_product"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 100.0,
+          "ease_of_adoption": 100.0,
+          "economic_advantage": 60.0,
+          "feature_equivalence": 85.0,
+          "integrations_extensibility": 75.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 50.0
+        },
+        "evaluated_at": "2026-11-09T01:44:34Z",
+        "evidence_families": [
+          "api",
+          "cloud_option",
+          "data_ownership",
+          "demo",
+          "import",
+          "multi_user",
+          "quickstart",
+          "self_host",
+          "sso",
+          "webhook"
+        ],
+        "oss_id": "github.com/himadrijunior/dhara",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "firebase",
+        "score": 88.2,
+        "score_version": "1.3.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 88.2
+      }
+    ]
+  },
+  "submitted_at": "2026-11-08T12:44:53Z",
+  "submitted_by": "waiting-room:grokbot"
+}

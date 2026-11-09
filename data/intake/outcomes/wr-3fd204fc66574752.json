@@ -1,0 +1,83 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-09T01:45:34Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "brainfish-ai/webcrawl-anything",
+      "created_at": "2026-10-31T04:07:24Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-09T01:45:34Z",
+      "forks": 4,
+      "found": true,
+      "host_repo_id": 1440489060,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 70,
+        "commits_inspected": 1,
+        "issues_closed_12m": 1,
+        "merged_prs_inspected": 10,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-08T20:59:25Z",
+      "stars": 2
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a release",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-08T20:44:25Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 18
+    }
+  },
+  "note": "waiting-room batch wr-20261108; 1 observation(s)",
+  "oss_id": "github.com/brainfish-ai/webcrawl-anything",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship",
+    "hinted SaaS 'firecrawl' is not evidenced by the repository itself"
+  ],
+  "repo_url": "https://github.com/brainfish-ai/webcrawl-anything",
+  "request_id": "wr-3fd204fc66574752",
+  "saas_hint": "firecrawl",
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Developing",
+      "confidence": 89.2,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-09T01:45:34Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/brainfish-ai/webcrawl-anything",
+      "score": 65.5,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": []
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-08T16:43:45Z",
+  "submitted_by": "waiting-room:grokbot"
+}

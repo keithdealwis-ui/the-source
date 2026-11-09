@@ -1,0 +1,85 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-09T01:46:42Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "Apache-2.0",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "anubhab7105/Assembly",
+      "created_at": "2026-08-15T21:36:42Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-09T01:46:42Z",
+      "forks": 8,
+      "found": true,
+      "host_repo_id": 1335435151,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "Apache License 2.0",
+      "licence_spdx": "Apache-2.0",
+      "observed": {
+        "commits_in_12m_window": 806,
+        "commits_inspected": 1,
+        "issues_closed_12m": 23,
+        "merged_prs_inspected": 10,
+        "releases_seen": 0,
+        "tags_seen": 0
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-08T19:13:08Z",
+      "stars": 6
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a merged_pr",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-08T19:12:43Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 8
+    }
+  },
+  "note": "waiting-room batch wr-20261108; 1 observation(s)",
+  "oss_id": "github.com/anubhab7105/assembly",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship"
+  ],
+  "repo_url": "https://github.com/anubhab7105/assembly",
+  "request_id": "wr-10b5d802e2fbc994",
+  "saas_hint": null,
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Developing",
+      "confidence": 88.4,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-09T01:46:42Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/anubhab7105/assembly",
+      "score": 67.8,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "no_releases",
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-08T16:44:10Z",
+  "submitted_by": "waiting-room:grokbot"
+}
