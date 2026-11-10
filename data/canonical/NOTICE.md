@@ -40,7 +40,7 @@ SOFTWARE.
 
 ## open-saas-directory/awesome-saas-directory
 
-- Source: https://github.com/open-saas-directory/awesome-saas-directory at commit e246633fa768e0b44091e5f1ff0b6041386dab73
+- Source: https://github.com/open-saas-directory/awesome-saas-directory at commit bce3d3144b245b2146e6e3032d716f27b70a7ef9
 - Licence: MIT
 - Attribution: open-saas-directory/awesome-saas-directory, Copyright (c) 2026 Open SaaS Directory, MIT License
 
@@ -158,13 +158,13 @@ SOFTWARE.
 
 ## sfermigier/awesome-foss-alternatives
 
-- Source: https://github.com/sfermigier/awesome-foss-alternatives at commit ba429396104b79baf2febf8a58d427432e585606
+- Source: https://github.com/sfermigier/awesome-foss-alternatives at commit 43da75ebbd9b69de11d7e938fb89dffbba27fffe
 - Licence: CC-BY-4.0
 - Attribution: "Awesome Free / Open Source Alternatives (to common SaaS products) for Business Use" by Stefane Fermigier and contributors, https://github.com/sfermigier/awesome-foss-alternatives, licensed CC BY 4.0; facts extracted, no text reproduced
 
 ## keithdealwis-ui/the-source
 
-- Source: https://github.com/keithdealwis-ui/the-source/blob/main/data/intake/admitted/ at commit 12a4db7974749484e8201edbbc6f1b04d9a6a548
+- Source: https://github.com/keithdealwis-ui/the-source/blob/main/data/intake/admitted/ at commit 180fce5a04e62102ddc5c682f6acb5895f958321
 - Licence: n/a (The Source's own assessment record)
 - Attribution: The Source intake ledger (data/intake/admitted/): relationships stated by each project in its own public repository and assessed by The Source
 
