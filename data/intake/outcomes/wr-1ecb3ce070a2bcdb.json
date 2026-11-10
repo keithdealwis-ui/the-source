@@ -1,0 +1,83 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-10T04:11:10Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "GPL-3.0",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "ThembaTman0/apex-download-manager",
+      "created_at": "2026-07-05T19:57:55Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-10T04:11:10Z",
+      "forks": 3,
+      "found": true,
+      "host_repo_id": 1290300010,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "GNU General Public License v3.0",
+      "licence_spdx": "GPL-3.0",
+      "observed": {
+        "commits_in_12m_window": 240,
+        "commits_inspected": 3,
+        "issues_closed_12m": 10,
+        "merged_prs_inspected": 10,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-09T19:20:45Z",
+      "stars": 60
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a release",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-09T17:44:28Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 19
+    }
+  },
+  "note": "waiting-room batch wr-20261109; 1 observation(s)",
+  "oss_id": "github.com/thembatman0/apex-download-manager",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship",
+    "hinted SaaS 'idm' is not evidenced by the repository itself"
+  ],
+  "repo_url": "https://github.com/thembatman0/apex-download-manager",
+  "request_id": "wr-1ecb3ce070a2bcdb",
+  "saas_hint": "idm",
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Healthy",
+      "confidence": 93.7,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-10T04:11:10Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/thembatman0/apex-download-manager",
+      "score": 78.1,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": []
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-09T20:39:15Z",
+  "submitted_by": "waiting-room:grokbot"
+}

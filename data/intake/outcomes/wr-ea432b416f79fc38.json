@@ -1,0 +1,138 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-10T04:06:21Z",
+  "canonical": {
+    "promoted_in_run": null,
+    "status": "pending_promotion"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "AGPL-3.0",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "aaronsuns/melarka",
+      "created_at": "2026-10-09T11:13:29Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-10T04:06:21Z",
+      "forks": 0,
+      "found": true,
+      "host_repo_id": 1411715994,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "GNU Affero General Public License v3.0",
+      "licence_spdx": "AGPL-3.0",
+      "observed": {
+        "commits_in_12m_window": 176,
+        "commits_inspected": 2,
+        "issues_closed_12m": 0,
+        "merged_prs_inspected": 10,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-09T21:50:53Z",
+      "stars": 11
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a code_commit",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-09T21:24:31Z",
+      "status": "active"
+    },
+    "saas_relationships": [
+      {
+        "category": "Audio streaming",
+        "excerpt": "topic spotify-alternative",
+        "field": "topics",
+        "matched": "spotify-alternative",
+        "saas_id": "spotify",
+        "saas_name": "Spotify"
+      }
+    ],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 20
+    }
+  },
+  "note": "waiting-room batch wr-20261109; 1 observation(s)",
+  "oss_id": "github.com/aaronsuns/melarka",
+  "outcome": "accepted",
+  "reasons": [
+    "passes every rule; relationship evidenced"
+  ],
+  "repo_url": "https://github.com/aaronsuns/melarka",
+  "request_id": "wr-ea432b416f79fc38",
+  "saas_hint": "spotify",
+  "scores": {
+    "errors": [],
+    "preliminary": true,
+    "project_health": {
+      "band": "Healthy",
+      "confidence": 90.0,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-10T04:06:21Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/aaronsuns/melarka",
+      "score": 78.6,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "open_core_markers",
+        "pre_1_0",
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": [
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 43.8,
+          "ease_of_adoption": 100.0,
+          "economic_advantage": 45.0,
+          "feature_equivalence": 73.3,
+          "integrations_extensibility": 25.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 40.0
+        },
+        "evaluated_at": "2026-11-10T04:06:21Z",
+        "evidence_families": [
+          "api",
+          "demo",
+          "import",
+          "quickstart",
+          "self_host",
+          "support"
+        ],
+        "oss_id": "github.com/aaronsuns/melarka",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "spotify",
+        "score": 74.1,
+        "score_version": "1.3.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 74.1
+      }
+    ]
+  },
+  "submitted_at": "2026-11-09T00:38:38Z",
+  "submitted_by": "waiting-room:grokbot"
+}

@@ -1,0 +1,85 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-10T04:10:07Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "GPL-3.0",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "GianlucaBave/murmury",
+      "created_at": "2026-11-02T17:17:17Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-10T04:10:07Z",
+      "forks": 15,
+      "found": true,
+      "host_repo_id": 1443260096,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "GNU General Public License v3.0",
+      "licence_spdx": "GPL-3.0",
+      "observed": {
+        "commits_in_12m_window": 40,
+        "commits_inspected": 1,
+        "issues_closed_12m": 9,
+        "merged_prs_inspected": 10,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-09T22:33:34Z",
+      "stars": 13
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a merged_pr",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-09T22:33:35Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 19
+    }
+  },
+  "note": "waiting-room batch wr-20261109; 1 observation(s)",
+  "oss_id": "github.com/gianlucabave/murmury",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship",
+    "hinted SaaS 'cluely' is not evidenced by the repository itself"
+  ],
+  "repo_url": "https://github.com/gianlucabave/murmury",
+  "request_id": "wr-4727906bd1960762",
+  "saas_hint": "cluely",
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Developing",
+      "confidence": 89.2,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-10T04:10:07Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/gianlucabave/murmury",
+      "score": 65.2,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "pre_1_0"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-09T12:38:07Z",
+  "submitted_by": "waiting-room:grokbot"
+}

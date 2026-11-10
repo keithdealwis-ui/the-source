@@ -1,0 +1,85 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-10T04:07:24Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "ozkl/ruxis",
+      "created_at": "2026-11-08T19:45:52Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-10T04:07:24Z",
+      "forks": 0,
+      "found": true,
+      "host_repo_id": 1450606572,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 2,
+        "commits_inspected": 2,
+        "issues_closed_12m": 0,
+        "merged_prs_inspected": 0,
+        "releases_seen": 0,
+        "tags_seen": 0
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-08T20:50:28Z",
+      "stars": 3
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a code_commit",
+      "days_since_meaningful_activity": 1,
+      "last_meaningful_activity_at": "2026-11-08T20:21:57Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 0
+    }
+  },
+  "note": "waiting-room batch wr-20261109; 1 observation(s)",
+  "oss_id": "github.com/ozkl/ruxis",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship"
+  ],
+  "repo_url": "https://github.com/ozkl/ruxis",
+  "request_id": "wr-f106fe6ff59db3ff",
+  "saas_hint": null,
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Caution",
+      "confidence": 85.1,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-10T04:07:24Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/ozkl/ruxis",
+      "score": 42.7,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "no_releases",
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-09T00:38:48Z",
+  "submitted_by": "waiting-room:grokbot"
+}
