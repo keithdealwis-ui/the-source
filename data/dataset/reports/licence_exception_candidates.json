@@ -241,6 +241,34 @@
   },
   {
     "detected": {
+      "closest_standard_licences": [],
+      "enterprise_directories": [],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE"
+      ],
+      "restriction_markers": [
+        "elastic license",
+        "hosted",
+        "license key",
+        "managed service",
+        "may not"
+      ]
+    },
+    "issue_category": "source_available",
+    "maintenance": "active",
+    "name": "hydradb",
+    "oss_id": "github.com/hydra-db/hydradb",
+    "reason": "licence text contains source-available or use-restricted terms: elastic license",
+    "recommendation_eligible": false,
+    "relationships_flagged": 2,
+    "repo_url": "https://github.com/hydra-db/hydradb",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
       "closest_standard_licences": [
         "Apache-2.0"
       ],

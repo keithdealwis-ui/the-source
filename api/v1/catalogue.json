@@ -4,9 +4,9 @@
   "counts": {
     "by_audience": {
       "b2b": {
-        "none_yet": 78,
+        "none_yet": 76,
         "ok": 154,
-        "partial": 105
+        "partial": 107
       },
       "b2c": {
         "none_yet": 24,
@@ -20,12 +20,12 @@
       }
     },
     "entries": 500,
-    "none_yet": 125,
+    "none_yet": 123,
     "ok": 210,
-    "partial": 165,
-    "support_records": 375
+    "partial": 167,
+    "support_records": 377
   },
-  "dataset_version": "c2b1b82cc4d51e55",
+  "dataset_version": "a2c65feabc929e93",
   "demand": {
     "status": "available",
     "telemetry": "no_product_dimension"
@@ -1296,8 +1296,8 @@
         "corpus_pairings": 0,
         "job_defined": true,
         "licence_review": 0,
-        "not_recommended": 3,
-        "outside_launch": 1,
+        "not_recommended": 4,
+        "outside_launch": 0,
         "share_alike_only": 0
       },
       "match": [
@@ -1311,13 +1311,12 @@
       "name": "Spotify",
       "path": "saas/spotify.json",
       "rank": 37,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 3 fully evaluated relationships did not qualify as recommendations; 1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 4 fully evaluated relationships did not qualify as recommendations",
       "reasons": [
         "fewer_than_minimum",
-        "evaluated_not_recommended",
-        "outside_launch_selection"
+        "evaluated_not_recommended"
       ],
-      "recommended": 1,
+      "recommended": 2,
       "saas_id": "spotify",
       "status": "partial"
     },
@@ -1883,7 +1882,7 @@
         "job_defined": true,
         "licence_review": 1,
         "not_recommended": 0,
-        "outside_launch": 2,
+        "outside_launch": 3,
         "share_alike_only": 0
       },
       "match": [
@@ -1982,7 +1981,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 2,
+        "outside_launch": 3,
         "share_alike_only": 0
       },
       "match": [
@@ -3728,8 +3727,8 @@
         "awaiting": 0,
         "corpus_pairings": 0,
         "job_defined": true,
-        "licence_review": 0,
-        "not_recommended": 1,
+        "licence_review": 1,
+        "not_recommended": 0,
         "outside_launch": 0,
         "share_alike_only": 0
       },
@@ -6056,15 +6055,16 @@
         }
       ],
       "name": "Snyk",
-      "path": null,
+      "path": "saas/snyk.json",
       "rank": 180,
-      "reason": "2 fully evaluated relationships did not qualify as recommendations",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 2 fully evaluated relationships did not qualify as recommendations",
       "reasons": [
+        "fewer_than_minimum",
         "evaluated_not_recommended"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "snyk",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2b",
@@ -14240,15 +14240,15 @@
         }
       ],
       "name": "Veracode",
-      "path": null,
+      "path": "saas/veracode.json",
       "rank": 426,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
       "reasons": [
-        "no_relationship_evidence"
+        "fewer_than_minimum"
       ],
-      "recommended": 0,
+      "recommended": 1,
       "saas_id": "veracode",
-      "status": "none_yet"
+      "status": "partial"
     },
     {
       "audience": "b2c",

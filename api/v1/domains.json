@@ -1,6 +1,6 @@
 {
   "api_version": "v1",
-  "dataset_version": "c2b1b82cc4d51e55",
+  "dataset_version": "a2c65feabc929e93",
   "match_semantics": "Lowercase the page hostname and strip one leading \"www.\". A rule matches when its host equals the hostname (or the hostname ends with its host_suffix) and, if it has a path_prefix, the URL path equals the prefix or continues it at a \"/\" (a prefix that ends in \"/\" is a plain prefix). When several rules match, the most specific wins: one with a path_prefix beats one without, a longer path_prefix beats a shorter one, an exact host beats a host_suffix, a longer host_suffix beats a shorter one; remaining ties go to the first rule in file order.",
   "rules": [
     {
@@ -509,6 +509,10 @@
       "saas_id": "amplitude"
     },
     {
+      "host": "analysiscenter.veracode.com",
+      "saas_id": "veracode"
+    },
+    {
       "host": "analytics.google.com",
       "saas_id": "google-analytics"
     },
@@ -667,6 +671,10 @@
     {
       "host": "app.eu.amplitude.com",
       "saas_id": "amplitude"
+    },
+    {
+      "host": "app.eu.snyk.io",
+      "saas_id": "snyk"
     },
     {
       "host": "app.eu.workato.com",
@@ -864,6 +872,10 @@
     {
       "host": "app.snowflake.com",
       "saas_id": "snowflake"
+    },
+    {
+      "host": "app.snyk.io",
+      "saas_id": "snyk"
     },
     {
       "host": "app.split.io",
@@ -2637,6 +2649,10 @@
       "saas_id": "snowflake"
     },
     {
+      "host": "snyk.io",
+      "saas_id": "snyk"
+    },
+    {
       "host": "sonarcloud.io",
       "saas_id": "sonarqube-cloud"
     },
@@ -2907,6 +2923,10 @@
     {
       "host": "usemotion.com",
       "saas_id": "motion"
+    },
+    {
+      "host": "veracode.com",
+      "saas_id": "veracode"
     },
     {
       "host": "vercel.com",

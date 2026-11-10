@@ -3,17 +3,17 @@
   "canonical_schema": "the-source.canonical/1",
   "catalogue": {
     "entries": 500,
-    "none_yet": 125,
+    "none_yet": 123,
     "ok": 210,
-    "partial": 165,
+    "partial": 167,
     "path": "catalogue.json"
   },
-  "data_as_of": "2026-11-10T01:59:23Z",
-  "dataset_version": "c2b1b82cc4d51e55",
+  "data_as_of": "2026-11-10T23:09:36Z",
+  "dataset_version": "a2c65feabc929e93",
   "domains": "domains.json",
   "live_checked_at": {
-    "newest": "2026-11-10T01:59:23Z",
-    "oldest": "2026-11-10T01:59:23Z"
+    "newest": "2026-11-10T23:09:36Z",
+    "oldest": "2026-11-10T23:09:36Z"
   },
   "supported_saas": [
     {
@@ -371,7 +371,7 @@
       "compare_path": null,
       "name": "Spotify",
       "path": "saas/spotify.json",
-      "recommendations": 1,
+      "recommendations": 2,
       "saas_id": "spotify",
       "slug": "spotify",
       "status": "insufficient_recommendations"
@@ -1571,6 +1571,15 @@
       "recommendations": 2,
       "saas_id": "descript",
       "slug": "descript",
+      "status": "insufficient_recommendations"
+    },
+    {
+      "compare_path": null,
+      "name": "Snyk",
+      "path": "saas/snyk.json",
+      "recommendations": 1,
+      "saas_id": "snyk",
+      "slug": "snyk",
       "status": "insufficient_recommendations"
     },
     {
@@ -3083,6 +3092,15 @@
       "recommendations": 1,
       "saas_id": "google-bigquery",
       "slug": "google-bigquery",
+      "status": "insufficient_recommendations"
+    },
+    {
+      "compare_path": null,
+      "name": "Veracode",
+      "path": "saas/veracode.json",
+      "recommendations": 1,
+      "saas_id": "veracode",
+      "slug": "veracode",
       "status": "insufficient_recommendations"
     },
     {
