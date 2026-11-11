@@ -1,0 +1,85 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-11T01:55:44Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "AGPL-3.0",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "OpenImmersive/OpenImmersive-Translator",
+      "created_at": "2026-07-03T13:22:18Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-11T01:55:44Z",
+      "forks": 1,
+      "found": true,
+      "host_repo_id": 1288306113,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "GNU Affero General Public License v3.0",
+      "licence_spdx": "AGPL-3.0",
+      "observed": {
+        "commits_in_12m_window": 68,
+        "commits_inspected": 2,
+        "issues_closed_12m": 0,
+        "merged_prs_inspected": 0,
+        "releases_seen": 2,
+        "tags_seen": 2
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-02T07:51:50Z",
+      "stars": 11
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a release",
+      "days_since_meaningful_activity": 12,
+      "last_meaningful_activity_at": "2026-10-29T05:58:36Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 16
+    }
+  },
+  "note": "waiting-room batch wr-20261110; 1 observation(s)",
+  "oss_id": "github.com/openimmersive/openimmersive-translator",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship",
+    "hinted SaaS 'immersivetranslate' is not evidenced by the repository itself"
+  ],
+  "repo_url": "https://github.com/openimmersive/openimmersive-translator",
+  "request_id": "wr-c23b30055b6b3a63",
+  "saas_hint": "immersivetranslate",
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Developing",
+      "confidence": 87.6,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-11T01:55:44Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/openimmersive/openimmersive-translator",
+      "score": 66.6,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "open_core_markers"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-10T08:47:22Z",
+  "submitted_by": "waiting-room:grokbot"
+}

@@ -1,0 +1,137 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-11T01:56:03Z",
+  "canonical": {
+    "promoted_in_run": null,
+    "status": "pending_promotion"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "frankShan001/CutVoke",
+      "created_at": "2026-09-15T17:01:59Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-11T01:56:03Z",
+      "forks": 2,
+      "found": true,
+      "host_repo_id": 1371830626,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 175,
+        "commits_inspected": 8,
+        "issues_closed_12m": 4,
+        "merged_prs_inspected": 10,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-11T01:52:36Z",
+      "stars": 32
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a release",
+      "days_since_meaningful_activity": 2,
+      "last_meaningful_activity_at": "2026-11-08T07:58:01Z",
+      "status": "active"
+    },
+    "saas_relationships": [
+      {
+        "category": "Video editing",
+        "excerpt": "topic capcut-alternative",
+        "field": "topics",
+        "matched": "capcut-alternative",
+        "saas_id": "capcut",
+        "saas_name": "CapCut"
+      }
+    ],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 20
+    }
+  },
+  "note": "waiting-room batch wr-20261110; 1 observation(s)",
+  "oss_id": "github.com/frankshan001/cutvoke",
+  "outcome": "accepted",
+  "reasons": [
+    "passes every rule; relationship evidenced"
+  ],
+  "repo_url": "https://github.com/frankshan001/cutvoke",
+  "request_id": "wr-fb2d2bd0a3ddc544",
+  "saas_hint": "capcut",
+  "scores": {
+    "errors": [],
+    "preliminary": true,
+    "project_health": {
+      "band": "Healthy",
+      "confidence": 89.7,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-11T01:56:03Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/frankshan001/cutvoke",
+      "score": 70.1,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": [
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 50.0,
+          "ease_of_adoption": 80.0,
+          "economic_advantage": 40.0,
+          "feature_equivalence": 100.0,
+          "integrations_extensibility": 50.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 50.0
+        },
+        "evaluated_at": "2026-11-11T01:56:03Z",
+        "evidence_families": [
+          "api",
+          "data_ownership",
+          "demo",
+          "import",
+          "plugins",
+          "quickstart",
+          "support"
+        ],
+        "oss_id": "github.com/frankshan001/cutvoke",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "capcut",
+        "score": 79.0,
+        "score_version": "1.3.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 79.0
+      }
+    ]
+  },
+  "submitted_at": "2026-11-10T12:47:42Z",
+  "submitted_by": "waiting-room:grokbot"
+}

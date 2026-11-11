@@ -1,0 +1,85 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-11T01:55:16Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "elifalanrocha/openring",
+      "created_at": "2026-10-30T13:44:26Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-11T01:55:16Z",
+      "forks": 6,
+      "found": true,
+      "host_repo_id": 1439783640,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 131,
+        "commits_inspected": 3,
+        "issues_closed_12m": 6,
+        "merged_prs_inspected": 2,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-09T04:10:53Z",
+      "stars": 20
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a release",
+      "days_since_meaningful_activity": 1,
+      "last_meaningful_activity_at": "2026-11-09T03:49:53Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 20
+    }
+  },
+  "note": "waiting-room batch wr-20261110; 1 observation(s)",
+  "oss_id": "github.com/elifalanrocha/openring",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship",
+    "hinted SaaS 'vapi' is not evidenced by the repository itself"
+  ],
+  "repo_url": "https://github.com/elifalanrocha/openring",
+  "request_id": "wr-f907e2681c99b1f3",
+  "saas_hint": "vapi",
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Healthy",
+      "confidence": 90.8,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-11T01:55:16Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/elifalanrocha/openring",
+      "score": 76.0,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "pre_1_0"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-10T04:40:23Z",
+  "submitted_by": "waiting-room:grokbot"
+}

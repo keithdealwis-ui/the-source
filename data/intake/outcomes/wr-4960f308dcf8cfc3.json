@@ -1,0 +1,190 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-11T01:55:37Z",
+  "canonical": {
+    "promoted_in_run": null,
+    "status": "pending_promotion"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "AGPL-3.0",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "open-net-worth-ai/open-net-worth",
+      "created_at": "2026-10-15T14:27:55Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-11T01:55:37Z",
+      "forks": 30,
+      "found": true,
+      "host_repo_id": 1420862684,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "GNU Affero General Public License v3.0",
+      "licence_spdx": "AGPL-3.0",
+      "observed": {
+        "commits_in_12m_window": 821,
+        "commits_inspected": 1,
+        "issues_closed_12m": 1,
+        "merged_prs_inspected": 10,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-10T19:46:07Z",
+      "stars": 343
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a code_commit",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-10T19:01:31Z",
+      "status": "active"
+    },
+    "saas_relationships": [
+      {
+        "category": "AI assistant",
+        "excerpt": "self-hosted alternative to claude and chatgpt personal finance. an ai agent that manages your budget a",
+        "field": "description",
+        "matched": "claude",
+        "saas_id": "claude",
+        "saas_name": "Claude"
+      },
+      {
+        "category": "Personal finance",
+        "excerpt": "topic ynab-alternative",
+        "field": "topics",
+        "matched": "ynab-alternative",
+        "saas_id": "ynab",
+        "saas_name": "YNAB"
+      }
+    ],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 12
+    }
+  },
+  "note": "waiting-room batch wr-20261110; 1 observation(s)",
+  "oss_id": "github.com/open-net-worth-ai/open-net-worth",
+  "outcome": "accepted",
+  "reasons": [
+    "passes every rule; relationship evidenced"
+  ],
+  "repo_url": "https://github.com/open-net-worth-ai/open-net-worth",
+  "request_id": "wr-4960f308dcf8cfc3",
+  "saas_hint": "ynab",
+  "scores": {
+    "errors": [],
+    "preliminary": true,
+    "project_health": {
+      "band": "Developing",
+      "confidence": 90.2,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-11T01:55:37Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/open-net-worth-ai/open-net-worth",
+      "score": 67.6,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "pre_1_0",
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": [
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described",
+            "readme_names_product"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 62.5,
+          "deployment_ownership": 68.8,
+          "ease_of_adoption": 100.0,
+          "economic_advantage": 60.0,
+          "feature_equivalence": 61.7,
+          "integrations_extensibility": 25.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 60.0
+        },
+        "evaluated_at": "2026-11-11T01:55:37Z",
+        "evidence_families": [
+          "api",
+          "data_ownership",
+          "demo",
+          "import",
+          "multi_user",
+          "quickstart",
+          "self_host",
+          "support"
+        ],
+        "oss_id": "github.com/open-net-worth-ai/open-net-worth",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "claude",
+        "score": 68.2,
+        "score_version": "1.3.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 68.2
+      },
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 62.5,
+          "deployment_ownership": 68.8,
+          "ease_of_adoption": 100.0,
+          "economic_advantage": 60.0,
+          "feature_equivalence": 92.5,
+          "integrations_extensibility": 25.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 60.0
+        },
+        "evaluated_at": "2026-11-11T01:55:37Z",
+        "evidence_families": [
+          "api",
+          "data_ownership",
+          "demo",
+          "import",
+          "multi_user",
+          "quickstart",
+          "self_host",
+          "support"
+        ],
+        "oss_id": "github.com/open-net-worth-ai/open-net-worth",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "ynab",
+        "score": 72.9,
+        "score_version": "1.3.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 72.9
+      }
+    ]
+  },
+  "submitted_at": "2026-11-10T08:47:21Z",
+  "submitted_by": "waiting-room:grokbot"
+}
