@@ -1,17 +1,23 @@
 {
-  "as_of": "2026-11-10T23:09:36Z",
+  "as_of": "2026-11-12T02:50:11Z",
   "collection": {
-    "as_of": "2026-11-10T23:09:36Z",
+    "as_of": "2026-11-12T02:50:11Z",
     "resolve": {
-      "asked": 5,
+      "asked": 19,
       "deferred": 0,
       "pool_added": [
-        "github.com/emollick/ai-portals",
-        "github.com/googlechrome/modern-web-guidance",
-        "github.com/microsoft/procexp-mac",
-        "github.com/r-lib/portable"
+        "github.com/0xdeadf1sh/assemblyforneovim",
+        "github.com/adrbn/bo2-mac",
+        "github.com/aws/aws-emulator",
+        "github.com/frigadehq/yogurt",
+        "github.com/gmkurtzer/ginux",
+        "github.com/huawei-csl/macaq",
+        "github.com/klad-app/klad",
+        "github.com/pomerado/pomerado",
+        "github.com/popvax/yash",
+        "github.com/tylertms/stela"
       ],
-      "resolved": 5,
+      "resolved": 19,
       "transient_failures": []
     },
     "sources": {
@@ -22,16 +28,16 @@
         "http_calls": 2,
         "items_read": 100,
         "listed": 100,
-        "mentions": 50,
+        "mentions": 48,
         "status": "ok"
       },
       "forem": {
         "errors": [],
-        "gone": 1,
-        "http_calls": 26,
-        "items_read": 22,
-        "listed": 22,
-        "mentions": 16,
+        "gone": 0,
+        "http_calls": 33,
+        "items_read": 25,
+        "listed": 25,
+        "mentions": 19,
         "status": "ok"
       },
       "hn": {
@@ -40,7 +46,7 @@
         "http_calls": 303,
         "items_read": 300,
         "listed": 338,
-        "mentions": 34,
+        "mentions": 40,
         "status": "ok"
       },
       "instagram": {
@@ -67,11 +73,11 @@
       }
     },
     "stars": {
-      "asked": 1,
+      "asked": 31,
       "error": null,
-      "found": 1,
+      "found": 31,
       "http_calls": 1,
-      "missing_before": 1,
+      "missing_before": 0,
       "not_found": 0,
       "status": "ok"
     }
@@ -79,45 +85,45 @@
   "counts": {
     "candidates": 30,
     "mentions_held": 768,
-    "mentions_in_window": 149,
+    "mentions_in_window": 170,
     "mentions_in_window_by_source": {
-      "bluesky": 74,
-      "forem": 16,
-      "hn": 59,
+      "bluesky": 75,
+      "forem": 20,
+      "hn": 75,
       "instagram": 0,
       "x": 0
     },
     "ranked": 50,
     "ranked_by_status": {
-      "candidate": 34,
-      "canonical": 1,
+      "candidate": 38,
+      "canonical": 0,
       "corpus": 0,
       "not_found": 0,
-      "unresolved": 15
+      "unresolved": 12
     },
-    "repositories_mentioned": 151,
-    "resolutions_held": 467,
+    "repositories_mentioned": 170,
+    "resolutions_held": 486,
     "stars": {
       "radar_only_without_stars": 0,
-      "ranked_with_stars": 49,
-      "ranked_without_stars": 1,
-      "readings_held": 254
+      "ranked_with_stars": 50,
+      "ranked_without_stars": 0,
+      "readings_held": 270
     },
-    "truncated": 101
+    "truncated": 120
   },
   "files": {
-    "candidates.jsonl": "7bb4bd3adac92a70fad2a315ed27e8e541da9084f18ee3fe9f6f634f8695053a",
-    "collection.json": "11c474a8bd0be0c8260388052d1cf48eb4341881b7127019c0c47b08857806a2",
-    "mentions.jsonl": "8d16623c48270b64651cc5b4a740ecbf517a9c6d5e0b5a3e36c94257190036ad",
-    "radar.jsonl": "44e46f4600b1aa7ef47c6fb962a0c00582fb0a5f534e19c85933b643ad8c84af",
-    "resolved.jsonl": "b99dd667ea4d93540cefdfb12d4bfb8535a4bdb8fa1eff586cb3c663f83fef65",
-    "stars.jsonl": "94c870fa7ca70d09ce1c5c4270ce08388a3b35cd738f859e33e02b4cd29ba934"
+    "candidates.jsonl": "307840429d9cf0b4e47c0aab6d679dfcd0afd23139ba1d8a0450c25b0ea56e96",
+    "collection.json": "09967e8476bc78df37958f4452c2f29c337814344943d78b2fb8c66823892b61",
+    "mentions.jsonl": "94c07afe24ebdbf716f3e4bde021c612e164636c38965dacb98489e599a14464",
+    "radar.jsonl": "529936146c4d93cfe1ab397841b5003c14e74f7b9670349866373a5fbfdabe36",
+    "resolved.jsonl": "73a45bb76219cdd83ced8fcfb0314e29f5022ae1c6c83de876c6afe31586cf6c",
+    "stars.jsonl": "b54cf75cb87d82cf9812638e069f05e3f2a6d06ccb5ce11896a12f492234b65c"
   },
   "inputs": {
-    "data/canonical/oss_projects.jsonl": "73c0b374d59db362843d4fcfc17fc954cf1e16033365a51a239167395a86a408",
-    "data/dataset/oss_projects.jsonl": "f421ea88adfd47b20bf5a3386a83aeddd663a3973c8dab6c1b3f5f5df6a81bbe",
-    "data/discovery/candidates.jsonl": "2b05f674ddddaa7d1910fb2bd9f3e891676c8efe119fcf23eee437909573e470",
-    "data/live/snapshot.json": "a9d3a0f169ede1b6208fa395ed7d4c115addba663c127642e38c6c8f7d063a13"
+    "data/canonical/oss_projects.jsonl": "8056f2c9414e242bb9b35221d997d632de6e455151da58c1b5d7979f3e02847a",
+    "data/dataset/oss_projects.jsonl": "0110190d27b40633728b52d38827d7c2212644c257d07edffc24d318c939d519",
+    "data/discovery/candidates.jsonl": "4fedefc62d36e0161893d3f623dee46695c9dfff220103c7ae6338647831f870",
+    "data/live/snapshot.json": "c6b6ddf8c2f1ac37dac885b2fed17054e52f2246ccdaf4a6e6e82d763daca092"
   },
   "methodology": {
     "doc": "docs/RADAR.md",
