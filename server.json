@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.keithdealwis-ui/the-source",
+  "title": "The Source",
+  "description": "Evidence-backed open-source alternatives to SaaS, with project health, fit and momentum.",
+  "repository": {
+    "url": "https://github.com/keithdealwis-ui/the-source",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "websiteUrl": "https://the-source.dev/",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://source-mcp.de-alwis.com/mcp"
+    }
+  ]
+}
