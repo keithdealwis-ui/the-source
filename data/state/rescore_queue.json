@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-12",
+  "as_of": "2026-11-13",
   "queue": {
     "github.com/1186258278/openclawchinesetranslation": {
       "queued_on": "2026-11-12",
@@ -16,7 +16,8 @@
     "github.com/aieradev/clypra": {
       "queued_on": "2026-11-12",
       "reasons": [
-        "release v1.6.0 -> v1.6.1"
+        "release v1.6.0 -> v1.6.1",
+        "release v1.6.1 -> v1.6.2"
       ]
     },
     "github.com/akaunting/akaunting": {
@@ -46,10 +47,28 @@
         "release 3.19.0 -> 3.20.0"
       ]
     },
+    "github.com/apache/logging-log4net": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release rel/3.5.0 -> rel/3.6.0"
+      ]
+    },
     "github.com/apify/crawlee-python": {
       "queued_on": "2026-11-11",
       "reasons": [
         "release v1.11.1 -> v1.11.2"
+      ]
+    },
+    "github.com/appsmithorg/appsmith": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v2.6.0 -> v2.7.0"
+      ]
+    },
+    "github.com/appwrite/appwrite": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release 2.7.1 -> 2.7.2"
       ]
     },
     "github.com/arastey/arasclient": {
@@ -70,10 +89,10 @@
         "release v1.11.12 -> v1.11.13"
       ]
     },
-    "github.com/aster-privacy/aster-mail": {
-      "queued_on": "2026-11-10",
+    "github.com/atomgraph/linkeddatahub": {
+      "queued_on": "2026-11-13",
       "reasons": [
-        "release v1.4.80 -> v1.4.81"
+        "release linkeddatahub-6.4.0 -> linkeddatahub-6.5.2"
       ]
     },
     "github.com/aws/aws-sam-cli": {
@@ -82,16 +101,16 @@
         "release v1.171.0 -> v1.172.1"
       ]
     },
-    "github.com/axllent/mailpit": {
-      "queued_on": "2026-11-08",
-      "reasons": [
-        "release v1.33.0 -> v1.33.1"
-      ]
-    },
     "github.com/azure/co-op-translator": {
       "queued_on": "2026-11-09",
       "reasons": [
         "release v0.23.3 -> v0.24.0"
+      ]
+    },
+    "github.com/b-editor/beutl": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v2.0.0-preview.11 -> v2.0.0-preview.12"
       ]
     },
     "github.com/baserow/baserow": {
@@ -100,10 +119,16 @@
         "release 2.4.1 -> 2.4.2"
       ]
     },
-    "github.com/bifrost0x/webssh": {
-      "queued_on": "2026-11-09",
+    "github.com/better-auth/better-auth": {
+      "queued_on": "2026-11-13",
       "reasons": [
-        "release v2.7.0 -> v3.0.0"
+        "release v1.7.21 -> v1.7.22"
+      ]
+    },
+    "github.com/bjarneo/cliamp": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v2.4.0 -> v2.4.1"
       ]
     },
     "github.com/bookstackapp/bookstack": {
@@ -118,10 +143,17 @@
         "release 2.2.40 -> 2.2.42"
       ]
     },
+    "github.com/bruin-data/bruin": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v0.11.819 -> v0.11.821"
+      ]
+    },
     "github.com/bruin-data/dac": {
       "queued_on": "2026-11-12",
       "reasons": [
-        "release v0.31.0 -> v0.32.0"
+        "release v0.31.0 -> v0.32.0",
+        "release v0.32.0 -> v0.32.1"
       ]
     },
     "github.com/budibase/budibase": {
@@ -133,7 +165,8 @@
     "github.com/builderio/builder": {
       "queued_on": "2026-11-12",
       "reasons": [
-        "release @builder.io/react@9.4.11 -> @builder.io/sdk-react@5.4.3"
+        "release @builder.io/react@9.4.11 -> @builder.io/sdk-react@5.4.3",
+        "release @builder.io/sdk-react@5.4.3 -> @builder.io/sdk-vue@5.4.4"
       ]
     },
     "github.com/cap-go/capgo.app": {
@@ -142,7 +175,8 @@
         "release capgo-22.32.0 -> capgo-22.33.1",
         "release capgo-22.33.1 -> capgo-22.33.2",
         "release capgo-22.33.2 -> capgo-22.38.0",
-        "release capgo-22.38.0 -> capgo-22.42.1"
+        "release capgo-22.38.0 -> capgo-22.42.1",
+        "release capgo-22.42.1 -> capgo-22.43.0"
       ]
     },
     "github.com/capcom6/android-sms-gateway": {
@@ -160,7 +194,14 @@
     "github.com/chatboxai/chatbox": {
       "queued_on": "2026-11-11",
       "reasons": [
-        "release v1.24.2 -> v1.24.3"
+        "release v1.24.2 -> v1.24.3",
+        "release v1.24.3 -> v1.24.4"
+      ]
+    },
+    "github.com/cloud-in-a-bottle/cloud-in-a-bottle": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v0.3.1 -> v0.3.2"
       ]
     },
     "github.com/cloudposse/atmos": {
@@ -173,12 +214,6 @@
       "queued_on": "2026-11-11",
       "reasons": [
         "release cli-v6.50.0 -> plugins-destination-clickhouse-v8.4.0"
-      ]
-    },
-    "github.com/coder/code-server": {
-      "queued_on": "2026-11-08",
-      "reasons": [
-        "release v4.145.0 -> v4.145.2"
       ]
     },
     "github.com/coder/coder": {
@@ -205,10 +240,22 @@
         "release v6.1.1 -> v6.2.0"
       ]
     },
+    "github.com/cometchat/cometchat-uikit-flutter": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v6.2.1 -> v6.3.0"
+      ]
+    },
     "github.com/comfy-org/comfyui": {
       "queued_on": "2026-11-11",
       "reasons": [
         "release v0.44.0 -> v0.45.0"
+      ]
+    },
+    "github.com/conductor-oss/conductor": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v3.33.0 -> v3.33.1"
       ]
     },
     "github.com/corgicorner/bisibility": {
@@ -221,7 +268,8 @@
     "github.com/crow-hq/llm-wiki-v2": {
       "queued_on": "2026-11-11",
       "reasons": [
-        "release v0.8.0 -> v1.0.0"
+        "release v0.8.0 -> v1.0.0",
+        "release v1.0.0 -> v1.0.1"
       ]
     },
     "github.com/cryptpad/cryptpad": {
@@ -236,18 +284,40 @@
         "release v1.8.21 -> v1.8.22"
       ]
     },
+    "github.com/dagster-io/dagster": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release 1.13.29 -> 1.13.30"
+      ]
+    },
+    "github.com/datalab-to/marker": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v2.1.0 -> v2.2.0"
+      ]
+    },
+    "github.com/debpalash/voicestudio": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v0.5.7 -> v0.5.8"
+      ]
+    },
     "github.com/deltachat/deltachat-android": {
       "queued_on": "2026-11-11",
       "reasons": [
         "release v2.67.0 -> v2.69.0"
       ]
     },
-    "github.com/devops-ia/helm-opencti": {
-      "queued_on": "2026-11-08",
+    "github.com/devilcoolyue/agentbox": {
+      "queued_on": "2026-11-13",
       "reasons": [
-        "release v3.0.29 -> v3.0.30",
-        "release v3.0.30 -> v3.0.31",
-        "release v3.0.31 -> v3.0.32"
+        "release v0.1.19 -> v0.1.20"
+      ]
+    },
+    "github.com/dokploy/dokploy": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v0.31.0 -> v0.31.2"
       ]
     },
     "github.com/dolibarr/dolibarr": {
@@ -271,7 +341,8 @@
     "github.com/element-hq/element-web": {
       "queued_on": "2026-11-12",
       "reasons": [
-        "release v1.12.33 -> v1.12.34"
+        "release v1.12.33 -> v1.12.34",
+        "release v1.12.34 -> v1.12.35"
       ]
     },
     "github.com/element-hq/synapse": {
@@ -286,11 +357,22 @@
         "release v4.1.0 -> v4.2.0"
       ]
     },
-    "github.com/ether/etherpad": {
-      "queued_on": "2026-11-08",
+    "github.com/encoredev/encore": {
+      "queued_on": "2026-11-13",
       "reasons": [
-        "release v3.3.15 -> v3.3.16",
-        "release v3.3.16 -> v3.3.17"
+        "release v1.58.8 -> v1.58.9"
+      ]
+    },
+    "github.com/ericerkz/kept": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v1.9.4 -> v1.9.5"
+      ]
+    },
+    "github.com/erxes/erxes": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release 3.4.18 -> 3.4.21"
       ]
     },
     "github.com/evergreen-it-dev/folio": {
@@ -299,25 +381,12 @@
         "release v0.4.3 -> v0.4.5"
       ]
     },
-    "github.com/every-app/every-app": {
-      "queued_on": "2026-11-10",
-      "reasons": [
-        "release None -> gateway-v0.3.0"
-      ]
-    },
     "github.com/fclairamb/solidping": {
       "queued_on": "2026-11-10",
       "reasons": [
         "release v0.44.3 -> v0.46.0",
-        "release v0.46.0 -> v0.47.0"
-      ]
-    },
-    "github.com/feder-cr/invisible_playwright": {
-      "queued_on": "2026-11-08",
-      "reasons": [
-        "release v0.45.0 -> v0.46.2",
-        "release v0.46.2 -> v0.47.1",
-        "release v0.47.1 -> v0.49.1"
+        "release v0.46.0 -> v0.47.0",
+        "release v0.47.0 -> v0.49.0"
       ]
     },
     "github.com/firezone/firezone": {
@@ -331,6 +400,12 @@
       "reasons": [
         "release v1.16.1 -> v1.17.0",
         "release v1.17.0 -> v2.0.0"
+      ]
+    },
+    "github.com/fluxerapp/fluxer": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release fluxer-release@2026.1112.20122 -> fluxer-release@2026.1112.195735"
       ]
     },
     "github.com/fonoster/fonoster": {
@@ -347,6 +422,24 @@
         "release v0.15.0 -> v0.15.1"
       ]
     },
+    "github.com/forwardemail/forwardemail.net": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v2.19.18 -> v2.19.20"
+      ]
+    },
+    "github.com/frappe/crm": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v16.0.2 -> v16.0.3"
+      ]
+    },
+    "github.com/frappe/erpnext": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v16.54.0 -> v16.55.0"
+      ]
+    },
     "github.com/frappe/hrms": {
       "queued_on": "2026-11-12",
       "reasons": [
@@ -357,18 +450,6 @@
       "queued_on": "2026-11-12",
       "reasons": [
         "release release-1.13.4 -> release-1.13.5"
-      ]
-    },
-    "github.com/freika/dawarich": {
-      "queued_on": "2026-11-08",
-      "reasons": [
-        "release 1.21.0 -> 1.22.0"
-      ]
-    },
-    "github.com/frigadehq/yap": {
-      "queued_on": "2026-11-10",
-      "reasons": [
-        "release v0.1.15 -> v0.1.16"
       ]
     },
     "github.com/gabandres/inkvolt": {
@@ -392,10 +473,34 @@
         "release v7.38.6 -> v7.39.0"
       ]
     },
+    "github.com/glimapp/glim": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v0.2.25 -> v0.2.26"
+      ]
+    },
+    "github.com/glpi-project/glpi": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release 12.0.1 -> 12.0.2"
+      ]
+    },
     "github.com/gogs/gogs": {
       "queued_on": "2026-11-12",
       "reasons": [
         "release v0.14.3 -> v0.14.4"
+      ]
+    },
+    "github.com/goharbor/harbor": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v2.16.0 -> v2.15.5"
+      ]
+    },
+    "github.com/golmenero/ratelog": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v2.3.1 -> v2.4.0"
       ]
     },
     "github.com/gonzaroman/acornix": {
@@ -410,15 +515,6 @@
         "release v0.19.0 -> v0.20.0"
       ]
     },
-    "github.com/gotenberg/gotenberg": {
-      "queued_on": "2026-11-07",
-      "reasons": [
-        "release v9.0.0 -> v9.1.0",
-        "release v9.1.0 -> v9.2.0",
-        "release v9.2.0 -> v9.3.0",
-        "release v9.3.0 -> v9.4.0"
-      ]
-    },
     "github.com/grafana/grafana": {
       "queued_on": "2026-11-11",
       "reasons": [
@@ -429,14 +525,6 @@
       "queued_on": "2026-11-12",
       "reasons": [
         "release v1.2.1 -> v1.2.2"
-      ]
-    },
-    "github.com/helixdb/helix-db": {
-      "queued_on": "2026-11-07",
-      "reasons": [
-        "release v3.6.0 -> v3.6.1",
-        "release v3.6.1 -> v3.6.2",
-        "release v3.6.2 -> v3.7.0"
       ]
     },
     "github.com/higress-group/higress": {
@@ -451,6 +539,12 @@
         "release 2.3.1 -> 2.4.0"
       ]
     },
+    "github.com/huggingface/diffusers": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v0.42.1 -> v0.43.0"
+      ]
+    },
     "github.com/huggingface/sentence-transformers": {
       "queued_on": "2026-11-12",
       "reasons": [
@@ -463,10 +557,10 @@
         "release v2026.11.05.2 -> v2026.11.09"
       ]
     },
-    "github.com/imgproxy/imgproxy": {
-      "queued_on": "2026-11-10",
+    "github.com/ideaplexa/voicetypr": {
+      "queued_on": "2026-11-13",
       "reasons": [
-        "release v4.0.22 -> v4.0.23"
+        "release v2.0.11 -> v2.0.12"
       ]
     },
     "github.com/immich-app/immich": {
@@ -491,6 +585,7 @@
     "github.com/jiangnangenius/floe-agent": {
       "queued_on": "2026-11-11",
       "reasons": [
+        "release v1.8.10 -> v1.8.16",
         "release v1.8.6 -> v1.8.7",
         "release v1.8.7 -> v1.8.10"
       ]
@@ -507,6 +602,12 @@
         "release v2.0.1 -> fa-models"
       ]
     },
+    "github.com/kanaries/graphic-walker": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v0.5.0 -> v0.6.0"
+      ]
+    },
     "github.com/karimz1/imgcompress": {
       "queued_on": "2026-11-11",
       "reasons": [
@@ -519,19 +620,18 @@
         "release v0.8.17 -> v0.8.19"
       ]
     },
-    "github.com/kdlbs/kandev": {
-      "queued_on": "2026-11-07",
-      "reasons": [
-        "release v0.100.0 -> v0.101.0",
-        "release v0.99.0 -> v0.99.1",
-        "release v0.99.1 -> v0.100.0"
-      ]
-    },
     "github.com/keploy/keploy": {
       "queued_on": "2026-11-11",
       "reasons": [
         "release v3.6.228 -> v3.6.229",
-        "release v3.6.229 -> v3.7.0"
+        "release v3.6.229 -> v3.7.0",
+        "release v3.7.0 -> v3.7.2"
+      ]
+    },
+    "github.com/kestra-io/kestra": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v2.0.9 -> v2.0.10"
       ]
     },
     "github.com/knadh/listmonk": {
@@ -546,10 +646,16 @@
         "release v1.1.2 -> v1.2.0"
       ]
     },
-    "github.com/koruworks/mono": {
-      "queued_on": "2026-11-08",
+    "github.com/kozea/radicale": {
+      "queued_on": "2026-11-13",
       "reasons": [
-        "release v0.1.4 -> v0.1.5"
+        "release v3.9.0 -> v3.9.1"
+      ]
+    },
+    "github.com/kuzzleio/kuzzle": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v2.61.0 -> v2.61.1"
       ]
     },
     "github.com/lambdasec/frame": {
@@ -581,7 +687,8 @@
       "queued_on": "2026-11-11",
       "reasons": [
         "release v7.5.1 -> v8.0.0",
-        "release v8.0.0 -> v8.0.1"
+        "release v8.0.0 -> v8.0.1",
+        "release v8.0.1 -> v8.1.1"
       ]
     },
     "github.com/leantime/leantime": {
@@ -593,19 +700,14 @@
     "github.com/leejet/stable-diffusion.cpp": {
       "queued_on": "2026-11-11",
       "reasons": [
-        "release master-1079-a3c49b1 -> master-1086-465adf3"
+        "release master-1079-a3c49b1 -> master-1086-465adf3",
+        "release master-1086-465adf3 -> master-1091-b9d7176"
       ]
     },
     "github.com/lennart-k/rustical": {
       "queued_on": "2026-11-12",
       "reasons": [
         "release v0.18.0 -> v0.19.0"
-      ]
-    },
-    "github.com/liberusoftware/project-accounting-erp-laravel-filament": {
-      "queued_on": "2026-11-07",
-      "reasons": [
-        "release v19.1.0 -> v19.1.1"
       ]
     },
     "github.com/libredb/libredb-studio": {
@@ -619,7 +721,8 @@
       "reasons": [
         "release 3.179.0 -> 3.190.0",
         "release 3.190.0 -> 3.208.0",
-        "release 3.208.0 -> 3.220.0"
+        "release 3.208.0 -> 3.220.0",
+        "release 3.220.0 -> 3.240.3"
       ]
     },
     "github.com/linuxmint/warpinator": {
@@ -632,6 +735,24 @@
       "queued_on": "2026-11-12",
       "reasons": [
         "release 4.99v -> 5.00v"
+      ]
+    },
+    "github.com/lobehub/lobehub": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v2.3.2 -> v2.3.3"
+      ]
+    },
+    "github.com/louislam/uptime-kuma": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release 2.5.9 -> 2.5.11"
+      ]
+    },
+    "github.com/lovasoa/whitebophir": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v2.18.33 -> v2.18.35"
       ]
     },
     "github.com/lowdefy/lowdefy": {
@@ -677,10 +798,10 @@
         "release v1.7.1 -> v1.8.0"
       ]
     },
-    "github.com/meteroid-oss/meteroid": {
-      "queued_on": "2026-11-07",
+    "github.com/michael-a-kuykendall/shimmy": {
+      "queued_on": "2026-11-13",
       "reasons": [
-        "release v2.1.0 -> v2.2.1"
+        "release v2.6.6 -> v2.6.7"
       ]
     },
     "github.com/mikopbx/core": {
@@ -695,6 +816,18 @@
         "release v3.0.5 -> v3.0.6"
       ]
     },
+    "github.com/misskey-dev/misskey": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release 2026.10.1 -> 2026.11.0"
+      ]
+    },
+    "github.com/moonshine-software/moonshine": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release 4.21.0 -> 5.0.0"
+      ]
+    },
     "github.com/msgbyte/tianji": {
       "queued_on": "2026-11-11",
       "reasons": [
@@ -704,7 +837,8 @@
     "github.com/n8n-io/n8n": {
       "queued_on": "2026-11-12",
       "reasons": [
-        "release n8n@2.47.3 -> n8n@2.47.4"
+        "release n8n@2.47.3 -> n8n@2.47.4",
+        "release n8n@2.47.4 -> n8n@2.47.5"
       ]
     },
     "github.com/nats-io/nats-server": {
@@ -727,23 +861,29 @@
         "release v0.82.0 -> v0.82.1"
       ]
     },
+    "github.com/nextcloud/server": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v33.0.10 -> v33.0.11"
+      ]
+    },
     "github.com/nhost/nhost": {
       "queued_on": "2026-11-11",
       "reasons": [
+        "release @nhost/dashboard@3.9.0 -> mcp@0.3.1",
         "release cli@1.52.2 -> @nhost/dashboard@3.9.0"
+      ]
+    },
+    "github.com/nodebb/nodebb": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v4.16.7 -> v4.16.8"
       ]
     },
     "github.com/nyakang/nyaterm": {
       "queued_on": "2026-11-10",
       "reasons": [
         "release v2.0.3 -> v2.0.4"
-      ]
-    },
-    "github.com/ocrmypdf/ocrmypdf": {
-      "queued_on": "2026-11-09",
-      "reasons": [
-        "release v17.13.0 -> v17.14.0",
-        "release v17.14.0 -> v17.14.1"
       ]
     },
     "github.com/ogkalu2/comic-translate": {
@@ -761,13 +901,20 @@
     "github.com/onyx-dot-app/onyx": {
       "queued_on": "2026-11-10",
       "reasons": [
-        "release v5.1.0 -> v5.1.1"
+        "release v5.1.0 -> v5.1.1",
+        "release v5.1.1 -> v5.1.2"
       ]
     },
-    "github.com/open-webui/open-webui": {
-      "queued_on": "2026-11-09",
+    "github.com/open-net-worth-ai/open-net-worth": {
+      "queued_on": "2026-11-13",
       "reasons": [
-        "release v0.13.0 -> v0.13.3"
+        "release 0.1.45 -> 0.1.47"
+      ]
+    },
+    "github.com/open-runtimes/open-runtimes": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release 0.13.44 -> 0.13.46"
       ]
     },
     "github.com/openfilm/openfilm": {
@@ -775,6 +922,18 @@
       "reasons": [
         "release v0.3.0 -> v0.3.1",
         "release v0.3.1 -> v0.3.2"
+      ]
+    },
+    "github.com/openobserve/openobserve": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v1.2.0-rc1 -> v1.2.0-rc2"
+      ]
+    },
+    "github.com/openrundev/openrun": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v0.20.15 -> v1.2611.120"
       ]
     },
     "github.com/opensignlabs/opensign": {
@@ -792,13 +951,15 @@
     "github.com/opsmill/infrahub": {
       "queued_on": "2026-11-11",
       "reasons": [
-        "release infrahub-v1.11.11 -> infrahub-v1.12.0"
+        "release infrahub-v1.11.11 -> infrahub-v1.12.0",
+        "release infrahub-v1.12.0 -> infrahub-v1.12.1"
       ]
     },
     "github.com/owasp/cve-lite-cli": {
       "queued_on": "2026-11-11",
       "reasons": [
-        "release v1.41.0 -> v1.41.1"
+        "release v1.41.0 -> v1.41.1",
+        "release v1.41.1 -> v1.41.2"
       ]
     },
     "github.com/p10node/k10s": {
@@ -807,10 +968,23 @@
         "release v0.1.8 -> v0.1.9"
       ]
     },
+    "github.com/passbolt/passbolt_api": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v5.17.0 -> v5.18.0"
+      ]
+    },
+    "github.com/passbolt/passbolt_browser_extension": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v5.17.1 -> v5.18.0"
+      ]
+    },
     "github.com/pbek/qownnotes": {
       "queued_on": "2026-11-11",
       "reasons": [
-        "release v26.11.6 -> v26.11.7"
+        "release v26.11.6 -> v26.11.7",
+        "release v26.11.7 -> v26.11.8"
       ]
     },
     "github.com/pdovhomilja/nextcrm-app": {
@@ -818,7 +992,8 @@
       "reasons": [
         "release v0.38.1 -> v0.38.4",
         "release v0.38.4 -> v0.39.4",
-        "release v0.39.4 -> v0.39.6"
+        "release v0.39.4 -> v0.39.6",
+        "release v0.39.6 -> v0.39.7"
       ]
     },
     "github.com/penpot/penpot": {
@@ -833,11 +1008,10 @@
         "release v4.2.1 -> v4.2.2"
       ]
     },
-    "github.com/perspective-dev/perspective": {
-      "queued_on": "2026-11-07",
+    "github.com/personaliai/chatty": {
+      "queued_on": "2026-11-13",
       "reasons": [
-        "release v5.7.0 -> v5.8.0",
-        "release v5.8.0 -> v5.9.0"
+        "release v2.1.0 -> v2.2.0"
       ]
     },
     "github.com/pion/webrtc": {
@@ -847,54 +1021,31 @@
         "release v5.0.0-rc.2 -> v5.0.0-rc.3"
       ]
     },
-    "github.com/piwigo/piwigo": {
-      "queued_on": "2026-11-10",
-      "reasons": [
-        "release 16.4.0 -> 16.5.0"
-      ]
-    },
     "github.com/pixtalelab/pixtale": {
       "queued_on": "2026-11-11",
       "reasons": [
         "release v2.2.0 -> v2.3.0"
       ]
     },
-    "github.com/polius/filesync": {
-      "queued_on": "2026-11-10",
-      "reasons": [
-        "release v.5.0.2 -> v.5.0.3"
-      ]
-    },
     "github.com/posthog/posthog": {
       "queued_on": "2026-11-10",
       "reasons": [
+        "release desktop-v0.61.1006 -> desktop-v0.61.1016",
         "release desktop-v0.61.967 -> desktop-v0.61.981",
         "release desktop-v0.61.981 -> posthog-cli/v0.19.2",
         "release posthog-cli/v0.19.2 -> desktop-v0.61.1006"
       ]
     },
-    "github.com/prestashop/prestashop": {
-      "queued_on": "2026-11-10",
+    "github.com/prowler-cloud/prowler": {
+      "queued_on": "2026-11-13",
       "reasons": [
-        "release 9.2.0 -> 9.2.1"
+        "release 5.48.0 -> 5.49.0"
       ]
     },
-    "github.com/primocms/primo": {
-      "queued_on": "2026-11-10",
+    "github.com/pulumi/pulumi": {
+      "queued_on": "2026-11-13",
       "reasons": [
-        "release v3.3.1 -> v3.3.2"
-      ]
-    },
-    "github.com/projectsend/projectsend": {
-      "queued_on": "2026-11-10",
-      "reasons": [
-        "release v2.8.0 -> v2.8.1"
-      ]
-    },
-    "github.com/pulsejet/memories": {
-      "queued_on": "2026-11-10",
-      "reasons": [
-        "release v11.0.2 -> v11.1.2"
+        "release v3.274.1 -> v3.276.0"
       ]
     },
     "github.com/pydantic/logfire": {
@@ -921,10 +1072,10 @@
         "release v3.3.14 -> v3.3.15"
       ]
     },
-    "github.com/rejetto/hfs": {
-      "queued_on": "2026-11-10",
+    "github.com/relaticle/relaticle": {
+      "queued_on": "2026-11-13",
       "reasons": [
-        "release v3.4.0 -> v3.4.1"
+        "release v3.9.0 -> v3.9.1"
       ]
     },
     "github.com/requarks/wiki": {
@@ -940,6 +1091,12 @@
         "release v4.31.4 -> v4.31.5"
       ]
     },
+    "github.com/riddix/retroarr": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v1.0.238 -> v1.0.239"
+      ]
+    },
     "github.com/riley-dorrington/job-board-aggregator": {
       "queued_on": "2026-11-10",
       "reasons": [
@@ -950,7 +1107,8 @@
     "github.com/rilldata/rill": {
       "queued_on": "2026-11-12",
       "reasons": [
-        "release v0.91.1 -> v0.91.2"
+        "release v0.91.1 -> v0.91.2",
+        "release v0.91.2 -> v0.91.3"
       ]
     },
     "github.com/rmyndharis/openwa": {
@@ -975,6 +1133,18 @@
       "queued_on": "2026-11-10",
       "reasons": [
         "release v0.9.32 -> v0.9.33"
+      ]
+    },
+    "github.com/rootprint/rootprint": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v0.4.6 -> v0.4.7"
+      ]
+    },
+    "github.com/router-for-me/cliproxyapi": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v8.0.67 -> v8.0.69"
       ]
     },
     "github.com/rrweb-io/rrweb": {
@@ -1004,13 +1174,21 @@
     "github.com/saleor/saleor": {
       "queued_on": "2026-11-11",
       "reasons": [
-        "release 3.23.47 -> 3.23.48"
+        "release 3.23.47 -> 3.23.48",
+        "release 3.23.48 -> 3.23.49"
       ]
     },
     "github.com/sameersbn/docker-gitlab": {
       "queued_on": "2026-11-12",
       "reasons": [
-        "release 19.5.3 -> 19.5.4"
+        "release 19.5.3 -> 19.5.4",
+        "release 19.5.4 -> 19.5.5"
+      ]
+    },
+    "github.com/samyrrrrrr990/openleads": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v5.2.0 -> v5.5.0"
       ]
     },
     "github.com/sartoopjj/thefeed": {
@@ -1023,13 +1201,15 @@
       "queued_on": "2026-11-11",
       "reasons": [
         "release v2.1.183 -> v2.1.188",
-        "release v2.1.188 -> v2.1.190"
+        "release v2.1.188 -> v2.1.190",
+        "release v2.1.190 -> v2.1.192"
       ]
     },
     "github.com/scalar/scalar": {
       "queued_on": "2026-11-11",
       "reasons": [
-        "release release-2026-11-05-1fa4255 -> release-2026-11-10-b9552d1"
+        "release release-2026-11-05-1fa4255 -> release-2026-11-10-b9552d1",
+        "release release-2026-11-10-b9552d1 -> release-2026-11-12-7e9d6bd"
       ]
     },
     "github.com/scanaislop/aislop": {
@@ -1043,13 +1223,15 @@
       "reasons": [
         "release v0.29.3 -> v0.30.1",
         "release v0.30.1 -> v0.30.2",
-        "release v0.30.2 -> v0.30.3"
+        "release v0.30.2 -> v0.30.3",
+        "release v0.30.3 -> v0.30.4"
       ]
     },
     "github.com/shopnex-ai/shopnex": {
       "queued_on": "2026-11-10",
       "reasons": [
-        "release v0.13.1 -> v0.14.0"
+        "release v0.13.1 -> v0.14.0",
+        "release v0.14.0 -> v0.15.0"
       ]
     },
     "github.com/sintan1729/chhoto-url": {
@@ -1068,7 +1250,8 @@
       "queued_on": "2026-11-11",
       "reasons": [
         "release v2.0.0 -> v2.1.1",
-        "release v2.1.1 -> v2.3.0"
+        "release v2.1.1 -> v2.3.0",
+        "release v2.3.0 -> v2.5.0"
       ]
     },
     "github.com/solidinvoice/solidinvoice": {
@@ -1083,19 +1266,6 @@
         "release v6.0.0 -> v6.0.1"
       ]
     },
-    "github.com/storj/storj": {
-      "queued_on": "2026-11-09",
-      "reasons": [
-        "release v1.166.1 -> v1.166.2",
-        "release v1.166.2 -> v1.166.3"
-      ]
-    },
-    "github.com/storytold/artcraft": {
-      "queued_on": "2026-11-08",
-      "reasons": [
-        "release artcraft-v0.41.0 -> artcraft-v0.41.1"
-      ]
-    },
     "github.com/storytold/filmcraft": {
       "queued_on": "2026-11-10",
       "reasons": [
@@ -1103,25 +1273,36 @@
         "release v0.19.0 -> v0.20.1"
       ]
     },
+    "github.com/storytold/lightcraft": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v0.21.0 -> v0.21.1"
+      ]
+    },
     "github.com/storytold/photocraft": {
       "queued_on": "2026-11-10",
       "reasons": [
         "release v0.21.0 -> v0.22.0",
-        "release v0.22.0 -> v0.23.0"
+        "release v0.22.0 -> v0.23.0",
+        "release v0.23.0 -> v0.23.1"
+      ]
+    },
+    "github.com/storytold/vectorcraft": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v0.24.0 -> v0.24.1"
+      ]
+    },
+    "github.com/strapi/strapi": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v5.61.0 -> v5.62.0"
       ]
     },
     "github.com/streetwriters/notesnook": {
       "queued_on": "2026-11-11",
       "reasons": [
         "release v3.4.12 -> v3.4.13"
-      ]
-    },
-    "github.com/supabase/storage": {
-      "queued_on": "2026-11-07",
-      "reasons": [
-        "release v1.89.13 -> v1.90.0",
-        "release v1.90.0 -> v1.90.2",
-        "release v1.90.2 -> v1.94.0"
       ]
     },
     "github.com/supercorp-ai/superci": {
@@ -1132,16 +1313,23 @@
         "release v0.20.3 -> v0.20.4"
       ]
     },
-    "github.com/supertokens/supertokens-core": {
-      "queued_on": "2026-11-07",
+    "github.com/superlinked/sie": {
+      "queued_on": "2026-11-13",
       "reasons": [
-        "release v12.4.2 -> v12.5.0"
+        "release v0.11.0 -> v0.11.1"
+      ]
+    },
+    "github.com/sveltia/sveltia-cms": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v0.263.0 -> v0.265.0"
       ]
     },
     "github.com/svix/svix-webhooks": {
       "queued_on": "2026-11-10",
       "reasons": [
         "release server-v1.104.0 -> v2.10.0",
+        "release server-v1.105.0 -> bridge-v1.102.0",
         "release v2.10.0 -> server-v1.105.0"
       ]
     },
@@ -1155,6 +1343,12 @@
       "queued_on": "2026-11-09",
       "reasons": [
         "release v8.2.0 -> v8.4.0"
+      ]
+    },
+    "github.com/tabler/tabler": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release @tabler/core@1.7.4 -> @tabler/core@1.7.5"
       ]
     },
     "github.com/taubyte/tau": {
@@ -1179,7 +1373,8 @@
       "queued_on": "2026-11-10",
       "reasons": [
         "release v1.22.27 -> v1.22.33",
-        "release v1.22.33 -> v1.22.34"
+        "release v1.22.33 -> v1.22.34",
+        "release v1.22.34 -> v1.22.35"
       ]
     },
     "github.com/thesnarkitecht/rembrandt": {
@@ -1207,6 +1402,12 @@
         "release v3.0.32 -> v3.0.33"
       ]
     },
+    "github.com/timescale/timescaledb": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release 2.31.0 -> 2.32.0"
+      ]
+    },
     "github.com/tinacms/tinacms": {
       "queued_on": "2026-11-10",
       "reasons": [
@@ -1222,15 +1423,8 @@
     "github.com/titraio/titra": {
       "queued_on": "2026-11-12",
       "reasons": [
-        "release v1.1.1 -> v1.1.2"
-      ]
-    },
-    "github.com/tolgee/tolgee-platform": {
-      "queued_on": "2026-11-07",
-      "reasons": [
-        "release v3.242.2 -> v3.242.4",
-        "release v3.242.4 -> v3.242.5",
-        "release v3.242.5 -> v3.242.6"
+        "release v1.1.1 -> v1.1.2",
+        "release v1.1.2 -> v1.2.0"
       ]
     },
     "github.com/tooljet/tooljet": {
@@ -1250,6 +1444,12 @@
       "reasons": [
         "release v6.75.0 -> v6.76.0",
         "release v6.76.0 -> v6.77.0"
+      ]
+    },
+    "github.com/tsuru/tsuru": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v1.33.0 -> v1.34.0"
       ]
     },
     "github.com/twentyhq/twenty": {
@@ -1272,22 +1472,41 @@
         "release v.2.0.0 -> v.2.0.1"
       ]
     },
+    "github.com/umami-software/umami": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v3.4.1 -> v3.5.0"
+      ]
+    },
+    "github.com/uptrace/uptrace": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v2.1.0-rc.2 -> v2.1.0-rc.3"
+      ]
+    },
     "github.com/utmstack/utmstack": {
       "queued_on": "2026-11-12",
       "reasons": [
         "release v11.3.0 -> v12.0.2"
       ]
     },
+    "github.com/vale-cli/vale": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v3.26.0 -> v3.27.0"
+      ]
+    },
+    "github.com/vendurehq/vendure": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v3.8.1 -> v3.8.2"
+      ]
+    },
     "github.com/vercel-labs/agent-browser": {
       "queued_on": "2026-11-10",
       "reasons": [
-        "release v0.41.2 -> v0.42.0"
-      ]
-    },
-    "github.com/verdaccio/verdaccio": {
-      "queued_on": "2026-11-09",
-      "reasons": [
-        "release v7.0.2 -> v7.1.0"
+        "release v0.41.2 -> v0.42.0",
+        "release v0.42.0 -> v0.43.0"
       ]
     },
     "github.com/victoriametrics/victoriametrics": {
@@ -1299,21 +1518,8 @@
     "github.com/viewtouch/viewtouch": {
       "queued_on": "2026-11-11",
       "reasons": [
-        "release modern-v0.16.1613 -> modern-v0.17.1626"
-      ]
-    },
-    "github.com/vladopajic/go-test-coverage": {
-      "queued_on": "2026-11-08",
-      "reasons": [
-        "release v2.22.0 -> v2.23.0"
-      ]
-    },
-    "github.com/vnotex/vnote": {
-      "queued_on": "2026-11-09",
-      "reasons": [
-        "release v4.14.0 -> v4.14.1",
-        "release v4.14.1 -> v4.14.2",
-        "release v4.14.2 -> v4.14.4"
+        "release modern-v0.16.1613 -> modern-v0.17.1626",
+        "release modern-v0.17.1626 -> modern-manual-0.18"
       ]
     },
     "github.com/voidauth/voidauth": {
@@ -1321,6 +1527,12 @@
       "reasons": [
         "release v1.18.1 -> v1.19.0",
         "release v1.19.0 -> v1.19.1"
+      ]
+    },
+    "github.com/warmbly/warmbly": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release v0.8.1 -> v0.8.4"
       ]
     },
     "github.com/wealthfolio/wealthfolio": {
@@ -1342,15 +1554,6 @@
         "release 0.311.0 -> 0.312.0"
       ]
     },
-    "github.com/wekan/wekan": {
-      "queued_on": "2026-11-07",
-      "reasons": [
-        "release v12.96 -> v13.00",
-        "release v13.00 -> v13.01",
-        "release v13.01 -> v13.04",
-        "release v13.04 -> v13.06"
-      ]
-    },
     "github.com/will-be-done/will-be-done": {
       "queued_on": "2026-11-11",
       "reasons": [
@@ -1362,7 +1565,8 @@
       "reasons": [
         "release v1.864.1 -> v1.865.0",
         "release v1.865.0 -> v1.867.0",
-        "release v1.867.0 -> v1.868.0"
+        "release v1.867.0 -> v1.868.0",
+        "release v1.868.0 -> v1.871.1"
       ]
     },
     "github.com/woocommerce/woocommerce": {
@@ -1383,6 +1587,12 @@
         "release v0.17.2 -> v0.17.3"
       ]
     },
+    "github.com/xushengfeng/esearch": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release 15.7.1 -> 15.8.0"
+      ]
+    },
     "github.com/xwiki/xwiki-platform": {
       "queued_on": "2026-11-11",
       "reasons": [
@@ -1392,19 +1602,27 @@
     "github.com/yelp/paasta": {
       "queued_on": "2026-11-12",
       "reasons": [
-        "release v1.64.1 -> v1.65.1"
+        "release v1.64.1 -> v1.65.1",
+        "release v1.65.1 -> v1.66.0"
       ]
     },
     "github.com/yuxino/kiri": {
       "queued_on": "2026-11-12",
       "reasons": [
-        "release v1.6.38 -> v1.6.42"
+        "release v1.6.38 -> v1.6.42",
+        "release v1.6.42 -> v1.6.43"
       ]
     },
     "github.com/zitadel/zitadel": {
       "queued_on": "2026-11-10",
       "reasons": [
         "release v4.20.1 -> v4.20.2"
+      ]
+    },
+    "github.com/zulip/zulip": {
+      "queued_on": "2026-11-13",
+      "reasons": [
+        "release 12.4 -> 13.0"
       ]
     }
   },

@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-12T02:50:11Z",
+  "as_of": "2026-11-13T00:07:14Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -129,8 +129,8 @@
     },
     "relationships": {
       "licence_exception": 37,
-      "recommendable": 2072,
-      "rejected": 3052
+      "recommendable": 2071,
+      "rejected": 3053
     }
   },
   "launch": {
@@ -418,15 +418,15 @@
       "zoho-mail",
       "zuora"
     ],
-    "catalogue_served_relationships": 1226,
-    "oss_distinct_products": 657,
-    "oss_projects": 658,
+    "catalogue_served_relationships": 1227,
+    "oss_distinct_products": 658,
+    "oss_projects": 659,
     "preserve_served": {
       "kept": 378,
-      "not_kept": 0,
-      "served_before": 378
+      "not_kept": 2,
+      "served_before": 380
     },
-    "relationships": 1604,
+    "relationships": 1605,
     "relationships_corroborated_by_2plus_sources": 218,
     "relationships_share_alike_only": 0,
     "saas_added_beyond_floor": 25,
@@ -458,7 +458,7 @@
     "named_exceptions_approved": 77,
     "note": "retained and flagged; recommendation_eligible is false for every record; none is in the launch set or in any export; retention establishes no reuse rights",
     "oss_projects": 29,
-    "oss_with_licence_issue_also_rejected_for_other_reasons": 20,
+    "oss_with_licence_issue_also_rejected_for_other_reasons": 21,
     "relationships_flagged": 37,
     "retained_under": {
       "decided_at": "2026-09-27",
@@ -478,18 +478,18 @@
   },
   "rejections": {
     "by_code": {
-      "archived": 18,
+      "archived": 19,
       "host_unverifiable": 7,
       "identity_unverified": 5,
       "licence_not_open": 45,
       "not_a_replacement": 2869,
       "not_a_repository": 9,
-      "not_found": 12,
+      "not_found": 11,
       "saas_not_in_catalogue": 235,
       "unmaintained": 65
     },
     "by_reason": {
-      "eligibility:archived": 5,
+      "eligibility:archived": 6,
       "eligibility:archived;no_recognised_open_source_licence;stale_no_meaningful_activity_12_months": 2,
       "eligibility:archived;stale_no_meaningful_activity_12_months": 11,
       "eligibility:host_not_independently_verifiable": 7,
@@ -498,7 +498,7 @@
       "eligibility:no_recognised_open_source_licence;stale_no_meaningful_activity_12_months": 16,
       "eligibility:no_recognised_open_source_licence;stale_no_meaningful_activity_12_months;repository_identity_changed_since_listed": 1,
       "eligibility:repository_identity_changed_since_listed": 3,
-      "eligibility:repository_not_found": 12,
+      "eligibility:repository_not_found": 11,
       "eligibility:stale_no_meaningful_activity_12_months": 65,
       "normalise:repo_url_not_a_repository": 9,
       "normalise:saas_not_in_catalogue": 235,
@@ -2022,7 +2022,6 @@
       "plausibility_review:Static/upload file server; not a file sync and sharing platform": 2,
       "plausibility_review:Status page generator; different kind of software": 1,
       "plausibility_review:Stealth AI overlay for calls; not a video conferencing platform": 5,
-      "plausibility_review:Stealth Playwright library for scraping; not a cross-browser testing cloud": 1,
       "plausibility_review:Stealth headless browser for developers; not a scraping service": 2,
       "plausibility_review:Story-to-video workflow over third-party model APIs; not an AI video generator": 1,
       "plausibility_review:Streaming ASR server; not a meeting notes transcription product": 1,
@@ -2306,7 +2305,7 @@
       "plausibility_review:inference server; not a multi-provider LLM API router": 1,
       "plausibility_review:infrastructure-as-code tool; not a platform that runs applications": 1,
       "plausibility_review:intranet tunneling reverse proxy; not a privacy VPN service": 1,
-      "plausibility_review:job match not yet desk-reviewed": 51,
+      "plausibility_review:job match not yet desk-reviewed": 52,
       "plausibility_review:layered image editor; not background removal": 1,
       "plausibility_review:layered photo/image editor; not template-based graphic design": 1,
       "plausibility_review:list of newsletter RSS feeds": 1,
@@ -2391,15 +2390,15 @@
   "verified": {
     "maintenance_status": {
       "active": 1344,
-      "maintained": 128,
+      "maintained": 129,
       "stale": 95,
-      "unverified": 19
+      "unverified": 18
     },
     "oss_recommendable": 1434,
     "oss_rejected": 152,
     "relationships_flagged_licence_exception": 37,
-    "relationships_rejected": 3052,
-    "relationships_validated": 2072,
+    "relationships_rejected": 3053,
+    "relationships_validated": 2071,
     "saas_with_validated_alternatives": 494
   }
 }

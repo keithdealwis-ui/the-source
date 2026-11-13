@@ -10,10 +10,10 @@
     ],
     "status": "partial"
   },
-  "dataset_version": "811717312eaff192",
+  "dataset_version": "4fdb7a0b6d5f06d4",
   "last_checked": {
-    "newest": "2026-11-12T02:50:11Z",
-    "oldest": "2026-11-12T02:50:11Z"
+    "newest": "2026-11-13T00:07:14Z",
+    "oldest": "2026-11-13T00:07:14Z"
   },
   "more_available": 0,
   "provenance": {
@@ -36,7 +36,7 @@
               "source_id": "intake"
             }
           ],
-          "validated_as_of": "2026-11-12T02:50:11Z"
+          "validated_as_of": "2026-11-13T00:07:14Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -50,14 +50,14 @@
             "readme_checked": true
           },
           "dimensions": {
-            "core_use_case_coverage": 50.0,
+            "core_use_case_coverage": 100.0,
             "deployment_ownership": 100.0,
             "ease_of_adoption": 72.5,
             "economic_advantage": 60.0,
-            "feature_equivalence": 16.7,
+            "feature_equivalence": 61.7,
             "integrations_extensibility": 100.0,
             "migration_friction": 100.0,
-            "production_commercial_readiness": 100.0
+            "production_commercial_readiness": 66.7
           },
           "evidence_families": [
             "api",
@@ -71,39 +71,37 @@
         }
       },
       "github_url": "https://github.com/every-app/every-app",
-      "last_meaningful_activity_at": "2026-11-09T09:40:50Z",
+      "last_meaningful_activity_at": "2026-11-12T19:04:59Z",
       "latest_release": {
-        "published_at": "2026-11-09T09:40:50Z",
-        "tag": "gateway-v0.3.0"
+        "published_at": "2026-11-12T18:39:32Z",
+        "tag": "gateway-v0.3.2"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-12T02:50:11Z",
+      "live_checked_at": "2026-11-13T00:07:14Z",
       "maintenance_status": "active",
       "name": "every-app",
       "note": {
-        "gaps": [
-          "feature parity"
-        ],
+        "gaps": [],
         "origin": "derived",
         "strengths": [
-          "self-hosting and data ownership",
-          "integrations and extensibility"
+          "core use-case coverage",
+          "self-hosting and data ownership"
         ],
-        "text": "Strongest on self-hosting and data ownership and integrations and extensibility; weakest on feature parity."
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
       },
       "oss_id": "github.com/every-app/every-app",
       "project_health": {
         "band": "Healthy",
-        "confidence": 89.7,
-        "score": 78.4,
-        "trajectory": "Insufficient history"
+        "confidence": 93.7,
+        "score": 78.6,
+        "trajectory": "Rising"
       },
       "rank": 1,
       "replacement_fit": {
         "caps": [],
         "confidence": 86.5,
-        "evaluated_at": "2026-11-05T02:13:56Z",
-        "score": 68.9,
+        "evaluated_at": "2026-11-13T00:07:14Z",
+        "score": 84.8,
         "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/every-app/every-app",
@@ -114,7 +112,7 @@
       "sources": [
         "intake"
       ],
-      "stars": 805
+      "stars": 811
     },
     {
       "evidence": {
@@ -128,7 +126,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-12T02:50:11Z"
+          "validated_as_of": "2026-11-13T00:07:14Z"
         },
         "replacement_fit": {
           "caps": [
@@ -175,7 +173,7 @@
         "tag": "v0.48.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-12T02:50:11Z",
+      "live_checked_at": "2026-11-13T00:07:14Z",
       "maintenance_status": "active",
       "name": "bisibility",
       "note": {
@@ -216,7 +214,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 602
+      "stars": 601
     }
   ],
   "saas": {
