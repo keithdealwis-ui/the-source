@@ -1,40 +1,37 @@
 {
-  "as_of": "2026-11-13T00:07:14Z",
+  "as_of": "2026-11-14T02:13:41Z",
   "collection": {
-    "as_of": "2026-11-13T00:07:14Z",
+    "as_of": "2026-11-14T02:13:41Z",
     "resolve": {
-      "asked": 8,
+      "asked": 14,
       "deferred": 0,
       "pool_added": [
-        "github.com/chocoford/excalidrawz",
-        "github.com/hyperionaidev/smolmaxxing",
-        "github.com/janestreet/agent_skills",
-        "github.com/necoz-oss/type-tune",
-        "github.com/nothings/stb",
-        "github.com/parcha-ai/agentrun",
-        "github.com/simpsoka/zigzag"
+        "github.com/basetenlabs/deepseek-ultrafast",
+        "github.com/lonewolf-im/lonewolf"
       ],
-      "resolved": 8,
+      "resolved": 14,
       "transient_failures": []
     },
     "sources": {
       "bluesky": {
-        "errors": [],
+        "errors": [
+          "bluesky 'github': http 500"
+        ],
         "gone": 0,
-        "host": "https://api.bsky.app",
-        "http_calls": 2,
-        "items_read": 100,
-        "listed": 100,
-        "mentions": 44,
-        "status": "ok"
+        "host": null,
+        "http_calls": 6,
+        "items_read": 0,
+        "listed": 0,
+        "mentions": 0,
+        "status": "failed"
       },
       "forem": {
         "errors": [],
-        "gone": 1,
-        "http_calls": 34,
-        "items_read": 29,
-        "listed": 29,
-        "mentions": 19,
+        "gone": 0,
+        "http_calls": 33,
+        "items_read": 28,
+        "listed": 28,
+        "mentions": 20,
         "status": "ok"
       },
       "hn": {
@@ -42,8 +39,8 @@
         "gone": 0,
         "http_calls": 303,
         "items_read": 300,
-        "listed": 346,
-        "mentions": 41,
+        "listed": 342,
+        "mentions": 40,
         "status": "ok"
       },
       "instagram": {
@@ -70,9 +67,9 @@
       }
     },
     "stars": {
-      "asked": 2,
+      "asked": 36,
       "error": null,
-      "found": 2,
+      "found": 36,
       "http_calls": 1,
       "missing_before": 0,
       "not_found": 0,
@@ -81,46 +78,46 @@
   },
   "counts": {
     "candidates": 30,
-    "mentions_held": 761,
-    "mentions_in_window": 171,
+    "mentions_held": 737,
+    "mentions_in_window": 150,
     "mentions_in_window_by_source": {
-      "bluesky": 76,
-      "forem": 20,
-      "hn": 75,
+      "bluesky": 60,
+      "forem": 21,
+      "hn": 69,
       "instagram": 0,
       "x": 0
     },
     "ranked": 50,
     "ranked_by_status": {
-      "candidate": 40,
+      "candidate": 35,
       "canonical": 0,
       "corpus": 0,
       "not_found": 0,
-      "unresolved": 10
+      "unresolved": 15
     },
-    "repositories_mentioned": 172,
-    "resolutions_held": 494,
+    "repositories_mentioned": 151,
+    "resolutions_held": 508,
     "stars": {
       "radar_only_without_stars": 0,
       "ranked_with_stars": 50,
       "ranked_without_stars": 0,
-      "readings_held": 271
+      "readings_held": 290
     },
-    "truncated": 122
+    "truncated": 101
   },
   "files": {
-    "candidates.jsonl": "01824559aebb80b955e1b922d1be9f893fb67d0d7d08c5ed8734140189c32d47",
-    "collection.json": "a2f2640a4d89e5e803bc6661656794d77fe6685d182de8042fe17c683c98e6ca",
-    "mentions.jsonl": "ec7db17753a389a5aa9f2f6cb839dbc90ca7bb12ce9796536b0d787d0113324f",
-    "radar.jsonl": "50371f586e9cbf259d32da37b8208af59e3a2084717b51ef1227f84bbeeb9ee8",
-    "resolved.jsonl": "75bcb301e4dfe2a5b8d4e729214ef006bf5eda55efd5cf3790aaaf98e455ea69",
-    "stars.jsonl": "f172fa7b552f9e96f6366e3fb2c5bb9ad39c942f2350cecd050f9a9127a4c8c7"
+    "candidates.jsonl": "00d90326e412901aadd3ca723e193fddbabe5496c9cb6149e2288bb09798df12",
+    "collection.json": "14bc8b701075cfa0a64156809764ec280b9b83bd970d770546bca3fae7c9dc3b",
+    "mentions.jsonl": "d37e6035eb539fb3920458847ed7db0fac67e1b6a081c2db11ebce46e7792fec",
+    "radar.jsonl": "f09c1febbf521e25f4da448ea5ca2446d2e516243889824a31e50fc9a7a37993",
+    "resolved.jsonl": "110b12ca1aaf5d622e08a42620cb3d36775f55e0aca7bdf6b7b5dcbdc5c23a7e",
+    "stars.jsonl": "89e1d4a4d624ce885d326371c8bd0ecd2044fe831e2b9971b1e2d8317f5e67ee"
   },
   "inputs": {
-    "data/canonical/oss_projects.jsonl": "5d1a2d563bf67671f271de3a70092e54f064c0a597bb2d1dfcfdcac9fa2e3577",
-    "data/dataset/oss_projects.jsonl": "b2c7fbddd05ca755f1e621766a00fc8d2a0a3cf3726f5a3ac5c9105bfa966ba5",
-    "data/discovery/candidates.jsonl": "c64a4a00d81c9f1213423bdb20ec6dbbc8ffc27185edeea017ff0bdca466d9d9",
-    "data/live/snapshot.json": "6b568507ff996d6dd245b4e183597c22a9a837182150c6b2d0e17b9e0c8e23e6"
+    "data/canonical/oss_projects.jsonl": "c8b18a3250adeeb3d7318c3d819c259c6e1fbaae71532eed98b5b65ca6559873",
+    "data/dataset/oss_projects.jsonl": "98e17aad0636f35cfb0aea42dd07bb4625ea2f094b8a979e89905876d4fdd000",
+    "data/discovery/candidates.jsonl": "efaffa02d0a34af55cf74a5971c7c91f339ecffd38be72a59de69e7f64221aea",
+    "data/live/snapshot.json": "3eec91b3035c6dafaebe8dcbc1f911783199a5a62f040996ba801d88b6936422"
   },
   "methodology": {
     "doc": "docs/RADAR.md",

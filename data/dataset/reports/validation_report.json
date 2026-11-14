@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-13T00:07:14Z",
+  "as_of": "2026-11-14T02:13:41Z",
   "checks": [
     {
       "criterion": 1,
@@ -219,7 +219,7 @@
       "failures": 0,
       "id": "activity.evidence_is_not_docs_only",
       "kind": "assertion",
-      "observed": 5286,
+      "observed": 5282,
       "ok": true
     },
     {
@@ -334,8 +334,8 @@
       "id": "maintenance.classification_matches_definition",
       "kind": "assertion",
       "observed": {
-        "active": 1344,
-        "maintained": 129,
+        "active": 1341,
+        "maintained": 132,
         "stale": 95,
         "unverified": 18
       },
@@ -505,11 +505,11 @@
       "kind": "observation",
       "observed": {
         "examples": [
-          "github.com/stirling-tools/stirling-pdf (96443 stars: no_recognised_open_source_licence)",
-          "github.com/opendatalab/mineru (83573 stars: no_recognised_open_source_licence)",
-          "github.com/nomic-ai/gpt4all (77356 stars: stale_no_meaningful_activity_12_months)",
-          "github.com/pi-hole/pi-hole (61869 stars: no_recognised_open_source_licence)",
-          "github.com/pocketbase/pocketbase (61600 stars: archived)"
+          "github.com/stirling-tools/stirling-pdf (96526 stars: no_recognised_open_source_licence)",
+          "github.com/opendatalab/mineru (83640 stars: no_recognised_open_source_licence)",
+          "github.com/nomic-ai/gpt4all (77344 stars: stale_no_meaningful_activity_12_months)",
+          "github.com/pi-hole/pi-hole (61962 stars: no_recognised_open_source_licence)",
+          "github.com/pocketbase/pocketbase (61596 stars: archived)"
         ],
         "launch_projects_under_500_stars": 103,
         "rejected_with_10k_plus_stars": 35
