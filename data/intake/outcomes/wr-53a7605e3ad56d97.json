@@ -1,0 +1,85 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-14T02:25:10Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "Forward-Future/scarlet",
+      "created_at": "2026-11-13T17:02:31Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-14T02:25:10Z",
+      "forks": 21,
+      "found": true,
+      "host_repo_id": 1456871094,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 132,
+        "commits_inspected": 1,
+        "issues_closed_12m": 1,
+        "merged_prs_inspected": 10,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-14T02:23:46Z",
+      "stars": 123
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a release",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-14T02:23:46Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 0
+    }
+  },
+  "note": "waiting-room batch wr-20261113; 1 observation(s)",
+  "oss_id": "github.com/forward-future/scarlet",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship",
+    "hinted SaaS 'descript' is not evidenced by the repository itself"
+  ],
+  "repo_url": "https://github.com/forward-future/scarlet",
+  "request_id": "wr-53a7605e3ad56d97",
+  "saas_hint": "descript",
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Healthy",
+      "confidence": 87.3,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-14T02:25:10Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/forward-future/scarlet",
+      "score": 71.0,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-13T20:43:39Z",
+  "submitted_by": "waiting-room:grokbot"
+}
