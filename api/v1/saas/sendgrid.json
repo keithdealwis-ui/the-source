@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "791251f2fc075a63",
+  "dataset_version": "00858e7b7d3d426d",
   "last_checked": {
-    "newest": "2026-11-14T02:13:41Z",
-    "oldest": "2026-11-14T02:13:41Z"
+    "newest": "2026-11-15T01:45:01Z",
+    "oldest": "2026-11-15T01:45:01Z"
   },
   "more_available": 0,
   "provenance": {
@@ -37,7 +37,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-11-14T02:13:41Z"
+          "validated_as_of": "2026-11-15T01:45:01Z"
         },
         "replacement_fit": {
           "caps": [
@@ -79,7 +79,7 @@
         "tag": "v3.4.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-14T02:13:41Z",
+      "live_checked_at": "2026-11-15T01:45:01Z",
       "maintenance_status": "active",
       "name": "Haraka",
       "note": {
@@ -120,7 +120,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 5636
+      "stars": 5637
     },
     {
       "evidence": {
@@ -144,7 +144,7 @@
               "source_id": "btwso"
             }
           ],
-          "validated_as_of": "2026-11-14T02:13:41Z"
+          "validated_as_of": "2026-11-15T01:45:01Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -180,7 +180,7 @@
         "tag": "3.3.7"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-14T02:13:41Z",
+      "live_checked_at": "2026-11-15T01:45:01Z",
       "maintenance_status": "active",
       "name": "Postal",
       "note": {
@@ -219,7 +219,7 @@
         "emmraan",
         "btwso"
       ],
-      "stars": 16956
+      "stars": 16958
     },
     {
       "evidence": {
@@ -233,7 +233,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-14T02:13:41Z"
+          "validated_as_of": "2026-11-15T01:45:01Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -247,7 +247,7 @@
           },
           "dimensions": {
             "core_use_case_coverage": 100.0,
-            "deployment_ownership": 68.8,
+            "deployment_ownership": 93.8,
             "ease_of_adoption": 100.0,
             "economic_advantage": 45.0,
             "feature_equivalence": 100.0,
@@ -257,6 +257,7 @@
           },
           "evidence_families": [
             "api",
+            "cloud_option",
             "data_ownership",
             "demo",
             "import",
@@ -272,13 +273,13 @@
         }
       },
       "github_url": "https://github.com/goposta/posta",
-      "last_meaningful_activity_at": "2026-11-10T03:32:18Z",
+      "last_meaningful_activity_at": "2026-11-14T06:59:33Z",
       "latest_release": {
-        "published_at": "2026-11-10T03:32:18Z",
-        "tag": "v0.20.0"
+        "published_at": "2026-11-14T06:59:33Z",
+        "tag": "v0.20.1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-14T02:13:41Z",
+      "live_checked_at": "2026-11-15T01:45:01Z",
       "maintenance_status": "active",
       "name": "posta",
       "note": {
@@ -293,16 +294,16 @@
       "oss_id": "github.com/goposta/posta",
       "project_health": {
         "band": "Healthy",
-        "confidence": 92.1,
-        "score": 81.7,
+        "confidence": 93.7,
+        "score": 82.2,
         "trajectory": "Insufficient history"
       },
       "rank": 3,
       "replacement_fit": {
         "caps": [],
         "confidence": 86.5,
-        "evaluated_at": "2026-11-07T00:51:19Z",
-        "score": 92.1,
+        "evaluated_at": "2026-11-15T01:45:01Z",
+        "score": 94.6,
         "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/goposta/posta",
@@ -313,7 +314,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 639
+      "stars": 640
     },
     {
       "evidence": {
@@ -327,7 +328,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-14T02:13:41Z"
+          "validated_as_of": "2026-11-15T01:45:01Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -367,7 +368,7 @@
         "tag": "0.0.48"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-14T02:13:41Z",
+      "live_checked_at": "2026-11-15T01:45:01Z",
       "maintenance_status": "active",
       "name": "relay",
       "note": {
@@ -402,7 +403,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 923
+      "stars": 924
     },
     {
       "evidence": {
@@ -416,7 +417,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-14T02:13:41Z"
+          "validated_as_of": "2026-11-15T01:45:01Z"
         },
         "replacement_fit": {
           "caps": [
@@ -466,7 +467,7 @@
         "tag": "v1.16.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-14T02:13:41Z",
+      "live_checked_at": "2026-11-15T01:45:01Z",
       "maintenance_status": "active",
       "name": "e2a",
       "note": {

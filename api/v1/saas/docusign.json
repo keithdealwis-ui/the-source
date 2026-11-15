@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "791251f2fc075a63",
+  "dataset_version": "00858e7b7d3d426d",
   "last_checked": {
-    "newest": "2026-11-14T02:13:41Z",
-    "oldest": "2026-11-14T02:13:41Z"
+    "newest": "2026-11-15T01:45:01Z",
+    "oldest": "2026-11-15T01:45:01Z"
   },
   "more_available": 0,
   "provenance": {
@@ -43,7 +43,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-11-14T02:13:41Z"
+          "validated_as_of": "2026-11-15T01:45:01Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -87,7 +87,7 @@
         "tag": "3.3.6"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-14T02:13:41Z",
+      "live_checked_at": "2026-11-15T01:45:01Z",
       "maintenance_status": "active",
       "name": "DocuSeal",
       "note": {
@@ -123,7 +123,7 @@
         "solvohq",
         "runacapital"
       ],
-      "stars": 19047
+      "stars": 19053
     },
     {
       "evidence": {
@@ -137,7 +137,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-11-14T02:13:41Z"
+          "validated_as_of": "2026-11-15T01:45:01Z"
         },
         "replacement_fit": {
           "caps": [
@@ -179,7 +179,7 @@
         "tag": "v15.0.12"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-14T02:13:41Z",
+      "live_checked_at": "2026-11-15T01:45:01Z",
       "maintenance_status": "active",
       "name": "LibreSign",
       "note": {
@@ -254,7 +254,7 @@
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-14T02:13:41Z"
+          "validated_as_of": "2026-11-15T01:45:01Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -295,7 +295,7 @@
         "tag": "v2.22.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-14T02:13:41Z",
+      "live_checked_at": "2026-11-15T01:45:01Z",
       "maintenance_status": "active",
       "name": "Documenso",
       "note": {
@@ -334,7 +334,7 @@
         "btwso",
         "altstack"
       ],
-      "stars": 15760
+      "stars": 15768
     },
     {
       "evidence": {
@@ -348,7 +348,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-11-14T02:13:41Z"
+          "validated_as_of": "2026-11-15T01:45:01Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -366,20 +366,22 @@
             "deployment_ownership": 68.8,
             "ease_of_adoption": 80.0,
             "economic_advantage": 45.0,
-            "feature_equivalence": 85.0,
-            "integrations_extensibility": 50.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 75.0,
             "migration_friction": 100.0,
-            "production_commercial_readiness": 60.0
+            "production_commercial_readiness": 80.0
           },
           "evidence_families": [
             "api",
             "data_ownership",
             "demo",
             "import",
+            "multi_user",
             "plugins",
             "quickstart",
             "self_host",
-            "support"
+            "support",
+            "webhook"
           ],
           "scoring_path": "single_project"
         }
@@ -392,7 +394,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the AGPL-3.0 core; parts under non-open terms are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-14T02:13:41Z",
+      "live_checked_at": "2026-11-15T01:45:01Z",
       "maintenance_status": "active",
       "name": "OpenSign",
       "note": {
@@ -400,23 +402,23 @@
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
-          "migration path"
+          "feature parity"
         ],
-        "text": "Strongest on core use-case coverage and migration path."
+        "text": "Strongest on core use-case coverage and feature parity."
       },
       "oss_id": "github.com/opensignlabs/opensign",
       "project_health": {
         "band": "Healthy",
-        "confidence": 96.6,
-        "score": 76.0,
-        "trajectory": "Declining"
+        "confidence": 94.7,
+        "score": 78.4,
+        "trajectory": "Stable"
       },
       "rank": 4,
       "replacement_fit": {
         "caps": [],
         "confidence": 92.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 79.9,
+        "evaluated_at": "2026-11-15T01:45:01Z",
+        "score": 86.6,
         "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/OpenSignLabs/OpenSign",
@@ -427,7 +429,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 7258
+      "stars": 7263
     }
   ],
   "saas": {

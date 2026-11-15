@@ -1,35 +1,37 @@
 {
-  "as_of": "2026-11-14T02:13:41Z",
+  "as_of": "2026-11-15T01:45:01Z",
   "resolve": {
-    "asked": 14,
+    "asked": 7,
     "deferred": 0,
     "pool_added": [
-      "github.com/basetenlabs/deepseek-ultrafast",
-      "github.com/lonewolf-im/lonewolf"
+      "github.com/akhouri-systems/apic",
+      "github.com/fursoy/fursoy-cpu",
+      "github.com/ggml-org/ggml",
+      "github.com/irs-public/direct-file",
+      "github.com/paul-nameless/agweb",
+      "github.com/vaibhaav-tiwari/deepseek-v3-jax"
     ],
-    "resolved": 14,
+    "resolved": 7,
     "transient_failures": []
   },
   "sources": {
     "bluesky": {
-      "errors": [
-        "bluesky 'github': http 500"
-      ],
+      "errors": [],
       "gone": 0,
-      "host": null,
-      "http_calls": 6,
-      "items_read": 0,
-      "listed": 0,
-      "mentions": 0,
-      "status": "failed"
+      "host": "https://api.bsky.app",
+      "http_calls": 2,
+      "items_read": 100,
+      "listed": 100,
+      "mentions": 48,
+      "status": "ok"
     },
     "forem": {
       "errors": [],
       "gone": 0,
-      "http_calls": 33,
-      "items_read": 28,
-      "listed": 28,
-      "mentions": 20,
+      "http_calls": 29,
+      "items_read": 24,
+      "listed": 24,
+      "mentions": 16,
       "status": "ok"
     },
     "hn": {
@@ -37,8 +39,8 @@
       "gone": 0,
       "http_calls": 303,
       "items_read": 300,
-      "listed": 342,
-      "mentions": 40,
+      "listed": 354,
+      "mentions": 38,
       "status": "ok"
     },
     "instagram": {
@@ -65,11 +67,11 @@
     }
   },
   "stars": {
-    "asked": 36,
+    "asked": 5,
     "error": null,
-    "found": 36,
+    "found": 5,
     "http_calls": 1,
-    "missing_before": 0,
+    "missing_before": 1,
     "not_found": 0,
     "status": "ok"
   }
