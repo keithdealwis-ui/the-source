@@ -158,7 +158,7 @@ SOFTWARE.
 
 ## sfermigier/awesome-foss-alternatives
 
-- Source: https://github.com/sfermigier/awesome-foss-alternatives at commit 43da75ebbd9b69de11d7e938fb89dffbba27fffe
+- Source: https://github.com/sfermigier/awesome-foss-alternatives at commit 6acca82933ffb61978b1ada46cd09a21172ec0cb
 - Licence: CC-BY-4.0
 - Attribution: "Awesome Free / Open Source Alternatives (to common SaaS products) for Business Use" by Stefane Fermigier and contributors, https://github.com/sfermigier/awesome-foss-alternatives, licensed CC BY 4.0; facts extracted, no text reproduced
 

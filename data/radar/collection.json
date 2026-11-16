@@ -1,17 +1,16 @@
 {
-  "as_of": "2026-11-15T01:45:01Z",
+  "as_of": "2026-11-16T01:50:14Z",
   "resolve": {
-    "asked": 7,
+    "asked": 9,
     "deferred": 0,
     "pool_added": [
-      "github.com/akhouri-systems/apic",
-      "github.com/fursoy/fursoy-cpu",
-      "github.com/ggml-org/ggml",
-      "github.com/irs-public/direct-file",
-      "github.com/paul-nameless/agweb",
-      "github.com/vaibhaav-tiwari/deepseek-v3-jax"
+      "github.com/db-branch/db-branch",
+      "github.com/eclipse-mosquitto/mosquitto",
+      "github.com/foxworkshop/shadowrecomp",
+      "github.com/matheuzgomes/gawain",
+      "github.com/tthanh2k6/turbo-browser-mcp"
     ],
-    "resolved": 7,
+    "resolved": 9,
     "transient_failures": []
   },
   "sources": {
@@ -22,16 +21,16 @@
       "http_calls": 2,
       "items_read": 100,
       "listed": 100,
-      "mentions": 48,
+      "mentions": 42,
       "status": "ok"
     },
     "forem": {
       "errors": [],
       "gone": 0,
-      "http_calls": 29,
-      "items_read": 24,
-      "listed": 24,
-      "mentions": 16,
+      "http_calls": 33,
+      "items_read": 28,
+      "listed": 28,
+      "mentions": 20,
       "status": "ok"
     },
     "hn": {
@@ -39,8 +38,8 @@
       "gone": 0,
       "http_calls": 303,
       "items_read": 300,
-      "listed": 354,
-      "mentions": 38,
+      "listed": 359,
+      "mentions": 35,
       "status": "ok"
     },
     "instagram": {
@@ -67,9 +66,9 @@
     }
   },
   "stars": {
-    "asked": 5,
+    "asked": 40,
     "error": null,
-    "found": 5,
+    "found": 40,
     "http_calls": 1,
     "missing_before": 1,
     "not_found": 0,

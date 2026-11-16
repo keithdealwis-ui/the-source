@@ -5,32 +5,32 @@
     "catalogue_none_yet": 123,
     "catalogue_ok": 210,
     "catalogue_partial": 167,
-    "oss_projects": 659,
-    "recommendation_gate_evaluated": 1604,
-    "recommendation_gate_failed": 348,
-    "recommendation_gate_passed": 1256,
-    "recommended_relationships": 1256,
-    "relationships": 1605,
+    "oss_projects": 661,
+    "recommendation_gate_evaluated": 1607,
+    "recommendation_gate_failed": 350,
+    "recommendation_gate_passed": 1257,
+    "recommended_relationships": 1257,
+    "relationships": 1608,
     "saas_products": 406,
     "supported_saas": 377,
     "supported_saas_ok": 210
   },
-  "data_as_of": "2026-11-15T01:45:01Z",
-  "dataset_version": "00858e7b7d3d426d",
+  "data_as_of": "2026-11-16T01:50:14Z",
+  "dataset_version": "f7b6ea976d35d3a8",
   "export_guard": {
     "export_licence_constraint": "none beyond attribution notices",
-    "relationships_exported": 1605,
+    "relationships_exported": 1608,
     "relationships_withheld_share_alike_only": 0
   },
   "files": {
-    "NOTICE.md": "b8ea267e3725ed3cdd8b630ddb450c7bef383a27d37f9a9be340e1425a1483a8",
-    "oss_projects.jsonl": "453f3f2dd38d348ed8e52dba387565a14abd09588601f3998113f9b56da36a34",
-    "relationships.jsonl": "e8b77cdc12e459e9d07d5c7ee5e022f5773c5baf0d80454c88f8d4da763e0b14",
+    "NOTICE.md": "e58105947def94ac5275ff8a7bb202ab3eba64355871c7a62f10464db5ef8ef4",
+    "oss_projects.jsonl": "c62806799731b0a687baaf13acb19e9f8c2e4c828c0f1d0c001d42f5900f9343",
+    "relationships.jsonl": "ec64f1ad25e514397cbd155e1887503cda46ebe4427683eae91a75f41b444e74",
     "saas_products.jsonl": "7b274ad76f7976ce790ad27164f579faac79e5a60d7b1b637feb24aee4b90788"
   },
   "live_checked_at": {
-    "newest": "2026-11-15T01:45:01Z",
-    "oldest": "2026-11-15T01:45:01Z"
+    "newest": "2026-11-16T01:50:14Z",
+    "oldest": "2026-11-16T01:50:14Z"
   },
   "recommendation_gate": {
     "by_tier": {
@@ -40,29 +40,29 @@
         "passed": 202
       },
       "job_matched": {
-        "evaluated": 978,
-        "pass_rate": 0.7127,
+        "evaluated": 979,
+        "pass_rate": 0.712,
         "passed": 697
       },
       "single_source": {
-        "evaluated": 409,
-        "pass_rate": 0.8729,
-        "passed": 357
+        "evaluated": 411,
+        "pass_rate": 0.871,
+        "passed": 358
       }
     },
-    "evaluated": 1604,
-    "failed": 348,
+    "evaluated": 1607,
+    "failed": 350,
     "failed_by_reason": {
-      "fit_below_job_matched_floor": 279,
-      "fit_below_single_source_floor": 23,
-      "not_credible": 46,
+      "fit_below_job_matched_floor": 282,
+      "fit_below_single_source_floor": 24,
+      "not_credible": 44,
       "not_publishable": 22,
       "not_scored": 1
     },
     "not_scored": 1,
-    "pass_rate": 0.783,
-    "passed": 1256,
-    "relationships": 1605,
+    "pass_rate": 0.7822,
+    "passed": 1257,
+    "relationships": 1608,
     "replacement_fit_min": {
       "corroborated": 60,
       "job_matched": 75,
@@ -89,7 +89,7 @@
     },
     "fossalt": {
       "decision": "allow_with_conditions",
-      "pinned_commit": "43da75ebbd9b69de11d7e938fb89dffbba27fffe"
+      "pinned_commit": "6acca82933ffb61978b1ada46cd09a21172ec0cb"
     },
     "intake": {
       "decision": "allow",
