@@ -1,33 +1,33 @@
 {
-  "as_of": "2026-11-16T01:50:14Z",
+  "as_of": "2026-11-17T03:40:57Z",
   "calibration": "none (V3)",
   "catalogue_digest": "8398bd3acf2fb533",
   "config_digest": "aa4a9cd8489c553b",
-  "corpus_version": "e1e334e26e6310b7",
+  "corpus_version": "a372e113c85bb964",
   "counts": {
-    "eligible": 21039,
-    "eligible_with_health": 20958,
+    "eligible": 21047,
+    "eligible_with_health": 20966,
     "fit_bands": {
-      "Moderate": 219,
+      "Moderate": 222,
       "Strong": 911,
       "Weak": 8
     },
     "health_bands": {
-      "Moderate": 6821,
-      "Poor": 725,
-      "Strong": 13784,
-      "Weak": 3790
+      "Moderate": 6825,
+      "Poor": 736,
+      "Strong": 13759,
+      "Weak": 3809
     },
-    "health_rows": 25120,
-    "paired_projects": 690,
-    "paired_projects_with_fit": 690,
-    "pairings": 1138,
+    "health_rows": 25129,
+    "paired_projects": 691,
+    "paired_projects_with_fit": 691,
+    "pairings": 1141,
     "pairings_by_evidence": {
       "description": 223,
       "replace_lane": 814,
-      "topic": 180
+      "topic": 183
     },
-    "projects": 25223,
+    "projects": 25232,
     "recommendation_eligible": 0
   },
   "coverage": {
@@ -35,14 +35,14 @@
     "target_pct": 95.0
   },
   "files": {
-    "health.jsonl": "94a5ee35183f2dd82683a3a8d8344cb5d8ac91e74d42de5d6359ff8ff9c3cc8c",
-    "pairings.jsonl": "8e064a3aa61294563494801b65089b8db19bea481475b295b5f9999a4243e1fc"
+    "health.jsonl": "b45fbc2ff7842b13d6aa93586c90671228124cd7155e9e0453d3fd9ee2c3dd68",
+    "pairings.jsonl": "779f85d897d23c79fb30cfa846ea26f3078c5854de90434aad280bb90f7f1dee"
   },
   "label": "quick",
   "last_run": {
     "api_calls": 0,
     "api_calls_allowed": 0,
-    "at": "2026-11-16T01:50:14Z",
+    "at": "2026-11-17T03:40:57Z",
     "caps": {
       "max_rescore_per_run": 20000,
       "max_runtime_s": 600
@@ -50,17 +50,17 @@
     "deferred": 0,
     "failure_count": 0,
     "failures": [],
-    "health_rescored": 226,
-    "health_unchanged": 24894,
+    "health_rescored": 229,
+    "health_unchanged": 24900,
     "mode": "incremental",
     "not_scored": {
       "host_not_found": 103
     },
     "pairings_removed": 0,
-    "pairings_rescored": 1,
-    "pairings_unchanged": 1137,
-    "projects": 25223,
-    "runtime_s": 58.78
+    "pairings_rescored": 5,
+    "pairings_unchanged": 1136,
+    "projects": 25232,
+    "runtime_s": 103.94
   },
   "methodology": "docs/QUICK-SCORING.md",
   "methods": {
@@ -68,7 +68,7 @@
     "health": "the-source.quick-health/1",
     "pairing": "source_pipeline/intake.find_evidence on description and topics, plus Replace lane pairings (data/dataset/relationships.jsonl)"
   },
-  "quick_version": "aefa4ddf8f0a090a",
+  "quick_version": "c53d31dd24ec3833",
   "rule": "quick score: programmatic and uncalibrated; never a recommendation. Only the full evaluation (Project Health and Replacement Fit in the canonical layer) recommends",
   "schema": "the-source.quick/1"
 }
