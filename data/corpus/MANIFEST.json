@@ -1,14 +1,14 @@
 {
-  "as_of": "2026-11-17T03:40:57Z",
+  "as_of": "2026-11-17T13:50:10Z",
   "attribution": "The Source (github.com/keithdealwis-ui/the-source), by Keith de Alwis",
-  "corpus_version": "a372e113c85bb964",
+  "corpus_version": "6955a4a8ede63f34",
   "counts": {
-    "archived": 76,
+    "archived": 85,
     "by_lane": {
       "discover": 24932,
       "replace": 485
     },
-    "host_not_found": 103,
+    "host_not_found": 111,
     "identity": {
       "collapsed": 9,
       "collapsed_by_reason": {
@@ -19,10 +19,10 @@
       "forks_of_corpus_projects": 0,
       "mirrors": 57,
       "mirrors_of_corpus_projects": 0,
-      "renamed": 134,
+      "renamed": 144,
       "sibling_groups": 146,
       "sibling_repositories": 313,
-      "with_identity": 510
+      "with_identity": 520
     },
     "licence_classification": {
       "missing": 590,
@@ -55,8 +55,8 @@
     "scope": "rows classified open_core"
   },
   "files": {
-    "live.jsonl": "6509564f8b281b848fd48afb8000d6fcf51334ca36226fe4eb2ddcb948e26177",
-    "projects.jsonl": "85c9cbeb0659f1a6b2d7a68c80788931fcbe2b95722b1f58876eaf57859aa63a"
+    "live.jsonl": "b413b3460385992283ee1b75abe7e95245a9edb0602c2ff62915f89f98086e43",
+    "projects.jsonl": "9194d63e93b290a6965e7e21d5418f65e44607c8982a0620139a3eb66fbb4e5f"
   },
   "identity": {
     "facts": {
@@ -76,7 +76,7 @@
     "scope": "rows with licence.status == 'issue'"
   },
   "live_observed_as_of": {
-    "newest": "2026-11-17T03:40:57Z",
+    "newest": "2026-11-17T13:50:10Z",
     "oldest": "2026-10-23T09:33:53Z"
   },
   "membership": {
@@ -114,6 +114,27 @@
   },
   "refresh": {
     "cadence": "weekly",
+    "in_progress": {
+      "cursor": "github.com/laradashboard/laradashboard",
+      "done": 12500,
+      "method": "GitHub GraphQL, 50 repositories per request; REST only to follow a rename; GitLab and Codeberg through hosts.py; resumable chunks of 2500 rows inside a 40 min budget per run",
+      "runs": 1,
+      "started_at": "2026-11-17T13:50:10Z",
+      "stats": {
+        "batches": 247,
+        "changed_metadata": 491,
+        "not_found": 70,
+        "not_on_github": 0,
+        "renamed": 24,
+        "requests": 998,
+        "resolved": 12380,
+        "unresolved": 50,
+        "waited_seconds": 1118
+      },
+      "stopped": "unresolved: 2250 of 25232 repositories unresolved in this pass (8.9%), 2200 of 2500 in chunk github.com/laradji/deadzone .. github.com/mspstack/mcp-itglue; not promoted",
+      "total": 25232,
+      "updated_at": "2026-11-17T13:50:10Z"
+    },
     "last": {
       "at": "2026-11-11T12:09:18Z",
       "batches": 499,
