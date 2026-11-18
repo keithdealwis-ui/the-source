@@ -1,0 +1,147 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-18T03:42:18Z",
+  "canonical": {
+    "promoted_in_run": null,
+    "status": "pending_promotion"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "AGPL-3.0",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "openpromoter/openpromoter",
+      "created_at": "2026-11-06T12:34:27Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-18T03:42:18Z",
+      "forks": 2,
+      "found": true,
+      "host_repo_id": 1448241306,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "GNU Affero General Public License v3.0",
+      "licence_spdx": "AGPL-3.0",
+      "observed": {
+        "commits_in_12m_window": 70,
+        "commits_inspected": 2,
+        "issues_closed_12m": 0,
+        "merged_prs_inspected": 0,
+        "releases_seen": 1,
+        "tags_seen": 1
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-17T10:20:45Z",
+      "stars": 17
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a code_commit",
+      "days_since_meaningful_activity": 1,
+      "last_meaningful_activity_at": "2026-11-16T21:00:00Z",
+      "status": "active"
+    },
+    "saas_relationships": [
+      {
+        "category": "Billing",
+        "excerpt": "rogram software for saas. a self-hosted alternative to rewardful, firstpromoter and tolt with stripe, paddle and lemon squeezy tracking, fraud checks, partner payouts and ai. 0% payout fees.",
+        "field": "description",
+        "matched": "paddle",
+        "saas_id": "paddle",
+        "saas_name": "Paddle"
+      }
+    ],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 20
+    }
+  },
+  "note": "waiting-room batch wr-20261117; 1 observation(s)",
+  "oss_id": "github.com/openpromoter/openpromoter",
+  "outcome": "accepted",
+  "reasons": [
+    "passes every rule; relationship evidenced",
+    "hinted SaaS 'rewardful' is not evidenced by the repository itself"
+  ],
+  "repo_url": "https://github.com/openpromoter/openpromoter",
+  "request_id": "wr-18767a54de9750bb",
+  "saas_hint": "rewardful",
+  "scores": {
+    "errors": [],
+    "preliminary": true,
+    "project_health": {
+      "band": "Developing",
+      "confidence": 87.6,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-18T03:42:18Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/openpromoter/openpromoter",
+      "score": 65.7,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "open_core_markers",
+        "pre_1_0",
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": [
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "failed",
+        "corroboration": {
+          "basis": [
+            "self_described",
+            "readme_names_product"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": false,
+        "dimensions": {
+          "core_use_case_coverage": 25.0,
+          "deployment_ownership": 93.8,
+          "ease_of_adoption": 100.0,
+          "economic_advantage": 45.0,
+          "feature_equivalence": 73.3,
+          "integrations_extensibility": 100.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 60.0
+        },
+        "evaluated_at": "2026-11-18T03:42:18Z",
+        "evidence_families": [
+          "api",
+          "cloud_option",
+          "data_ownership",
+          "demo",
+          "import",
+          "multi_user",
+          "plugins",
+          "quickstart",
+          "self_host",
+          "sso",
+          "webhook"
+        ],
+        "oss_id": "github.com/openpromoter/openpromoter",
+        "publish": false,
+        "refusal_reasons": [
+          "core use case not evidenced (core gate failed)"
+        ],
+        "saas_id": "paddle",
+        "score": 45.0,
+        "score_version": "1.3.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 69.9
+      }
+    ]
+  },
+  "submitted_at": "2026-11-17T12:33:43Z",
+  "submitted_by": "waiting-room:grokbot"
+}
