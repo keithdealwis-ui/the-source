@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "332876ed380b5d63",
+  "dataset_version": "3b89c718bedb2802",
   "last_checked": {
-    "newest": "2026-11-17T03:40:57Z",
-    "oldest": "2026-11-17T03:40:57Z"
+    "newest": "2026-11-18T03:37:02Z",
+    "oldest": "2026-11-18T03:37:02Z"
   },
   "more_available": 0,
   "provenance": {
@@ -41,7 +41,7 @@
               "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-17T03:40:57Z"
+          "validated_as_of": "2026-11-18T03:37:02Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -84,7 +84,7 @@
         "tag": "v4.8.8"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-17T03:40:57Z",
+      "live_checked_at": "2026-11-18T03:37:02Z",
       "maintenance_status": "active",
       "name": "LinkStack",
       "note": {
@@ -139,7 +139,7 @@
               "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-17T03:40:57Z"
+          "validated_as_of": "2026-11-18T03:37:02Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -179,7 +179,7 @@
         "tag": "v3.11.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-17T03:40:57Z",
+      "live_checked_at": "2026-11-18T03:37:02Z",
       "maintenance_status": "maintained",
       "name": "LittleLink",
       "note": {
@@ -231,7 +231,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-17T03:40:57Z"
+          "validated_as_of": "2026-11-18T03:37:02Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -249,9 +249,9 @@
             "ease_of_adoption": 100.0,
             "economic_advantage": 80.0,
             "feature_equivalence": 100.0,
-            "integrations_extensibility": 50.0,
+            "integrations_extensibility": 75.0,
             "migration_friction": 100.0,
-            "production_commercial_readiness": 80.0
+            "production_commercial_readiness": 100.0
           },
           "evidence_families": [
             "api",
@@ -262,6 +262,7 @@
             "plugins",
             "quickstart",
             "self_host",
+            "sso",
             "support"
           ],
           "scoring_path": "single_project"
@@ -274,7 +275,7 @@
         "tag": "v1.6.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-17T03:40:57Z",
+      "live_checked_at": "2026-11-18T03:37:02Z",
       "maintenance_status": "active",
       "name": "LinkBreeze",
       "note": {
@@ -290,15 +291,15 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 93.7,
-        "score": 86.0,
+        "score": 86.1,
         "trajectory": "Insufficient history"
       },
       "rank": 3,
       "replacement_fit": {
         "caps": [],
         "confidence": 86.5,
-        "evaluated_at": "2026-10-20T23:06:47Z",
-        "score": 89.5,
+        "evaluated_at": "2026-11-18T03:37:02Z",
+        "score": 94.0,
         "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/OmniRise/LinkBreeze",

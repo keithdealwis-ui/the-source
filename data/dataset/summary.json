@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-17T03:40:57Z",
+  "as_of": "2026-11-18T03:37:02Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -23,7 +23,7 @@
         "entries_with_saas_claim": 93,
         "harvested": true,
         "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
-        "pinned_commit": "7524aea2dd2ff3c570cedf4d3965ec730b707561",
+        "pinned_commit": "7dd830cfa7e62d9561a01dc202f1f54694d18b57",
         "relationship_claims": 148,
         "unparseable_files": 0
       },
@@ -63,7 +63,7 @@
         "entries_with_saas_claim": 125,
         "harvested": true,
         "licence_file_sha256": "dca018b777d7bbaad6a295cd35b9653e8ffe014ac8a737292157e1f33b769753",
-        "pinned_commit": "6acca82933ffb61978b1ada46cd09a21172ec0cb",
+        "pinned_commit": "73c1bbedc7752a0735f00ac1e95a6bbbad230140",
         "relationship_claims": 174,
         "unparseable_files": 0
       },
@@ -124,8 +124,8 @@
   "lanes": {
     "oss_projects": {
       "licence_exception": 29,
-      "recommendable": 1441,
-      "rejected": 122
+      "recommendable": 1439,
+      "rejected": 124
     },
     "relationships": {
       "licence_exception": 37,
@@ -480,13 +480,13 @@
     "by_code": {
       "archived": 19,
       "host_unverifiable": 7,
-      "identity_unverified": 5,
+      "identity_unverified": 6,
       "licence_not_open": 45,
       "not_a_replacement": 2869,
       "not_a_repository": 8,
       "not_found": 11,
       "saas_not_in_catalogue": 241,
-      "unmaintained": 64
+      "unmaintained": 65
     },
     "by_reason": {
       "eligibility:archived": 6,
@@ -497,9 +497,9 @@
       "eligibility:no_recognised_open_source_licence;repository_identity_changed_since_listed": 1,
       "eligibility:no_recognised_open_source_licence;stale_no_meaningful_activity_12_months": 16,
       "eligibility:no_recognised_open_source_licence;stale_no_meaningful_activity_12_months;repository_identity_changed_since_listed": 1,
-      "eligibility:repository_identity_changed_since_listed": 3,
+      "eligibility:repository_identity_changed_since_listed": 4,
       "eligibility:repository_not_found": 11,
-      "eligibility:stale_no_meaningful_activity_12_months": 64,
+      "eligibility:stale_no_meaningful_activity_12_months": 65,
       "normalise:repo_url_not_a_repository": 8,
       "normalise:saas_not_in_catalogue": 241,
       "plausibility_review:.NET API docs static site generator; not an interactive API developer hub like ReadMe": 1,
@@ -2379,7 +2379,7 @@
       "plausibility_review:workbench front end for third-party image model APIs": 1,
       "plausibility_review:workflow engine programmed in code; not a no-code automation product": 1
     },
-    "total": 3269
+    "total": 3271
   },
   "review_queue": {
     "open": 9,
@@ -2389,13 +2389,13 @@
   "schema_version": "1.0.0",
   "verified": {
     "maintenance_status": {
-      "active": 1348,
+      "active": 1347,
       "maintained": 132,
-      "stale": 94,
+      "stale": 95,
       "unverified": 18
     },
-    "oss_recommendable": 1441,
-    "oss_rejected": 151,
+    "oss_recommendable": 1439,
+    "oss_rejected": 153,
     "relationships_flagged_licence_exception": 37,
     "relationships_rejected": 3053,
     "relationships_validated": 2076,
