@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "3b89c718bedb2802",
+  "dataset_version": "63e05d80e33a6776",
   "last_checked": {
-    "newest": "2026-11-18T03:37:02Z",
-    "oldest": "2026-11-18T03:37:02Z"
+    "newest": "2026-11-19T03:10:32Z",
+    "oldest": "2026-11-19T03:10:32Z"
   },
   "more_available": 1,
   "provenance": {
@@ -27,103 +27,6 @@
     {
       "evidence": {
         "relationship": {
-          "corroborated": true,
-          "evidence_class": "listed",
-          "provenance": [
-            {
-              "locator": "README.md#L373",
-              "source_commit": "bce3d3144b245b2146e6e3032d716f27b70a7ef9",
-              "source_id": "opensaasdirectory"
-            },
-            {
-              "locator": "data/products.json#/76/slug=uptime-kuma",
-              "source_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
-              "source_id": "emmraan"
-            }
-          ],
-          "validated_as_of": "2026-11-18T03:37:02Z"
-        },
-        "replacement_fit": {
-          "caps": [],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [
-              "second_upstream_source"
-            ],
-            "corroborated": true,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 50.0,
-            "ease_of_adoption": 80.0,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 92.5,
-            "integrations_extensibility": 25.0,
-            "migration_friction": 33.3,
-            "production_commercial_readiness": 60.0
-          },
-          "evidence_families": [
-            "api",
-            "demo",
-            "quickstart",
-            "self_host",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/louislam/uptime-kuma",
-      "last_meaningful_activity_at": "2026-11-17T17:07:03Z",
-      "latest_release": {
-        "published_at": "2026-11-17T16:15:28Z",
-        "tag": "3.0.0-beta.1"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-18T03:37:02Z",
-      "maintenance_status": "active",
-      "name": "Uptime Kuma",
-      "note": {
-        "gaps": [
-          "integrations and extensibility",
-          "migration path"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "feature parity"
-        ],
-        "text": "Strongest on core use-case coverage and feature parity; weakest on integrations and extensibility and migration path."
-      },
-      "oss_id": "github.com/louislam/uptime-kuma",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 95.0,
-        "score": 94.6,
-        "trajectory": "Stable"
-      },
-      "rank": 1,
-      "replacement_fit": {
-        "caps": [],
-        "confidence": 90.5,
-        "evaluated_at": "2026-11-01T02:05:53Z",
-        "score": 70.7,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/louislam/uptime-kuma",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "opensaasdirectory",
-        "emmraan"
-      ],
-      "stars": 94567
-    },
-    {
-      "evidence": {
-        "relationship": {
           "corroborated": false,
           "evidence_class": "listed",
           "provenance": [
@@ -133,7 +36,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-18T03:37:02Z"
+          "validated_as_of": "2026-11-19T03:10:32Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -170,7 +73,7 @@
         "tag": "v0.49.3"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-18T03:37:02Z",
+      "live_checked_at": "2026-11-19T03:10:32Z",
       "maintenance_status": "active",
       "name": "SolidPing",
       "note": {
@@ -192,7 +95,7 @@
         "score": 80.0,
         "trajectory": "Insufficient history"
       },
-      "rank": 2,
+      "rank": 1,
       "replacement_fit": {
         "caps": [],
         "confidence": 84.5,
@@ -208,7 +111,104 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 39
+      "stars": 40
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L373",
+              "source_commit": "bce3d3144b245b2146e6e3032d716f27b70a7ef9",
+              "source_id": "opensaasdirectory"
+            },
+            {
+              "locator": "data/products.json#/76/slug=uptime-kuma",
+              "source_commit": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
+              "source_id": "emmraan"
+            }
+          ],
+          "validated_as_of": "2026-11-19T03:10:32Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "second_upstream_source"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 62.5,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 25.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "demo",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/louislam/uptime-kuma",
+      "last_meaningful_activity_at": "2026-11-17T17:07:03Z",
+      "latest_release": {
+        "published_at": "2026-11-17T16:15:28Z",
+        "tag": "3.0.0-beta.1"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-19T03:10:32Z",
+      "maintenance_status": "active",
+      "name": "Uptime Kuma",
+      "note": {
+        "gaps": [
+          "integrations and extensibility",
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "feature parity",
+          "ease of adoption"
+        ],
+        "text": "Strongest on feature parity and ease of adoption; weakest on integrations and extensibility and migration path."
+      },
+      "oss_id": "github.com/louislam/uptime-kuma",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 93.7,
+        "trajectory": "Stable"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 90.5,
+        "evaluated_at": "2026-11-19T03:10:32Z",
+        "score": 61.3,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/louislam/uptime-kuma",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "opensaasdirectory",
+        "emmraan"
+      ],
+      "stars": 94616
     },
     {
       "evidence": {
@@ -222,7 +222,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-18T03:37:02Z"
+          "validated_as_of": "2026-11-19T03:10:32Z"
         },
         "replacement_fit": {
           "caps": [
@@ -270,7 +270,7 @@
         "tag": "v4.0.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-18T03:37:02Z",
+      "live_checked_at": "2026-11-19T03:10:32Z",
       "maintenance_status": "active",
       "name": "Checkmate",
       "note": {
@@ -311,7 +311,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 11063
+      "stars": 11068
     },
     {
       "evidence": {
@@ -325,7 +325,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-18T03:37:02Z"
+          "validated_as_of": "2026-11-19T03:10:32Z"
         },
         "replacement_fit": {
           "caps": [
@@ -373,7 +373,7 @@
         "tag": "v1.11.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-18T03:37:02Z",
+      "live_checked_at": "2026-11-19T03:10:32Z",
       "maintenance_status": "active",
       "name": "maintenant",
       "note": {
@@ -414,7 +414,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 550
+      "stars": 551
     },
     {
       "evidence": {
@@ -428,7 +428,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-18T03:37:02Z"
+          "validated_as_of": "2026-11-19T03:10:32Z"
         },
         "replacement_fit": {
           "caps": [
@@ -470,7 +470,7 @@
         "tag": "v1.34.3"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-18T03:37:02Z",
+      "live_checked_at": "2026-11-19T03:10:32Z",
       "maintenance_status": "active",
       "name": "tianji",
       "note": {
@@ -513,7 +513,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 3123
+      "stars": 3122
     }
   ],
   "saas": {

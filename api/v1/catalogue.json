@@ -25,7 +25,7 @@
     "partial": 167,
     "support_records": 377
   },
-  "dataset_version": "3b89c718bedb2802",
+  "dataset_version": "63e05d80e33a6776",
   "demand": {
     "status": "available",
     "telemetry": "no_product_dimension"
@@ -205,9 +205,9 @@
         "awaiting": 0,
         "corpus_pairings": 3,
         "job_defined": true,
-        "licence_review": 1,
+        "licence_review": 2,
         "not_recommended": 0,
-        "outside_launch": 8,
+        "outside_launch": 7,
         "share_alike_only": 0
       },
       "match": [
@@ -534,8 +534,8 @@
         "corpus_pairings": 7,
         "job_defined": true,
         "licence_review": 0,
-        "not_recommended": 0,
-        "outside_launch": 4,
+        "not_recommended": 1,
+        "outside_launch": 3,
         "share_alike_only": 0
       },
       "match": [
@@ -15133,7 +15133,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 0,
+        "outside_launch": 1,
         "share_alike_only": 0
       },
       "match": [
@@ -15147,9 +15147,9 @@
       "name": "Paddle",
       "path": null,
       "rank": 453,
-      "reason": "no open-source alternative has been found with relationship evidence yet",
+      "reason": "1 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision",
       "reasons": [
-        "no_relationship_evidence"
+        "outside_launch_selection"
       ],
       "recommended": 0,
       "saas_id": "paddle",

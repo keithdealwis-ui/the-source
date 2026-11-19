@@ -158,13 +158,13 @@ SOFTWARE.
 
 ## sfermigier/awesome-foss-alternatives
 
-- Source: https://github.com/sfermigier/awesome-foss-alternatives at commit 73c1bbedc7752a0735f00ac1e95a6bbbad230140
+- Source: https://github.com/sfermigier/awesome-foss-alternatives at commit bca6ae8e8eab1c12de15e87f98d28732ef79fd70
 - Licence: CC-BY-4.0
 - Attribution: "Awesome Free / Open Source Alternatives (to common SaaS products) for Business Use" by Stefane Fermigier and contributors, https://github.com/sfermigier/awesome-foss-alternatives, licensed CC BY 4.0; facts extracted, no text reproduced
 
 ## keithdealwis-ui/the-source
 
-- Source: https://github.com/keithdealwis-ui/the-source/blob/main/data/intake/admitted/ at commit 60c0b7670b6193c19fcaf8cd40d9a31a4ce88e60
+- Source: https://github.com/keithdealwis-ui/the-source/blob/main/data/intake/admitted/ at commit caee2a11d57e4ab8c5f0d17a93a57a6bf1f27bbf
 - Licence: n/a (The Source's own assessment record)
 - Attribution: The Source intake ledger (data/intake/admitted/): relationships stated by each project in its own public repository and assessed by The Source
 

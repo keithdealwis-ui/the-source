@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "3b89c718bedb2802",
+  "dataset_version": "63e05d80e33a6776",
   "last_checked": {
-    "newest": "2026-11-18T03:37:02Z",
-    "oldest": "2026-11-18T03:37:02Z"
+    "newest": "2026-11-19T03:10:32Z",
+    "oldest": "2026-11-19T03:10:32Z"
   },
   "more_available": 0,
   "provenance": {
@@ -33,18 +33,19 @@
           "provenance": [
             {
               "locator": "data/intake/admitted/wr-4960f308dcf8cfc3.json",
-              "source_commit": "60c0b7670b6193c19fcaf8cd40d9a31a4ce88e60",
+              "source_commit": "caee2a11d57e4ab8c5f0d17a93a57a6bf1f27bbf",
               "source_id": "intake"
             }
           ],
-          "validated_as_of": "2026-11-18T03:37:02Z"
+          "validated_as_of": "2026-11-19T03:10:32Z"
         },
         "replacement_fit": {
           "caps": [],
           "core_gate": "passed",
           "corroboration": {
             "basis": [
-              "self_described"
+              "self_described",
+              "readme_names_product"
             ],
             "corroborated": true,
             "readme_checked": true
@@ -54,7 +55,7 @@
             "deployment_ownership": 68.8,
             "ease_of_adoption": 100.0,
             "economic_advantage": 60.0,
-            "feature_equivalence": 92.5,
+            "feature_equivalence": 100.0,
             "integrations_extensibility": 25.0,
             "migration_friction": 100.0,
             "production_commercial_readiness": 60.0
@@ -73,13 +74,13 @@
         }
       },
       "github_url": "https://github.com/open-net-worth-ai/open-net-worth",
-      "last_meaningful_activity_at": "2026-11-14T23:03:48Z",
+      "last_meaningful_activity_at": "2026-11-18T17:21:17Z",
       "latest_release": {
-        "published_at": "2026-11-14T23:03:48Z",
-        "tag": "0.1.52"
+        "published_at": "2026-11-18T04:31:55Z",
+        "tag": "0.1.57"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-18T03:37:02Z",
+      "live_checked_at": "2026-11-19T03:10:32Z",
       "maintenance_status": "active",
       "name": "open-net-worth",
       "note": {
@@ -89,23 +90,23 @@
         "origin": "derived",
         "strengths": [
           "ease of adoption",
-          "migration path"
+          "feature parity"
         ],
-        "text": "Strongest on ease of adoption and migration path; weakest on integrations and extensibility."
+        "text": "Strongest on ease of adoption and feature parity; weakest on integrations and extensibility."
       },
       "oss_id": "github.com/open-net-worth-ai/open-net-worth",
       "project_health": {
-        "band": "Developing",
-        "confidence": 90.2,
-        "score": 67.8,
+        "band": "Healthy",
+        "confidence": 92.1,
+        "score": 74.4,
         "trajectory": "Insufficient history"
       },
       "rank": 1,
       "replacement_fit": {
         "caps": [],
         "confidence": 86.5,
-        "evaluated_at": "2026-11-12T02:50:11Z",
-        "score": 72.9,
+        "evaluated_at": "2026-11-19T03:10:32Z",
+        "score": 74.0,
         "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/open-net-worth-ai/open-net-worth",
@@ -116,7 +117,7 @@
       "sources": [
         "intake"
       ],
-      "stars": 563
+      "stars": 595
     },
     {
       "evidence": {
@@ -135,7 +136,7 @@
               "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-18T03:37:02Z"
+          "validated_as_of": "2026-11-19T03:10:32Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -172,7 +173,7 @@
         "tag": "v26.11.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-18T03:37:02Z",
+      "live_checked_at": "2026-11-19T03:10:32Z",
       "maintenance_status": "active",
       "name": "Actual Budget",
       "note": {
@@ -210,7 +211,7 @@
         "opensaasdirectory",
         "diegoleme"
       ],
-      "stars": 30331
+      "stars": 30345
     },
     {
       "evidence": {
@@ -229,7 +230,7 @@
               "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-18T03:37:02Z"
+          "validated_as_of": "2026-11-19T03:10:32Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -268,7 +269,7 @@
         "tag": "v6.7.9"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-18T03:37:02Z",
+      "live_checked_at": "2026-11-19T03:10:32Z",
       "maintenance_status": "active",
       "name": "Firefly III",
       "note": {
@@ -305,7 +306,7 @@
         "opensaasdirectory",
         "diegoleme"
       ],
-      "stars": 25268
+      "stars": 25287
     },
     {
       "evidence": {
@@ -319,7 +320,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-18T03:37:02Z"
+          "validated_as_of": "2026-11-19T03:10:32Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -359,7 +360,7 @@
         "tag": "v0.19.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-18T03:37:02Z",
+      "live_checked_at": "2026-11-19T03:10:32Z",
       "maintenance_status": "active",
       "name": "securo",
       "note": {
@@ -397,7 +398,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 4550
+      "stars": 4557
     },
     {
       "evidence": {
@@ -411,7 +412,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-18T03:37:02Z"
+          "validated_as_of": "2026-11-19T03:10:32Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -452,7 +453,7 @@
         "tag": "v2.1.1"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-18T03:37:02Z",
+      "live_checked_at": "2026-11-19T03:10:32Z",
       "maintenance_status": "active",
       "name": "ezbookkeeping",
       "note": {
@@ -487,7 +488,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 6088
+      "stars": 6095
     }
   ],
   "saas": {
