@@ -4,9 +4,9 @@
   "counts": {
     "by_audience": {
       "b2b": {
-        "none_yet": 76,
+        "none_yet": 78,
         "ok": 154,
-        "partial": 107
+        "partial": 105
       },
       "b2c": {
         "none_yet": 24,
@@ -20,12 +20,12 @@
       }
     },
     "entries": 500,
-    "none_yet": 123,
+    "none_yet": 125,
     "ok": 210,
-    "partial": 167,
-    "support_records": 377
+    "partial": 165,
+    "support_records": 375
   },
-  "dataset_version": "63e05d80e33a6776",
+  "dataset_version": "8927f0c1a32b5220",
   "demand": {
     "status": "available",
     "telemetry": "no_product_dimension"
@@ -207,7 +207,7 @@
         "job_defined": true,
         "licence_review": 2,
         "not_recommended": 0,
-        "outside_launch": 7,
+        "outside_launch": 8,
         "share_alike_only": 0
       },
       "match": [
@@ -393,7 +393,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 0,
-        "outside_launch": 3,
+        "outside_launch": 4,
         "share_alike_only": 0
       },
       "match": [
@@ -1016,7 +1016,7 @@
         "corpus_pairings": 3,
         "job_defined": true,
         "licence_review": 0,
-        "not_recommended": 0,
+        "not_recommended": 1,
         "outside_launch": 0,
         "share_alike_only": 0
       },
@@ -2730,7 +2730,7 @@
         "job_defined": true,
         "licence_review": 0,
         "not_recommended": 1,
-        "outside_launch": 3,
+        "outside_launch": 4,
         "share_alike_only": 0
       },
       "match": [
@@ -2792,7 +2792,7 @@
         "corpus_pairings": 0,
         "job_defined": true,
         "licence_review": 0,
-        "not_recommended": 1,
+        "not_recommended": 2,
         "outside_launch": 0,
         "share_alike_only": 0
       },
@@ -3692,7 +3692,7 @@
         "corpus_pairings": 1,
         "job_defined": true,
         "licence_review": 0,
-        "not_recommended": 0,
+        "not_recommended": 1,
         "outside_launch": 1,
         "share_alike_only": 0
       },
@@ -6240,7 +6240,7 @@
         "corpus_pairings": 0,
         "job_defined": true,
         "licence_review": 0,
-        "not_recommended": 0,
+        "not_recommended": 1,
         "outside_launch": 0,
         "share_alike_only": 0
       },
@@ -6255,9 +6255,10 @@
       "name": "Carrd",
       "path": "saas/carrd.json",
       "rank": 186,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations",
       "reasons": [
-        "fewer_than_minimum"
+        "fewer_than_minimum",
+        "evaluated_not_recommended"
       ],
       "recommended": 2,
       "saas_id": "carrd",
@@ -6304,7 +6305,7 @@
         "corpus_pairings": 0,
         "job_defined": true,
         "licence_review": 0,
-        "not_recommended": 0,
+        "not_recommended": 1,
         "outside_launch": 0,
         "share_alike_only": 0
       },
@@ -6322,11 +6323,12 @@
       "name": "Snowflake",
       "path": "saas/snowflake.json",
       "rank": 188,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations",
       "reasons": [
-        "fewer_than_minimum"
+        "fewer_than_minimum",
+        "evaluated_not_recommended"
       ],
-      "recommended": 2,
+      "recommended": 1,
       "saas_id": "snowflake",
       "status": "partial"
     },
@@ -7226,7 +7228,7 @@
         "corpus_pairings": 2,
         "job_defined": true,
         "licence_review": 0,
-        "not_recommended": 0,
+        "not_recommended": 1,
         "outside_launch": 0,
         "share_alike_only": 0
       },
@@ -7241,9 +7243,10 @@
       "name": "Framer",
       "path": "saas/framer.json",
       "rank": 216,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "1 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations",
       "reasons": [
-        "fewer_than_minimum"
+        "fewer_than_minimum",
+        "evaluated_not_recommended"
       ],
       "recommended": 1,
       "saas_id": "framer",
@@ -8890,7 +8893,7 @@
         "corpus_pairings": 0,
         "job_defined": true,
         "licence_review": 0,
-        "not_recommended": 0,
+        "not_recommended": 1,
         "outside_launch": 0,
         "share_alike_only": 0
       },
@@ -9020,7 +9023,7 @@
         "corpus_pairings": 0,
         "job_defined": true,
         "licence_review": 0,
-        "not_recommended": 0,
+        "not_recommended": 1,
         "outside_launch": 0,
         "share_alike_only": 0
       },
@@ -9035,9 +9038,10 @@
       "name": "Weebly",
       "path": "saas/weebly.json",
       "rank": 270,
-      "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations",
       "reasons": [
-        "fewer_than_minimum"
+        "fewer_than_minimum",
+        "evaluated_not_recommended"
       ],
       "recommended": 2,
       "saas_id": "weebly",
@@ -11242,7 +11246,7 @@
         "corpus_pairings": 0,
         "job_defined": true,
         "licence_review": 0,
-        "not_recommended": 0,
+        "not_recommended": 1,
         "outside_launch": 0,
         "share_alike_only": 0
       },
@@ -11261,15 +11265,15 @@
         }
       ],
       "name": "Amazon Redshift",
-      "path": "saas/amazon-redshift.json",
+      "path": null,
       "rank": 337,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "1 fully evaluated relationships did not qualify as recommendations",
       "reasons": [
-        "fewer_than_minimum"
+        "evaluated_not_recommended"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "saas_id": "amazon-redshift",
-      "status": "partial"
+      "status": "none_yet"
     },
     {
       "audience": "b2b",
@@ -14193,7 +14197,7 @@
         "corpus_pairings": 0,
         "job_defined": true,
         "licence_review": 0,
-        "not_recommended": 0,
+        "not_recommended": 1,
         "outside_launch": 0,
         "share_alike_only": 0
       },
@@ -14208,15 +14212,15 @@
         }
       ],
       "name": "Google BigQuery",
-      "path": "saas/google-bigquery.json",
+      "path": null,
       "rank": 425,
-      "reason": "1 of the 3 recommendations needed have passed the full evaluation",
+      "reason": "1 fully evaluated relationships did not qualify as recommendations",
       "reasons": [
-        "fewer_than_minimum"
+        "evaluated_not_recommended"
       ],
-      "recommended": 1,
+      "recommended": 0,
       "saas_id": "google-bigquery",
-      "status": "partial"
+      "status": "none_yet"
     },
     {
       "audience": "b2b",
@@ -14492,7 +14496,7 @@
         "corpus_pairings": 0,
         "job_defined": true,
         "licence_review": 0,
-        "not_recommended": 0,
+        "not_recommended": 1,
         "outside_launch": 1,
         "share_alike_only": 0
       },
@@ -16513,7 +16517,7 @@
         "corpus_pairings": 0,
         "job_defined": true,
         "licence_review": 1,
-        "not_recommended": 1,
+        "not_recommended": 2,
         "outside_launch": 0,
         "share_alike_only": 0
       },
@@ -16528,7 +16532,7 @@
       "name": "Shogun",
       "path": null,
       "rank": 495,
-      "reason": "1 fully evaluated relationships did not qualify as recommendations; 1 candidate relationships are waiting on a licence decision",
+      "reason": "2 fully evaluated relationships did not qualify as recommendations; 1 candidate relationships are waiting on a licence decision",
       "reasons": [
         "evaluated_not_recommended",
         "licence_review"

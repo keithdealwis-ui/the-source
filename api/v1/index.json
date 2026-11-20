@@ -3,17 +3,17 @@
   "canonical_schema": "the-source.canonical/1",
   "catalogue": {
     "entries": 500,
-    "none_yet": 123,
+    "none_yet": 125,
     "ok": 210,
-    "partial": 167,
+    "partial": 165,
     "path": "catalogue.json"
   },
-  "data_as_of": "2026-11-19T03:10:32Z",
-  "dataset_version": "63e05d80e33a6776",
+  "data_as_of": "2026-11-20T02:58:57Z",
+  "dataset_version": "8927f0c1a32b5220",
   "domains": "domains.json",
   "live_checked_at": {
-    "newest": "2026-11-19T03:10:32Z",
-    "oldest": "2026-11-19T03:10:32Z"
+    "newest": "2026-11-20T02:58:57Z",
+    "oldest": "2026-11-20T02:58:57Z"
   },
   "supported_saas": [
     {
@@ -1649,7 +1649,7 @@
       "compare_path": null,
       "name": "Snowflake",
       "path": "saas/snowflake.json",
-      "recommendations": 2,
+      "recommendations": 1,
       "saas_id": "snowflake",
       "slug": "snowflake",
       "status": "insufficient_recommendations"
@@ -2646,15 +2646,6 @@
     },
     {
       "compare_path": null,
-      "name": "Amazon Redshift",
-      "path": "saas/amazon-redshift.json",
-      "recommendations": 1,
-      "saas_id": "amazon-redshift",
-      "slug": "amazon-redshift",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
       "name": "ServiceNow",
       "path": "saas/servicenow.json",
       "recommendations": 1,
@@ -3084,15 +3075,6 @@
       "saas_id": "microsoft-outlook",
       "slug": "microsoft-outlook",
       "status": "ok"
-    },
-    {
-      "compare_path": null,
-      "name": "Google BigQuery",
-      "path": "saas/google-bigquery.json",
-      "recommendations": 1,
-      "saas_id": "google-bigquery",
-      "slug": "google-bigquery",
-      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,

@@ -1,6 +1,6 @@
 {
   "api_version": "v1",
-  "dataset_version": "63e05d80e33a6776",
+  "dataset_version": "8927f0c1a32b5220",
   "match_semantics": "Lowercase the page hostname and strip one leading \"www.\". A rule matches when its host equals the hostname (or the hostname ends with its host_suffix) and, if it has a path_prefix, the URL path equals the prefix or continues it at a \"/\" (a prefix that ends in \"/\" is a plain prefix). When several rules match, the most specific wins: one with a path_prefix beats one without, a longer path_prefix beats a shorter one, an exact host beats a host_suffix, a longer host_suffix beats a shorter one; remaining ties go to the first rule in file order.",
   "rules": [
     {
@@ -151,11 +151,6 @@
       "host_suffix": ".console.aws.amazon.com",
       "path_prefix": "/elasticbeanstalk",
       "saas_id": "aws-elastic-beanstalk"
-    },
-    {
-      "host_suffix": ".console.aws.amazon.com",
-      "path_prefix": "/redshiftv2",
-      "saas_id": "amazon-redshift"
     },
     {
       "host_suffix": ".console.aws.amazon.com",
@@ -1015,11 +1010,6 @@
     },
     {
       "host": "aws.amazon.com",
-      "path_prefix": "/redshift",
-      "saas_id": "amazon-redshift"
-    },
-    {
-      "host": "aws.amazon.com",
       "path_prefix": "/s3",
       "saas_id": "amazon-s3"
     },
@@ -1221,11 +1211,6 @@
     },
     {
       "host": "cloud.google.com",
-      "path_prefix": "/bigquery",
-      "saas_id": "google-bigquery"
-    },
-    {
-      "host": "cloud.google.com",
       "path_prefix": "/looker",
       "saas_id": "looker"
     },
@@ -1321,11 +1306,6 @@
     },
     {
       "host": "console.aws.amazon.com",
-      "path_prefix": "/redshiftv2",
-      "saas_id": "amazon-redshift"
-    },
-    {
-      "host": "console.aws.amazon.com",
       "path_prefix": "/s3",
       "saas_id": "amazon-s3"
     },
@@ -1338,11 +1318,6 @@
       "host": "console.cloud.google.com",
       "path_prefix": "/apigee",
       "saas_id": "apigee"
-    },
-    {
-      "host": "console.cloud.google.com",
-      "path_prefix": "/bigquery",
-      "saas_id": "google-bigquery"
     },
     {
       "host": "console.cloud.google.com",

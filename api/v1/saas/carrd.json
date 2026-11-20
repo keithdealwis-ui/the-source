@@ -3,16 +3,17 @@
   "catalogue": {
     "audience": "b2c",
     "rank": 186,
-    "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations",
     "reasons": [
-      "fewer_than_minimum"
+      "fewer_than_minimum",
+      "evaluated_not_recommended"
     ],
     "status": "partial"
   },
-  "dataset_version": "63e05d80e33a6776",
+  "dataset_version": "8927f0c1a32b5220",
   "last_checked": {
-    "newest": "2026-11-19T03:10:32Z",
-    "oldest": "2026-11-19T03:10:32Z"
+    "newest": "2026-11-20T02:58:57Z",
+    "oldest": "2026-11-20T02:58:57Z"
   },
   "more_available": 0,
   "provenance": {
@@ -34,7 +35,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-19T03:10:32Z"
+          "validated_as_of": "2026-11-20T02:58:57Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -74,7 +75,7 @@
         "tag": "1.0.9.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-19T03:10:32Z",
+      "live_checked_at": "2026-11-20T02:58:57Z",
       "maintenance_status": "active",
       "name": "Vvveb",
       "note": {
@@ -109,7 +110,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 1324
+      "stars": 1322
     },
     {
       "evidence": {
@@ -123,7 +124,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-19T03:10:32Z"
+          "validated_as_of": "2026-11-20T02:58:57Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -163,7 +164,7 @@
         "tag": "v0.0.21"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-19T03:10:32Z",
+      "live_checked_at": "2026-11-20T02:58:57Z",
       "maintenance_status": "active",
       "name": "Instatic",
       "note": {
@@ -198,7 +199,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 9141
+      "stars": 9144
     }
   ],
   "saas": {
