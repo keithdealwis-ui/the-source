@@ -3,8 +3,8 @@
   "counts": {
     "catalogue_entries": 500,
     "catalogue_none_yet": 125,
-    "catalogue_ok": 210,
-    "catalogue_partial": 165,
+    "catalogue_ok": 209,
+    "catalogue_partial": 166,
     "oss_projects": 662,
     "recommendation_gate_evaluated": 1613,
     "recommendation_gate_failed": 360,
@@ -13,10 +13,10 @@
     "relationships": 1614,
     "saas_products": 406,
     "supported_saas": 375,
-    "supported_saas_ok": 210
+    "supported_saas_ok": 209
   },
-  "data_as_of": "2026-11-21T01:21:40Z",
-  "dataset_version": "5516ff38ee999e99",
+  "data_as_of": "2026-11-21T23:02:35Z",
+  "dataset_version": "609f356f2da3c469",
   "export_guard": {
     "export_licence_constraint": "none beyond attribution notices",
     "relationships_exported": 1614,
@@ -24,13 +24,13 @@
   },
   "files": {
     "NOTICE.md": "777b8a34fab8bf916730acdbd81c54b5f326d727399e41b448f565e34341bdd7",
-    "oss_projects.jsonl": "2c7589a3d84ac857c0fe0004a9ea6c55f25bd63ea4f47afdfe40cdfc2039a113",
-    "relationships.jsonl": "87dcf8d922137a091027976c29e42f01109163dc442a95ef9f87525a50b99fbd",
-    "saas_products.jsonl": "bf0f3675cc41aeda6bfefccbf5a973dd3106fbb6b854915a38cf9f6ce018b5a0"
+    "oss_projects.jsonl": "1f3a8888910b002b8cb9c248cfaba68d97eecadf15d6f921cedab83b679ab2be",
+    "relationships.jsonl": "cfef646dbf4c2421104f57dc992a38820926d803c16659c435591b9cb3c78a22",
+    "saas_products.jsonl": "ad4e3d962d91895133096754d76e1cde900cf45c1e44f1bab6cdb73865b4831c"
   },
   "live_checked_at": {
-    "newest": "2026-11-21T01:21:40Z",
-    "oldest": "2026-11-21T01:21:40Z"
+    "newest": "2026-11-21T23:02:35Z",
+    "oldest": "2026-11-21T23:02:35Z"
   },
   "recommendation_gate": {
     "by_tier": {
@@ -40,14 +40,14 @@
         "passed": 202
       },
       "job_matched": {
-        "evaluated": 984,
-        "pass_rate": 0.7053,
-        "passed": 694
+        "evaluated": 985,
+        "pass_rate": 0.7056,
+        "passed": 695
       },
       "single_source": {
-        "evaluated": 412,
-        "pass_rate": 0.8665,
-        "passed": 357
+        "evaluated": 411,
+        "pass_rate": 0.8662,
+        "passed": 356
       }
     },
     "evaluated": 1613,

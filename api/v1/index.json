@@ -4,16 +4,16 @@
   "catalogue": {
     "entries": 500,
     "none_yet": 125,
-    "ok": 210,
-    "partial": 165,
+    "ok": 209,
+    "partial": 166,
     "path": "catalogue.json"
   },
-  "data_as_of": "2026-11-21T01:21:40Z",
-  "dataset_version": "5516ff38ee999e99",
+  "data_as_of": "2026-11-21T23:02:35Z",
+  "dataset_version": "609f356f2da3c469",
   "domains": "domains.json",
   "live_checked_at": {
-    "newest": "2026-11-21T01:21:40Z",
-    "oldest": "2026-11-21T01:21:40Z"
+    "newest": "2026-11-21T23:02:35Z",
+    "oldest": "2026-11-21T23:02:35Z"
   },
   "supported_saas": [
     {
@@ -1403,13 +1403,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": "/open-source/anydesk-alternatives",
+      "compare_path": null,
       "name": "AnyDesk",
       "path": "saas/anydesk.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "anydesk",
       "slug": "anydesk",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/logrocket-alternatives",
@@ -2855,7 +2855,7 @@
       "compare_path": null,
       "name": "UiPath",
       "path": "saas/uipath.json",
-      "recommendations": 1,
+      "recommendations": 2,
       "saas_id": "uipath",
       "slug": "uipath",
       "status": "insufficient_recommendations"

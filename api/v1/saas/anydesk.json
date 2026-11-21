@@ -3,22 +3,24 @@
   "catalogue": {
     "audience": "both",
     "rank": 161,
-    "reason": "3 recommendations passed the full evaluation",
+    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 1 fully evaluated relationships did not qualify as recommendations; 2 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision; 1 candidate relationships are waiting on a licence decision",
     "reasons": [
-      "full_evaluation"
+      "fewer_than_minimum",
+      "evaluated_not_recommended",
+      "outside_launch_selection",
+      "licence_review"
     ],
-    "status": "ok"
+    "status": "partial"
   },
-  "dataset_version": "5516ff38ee999e99",
+  "dataset_version": "609f356f2da3c469",
   "last_checked": {
-    "newest": "2026-11-21T01:21:40Z",
-    "oldest": "2026-11-21T01:21:40Z"
+    "newest": "2026-11-21T23:02:35Z",
+    "oldest": "2026-11-21T23:02:35Z"
   },
   "more_available": 0,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
-      "intake",
       "job_match",
       "opensaasdirectory"
     ]
@@ -36,7 +38,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-21T01:21:40Z"
+          "validated_as_of": "2026-11-21T23:02:35Z"
         },
         "replacement_fit": {
           "caps": [
@@ -83,7 +85,7 @@
         "tag": "1.5.3"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-21T01:21:40Z",
+      "live_checked_at": "2026-11-21T23:02:35Z",
       "maintenance_status": "active",
       "name": "RustDesk",
       "note": {
@@ -124,97 +126,7 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 130507
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "self_described",
-          "provenance": [
-            {
-              "locator": "data/intake/admitted/wr-6e41bc0d20677f5a.json",
-              "source_commit": "6f42cdd7a46dec1e31210c8b950e000b15cd52af",
-              "source_id": "intake"
-            }
-          ],
-          "validated_as_of": "2026-11-21T01:21:40Z"
-        },
-        "replacement_fit": {
-          "caps": [],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [
-              "self_described"
-            ],
-            "corroborated": true,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 75.0,
-            "ease_of_adoption": 55.8,
-            "economic_advantage": 30.0,
-            "feature_equivalence": 16.7,
-            "integrations_extensibility": 100.0,
-            "migration_friction": 100.0,
-            "production_commercial_readiness": 50.0
-          },
-          "evidence_families": [
-            "api",
-            "demo",
-            "quickstart",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/alielmorsy/ywza",
-      "last_meaningful_activity_at": "2026-11-15T15:05:00Z",
-      "latest_release": {
-        "published_at": "2026-11-15T00:29:30Z",
-        "tag": "v0.1.1"
-      },
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-21T01:21:40Z",
-      "maintenance_status": "active",
-      "name": "ywza",
-      "note": {
-        "gaps": [
-          "feature parity",
-          "cost advantage"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "integrations and extensibility"
-        ],
-        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity and cost advantage."
-      },
-      "oss_id": "github.com/alielmorsy/ywza",
-      "project_health": {
-        "band": "Caution",
-        "confidence": 85.1,
-        "score": 49.8,
-        "trajectory": "Insufficient history"
-      },
-      "rank": 2,
-      "replacement_fit": {
-        "caps": [],
-        "confidence": 86.5,
-        "evaluated_at": "2026-11-10T01:59:23Z",
-        "score": 69.9,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/alielmorsy/ywza",
-      "self_hosting": {
-        "basis": "no self-hosting evidence found; not evidence of absence",
-        "self_hostable": null
-      },
-      "sources": [
-        "intake"
-      ],
-      "stars": 25
+      "stars": 130641
     },
     {
       "evidence": {
@@ -228,7 +140,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-21T01:21:40Z"
+          "validated_as_of": "2026-11-21T23:02:35Z"
         },
         "replacement_fit": {
           "caps": [
@@ -269,7 +181,7 @@
         "tag": "1.3.1"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-21T01:21:40Z",
+      "live_checked_at": "2026-11-21T23:02:35Z",
       "maintenance_status": "active",
       "name": "MeshCentral",
       "note": {
@@ -290,7 +202,7 @@
         "score": 89.9,
         "trajectory": "Stable"
       },
-      "rank": 3,
+      "rank": 2,
       "replacement_fit": {
         "caps": [
           {
@@ -312,12 +224,12 @@
       "sources": [
         "job_match"
       ],
-      "stars": 7735
+      "stars": 7736
     }
   ],
   "saas": {
     "category": "Remote access",
-    "compare_path": "/open-source/anydesk-alternatives",
+    "compare_path": null,
     "domain": "anydesk.com",
     "name": "AnyDesk",
     "saas_id": "anydesk",
@@ -329,5 +241,5 @@
       "1.3.0"
     ]
   },
-  "status": "ok"
+  "status": "insufficient_recommendations"
 }
