@@ -1,14 +1,16 @@
 {
-  "as_of": "2026-11-20T02:58:57Z",
+  "as_of": "2026-11-21T01:21:40Z",
   "resolve": {
-    "asked": 7,
+    "asked": 11,
     "deferred": 0,
     "pool_added": [
-      "github.com/onlook-dev/onlook",
-      "github.com/openjdk/jdk",
-      "github.com/springcraft-ai/springrep"
+      "github.com/bigcrimping/floppy3.5",
+      "github.com/bluesky-social/slagworks",
+      "github.com/cdutsov/hippomaps",
+      "github.com/diggerhq/opencomputer",
+      "github.com/tristanbuckmaster/navier-stokes"
     ],
-    "resolved": 7,
+    "resolved": 11,
     "transient_failures": []
   },
   "sources": {
@@ -19,16 +21,16 @@
       "http_calls": 2,
       "items_read": 100,
       "listed": 100,
-      "mentions": 49,
+      "mentions": 51,
       "status": "ok"
     },
     "forem": {
       "errors": [],
       "gone": 0,
-      "http_calls": 30,
+      "http_calls": 31,
       "items_read": 26,
       "listed": 26,
-      "mentions": 25,
+      "mentions": 24,
       "status": "ok"
     },
     "hn": {
@@ -36,8 +38,8 @@
       "gone": 0,
       "http_calls": 303,
       "items_read": 300,
-      "listed": 349,
-      "mentions": 27,
+      "listed": 343,
+      "mentions": 33,
       "status": "ok"
     },
     "instagram": {
@@ -64,11 +66,11 @@
     }
   },
   "stars": {
-    "asked": 12,
+    "asked": 19,
     "error": null,
-    "found": 12,
+    "found": 19,
     "http_calls": 1,
-    "missing_before": 2,
+    "missing_before": 4,
     "not_found": 0,
     "status": "ok"
   }

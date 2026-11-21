@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-20T02:58:57Z",
+  "as_of": "2026-11-21T01:21:40Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -23,7 +23,7 @@
         "entries_with_saas_claim": 93,
         "harvested": true,
         "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
-        "pinned_commit": "8f22991fff9ab921339850f2af597971eb99febd",
+        "pinned_commit": "facbd1e9b68ab62f4cceed4e915859aa40dc816e",
         "relationship_claims": 148,
         "unparseable_files": 0
       },
@@ -123,14 +123,14 @@
   },
   "lanes": {
     "oss_projects": {
-      "licence_exception": 30,
+      "licence_exception": 28,
       "recommendable": 1442,
-      "rejected": 122
+      "rejected": 124
     },
     "relationships": {
-      "licence_exception": 38,
-      "recommendable": 2089,
-      "rejected": 3041
+      "licence_exception": 33,
+      "recommendable": 2090,
+      "rejected": 3045
     }
   },
   "launch": {
@@ -418,15 +418,15 @@
       "zoho-mail",
       "zuora"
     ],
-    "catalogue_served_relationships": 1241,
-    "oss_distinct_products": 662,
-    "oss_projects": 663,
+    "catalogue_served_relationships": 1237,
+    "oss_distinct_products": 661,
+    "oss_projects": 662,
     "preserve_served": {
       "kept": 377,
-      "not_kept": 0,
-      "served_before": 377
+      "not_kept": 4,
+      "served_before": 381
     },
-    "relationships": 1618,
+    "relationships": 1614,
     "relationships_corroborated_by_2plus_sources": 218,
     "relationships_share_alike_only": 0,
     "saas_added_beyond_floor": 25,
@@ -448,7 +448,7 @@
   },
   "licence_exception_lane": {
     "by_issue_category": {
-      "missing": 9,
+      "missing": 7,
       "open_core": 8,
       "restricted": 5,
       "source_available": 4,
@@ -457,16 +457,16 @@
     },
     "named_exceptions_approved": 77,
     "note": "retained and flagged; recommendation_eligible is false for every record; none is in the launch set or in any export; retention establishes no reuse rights",
-    "oss_projects": 30,
+    "oss_projects": 28,
     "oss_with_licence_issue_also_rejected_for_other_reasons": 20,
-    "relationships_flagged": 38,
+    "relationships_flagged": 33,
     "retained_under": {
       "decided_at": "2026-09-27",
       "decided_by": "keith",
       "decision_ref": "Linear KEI-805 comment 258b38dd-a288-4b6e-bbe6-9fae7220d4fd",
       "scope": "schema inclusion and flagged retention only; not recommendation, publication or redistribution"
     },
-    "saas_products_touched": 35
+    "saas_products_touched": 31
   },
   "publication_status": "public",
   "reconciled": {
@@ -478,26 +478,26 @@
   },
   "rejections": {
     "by_code": {
-      "archived": 19,
+      "archived": 20,
       "host_unverifiable": 7,
-      "identity_unverified": 6,
-      "licence_not_open": 45,
-      "not_a_replacement": 2869,
+      "identity_unverified": 7,
+      "licence_not_open": 43,
+      "not_a_replacement": 2873,
       "not_a_repository": 8,
       "not_found": 11,
       "saas_not_in_catalogue": 241,
       "unmaintained": 64
     },
     "by_reason": {
-      "eligibility:archived": 6,
+      "eligibility:archived": 7,
       "eligibility:archived;no_recognised_open_source_licence;stale_no_meaningful_activity_12_months": 2,
       "eligibility:archived;stale_no_meaningful_activity_12_months": 11,
       "eligibility:host_not_independently_verifiable": 7,
-      "eligibility:no_recognised_open_source_licence": 30,
+      "eligibility:no_recognised_open_source_licence": 28,
       "eligibility:no_recognised_open_source_licence;repository_identity_changed_since_listed": 1,
       "eligibility:no_recognised_open_source_licence;stale_no_meaningful_activity_12_months": 15,
       "eligibility:no_recognised_open_source_licence;stale_no_meaningful_activity_12_months;repository_identity_changed_since_listed": 1,
-      "eligibility:repository_identity_changed_since_listed": 4,
+      "eligibility:repository_identity_changed_since_listed": 5,
       "eligibility:repository_not_found": 11,
       "eligibility:stale_no_meaningful_activity_12_months": 64,
       "normalise:repo_url_not_a_repository": 8,
@@ -565,7 +565,6 @@
       "plausibility_review:AI tagging companion for Paperless-ngx": 1,
       "plausibility_review:AI task spend meter; different kind of software": 1,
       "plausibility_review:AI task spend meter; not personal finance": 1,
-      "plausibility_review:AI video dubbing tool for YouTube; not a speech API or localization platform": 10,
       "plausibility_review:AI wrapper around Docker scanners; not an application security platform like Snyk": 1,
       "plausibility_review:AI-as-a-service LLM platform; not a customer support desk": 1,
       "plausibility_review:AI-as-a-service LLM platform; not a helpdesk": 1,
@@ -1925,7 +1924,6 @@
       "plausibility_review:Self-hosted TTS model server; not a general AI/LLM platform": 10,
       "plausibility_review:Self-hosted Twitch-like streaming server; not a multistreaming or studio tool": 2,
       "plausibility_review:Self-hosted bookmark manager; not a search service": 4,
-      "plausibility_review:Self-hosted cloud photo album; no Lightroom-style photo editing": 1,
       "plausibility_review:Self-hosted container deployment platform; not frontend/Jamstack hosting": 4,
       "plausibility_review:Self-hosted email archive; not source control hosting like GitHub": 1,
       "plausibility_review:Self-hosted file server; not an Apple device-integrated sync service": 1,
@@ -2180,7 +2178,6 @@
       "plausibility_review:Web front end for Telnyx/Twilio APIs; not a business phone system": 1,
       "plausibility_review:Web front end for the MyFin platform only; a component, not a complete product like Rocket Money": 1,
       "plausibility_review:Web frontend only for a personal-finance backend; description does not establish full product": 1,
-      "plausibility_review:Web photo album gallery; description does not establish device library sync": 1,
       "plausibility_review:Web photo gallery for sharing; lacks Lightroom's raw develop and editing core": 1,
       "plausibility_review:Web photo gallery/sharing; no device photo library backup and sync": 1,
       "plausibility_review:Web photo gallery; not a photo editing and cataloguing tool": 1,
@@ -2305,7 +2302,7 @@
       "plausibility_review:inference server; not a multi-provider LLM API router": 1,
       "plausibility_review:infrastructure-as-code tool; not a platform that runs applications": 1,
       "plausibility_review:intranet tunneling reverse proxy; not a privacy VPN service": 1,
-      "plausibility_review:job match not yet desk-reviewed": 52,
+      "plausibility_review:job match not yet desk-reviewed": 68,
       "plausibility_review:layered image editor; not background removal": 1,
       "plausibility_review:layered photo/image editor; not template-based graphic design": 1,
       "plausibility_review:list of newsletter RSS feeds": 1,
@@ -2379,7 +2376,7 @@
       "plausibility_review:workbench front end for third-party image model APIs": 1,
       "plausibility_review:workflow engine programmed in code; not a no-code automation product": 1
     },
-    "total": 3270
+    "total": 3274
   },
   "review_queue": {
     "open": 9,
@@ -2389,16 +2386,16 @@
   "schema_version": "1.0.0",
   "verified": {
     "maintenance_status": {
-      "active": 1351,
-      "maintained": 132,
+      "active": 1349,
+      "maintained": 134,
       "stale": 93,
       "unverified": 18
     },
     "oss_recommendable": 1442,
     "oss_rejected": 152,
-    "relationships_flagged_licence_exception": 38,
-    "relationships_rejected": 3041,
-    "relationships_validated": 2089,
+    "relationships_flagged_licence_exception": 33,
+    "relationships_rejected": 3045,
+    "relationships_validated": 2090,
     "saas_with_validated_alternatives": 495
   }
 }

@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-20T02:58:57Z",
+  "as_of": "2026-11-21T01:21:40Z",
   "checks": [
     {
       "criterion": 1,
@@ -49,11 +49,11 @@
       "id": "schema.rejection",
       "kind": "assertion",
       "observed": {
-        "archived": 19,
+        "archived": 20,
         "host_unverifiable": 7,
-        "identity_unverified": 6,
-        "licence_not_open": 45,
-        "not_a_replacement": 2869,
+        "identity_unverified": 7,
+        "licence_not_open": 43,
+        "not_a_replacement": 2873,
         "not_a_repository": 8,
         "not_found": 11,
         "saas_not_in_catalogue": 241,
@@ -219,7 +219,7 @@
       "failures": 0,
       "id": "activity.evidence_is_not_docs_only",
       "kind": "assertion",
-      "observed": 5311,
+      "observed": 5312,
       "ok": true
     },
     {
@@ -229,7 +229,7 @@
       "failures": 0,
       "id": "archived.excluded",
       "kind": "assertion",
-      "observed": 19,
+      "observed": 20,
       "ok": true
     },
     {
@@ -259,7 +259,7 @@
       "failures": 0,
       "id": "licence_lane.every_licence_issue_is_described",
       "kind": "assertion",
-      "observed": 125,
+      "observed": 124,
       "ok": true
     },
     {
@@ -269,7 +269,7 @@
       "failures": 0,
       "id": "licence_lane.retained_not_discarded",
       "kind": "assertion",
-      "observed": 30,
+      "observed": 28,
       "ok": true
     },
     {
@@ -280,8 +280,8 @@
       "id": "licence_lane.never_recommended",
       "kind": "assertion",
       "observed": {
-        "projects": 30,
-        "relationships": 38
+        "projects": 28,
+        "relationships": 33
       },
       "ok": true
     },
@@ -304,14 +304,14 @@
       "kind": "assertion",
       "observed": {
         "oss_projects": {
-          "licence_exception": 30,
+          "licence_exception": 28,
           "recommendable": 1442,
-          "rejected": 122
+          "rejected": 124
         },
         "relationships": {
-          "licence_exception": 38,
-          "recommendable": 2089,
-          "rejected": 3041
+          "licence_exception": 33,
+          "recommendable": 2090,
+          "rejected": 3045
         }
       },
       "ok": true
@@ -334,8 +334,8 @@
       "id": "maintenance.classification_matches_definition",
       "kind": "assertion",
       "observed": {
-        "active": 1351,
-        "maintained": 132,
+        "active": 1349,
+        "maintained": 134,
         "stale": 93,
         "unverified": 18
       },
@@ -434,7 +434,7 @@
       "failures": 0,
       "id": "dedupe.one_repository_per_product_per_saas",
       "kind": "assertion",
-      "observed": 1618,
+      "observed": 1614,
       "ok": true
     },
     {
@@ -444,7 +444,7 @@
       "failures": 0,
       "id": "launch.only_validated_edges",
       "kind": "assertion",
-      "observed": 1618,
+      "observed": 1614,
       "ok": true
     },
     {
@@ -479,9 +479,9 @@
       "id": "launch.targets",
       "kind": "assertion",
       "observed": {
-        "oss_distinct_products": 662,
-        "oss_projects": 663,
-        "relationships": 1618,
+        "oss_distinct_products": 661,
+        "oss_projects": 662,
+        "relationships": 1614,
         "saas_products": 406
       },
       "ok": true
@@ -505,13 +505,13 @@
       "kind": "observation",
       "observed": {
         "examples": [
-          "github.com/stirling-tools/stirling-pdf (97045 stars: no_recognised_open_source_licence)",
-          "github.com/opendatalab/mineru (84018 stars: no_recognised_open_source_licence)",
+          "github.com/stirling-tools/stirling-pdf (97110 stars: no_recognised_open_source_licence)",
+          "github.com/opendatalab/mineru (84063 stars: no_recognised_open_source_licence)",
           "github.com/nomic-ai/gpt4all (77332 stars: stale_no_meaningful_activity_12_months)",
-          "github.com/pi-hole/pi-hole (62132 stars: no_recognised_open_source_licence)",
-          "github.com/pocketbase/pocketbase (61578 stars: archived)"
+          "github.com/pi-hole/pi-hole (62146 stars: no_recognised_open_source_licence)",
+          "github.com/pocketbase/pocketbase (61579 stars: archived)"
         ],
-        "launch_projects_under_500_stars": 106,
+        "launch_projects_under_500_stars": 105,
         "rejected_with_10k_plus_stars": 35
       }
     },
@@ -524,9 +524,9 @@
         "entries_read": 3622,
         "oss_candidates": 1594,
         "oss_recommendable": 1442,
-        "rejections_recorded": 3270,
+        "rejections_recorded": 3274,
         "relationship_claims_read": 5988,
-        "relationships_validated": 2089
+        "relationships_validated": 2090
       }
     }
   ],

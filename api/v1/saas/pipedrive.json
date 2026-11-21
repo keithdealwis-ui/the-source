@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "8927f0c1a32b5220",
+  "dataset_version": "5516ff38ee999e99",
   "last_checked": {
-    "newest": "2026-11-20T02:58:57Z",
-    "oldest": "2026-11-20T02:58:57Z"
+    "newest": "2026-11-21T01:21:40Z",
+    "oldest": "2026-11-21T01:21:40Z"
   },
   "more_available": 1,
   "provenance": {
@@ -37,7 +37,7 @@
               "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-20T02:58:57Z"
+          "validated_as_of": "2026-11-21T01:21:40Z"
         },
         "replacement_fit": {
           "caps": [
@@ -99,7 +99,7 @@
         "tag": "v2.13.2"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-20T02:58:57Z",
+      "live_checked_at": "2026-11-21T01:21:40Z",
       "maintenance_status": "active",
       "name": "Warpdrive",
       "note": {
@@ -152,7 +152,7 @@
       "sources": [
         "diegoleme"
       ],
-      "stars": 911
+      "stars": 910
     },
     {
       "evidence": {
@@ -171,14 +171,14 @@
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-20T02:58:57Z"
+          "validated_as_of": "2026-11-21T01:21:40Z"
         },
         "replacement_fit": {
           "caps": [],
           "core_gate": "passed",
           "corroboration": {
             "basis": [
-              "readme_names_product"
+              "second_upstream_source"
             ],
             "corroborated": true,
             "readme_checked": true
@@ -186,11 +186,11 @@
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 68.8,
-            "ease_of_adoption": 80.0,
+            "ease_of_adoption": 100.0,
             "economic_advantage": 45.0,
             "feature_equivalence": 85.0,
             "integrations_extensibility": 100.0,
-            "migration_friction": 100.0,
+            "migration_friction": 66.7,
             "production_commercial_readiness": 100.0
           },
           "evidence_families": [
@@ -210,14 +210,14 @@
         }
       },
       "github_url": "https://github.com/customermates/customermates",
-      "last_meaningful_activity_at": "2026-11-11T22:30:03Z",
+      "last_meaningful_activity_at": "2026-11-20T08:46:50Z",
       "latest_release": {
         "published_at": "2026-03-27T13:16:42Z",
         "tag": "v.1.1.0"
       },
       "licence_disclosure": "open core: recommendation covers the AGPL-3.0-only core; parts under Customermates Commercial License are excluded",
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-20T02:58:57Z",
+      "licence_spdx": "NOASSERTION",
+      "live_checked_at": "2026-11-21T01:21:40Z",
       "maintenance_status": "active",
       "name": "Customermates",
       "note": {
@@ -225,23 +225,23 @@
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
-          "integrations and extensibility"
+          "ease of adoption"
         ],
-        "text": "Strongest on core use-case coverage and integrations and extensibility."
+        "text": "Strongest on core use-case coverage and ease of adoption."
       },
       "oss_id": "github.com/customermates/customermates",
       "project_health": {
         "band": "Healthy",
         "confidence": 88.4,
-        "score": 71.4,
+        "score": 73.6,
         "trajectory": "Insufficient history"
       },
       "rank": 2,
       "replacement_fit": {
         "caps": [],
-        "confidence": 86.5,
-        "evaluated_at": "2026-10-28T23:06:27Z",
-        "score": 88.9,
+        "confidence": 90.5,
+        "evaluated_at": "2026-11-21T01:21:40Z",
+        "score": 88.5,
         "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/customermates/customermates",
@@ -267,7 +267,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-20T02:58:57Z"
+          "validated_as_of": "2026-11-21T01:21:40Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -310,7 +310,7 @@
         "tag": "v1.44.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-20T02:58:57Z",
+      "live_checked_at": "2026-11-21T01:21:40Z",
       "maintenance_status": "active",
       "name": "Django-CRM",
       "note": {
@@ -359,7 +359,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-20T02:58:57Z"
+          "validated_as_of": "2026-11-21T01:21:40Z"
         },
         "replacement_fit": {
           "caps": [
@@ -408,7 +408,7 @@
         "tag": "24.0.1"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-20T02:58:57Z",
+      "live_checked_at": "2026-11-21T01:21:40Z",
       "maintenance_status": "active",
       "name": "Dolibarr",
       "note": {
@@ -449,7 +449,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 7885
+      "stars": 7889
     },
     {
       "evidence": {
@@ -463,7 +463,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-20T02:58:57Z"
+          "validated_as_of": "2026-11-21T01:21:40Z"
         },
         "replacement_fit": {
           "caps": [
@@ -510,7 +510,7 @@
         "tag": "v3.1.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-20T02:58:57Z",
+      "live_checked_at": "2026-11-21T01:21:40Z",
       "maintenance_status": "active",
       "name": "django-crm",
       "note": {
