@@ -1,0 +1,59 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-22T02:12:34Z",
+  "canonical": {
+    "status": "licence_exception"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": false,
+      "spdx": "NOASSERTION",
+      "status": "issue"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "InteraOne/InteraOne",
+      "created_at": "2025-07-24T05:50:01Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-22T02:12:34Z",
+      "forks": 21,
+      "found": true,
+      "host_repo_id": 1025343957,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "Other",
+      "licence_spdx": "NOASSERTION",
+      "observed": {
+        "commits_in_12m_window": 455,
+        "commits_inspected": 1,
+        "issues_closed_12m": 6,
+        "merged_prs_inspected": 10,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-21T13:44:21Z",
+      "stars": 125
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a merged_pr",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-21T13:44:22Z",
+      "status": "active"
+    }
+  },
+  "note": "waiting-room batch wr-20261121; 1 observation(s)",
+  "oss_id": "github.com/interaone/interaone",
+  "outcome": "rejected",
+  "reasons": [
+    "no_recognised_open_source_licence"
+  ],
+  "repo_url": "https://github.com/interaone/interaone",
+  "request_id": "wr-eec4d909273d86d1",
+  "saas_hint": "intercom",
+  "scores": null,
+  "submitted_at": "2026-11-21T00:31:15Z",
+  "submitted_by": "waiting-room:grokbot"
+}
