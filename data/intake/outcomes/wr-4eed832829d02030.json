@@ -1,0 +1,136 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-23T02:42:46Z",
+  "canonical": {
+    "promoted_in_run": null,
+    "status": "pending_promotion"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "Augani/openreel-video",
+      "created_at": "2026-01-19T11:24:02Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-23T02:42:46Z",
+      "forks": 931,
+      "found": true,
+      "host_repo_id": 1137441048,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 251,
+        "commits_inspected": 3,
+        "issues_closed_12m": 40,
+        "merged_prs_inspected": 10,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-20T06:19:59Z",
+      "stars": 6279
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a release",
+      "days_since_meaningful_activity": 2,
+      "last_meaningful_activity_at": "2026-11-20T06:41:38Z",
+      "status": "active"
+    },
+    "saas_relationships": [
+      {
+        "category": "Video editing",
+        "excerpt": "openreel video - professional browser-based video editor. open source capcut alternative. 100% browser-based, no installation, n",
+        "field": "description",
+        "matched": "capcut alternative",
+        "saas_id": "capcut",
+        "saas_name": "CapCut"
+      }
+    ],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 0
+    }
+  },
+  "note": "waiting-room batch wr-20261122; 1 observation(s)",
+  "oss_id": "github.com/augani/openreel-video",
+  "outcome": "accepted",
+  "reasons": [
+    "passes every rule; relationship evidenced"
+  ],
+  "repo_url": "https://github.com/augani/openreel-video",
+  "request_id": "wr-4eed832829d02030",
+  "saas_hint": "capcut",
+  "scores": {
+    "errors": [],
+    "preliminary": true,
+    "project_health": {
+      "band": "Healthy",
+      "confidence": 93.7,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-23T02:42:46Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/augani/openreel-video",
+      "score": 77.3,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": []
+    },
+    "replacement_fit": [
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described",
+            "readme_names_product"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 50.0,
+          "ease_of_adoption": 80.0,
+          "economic_advantage": 40.0,
+          "feature_equivalence": 100.0,
+          "integrations_extensibility": 50.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 60.0
+        },
+        "evaluated_at": "2026-11-23T02:42:46Z",
+        "evidence_families": [
+          "api",
+          "data_ownership",
+          "demo",
+          "import",
+          "plugins",
+          "quickstart",
+          "support"
+        ],
+        "oss_id": "github.com/augani/openreel-video",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "capcut",
+        "score": 80.0,
+        "score_version": "1.3.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 80.0
+      }
+    ]
+  },
+  "submitted_at": "2026-11-22T12:26:51Z",
+  "submitted_by": "waiting-room:grokbot"
+}
