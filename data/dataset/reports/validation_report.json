@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-21T23:02:35Z",
+  "as_of": "2026-11-23T00:10:59Z",
   "checks": [
     {
       "criterion": 1,
@@ -138,7 +138,7 @@
           "piotrkulpinski/open-source-alternatives",
           "tycrek/degoogle"
         ],
-        "staged_claims": 3622
+        "staged_claims": 3621
       },
       "ok": true
     },
@@ -219,7 +219,7 @@
       "failures": 0,
       "id": "activity.evidence_is_not_docs_only",
       "kind": "assertion",
-      "observed": 5315,
+      "observed": 5319,
       "ok": true
     },
     {
@@ -334,8 +334,8 @@
       "id": "maintenance.classification_matches_definition",
       "kind": "assertion",
       "observed": {
-        "active": 1352,
-        "maintained": 132,
+        "active": 1349,
+        "maintained": 135,
         "stale": 92,
         "unverified": 18
       },
@@ -505,11 +505,11 @@
       "kind": "observation",
       "observed": {
         "examples": [
-          "github.com/stirling-tools/stirling-pdf (97164 stars: no_recognised_open_source_licence)",
-          "github.com/opendatalab/mineru (84101 stars: no_recognised_open_source_licence)",
+          "github.com/stirling-tools/stirling-pdf (97247 stars: no_recognised_open_source_licence)",
+          "github.com/opendatalab/mineru (84148 stars: no_recognised_open_source_licence)",
           "github.com/nomic-ai/gpt4all (77327 stars: stale_no_meaningful_activity_12_months)",
-          "github.com/pi-hole/pi-hole (62159 stars: no_recognised_open_source_licence)",
-          "github.com/pocketbase/pocketbase (61576 stars: archived)"
+          "github.com/pi-hole/pi-hole (62181 stars: no_recognised_open_source_licence)",
+          "github.com/pocketbase/pocketbase (61573 stars: archived)"
         ],
         "launch_projects_under_500_stars": 104,
         "rejected_with_10k_plus_stars": 35
@@ -521,7 +521,7 @@
       "id": "strategy.harvest_broad_reject_aggressive",
       "kind": "observation",
       "observed": {
-        "entries_read": 3622,
+        "entries_read": 3621,
         "oss_candidates": 1594,
         "oss_recommendable": 1443,
         "rejections_recorded": 3273,

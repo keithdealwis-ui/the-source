@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "609f356f2da3c469",
+  "dataset_version": "8d166df037d8b794",
   "last_checked": {
-    "newest": "2026-11-21T23:02:35Z",
-    "oldest": "2026-11-21T23:02:35Z"
+    "newest": "2026-11-23T00:10:59Z",
+    "oldest": "2026-11-23T00:10:59Z"
   },
   "more_available": 0,
   "provenance": {
@@ -34,7 +34,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-11-21T23:02:35Z"
+          "validated_as_of": "2026-11-23T00:10:59Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -71,7 +71,7 @@
         "tag": "3.3.0-beta01"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-21T23:02:35Z",
+      "live_checked_at": "2026-11-23T00:10:59Z",
       "maintenance_status": "active",
       "name": "Neo4j",
       "note": {
@@ -109,7 +109,7 @@
       "sources": [
         "runacapital"
       ],
-      "stars": 17476
+      "stars": 17478
     },
     {
       "evidence": {
@@ -123,7 +123,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-11-21T23:02:35Z"
+          "validated_as_of": "2026-11-23T00:10:59Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -135,7 +135,7 @@
           },
           "dimensions": {
             "core_use_case_coverage": 100.0,
-            "deployment_ownership": 50.0,
+            "deployment_ownership": 75.0,
             "ease_of_adoption": 80.0,
             "economic_advantage": 80.0,
             "feature_equivalence": 50.0,
@@ -145,6 +145,7 @@
           },
           "evidence_families": [
             "api",
+            "data_ownership",
             "import",
             "multi_user",
             "quickstart",
@@ -161,7 +162,7 @@
         "tag": "v12.1.0-rc3"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-21T23:02:35Z",
+      "live_checked_at": "2026-11-23T00:10:59Z",
       "maintenance_status": "active",
       "name": "TerminusDB",
       "note": {
@@ -178,16 +179,16 @@
       "oss_id": "github.com/terminusdb/terminusdb",
       "project_health": {
         "band": "Exceptional",
-        "confidence": 95.0,
-        "score": 90.2,
-        "trajectory": "Stable"
+        "confidence": 93.6,
+        "score": 90.6,
+        "trajectory": "Rising"
       },
       "rank": 2,
       "replacement_fit": {
         "caps": [],
         "confidence": 84.5,
-        "evaluated_at": "2026-10-13T00:32:08Z",
-        "score": 70.7,
+        "evaluated_at": "2026-11-23T00:10:59Z",
+        "score": 73.2,
         "score_version": "1.3.0"
       },
       "repo_url": "https://github.com/terminusdb/terminusdb",
@@ -198,7 +199,7 @@
       "sources": [
         "runacapital"
       ],
-      "stars": 3487
+      "stars": 3488
     },
     {
       "evidence": {
@@ -212,7 +213,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-11-21T23:02:35Z"
+          "validated_as_of": "2026-11-23T00:10:59Z"
         },
         "replacement_fit": {
           "caps": [
@@ -254,7 +255,7 @@
       "latest_release": null,
       "licence_disclosure": "source-available: licensed under BUSL-1.1, which is not an OSI-approved open-source licence",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-21T23:02:35Z",
+      "live_checked_at": "2026-11-23T00:10:59Z",
       "maintenance_status": "active",
       "name": "ArangoDB",
       "note": {
@@ -297,7 +298,7 @@
       "sources": [
         "runacapital"
       ],
-      "stars": 14301
+      "stars": 14302
     },
     {
       "evidence": {
@@ -311,7 +312,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-11-21T23:02:35Z"
+          "validated_as_of": "2026-11-23T00:10:59Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -346,14 +347,14 @@
         }
       },
       "github_url": "https://github.com/memgraph/memgraph",
-      "last_meaningful_activity_at": "2026-11-07T00:29:54Z",
+      "last_meaningful_activity_at": "2026-11-21T09:40:55Z",
       "latest_release": {
         "published_at": "2026-10-21T11:05:17Z",
         "tag": "v3.14.0"
       },
       "licence_disclosure": "source-available: licensed under BUSL-1.1 + Memgraph Enterprise License, which is not an OSI-approved open-source licence",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-21T23:02:35Z",
+      "live_checked_at": "2026-11-23T00:10:59Z",
       "maintenance_status": "active",
       "name": "Memgraph",
       "note": {

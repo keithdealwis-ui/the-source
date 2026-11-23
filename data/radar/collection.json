@@ -1,12 +1,16 @@
 {
-  "as_of": "2026-11-21T23:02:35Z",
+  "as_of": "2026-11-23T00:10:59Z",
   "resolve": {
-    "asked": 12,
+    "asked": 13,
     "deferred": 0,
     "pool_added": [
-      "github.com/shinmegamiboson/lookatmyquant"
+      "github.com/el4cteo/fast-anything",
+      "github.com/gulivan/worker755",
+      "github.com/itsnotrexed/leonida",
+      "github.com/sebaandrada-cell/pcapanalyzer",
+      "github.com/tamnd/riemann-handbook"
     ],
-    "resolved": 12,
+    "resolved": 13,
     "transient_failures": []
   },
   "sources": {
@@ -15,18 +19,18 @@
       "gone": 0,
       "host": "https://api.bsky.app",
       "http_calls": 2,
-      "items_read": 99,
-      "listed": 99,
-      "mentions": 49,
+      "items_read": 100,
+      "listed": 100,
+      "mentions": 43,
       "status": "ok"
     },
     "forem": {
       "errors": [],
       "gone": 0,
       "http_calls": 32,
-      "items_read": 28,
-      "listed": 28,
-      "mentions": 26,
+      "items_read": 27,
+      "listed": 27,
+      "mentions": 24,
       "status": "ok"
     },
     "hn": {
@@ -34,8 +38,8 @@
       "gone": 0,
       "http_calls": 303,
       "items_read": 300,
-      "listed": 346,
-      "mentions": 28,
+      "listed": 366,
+      "mentions": 17,
       "status": "ok"
     },
     "instagram": {
@@ -62,9 +66,9 @@
     }
   },
   "stars": {
-    "asked": 13,
+    "asked": 34,
     "error": null,
-    "found": 13,
+    "found": 34,
     "http_calls": 1,
     "missing_before": 3,
     "not_found": 0,

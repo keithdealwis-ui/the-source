@@ -3,17 +3,17 @@
   "canonical_schema": "the-source.canonical/1",
   "catalogue": {
     "entries": 500,
-    "none_yet": 125,
+    "none_yet": 123,
     "ok": 209,
-    "partial": 166,
+    "partial": 168,
     "path": "catalogue.json"
   },
-  "data_as_of": "2026-11-21T23:02:35Z",
-  "dataset_version": "609f356f2da3c469",
+  "data_as_of": "2026-11-23T00:10:59Z",
+  "dataset_version": "8d166df037d8b794",
   "domains": "domains.json",
   "live_checked_at": {
-    "newest": "2026-11-21T23:02:35Z",
-    "oldest": "2026-11-21T23:02:35Z"
+    "newest": "2026-11-23T00:10:59Z",
+    "oldest": "2026-11-23T00:10:59Z"
   },
   "supported_saas": [
     {
@@ -1980,6 +1980,15 @@
     },
     {
       "compare_path": null,
+      "name": "Smallpdf",
+      "path": "saas/smallpdf.json",
+      "recommendations": 1,
+      "saas_id": "smallpdf",
+      "slug": "smallpdf",
+      "status": "insufficient_recommendations"
+    },
+    {
+      "compare_path": null,
       "name": "MyFitnessPal",
       "path": "saas/myfitnesspal.json",
       "recommendations": 2,
@@ -2021,6 +2030,15 @@
       "recommendations": 2,
       "saas_id": "cloudconvert",
       "slug": "cloudconvert",
+      "status": "insufficient_recommendations"
+    },
+    {
+      "compare_path": null,
+      "name": "iLovePDF",
+      "path": "saas/ilovepdf.json",
+      "recommendations": 1,
+      "saas_id": "ilovepdf",
+      "slug": "ilovepdf",
       "status": "insufficient_recommendations"
     },
     {
