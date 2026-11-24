@@ -107,8 +107,12 @@ def test_recommend_from_a_need_in_words_uses_named_product_and_hybrid_retrieval(
                                         "strength": 1.0}
     assert all(x["via"] == "replaces notion" for x in r["recommendations"])
     r = _ok(S, "source_recommend", need="customer support helpdesk")
-    assert r["matched_products"] and all(m["matched_by"] == "hybrid" for m in r["matched_products"])
-    assert all(set(m["components"]) == {"lexical", "semantic", "graph"} for m in r["matched_products"])
+    # "customer support" names a catalogue category, so its products are matched by category (with search's SaaS
+    # lexical score); a product reached by retrieval alone still carries its three hybrid components.
+    assert r["matched_products"] and all(m["matched_by"] in ("hybrid", "category") for m in r["matched_products"])
+    assert all(m["category"] == "Customer support" for m in r["matched_products"] if m["matched_by"] == "category")
+    assert all(set(m["components"]) == {"lexical", "semantic", "graph"} for m in r["matched_products"]
+               if m["matched_by"] == "hybrid")
     assert r["recommendations"]
 
 

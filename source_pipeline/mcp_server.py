@@ -1463,6 +1463,49 @@ def _include_discovery(args):
     return v
 
 
+# A product-driven discovery candidate that neither claims to replace the product nor is listed as replacing it
+# must agree with the product's category on more than the category word itself: one bare word ("scheduling")
+# matches job schedulers, dataflow schedulers and cron libraries as readily as booking apps.
+MIN_DISCOVERY_QUICK_FIT = 50
+_TOPIC_SPREAD_MAX = 3  # a topic seen in the canonical projects of more categories than this says nothing specific
+
+
+def _category_topics(layer, category):
+    """Topics that mark a category: carried by the corpus rows of canonical projects paired with the category's
+    products, and by projects in no more than _TOPIC_SPREAD_MAX categories. Computed once per layer."""
+    cache = layer.__dict__.setdefault("_category_topic_cache", {})
+    if not cache:
+        spread, by_cat = {}, {}
+        for pid, row in layer.canonical_corpus.items():
+            cats = {layer.saas[r["saas_id"]]["category"] for r in layer.rel_by_project.get(pid, [])
+                    if r["saas_id"] in layer.saas}
+            for t in row.get("topics") or []:
+                spread.setdefault(t, set()).update(cats)
+                for cat in cats:
+                    by_cat.setdefault(cat, set()).add(t)
+        for cat, topics in by_cat.items():
+            cache[cat] = frozenset(t for t in topics if len(spread[t]) <= _TOPIC_SPREAD_MAX)
+        cache.setdefault(None, frozenset())
+    return cache.get(category, frozenset())
+
+
+def _topic_agreement(layer, saas, topics):
+    """The candidate topics that agree with the product's category, ignoring topics that only restate a category
+    word ("scheduler", "scheduling" for Scheduling)."""
+    stems = [t[:5] for t in _category_terms(saas)]
+    vocab = _category_topics(layer, saas.get("category"))
+
+    def restates(topic):
+        parts = [p for p in re.split(r"[-_ ]+", topic.lower()) if p]
+        return all(any(p.startswith(s) for s in stems) for p in parts)
+    return sorted(t for t in topics or [] if t in vocab and not restates(t))
+
+
+def _discovery_quick_fit(layer, cid, saas_id):
+    return max((r["quick_fit"]["score"] or 0 for r in layer.quick_pairings.get(cid, []) if r["saas_id"] == saas_id),
+               default=None)
+
+
 def _discovery_candidates(layer, server, query, limit, licences=None, family=None, status=None, min_stars=None,
                           max_stars=None, terms=None, anchors=None, saas_id=None):
     """Discovery-tier projects that match a query: a separate, labelled list, never recommendations. Only
@@ -1497,7 +1540,14 @@ def _discovery_candidates(layer, server, query, limit, licences=None, family=Non
             r"\bintegrat\w* with [^.]{0,120}\b" + re.escape(_norm(anchors)) + r"\b", _norm(c["description"])))
         strong, coverage, matched = match_strength(h, terms, (True if alt else False) if anchors else None,
                                                    c["topics"])
+        agreement, qfit = [], None
+        off_category = False
+        if strong and anchors and saas_id in layer.saas and not alt:
+            agreement = _topic_agreement(layer, layer.saas[saas_id], c["topics"])
+            qfit = _discovery_quick_fit(layer, h["key"], saas_id)
+            off_category = not agreement and (qfit is None or qfit < MIN_DISCOVERY_QUICK_FIT)
         why_not = ("weak_match" if not strong
+                   else "off_category" if off_category
                    else "integration_not_replacement"
                    if uses or integration_kind(c["name"], c["full_name"], c["description"], c["topics"], products, alt)
                    else "not_a_product" if not_a_product(c["name"], c["full_name"], c["topics"], c["description"])
@@ -1517,13 +1567,17 @@ def _discovery_candidates(layer, server, query, limit, licences=None, family=Non
         rows.append({**_discovery_view(layer, h["key"]),
                      "retrieval": {**{k: h[k] for k in ("score", "components", "semantic_terms")},
                                    "term_coverage": coverage, "matched_terms": matched,
+                                   **({"category_topics": agreement} if agreement else {}),
+                                   **({"quick_fit": qfit} if qfit is not None else {}),
                                    **({"basis": "listed as an alternative by licence-cleared upstream lists "
                                                 "(KEI-805 dataset); withheld from recommendations for its licence"}
                                       if h.get("listed") else {})}})
     out = {**base, "status": "ok" if rows else "no_matching_discovery_projects", "candidates": rows[:limit],
            "more_available": max(0, len(rows) - limit), "excluded": dict(sorted(excluded.items())),
            "match_rule": ((f"a candidate must say it is an alternative to {anchors} or match every category word "
-                           f"{terms}; " if anchors else
+                           f"{terms}, and one that does not claim to be an alternative must also carry a topic of "
+                           f"the category's own projects or have a quick Fit of at least {MIN_DISCOVERY_QUICK_FIT} "
+                           "for the product (off_category otherwise); " if anchors else
                            f"a candidate must match at least {MIN_TERM_COVERAGE:.0%} of the query's content words "
                            f"{terms} with one in its name, repository or topics; ") + "weak word matches are excluded, "
                           "never used to fill the list. Integrations (MCP servers, SDKs, bots, API clients) work "
@@ -1986,6 +2040,46 @@ def _num(args, key, lo, hi):
     return v
 
 
+# A need's words that name a catalogue category the category name itself does not spell out. Each phrase is
+# matched on whole stemmed tokens; the categories must exist in the catalogue to be used.
+_NEED_CATEGORY_SYNONYMS = {
+    "password": ("Password management",), "password manager": ("Password management",),
+    "password vault": ("Password management",),
+    "newsletter": ("Email marketing", "Publishing"), "mailing list": ("Email marketing",),
+    "email campaign": ("Email marketing",), "email list": ("Email marketing",),
+    "booking": ("Scheduling",), "appointment": ("Scheduling",),
+}
+# Category words that say nothing on their own ("management" in "Password management").
+_GENERIC_CATEGORY_WORDS = {"management", "platform", "tool", "tooling", "service", "software", "app", "a", "an",
+                           "and", "as", "of", "the", "for", "&"}
+# A product reached only by retrieval (not named, not by category) below this hybrid score is a weak match: the
+# answer says so (status weak_match) instead of presenting its alternatives as an ok answer.
+MIN_PRODUCT_MATCH = 0.45
+MAX_CATEGORY_PRODUCTS = 12
+
+
+def _need_categories(layer, need):
+    """Catalogue categories a need asks for: by synonym, or by every distinctive word of the category name."""
+    toks = _tokens(need)
+    padded = f" {' '.join(toks)} "
+    cats = {s["category"] for s in layer.saas.values() if s.get("category")}
+    found = {}
+    for phrase, targets in _NEED_CATEGORY_SYNONYMS.items():
+        if f" {' '.join(_tokens(phrase))} " in padded:
+            for cat in targets:
+                if cat in cats:
+                    found[cat] = "synonym: " + phrase
+    tokset = set(toks)
+    for cat in cats:
+        words = {t for t in _tokens(cat) if t not in _GENERIC_CATEGORY_WORDS}
+        if words and words <= tokset and cat not in found:
+            found[cat] = "category name"
+    # The most specific category wins: "Email" is not asked for when "Email marketing" is.
+    words = {cat: {t for t in _tokens(cat) if t not in _GENERIC_CATEGORY_WORDS} for cat in found}
+    return {cat: why for cat, why in found.items()
+            if not any(o != cat and words[cat] < words[o] for o in found)}
+
+
 def tool_recommend(layer, args, server):
     need, saas = args.get("need"), args.get("saas")
     if need is None and saas is None:
@@ -2033,7 +2127,21 @@ def tool_recommend(layer, args, server):
             sv = layer.saas[sid]
             return need_terms & set(_tokens(" ".join([sv["name"], *(sv.get("aliases") or []), sv.get("category") or ""])))
         full = {h["key"] for h in hits if h["kind"] == "saas" and need_terms and _covered(h["key"]) == need_terms}
-        for h in ([] if named or not need_terms else hits):
+        # KEI-961 follow-on: a need that names a category ("password manager", "newsletter") is matched to that
+        # category's products, ordered by search's own SaaS lexical match; a product sharing one generic word with
+        # the need ("Microsoft Teams" for "small team") is not matched beside them.
+        need_cats = {} if named or not need_terms else _need_categories(layer, need)
+        if need_cats:
+            lex = {key: score for score, _, key, _, _ in layer.search(" ".join(_sem_tokens(need)) or need, "saas")}
+            in_cat = sorted((sid for sid, sv in layer.saas.items() if sv.get("category") in need_cats),
+                            key=lambda sid: (-lex.get(sid, 0), -sum(r["recommended"] for r in
+                                                                    layer.rel_by_saas.get(sid, [])), sid))
+            for sid in in_cat[:MAX_CATEGORY_PRODUCTS]:
+                cat = layer.saas[sid]["category"]
+                matched.append({"saas_id": sid, "name": layer.saas[sid]["name"], "matched_by": "category",
+                                "category": cat, "basis": need_cats[cat], "strength": 1.0,
+                                "lexical": lex.get(sid, 0.0)})
+        for h in ([] if named or need_cats or not need_terms else hits):
             if full and h["kind"] == "saas" and h["key"] not in full:
                 continue
             if h["kind"] == "saas" and h["score"] >= max(0.25, 0.8 * top_saas) and len(matched) < 3 and \
@@ -2058,9 +2166,12 @@ def tool_recommend(layer, args, server):
                 cur = cands.get(r["oss_id"])
                 if cur is None or (r["replacement_fit"]["score"] or 0) > (cur["rel"]["replacement_fit"]["score"] or 0):
                     cands[r["oss_id"]] = {"rel": r, "via": "replaces " + m["saas_id"], "group": 0}
+    # With a category match, a direct hit joins only as an alternative to one of the category's products.
+    in_scope = ({m["saas_id"] for m in matched} if any(m["matched_by"] == "category" for m in matched) else None)
     for pid, h in proj_hits.items():
         if pid not in cands:
-            recs = sorted((r for r in layer.rel_by_project.get(pid, []) if r["recommended"]),
+            recs = sorted((r for r in layer.rel_by_project.get(pid, []) if r["recommended"]
+                           and (in_scope is None or r["saas_id"] in in_scope)),
                           key=lambda r: -(r["replacement_fit"]["score"] or 0))
             if recs:
                 cands[pid] = {"rel": recs[0], "via": "matched the need directly", "group": 1 if matched else 0}
@@ -2108,6 +2219,13 @@ def tool_recommend(layer, args, server):
     for i, row in enumerate(out, 1):
         row["rank"] = i
         del row["_group"]
+    # The match-strength floor: an answer is ok only when a product was named, matched by category or matched by
+    # retrieval at MIN_PRODUCT_MATCH or above, or a direct project hit reached it. Anything weaker is weak_match.
+    for m in matched:
+        if m["strength"] < MIN_PRODUCT_MATCH:
+            m["weak"] = True
+    strong_basis = (any(m["strength"] >= MIN_PRODUCT_MATCH for m in matched)
+                    or any(h["score"] >= MIN_PRODUCT_MATCH for h in proj_hits.values()))
     constraints = {k: args[k] for k in ("licence", "licence_family", "self_hostable", "maintenance_status", "min_fit",
                                         "min_health", "min_stars", "max_stars", "max_days_since_activity",
                                         "repository_momentum_7d") if k in args}
@@ -2115,7 +2233,8 @@ def tool_recommend(layer, args, server):
             "constraints_applied": constraints, "candidates_considered": len(cands),
             "excluded_by_constraint": dict(sorted(excluded.items())),
             "recommendations": out[:limit], "more_available": max(0, len(out) - limit),
-            "status": "ok" if out else ("no_products_matched" if not matched and not proj_hits
+            "status": ("ok" if strong_basis else "weak_match") if out else (
+                                        "no_products_matched" if not matched and not proj_hits
                                         else "no_recommended_alternatives" if not cands
                                         else "no_candidate_meets_constraints"),
             "ranking": "Alternatives to the matched products first, then strong direct matches of the need; within "
@@ -2125,6 +2244,14 @@ def tool_recommend(layer, args, server):
                               "why": "The published layer holds no evidence for these; check them yourself. "
                                      "self_hostable is evidenced only on published api/v1 pages."},
             "signals": {n: _signal_state(layer, server, n) for n in SIGNALS}}
+    if out["status"] == "weak_match":
+        out["match_strength"] = {
+            "floor": MIN_PRODUCT_MATCH,
+            "best_product_match": max((m["strength"] for m in matched), default=None),
+            "best_direct_match": max((h["score"] for h in proj_hits.values()), default=None),
+            "note": "No product or project matched the need strongly enough. The candidates are listed for "
+                    "inspection only; they answer the words of the need, not necessarily its meaning. Name the "
+                    "product to replace, or rephrase the need, for a reliable answer."}
     # KEI-919 S1.3: say plainly why the list is short instead of padding it.
     out["weak_matches_excluded"] = weak
     shown = len(out["recommendations"])
