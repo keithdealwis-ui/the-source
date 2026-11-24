@@ -3,28 +3,120 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 76,
-    "reason": "3 recommendations passed the full evaluation",
+    "reason": "4 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "8d166df037d8b794",
+  "dataset_version": "2702df4c40902975",
   "last_checked": {
-    "newest": "2026-11-23T00:10:59Z",
-    "oldest": "2026-11-23T00:10:59Z"
+    "newest": "2026-11-24T05:53:52Z",
+    "oldest": "2026-11-24T05:53:52Z"
   },
   "more_available": 0,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
       "altstack",
+      "intake",
       "job_match",
       "opensaasdirectory",
       "solvohq"
     ]
   },
   "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "self_described",
+          "provenance": [
+            {
+              "locator": "data/intake/admitted/wr-dac42d38f4f1c987.json",
+              "source_commit": "c85f6c46f48ef0b43d622720585ae1c8aebcd966",
+              "source_id": "intake"
+            }
+          ],
+          "validated_as_of": "2026-11-24T05:53:52Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "self_described",
+              "readme_names_product"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 62.5,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 60.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 75.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/WarrDoge/RVNA",
+      "last_meaningful_activity_at": "2026-11-22T19:08:18Z",
+      "latest_release": null,
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-11-24T05:53:52Z",
+      "maintenance_status": "active",
+      "name": "RVNA",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "integrations and extensibility",
+          "migration path"
+        ],
+        "text": "Strongest on integrations and extensibility and migration path."
+      },
+      "oss_id": "github.com/warrdoge/rvna",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 85.9,
+        "score": 60.0,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 86.5,
+        "evaluated_at": "2026-11-24T05:53:52Z",
+        "score": 77.5,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/WarrDoge/RVNA",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "intake"
+      ],
+      "stars": 12
+    },
     {
       "evidence": {
         "relationship": {
@@ -42,7 +134,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-23T00:10:59Z"
+          "validated_as_of": "2026-11-24T05:53:52Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -83,7 +175,7 @@
         "tag": "v26.09.3"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-23T00:10:59Z",
+      "live_checked_at": "2026-11-24T05:53:52Z",
       "maintenance_status": "active",
       "name": "BookStack",
       "note": {
@@ -105,7 +197,7 @@
         "score": 85.7,
         "trajectory": "Stable"
       },
-      "rank": 1,
+      "rank": 2,
       "replacement_fit": {
         "caps": [],
         "confidence": 90.5,
@@ -122,7 +214,7 @@
         "solvohq",
         "opensaasdirectory"
       ],
-      "stars": 19149
+      "stars": 19150
     },
     {
       "evidence": {
@@ -146,7 +238,7 @@
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-23T00:10:59Z"
+          "validated_as_of": "2026-11-24T05:53:52Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -188,7 +280,7 @@
       },
       "licence_disclosure": "source-available: licensed under BUSL-1.1, which is not an OSI-approved open-source licence",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-23T00:10:59Z",
+      "live_checked_at": "2026-11-24T05:53:52Z",
       "maintenance_status": "active",
       "name": "Outline",
       "note": {
@@ -207,7 +299,7 @@
         "score": 89.9,
         "trajectory": "Rising"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "caps": [],
         "confidence": 95.0,
@@ -225,7 +317,7 @@
         "opensaasdirectory",
         "altstack"
       ],
-      "stars": 41337
+      "stars": 41356
     },
     {
       "evidence": {
@@ -239,7 +331,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-23T00:10:59Z"
+          "validated_as_of": "2026-11-24T05:53:52Z"
         },
         "replacement_fit": {
           "caps": [
@@ -286,7 +378,7 @@
         "tag": "v1.9.6"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-23T00:10:59Z",
+      "live_checked_at": "2026-11-24T05:53:52Z",
       "maintenance_status": "active",
       "name": "wiki-go",
       "note": {
@@ -305,7 +397,7 @@
         "score": 83.9,
         "trajectory": "Stable"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "caps": [
           {
@@ -327,7 +419,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 629
+      "stars": 630
     }
   ],
   "saas": {

@@ -4,16 +4,16 @@
   "catalogue": {
     "entries": 500,
     "none_yet": 123,
-    "ok": 209,
-    "partial": 168,
+    "ok": 208,
+    "partial": 169,
     "path": "catalogue.json"
   },
-  "data_as_of": "2026-11-23T00:10:59Z",
-  "dataset_version": "8d166df037d8b794",
+  "data_as_of": "2026-11-24T05:53:52Z",
+  "dataset_version": "2702df4c40902975",
   "domains": "domains.json",
   "live_checked_at": {
-    "newest": "2026-11-23T00:10:59Z",
-    "oldest": "2026-11-23T00:10:59Z"
+    "newest": "2026-11-24T05:53:52Z",
+    "oldest": "2026-11-24T05:53:52Z"
   },
   "supported_saas": [
     {
@@ -704,7 +704,7 @@
       "compare_path": "/open-source/confluence-alternatives",
       "name": "Confluence",
       "path": "saas/confluence.json",
-      "recommendations": 3,
+      "recommendations": 4,
       "saas_id": "confluence",
       "slug": "confluence",
       "status": "ok"
@@ -821,7 +821,7 @@
       "compare_path": "/open-source/1password-alternatives",
       "name": "1Password",
       "path": "saas/1password.json",
-      "recommendations": 5,
+      "recommendations": 4,
       "saas_id": "1password",
       "slug": "1password",
       "status": "ok"
@@ -971,13 +971,13 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/microsoft-teams-alternatives",
+      "compare_path": null,
       "name": "Microsoft Teams",
       "path": "saas/microsoft-teams.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "microsoft-teams",
       "slug": "microsoft-teams",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/freshdesk-alternatives",
@@ -2333,7 +2333,7 @@
       "compare_path": "/open-source/capcut-alternatives",
       "name": "CapCut",
       "path": "saas/capcut.json",
-      "recommendations": 4,
+      "recommendations": 5,
       "saas_id": "capcut",
       "slug": "capcut",
       "status": "ok"
@@ -3341,7 +3341,7 @@
       "compare_path": null,
       "name": "Jira Service Management",
       "path": "saas/jira-service-management.json",
-      "recommendations": 1,
+      "recommendations": 2,
       "saas_id": "jira-service-management",
       "slug": "jira-service-management",
       "status": "insufficient_recommendations"

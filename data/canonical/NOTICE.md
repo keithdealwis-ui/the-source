@@ -164,7 +164,7 @@ SOFTWARE.
 
 ## keithdealwis-ui/the-source
 
-- Source: https://github.com/keithdealwis-ui/the-source/blob/main/data/intake/admitted/ at commit 6f42cdd7a46dec1e31210c8b950e000b15cd52af
+- Source: https://github.com/keithdealwis-ui/the-source/blob/main/data/intake/admitted/ at commit c85f6c46f48ef0b43d622720585ae1c8aebcd966
 - Licence: n/a (The Source's own assessment record)
 - Attribution: The Source intake ledger (data/intake/admitted/): relationships stated by each project in its own public repository and assessed by The Source
 

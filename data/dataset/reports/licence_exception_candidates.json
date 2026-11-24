@@ -395,6 +395,51 @@
   {
     "detected": {
       "closest_standard_licences": [
+        "AGPL-3.0"
+      ],
+      "enterprise_directories": [
+        "enterprise"
+      ],
+      "host_licence_name": "Other",
+      "host_spdx": "NOASSERTION",
+      "licence_files": [
+        "LICENSE-AGPL.txt",
+        "LICENSE-ENTERPRISE.txt",
+        "LICENSE.txt"
+      ],
+      "restriction_markers": [
+        "applies",
+        "apply",
+        "cannot",
+        "commercial",
+        "directories",
+        "employees",
+        "enterprise",
+        "evaluation",
+        "except",
+        "hosted",
+        "only",
+        "production use",
+        "reference to an ee/ or enterprise/ path",
+        "require",
+        "required",
+        "requires"
+      ]
+    },
+    "issue_category": "open_core",
+    "maintenance": "active",
+    "name": "Padloc",
+    "oss_id": "github.com/padloc/padloc",
+    "reason": "enterprise directory at the repository root: enterprise; licence text scopes or splits the licence: commercial, directories, enterprise, reference to an ee/ or enterprise/ path",
+    "recommendation_eligible": false,
+    "relationships_flagged": 1,
+    "repo_url": "https://github.com/padloc/padloc",
+    "review_status": "flagged_retained_not_reviewed_individually",
+    "upstream_claims": []
+  },
+  {
+    "detected": {
+      "closest_standard_licences": [
         "EUPL-1.2"
       ],
       "enterprise_directories": [],
