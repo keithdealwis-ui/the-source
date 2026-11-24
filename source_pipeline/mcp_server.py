@@ -1923,7 +1923,7 @@ def _load_momentum_serving(path: Path = None) -> dict:
     for m in re.finditer(r"^[ \t]+([a-z_0-9]+):\s*\"?([^\"#\n]*?)\"?\s*(?:#.*)?$", block.group(1) if block else "",
                          re.M):
         v = m.group(2).strip()
-        cfg[m.group(1)] = float(v) if re.fullmatch(r"\d+(\.\d+)?", v) and m.group(1) != "headline_window" else v
+        cfg[m.group(1)] = (int(v) if v.isdigit() else float(v)) if re.fullmatch(r"\d+(\.\d+)?", v) and m.group(1) != "headline_window" else v
     if str(cfg.get("headline_window", "")) in ("1", "7", "30", "90"):
         out["headline_window"] = str(cfg["headline_window"])
     v = cfg.get("one_day_min_abs_delta")
@@ -1952,7 +1952,7 @@ def _window_view(win: dict, window=None):
     if one_day_suppressed(win, window):
         extra = {"momentum_suppressed": {
             "label": win.get("momentum"),
-            "reason": f"1-day change of {win.get('stars_delta'):+d} stars is below the 1-day label threshold of "
+            "reason": f"1-day change of {win.get('stars_delta'):+g} stars is below the 1-day label threshold of "
                       f"{MOMENTUM_SERVING['one_day_min_abs_delta']} (config/momentum.yaml serving); read the "
                       f"{MOMENTUM_SERVING['headline_window']}-day headline"}}
     return {"status": "measured", **extra,
