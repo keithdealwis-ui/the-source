@@ -223,108 +223,6 @@
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "README.md#L877",
-              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
-              "source_id": "solvohq"
-            }
-          ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
-        },
-        "replacement_fit": {
-          "caps": [
-            {
-              "cap": 80.0,
-              "id": "uncorroborated_pairing",
-              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Google Drive as what it replaces"
-            }
-          ],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 75.0,
-            "ease_of_adoption": 100.0,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 85.0,
-            "integrations_extensibility": 75.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 80.0
-          },
-          "evidence_families": [
-            "api",
-            "data_ownership",
-            "demo",
-            "import",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "sso",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/owncloud/ocis",
-      "last_meaningful_activity_at": "2026-11-20T17:09:21Z",
-      "latest_release": {
-        "published_at": "2026-11-20T14:46:34Z",
-        "tag": "v8.0.11"
-      },
-      "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
-      "maintenance_status": "active",
-      "name": "OwnCloud Infinite Scale",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption."
-      },
-      "oss_id": "github.com/owncloud/ocis",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 95.0,
-        "score": 92.1,
-        "trajectory": "Stable"
-      },
-      "rank": 3,
-      "replacement_fit": {
-        "caps": [
-          {
-            "cap": 80.0,
-            "id": "uncorroborated_pairing",
-            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Google Drive as what it replaces"
-          }
-        ],
-        "confidence": 84.5,
-        "evaluated_at": "2026-11-07T00:51:19Z",
-        "score": 80.0,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/owncloud/ocis",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "solvohq"
-      ],
-      "stars": 2201
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
               "locator": "README.md#L349",
               "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
               "source_id": "diegoleme"
@@ -391,7 +289,7 @@
         "score": 88.7,
         "trajectory": "Stable"
       },
-      "rank": 4,
+      "rank": 3,
       "replacement_fit": {
         "caps": [
           {
@@ -511,7 +409,7 @@
         "score": 93.9,
         "trajectory": "Rising"
       },
-      "rank": 5,
+      "rank": 4,
       "replacement_fit": {
         "caps": [],
         "confidence": 95.0,
@@ -532,6 +430,108 @@
         "diegoleme"
       ],
       "stars": 37619
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L877",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-11-24T05:53:52Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Google Drive as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/owncloud/ocis",
+      "last_meaningful_activity_at": "2026-11-20T17:09:21Z",
+      "latest_release": {
+        "published_at": "2026-11-20T14:46:34Z",
+        "tag": "v8.0.11"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-11-24T05:53:52Z",
+      "maintenance_status": "active",
+      "name": "OwnCloud Infinite Scale",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/owncloud/ocis",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 92.1,
+        "trajectory": "Stable"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Google Drive as what it replaces"
+          }
+        ],
+        "confidence": 84.5,
+        "evaluated_at": "2026-11-07T00:51:19Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/owncloud/ocis",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 2201
     }
   ],
   "saas": {

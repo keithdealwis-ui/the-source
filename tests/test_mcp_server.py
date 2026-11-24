@@ -169,8 +169,8 @@ def test_alternatives_for_supported_products_equal_the_published_page():
         assert more["recommendations"][:len(page["recommendations"])] == page["recommendations"]
         extra = more["recommendations"][len(page["recommendations"]):]
         assert len(extra) == page["more_available"] and all(r["beyond_published_page"] for r in extra)
-        keys = [M._rank_key(r) for r in more["recommendations"]]
-        assert keys == sorted(keys)
+        keys = [r["oss_id"] for r in more["recommendations"]]
+        assert keys == [r["oss_id"] for r in M._rank(more["recommendations"])]  # rubric 1.4.0 Fit-band order
         assert [r["rank"] for r in more["recommendations"]] == list(range(1, len(keys) + 1))
 
 
@@ -214,8 +214,8 @@ def test_unsupported_product_is_served_from_canonical_with_a_caveat():
         s.layer.surface.pop(sid)
     got = _ok(s, "source_get_alternatives", saas=sid)
     assert got["surface"] == "data/canonical/relationships.jsonl" and "no published api/v1 page" in got["caveat"]
-    keys = [M._rank_key(r) for r in got["recommendations"]]
-    assert keys == sorted(keys) and [r["rank"] for r in got["recommendations"]] == list(range(1, len(keys) + 1))
+    keys = [r["oss_id"] for r in got["recommendations"]]
+    assert keys == [r["oss_id"] for r in M._rank(got["recommendations"])] and [r["rank"] for r in got["recommendations"]] == list(range(1, len(keys) + 1))
     assert all("note" not in r and "self_hosting" not in r for r in got["recommendations"])
 
 

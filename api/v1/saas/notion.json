@@ -316,91 +316,6 @@
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "submissions/Notabase.yaml",
-              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
-              "source_id": "runacapital"
-            }
-          ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
-        },
-        "replacement_fit": {
-          "caps": [],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 93.8,
-            "ease_of_adoption": 54.3,
-            "economic_advantage": 45.0,
-            "feature_equivalence": 73.3,
-            "integrations_extensibility": null,
-            "migration_friction": 100.0,
-            "production_commercial_readiness": 50.0
-          },
-          "evidence_families": [
-            "cloud_option",
-            "data_ownership",
-            "demo",
-            "import",
-            "quickstart",
-            "self_host",
-            "support"
-          ],
-          "scoring_path": "full_lane"
-        }
-      },
-      "github_url": "https://github.com/churichard/notabase",
-      "last_meaningful_activity_at": "2026-07-17T17:01:39Z",
-      "latest_release": null,
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
-      "maintenance_status": "maintained",
-      "name": "Notabase",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "migration path"
-        ],
-        "text": "Strongest on core use-case coverage and migration path."
-      },
-      "oss_id": "github.com/churichard/notabase",
-      "project_health": {
-        "band": "Developing",
-        "confidence": 94.2,
-        "score": 67.5,
-        "trajectory": "Rising"
-      },
-      "rank": 4,
-      "replacement_fit": {
-        "caps": [],
-        "confidence": 83.5,
-        "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 78.6,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/churichard/notabase",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "runacapital"
-      ],
-      "stars": 915
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
               "locator": "README.md#L66",
               "source_commit": "bca6ae8e8eab1c12de15e87f98d28732ef79fd70",
               "source_id": "fossalt"
@@ -463,7 +378,7 @@
         "score": 87.8,
         "trajectory": "Rising"
       },
-      "rank": 5,
+      "rank": 4,
       "replacement_fit": {
         "caps": [],
         "confidence": 84.5,
@@ -480,6 +395,91 @@
         "fossalt"
       ],
       "stars": 1336
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Notabase.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-11-24T05:53:52Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 93.8,
+            "ease_of_adoption": 54.3,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": null,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 50.0
+          },
+          "evidence_families": [
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/churichard/notabase",
+      "last_meaningful_activity_at": "2026-07-17T17:01:39Z",
+      "latest_release": null,
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-11-24T05:53:52Z",
+      "maintenance_status": "maintained",
+      "name": "Notabase",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "migration path"
+        ],
+        "text": "Strongest on core use-case coverage and migration path."
+      },
+      "oss_id": "github.com/churichard/notabase",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 94.2,
+        "score": 67.5,
+        "trajectory": "Rising"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 83.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 78.6,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/churichard/notabase",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 915
     }
   ],
   "saas": {

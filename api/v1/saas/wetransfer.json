@@ -216,6 +216,90 @@
           "evidence_class": "listed",
           "provenance": [
             {
+              "locator": "README.md#L896",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            }
+          ],
+          "validated_as_of": "2026-11-24T05:53:52Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 95.6,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": null,
+            "production_commercial_readiness": 0.0
+          },
+          "evidence_families": [
+            "cloud_option",
+            "plugins",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/timvisee/send",
+      "last_meaningful_activity_at": "2026-11-02T19:32:16Z",
+      "latest_release": null,
+      "licence_spdx": "MPL-2.0",
+      "live_checked_at": "2026-11-24T05:53:52Z",
+      "maintenance_status": "active",
+      "name": "Send (Timvisee fork)",
+      "note": {
+        "gaps": [
+          "production readiness"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on production readiness."
+      },
+      "oss_id": "github.com/timvisee/send",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 94.2,
+        "score": 68.1,
+        "trajectory": "Stable"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 81.5,
+        "evaluated_at": "2026-11-01T02:05:53Z",
+        "score": 77.6,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/timvisee/send",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq"
+      ],
+      "stars": 5954
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
               "locator": "README.md#L895",
               "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
               "source_id": "solvohq"
@@ -289,7 +373,7 @@
         "score": 83.8,
         "trajectory": "Rising"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "caps": [
           {
@@ -312,90 +396,6 @@
         "solvohq"
       ],
       "stars": 2065
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
-              "locator": "README.md#L896",
-              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
-              "source_id": "solvohq"
-            }
-          ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
-        },
-        "replacement_fit": {
-          "caps": [],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 100.0,
-            "ease_of_adoption": 95.6,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 50.0,
-            "integrations_extensibility": 100.0,
-            "migration_friction": null,
-            "production_commercial_readiness": 0.0
-          },
-          "evidence_families": [
-            "cloud_option",
-            "plugins",
-            "quickstart",
-            "self_host"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/timvisee/send",
-      "last_meaningful_activity_at": "2026-11-02T19:32:16Z",
-      "latest_release": null,
-      "licence_spdx": "MPL-2.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
-      "maintenance_status": "active",
-      "name": "Send (Timvisee fork)",
-      "note": {
-        "gaps": [
-          "production readiness"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "self-hosting and data ownership"
-        ],
-        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on production readiness."
-      },
-      "oss_id": "github.com/timvisee/send",
-      "project_health": {
-        "band": "Developing",
-        "confidence": 94.2,
-        "score": 68.1,
-        "trajectory": "Stable"
-      },
-      "rank": 4,
-      "replacement_fit": {
-        "caps": [],
-        "confidence": 81.5,
-        "evaluated_at": "2026-11-01T02:05:53Z",
-        "score": 77.6,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/timvisee/send",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "solvohq"
-      ],
-      "stars": 5954
     },
     {
       "evidence": {

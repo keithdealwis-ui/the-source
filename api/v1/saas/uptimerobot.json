@@ -33,6 +33,109 @@
           "evidence_class": "listed",
           "provenance": [
             {
+              "locator": "README.md#L400",
+              "source_commit": "bce3d3144b245b2146e6e3032d716f27b70a7ef9",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-11-24T05:53:52Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name UptimeRobot as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/bluewave-labs/Checkmate",
+      "last_meaningful_activity_at": "2026-11-17T00:21:27Z",
+      "latest_release": {
+        "published_at": "2026-11-16T20:45:17Z",
+        "tag": "v4.0.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-11-24T05:53:52Z",
+      "maintenance_status": "active",
+      "name": "Checkmate",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/bluewave-labs/checkmate",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 85.1,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name UptimeRobot as what it replaces"
+          }
+        ],
+        "confidence": 86.5,
+        "evaluated_at": "2026-11-24T05:53:52Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/bluewave-labs/Checkmate",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "opensaasdirectory"
+      ],
+      "stars": 11119
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
               "locator": "README.md#L531",
               "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
               "source_id": "solvohq"
@@ -106,7 +209,7 @@
         "score": 85.5,
         "trajectory": "Stable"
       },
-      "rank": 1,
+      "rank": 2,
       "replacement_fit": {
         "caps": [
           {
@@ -129,109 +232,6 @@
         "solvohq"
       ],
       "stars": 10543
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
-              "locator": "README.md#L400",
-              "source_commit": "bce3d3144b245b2146e6e3032d716f27b70a7ef9",
-              "source_id": "opensaasdirectory"
-            }
-          ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
-        },
-        "replacement_fit": {
-          "caps": [
-            {
-              "cap": 80.0,
-              "id": "uncorroborated_pairing",
-              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name UptimeRobot as what it replaces"
-            }
-          ],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 68.8,
-            "ease_of_adoption": 100.0,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 100.0,
-            "integrations_extensibility": 75.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 80.0
-          },
-          "evidence_families": [
-            "api",
-            "cloud_option",
-            "demo",
-            "import",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "support",
-            "webhook"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/bluewave-labs/Checkmate",
-      "last_meaningful_activity_at": "2026-11-17T00:21:27Z",
-      "latest_release": {
-        "published_at": "2026-11-16T20:45:17Z",
-        "tag": "v4.0.0"
-      },
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
-      "maintenance_status": "active",
-      "name": "Checkmate",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption."
-      },
-      "oss_id": "github.com/bluewave-labs/checkmate",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 95.0,
-        "score": 85.1,
-        "trajectory": "Stable"
-      },
-      "rank": 2,
-      "replacement_fit": {
-        "caps": [
-          {
-            "cap": 80.0,
-            "id": "uncorroborated_pairing",
-            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name UptimeRobot as what it replaces"
-          }
-        ],
-        "confidence": 86.5,
-        "evaluated_at": "2026-11-24T05:53:52Z",
-        "score": 80.0,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/bluewave-labs/Checkmate",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "opensaasdirectory"
-      ],
-      "stars": 11119
     },
     {
       "evidence": {
@@ -438,7 +438,7 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/kolapsis/maintenant",
+              "locator": "data/job_match/ledger.json#github.com/msgbyte/tianji",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
@@ -461,54 +461,50 @@
           },
           "dimensions": {
             "core_use_case_coverage": 100.0,
-            "deployment_ownership": 50.0,
-            "ease_of_adoption": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 94.2,
             "economic_advantage": 80.0,
-            "feature_equivalence": 92.5,
-            "integrations_extensibility": 100.0,
-            "migration_friction": 66.7,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": null,
+            "migration_friction": null,
             "production_commercial_readiness": 100.0
           },
           "evidence_families": [
-            "api",
-            "demo",
-            "import",
             "multi_user",
-            "plugins",
             "quickstart",
             "self_host",
-            "sso",
-            "support",
-            "webhook"
+            "support"
           ],
           "scoring_path": "single_project"
         }
       },
-      "github_url": "https://github.com/kOlapsis/maintenant",
-      "last_meaningful_activity_at": "2026-11-21T17:18:37Z",
+      "github_url": "https://github.com/msgbyte/tianji",
+      "last_meaningful_activity_at": "2026-11-13T19:04:40Z",
       "latest_release": {
-        "published_at": "2026-11-21T17:18:37Z",
-        "tag": "v1.13.0"
+        "published_at": "2026-11-13T19:04:40Z",
+        "tag": "v1.34.3"
       },
       "licence_spdx": "Apache-2.0",
       "live_checked_at": "2026-11-24T05:53:52Z",
       "maintenance_status": "active",
-      "name": "maintenant",
+      "name": "tianji",
       "note": {
-        "gaps": [],
+        "gaps": [
+          "feature parity"
+        ],
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
-          "ease of adoption"
+          "self-hosting and data ownership"
         ],
-        "text": "Strongest on core use-case coverage and ease of adoption."
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
       },
-      "oss_id": "github.com/kolapsis/maintenant",
+      "oss_id": "github.com/msgbyte/tianji",
       "project_health": {
         "band": "Healthy",
-        "confidence": 93.7,
-        "score": 83.2,
-        "trajectory": "Insufficient history"
+        "confidence": 96.6,
+        "score": 78.4,
+        "trajectory": "Stable"
       },
       "rank": 5,
       "replacement_fit": {
@@ -519,12 +515,12 @@
             "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name UptimeRobot as what it replaces"
           }
         ],
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-20T23:06:47Z",
+        "confidence": 78.5,
+        "evaluated_at": "2026-11-16T01:50:14Z",
         "score": 80.0,
         "score_version": "1.3.0"
       },
-      "repo_url": "https://github.com/kOlapsis/maintenant",
+      "repo_url": "https://github.com/msgbyte/tianji",
       "self_hosting": {
         "basis": "self-hosting documented in the project's README",
         "self_hostable": true
@@ -532,7 +528,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 555
+      "stars": 3124
     }
   ],
   "saas": {

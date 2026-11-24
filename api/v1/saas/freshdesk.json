@@ -127,7 +127,7 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/useopendesk/opendesk",
+              "locator": "data/job_match/ledger.json#github.com/freescout-help-desk/freescout",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
@@ -135,13 +135,7 @@
           "validated_as_of": "2026-11-24T05:53:52Z"
         },
         "replacement_fit": {
-          "caps": [
-            {
-              "cap": 80.0,
-              "id": "uncorroborated_pairing",
-              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Freshdesk as what it replaces"
-            }
-          ],
+          "caps": [],
           "core_gate": "passed",
           "corroboration": {
             "basis": [],
@@ -150,69 +144,64 @@
           },
           "dimensions": {
             "core_use_case_coverage": 100.0,
-            "deployment_ownership": 75.0,
-            "ease_of_adoption": 80.0,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 92.5,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 58.3,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 50.0,
             "integrations_extensibility": 75.0,
             "migration_friction": 66.7,
-            "production_commercial_readiness": 60.0
+            "production_commercial_readiness": 100.0
           },
           "evidence_families": [
             "api",
-            "cloud_option",
+            "data_ownership",
+            "demo",
             "import",
             "multi_user",
             "plugins",
             "quickstart",
             "self_host",
-            "support",
-            "webhook"
+            "sso",
+            "support"
           ],
           "scoring_path": "single_project"
         }
       },
-      "github_url": "https://github.com/useopendesk/opendesk",
-      "last_meaningful_activity_at": "2026-11-15T09:48:46Z",
+      "github_url": "https://github.com/freescout-help-desk/freescout",
+      "last_meaningful_activity_at": "2026-11-14T06:58:29Z",
       "latest_release": {
-        "published_at": "2026-11-15T09:48:46Z",
-        "tag": "v0.4.10"
+        "published_at": "2026-11-14T06:58:29Z",
+        "tag": "1.8.251"
       },
-      "licence_spdx": "Apache-2.0",
+      "licence_spdx": "AGPL-3.0",
       "live_checked_at": "2026-11-24T05:53:52Z",
       "maintenance_status": "active",
-      "name": "opendesk",
+      "name": "FreeScout",
       "note": {
         "gaps": [],
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
-          "feature parity"
+          "production readiness"
         ],
-        "text": "Strongest on core use-case coverage and feature parity."
+        "text": "Strongest on core use-case coverage and production readiness."
       },
-      "oss_id": "github.com/useopendesk/opendesk",
+      "oss_id": "github.com/freescout-help-desk/freescout",
       "project_health": {
         "band": "Exceptional",
-        "confidence": 89.2,
-        "score": 85.3,
-        "trajectory": "Insufficient history"
+        "confidence": 96.6,
+        "score": 86.6,
+        "trajectory": "Rising"
       },
       "rank": 2,
       "replacement_fit": {
-        "caps": [
-          {
-            "cap": 80.0,
-            "id": "uncorroborated_pairing",
-            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Freshdesk as what it replaces"
-          }
-        ],
+        "caps": [],
         "confidence": 84.5,
-        "evaluated_at": "2026-11-24T05:53:52Z",
-        "score": 80.0,
+        "evaluated_at": "2026-11-21T23:02:35Z",
+        "score": 75.3,
         "score_version": "1.3.0"
       },
-      "repo_url": "https://github.com/useopendesk/opendesk",
+      "repo_url": "https://github.com/freescout-help-desk/freescout",
       "self_hosting": {
         "basis": "self-hosting documented in the project's README",
         "self_hostable": true
@@ -220,7 +209,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 514
+      "stars": 4679
     },
     {
       "evidence": {
@@ -421,7 +410,7 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/freescout-help-desk/freescout",
+              "locator": "data/job_match/ledger.json#github.com/useopendesk/opendesk",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
@@ -429,7 +418,13 @@
           "validated_as_of": "2026-11-24T05:53:52Z"
         },
         "replacement_fit": {
-          "caps": [],
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Freshdesk as what it replaces"
+            }
+          ],
           "core_gate": "passed",
           "corroboration": {
             "basis": [],
@@ -438,64 +433,69 @@
           },
           "dimensions": {
             "core_use_case_coverage": 100.0,
-            "deployment_ownership": 68.8,
-            "ease_of_adoption": 58.3,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 50.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 92.5,
             "integrations_extensibility": 75.0,
             "migration_friction": 66.7,
-            "production_commercial_readiness": 100.0
+            "production_commercial_readiness": 60.0
           },
           "evidence_families": [
             "api",
-            "data_ownership",
-            "demo",
+            "cloud_option",
             "import",
             "multi_user",
             "plugins",
             "quickstart",
             "self_host",
-            "sso",
-            "support"
+            "support",
+            "webhook"
           ],
           "scoring_path": "single_project"
         }
       },
-      "github_url": "https://github.com/freescout-help-desk/freescout",
-      "last_meaningful_activity_at": "2026-11-14T06:58:29Z",
+      "github_url": "https://github.com/useopendesk/opendesk",
+      "last_meaningful_activity_at": "2026-11-15T09:48:46Z",
       "latest_release": {
-        "published_at": "2026-11-14T06:58:29Z",
-        "tag": "1.8.251"
+        "published_at": "2026-11-15T09:48:46Z",
+        "tag": "v0.4.10"
       },
-      "licence_spdx": "AGPL-3.0",
+      "licence_spdx": "Apache-2.0",
       "live_checked_at": "2026-11-24T05:53:52Z",
       "maintenance_status": "active",
-      "name": "FreeScout",
+      "name": "opendesk",
       "note": {
         "gaps": [],
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
-          "production readiness"
+          "feature parity"
         ],
-        "text": "Strongest on core use-case coverage and production readiness."
+        "text": "Strongest on core use-case coverage and feature parity."
       },
-      "oss_id": "github.com/freescout-help-desk/freescout",
+      "oss_id": "github.com/useopendesk/opendesk",
       "project_health": {
         "band": "Exceptional",
-        "confidence": 96.6,
-        "score": 86.6,
-        "trajectory": "Rising"
+        "confidence": 89.2,
+        "score": 85.3,
+        "trajectory": "Insufficient history"
       },
       "rank": 5,
       "replacement_fit": {
-        "caps": [],
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Freshdesk as what it replaces"
+          }
+        ],
         "confidence": 84.5,
-        "evaluated_at": "2026-11-21T23:02:35Z",
-        "score": 75.3,
+        "evaluated_at": "2026-11-24T05:53:52Z",
+        "score": 80.0,
         "score_version": "1.3.0"
       },
-      "repo_url": "https://github.com/freescout-help-desk/freescout",
+      "repo_url": "https://github.com/useopendesk/opendesk",
       "self_hosting": {
         "basis": "self-hosting documented in the project's README",
         "self_hostable": true
@@ -503,7 +503,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 4679
+      "stars": 514
     }
   ],
   "saas": {

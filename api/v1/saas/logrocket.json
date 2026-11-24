@@ -135,6 +135,100 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
+              "locator": "data/job_match/ledger.json#github.com/openobserve/openobserve",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-11-24T05:53:52Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 93.8,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 45.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/openobserve/openobserve",
+      "last_meaningful_activity_at": "2026-11-24T03:34:17Z",
+      "latest_release": {
+        "published_at": "2026-11-23T16:39:42Z",
+        "tag": "v1.2.0-rc3"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-11-24T05:53:52Z",
+      "maintenance_status": "active",
+      "name": "OpenObserve",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "production readiness"
+        ],
+        "text": "Strongest on core use-case coverage and production readiness; weakest on feature parity."
+      },
+      "oss_id": "github.com/openobserve/openobserve",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 94.8,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 84.5,
+        "evaluated_at": "2026-11-19T03:10:32Z",
+        "score": 75.3,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/openobserve/openobserve",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 23170
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
               "locator": "data/job_match/ledger.json#github.com/talivia-group/talivia",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
@@ -208,7 +302,7 @@
         "score": 64.8,
         "trajectory": "Insufficient history"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "caps": [
           {
@@ -231,100 +325,6 @@
         "job_match"
       ],
       "stars": 2118
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/openobserve/openobserve",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
-        },
-        "replacement_fit": {
-          "caps": [],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 93.8,
-            "ease_of_adoption": 80.0,
-            "economic_advantage": 45.0,
-            "feature_equivalence": 16.7,
-            "integrations_extensibility": 75.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 100.0
-          },
-          "evidence_families": [
-            "api",
-            "cloud_option",
-            "data_ownership",
-            "demo",
-            "import",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "sso",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/openobserve/openobserve",
-      "last_meaningful_activity_at": "2026-11-24T03:34:17Z",
-      "latest_release": {
-        "published_at": "2026-11-23T16:39:42Z",
-        "tag": "v1.2.0-rc3"
-      },
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
-      "maintenance_status": "active",
-      "name": "OpenObserve",
-      "note": {
-        "gaps": [
-          "feature parity"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "production readiness"
-        ],
-        "text": "Strongest on core use-case coverage and production readiness; weakest on feature parity."
-      },
-      "oss_id": "github.com/openobserve/openobserve",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 92.1,
-        "score": 94.8,
-        "trajectory": "Rising"
-      },
-      "rank": 3,
-      "replacement_fit": {
-        "caps": [],
-        "confidence": 84.5,
-        "evaluated_at": "2026-11-19T03:10:32Z",
-        "score": 75.3,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/openobserve/openobserve",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 23170
     },
     {
       "evidence": {
