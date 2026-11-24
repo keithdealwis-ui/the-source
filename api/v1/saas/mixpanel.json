@@ -11,10 +11,10 @@
     ],
     "status": "partial"
   },
-  "dataset_version": "00d8417ab8ebec02",
+  "dataset_version": "788f74b12ccef7c4",
   "last_checked": {
-    "newest": "2026-11-24T05:53:52Z",
-    "oldest": "2026-11-24T05:53:52Z"
+    "newest": "2026-11-24T18:47:13Z",
+    "oldest": "2026-11-24T18:47:13Z"
   },
   "more_available": 0,
   "provenance": {
@@ -41,7 +41,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -84,7 +84,7 @@
         "tag": "v3.30.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "OpenPanel",
       "note": {
@@ -119,7 +119,7 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 7319
+      "stars": 7322
     },
     {
       "evidence": {
@@ -158,7 +158,7 @@
               "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -203,7 +203,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the MIT core; parts under PostHog EE licence are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "PostHog",
       "note": {
@@ -219,16 +219,16 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 92.1,
-        "score": 93.6,
+        "score": 94.1,
         "trajectory": "Rising"
       },
       "rank": 2,
       "replacement_fit": {
         "caps": [],
         "confidence": 95.0,
-        "evaluated_at": "2026-11-16T01:50:14Z",
+        "evaluated_at": "2026-11-24T18:47:13Z",
         "score": 83.4,
-        "score_version": "1.3.0"
+        "score_version": "1.4.0"
       },
       "repo_url": "https://github.com/PostHog/posthog",
       "self_hosting": {
@@ -243,7 +243,7 @@
         "btwso",
         "diegoleme"
       ],
-      "stars": 41059
+      "stars": 41083
     }
   ],
   "saas": {
@@ -257,7 +257,8 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.3.0"
+      "1.3.0",
+      "1.4.0"
     ]
   },
   "status": "insufficient_recommendations"

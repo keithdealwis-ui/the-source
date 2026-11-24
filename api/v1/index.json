@@ -4,16 +4,16 @@
   "catalogue": {
     "entries": 500,
     "none_yet": 123,
-    "ok": 210,
-    "partial": 167,
+    "ok": 214,
+    "partial": 163,
     "path": "catalogue.json"
   },
-  "data_as_of": "2026-11-24T05:53:52Z",
-  "dataset_version": "00d8417ab8ebec02",
+  "data_as_of": "2026-11-24T18:47:13Z",
+  "dataset_version": "788f74b12ccef7c4",
   "domains": "domains.json",
   "live_checked_at": {
-    "newest": "2026-11-24T05:53:52Z",
-    "oldest": "2026-11-24T05:53:52Z"
+    "newest": "2026-11-24T18:47:13Z",
+    "oldest": "2026-11-24T18:47:13Z"
   },
   "supported_saas": [
     {
@@ -353,19 +353,19 @@
       "compare_path": "/open-source/figma-alternatives",
       "name": "Figma",
       "path": "saas/figma.json",
-      "recommendations": 3,
+      "recommendations": 5,
       "saas_id": "figma",
       "slug": "figma",
       "status": "ok"
     },
     {
-      "compare_path": null,
+      "compare_path": "/open-source/slack-alternatives",
       "name": "Slack",
       "path": "saas/slack.json",
-      "recommendations": 2,
+      "recommendations": 3,
       "saas_id": "slack",
       "slug": "slack",
-      "status": "insufficient_recommendations"
+      "status": "ok"
     },
     {
       "compare_path": null,
@@ -800,13 +800,13 @@
       "status": "ok"
     },
     {
-      "compare_path": null,
+      "compare_path": "/open-source/midjourney-alternatives",
       "name": "Midjourney",
       "path": "saas/midjourney.json",
-      "recommendations": 2,
+      "recommendations": 3,
       "saas_id": "midjourney",
       "slug": "midjourney",
-      "status": "insufficient_recommendations"
+      "status": "ok"
     },
     {
       "compare_path": "/open-source/railway-alternatives",
@@ -935,13 +935,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": null,
+      "compare_path": "/open-source/semrush-alternatives",
       "name": "Semrush",
       "path": "saas/semrush.json",
-      "recommendations": 2,
+      "recommendations": 3,
       "saas_id": "semrush",
       "slug": "semrush",
-      "status": "insufficient_recommendations"
+      "status": "ok"
     },
     {
       "compare_path": null,
@@ -1223,13 +1223,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": null,
+      "compare_path": "/open-source/ahrefs-alternatives",
       "name": "Ahrefs",
       "path": "saas/ahrefs.json",
-      "recommendations": 2,
+      "recommendations": 3,
       "saas_id": "ahrefs",
       "slug": "ahrefs",
-      "status": "insufficient_recommendations"
+      "status": "ok"
     },
     {
       "compare_path": null,
@@ -1280,7 +1280,7 @@
       "compare_path": "/open-source/basecamp-alternatives",
       "name": "Basecamp",
       "path": "saas/basecamp.json",
-      "recommendations": 3,
+      "recommendations": 4,
       "saas_id": "basecamp",
       "slug": "basecamp",
       "status": "ok"

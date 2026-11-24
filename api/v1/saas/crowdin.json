@@ -10,10 +10,10 @@
     ],
     "status": "partial"
   },
-  "dataset_version": "00d8417ab8ebec02",
+  "dataset_version": "788f74b12ccef7c4",
   "last_checked": {
-    "newest": "2026-11-24T05:53:52Z",
-    "oldest": "2026-11-24T05:53:52Z"
+    "newest": "2026-11-24T18:47:13Z",
+    "oldest": "2026-11-24T18:47:13Z"
   },
   "more_available": 0,
   "provenance": {
@@ -42,7 +42,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -85,7 +85,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the Apache-2.0 core; parts under Tolgee EE licence are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "Tolgee",
       "note": {
@@ -100,17 +100,17 @@
       "oss_id": "github.com/tolgee/tolgee-platform",
       "project_health": {
         "band": "Exceptional",
-        "confidence": 96.6,
-        "score": 91.6,
+        "confidence": 95.0,
+        "score": 91.9,
         "trajectory": "Stable"
       },
       "rank": 1,
       "replacement_fit": {
         "caps": [],
         "confidence": 92.5,
-        "evaluated_at": "2026-11-13T00:07:14Z",
+        "evaluated_at": "2026-11-24T18:47:13Z",
         "score": 80.9,
-        "score_version": "1.3.0"
+        "score_version": "1.4.0"
       },
       "repo_url": "https://github.com/tolgee/tolgee-platform",
       "self_hosting": {
@@ -135,7 +135,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [
@@ -178,7 +178,7 @@
         "tag": "v0.110"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "mojito",
       "note": {
@@ -233,7 +233,8 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.3.0"
+      "1.3.0",
+      "1.4.0"
     ]
   },
   "status": "insufficient_recommendations"

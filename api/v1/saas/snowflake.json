@@ -10,10 +10,10 @@
     ],
     "status": "partial"
   },
-  "dataset_version": "00d8417ab8ebec02",
+  "dataset_version": "788f74b12ccef7c4",
   "last_checked": {
-    "newest": "2026-11-24T05:53:52Z",
-    "oldest": "2026-11-24T05:53:52Z"
+    "newest": "2026-11-24T18:47:13Z",
+    "oldest": "2026-11-24T18:47:13Z"
   },
   "more_available": 0,
   "provenance": {
@@ -41,7 +41,7 @@
               "source_id": "btwso"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -75,14 +75,14 @@
         }
       },
       "github_url": "https://github.com/databendlabs/databend",
-      "last_meaningful_activity_at": "2026-11-24T03:47:55Z",
+      "last_meaningful_activity_at": "2026-11-24T18:00:32Z",
       "latest_release": {
-        "published_at": "2026-11-23T13:06:22Z",
-        "tag": "v1.2.969-nightly"
+        "published_at": "2026-11-24T18:00:32Z",
+        "tag": "v1.2.970-nightly"
       },
       "licence_disclosure": "open core: recommendation covers the Apache-2.0 core; enterprise features excluded (src/bendsave/, src/binaries/query/ee_main.rs, src/meta/ee/, src/query/ee/): attach table, backup, data mask, data sharing, fail safe, materialized view, resource management, restore, row access policy, storage encryption, stream, table ref; core-only build: databend-meta-oss, databend-query-oss (the repository's default image, docker/Dockerfile, ships the full build)",
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "Databend",
       "note": {
@@ -120,7 +120,7 @@
         "runacapital",
         "btwso"
       ],
-      "stars": 9505
+      "stars": 9507
     }
   ],
   "saas": {

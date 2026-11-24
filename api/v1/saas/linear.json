@@ -3,24 +3,23 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 48,
-    "reason": "6 recommendations passed the full evaluation",
+    "reason": "7 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "00d8417ab8ebec02",
+  "dataset_version": "788f74b12ccef7c4",
   "last_checked": {
-    "newest": "2026-11-24T05:53:52Z",
-    "oldest": "2026-11-24T05:53:52Z"
+    "newest": "2026-11-24T18:47:13Z",
+    "oldest": "2026-11-24T18:47:13Z"
   },
-  "more_available": 1,
+  "more_available": 2,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
       "emmraan",
       "intake",
-      "job_match",
       "opensaasdirectory",
       "runacapital",
       "solvohq"
@@ -35,11 +34,11 @@
           "provenance": [
             {
               "locator": "data/intake/admitted/wr-6b2abcf4a0b28ffd.json",
-              "source_commit": "c85f6c46f48ef0b43d622720585ae1c8aebcd966",
+              "source_commit": "0f281826159cb3eb3b3912f99f1f3d86dafcd944",
               "source_id": "intake"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -81,7 +80,7 @@
         "tag": "v2.50.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "kaneo",
       "note": {
@@ -116,7 +115,102 @@
       "sources": [
         "intake"
       ],
-      "stars": 9880
+      "stars": 9887
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "self_described",
+          "provenance": [
+            {
+              "locator": "data/intake/admitted/wr-480d02eb58e985c5.json",
+              "source_commit": "0f281826159cb3eb3b3912f99f1f3d86dafcd944",
+              "source_id": "intake"
+            }
+          ],
+          "validated_as_of": "2026-11-24T18:47:13Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "self_described",
+              "readme_names_product"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 93.8,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/usetuff/tuff",
+      "last_meaningful_activity_at": "2026-11-24T16:27:11Z",
+      "latest_release": {
+        "published_at": "2026-11-22T15:14:15Z",
+        "tag": "v1.1.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-11-24T18:47:13Z",
+      "maintenance_status": "active",
+      "name": "tuff",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/usetuff/tuff",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 87.6,
+        "score": 71.9,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 86.5,
+        "evaluated_at": "2026-11-24T18:47:13Z",
+        "score": 90.9,
+        "score_version": "1.4.0"
+      },
+      "repo_url": "https://github.com/usetuff/tuff",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "intake"
+      ],
+      "stars": 206
     },
     {
       "evidence": {
@@ -145,7 +239,7 @@
               "source_id": "emmraan"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -189,7 +283,7 @@
         "tag": "v1.5.0-rc1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "Plane",
       "note": {
@@ -208,7 +302,7 @@
         "score": 82.0,
         "trajectory": "Stable"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "caps": [],
         "confidence": 95.0,
@@ -227,7 +321,7 @@
         "opensaasdirectory",
         "emmraan"
       ],
-      "stars": 63056
+      "stars": 63091
     },
     {
       "evidence": {
@@ -241,7 +335,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -284,7 +378,7 @@
         "tag": "v0.7.426"
       },
       "licence_spdx": "EPL-2.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "Huly",
       "note": {
@@ -303,7 +397,7 @@
         "score": 84.0,
         "trajectory": "Declining"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "caps": [],
         "confidence": 92.5,
@@ -319,7 +413,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 28179
+      "stars": 28182
     },
     {
       "evidence": {
@@ -333,7 +427,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -373,7 +467,7 @@
         "tag": "v17.8.3"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "OpenProject",
       "note": {
@@ -395,7 +489,7 @@
         "score": 96.2,
         "trajectory": "Rising"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "caps": [],
         "confidence": 84.5,
@@ -411,101 +505,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 17672
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/croffasia/itsaplan",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
-        },
-        "replacement_fit": {
-          "caps": [],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [
-              "readme_names_product"
-            ],
-            "corroborated": true,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 68.8,
-            "ease_of_adoption": 100.0,
-            "economic_advantage": 45.0,
-            "feature_equivalence": 100.0,
-            "integrations_extensibility": 100.0,
-            "migration_friction": 100.0,
-            "production_commercial_readiness": 100.0
-          },
-          "evidence_families": [
-            "api",
-            "data_ownership",
-            "demo",
-            "import",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "sso",
-            "support",
-            "webhook"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/croffasia/itsaplan",
-      "last_meaningful_activity_at": "2026-11-14T21:32:07Z",
-      "latest_release": {
-        "published_at": "2026-11-14T21:32:07Z",
-        "tag": "v1.11.0"
-      },
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
-      "maintenance_status": "active",
-      "name": "itsaplan",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption."
-      },
-      "oss_id": "github.com/croffasia/itsaplan",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 89.2,
-        "score": 84.7,
-        "trajectory": "Insufficient history"
-      },
-      "rank": 5,
-      "replacement_fit": {
-        "caps": [],
-        "confidence": 86.5,
-        "evaluated_at": "2026-11-21T23:02:35Z",
-        "score": 94.1,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/croffasia/itsaplan",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 2581
+      "stars": 17692
     }
   ],
   "saas": {
@@ -519,7 +519,8 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.3.0"
+      "1.3.0",
+      "1.4.0"
     ]
   },
   "status": "ok"

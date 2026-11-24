@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "00d8417ab8ebec02",
+  "dataset_version": "788f74b12ccef7c4",
   "last_checked": {
-    "newest": "2026-11-24T05:53:52Z",
-    "oldest": "2026-11-24T05:53:52Z"
+    "newest": "2026-11-24T18:47:13Z",
+    "oldest": "2026-11-24T18:47:13Z"
   },
   "more_available": 0,
   "provenance": {
@@ -37,7 +37,7 @@
               "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [
@@ -84,7 +84,7 @@
         "tag": "v0.40.17"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "Ollama",
       "note": {
@@ -125,7 +125,7 @@
       "sources": [
         "diegoleme"
       ],
-      "stars": 187940
+      "stars": 187989
     },
     {
       "evidence": {
@@ -139,7 +139,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [
@@ -187,7 +187,7 @@
         "tag": "v0.8.9"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "LibreChat",
       "note": {
@@ -228,7 +228,7 @@
       "sources": [
         "opensaasdirectory"
       ],
-      "stars": 47466
+      "stars": 47494
     },
     {
       "evidence": {
@@ -238,11 +238,11 @@
           "provenance": [
             {
               "locator": "data/intake/admitted/wr-4960f308dcf8cfc3.json",
-              "source_commit": "c85f6c46f48ef0b43d622720585ae1c8aebcd966",
+              "source_commit": "0f281826159cb3eb3b3912f99f1f3d86dafcd944",
               "source_id": "intake"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -285,7 +285,7 @@
         "tag": "0.1.60"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "open-net-worth",
       "note": {
@@ -336,7 +336,7 @@
               "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -375,7 +375,7 @@
       },
       "licence_disclosure": "source-available: licensed under the Open WebUI License (BSD-3-Clause with a branding-retention requirement), which is not an OSI-approved open-source licence",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "Open WebUI",
       "note": {
@@ -413,7 +413,7 @@
       "sources": [
         "diegoleme"
       ],
-      "stars": 159382
+      "stars": 159435
     },
     {
       "evidence": {
@@ -427,7 +427,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [
@@ -475,7 +475,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the MIT core; parts under Onyx Enterprise License are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "onyx",
       "note": {
@@ -493,7 +493,7 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 95.0,
-        "score": 92.7,
+        "score": 93.3,
         "trajectory": "Rising"
       },
       "rank": 5,
@@ -506,9 +506,9 @@
           }
         ],
         "confidence": 86.5,
-        "evaluated_at": "2026-11-14T02:13:41Z",
+        "evaluated_at": "2026-11-24T18:47:13Z",
         "score": 80.0,
-        "score_version": "1.3.0"
+        "score_version": "1.4.0"
       },
       "repo_url": "https://github.com/onyx-dot-app/onyx",
       "self_hosting": {
@@ -518,7 +518,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 33519
+      "stars": 33529
     }
   ],
   "saas": {
@@ -532,7 +532,8 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.3.0"
+      "1.3.0",
+      "1.4.0"
     ]
   },
   "status": "ok"

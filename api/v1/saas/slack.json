@@ -3,19 +3,16 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 36,
-    "reason": "2 of the 3 recommendations needed have passed the full evaluation; 3 fully evaluated relationships did not qualify as recommendations; 4 validated relationships are outside the published launch corpus (config/policy.yaml launch, edges_max 400); publishing them is a launch-policy decision; 1 candidate relationships are waiting on a licence decision",
+    "reason": "3 recommendations passed the full evaluation",
     "reasons": [
-      "fewer_than_minimum",
-      "evaluated_not_recommended",
-      "outside_launch_selection",
-      "licence_review"
+      "full_evaluation"
     ],
-    "status": "partial"
+    "status": "ok"
   },
-  "dataset_version": "00d8417ab8ebec02",
+  "dataset_version": "788f74b12ccef7c4",
   "last_checked": {
-    "newest": "2026-11-24T05:53:52Z",
-    "oldest": "2026-11-24T05:53:52Z"
+    "newest": "2026-11-24T18:47:13Z",
+    "oldest": "2026-11-24T18:47:13Z"
   },
   "more_available": 0,
   "provenance": {
@@ -25,6 +22,7 @@
       "btwso",
       "diegoleme",
       "fossalt",
+      "intake",
       "opensaasdirectory",
       "runacapital",
       "solvohq"
@@ -68,7 +66,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -107,7 +105,7 @@
         "tag": "13.3"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "Zulip",
       "note": {
@@ -154,6 +152,100 @@
     {
       "evidence": {
         "relationship": {
+          "corroborated": false,
+          "evidence_class": "self_described",
+          "provenance": [
+            {
+              "locator": "data/intake/admitted/wr-480d02eb58e985c5.json",
+              "source_commit": "0f281826159cb3eb3b3912f99f1f3d86dafcd944",
+              "source_id": "intake"
+            }
+          ],
+          "validated_as_of": "2026-11-24T18:47:13Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "self_described"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 93.8,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/usetuff/tuff",
+      "last_meaningful_activity_at": "2026-11-24T16:27:11Z",
+      "latest_release": {
+        "published_at": "2026-11-22T15:14:15Z",
+        "tag": "v1.1.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-11-24T18:47:13Z",
+      "maintenance_status": "active",
+      "name": "tuff",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/usetuff/tuff",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 87.6,
+        "score": 71.9,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 86.5,
+        "evaluated_at": "2026-11-24T18:47:13Z",
+        "score": 87.4,
+        "score_version": "1.4.0"
+      },
+      "repo_url": "https://github.com/usetuff/tuff",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "intake"
+      ],
+      "stars": 206
+    },
+    {
+      "evidence": {
+        "relationship": {
           "corroborated": true,
           "evidence_class": "listed",
           "provenance": [
@@ -193,7 +285,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -235,7 +327,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the MIT core; parts under Rocket.Chat EE licence are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "Rocket.Chat",
       "note": {
@@ -256,7 +348,7 @@
         "score": 88.9,
         "trajectory": "Rising"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "caps": [],
         "confidence": 95.0,
@@ -278,12 +370,12 @@
         "altstack",
         "fossalt"
       ],
-      "stars": 46526
+      "stars": 46533
     }
   ],
   "saas": {
     "category": "Team chat",
-    "compare_path": null,
+    "compare_path": "/open-source/slack-alternatives",
     "domain": "slack.com",
     "name": "Slack",
     "saas_id": "slack",
@@ -292,8 +384,9 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.3.0"
+      "1.3.0",
+      "1.4.0"
     ]
   },
-  "status": "insufficient_recommendations"
+  "status": "ok"
 }

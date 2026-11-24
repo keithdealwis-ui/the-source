@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-24T05:53:52Z",
+  "as_of": "2026-11-24T18:47:13Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -69,12 +69,12 @@
       },
       "intake": {
         "decision": "allow",
-        "entries": 19,
-        "entries_with_saas_claim": 19,
+        "entries": 25,
+        "entries_with_saas_claim": 25,
         "harvested": true,
         "licence_file_sha256": "ccc2475e96c83d6774422c036d4e7b7f495de3522c25bd03f852d78edff5a022",
-        "pinned_commit": "c85f6c46f48ef0b43d622720585ae1c8aebcd966",
-        "relationship_claims": 27,
+        "pinned_commit": "0f281826159cb3eb3b3912f99f1f3d86dafcd944",
+        "relationship_claims": 40,
         "unparseable_files": 0
       },
       "job_match": {
@@ -82,7 +82,7 @@
         "entries": 983,
         "entries_with_saas_claim": 983,
         "harvested": true,
-        "licence_file_sha256": "199e9c1378d77da147e67bbc9465d65492650b458b77aafb627444c75a4110c7",
+        "licence_file_sha256": "a5bbf4585b11a6b3a15847a3d4397e32f504ac4869214ebd06bd715c278d24df",
         "pinned_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
         "relationship_claims": 4167,
         "unparseable_files": 0
@@ -118,18 +118,18 @@
         "unparseable_files": 0
       }
     },
-    "entries_read": 3623,
-    "relationship_claims_read": 5992
+    "entries_read": 3629,
+    "relationship_claims_read": 6005
   },
   "lanes": {
     "oss_projects": {
       "licence_exception": 29,
-      "recommendable": 1443,
+      "recommendable": 1448,
       "rejected": 124
     },
     "relationships": {
       "licence_exception": 34,
-      "recommendable": 2098,
+      "recommendable": 2111,
       "rejected": 3040
     }
   },
@@ -305,7 +305,6 @@
       "microsoft-planner",
       "microsoft-power-automate",
       "microsoft-to-do",
-      "midjourney",
       "mintlify",
       "monarch-money",
       "motion",
@@ -418,19 +417,19 @@
       "zoho-mail",
       "zuora"
     ],
-    "catalogue_served_relationships": 1239,
-    "oss_distinct_products": 662,
-    "oss_projects": 663,
+    "catalogue_served_relationships": 1246,
+    "oss_distinct_products": 667,
+    "oss_projects": 668,
     "preserve_served": {
-      "kept": 377,
+      "kept": 378,
       "not_kept": 0,
-      "served_before": 377
+      "served_before": 378
     },
-    "relationships": 1616,
+    "relationships": 1625,
     "relationships_corroborated_by_2plus_sources": 218,
     "relationships_share_alike_only": 0,
-    "saas_added_beyond_floor": 25,
-    "saas_named_by_a_single_source": 114,
+    "saas_added_beyond_floor": 26,
+    "saas_named_by_a_single_source": 115,
     "saas_products": 406,
     "saas_target_decision_ref": "dr-KEI-805-507e4f70",
     "saas_target_is": "floor",
@@ -470,9 +469,9 @@
   },
   "publication_status": "public",
   "reconciled": {
-    "oss_candidates": 1596,
-    "oss_candidates_before_identity_merge": 1621,
-    "relationship_candidates": 5172,
+    "oss_candidates": 1601,
+    "oss_candidates_before_identity_merge": 1626,
+    "relationship_candidates": 5185,
     "renamed_or_duplicate_repositories_merged": 25,
     "saas_products_named": 569
   },
@@ -2386,16 +2385,16 @@
   "schema_version": "1.0.0",
   "verified": {
     "maintenance_status": {
-      "active": 1352,
+      "active": 1357,
       "maintained": 134,
       "stale": 92,
       "unverified": 18
     },
-    "oss_recommendable": 1443,
+    "oss_recommendable": 1448,
     "oss_rejected": 153,
     "relationships_flagged_licence_exception": 34,
     "relationships_rejected": 3040,
-    "relationships_validated": 2098,
+    "relationships_validated": 2111,
     "saas_with_validated_alternatives": 495
   }
 }

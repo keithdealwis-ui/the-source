@@ -3,25 +3,121 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 143,
-    "reason": "3 recommendations passed the full evaluation",
+    "reason": "4 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "00d8417ab8ebec02",
+  "dataset_version": "788f74b12ccef7c4",
   "last_checked": {
-    "newest": "2026-11-24T05:53:52Z",
-    "oldest": "2026-11-24T05:53:52Z"
+    "newest": "2026-11-24T18:47:13Z",
+    "oldest": "2026-11-24T18:47:13Z"
   },
   "more_available": 0,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "intake",
       "job_match"
     ]
   },
   "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "self_described",
+          "provenance": [
+            {
+              "locator": "data/intake/admitted/wr-480d02eb58e985c5.json",
+              "source_commit": "0f281826159cb3eb3b3912f99f1f3d86dafcd944",
+              "source_id": "intake"
+            }
+          ],
+          "validated_as_of": "2026-11-24T18:47:13Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "self_described",
+              "readme_names_product"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 93.8,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/usetuff/tuff",
+      "last_meaningful_activity_at": "2026-11-24T16:27:11Z",
+      "latest_release": {
+        "published_at": "2026-11-22T15:14:15Z",
+        "tag": "v1.1.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-11-24T18:47:13Z",
+      "maintenance_status": "active",
+      "name": "tuff",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/usetuff/tuff",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 87.6,
+        "score": 71.9,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 86.5,
+        "evaluated_at": "2026-11-24T18:47:13Z",
+        "score": 90.9,
+        "score_version": "1.4.0"
+      },
+      "repo_url": "https://github.com/usetuff/tuff",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "intake"
+      ],
+      "stars": 206
+    },
     {
       "evidence": {
         "relationship": {
@@ -34,7 +130,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -75,7 +171,7 @@
         "tag": "v1.5.0-rc1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "Plane",
       "note": {
@@ -96,7 +192,7 @@
         "score": 82.0,
         "trajectory": "Stable"
       },
-      "rank": 1,
+      "rank": 2,
       "replacement_fit": {
         "caps": [],
         "confidence": 84.5,
@@ -112,7 +208,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 63056
+      "stars": 63091
     },
     {
       "evidence": {
@@ -126,7 +222,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [
@@ -174,7 +270,7 @@
         "tag": "v3.17.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "Leantime",
       "note": {
@@ -193,7 +289,7 @@
         "score": 88.1,
         "trajectory": "Stable"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "caps": [
           {
@@ -229,7 +325,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
+          "validated_as_of": "2026-11-24T18:47:13Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -263,7 +359,7 @@
         "tag": "v1.2.57"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-24T05:53:52Z",
+      "live_checked_at": "2026-11-24T18:47:13Z",
       "maintenance_status": "active",
       "name": "Kanboard",
       "note": {
@@ -284,7 +380,7 @@
         "score": 90.1,
         "trajectory": "Rising"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "caps": [],
         "confidence": 78.5,
@@ -314,7 +410,8 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.3.0"
+      "1.3.0",
+      "1.4.0"
     ]
   },
   "status": "ok"

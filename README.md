@@ -57,9 +57,9 @@ The catalogue has several levels of evidence. Finding a project is the beginning
 <!-- source-stats:start -->
 | Published coverage | What it means |
 |---|---|
-| **25,294 discovered projects** | The broad discovery corpus: public project records with evidence dates and licensing information or warnings. |
-| **662 projects in the assessed layer** | Projects with the fuller assessment of health and replacement fit where applicable. |
-| **1,256 recommended product–project pairings** | Specific relationships that pass the recommendation rules. One project can replace more than one product. |
+| **25,300 discovered projects** | The broad discovery corpus: public project records with evidence dates and licensing information or warnings. |
+| **668 projects in the assessed layer** | Projects with the fuller assessment of health and replacement fit where applicable. |
+| **1,267 recommended product–project pairings** | Specific relationships that pass the recommendation rules. One project can replace more than one product. |
 | **377 products with published alternative records** | Product coverage in the read API; the number of alternatives varies. |
 
 Assessment snapshot: **24 November 2026**. Discovery snapshot: **24 November 2026**. Individual observation dates can differ.
