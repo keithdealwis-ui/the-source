@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "2702df4c40902975",
+  "dataset_version": "00d8417ab8ebec02",
   "last_checked": {
     "newest": "2026-11-24T05:53:52Z",
     "oldest": "2026-11-24T05:53:52Z"
@@ -131,6 +131,94 @@
           "evidence_class": "listed",
           "provenance": [
             {
+              "locator": "README.md#L391",
+              "source_commit": "bce3d3144b245b2146e6e3032d716f27b70a7ef9",
+              "source_id": "opensaasdirectory"
+            }
+          ],
+          "validated_as_of": "2026-11-24T05:53:52Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 68.8,
+            "ease_of_adoption": 79.1,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 33.3,
+            "production_commercial_readiness": 50.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "full_lane"
+        }
+      },
+      "github_url": "https://github.com/openstatusHQ/openstatus",
+      "last_meaningful_activity_at": "2026-11-12T19:51:41Z",
+      "latest_release": null,
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-11-24T05:53:52Z",
+      "maintenance_status": "active",
+      "name": "OpenStatus",
+      "note": {
+        "gaps": [
+          "migration path"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption; weakest on migration path."
+      },
+      "oss_id": "github.com/openstatushq/openstatus",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 92.6,
+        "score": 84.6,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 84.5,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 71.8,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/openstatusHQ/openstatus",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "opensaasdirectory"
+      ],
+      "stars": 9281
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
               "locator": "README.md#L436",
               "source_commit": "bce3d3144b245b2146e6e3032d716f27b70a7ef9",
               "source_id": "opensaasdirectory"
@@ -195,7 +283,7 @@
         "score": 81.0,
         "trajectory": "Insufficient history"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "caps": [],
         "confidence": 86.5,
@@ -212,94 +300,6 @@
         "opensaasdirectory"
       ],
       "stars": 53
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
-              "locator": "README.md#L391",
-              "source_commit": "bce3d3144b245b2146e6e3032d716f27b70a7ef9",
-              "source_id": "opensaasdirectory"
-            }
-          ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
-        },
-        "replacement_fit": {
-          "caps": [],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 68.8,
-            "ease_of_adoption": 79.1,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 61.7,
-            "integrations_extensibility": 75.0,
-            "migration_friction": 33.3,
-            "production_commercial_readiness": 50.0
-          },
-          "evidence_families": [
-            "api",
-            "cloud_option",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "support",
-            "webhook"
-          ],
-          "scoring_path": "full_lane"
-        }
-      },
-      "github_url": "https://github.com/openstatusHQ/openstatus",
-      "last_meaningful_activity_at": "2026-11-12T19:51:41Z",
-      "latest_release": null,
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
-      "maintenance_status": "active",
-      "name": "OpenStatus",
-      "note": {
-        "gaps": [
-          "migration path"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption; weakest on migration path."
-      },
-      "oss_id": "github.com/openstatushq/openstatus",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 92.6,
-        "score": 84.6,
-        "trajectory": "Rising"
-      },
-      "rank": 3,
-      "replacement_fit": {
-        "caps": [],
-        "confidence": 84.5,
-        "evaluated_at": "2026-09-29T18:28:27Z",
-        "score": 71.8,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/openstatusHQ/openstatus",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "opensaasdirectory"
-      ],
-      "stars": 9281
     },
     {
       "evidence": {
@@ -411,7 +411,7 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/kolapsis/maintenant",
+              "locator": "data/job_match/ledger.json#github.com/msgbyte/tianji",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
@@ -434,54 +434,50 @@
           },
           "dimensions": {
             "core_use_case_coverage": 100.0,
-            "deployment_ownership": 50.0,
-            "ease_of_adoption": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 94.2,
             "economic_advantage": 80.0,
-            "feature_equivalence": 92.5,
-            "integrations_extensibility": 100.0,
-            "migration_friction": 66.7,
+            "feature_equivalence": 33.3,
+            "integrations_extensibility": null,
+            "migration_friction": null,
             "production_commercial_readiness": 100.0
           },
           "evidence_families": [
-            "api",
-            "demo",
-            "import",
             "multi_user",
-            "plugins",
             "quickstart",
             "self_host",
-            "sso",
-            "support",
-            "webhook"
+            "support"
           ],
           "scoring_path": "single_project"
         }
       },
-      "github_url": "https://github.com/kOlapsis/maintenant",
-      "last_meaningful_activity_at": "2026-11-21T17:18:37Z",
+      "github_url": "https://github.com/msgbyte/tianji",
+      "last_meaningful_activity_at": "2026-11-13T19:04:40Z",
       "latest_release": {
-        "published_at": "2026-11-21T17:18:37Z",
-        "tag": "v1.13.0"
+        "published_at": "2026-11-13T19:04:40Z",
+        "tag": "v1.34.3"
       },
       "licence_spdx": "Apache-2.0",
       "live_checked_at": "2026-11-24T05:53:52Z",
       "maintenance_status": "active",
-      "name": "maintenant",
+      "name": "tianji",
       "note": {
-        "gaps": [],
+        "gaps": [
+          "feature parity"
+        ],
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
-          "ease of adoption"
+          "self-hosting and data ownership"
         ],
-        "text": "Strongest on core use-case coverage and ease of adoption."
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
       },
-      "oss_id": "github.com/kolapsis/maintenant",
+      "oss_id": "github.com/msgbyte/tianji",
       "project_health": {
         "band": "Healthy",
-        "confidence": 93.7,
-        "score": 83.2,
-        "trajectory": "Insufficient history"
+        "confidence": 96.6,
+        "score": 78.4,
+        "trajectory": "Stable"
       },
       "rank": 5,
       "replacement_fit": {
@@ -492,12 +488,12 @@
             "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Better Stack as what it replaces"
           }
         ],
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-20T23:06:47Z",
+        "confidence": 78.5,
+        "evaluated_at": "2026-11-16T01:50:14Z",
         "score": 80.0,
         "score_version": "1.3.0"
       },
-      "repo_url": "https://github.com/kOlapsis/maintenant",
+      "repo_url": "https://github.com/msgbyte/tianji",
       "self_hosting": {
         "basis": "self-hosting documented in the project's README",
         "self_hostable": true
@@ -505,7 +501,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 555
+      "stars": 3124
     }
   ],
   "saas": {

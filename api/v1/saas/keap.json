@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "2702df4c40902975",
+  "dataset_version": "00d8417ab8ebec02",
   "last_checked": {
     "newest": "2026-11-24T05:53:52Z",
     "oldest": "2026-11-24T05:53:52Z"
@@ -133,6 +133,106 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
+              "locator": "data/job_match/ledger.json#github.com/arnasdon/wacrm",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-11-24T05:53:52Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Keap as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 100.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 50.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/ArnasDon/wacrm",
+      "last_meaningful_activity_at": "2026-10-30T09:26:39Z",
+      "latest_release": null,
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-24T05:53:52Z",
+      "maintenance_status": "active",
+      "name": "wacrm",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/arnasdon/wacrm",
+      "project_health": {
+        "band": "Healthy",
+        "confidence": 89.7,
+        "score": 77.1,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Keap as what it replaces"
+          }
+        ],
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/ArnasDon/wacrm",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 2776
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
               "locator": "data/job_match/ledger.json#github.com/django-crm/django-crm",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
@@ -204,7 +304,7 @@
         "score": 88.4,
         "trajectory": "Rising"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "caps": [
           {
@@ -306,7 +406,7 @@
         "score": 85.6,
         "trajectory": "Declining"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "caps": [
           {
@@ -329,106 +429,6 @@
         "job_match"
       ],
       "stars": 653
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/arnasdon/wacrm",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
-        },
-        "replacement_fit": {
-          "caps": [
-            {
-              "cap": 80.0,
-              "id": "uncorroborated_pairing",
-              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Keap as what it replaces"
-            }
-          ],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 75.0,
-            "ease_of_adoption": 100.0,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 100.0,
-            "integrations_extensibility": 75.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 50.0
-          },
-          "evidence_families": [
-            "api",
-            "data_ownership",
-            "demo",
-            "import",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "support",
-            "webhook"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/ArnasDon/wacrm",
-      "last_meaningful_activity_at": "2026-10-30T09:26:39Z",
-      "latest_release": null,
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-24T05:53:52Z",
-      "maintenance_status": "active",
-      "name": "wacrm",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption."
-      },
-      "oss_id": "github.com/arnasdon/wacrm",
-      "project_health": {
-        "band": "Healthy",
-        "confidence": 89.7,
-        "score": 77.1,
-        "trajectory": "Insufficient history"
-      },
-      "rank": 4,
-      "replacement_fit": {
-        "caps": [
-          {
-            "cap": 80.0,
-            "id": "uncorroborated_pairing",
-            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Keap as what it replaces"
-          }
-        ],
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 80.0,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/ArnasDon/wacrm",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 2776
     }
   ],
   "saas": {

@@ -46,6 +46,7 @@ snapshot succeeded, when, and whether the snapshot served is the last good one.
 from __future__ import annotations
 
 import argparse
+import difflib
 import hashlib
 import json
 import math
@@ -167,6 +168,39 @@ def _norm(text) -> str:
     """Lowercase, accents folded, every run of non-alphanumerics one space."""
     t = unicodedata.normalize("NFKD", str(text or "")).encode("ascii", "ignore").decode().lower()
     return " ".join(re.findall(r"[a-z0-9]+", t))
+
+
+FUZZY_CUTOFF = 0.75     # difflib ratio for a "did you mean" suggestion
+FUZZY_CONFIDENT = 0.85  # a single target at or above this ratio, clear of every other target, resolves itself
+FUZZY_MARGIN = 0.05
+
+
+def fuzzy_names(value, names: dict, n: int = 5):
+    """Typo tolerance over a {normalised name: {ids}} index -> (confident id or None, suggestions).
+    suggestions is [(name, sorted ids, ratio)] best first. One id resolves itself only when its best ratio is at
+    least FUZZY_CONFIDENT and every other id's best ratio is at least FUZZY_MARGIN below it."""
+    q = _norm(value)
+    if len(q) < 3:
+        return None, []
+    keys = [k for k in names if abs(len(k) - len(q)) <= max(2, len(q) // 3)]
+    scored = []
+    for k in difflib.get_close_matches(q, keys, n=max(n, 10), cutoff=FUZZY_CUTOFF):
+        scored.append((k, sorted(names[k]), round(difflib.SequenceMatcher(None, q, k).ratio(), 4)))
+    scored.sort(key=lambda x: (-x[2], x[0]))
+    best = {}
+    for k, ids, ratio in scored:
+        for i in ids:
+            best[i] = max(best.get(i, 0.0), ratio)
+    confident = None
+    if scored and len(scored[0][1]) == 1 and scored[0][2] >= FUZZY_CONFIDENT:
+        top = scored[0][1][0]
+        if all(r <= scored[0][2] - FUZZY_MARGIN for i, r in best.items() if i != top):
+            confident = top
+    return confident, scored[:n]
+
+
+def _suggestion_text(scored) -> str:
+    return "; did you mean " + ", ".join(f"{k!r} ({', '.join(ids[:3])})" for k, ids, _ in scored) + "?"
 
 
 def _tokens(text) -> list:
@@ -334,7 +368,7 @@ def _load_corpus(root: Path) -> dict:
 
 QUICK_SCHEMA = "the-source.quick/1"
 QUICK_FILES = ("health.jsonl", "pairings.jsonl")
-QUICK_NOTE = ("quick score (KEI-921): programmatic over published repository facts and detected pairings, "
+QUICK_NOTE = ("quick score: programmatic over published repository facts and detected pairings, "
               "uncalibrated, never a recommendation. Only the full evaluation (Project Health and Replacement Fit "
               "in the canonical layer) recommends. Method: docs/QUICK-SCORING.md")
 
@@ -600,10 +634,15 @@ class Layer:
         return None
 
     def resolve_any(self, value: str):
-        """A project in the canonical layer or the discovery corpus -> (key, tier), canonical first."""
+        key, tier, _ = self.resolve_any_how(value)
+        return key, tier
+
+    def resolve_any_how(self, value: str):
+        """A project in the canonical layer or the discovery corpus -> (key, tier, how), canonical first; exact
+        matches anywhere before a fuzzy one."""
         try:
-            pid = self.resolve_project(value)
-            return pid, self.tier_of(pid)
+            pid, how = self.resolve_project_how(value, fuzzy=self.full is None)
+            return pid, self.tier_of(pid), how
         except ToolError as exc:
             v = str(value or "").strip()
             if "more than one project" in str(exc) or self.full is None:
@@ -617,7 +656,7 @@ class Layer:
                 primaries = {(self.corpus[h].get("identity") or {}).get("sibling_primary") for h in hit}
                 if len(primaries) == 1 and None not in primaries and next(iter(primaries)) in (
                         set(self.corpus) | set(self.projects)):
-                    return next(iter(primaries)), self.tier_of(next(iter(primaries)))
+                    return next(iter(primaries)), self.tier_of(next(iter(primaries))), "name"
                 shown = sorted(hit)
                 raise ToolError(f"{v!r} names more than one discovery project: {shown[:10]}"
                                 + (f" and {len(shown) - 10} more" if len(shown) > 10 else "")
@@ -625,9 +664,16 @@ class Layer:
         if cid is None:
             cid = self._by_owner(v)
         if cid is None:
-            raise ToolError(f"{v!r} is not a project The Source holds (canonical layer or discovery corpus); "
-                            "try source_search")
-        return cid, self.tier_of(cid)
+            pid, scored = fuzzy_names(v, self.project_names)
+            if pid:
+                return pid, self.tier_of(pid), "fuzzy"
+            cid, cscored = fuzzy_names(v, self.corpus_names)
+            if cid and not scored:
+                return cid, self.tier_of(cid), "fuzzy"
+            scored = sorted(scored + cscored, key=lambda x: (-x[2], x[0]))[:5]
+            raise ToolError(f"{v!r} is not a project The Source holds (canonical layer or discovery corpus)"
+                            + (_suggestion_text(scored) if scored else "; try source_search"))
+        return cid, self.tier_of(cid), "id"
 
     def _by_owner(self, value: str):
         """KEI-919 S1.2: a bare organisation name ('bitwarden') -> its one repository, or the repository named
@@ -817,7 +863,11 @@ class Layer:
                 return by_domain[0], "domain"
             if by_domain:
                 raise ToolError(f"{host!r} is the domain of more than one product: {by_domain}")
-        raise ToolError(f"{v!r} is not a product in The Source catalogue; try source_search")
+        sid, scored = fuzzy_names(v, self.saas_names)
+        if sid:
+            return sid, "fuzzy"
+        raise ToolError(f"{v!r} is not a product in The Source catalogue"
+                        + (_suggestion_text(scored) if scored else "; try source_search"))
 
     def _by_owner_repo(self, value: str, keys: dict, what: str):
         """KEI-919 S1.2: 'owner/repo' with no host -> the one project at <host>/owner/repo for any host the layer
@@ -837,18 +887,28 @@ class Layer:
         return found[0] if found else None
 
     def resolve_project(self, value: str):
+        return self.resolve_project_how(value)[0]
+
+    def resolve_project_how(self, value: str, fuzzy: bool = True):
+        """-> (oss_id, how): how is "id", "name" or "fuzzy" (a single confident near-miss of a project name)."""
         v = str(value or "").strip()
         if not v:
             raise ToolError("project is empty")
         pid = self.repo_keys.get(_repo_key(v)) or self._by_owner_repo(v, self.repo_keys, "project")
         if pid:
-            return pid
+            return pid, "id"
         hit = self.project_names.get(_norm(v))
         if hit and len(hit) == 1:
-            return next(iter(hit))
+            return next(iter(hit)), "name"
         if hit:
             raise ToolError(f"{v!r} names more than one project: {sorted(hit)}; pass the oss_id")
-        raise ToolError(f"{v!r} is not a project in The Source canonical layer; try source_search")
+        scored = []
+        if fuzzy:
+            pid, scored = fuzzy_names(v, self.project_names)
+            if pid:
+                return pid, "fuzzy"
+        raise ToolError(f"{v!r} is not a project in The Source canonical layer"
+                        + (_suggestion_text(scored) if scored else "; try source_search"))
 
     def detect(self, url: str):
         """api/v1/domains.json semantics (source_pipeline/detect.py): the most specific matching rule wins."""
@@ -1085,6 +1145,30 @@ def _rank_key(rec):
     return (_evidence_tier(rec), licence_tier, -(fit.get("score") or 0), -(health.get("score") or 0), -(rec.get("stars") or 0), rec["oss_id"])
 
 
+FIT_BAND = 5.0  # same as canonical.FIT_BAND (rubric 1.4.0)
+
+
+def _rank(recs):
+    """Same order as canonical.rank: _rank_key's evidence and licence tiers first; inside each, a band anchored on the
+    highest remaining Replacement Fit holds everything within FIT_BAND points and is ordered by stars, then Project
+    Health, then Fit, then id."""
+    def fit(r):
+        return (r.get("replacement_fit") or {}).get("score") or 0
+
+    def adoption(r):
+        return (-(r.get("stars") or 0), -((r.get("project_health") or {}).get("score") or 0), -fit(r), r["oss_id"])
+
+    ordered = sorted(recs, key=_rank_key)
+    out, i = [], 0
+    while i < len(ordered):
+        tiers, lead, j = _rank_key(ordered[i])[:2], fit(ordered[i]), i
+        while j < len(ordered) and _rank_key(ordered[j])[:2] == tiers and lead - fit(ordered[j]) <= FIT_BAND + 1e-9:
+            j += 1
+        out += sorted(ordered[i:j], key=adoption)
+        i = j
+    return out
+
+
 def _saas_view(layer, sid):
     s = layer.saas[sid]
     out = {k: s[k] for k in ("saas_id", "name", "domain", "category", "aliases", "supported")}
@@ -1188,7 +1272,34 @@ def _licence_view(lic: dict, host_spdx):
     for k in ("classification", "eligibility", "edition_check"):  # edition_check: edition_check.py
         if lic.get(k):
             out[k] = lic[k]
+    if isinstance((out.get("edition_check") or {}).get("deployment"), list):
+        out["edition_check"] = {**out["edition_check"],
+                                "deployment": deployment_summary(out["edition_check"]["deployment"])}
     return out
+
+
+DEPLOYMENT_SAMPLE = 3
+
+
+def deployment_summary(deployment: list) -> dict:
+    """edition_check.deployment (every docker-compose / Dockerfile / chart artefact with its service list) can run
+    to thousands of tokens for one project. Served as counts plus a few file names; the full lists stay in
+    data/corpus/projects.jsonl."""
+    kinds, services, runs, dev, files = {}, 0, 0, 0, []
+    for d in deployment:
+        if not isinstance(d, dict):
+            continue
+        kinds[d.get("kind") or "unknown"] = kinds.get(d.get("kind") or "unknown", 0) + 1
+        services += len(d.get("services") or [])
+        runs += bool(d.get("runs_project"))
+        dev += bool(d.get("development"))
+        for f in [d.get("path"), *(d.get("files") or [])]:
+            if f and f not in files:
+                files.append(f)
+    return {"summarised": True, "artefacts": len(deployment), "kinds": dict(sorted(kinds.items())),
+            "artefacts_running_project": runs, "development_only_artefacts": dev, "services": services,
+            "files": len(files), "files_sample": files[:DEPLOYMENT_SAMPLE],
+            "full_record": "data/corpus/projects.jsonl (licence.edition_check.deployment)"}
 
 
 def _corpus_spdx(c: dict):
@@ -1349,7 +1460,7 @@ def tool_dataset_info(layer, args, server):
                   "rule": "recommendation tools return recommended-tier projects only; search, project, compare, "
                           "emerging and momentum serve every tier and label each row"},
         "retrieval": {"lexical": "BM25F-lite", "semantic_model": SEMANTIC_MODEL,
-                      "semantic_model_origin": "KEI-844 source_pipeline/graph_retrieval.py",
+                      "semantic_model_origin": "source_pipeline/graph_retrieval.py",
                       "graph": "SaaS -REPLACES-> project edges from data/canonical/relationships.jsonl",
                       "hybrid_weights": HYBRID_WEIGHTS},
         "serves": ["data/canonical/" + f for f in ("MANIFEST.json",) + CANONICAL_FILES]
@@ -1421,12 +1532,39 @@ def last_run(root: Path, now: datetime, serving_version: str) -> dict:
                     "served stays the last successful run's output; serving_last_success says whether it is."}
 
 
+SUPPORTED_STATUSES = ("ok", "insufficient_recommendations", "no_recommendations")
+SUPPORTED_MAX_LIMIT = 500
+
+
 def tool_list_supported(layer, args, server):
+    category, status = args.get("category"), args.get("status")
+    if category is not None and (not isinstance(category, str) or not _norm(category) or len(category) > MAX_TEXT):
+        raise ToolError(f"category must contain words and be at most {MAX_TEXT} characters")
+    if status is not None and status not in SUPPORTED_STATUSES:
+        raise ToolError(f"status must be one of {list(SUPPORTED_STATUSES)}")
+    offset = args.get("offset", 0)
+    if isinstance(offset, bool) or not isinstance(offset, int) or offset < 0:
+        raise ToolError("offset must be an integer >= 0")
+    limit = args.get("limit")
+    if limit is not None and (isinstance(limit, bool) or not isinstance(limit, int)
+                              or not 1 <= limit <= SUPPORTED_MAX_LIMIT):
+        raise ToolError(f"limit must be an integer from 1 to {SUPPORTED_MAX_LIMIT}")
+    want = _norm(category) if category is not None else None
     rows = []
     for row in layer.index["supported_saas"]:
         s = layer.saas[row["saas_id"]]
+        cat = _norm(s["category"])
+        if want is not None and cat != want and f" {want} " not in f" {cat} ":
+            continue
+        if status is not None and row.get("status") != status:
+            continue
         rows.append({**row, "category": s["category"], "domain": s["domain"]})
-    return {"supported_saas": rows, "count": len(rows),
+    total = len(rows)
+    page = rows[offset:] if limit is None else rows[offset:offset + limit]
+    nxt = offset + len(page)
+    return {"supported_saas": page, "count": len(page), "total": total, "offset": offset,
+            "next_offset": nxt if nxt < total else None,
+            "filters": {"category": category, "status": status},
             "catalogue_products": len(layer.saas),
             "note": "Supported products have a published api/v1 page. Other catalogued products can still have "
                     "recommended relationships in data/canonical; source_get_alternatives serves both and says which."}
@@ -1437,6 +1575,49 @@ def _include_discovery(args):
     if not isinstance(v, bool):
         raise ToolError("include_discovery must be true or false")
     return v
+
+
+# A product-driven discovery candidate that neither claims to replace the product nor is listed as replacing it
+# must agree with the product's category on more than the category word itself: one bare word ("scheduling")
+# matches job schedulers, dataflow schedulers and cron libraries as readily as booking apps.
+MIN_DISCOVERY_QUICK_FIT = 50
+_TOPIC_SPREAD_MAX = 3  # a topic seen in the canonical projects of more categories than this says nothing specific
+
+
+def _category_topics(layer, category):
+    """Topics that mark a category: carried by the corpus rows of canonical projects paired with the category's
+    products, and by projects in no more than _TOPIC_SPREAD_MAX categories. Computed once per layer."""
+    cache = layer.__dict__.setdefault("_category_topic_cache", {})
+    if not cache:
+        spread, by_cat = {}, {}
+        for pid, row in layer.canonical_corpus.items():
+            cats = {layer.saas[r["saas_id"]]["category"] for r in layer.rel_by_project.get(pid, [])
+                    if r["saas_id"] in layer.saas}
+            for t in row.get("topics") or []:
+                spread.setdefault(t, set()).update(cats)
+                for cat in cats:
+                    by_cat.setdefault(cat, set()).add(t)
+        for cat, topics in by_cat.items():
+            cache[cat] = frozenset(t for t in topics if len(spread[t]) <= _TOPIC_SPREAD_MAX)
+        cache.setdefault(None, frozenset())
+    return cache.get(category, frozenset())
+
+
+def _topic_agreement(layer, saas, topics):
+    """The candidate topics that agree with the product's category, ignoring topics that only restate a category
+    word ("scheduler", "scheduling" for Scheduling)."""
+    stems = [t[:5] for t in _category_terms(saas)]
+    vocab = _category_topics(layer, saas.get("category"))
+
+    def restates(topic):
+        parts = [p for p in re.split(r"[-_ ]+", topic.lower()) if p]
+        return all(any(p.startswith(s) for s in stems) for p in parts)
+    return sorted(t for t in topics or [] if t in vocab and not restates(t))
+
+
+def _discovery_quick_fit(layer, cid, saas_id):
+    return max((r["quick_fit"]["score"] or 0 for r in layer.quick_pairings.get(cid, []) if r["saas_id"] == saas_id),
+               default=None)
 
 
 def _discovery_candidates(layer, server, query, limit, licences=None, family=None, status=None, min_stars=None,
@@ -1473,7 +1654,14 @@ def _discovery_candidates(layer, server, query, limit, licences=None, family=Non
             r"\bintegrat\w* with [^.]{0,120}\b" + re.escape(_norm(anchors)) + r"\b", _norm(c["description"])))
         strong, coverage, matched = match_strength(h, terms, (True if alt else False) if anchors else None,
                                                    c["topics"])
+        agreement, qfit = [], None
+        off_category = False
+        if strong and anchors and saas_id in layer.saas and not alt:
+            agreement = _topic_agreement(layer, layer.saas[saas_id], c["topics"])
+            qfit = _discovery_quick_fit(layer, h["key"], saas_id)
+            off_category = not agreement and (qfit is None or qfit < MIN_DISCOVERY_QUICK_FIT)
         why_not = ("weak_match" if not strong
+                   else "off_category" if off_category
                    else "integration_not_replacement"
                    if uses or integration_kind(c["name"], c["full_name"], c["description"], c["topics"], products, alt)
                    else "not_a_product" if not_a_product(c["name"], c["full_name"], c["topics"], c["description"])
@@ -1493,13 +1681,17 @@ def _discovery_candidates(layer, server, query, limit, licences=None, family=Non
         rows.append({**_discovery_view(layer, h["key"]),
                      "retrieval": {**{k: h[k] for k in ("score", "components", "semantic_terms")},
                                    "term_coverage": coverage, "matched_terms": matched,
+                                   **({"category_topics": agreement} if agreement else {}),
+                                   **({"quick_fit": qfit} if qfit is not None else {}),
                                    **({"basis": "listed as an alternative by licence-cleared upstream lists "
                                                 "(KEI-805 dataset); withheld from recommendations for its licence"}
                                       if h.get("listed") else {})}})
     out = {**base, "status": "ok" if rows else "no_matching_discovery_projects", "candidates": rows[:limit],
            "more_available": max(0, len(rows) - limit), "excluded": dict(sorted(excluded.items())),
            "match_rule": ((f"a candidate must say it is an alternative to {anchors} or match every category word "
-                           f"{terms}; " if anchors else
+                           f"{terms}, and one that does not claim to be an alternative must also carry a topic of "
+                           f"the category's own projects or have a quick Fit of at least {MIN_DISCOVERY_QUICK_FIT} "
+                           "for the product (off_category otherwise); " if anchors else
                            f"a candidate must match at least {MIN_TERM_COVERAGE:.0%} of the query's content words "
                            f"{terms} with one in its name, repository or topics; ") + "weak word matches are excluded, "
                           "never used to fill the list. Integrations (MCP servers, SDKs, bots, API clients) work "
@@ -1516,8 +1708,7 @@ def tool_get_alternatives(layer, args, server):
     include_discovery = _include_discovery(args)
     not_rec = [r for r in layer.rel_by_saas.get(sid, []) if not r["recommended"]]
     doc = layer.surface.get(sid)
-    recs = sorted((_canonical_rec(layer, r) for r in layer.rel_by_saas.get(sid, []) if r["recommended"]),
-                  key=_rank_key)
+    recs = _rank([_canonical_rec(layer, r) for r in layer.rel_by_saas.get(sid, []) if r["recommended"]])
     for i, rec in enumerate(recs, 1):
         rec["rank"] = i
     if doc:
@@ -1697,7 +1888,7 @@ def tool_search(layer, args, server):
     if mode == "hybrid":
         out["graph_seeds"] = seeds
         out["ranking"] = (f"Hybrid: {HYBRID_WEIGHTS['lexical']} x lexical BM25 (normalised to the best hit) + "
-                          f"{HYBRID_WEIGHTS['semantic']} x KEI-844 semantic cosine ({SEMANTIC_MODEL}) + "
+                          f"{HYBRID_WEIGHTS['semantic']} x semantic cosine ({SEMANTIC_MODEL}) + "
                           f"{HYBRID_WEIGHTS['graph']} x graph (matched product -REPLACES-> project, weighted by "
                           "Replacement Fit). Components are returned per result; ties by kind then id.")
     else:
@@ -1718,15 +1909,21 @@ _ASKS_FOR_INTEGRATION = {"mcp", "sdk", "sdks", "plugin", "plugins", "extension",
 
 
 def tool_get_project(layer, args, server):
-    pid, tier = layer.resolve_any(args.get("project"))
+    pid, tier, how = layer.resolve_any_how(args.get("project"))
     if tier == "discovery":
-        return {"project": _discovery_view(layer, pid, full=True), "tier": tier, "relationships": [],
+        return {"project": _discovery_view(layer, pid, full=True), "tier": tier, "resolved_by": how,
+                "relationships": [],
                 "corpus": _corpus_state(layer, server),
                 "note": DISCOVERY_LABEL + ". The Source has not evaluated it as a replacement for any SaaS product; "
                         "it is not a recommendation."}
     rels = sorted(layer.rel_by_project.get(pid, []), key=lambda r: (not r["recommended"], r["saas_id"]))
     c = layer.canonical_corpus.get(pid)
-    return {"project": {**_project_view(layer.projects[pid]), "tier": tier}, "tier": tier,
+    p = layer.projects[pid]
+    rr = release_readings(layer, pid, p["live"]["latest_release"], p["live"]["checked_at"])
+    view = {**_project_view(p), "tier": tier, "latest_release_as_of": p["live"]["checked_at"]}
+    if rr:
+        view["latest_release_readings"], view["latest_release_note"] = rr
+    return {"project": view, "tier": tier, "resolved_by": how,
             "relationships": [_rel_summary(layer, r) for r in rels],
             "discovery_record": None if c is None else {
                 "description": c["description"], "topics": c["topics"], "provenance": c["provenance"],
@@ -1787,13 +1984,56 @@ def _signal_state(layer, server, name):
     return s
 
 
-def _window_view(win: dict):
+MOMENTUM_SERVING_DEFAULT = {"headline_window": "7", "one_day_min_abs_delta": 100}
+
+
+def _load_momentum_serving(path: Path = None) -> dict:
+    """config/momentum.yaml `serving:` (presentation only, outside the methodology fingerprint), else defaults."""
+    out = dict(MOMENTUM_SERVING_DEFAULT)
+    path = path or Path(__file__).resolve().parent.parent / "config" / "momentum.yaml"
+    try:  # standard library only: read the flat `serving:` block's scalar keys
+        text = path.read_text(encoding="utf-8")
+    except OSError:  # no config beside the read layer: the defaults
+        return out
+    block = re.search(r"^serving:\s*\n((?:[ \t]+.*\n?|\s*\n)*)", text, re.M)
+    cfg = {}
+    for m in re.finditer(r"^[ \t]+([a-z_0-9]+):\s*\"?([^\"#\n]*?)\"?\s*(?:#.*)?$", block.group(1) if block else "",
+                         re.M):
+        v = m.group(2).strip()
+        cfg[m.group(1)] = (int(v) if v.isdigit() else float(v)) if re.fullmatch(r"\d+(\.\d+)?", v) and m.group(1) != "headline_window" else v
+    if str(cfg.get("headline_window", "")) in ("1", "7", "30", "90"):
+        out["headline_window"] = str(cfg["headline_window"])
+    v = cfg.get("one_day_min_abs_delta")
+    if isinstance(v, (int, float)) and not isinstance(v, bool) and v >= 0:
+        out["one_day_min_abs_delta"] = v
+    return out
+
+
+MOMENTUM_SERVING = _load_momentum_serving()
+
+
+def one_day_suppressed(win: dict, window) -> bool:
+    """A measured 1-day label whose star change is below one_day_min_abs_delta is noise (a -60 blip on a 46k-star
+    repository is not 'declining'): the label is withheld and the 7-day headline stands."""
+    return (str(window) == "1" and (win or {}).get("status") == "measured"
+            and abs(win.get("stars_delta") or 0) < MOMENTUM_SERVING["one_day_min_abs_delta"])
+
+
+def _window_view(win: dict, window=None):
     if not win:
         return {"status": "not_published"}
     if win.get("status") != "measured":
         return {"status": win.get("status"), "reason": win.get("reason")}
     acc = win.get("acceleration") or {}
-    return {"status": "measured", "momentum": win.get("momentum"), "stars_now": win.get("stars_now"),
+    extra = {}
+    if one_day_suppressed(win, window):
+        extra = {"momentum_suppressed": {
+            "label": win.get("momentum"),
+            "reason": f"1-day change of {win.get('stars_delta'):+g} stars is below the 1-day label threshold of "
+                      f"{MOMENTUM_SERVING['one_day_min_abs_delta']} (config/momentum.yaml serving); read the "
+                      f"{MOMENTUM_SERVING['headline_window']}-day headline"}}
+    return {"status": "measured", **extra,
+            "momentum": None if extra else win.get("momentum"), "stars_now": win.get("stars_now"),
             "stars_delta": win.get("stars_delta"), "stars_per_day": win.get("stars_per_day"),
             "growth_pct_per_30d": win.get("growth_pct_per_30d"), "base_day": win.get("base_day"),
             "acceleration": ({"status": "measured", "label": acc.get("label"),
@@ -1804,12 +2044,50 @@ def _window_view(win: dict):
             "activity": win.get("activity"), "explanation": win.get("explanation")}
 
 
+RELEASE_BASIS = {
+    "canonical": "the newest-published release in the project's maintenance evidence (canonical layer)",
+    "snapshot": "the host's latest-release marker in the daily snapshot (data/history, Repository Momentum)"}
+
+
+def release_readings(layer, pid, release, as_of):
+    """The canonical latest_release and the daily snapshot's release tag are two readings with different bases
+    (a backport published after a major release is the newest-published one, not the host's 'latest'). When
+    they disagree, both are returned, each with its basis and as-of, plus a sentence for the uncertainty list;
+    None when they agree or there is only one."""
+    row = layer.momentum.get(_repo_key(pid)) or {}
+    snap = None
+    for w in ("1", "7", "30", "90"):
+        tag = (((row.get("windows") or {}).get(w) or {}).get("activity") or {}).get("latest_release_tag")
+        if tag:
+            snap = tag
+            break
+    mine = (release or {}).get("tag")
+    if not snap or not mine or snap == mine:
+        return None
+    readings = [{"tag": mine, "published_at": (release or {}).get("published_at"), "as_of": as_of,
+                 "basis": RELEASE_BASIS["canonical"]},
+                {"tag": snap, "as_of": row.get("on"), "basis": RELEASE_BASIS["snapshot"]}]
+    return readings, (f"{pid}: two latest-release readings disagree: {mine} (as of {as_of}, newest published) and "
+                      f"{snap} (as of {row.get('on')}, the host's latest-release marker)")
+
+
 def _repository_momentum(layer, key):
     row = layer.momentum.get(_repo_key(key))
     if row is None:
         return {"status": "not_tracked", "reason": "this repository is not in data/momentum/projects.jsonl"}
+    windows = {w: _window_view((row.get("windows") or {}).get(w), w) for w in ("1", "7", "30", "90")}
+    for w in windows.values():
+        if isinstance(w.get("activity"), dict) and w["activity"].get("latest_release_tag") is not None:
+            w["activity"] = {**w["activity"], "latest_release_as_of": row.get("on"),
+                             "latest_release_basis": RELEASE_BASIS["snapshot"]}
+    hw = MOMENTUM_SERVING["headline_window"]
+    head = windows.get(hw) or {}
     return {"status": "tracked", "key": row.get("key"), "on": row.get("on"), "stars": row.get("stars"),
-            "windows": {w: _window_view((row.get("windows") or {}).get(w)) for w in ("1", "7", "30", "90")}}
+            "headline": {"window_days": int(hw), "status": head.get("status"), "momentum": head.get("momentum"),
+                         "growth_pct_per_30d": head.get("growth_pct_per_30d"),
+                         "rule": f"the {hw}-day window is the headline label; 1-day labels are withheld when the "
+                                 f"change is under {MOMENTUM_SERVING['one_day_min_abs_delta']} stars"},
+            "windows": windows}
 
 
 def _community_momentum(layer, key, full=False):
@@ -1893,13 +2171,18 @@ def tool_compare(layer, args, server):
             "licence_spdx": p["licence"]["spdx"],
             "licence_family": LICENCE_FAMILIES.get(p["licence"]["spdx"] or "", "unknown"),
             "stars": p["live"]["stars"], "archived": p["live"]["archived"],
-            "latest_release": p["live"]["latest_release"], "maintenance": p["maintenance"],
+            "latest_release": p["live"]["latest_release"], "latest_release_as_of": p["live"]["checked_at"],
+            "maintenance": p["maintenance"],
             "project_health": h, "live_checked_at": p["live"]["checked_at"],
             "replaces": [{"saas_id": r["saas_id"], "saas_name": layer.saas[r["saas_id"]]["name"],
                           "replacement_fit": r["replacement_fit"]["score"],
                           "confidence": r["replacement_fit"]["confidence"]} for r in recs],
             "repository_momentum": _repository_momentum(layer, pid),
             "community_momentum": _community_momentum(layer, pid)})
+        rr = release_readings(layer, pid, p["live"]["latest_release"], p["live"]["checked_at"])
+        if rr:
+            rows[-1]["latest_release_readings"] = rr[0]
+            uncertainty.append(rr[1])
         if h is None:
             uncertainty.append(f"{pid}: no Project Health score")
         elif h.get("evidence_insufficient"):
@@ -1963,6 +2246,47 @@ def _num(args, key, lo, hi):
     return v
 
 
+# A need's words that name a catalogue category the category name itself does not spell out. Each phrase is
+# matched on whole stemmed tokens; the categories must exist in the catalogue to be used.
+_NEED_CATEGORY_SYNONYMS = {
+    "password": ("Password management",), "password manager": ("Password management",),
+    "password vault": ("Password management",),
+    "newsletter": ("Email marketing", "Publishing"), "mailing list": ("Email marketing",),
+    "email campaign": ("Email marketing",), "email list": ("Email marketing",),
+    "booking": ("Scheduling",), "appointment": ("Scheduling",),
+    "helpdesk": ("Customer support",), "help desk": ("Customer support",),
+}
+# Category words that say nothing on their own ("management" in "Password management").
+_GENERIC_CATEGORY_WORDS = {"management", "platform", "tool", "tooling", "service", "software", "app", "a", "an",
+                           "and", "as", "of", "the", "for", "&"}
+# A product reached only by retrieval (not named, not by category) below this hybrid score is a weak match: the
+# answer says so (status weak_match) instead of presenting its alternatives as an ok answer.
+MIN_PRODUCT_MATCH = 0.45
+MAX_CATEGORY_PRODUCTS = 12
+
+
+def _need_categories(layer, need):
+    """Catalogue categories a need asks for: by synonym, or by every distinctive word of the category name."""
+    toks = _tokens(need)
+    padded = f" {' '.join(toks)} "
+    cats = {s["category"] for s in layer.saas.values() if s.get("category")}
+    found = {}
+    for phrase, targets in _NEED_CATEGORY_SYNONYMS.items():
+        if f" {' '.join(_tokens(phrase))} " in padded:
+            for cat in targets:
+                if cat in cats:
+                    found[cat] = "synonym: " + phrase
+    tokset = set(toks)
+    for cat in cats:
+        words = {t for t in _tokens(cat) if t not in _GENERIC_CATEGORY_WORDS}
+        if words and words <= tokset and cat not in found:
+            found[cat] = "category name"
+    # The most specific category wins: "Email" is not asked for when "Email marketing" is.
+    words = {cat: {t for t in _tokens(cat) if t not in _GENERIC_CATEGORY_WORDS} for cat in found}
+    return {cat: why for cat, why in found.items()
+            if not any(o != cat and words[cat] < words[o] for o in found)}
+
+
 def tool_recommend(layer, args, server):
     need, saas = args.get("need"), args.get("saas")
     if need is None and saas is None:
@@ -2010,7 +2334,21 @@ def tool_recommend(layer, args, server):
             sv = layer.saas[sid]
             return need_terms & set(_tokens(" ".join([sv["name"], *(sv.get("aliases") or []), sv.get("category") or ""])))
         full = {h["key"] for h in hits if h["kind"] == "saas" and need_terms and _covered(h["key"]) == need_terms}
-        for h in ([] if named or not need_terms else hits):
+        # KEI-961 follow-on: a need that names a category ("password manager", "newsletter") is matched to that
+        # category's products, ordered by search's own SaaS lexical match; a product sharing one generic word with
+        # the need ("Microsoft Teams" for "small team") is not matched beside them.
+        need_cats = {} if named or not need_terms else _need_categories(layer, need)
+        if need_cats:
+            lex = {key: score for score, _, key, _, _ in layer.search(" ".join(_sem_tokens(need)) or need, "saas")}
+            in_cat = sorted((sid for sid, sv in layer.saas.items() if sv.get("category") in need_cats),
+                            key=lambda sid: (-lex.get(sid, 0), -sum(r["recommended"] for r in
+                                                                    layer.rel_by_saas.get(sid, [])), sid))
+            for sid in in_cat[:MAX_CATEGORY_PRODUCTS]:
+                cat = layer.saas[sid]["category"]
+                matched.append({"saas_id": sid, "name": layer.saas[sid]["name"], "matched_by": "category",
+                                "category": cat, "basis": need_cats[cat], "strength": 1.0,
+                                "lexical": lex.get(sid, 0.0)})
+        for h in ([] if named or need_cats or not need_terms else hits):
             if full and h["kind"] == "saas" and h["key"] not in full:
                 continue
             if h["kind"] == "saas" and h["score"] >= max(0.25, 0.8 * top_saas) and len(matched) < 3 and \
@@ -2035,9 +2373,12 @@ def tool_recommend(layer, args, server):
                 cur = cands.get(r["oss_id"])
                 if cur is None or (r["replacement_fit"]["score"] or 0) > (cur["rel"]["replacement_fit"]["score"] or 0):
                     cands[r["oss_id"]] = {"rel": r, "via": "replaces " + m["saas_id"], "group": 0}
+    # With a category match, a direct hit joins only as an alternative to one of the category's products.
+    in_scope = ({m["saas_id"] for m in matched} if any(m["matched_by"] == "category" for m in matched) else None)
     for pid, h in proj_hits.items():
         if pid not in cands:
-            recs = sorted((r for r in layer.rel_by_project.get(pid, []) if r["recommended"]),
+            recs = sorted((r for r in layer.rel_by_project.get(pid, []) if r["recommended"]
+                           and (in_scope is None or r["saas_id"] in in_scope)),
                           key=lambda r: -(r["replacement_fit"]["score"] or 0))
             if recs:
                 cands[pid] = {"rel": recs[0], "via": "matched the need directly", "group": 1 if matched else 0}
@@ -2085,6 +2426,13 @@ def tool_recommend(layer, args, server):
     for i, row in enumerate(out, 1):
         row["rank"] = i
         del row["_group"]
+    # The match-strength floor: an answer is ok only when a product was named, matched by category or matched by
+    # retrieval at MIN_PRODUCT_MATCH or above, or a direct project hit reached it. Anything weaker is weak_match.
+    for m in matched:
+        if m["strength"] < MIN_PRODUCT_MATCH:
+            m["weak"] = True
+    strong_basis = (any(m["strength"] >= MIN_PRODUCT_MATCH for m in matched)
+                    or any(h["score"] >= MIN_PRODUCT_MATCH for h in proj_hits.values()))
     constraints = {k: args[k] for k in ("licence", "licence_family", "self_hostable", "maintenance_status", "min_fit",
                                         "min_health", "min_stars", "max_stars", "max_days_since_activity",
                                         "repository_momentum_7d") if k in args}
@@ -2092,7 +2440,8 @@ def tool_recommend(layer, args, server):
             "constraints_applied": constraints, "candidates_considered": len(cands),
             "excluded_by_constraint": dict(sorted(excluded.items())),
             "recommendations": out[:limit], "more_available": max(0, len(out) - limit),
-            "status": "ok" if out else ("no_products_matched" if not matched and not proj_hits
+            "status": ("ok" if strong_basis else "weak_match") if out else (
+                                        "no_products_matched" if not matched and not proj_hits
                                         else "no_recommended_alternatives" if not cands
                                         else "no_candidate_meets_constraints"),
             "ranking": "Alternatives to the matched products first, then strong direct matches of the need; within "
@@ -2102,6 +2451,14 @@ def tool_recommend(layer, args, server):
                               "why": "The published layer holds no evidence for these; check them yourself. "
                                      "self_hostable is evidenced only on published api/v1 pages."},
             "signals": {n: _signal_state(layer, server, n) for n in SIGNALS}}
+    if out["status"] == "weak_match":
+        out["match_strength"] = {
+            "floor": MIN_PRODUCT_MATCH,
+            "best_product_match": max((m["strength"] for m in matched), default=None),
+            "best_direct_match": max((h["score"] for h in proj_hits.values()), default=None),
+            "note": "No product or project matched the need strongly enough. The candidates are listed for "
+                    "inspection only; they answer the words of the need, not necessarily its meaning. Name the "
+                    "product to replace, or rephrase the need, for a reliable answer."}
     # KEI-919 S1.3: say plainly why the list is short instead of padding it.
     out["weak_matches_excluded"] = weak
     shown = len(out["recommendations"])
@@ -2150,13 +2507,20 @@ def tool_emerging(layer, args, server):
     in_scope = None
     if query is not None:
         hits, _ = (layer.full or layer).hybrid(query, "project")
-        in_scope = {h["key"] for h in hits if h["score"] >= 0.15}
+        terms = _query_terms(query)
+        # The same term-coverage rule source_search and source_recommend apply: a weak word match (one query word
+        # in a long description) never puts a project in scope.
+        in_scope = {h["key"] for h in hits if h["score"] >= 0.15 and match_strength(
+            h, terms, topics=(layer.corpus.get(h["key"]) or {}).get("topics"))[0]}
 
     cov = (layer.signals["momentum"].get("coverage") or {}).get(window, {})
-    repo_rows = []
+    repo_rows, noise = [], 0
     for row in layer.momentum_projects:
         win = (row.get("windows") or {}).get(window) or {}
         if win.get("status") != "measured" or win.get("momentum") not in labels:
+            continue
+        if one_day_suppressed(win, window):
+            noise += 1
             continue
         acc = win.get("acceleration") or {}
         if accelerating and not (acc.get("status") == "measured" and acc.get("label") == "accelerating"):
@@ -2178,7 +2542,7 @@ def tool_emerging(layer, args, server):
             "in_canonical_layer": bool(p), "in_corpus": bool(c) or pid in layer.canonical_corpus,
             "stars": stars, "momentum": win.get("momentum"),
             "growth_pct_per_30d": win.get("growth_pct_per_30d"), "stars_per_day": win.get("stars_per_day"),
-            "acceleration": _window_view(win)["acceleration"], "explanation": win.get("explanation"),
+            "acceleration": _window_view(win, window)["acceleration"], "explanation": win.get("explanation"),
             "recommended_for": sorted(r["saas_id"] for r in layer.rel_by_project.get(pid, []) if r["recommended"])
             if p else [],
             "community_momentum": _community_momentum(layer, row.get("key"))})
@@ -2215,6 +2579,9 @@ def tool_emerging(layer, args, server):
     if cov.get("acceleration_status") not in (None, "measured"):
         degraded.append(f"{window}-day acceleration is {cov.get('acceleration_status')}; measurable from "
                         f"{cov.get('acceleration_measurable_from')}")
+    if noise:
+        degraded.append(f"{noise} repositories left out: their 1-day change is under "
+                        f"{MOMENTUM_SERVING['one_day_min_abs_delta']} stars, too small for a 1-day label")
     if unknown_stars:
         degraded.append(f"{unknown_stars} Community Radar repositories have no star count (momentum layer or radar "
                         "reading), so "
@@ -2249,12 +2616,21 @@ TOOLS = [
      "checked (and whether that is stale), record counts, upstream sources, licence and attribution.",
      _obj({}), tool_dataset_info),
     ("source_list_supported_saas", "Supported SaaS products",
-     "The SaaS products that have a published comparison page, with how many recommendations each has.",
-     _obj({}), tool_list_supported),
+     "The SaaS products that have a published comparison page, with how many recommendations each has. Filter by "
+     "category or page status; paged with limit/offset (total and next_offset say what is left).",
+     _obj({"category": {"type": "string", "description": "case-insensitive category, exact or a word in it, "
+                                                         "e.g. 'Team chat' or 'chat'"},
+           "status": {"type": "string", "enum": list(SUPPORTED_STATUSES),
+                      "description": "the page's status"},
+           "limit": {**LIMIT, "maximum": SUPPORTED_MAX_LIMIT, "description": f"page size (default all, at most "
+                                                                             f"{SUPPORTED_MAX_LIMIT})"},
+           "offset": {"type": "integer", "minimum": 0, "description": "rows to skip (default 0)"}}),
+     tool_list_supported),
     ("source_get_alternatives", "Open-source alternatives to a SaaS product",
-     "Ranked, evidence-backed open-source alternatives to one SaaS product (a source-available one carries a "
-     "licence_disclosure). 'saas' may be a saas_id, a name, "
-     "an alias, a domain or a URL. For supported products this is exactly the published api/v1 page (with detail "
+     "The entry point for 'replace product X' / 'what can I use instead of X': ranked, evidence-backed "
+     "open-source alternatives to one named SaaS product (a source-available one carries a licence_disclosure). "
+     "'saas' may be a saas_id, a name, an alias, a domain or a URL; a small typo is corrected when one product "
+     "clearly matches (resolved_by \"fuzzy\"), otherwise the error lists suggestions. For supported products this is exactly the published api/v1 page (with detail "
      "full; compact cuts each row's evidence block to its dates).",
      _obj({"saas": {"type": "string", "description": "saas_id, name, alias, domain or URL, e.g. 'Notion'"},
            "limit": {**LIMIT, "description": "how many recommendations (default 5)"},
@@ -2268,11 +2644,11 @@ TOOLS = [
      _obj({"url": {"type": "string", "description": "a page URL or host, e.g. https://acme.atlassian.net/jira/"}},
           ["url"]), tool_detect_saas),
     ("source_search", "Search products and projects",
-     "Search The Source's SaaS catalogue and every open-source project it knows (about 9,400: the canonical layer "
-     "plus the discovery corpus) by words: names, aliases, categories, products replaced, host descriptions and "
+     "Search The Source's SaaS catalogue and every open-source project it knows (the canonical layer plus the "
+     "discovery corpus; source_dataset_info gives the current counts) by words: names, aliases, categories, products replaced, host descriptions and "
      "topics. Every project carries a tier (recommended, scored, discovery); filter by tier, licence, maintenance "
      "status and Project Health (or quick Health). Discovery projects are not fully scored and never "
-     "recommendations; they carry labelled quick Health and quick Fit (KEI-921).",
+     "recommendations; they carry labelled quick Health and quick Fit.",
      _obj({"query": {"type": "string", "description": "words to look for, e.g. 'password manager'"},
            "kind": {"type": "string", "enum": ["any", "saas", "project"], "description": "default any"},
            "licence": {"type": "string", "description": "SPDX id, e.g. AGPL-3.0 (projects only)"},
@@ -2285,7 +2661,7 @@ TOOLS = [
            "tier": {"type": "string", "enum": ["any"] + list(TIERS),
                     "description": "projects only: recommended, scored or discovery (default any)"},
            "mode": {"type": "string", "enum": ["lexical", "hybrid"],
-                    "description": "lexical (default, BM25) or hybrid (BM25 + KEI-844 semantic + graph, with score "
+                    "description": "lexical (default, BM25) or hybrid (BM25 + semantic + graph, with score "
                                    "components per result)"},
            "limit": {**LIMIT, "description": "default 10"}}, ["query"]), tool_search),
     ("source_get_project", "One open-source project",
@@ -2309,10 +2685,11 @@ TOOLS = [
                         "description": "oss_ids, repository URLs or names, e.g. ['Docmost', 'AppFlowy']"}},
           ["projects"]), tool_compare),
     ("source_recommend", "Recommend projects against explicit requirements",
+     "For hard constraints or a free-text need (to simply replace a named product, use source_get_alternatives). "
      "Recommended open-source projects for a need in words and/or a SaaS product to replace, filtered exactly by "
      "hard constraints (licence or licence family, self-hostable, maintenance, minimum Replacement Fit or Project "
      "Health, star range, days since activity, 7-day repository momentum). Says which products the need matched "
-     "and how (lexical, KEI-844 semantic, graph), what each constraint excluded, and which requirements the data "
+     "and how (lexical, semantic, graph), what each constraint excluded, and which requirements the data "
      "cannot judge.",
      _obj({"need": {"type": "string", "description": "e.g. 'team wiki and notes like Notion'"},
            "saas": {"type": "string", "description": "a product to replace: saas_id, name, alias, domain or URL"},
@@ -2793,7 +3170,7 @@ def main(argv=None) -> int:
     ap.add_argument("--now", help="pin the clock used for freshness (YYYY-MM-DDTHH:MM:SSZ)")
     ap.add_argument("--check", action="store_true", help="verify the read layer, print a summary and exit")
     ap.add_argument("--default-detail", choices=DETAIL_MODES, default="compact",
-                    help="response detail for calls that name none (KEI-961; default compact)")
+                    help="response detail for calls that name none (default compact)")
     a = ap.parse_args(argv)
     now = None
     if a.now:

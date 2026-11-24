@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "2702df4c40902975",
+  "dataset_version": "00d8417ab8ebec02",
   "last_checked": {
     "newest": "2026-11-24T05:53:52Z",
     "oldest": "2026-11-24T05:53:52Z"
@@ -132,7 +132,7 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/afaneca/myfin",
+              "locator": "data/job_match/ledger.json#github.com/mayswind/ezbookkeeping",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
@@ -140,13 +140,7 @@
           "validated_as_of": "2026-11-24T05:53:52Z"
         },
         "replacement_fit": {
-          "caps": [
-            {
-              "cap": 80.0,
-              "id": "uncorroborated_pairing",
-              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Monarch Money as what it replaces"
-            }
-          ],
+          "caps": [],
           "core_gate": "passed",
           "corroboration": {
             "basis": [],
@@ -155,66 +149,63 @@
           },
           "dimensions": {
             "core_use_case_coverage": 100.0,
-            "deployment_ownership": 92.5,
-            "ease_of_adoption": 95.3,
-            "economic_advantage": 68.0,
-            "feature_equivalence": 73.3,
-            "integrations_extensibility": 100.0,
-            "migration_friction": 100.0,
-            "production_commercial_readiness": 100.0
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
           },
           "evidence_families": [
             "api",
+            "data_ownership",
             "demo",
             "import",
+            "plugins",
             "quickstart",
             "self_host",
+            "sso",
             "support"
           ],
           "scoring_path": "single_project"
         }
       },
-      "github_url": "https://github.com/afaneca/myfin",
-      "last_meaningful_activity_at": "2026-10-24T09:17:29Z",
+      "github_url": "https://github.com/mayswind/ezbookkeeping",
+      "last_meaningful_activity_at": "2026-11-21T12:38:21Z",
       "latest_release": {
-        "published_at": "2026-10-24T09:17:29Z",
-        "tag": "10.7.1"
+        "published_at": "2026-11-21T12:38:21Z",
+        "tag": "v2.2.0"
       },
-      "licence_spdx": "GPL-3.0",
+      "licence_spdx": "MIT",
       "live_checked_at": "2026-11-24T05:53:52Z",
       "maintenance_status": "active",
-      "name": "myfin",
+      "name": "ezbookkeeping",
       "note": {
         "gaps": [],
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
-          "integrations and extensibility"
+          "ease of adoption"
         ],
-        "text": "Strongest on core use-case coverage and integrations and extensibility."
+        "text": "Strongest on core use-case coverage and ease of adoption."
       },
-      "oss_id": "github.com/afaneca/myfin",
+      "oss_id": "github.com/mayswind/ezbookkeeping",
       "project_health": {
-        "band": "Healthy",
+        "band": "Exceptional",
         "confidence": 96.6,
-        "score": 81.4,
+        "score": 87.2,
         "trajectory": "Stable"
       },
       "rank": 2,
       "replacement_fit": {
-        "caps": [
-          {
-            "cap": 80.0,
-            "id": "uncorroborated_pairing",
-            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Monarch Money as what it replaces"
-          }
-        ],
+        "caps": [],
         "confidence": 84.5,
-        "evaluated_at": "2026-10-24T23:05:38Z",
-        "score": 80.0,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 78.2,
         "score_version": "1.3.0"
       },
-      "repo_url": "https://github.com/afaneca/myfin",
+      "repo_url": "https://github.com/mayswind/ezbookkeeping",
       "self_hosting": {
         "basis": "self-hosting documented in the project's README",
         "self_hostable": true
@@ -222,7 +213,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 319
+      "stars": 6124
     },
     {
       "evidence": {
@@ -323,7 +314,7 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/mayswind/ezbookkeeping",
+              "locator": "data/job_match/ledger.json#github.com/afaneca/myfin",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
@@ -331,7 +322,13 @@
           "validated_as_of": "2026-11-24T05:53:52Z"
         },
         "replacement_fit": {
-          "caps": [],
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Monarch Money as what it replaces"
+            }
+          ],
           "core_gate": "passed",
           "corroboration": {
             "basis": [],
@@ -340,63 +337,66 @@
           },
           "dimensions": {
             "core_use_case_coverage": 100.0,
-            "deployment_ownership": 75.0,
-            "ease_of_adoption": 80.0,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 50.0,
-            "integrations_extensibility": 75.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 80.0
+            "deployment_ownership": 92.5,
+            "ease_of_adoption": 95.3,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
           },
           "evidence_families": [
             "api",
-            "data_ownership",
             "demo",
             "import",
-            "plugins",
             "quickstart",
             "self_host",
-            "sso",
             "support"
           ],
           "scoring_path": "single_project"
         }
       },
-      "github_url": "https://github.com/mayswind/ezbookkeeping",
-      "last_meaningful_activity_at": "2026-11-21T12:38:21Z",
+      "github_url": "https://github.com/afaneca/myfin",
+      "last_meaningful_activity_at": "2026-10-24T09:17:29Z",
       "latest_release": {
-        "published_at": "2026-11-21T12:38:21Z",
-        "tag": "v2.2.0"
+        "published_at": "2026-10-24T09:17:29Z",
+        "tag": "10.7.1"
       },
-      "licence_spdx": "MIT",
+      "licence_spdx": "GPL-3.0",
       "live_checked_at": "2026-11-24T05:53:52Z",
       "maintenance_status": "active",
-      "name": "ezbookkeeping",
+      "name": "myfin",
       "note": {
         "gaps": [],
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
-          "ease of adoption"
+          "integrations and extensibility"
         ],
-        "text": "Strongest on core use-case coverage and ease of adoption."
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
       },
-      "oss_id": "github.com/mayswind/ezbookkeeping",
+      "oss_id": "github.com/afaneca/myfin",
       "project_health": {
-        "band": "Exceptional",
+        "band": "Healthy",
         "confidence": 96.6,
-        "score": 87.2,
+        "score": 81.4,
         "trajectory": "Stable"
       },
       "rank": 4,
       "replacement_fit": {
-        "caps": [],
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Monarch Money as what it replaces"
+          }
+        ],
         "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 78.2,
+        "evaluated_at": "2026-10-24T23:05:38Z",
+        "score": 80.0,
         "score_version": "1.3.0"
       },
-      "repo_url": "https://github.com/mayswind/ezbookkeeping",
+      "repo_url": "https://github.com/afaneca/myfin",
       "self_hosting": {
         "basis": "self-hosting documented in the project's README",
         "self_hostable": true
@@ -404,7 +404,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 6124
+      "stars": 319
     }
   ],
   "saas": {

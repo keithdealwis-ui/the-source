@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "2702df4c40902975",
+  "dataset_version": "00d8417ab8ebec02",
   "last_checked": {
     "newest": "2026-11-24T05:53:52Z",
     "oldest": "2026-11-24T05:53:52Z"
@@ -22,6 +22,94 @@
     ]
   },
   "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/super-productivity/super-productivity",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-11-24T05:53:52Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 60.0
+          },
+          "evidence_families": [
+            "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "plugins",
+            "quickstart",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/super-productivity/super-productivity",
+      "last_meaningful_activity_at": "2026-11-21T20:14:58Z",
+      "latest_release": {
+        "published_at": "2026-11-21T15:16:36Z",
+        "tag": "v20.1.0"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-24T05:53:52Z",
+      "maintenance_status": "active",
+      "name": "Super Productivity",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/super-productivity/super-productivity",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 95.5,
+        "trajectory": "Stable"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 84.5,
+        "evaluated_at": "2026-11-08T02:18:54Z",
+        "score": 79.2,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/super-productivity/super-productivity",
+      "self_hosting": {
+        "basis": "no self-hosting evidence found; not evidence of absence",
+        "self_hostable": null
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 24017
+    },
     {
       "evidence": {
         "relationship": {
@@ -94,7 +182,7 @@
         "score": 93.5,
         "trajectory": "Stable"
       },
-      "rank": 1,
+      "rank": 2,
       "replacement_fit": {
         "caps": [
           {
@@ -194,7 +282,7 @@
         "score": 86.1,
         "trajectory": "Rising"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "caps": [
           {
@@ -217,94 +305,6 @@
         "job_match"
       ],
       "stars": 6162
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/super-productivity/super-productivity",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
-        },
-        "replacement_fit": {
-          "caps": [],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 75.0,
-            "ease_of_adoption": 100.0,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 73.3,
-            "integrations_extensibility": 50.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 60.0
-          },
-          "evidence_families": [
-            "api",
-            "data_ownership",
-            "demo",
-            "import",
-            "plugins",
-            "quickstart",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/super-productivity/super-productivity",
-      "last_meaningful_activity_at": "2026-11-21T20:14:58Z",
-      "latest_release": {
-        "published_at": "2026-11-21T15:16:36Z",
-        "tag": "v20.1.0"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-24T05:53:52Z",
-      "maintenance_status": "active",
-      "name": "Super Productivity",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
-        ],
-        "text": "Strongest on core use-case coverage and ease of adoption."
-      },
-      "oss_id": "github.com/super-productivity/super-productivity",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 92.1,
-        "score": 95.5,
-        "trajectory": "Stable"
-      },
-      "rank": 3,
-      "replacement_fit": {
-        "caps": [],
-        "confidence": 84.5,
-        "evaluated_at": "2026-11-08T02:18:54Z",
-        "score": 79.2,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/super-productivity/super-productivity",
-      "self_hosting": {
-        "basis": "no self-hosting evidence found; not evidence of absence",
-        "self_hostable": null
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 24017
     },
     {
       "evidence": {

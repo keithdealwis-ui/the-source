@@ -39,7 +39,7 @@ RUNS = common.ROOT / "runs"
 SCHEDULE = common.CONFIG / "schedule.yaml"
 WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 PROMOTE = ["data/staging", "data/live", "data/dataset", "data/state", "data/scores", "data/canonical",
-           "data/intake/outcomes", "data/history", "data/momentum", "data/discovery", "data/radar", "data/corpus", "data/quick", "api/v1"]
+           "data/intake/outcomes", "data/intake/admitted", "data/history", "data/momentum", "data/discovery", "data/radar", "data/corpus", "data/quick", "api/v1"]
 
 
 class CycleError(RuntimeError):
@@ -265,7 +265,9 @@ def _lanes(path: Path) -> dict:
             for p in common.read_jsonl(path)}
 
 
-def _score_new(budget: int, res: dict) -> None:
+def _score_new(budget: int, res: dict, priority: list[str] | None = None) -> None:
+    """Single-project full scoring of unscored validated pairs and projects. `priority` (the promotion queue,
+    promotion.py) is asked first, strongest first; the rest follow in id order, as before."""
     from . import canonical, score_build, score_one
 
     fit, health = canonical._load_scores()
@@ -291,7 +293,8 @@ def _score_new(budget: int, res: dict) -> None:
     for oid, p in oss.items():
         if p["derived"]["lane"] == "recommendable" and p["host"] == "github.com" and oid not in health:
             todo.setdefault(oid, [])
-    keys = sorted(todo)[:budget]
+    first = [k for k in dict.fromkeys(priority or []) if k in todo]
+    keys = (first + [k for k in sorted(todo) if k not in set(first)])[:budget]
     errors, scored_pairs = [], 0
     for key in keys:
         p = oss[key]
@@ -309,6 +312,7 @@ def _score_new(budget: int, res: dict) -> None:
     res["strategies"].append({"id": "new_pair_scoring", "status": "ok" if not errors else "degraded",
                               "projects_scored": len(keys) - len([e for e in errors if "no live" in e]),
                               "pairs_scored": scored_pairs, "deferred_to_next_cycle": max(0, len(todo) - budget),
+                              "promoted_first": [k for k in first if k in keys],
                               "not_scorable_no_job_definition": len(no_job),
                               "not_scorable": sorted(no_job, key=lambda x: (x["saas_id"], x["oss_id"]))[:20],
                               "errors": errors[:20]})
@@ -459,7 +463,7 @@ class _Timer:
 def work(run_id: str, result_path: Path) -> int:
     """Everything a cycle does. Runs with THE_SOURCE_ROOT set to a scratch copy."""
     from . import (build, canonical, canonical_validate, corroborate, daily, discovery_search, enrich, harvest,
-                   intake, momentum, radar, research, validate)
+                   intake, momentum, promotion, radar, research, validate)
     from .normalise import reconcile
 
     cfg = load_schedule()
@@ -492,6 +496,12 @@ def work(run_id: str, result_path: Path) -> int:
                                   "sources": len(pins), "advanced": sum(p["status"] == "advanced" for p in pins),
                                   "kept": [{k: p.get(k) for k in ("source_id", "status", "detail")} for p in bad],
                                   "detail": pins})
+        # 1b. promotion queue: strong discovery-tier pairings (quick Fit and stars over config/schedule.yaml
+        # scoring.promotion) join the intake ledger before the harvest, and go first in new-pair scoring
+        step("promotion_queue")
+        promo_q = promotion.run(promotion.load_cfg(cfg))
+        res["strategies"].append({k: v for k, v in promo_q.items()})
+
         # 2. harvest every source at its pin, plus the intake ledger
         step("intake_ledger")
         stats = harvest.run()
@@ -611,7 +621,7 @@ def work(run_id: str, result_path: Path) -> int:
         # 8. score what is new, re-score what materially changed
         step("scoring")
         fit_before = common.sha256_file(SCORES_FIT) if SCORES_FIT.exists() else None
-        _score_new(cfg["scoring"]["max_new_projects_per_cycle"], res)
+        _score_new(cfg["scoring"]["max_new_projects_per_cycle"], res, priority=promo_q["scoring_priority"])
         rescored = _rescore(changed_keys, int(cfg["scoring"].get("max_rescored_per_cycle", 40)), res,
                             reasons={k: classes[k]["reasons"] for k in changed_keys}, day=day,
                             release_interval_days=int(cfg["scoring"].get("release_rescore_interval_days", 7)))

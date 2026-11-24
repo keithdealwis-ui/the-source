@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "2702df4c40902975",
+  "dataset_version": "00d8417ab8ebec02",
   "last_checked": {
     "newest": "2026-11-24T05:53:52Z",
     "oldest": "2026-11-24T05:53:52Z"
@@ -25,96 +25,6 @@
     ]
   },
   "recommendations": [
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
-              "locator": "submissions/Lowdefy.yaml",
-              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
-              "source_id": "runacapital"
-            }
-          ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
-        },
-        "replacement_fit": {
-          "caps": [],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 50.0,
-            "ease_of_adoption": 37.9,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 92.5,
-            "integrations_extensibility": 50.0,
-            "migration_friction": 66.7,
-            "production_commercial_readiness": 80.0
-          },
-          "evidence_families": [
-            "api",
-            "import",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "self_host",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/lowdefy/lowdefy",
-      "last_meaningful_activity_at": "2026-11-14T19:53:19Z",
-      "latest_release": {
-        "published_at": "2026-11-14T19:53:19Z",
-        "tag": "v7.4.0"
-      },
-      "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
-      "maintenance_status": "active",
-      "name": "Lowdefy",
-      "note": {
-        "gaps": [
-          "ease of adoption"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "feature parity"
-        ],
-        "text": "Strongest on core use-case coverage and feature parity; weakest on ease of adoption."
-      },
-      "oss_id": "github.com/lowdefy/lowdefy",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 95.0,
-        "score": 87.0,
-        "trajectory": "Rising"
-      },
-      "rank": 1,
-      "replacement_fit": {
-        "caps": [],
-        "confidence": 84.5,
-        "evaluated_at": "2026-11-18T03:37:02Z",
-        "score": 73.2,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/lowdefy/lowdefy",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "runacapital"
-      ],
-      "stars": 3026
-    },
     {
       "evidence": {
         "relationship": {
@@ -204,7 +114,7 @@
         "score": 90.5,
         "trajectory": "Stable"
       },
-      "rank": 2,
+      "rank": 1,
       "replacement_fit": {
         "caps": [],
         "confidence": 95.0,
@@ -224,6 +134,96 @@
         "btwso"
       ],
       "stars": 41294
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Lowdefy.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-11-24T05:53:52Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 50.0,
+            "ease_of_adoption": 37.9,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 80.0
+          },
+          "evidence_families": [
+            "api",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/lowdefy/lowdefy",
+      "last_meaningful_activity_at": "2026-11-14T19:53:19Z",
+      "latest_release": {
+        "published_at": "2026-11-14T19:53:19Z",
+        "tag": "v7.4.0"
+      },
+      "licence_spdx": "Apache-2.0",
+      "live_checked_at": "2026-11-24T05:53:52Z",
+      "maintenance_status": "active",
+      "name": "Lowdefy",
+      "note": {
+        "gaps": [
+          "ease of adoption"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "feature parity"
+        ],
+        "text": "Strongest on core use-case coverage and feature parity; weakest on ease of adoption."
+      },
+      "oss_id": "github.com/lowdefy/lowdefy",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 87.0,
+        "trajectory": "Rising"
+      },
+      "rank": 2,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 84.5,
+        "evaluated_at": "2026-11-18T03:37:02Z",
+        "score": 73.2,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/lowdefy/lowdefy",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 3026
     },
     {
       "evidence": {

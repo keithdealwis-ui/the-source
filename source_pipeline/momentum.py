@@ -60,7 +60,7 @@ def load_config() -> dict:
 
 
 def parameters_sha256(cfg: dict) -> str:
-    params = {k: v for k, v in cfg.items() if k not in ("methodology", "schema")}
+    params = {k: v for k, v in cfg.items() if k not in ("methodology", "schema", "serving")}
     return hashlib.sha256(common.dumps(params).encode()).hexdigest()
 
 

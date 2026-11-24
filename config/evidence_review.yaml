@@ -15,4 +15,14 @@
 #     reviewed_at: "2026-10-17"
 #     approval_ref: KEI-919
 
-resolved: []
+resolved:
+  - queue_id: licence--github.com/calcom/cal.diy
+    resolution: "MIT: the host API and altstack say MIT; the AGPL-3.0 claims in solvohq and emmraan predate the cal.com -> cal.diy relicensing"
+    reviewed_by: keith
+    reviewed_at: "2026-11-24"
+    approval_ref: keith-chat-2026-11-24-mcp-stress-test
+  - queue_id: licence--github.com/dani-garcia/vaultwarden
+    resolution: "AGPL-3.0: the host API, solvohq and altstack agree; the GPL-3.0 claim in emmraan is wrong"
+    reviewed_by: keith
+    reviewed_at: "2026-11-24"
+    approval_ref: keith-chat-2026-11-24-mcp-stress-test

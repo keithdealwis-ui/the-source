@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "2702df4c40902975",
+  "dataset_version": "00d8417ab8ebec02",
   "last_checked": {
     "newest": "2026-11-24T05:53:52Z",
     "oldest": "2026-11-24T05:53:52Z"
@@ -152,202 +152,6 @@
           "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "submissions/Vikunja.yaml",
-              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
-              "source_id": "runacapital"
-            }
-          ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
-        },
-        "replacement_fit": {
-          "caps": [
-            {
-              "cap": 80.0,
-              "id": "uncorroborated_pairing",
-              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Trello as what it replaces"
-            }
-          ],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 91.7,
-            "ease_of_adoption": 71.9,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 50.0,
-            "integrations_extensibility": 100.0,
-            "migration_friction": 100.0,
-            "production_commercial_readiness": 100.0
-          },
-          "evidence_families": [
-            "api",
-            "cloud_option",
-            "demo",
-            "multi_user",
-            "quickstart",
-            "self_host",
-            "support"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/go-vikunja/vikunja",
-      "last_meaningful_activity_at": "2026-11-18T16:02:53Z",
-      "latest_release": {
-        "published_at": "2026-11-05T20:44:21Z",
-        "tag": "v2.8.0"
-      },
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
-      "maintenance_status": "active",
-      "name": "Vikunja",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "integrations and extensibility"
-        ],
-        "text": "Strongest on core use-case coverage and integrations and extensibility."
-      },
-      "oss_id": "github.com/go-vikunja/vikunja",
-      "project_health": {
-        "band": "Exceptional",
-        "confidence": 95.0,
-        "score": 86.1,
-        "trajectory": "Rising"
-      },
-      "rank": 2,
-      "replacement_fit": {
-        "caps": [
-          {
-            "cap": 80.0,
-            "id": "uncorroborated_pairing",
-            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Trello as what it replaces"
-          }
-        ],
-        "confidence": 84.5,
-        "evaluated_at": "2026-11-06T00:04:22Z",
-        "score": 80.0,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/go-vikunja/vikunja",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "runacapital"
-      ],
-      "stars": 6162
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
-              "locator": "README.md#L95",
-              "source_commit": "bca6ae8e8eab1c12de15e87f98d28732ef79fd70",
-              "source_id": "fossalt"
-            }
-          ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
-        },
-        "replacement_fit": {
-          "caps": [
-            {
-              "cap": 80.0,
-              "id": "uncorroborated_pairing",
-              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Trello as what it replaces"
-            }
-          ],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 100.0,
-            "ease_of_adoption": 64.6,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 50.0,
-            "integrations_extensibility": null,
-            "migration_friction": 100.0,
-            "production_commercial_readiness": 100.0
-          },
-          "evidence_families": [
-            "import",
-            "multi_user",
-            "quickstart"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/tehnika-mk/monomap",
-      "last_meaningful_activity_at": "2026-10-28T14:15:29Z",
-      "latest_release": {
-        "published_at": "2026-09-30T07:10:04Z",
-        "tag": "v1.2"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-24T05:53:52Z",
-      "maintenance_status": "active",
-      "name": "MonoMap",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "self-hosting and data ownership"
-        ],
-        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
-      },
-      "oss_id": "github.com/tehnika-mk/monomap",
-      "project_health": {
-        "band": "Developing",
-        "confidence": 87.6,
-        "score": 59.8,
-        "trajectory": "Insufficient history"
-      },
-      "rank": 3,
-      "replacement_fit": {
-        "caps": [
-          {
-            "cap": 80.0,
-            "id": "uncorroborated_pairing",
-            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Trello as what it replaces"
-          }
-        ],
-        "confidence": 81.5,
-        "evaluated_at": "2026-10-03T00:23:01Z",
-        "score": 80.0,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/tehnika-mk/monomap",
-      "self_hosting": {
-        "basis": "container image or self-hosting evidence found",
-        "self_hostable": true
-      },
-      "sources": [
-        "fossalt"
-      ],
-      "stars": 1
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "listed",
-          "provenance": [
-            {
               "locator": "submissions/Plane.yaml",
               "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
               "source_id": "runacapital"
@@ -415,7 +219,7 @@
         "score": 82.0,
         "trajectory": "Stable"
       },
-      "rank": 4,
+      "rank": 2,
       "replacement_fit": {
         "caps": [],
         "confidence": 84.5,
@@ -503,7 +307,7 @@
         "score": 95.5,
         "trajectory": "Stable"
       },
-      "rank": 5,
+      "rank": 3,
       "replacement_fit": {
         "caps": [],
         "confidence": 86.5,
@@ -520,6 +324,211 @@
         "fossalt"
       ],
       "stars": 24017
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": true,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "README.md#L308",
+              "source_commit": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+              "source_id": "solvohq"
+            },
+            {
+              "locator": "README.md#L139",
+              "source_commit": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+              "source_id": "btwso"
+            },
+            {
+              "locator": "README.md#L396",
+              "source_commit": "401bc408a04e8442ed9370156be98b408cfade16",
+              "source_id": "diegoleme"
+            },
+            {
+              "locator": "README.md#L91",
+              "source_commit": "bca6ae8e8eab1c12de15e87f98d28732ef79fd70",
+              "source_id": "fossalt"
+            }
+          ],
+          "validated_as_of": "2026-11-24T05:53:52Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "second_upstream_source"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 61.3,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": null,
+            "migration_friction": null,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/kanboard/kanboard",
+      "last_meaningful_activity_at": "2026-11-16T01:25:45Z",
+      "latest_release": {
+        "published_at": "2026-10-31T00:52:06Z",
+        "tag": "v1.2.57"
+      },
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-24T05:53:52Z",
+      "maintenance_status": "active",
+      "name": "Kanboard",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
+      },
+      "oss_id": "github.com/kanboard/kanboard",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 90.1,
+        "trajectory": "Rising"
+      },
+      "rank": 4,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 89.0,
+        "evaluated_at": "2026-11-01T02:05:53Z",
+        "score": 75.9,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/kanboard/kanboard",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "solvohq",
+        "btwso",
+        "diegoleme",
+        "fossalt"
+      ],
+      "stars": 9975
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "listed",
+          "provenance": [
+            {
+              "locator": "submissions/Vikunja.yaml",
+              "source_commit": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+              "source_id": "runacapital"
+            }
+          ],
+          "validated_as_of": "2026-11-24T05:53:52Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Trello as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 91.7,
+            "ease_of_adoption": 71.9,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "demo",
+            "multi_user",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/go-vikunja/vikunja",
+      "last_meaningful_activity_at": "2026-11-18T16:02:53Z",
+      "latest_release": {
+        "published_at": "2026-11-05T20:44:21Z",
+        "tag": "v2.8.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-11-24T05:53:52Z",
+      "maintenance_status": "active",
+      "name": "Vikunja",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility."
+      },
+      "oss_id": "github.com/go-vikunja/vikunja",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 95.0,
+        "score": 86.1,
+        "trajectory": "Rising"
+      },
+      "rank": 5,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Trello as what it replaces"
+          }
+        ],
+        "confidence": 84.5,
+        "evaluated_at": "2026-11-06T00:04:22Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/go-vikunja/vikunja",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "runacapital"
+      ],
+      "stars": 6162
     }
   ],
   "saas": {

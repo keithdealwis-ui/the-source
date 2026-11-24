@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "2702df4c40902975",
+  "dataset_version": "00d8417ab8ebec02",
   "last_checked": {
     "newest": "2026-11-24T05:53:52Z",
     "oldest": "2026-11-24T05:53:52Z"
@@ -225,7 +225,7 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/cypht-org/cypht",
+              "locator": "data/job_match/ledger.json#github.com/foundry376/mailspring",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
@@ -233,13 +233,7 @@
           "validated_as_of": "2026-11-24T05:53:52Z"
         },
         "replacement_fit": {
-          "caps": [
-            {
-              "cap": 80.0,
-              "id": "uncorroborated_pairing",
-              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Outlook as what it replaces"
-            }
-          ],
+          "caps": [],
           "core_gate": "passed",
           "corroboration": {
             "basis": [],
@@ -248,15 +242,17 @@
           },
           "dimensions": {
             "core_use_case_coverage": 100.0,
-            "deployment_ownership": 92.5,
-            "ease_of_adoption": 87.3,
-            "economic_advantage": 68.0,
-            "feature_equivalence": 33.3,
+            "deployment_ownership": 85.0,
+            "ease_of_adoption": 76.6,
+            "economic_advantage": 34.0,
+            "feature_equivalence": 16.7,
             "integrations_extensibility": 100.0,
-            "migration_friction": null,
+            "migration_friction": 100.0,
             "production_commercial_readiness": 100.0
           },
           "evidence_families": [
+            "demo",
+            "import",
             "plugins",
             "quickstart",
             "support"
@@ -264,49 +260,44 @@
           "scoring_path": "single_project"
         }
       },
-      "github_url": "https://github.com/cypht-org/cypht",
-      "last_meaningful_activity_at": "2026-11-17T14:22:19Z",
+      "github_url": "https://github.com/Foundry376/Mailspring",
+      "last_meaningful_activity_at": "2026-11-23T22:48:08Z",
       "latest_release": {
-        "published_at": "2026-11-06T05:54:32Z",
-        "tag": "v2.14.0"
+        "published_at": "2026-11-20T13:28:36Z",
+        "tag": "2.0.0-rc1"
       },
-      "licence_spdx": "LGPL-2.1",
+      "licence_spdx": "GPL-3.0",
       "live_checked_at": "2026-11-24T05:53:52Z",
       "maintenance_status": "active",
-      "name": "cypht",
+      "name": "Mailspring",
       "note": {
         "gaps": [
-          "feature parity"
+          "feature parity",
+          "cost advantage"
         ],
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
           "integrations and extensibility"
         ],
-        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity."
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity and cost advantage."
       },
-      "oss_id": "github.com/cypht-org/cypht",
+      "oss_id": "github.com/foundry376/mailspring",
       "project_health": {
         "band": "Exceptional",
         "confidence": 96.6,
-        "score": 92.0,
-        "trajectory": "Stable"
+        "score": 92.3,
+        "trajectory": "Rising"
       },
       "rank": 3,
       "replacement_fit": {
-        "caps": [
-          {
-            "cap": 80.0,
-            "id": "uncorroborated_pairing",
-            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Outlook as what it replaces"
-          }
-        ],
-        "confidence": 81.5,
-        "evaluated_at": "2026-11-12T02:50:11Z",
-        "score": 80.0,
+        "caps": [],
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 79.2,
         "score_version": "1.3.0"
       },
-      "repo_url": "https://github.com/cypht-org/cypht",
+      "repo_url": "https://github.com/Foundry376/Mailspring",
       "self_hosting": {
         "basis": "no self-hosting evidence found; not evidence of absence",
         "self_hostable": null
@@ -314,7 +305,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 1819
+      "stars": 18025
     },
     {
       "evidence": {
@@ -426,7 +417,7 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/foundry376/mailspring",
+              "locator": "data/job_match/ledger.json#github.com/cypht-org/cypht",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
@@ -434,7 +425,13 @@
           "validated_as_of": "2026-11-24T05:53:52Z"
         },
         "replacement_fit": {
-          "caps": [],
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Outlook as what it replaces"
+            }
+          ],
           "core_gate": "passed",
           "corroboration": {
             "basis": [],
@@ -443,17 +440,15 @@
           },
           "dimensions": {
             "core_use_case_coverage": 100.0,
-            "deployment_ownership": 85.0,
-            "ease_of_adoption": 76.6,
-            "economic_advantage": 34.0,
-            "feature_equivalence": 16.7,
+            "deployment_ownership": 92.5,
+            "ease_of_adoption": 87.3,
+            "economic_advantage": 68.0,
+            "feature_equivalence": 33.3,
             "integrations_extensibility": 100.0,
-            "migration_friction": 100.0,
+            "migration_friction": null,
             "production_commercial_readiness": 100.0
           },
           "evidence_families": [
-            "demo",
-            "import",
             "plugins",
             "quickstart",
             "support"
@@ -461,44 +456,49 @@
           "scoring_path": "single_project"
         }
       },
-      "github_url": "https://github.com/Foundry376/Mailspring",
-      "last_meaningful_activity_at": "2026-11-23T22:48:08Z",
+      "github_url": "https://github.com/cypht-org/cypht",
+      "last_meaningful_activity_at": "2026-11-17T14:22:19Z",
       "latest_release": {
-        "published_at": "2026-11-20T13:28:36Z",
-        "tag": "2.0.0-rc1"
+        "published_at": "2026-11-06T05:54:32Z",
+        "tag": "v2.14.0"
       },
-      "licence_spdx": "GPL-3.0",
+      "licence_spdx": "LGPL-2.1",
       "live_checked_at": "2026-11-24T05:53:52Z",
       "maintenance_status": "active",
-      "name": "Mailspring",
+      "name": "cypht",
       "note": {
         "gaps": [
-          "feature parity",
-          "cost advantage"
+          "feature parity"
         ],
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
           "integrations and extensibility"
         ],
-        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity and cost advantage."
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity."
       },
-      "oss_id": "github.com/foundry376/mailspring",
+      "oss_id": "github.com/cypht-org/cypht",
       "project_health": {
         "band": "Exceptional",
         "confidence": 96.6,
-        "score": 92.3,
-        "trajectory": "Rising"
+        "score": 92.0,
+        "trajectory": "Stable"
       },
       "rank": 5,
       "replacement_fit": {
-        "caps": [],
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-20T23:06:47Z",
-        "score": 79.2,
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Microsoft Outlook as what it replaces"
+          }
+        ],
+        "confidence": 81.5,
+        "evaluated_at": "2026-11-12T02:50:11Z",
+        "score": 80.0,
         "score_version": "1.3.0"
       },
-      "repo_url": "https://github.com/Foundry376/Mailspring",
+      "repo_url": "https://github.com/cypht-org/cypht",
       "self_hosting": {
         "basis": "no self-hosting evidence found; not evidence of absence",
         "self_hostable": null
@@ -506,7 +506,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 18025
+      "stars": 1819
     }
   ],
   "saas": {

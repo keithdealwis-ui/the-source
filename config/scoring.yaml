@@ -13,7 +13,10 @@
 # A signal whose evidence is missing is UNKNOWN, never zero: its weight is dropped from the
 # dimension and the gap is charged to Evidence Confidence instead (rubric rule 1).
 
-version: "1.3.0"
+# 1.4.0 (2026-11-24): recommendation ORDER only. Within a 5-point Replacement Fit band, stars then Project Health
+# decide the order (canonical.rank / canonical.FIT_BAND, mirrored in mcp_server._rank; docs/METHODOLOGY.md,
+# Ranking). No weight, curve, cap or threshold changed: every stored score is the same number under 1.4.0.
+version: "1.4.0"
 approved_rubric: "Keith, 29 Sep 2026 (KEI-806 description)"
 
 endorsement:

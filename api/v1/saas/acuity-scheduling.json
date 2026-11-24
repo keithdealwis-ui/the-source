@@ -3,13 +3,13 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 335,
-    "reason": "2 of the 3 recommendations needed have passed the full evaluation",
+    "reason": "3 recommendations passed the full evaluation",
     "reasons": [
-      "fewer_than_minimum"
+      "full_evaluation"
     ],
-    "status": "partial"
+    "status": "ok"
   },
-  "dataset_version": "2702df4c40902975",
+  "dataset_version": "00d8417ab8ebec02",
   "last_checked": {
     "newest": "2026-11-24T05:53:52Z",
     "oldest": "2026-11-24T05:53:52Z"
@@ -18,7 +18,8 @@
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
-      "job_match"
+      "job_match",
+      "opensaasdirectory"
     ]
   },
   "recommendations": [
@@ -26,24 +27,18 @@
       "evidence": {
         "relationship": {
           "corroborated": false,
-          "evidence_class": "job_matched",
+          "evidence_class": "listed",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/tymeslot/tymeslot",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
+              "locator": "README.md#L1129",
+              "source_commit": "bce3d3144b245b2146e6e3032d716f27b70a7ef9",
+              "source_id": "opensaasdirectory"
             }
           ],
           "validated_as_of": "2026-11-24T05:53:52Z"
         },
         "replacement_fit": {
-          "caps": [
-            {
-              "cap": 80.0,
-              "id": "uncorroborated_pairing",
-              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Acuity Scheduling as what it replaces"
-            }
-          ],
+          "caps": [],
           "core_gate": "passed",
           "corroboration": {
             "basis": [],
@@ -51,12 +46,12 @@
             "readme_checked": true
           },
           "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 93.8,
-            "ease_of_adoption": 100.0,
+            "core_use_case_coverage": 62.5,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 80.0,
             "economic_advantage": 60.0,
-            "feature_equivalence": 92.5,
-            "integrations_extensibility": 100.0,
+            "feature_equivalence": 50.0,
+            "integrations_extensibility": 75.0,
             "migration_friction": 66.7,
             "production_commercial_readiness": 100.0
           },
@@ -64,68 +59,60 @@
             "api",
             "cloud_option",
             "data_ownership",
-            "demo",
             "import",
             "multi_user",
             "plugins",
             "quickstart",
             "self_host",
             "sso",
-            "support",
-            "webhook"
+            "support"
           ],
-          "scoring_path": "single_project"
+          "scoring_path": "full_lane"
         }
       },
-      "github_url": "https://github.com/Tymeslot/tymeslot",
-      "last_meaningful_activity_at": "2026-11-17T14:40:31Z",
+      "github_url": "https://github.com/calcom/cal.diy",
+      "last_meaningful_activity_at": "2026-11-13T19:35:06Z",
       "latest_release": {
-        "published_at": "2026-11-17T14:40:31Z",
-        "tag": "v1.46.0"
+        "published_at": "2026-03-01T23:49:01Z",
+        "tag": "v6.2.0"
       },
-      "licence_spdx": "AGPL-3.0",
+      "licence_spdx": "MIT",
       "live_checked_at": "2026-11-24T05:53:52Z",
       "maintenance_status": "active",
-      "name": "Tymeslot",
+      "name": "Cal.com",
       "note": {
         "gaps": [],
         "origin": "derived",
         "strengths": [
-          "core use-case coverage",
-          "ease of adoption"
+          "self-hosting and data ownership",
+          "production readiness"
         ],
-        "text": "Strongest on core use-case coverage and ease of adoption."
+        "text": "Strongest on self-hosting and data ownership and production readiness."
       },
-      "oss_id": "github.com/tymeslot/tymeslot",
+      "oss_id": "github.com/calcom/cal.diy",
       "project_health": {
         "band": "Exceptional",
-        "confidence": 96.6,
-        "score": 85.1,
-        "trajectory": "Rising"
+        "confidence": 92.1,
+        "score": 95.3,
+        "trajectory": "Declining"
       },
       "rank": 1,
       "replacement_fit": {
-        "caps": [
-          {
-            "cap": 80.0,
-            "id": "uncorroborated_pairing",
-            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Acuity Scheduling as what it replaces"
-          }
-        ],
+        "caps": [],
         "confidence": 84.5,
-        "evaluated_at": "2026-11-16T01:50:14Z",
-        "score": 80.0,
+        "evaluated_at": "2026-09-29T18:28:27Z",
+        "score": 72.3,
         "score_version": "1.3.0"
       },
-      "repo_url": "https://github.com/Tymeslot/tymeslot",
+      "repo_url": "https://github.com/calcom/cal.diy",
       "self_hosting": {
         "basis": "self-hosting documented in the project's README",
         "self_hostable": true
       },
       "sources": [
-        "job_match"
+        "opensaasdirectory"
       ],
-      "stars": 329
+      "stars": 50349
     },
     {
       "evidence": {
@@ -214,11 +201,116 @@
         "job_match"
       ],
       "stars": 1065
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/tymeslot/tymeslot",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-11-24T05:53:52Z"
+        },
+        "replacement_fit": {
+          "caps": [
+            {
+              "cap": 80.0,
+              "id": "uncorroborated_pairing",
+              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Acuity Scheduling as what it replaces"
+            }
+          ],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 93.8,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 92.5,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 66.7,
+            "production_commercial_readiness": 100.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "sso",
+            "support",
+            "webhook"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/Tymeslot/tymeslot",
+      "last_meaningful_activity_at": "2026-11-17T14:40:31Z",
+      "latest_release": {
+        "published_at": "2026-11-17T14:40:31Z",
+        "tag": "v1.46.0"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-11-24T05:53:52Z",
+      "maintenance_status": "active",
+      "name": "Tymeslot",
+      "note": {
+        "gaps": [],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "ease of adoption"
+        ],
+        "text": "Strongest on core use-case coverage and ease of adoption."
+      },
+      "oss_id": "github.com/tymeslot/tymeslot",
+      "project_health": {
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 85.1,
+        "trajectory": "Rising"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "caps": [
+          {
+            "cap": 80.0,
+            "id": "uncorroborated_pairing",
+            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Acuity Scheduling as what it replaces"
+          }
+        ],
+        "confidence": 84.5,
+        "evaluated_at": "2026-11-16T01:50:14Z",
+        "score": 80.0,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/Tymeslot/tymeslot",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 329
     }
   ],
   "saas": {
     "category": "Scheduling",
-    "compare_path": null,
+    "compare_path": "/open-source/acuity-scheduling-alternatives",
     "domain": "acuityscheduling.com",
     "name": "Acuity Scheduling",
     "saas_id": "acuity-scheduling",
@@ -230,5 +322,5 @@
       "1.3.0"
     ]
   },
-  "status": "insufficient_recommendations"
+  "status": "ok"
 }

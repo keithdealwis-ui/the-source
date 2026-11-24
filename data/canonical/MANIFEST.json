@@ -3,30 +3,30 @@
   "counts": {
     "catalogue_entries": 500,
     "catalogue_none_yet": 123,
-    "catalogue_ok": 208,
-    "catalogue_partial": 169,
-    "oss_projects": 662,
-    "recommendation_gate_evaluated": 1613,
+    "catalogue_ok": 210,
+    "catalogue_partial": 167,
+    "oss_projects": 663,
+    "recommendation_gate_evaluated": 1615,
     "recommendation_gate_failed": 357,
-    "recommendation_gate_passed": 1256,
-    "recommended_relationships": 1256,
-    "relationships": 1614,
+    "recommendation_gate_passed": 1258,
+    "recommended_relationships": 1258,
+    "relationships": 1616,
     "saas_products": 406,
     "supported_saas": 377,
-    "supported_saas_ok": 208
+    "supported_saas_ok": 210
   },
   "data_as_of": "2026-11-24T05:53:52Z",
-  "dataset_version": "2702df4c40902975",
+  "dataset_version": "00d8417ab8ebec02",
   "export_guard": {
     "export_licence_constraint": "none beyond attribution notices",
-    "relationships_exported": 1614,
+    "relationships_exported": 1616,
     "relationships_withheld_share_alike_only": 0
   },
   "files": {
     "NOTICE.md": "ef0d78bfcfe78e71395a176f0440ece8a639e99d50bf0d666885abe61639b90a",
-    "oss_projects.jsonl": "e3bbc75519b7bad8cc3dd1024fb197619977e7166b52a4e0931d56c058cf60d5",
-    "relationships.jsonl": "4e7a9c83dcdef363db06d9bee7e743b5f7d243907f9cf89852f135cfca54038d",
-    "saas_products.jsonl": "5cfa3b2ade5d7d97e010cd151bdf0826ae8241728a671d80c24b484cb448ad0c"
+    "oss_projects.jsonl": "b339cfd1e124dd6b6a9f45aab10f8c3b58a17d925f12adde96c4739b74959880",
+    "relationships.jsonl": "292e535f3e35c93b8e3ad1b79ccd80417afcf94c2b580f0d4a0be17092517e5b",
+    "saas_products.jsonl": "047c9069c77b3e2a3fb86f7f8ce67f2d03e121e2b9dfb1e8ab888aa26cd0e3ca"
   },
   "live_checked_at": {
     "newest": "2026-11-24T05:53:52Z",
@@ -35,9 +35,9 @@
   "recommendation_gate": {
     "by_tier": {
       "corroborated": {
-        "evaluated": 216,
-        "pass_rate": 0.9306,
-        "passed": 201
+        "evaluated": 217,
+        "pass_rate": 0.9309,
+        "passed": 202
       },
       "job_matched": {
         "evaluated": 984,
@@ -45,12 +45,12 @@
         "passed": 697
       },
       "single_source": {
-        "evaluated": 413,
-        "pass_rate": 0.8668,
-        "passed": 358
+        "evaluated": 414,
+        "pass_rate": 0.8671,
+        "passed": 359
       }
     },
-    "evaluated": 1613,
+    "evaluated": 1615,
     "failed": 357,
     "failed_by_reason": {
       "fit_below_job_matched_floor": 287,
@@ -60,9 +60,9 @@
       "not_scored": 1
     },
     "not_scored": 1,
-    "pass_rate": 0.7787,
-    "passed": 1256,
-    "relationships": 1614,
+    "pass_rate": 0.7789,
+    "passed": 1258,
+    "relationships": 1616,
     "replacement_fit_min": {
       "corroborated": 60,
       "job_matched": 75,

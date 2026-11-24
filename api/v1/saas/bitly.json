@@ -9,7 +9,7 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "2702df4c40902975",
+  "dataset_version": "00d8417ab8ebec02",
   "last_checked": {
     "newest": "2026-11-24T05:53:52Z",
     "oldest": "2026-11-24T05:53:52Z"
@@ -29,7 +29,7 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/sintan1729/chhoto-url",
+              "locator": "data/job_match/ledger.json#github.com/thedevs-network/kutt",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
@@ -37,13 +37,7 @@
           "validated_as_of": "2026-11-24T05:53:52Z"
         },
         "replacement_fit": {
-          "caps": [
-            {
-              "cap": 80.0,
-              "id": "uncorroborated_pairing",
-              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Bitly as what it replaces"
-            }
-          ],
+          "caps": [],
           "core_gate": "passed",
           "corroboration": {
             "basis": [],
@@ -53,19 +47,18 @@
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 75.0,
-            "ease_of_adoption": 100.0,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 73.3,
-            "integrations_extensibility": 50.0,
+            "ease_of_adoption": 80.0,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 75.0,
             "migration_friction": 66.7,
-            "production_commercial_readiness": 100.0
+            "production_commercial_readiness": 80.0
           },
           "evidence_families": [
             "api",
-            "data_ownership",
-            "demo",
+            "cloud_option",
             "import",
-            "multi_user",
+            "plugins",
             "quickstart",
             "self_host",
             "sso",
@@ -74,16 +67,16 @@
           "scoring_path": "single_project"
         }
       },
-      "github_url": "https://github.com/SinTan1729/chhoto-url",
-      "last_meaningful_activity_at": "2026-11-19T21:03:20Z",
+      "github_url": "https://github.com/thedevs-network/kutt",
+      "last_meaningful_activity_at": "2026-10-19T07:55:33Z",
       "latest_release": {
-        "published_at": "2026-11-19T21:03:20Z",
-        "tag": "7.11.7"
+        "published_at": "2026-07-05T10:38:58Z",
+        "tag": "v3.2.6"
       },
       "licence_spdx": "MIT",
       "live_checked_at": "2026-11-24T05:53:52Z",
       "maintenance_status": "active",
-      "name": "chhoto-url",
+      "name": "kutt",
       "note": {
         "gaps": [],
         "origin": "derived",
@@ -93,28 +86,22 @@
         ],
         "text": "Strongest on core use-case coverage and ease of adoption."
       },
-      "oss_id": "github.com/sintan1729/chhoto-url",
+      "oss_id": "github.com/thedevs-network/kutt",
       "project_health": {
-        "band": "Exceptional",
+        "band": "Healthy",
         "confidence": 96.6,
-        "score": 85.9,
-        "trajectory": "Rising"
+        "score": 79.3,
+        "trajectory": "Stable"
       },
       "rank": 1,
       "replacement_fit": {
-        "caps": [
-          {
-            "cap": 80.0,
-            "id": "uncorroborated_pairing",
-            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Bitly as what it replaces"
-          }
-        ],
+        "caps": [],
         "confidence": 84.5,
-        "evaluated_at": "2026-11-18T03:37:02Z",
-        "score": 80.0,
+        "evaluated_at": "2026-10-20T23:06:47Z",
+        "score": 78.9,
         "score_version": "1.3.0"
       },
-      "repo_url": "https://github.com/SinTan1729/chhoto-url",
+      "repo_url": "https://github.com/thedevs-network/kutt",
       "self_hosting": {
         "basis": "self-hosting documented in the project's README",
         "self_hostable": true
@@ -122,7 +109,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 1021
+      "stars": 11217
     },
     {
       "evidence": {
@@ -233,7 +220,96 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/sjdonado/bit",
+              "locator": "data/job_match/ledger.json#github.com/yourselfhosted/slash",
+              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
+              "source_id": "job_match"
+            }
+          ],
+          "validated_as_of": "2026-11-24T05:53:52Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [],
+            "corroborated": false,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 87.5,
+            "ease_of_adoption": 90.8,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 16.7,
+            "integrations_extensibility": 100.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 66.7
+          },
+          "evidence_families": [
+            "demo",
+            "import",
+            "multi_user",
+            "plugins",
+            "quickstart",
+            "self_host"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/yourselfhosted/slash",
+      "last_meaningful_activity_at": "2026-08-23T03:08:31Z",
+      "latest_release": {
+        "published_at": "2024-02-06T13:30:43Z",
+        "tag": "v0.5.3"
+      },
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-11-24T05:53:52Z",
+      "maintenance_status": "maintained",
+      "name": "slash",
+      "note": {
+        "gaps": [
+          "feature parity"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "integrations and extensibility"
+        ],
+        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity."
+      },
+      "oss_id": "github.com/yourselfhosted/slash",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 96.6,
+        "score": 67.1,
+        "trajectory": "Declining"
+      },
+      "rank": 3,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 84.5,
+        "evaluated_at": "2026-10-18T02:47:20Z",
+        "score": 79.5,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/yourselfhosted/slash",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "job_match"
+      ],
+      "stars": 3193
+    },
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "job_matched",
+          "provenance": [
+            {
+              "locator": "data/job_match/ledger.json#github.com/sintan1729/chhoto-url",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
@@ -256,51 +332,55 @@
           },
           "dimensions": {
             "core_use_case_coverage": 100.0,
-            "deployment_ownership": 100.0,
-            "ease_of_adoption": 86.0,
+            "deployment_ownership": 75.0,
+            "ease_of_adoption": 100.0,
             "economic_advantage": 80.0,
-            "feature_equivalence": 33.3,
-            "integrations_extensibility": 100.0,
-            "migration_friction": 100.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 66.7,
             "production_commercial_readiness": 100.0
           },
           "evidence_families": [
             "api",
+            "data_ownership",
+            "demo",
+            "import",
+            "multi_user",
+            "quickstart",
             "self_host",
+            "sso",
             "support"
           ],
           "scoring_path": "single_project"
         }
       },
-      "github_url": "https://github.com/sjdonado/bit",
-      "last_meaningful_activity_at": "2026-10-05T16:58:03Z",
+      "github_url": "https://github.com/SinTan1729/chhoto-url",
+      "last_meaningful_activity_at": "2026-11-19T21:03:20Z",
       "latest_release": {
-        "published_at": "2026-10-05T16:58:03Z",
-        "tag": "1.7.0"
+        "published_at": "2026-11-19T21:03:20Z",
+        "tag": "7.11.7"
       },
       "licence_spdx": "MIT",
       "live_checked_at": "2026-11-24T05:53:52Z",
       "maintenance_status": "active",
-      "name": "bit",
+      "name": "chhoto-url",
       "note": {
-        "gaps": [
-          "feature parity"
-        ],
+        "gaps": [],
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
-          "self-hosting and data ownership"
+          "ease of adoption"
         ],
-        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on feature parity."
+        "text": "Strongest on core use-case coverage and ease of adoption."
       },
-      "oss_id": "github.com/sjdonado/bit",
+      "oss_id": "github.com/sintan1729/chhoto-url",
       "project_health": {
-        "band": "Healthy",
-        "confidence": 92.8,
-        "score": 76.8,
-        "trajectory": "Stable"
+        "band": "Exceptional",
+        "confidence": 96.6,
+        "score": 85.9,
+        "trajectory": "Rising"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "caps": [
           {
@@ -310,11 +390,11 @@
           }
         ],
         "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
+        "evaluated_at": "2026-11-18T03:37:02Z",
         "score": 80.0,
         "score_version": "1.3.0"
       },
-      "repo_url": "https://github.com/sjdonado/bit",
+      "repo_url": "https://github.com/SinTan1729/chhoto-url",
       "self_hosting": {
         "basis": "self-hosting documented in the project's README",
         "self_hostable": true
@@ -322,7 +402,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 114
+      "stars": 1021
     },
     {
       "evidence": {
@@ -397,7 +477,7 @@
         "score": 65.9,
         "trajectory": "Declining"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "caps": [
           {
@@ -420,95 +500,6 @@
         "job_match"
       ],
       "stars": 543
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/yourselfhosted/slash",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-24T05:53:52Z"
-        },
-        "replacement_fit": {
-          "caps": [],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 87.5,
-            "ease_of_adoption": 90.8,
-            "economic_advantage": 60.0,
-            "feature_equivalence": 16.7,
-            "integrations_extensibility": 100.0,
-            "migration_friction": 100.0,
-            "production_commercial_readiness": 66.7
-          },
-          "evidence_families": [
-            "demo",
-            "import",
-            "multi_user",
-            "plugins",
-            "quickstart",
-            "self_host"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/yourselfhosted/slash",
-      "last_meaningful_activity_at": "2026-08-23T03:08:31Z",
-      "latest_release": {
-        "published_at": "2024-02-06T13:30:43Z",
-        "tag": "v0.5.3"
-      },
-      "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-24T05:53:52Z",
-      "maintenance_status": "maintained",
-      "name": "slash",
-      "note": {
-        "gaps": [
-          "feature parity"
-        ],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "integrations and extensibility"
-        ],
-        "text": "Strongest on core use-case coverage and integrations and extensibility; weakest on feature parity."
-      },
-      "oss_id": "github.com/yourselfhosted/slash",
-      "project_health": {
-        "band": "Developing",
-        "confidence": 96.6,
-        "score": 67.1,
-        "trajectory": "Declining"
-      },
-      "rank": 5,
-      "replacement_fit": {
-        "caps": [],
-        "confidence": 84.5,
-        "evaluated_at": "2026-10-18T02:47:20Z",
-        "score": 79.5,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/yourselfhosted/slash",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 3193
     }
   ],
   "saas": {
