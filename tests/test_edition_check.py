@@ -400,3 +400,63 @@ def test_the_canonical_licence_carries_a_carve_out_disclosure():
     _, block = _carved(None)  # nothing to disclose: no open_core block, and MCP withholds the recommendation
     assert "open_core" not in canonical._licence_block({"spdx": "Apache-2.0", "status": "recognised",
                                                         "exception": None, "open_core": block})
+
+
+# ---------------------------------------------------------------- maintainer-confirmed overrides (stress test 2026-11-24)
+
+def _override_file(tmp_path, **fields):
+    entry = {"oss_id": f"github.com/{SLUG}", "clears": ["only_development_deployments"],
+             "deployment": "https://github.com/acme/chat-docker",
+             "provenance": [{"url": "https://github.com/acme/chat-docker", "says": "production compose"}],
+             "reason": "the repository ships dev stacks only; production lives in acme/chat-docker",
+             "confirmed_by": "keith", "confirmed_at": "2026-11-24", "approval_ref": "TEST-1"}
+    entry.update(fields)
+    path = tmp_path / "edition_check_overrides.yaml"
+    path.write_text(yaml.safe_dump({"schema": E.OVERRIDES_SCHEMA, "overrides": [entry]}))
+    return path
+
+
+def test_a_confirmed_override_clears_only_development_deployments(tmp_path):
+    """Mattermost's shape: server/docker-compose.yaml runs the project, is clean, and is a development stack."""
+    row = _row(paths=("server/enterprise",))
+    rec = _rec({"server/docker-compose.yaml": CORE_COMPOSE}, extra_paths=["server/enterprise/x.go"])
+    assert E.check(row, rec, "t")["reason_code"] == "only_development_deployments"
+    ov = E.load_overrides(_override_file(tmp_path))[f"github.com/{SLUG}"]
+    res = E.check(row, rec, "t", ov)
+    assert (res["result"], res["reason_code"]) == ("pass", "maintainer_confirmed_deployment")
+    assert res["core_deployment"] == "https://github.com/acme/chat-docker"
+    assert res["override"]["cleared"] == "only_development_deployments" and res["override"]["confirmed_by"] == "keith"
+    E.apply(row, res, {})
+    assert row["licence"]["eligibility"]["status"] == "eligible"
+    entry = E.generated_entry(row, res)
+    assert build._generated_exception(entry) is entry and entry["edition_check"]["override"]["approval_ref"] == "TEST-1"
+
+
+def test_an_override_never_clears_a_dirty_deployment_or_another_code(tmp_path):
+    ov = E.load_overrides(_override_file(tmp_path))[f"github.com/{SLUG}"]
+    dirty = "services:\n  app:\n    image: acme/chat:1\n    volumes: ['./ee/plugins:/plugins']\n"
+    assert E.check(_row(), _rec({"docker-compose.yml": dirty}, extra_paths=["ee/x.go"]), "t", ov)["result"] == "fail"
+    res = E.check(_row(), _rec({"docker-compose.yml": "services:\n  db:\n    image: postgres:16\n"}), "t", ov)
+    assert (res["result"], res["reason_code"]) == ("ambiguous", "no_deployment_runs_the_project")
+
+
+@pytest.mark.parametrize("fields,valid", [
+    ({"confirmed_by": None}, "pending"), ({"approval_ref": None}, "pending"),
+    ({"confirmed_by": "claude"}, False), ({"confirmed_by": "edition-check"}, False),
+    ({"clears": ["deployment_requires_excluded_parts"]}, False), ({"provenance": []}, False), ({"reason": ""}, False),
+])
+def test_override_conventions_fail_closed(tmp_path, fields, valid):
+    path = _override_file(tmp_path, **fields)
+    if valid == "pending":
+        assert E.load_overrides(path) == {}
+    else:
+        with pytest.raises(ValueError):
+            E.load_overrides(path)
+
+
+def test_the_committed_override_file_loads_and_mattermost_is_pending_until_confirmed():
+    doc = yaml.safe_load((ROOT / "config" / "edition_check_overrides.yaml").read_text())
+    mm = next(o for o in doc["overrides"] if o["oss_id"] == "github.com/mattermost/mattermost")
+    assert mm["clears"] == ["only_development_deployments"] and mm["provenance"]
+    loaded = E.load_overrides(ROOT / "config" / "edition_check_overrides.yaml")
+    assert ("github.com/mattermost/mattermost" in loaded) == bool(mm.get("confirmed_by") and mm.get("approval_ref"))

@@ -1,0 +1,41 @@
+# Edition-check overrides (stress test 2026-11-24; sibling of config/licence_exceptions.yaml).
+#
+# The automated edition check (source_pipeline/edition_check.py) fails closed: a project whose repository ships
+# only development docker-compose files is `ambiguous / only_development_deployments`, even when its maintainers
+# publish the production self-hosting path somewhere else (a separate deployment repository or their docs). An
+# entry here clears exactly that kind of result for one named project, on the maintainer's own published word.
+#
+# Same conventions as licence_exceptions.yaml:
+#   - `confirmed_by` is a named human (never an executor: claude, draper, archie, pipeline, ... or edition-check)
+#     and `approval_ref` says where the confirmation is recorded. An entry without both is PENDING: it is loaded,
+#     reported, and clears nothing (fail closed).
+#   - `provenance` names the maintainer's own statement (URL and what it says), `reason` says why the automated
+#     result is wrong for this project.
+#   - `clears` lists the reason codes it may clear. Only `only_development_deployments` and
+#     `no_deployment_files_in_repository` can be cleared; a `fail` (a deployment that needs an excluded part) or a
+#     runtime-component exclusion never can. The override also applies only while every deployment in the
+#     repository that runs the project is clean (no excluded path, marker or unreadable file): it replaces the
+#     "is this the production path?" judgement, never the "does it need the excluded parts?" one.
+#   - `deployment` is the maintainer's production self-hosting path, reported as the core deployment.
+#
+# Clearing the edition check makes the corpus row eligible (core only) and generates an edition-check licence
+# exception with the override recorded in it. A hand-approved entry in licence_exceptions.yaml still wins. It
+# changes no score and no recommendation gate.
+
+schema: the-source.edition-check-overrides/1
+
+overrides:
+  - oss_id: github.com/mattermost/mattermost
+    clears: [only_development_deployments]
+    deployment: https://github.com/mattermost/docker
+    provenance:
+      - url: https://github.com/mattermost/docker
+        says: "\"Install Mattermost server via Docker\": the maintainers' own docker deployment repository (mattermost org), separate from the server source tree (read 2026-11-24)"
+    reason: >-
+      The server repository's docker-compose files are development stacks (server/build/, server/docker-compose.yaml),
+      so the check correctly finds no production path inside the repository. The maintainers publish it in
+      github.com/mattermost/docker. The confirmer should check, before confirming, that this deployment runs the
+      AGPL-3.0 core without server/enterprise (the team edition).
+    confirmed_by: null      # PENDING: needs Keith's confirmation (and approval_ref) before it clears anything
+    confirmed_at: null
+    approval_ref: null

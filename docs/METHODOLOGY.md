@@ -65,6 +65,22 @@ These are policy thresholds, not probabilities of success. The live rules are `c
 
 `validated` means a relationship passed its evidence and quality checks. It does not mean someone tested the software, nor does it automatically make the relationship a recommendation. [Rejection records](REJECTIONS.md) explain excluded cases.
 
+## Ranking
+
+Recommendations for a product are ordered in three steps (rubric 1.4.0):
+
+1. Evidence tier: listed and self-described relationships before job-matched ones, whatever their scores.
+2. Licence tier: OSI-licensed projects, then disclosed open-core exceptions, then disclosed source-available ones.
+3. Replacement Fit, in bands. Inside a tier, a band opens at the highest remaining Fit and holds every recommendation within 5 points of it. Within a band, adoption and maturity decide: more GitHub stars first, then higher Project Health, then higher Fit. The next band opens at the highest Fit left.
+
+A Fit difference of a few points is within what the rubric can resolve, so a widely adopted, healthy project is not placed below a barely used one on that difference alone. A difference larger than the band still decides: a project more than 5 points below the band's leader never moves above it. For example, for Mailchimp, Listmonk (Fit 78.5, about 24k stars) is placed ahead of Keila (Fit 82.2, about 2k stars); for Notion, Docmost (83.7, about 22k stars) leads its band, but Folio (92.0) stays first because the gap is 8.3 points.
+
+The band changes order only. Scores, thresholds and the recommendation gate are unchanged.
+
+## Promotion from discovery
+
+Each daily cycle, a discovery-tier pairing with quick Fit of at least 75 and at least 5,000 stars that the canonical layer does not hold is sent towards full scoring (`config/schedule.yaml` → `scoring.promotion`). If the project's own description or topics state the pairing, it joins the intake ledger and is validated by the build like any other intake. If the pairing is already in the dataset, it is scored first. If it is held back, the cycle record reports the build's reason, for example an open review of contradictory licence evidence. Promotion never skips validation, scoring or the recommendation gate.
+
 ## What gets published
 
 The canonical build produces the [read API](READ-API.md), project records and relationships. The current policy combines ranked selection with enabled catalogue serving and preservation of previously served valid relationships. Budgets and per-product limits are declared in `config/policy.yaml`; the original launch target is not the full current coverage.

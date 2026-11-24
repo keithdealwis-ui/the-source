@@ -233,13 +233,46 @@ def _licence_tier(rec: dict) -> int:
     return 2 if d.startswith("source-available") else 1 if d else 0
 
 
+# Rubric 1.4.0 (stress test 2026-11-24): Replacement Fit differences this small are inside the rubric's resolution,
+# so within a band of FIT_BAND points adoption and maturity decide the order (docs/METHODOLOGY.md, Ranking).
+FIT_BAND = 5.0
+
+
 def _rank_key(rec: dict):
     """Listed and self-described recommendations before job-matched ones, then by licence tier (_licence_tier) (KEI-930: weaker evidence never
-    displaces stronger evidence); within each, Replacement Fit, Project Health, stars, id."""
+    displaces stronger evidence); within each, Replacement Fit, Project Health, stars, id. The strict order; rank()
+    applies the Fit band on top of it."""
     fit = rec["replacement_fit"] or {}
     health = rec["project_health"] or {}
     tier = 1 if rec["evidence"]["relationship"].get("evidence_class") == "job_matched" else 0
     return (tier, _licence_tier(rec), -(fit.get("score") or 0), -(health.get("score") or 0), -(rec["stars"] or 0), rec["oss_id"])
+
+
+def _adoption_key(rec: dict):
+    """Inside one Fit band: stars, then Project Health, then Fit, then id."""
+    fit = rec.get("replacement_fit") or {}
+    health = rec.get("project_health") or {}
+    return (-(rec.get("stars") or 0), -(health.get("score") or 0), -(fit.get("score") or 0), rec["oss_id"])
+
+
+def rank(recs: list[dict], key=_rank_key, band: float = FIT_BAND) -> list[dict]:
+    """The recommendation order (rubric 1.4.0). Evidence tier and licence tier first (key[0], key[1]), exactly as
+    _rank_key; inside each tier, a band opens at the highest remaining Replacement Fit and holds every
+    recommendation within `band` points of it, and the band is ordered by adoption (_adoption_key). Bands are
+    anchored on their leader, so the order is deterministic and a project more than `band` below the leader never
+    moves above it."""
+    ordered = sorted(recs, key=key)
+    out, i = [], 0
+    while i < len(ordered):
+        tiers = key(ordered[i])[:2]
+        lead = (ordered[i].get("replacement_fit") or {}).get("score") or 0
+        j = i
+        while (j < len(ordered) and key(ordered[j])[:2] == tiers
+               and lead - ((ordered[j].get("replacement_fit") or {}).get("score") or 0) <= band + 1e-9):
+            j += 1
+        out += sorted(ordered[i:j], key=_adoption_key)
+        i = j
+    return out
 
 
 def _utc(ts: str | None) -> str | None:
@@ -536,7 +569,7 @@ def build(out_root: Path | None = None) -> dict:
                    {"licence_disclosure": p["licence"]["exception"]["disclosure"]}
                    if p["licence"].get("exception") else {}),
             })
-        recs.sort(key=_rank_key)
+        recs = rank(recs)
         for i, rec in enumerate(recs, 1):
             rec["rank"] = i
         shown = recs[:hi]

@@ -48,6 +48,11 @@ METHOD = "the-source.edition-check/1"
 RESULTS = ("pass", "fail", "ambiguous")
 APPROVER = "edition-check"
 GENERATED = common.CONFIG / "licence_exceptions.generated.yaml"
+OVERRIDES = common.CONFIG / "edition_check_overrides.yaml"
+OVERRIDES_SCHEMA = "the-source.edition-check-overrides/1"
+# The only results a maintainer-confirmed override may clear: "is the repository's deployment the production path?"
+# judgements. A fail, a runtime-component exclusion or an unreadable file is never cleared.
+CLEARABLE = ("only_development_deployments", "no_deployment_files_in_repository")
 CACHE = common.RAW / "edition_check"
 LIST_DEPTH = 3
 DEPLOY_DIR = re.compile(r"^\.?(docker|deploy|deployment|deployments|helm|charts?|k8s|kubernetes|compose|install|"
@@ -381,8 +386,57 @@ def disclosure(core_spdx: str, scope: list[dict], build: dict | None = None) -> 
     return text
 
 
-def check(row: dict, rec: dict | None, checked_at: str) -> dict:
-    """Pure: the edition check for one corpus row, given what was read at the classification commit."""
+def load_overrides(path: Path | None = None) -> dict:
+    """oss_id -> confirmed override (config/edition_check_overrides.yaml). An entry without a human confirmed_by and
+    an approval_ref is pending and clears nothing; an entry that is malformed, names an executor or asks to clear a
+    code outside CLEARABLE refuses the run (fail closed, as build.load_exceptions does)."""
+    from .build import EXECUTORS
+
+    path = path or OVERRIDES
+    doc = (common.load_yaml(path) or {}) if path.is_file() else {}
+    if doc and doc.get("schema") != OVERRIDES_SCHEMA:
+        raise ValueError(f"{path.name}: schema must be {OVERRIDES_SCHEMA}")
+    out = {}
+    for o in doc.get("overrides") or []:
+        oid = str(o.get("oss_id") or "").lower()
+        clears = list(o.get("clears") or [])
+        if (not oid or not clears or any(c not in CLEARABLE for c in clears) or not o.get("reason")
+                or not o.get("provenance") or not o.get("deployment")):
+            raise ValueError(f"edition-check override for {oid or '?'} is not valid: it needs oss_id, clears (only "
+                             f"{', '.join(CLEARABLE)}), deployment, provenance and reason")
+        who = str(o.get("confirmed_by") or "").strip().lower()
+        if who and (who in EXECUTORS or who == APPROVER):
+            raise ValueError(f"edition-check override for {oid}: confirmed_by must be a named human, not {who}")
+        if not who or not o.get("approval_ref"):
+            continue  # pending: clears nothing until a human confirms it
+        out[oid] = {**o, "oss_id": oid, "clears": clears}
+    return out
+
+
+def _override(out: dict, override: dict | None) -> dict:
+    """Clear an ambiguous result the override names, only while every in-repository deployment that runs the
+    project is clean (no excluded path or marker, every file read)."""
+    if not override or out["result"] != "ambiguous" or out["reason_code"] not in override["clears"]:
+        return out
+    if any(u.get("error") or (u["runs_project"] and u["hits"]) for u in out["deployment"]):
+        return out
+    cleared = out["reason_code"]
+    out["override"] = {**{k: override.get(k) for k in ("deployment", "provenance", "reason", "confirmed_by",
+                                                        "confirmed_at", "approval_ref")}, "cleared": cleared}
+    out["core_deployment"] = override["deployment"]
+    out.update(result="pass", reason_code="maintainer_confirmed_deployment",
+               reason=(f"maintainer-confirmed override ({override['confirmed_by']}, {override['approval_ref']}): "
+                       f"{override['deployment']} is the self-hosting path; cleared {cleared}: {out['reason']}")[:600])
+    return out
+
+
+def check(row: dict, rec: dict | None, checked_at: str, override: dict | None = None) -> dict:
+    """Pure: the edition check for one corpus row, given what was read at the classification commit, then the
+    row's maintainer-confirmed override (load_overrides), if any."""
+    return _override(_check(row, rec, checked_at), override)
+
+
+def _check(row: dict, rec: dict | None, checked_at: str) -> dict:
     cls = row["licence"].get("classification") or {}
     commit = (cls.get("provenance") or {}).get("commit")
     files_read = sorted(k for k in ((rec or {}).get("texts") or {}) if k != MARKER_FILES_KEY)
@@ -649,7 +703,8 @@ def generated_entry(row: dict, res: dict) -> dict:
             "reviewed_at": prov["checked_at"][:10], "rationale": res["reason"], "disclosure": res["disclosure"],
             "core_spdx": res["core_spdx"], "excluded_scope": res["excluded_scope"],
             "edition_check": {"method": METHOD, "commit": prov["commit"], "files": prov["source"]["files"],
-                              "checked_at": prov["checked_at"], "core_deployment": res.get("core_deployment")}}
+                              "checked_at": prov["checked_at"], "core_deployment": res.get("core_deployment"),
+                              **({"override": res["override"]} if res.get("override") else {})}}
 
 
 def write_generated(entries: list[dict], path: Path = GENERATED) -> None:
@@ -728,9 +783,10 @@ def run(out: Path | None = None, workers: int = 6, api=None, generated: Path | N
     with ThreadPoolExecutor(workers) as pool:
         recs = list(pool.map(read, rows))
     claims = relationship_claims()
+    overrides = load_overrides()
     tally, entries, report = {r: 0 for r in RESULTS}, [], []
     for p, rec in zip(rows, recs):
-        res = check(p, rec, stamp)
+        res = check(p, rec, stamp, overrides.get(p["id"].lower()))
         apply(p, res, claims)
         tally[res["result"]] += 1
         report.append({"id": p["id"], "result": res["result"], "reason_code": res["reason_code"],

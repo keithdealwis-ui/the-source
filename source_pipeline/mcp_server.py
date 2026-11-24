@@ -1085,6 +1085,30 @@ def _rank_key(rec):
     return (_evidence_tier(rec), licence_tier, -(fit.get("score") or 0), -(health.get("score") or 0), -(rec.get("stars") or 0), rec["oss_id"])
 
 
+FIT_BAND = 5.0  # same as canonical.FIT_BAND (rubric 1.4.0)
+
+
+def _rank(recs):
+    """Same order as canonical.rank: _rank_key's evidence and licence tiers first; inside each, a band anchored on the
+    highest remaining Replacement Fit holds everything within FIT_BAND points and is ordered by stars, then Project
+    Health, then Fit, then id."""
+    def fit(r):
+        return (r.get("replacement_fit") or {}).get("score") or 0
+
+    def adoption(r):
+        return (-(r.get("stars") or 0), -((r.get("project_health") or {}).get("score") or 0), -fit(r), r["oss_id"])
+
+    ordered = sorted(recs, key=_rank_key)
+    out, i = [], 0
+    while i < len(ordered):
+        tiers, lead, j = _rank_key(ordered[i])[:2], fit(ordered[i]), i
+        while j < len(ordered) and _rank_key(ordered[j])[:2] == tiers and lead - fit(ordered[j]) <= FIT_BAND + 1e-9:
+            j += 1
+        out += sorted(ordered[i:j], key=adoption)
+        i = j
+    return out
+
+
 def _saas_view(layer, sid):
     s = layer.saas[sid]
     out = {k: s[k] for k in ("saas_id", "name", "domain", "category", "aliases", "supported")}
@@ -1516,8 +1540,7 @@ def tool_get_alternatives(layer, args, server):
     include_discovery = _include_discovery(args)
     not_rec = [r for r in layer.rel_by_saas.get(sid, []) if not r["recommended"]]
     doc = layer.surface.get(sid)
-    recs = sorted((_canonical_rec(layer, r) for r in layer.rel_by_saas.get(sid, []) if r["recommended"]),
-                  key=_rank_key)
+    recs = _rank([_canonical_rec(layer, r) for r in layer.rel_by_saas.get(sid, []) if r["recommended"]])
     for i, rec in enumerate(recs, 1):
         rec["rank"] = i
     if doc:

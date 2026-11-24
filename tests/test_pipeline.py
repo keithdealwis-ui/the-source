@@ -716,3 +716,37 @@ class TestBuiltDataset:
                 assert s["url"] in notice
         blob = json.dumps(rows)
         assert "description" not in blob and "tagline" not in blob
+
+
+# ---------------------------------------------------------------- renames carry relationships (stress test 2026-11-24)
+
+def test_a_two_step_rename_carries_every_relationship_to_cal_diy():
+    """calendso/calendso -> calcom/cal.com -> calcom/cal.diy: every claim under either old name lands on the new id,
+    with its provenance, and nothing is left under an old id."""
+    rec = normalise.reconcile([
+        claim("solvohq", "https://github.com/calendso/calendso", ["Calendly"], "Cal.com"),
+        claim("runacapital", "https://github.com/calcom/cal.com", ["Calendly"], "Cal.com", "s/c.yaml"),
+        claim("diegoleme", "https://github.com/calcom/cal.diy", ["Calendly", "Acuity Scheduling"], "Cal.diy", "R#L2"),
+    ], SOURCES)
+    new = "github.com/calcom/cal.diy"
+    merged = normalise.merge_renamed(rec, {"github.com/calendso/calendso": new, "github.com/calcom/cal.com": new})
+    assert list(merged["oss"]) == [new]
+    assert merged["oss"][new]["harvested_as"] == ["github.com/calcom/cal.com", "github.com/calcom/cal.diy",
+                                                  "github.com/calendso/calendso"]
+    edges = {e["saas_id"]: e for e in merged["edges"]}
+    assert all(e["oss_id"] == new for e in merged["edges"])
+    assert edges["calendly"]["source_count"] == 3
+    assert {p["source_id"] for p in edges["calendly"]["provenance"]} == {"solvohq", "runacapital", "diegoleme"}
+    assert edges["acuity-scheduling"]["source_count"] == 1
+
+
+def test_the_committed_dataset_holds_cal_com_relationships_under_cal_diy():
+    """The live data agrees: the Calendly relationship is under cal.diy with the claims that named Cal.com, no row
+    remains under the old ids, and the project records both former names."""
+    old = {"github.com/calcom/cal.com", "github.com/calendso/calendso"}
+    projects = {p["oss_id"]: p for p in common.read_jsonl(common.DATASET / "oss_projects.jsonl")}
+    rels = common.read_jsonl(common.DATASET / "relationships.jsonl")
+    assert not old & set(projects) and not any(e["oss_id"] in old for e in rels)
+    assert old <= set(projects["github.com/calcom/cal.diy"]["harvested_as"])
+    edge = next(e for e in rels if (e["saas_id"], e["oss_id"]) == ("calendly", "github.com/calcom/cal.diy"))
+    assert any(p["claimed_oss_name"] == "Cal.com" for p in edge["provenance"]) and edge["source_count"] >= 2

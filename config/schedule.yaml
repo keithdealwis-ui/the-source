@@ -19,6 +19,7 @@ max_attempts: 3          # per daily cycle; a failed attempt is retried at the n
 # in the run record with what it did.
 strategies:
   - upstream_lists       # move licence-cleared upstream lists to their newest commit (research.py)
+  - promotion_queue      # discovery-tier pairings over the scoring.promotion thresholds join the intake ledger
   - intake_ledger        # repositories admitted through the manual intake path (intake.py)
   - light_refresh        # cheap batched metadata for the whole corpus, every day (daily.py)
   - discovery_search     # new candidate repositories from the approved search lanes, reconciled
@@ -59,6 +60,14 @@ scoring:
   max_rescored_per_cycle: 40       # re-scoring of materially changed projects; the rest wait in
                                    # data/state/rescore_queue.json and go first next cycle (KEI-961)
   release_rescore_interval_days: 7 # a release-only change re-scores a project at most this often (KEI-961)
+  # Promotion queue (source_pipeline/promotion.py): a discovery-tier pairing with quick Fit and stars at or over
+  # these thresholds, not yet full-scored, goes through full scoring. A pairing the project's own description or
+  # topics state joins the intake ledger (validated by the build like any intake row); one already in
+  # data/dataset is scored first, or reported as blocked with the build's reasons (e.g. a review-queue hold).
+  promotion:
+    min_quick_fit: 75
+    min_stars: 5000
+    max_admissions_per_cycle: 20
 
 history:
   retain_days: 400                 # enough for 90-day deltas with a year of look-back
