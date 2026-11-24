@@ -121,13 +121,13 @@ Expectations written before the first full run (`config/score_calibration.yaml`)
 - Replacement Fit for Fathom Analytics: **87.8/100** (core gate passed, confidence 84.5, credible: True, publish: True)
 - Replacement Fit for Google Analytics: **91.1/100** (core gate passed, confidence 95.0, credible: True, publish: True)
 - Replacement Fit for Mixpanel: **45.0/100** (core gate failed, confidence 84.5, credible: False, publish: False)
-- why: Last commit 0 days before evaluation; 143 commits in 90 days  
+- why: Last commit 0 days before evaluation; 143 commits in 90 days
   `score:evidence/github_meta.json#github.com/plausible/analytics@2026-09-29T18:28:27Z:defaultBranchRef.target.c365.nodes[0].committedDate`
-- why: 11 distinct commit authors in the last 12 months (of the latest 100 commits)  
+- why: 11 distinct commit authors in the last 12 months (of the latest 100 commits)
   `score:evidence/github_meta.json#github.com/plausible/analytics@2026-09-29T18:28:27Z:c365.nodes[].author.user.login`
-- why: Median first maintainer response 25 hours across recent issues (60% answered)  
+- why: Median first maintainer response 25 hours across recent issues (60% answered)
   `score:evidence/github_meta.json#github.com/plausible/analytics@2026-09-29T18:28:27Z:recentIssues.nodes`
-- why: 44 published releases; project age 7.82 years  
+- why: 44 published releases; project age 7.82 years
   `score:evidence/github_meta.json#github.com/plausible/analytics@2026-09-29T18:28:27Z:releases.totalCount`
 - watch-out `open_core_markers`: README mentions premium features
 - dimensions: community contributors 92.5 · documentation usability 75.4 · issue pr responsiveness 91.2 · licence 75.0 · maintenance momentum 93.1 · maturity continuity 99.2 · operational readiness 100.0 · security governance 100.0
@@ -136,13 +136,13 @@ Expectations written before the first full run (`config/score_calibration.yaml`)
 **authelia/authelia** (https://github.com/authelia/authelia), evaluated 2026-09-29T18:28:27Z, score version 1.2.0
 
 - Project Health **96.4/100 · Exceptional** · trajectory **Rising** · Evidence Confidence **95.0/100**
-- why: Last commit 0 days before evaluation; 757 commits in 90 days  
+- why: Last commit 0 days before evaluation; 757 commits in 90 days
   `score:evidence/github_meta.json#github.com/authelia/authelia@2026-09-29T18:28:27Z:defaultBranchRef.target.c365.nodes[0].committedDate`
-- why: 10 distinct commit authors in the last 12 months (of the latest 100 commits)  
+- why: 10 distinct commit authors in the last 12 months (of the latest 100 commits)
   `score:evidence/github_meta.json#github.com/authelia/authelia@2026-09-29T18:28:27Z:c365.nodes[].author.user.login`
-- why: Median first maintainer response 6 hours across recent issues (100% answered)  
+- why: Median first maintainer response 6 hours across recent issues (100% answered)
   `score:evidence/github_meta.json#github.com/authelia/authelia@2026-09-29T18:28:27Z:recentIssues.nodes`
-- why: 174 published releases; project age 9.81 years  
+- why: 174 published releases; project age 9.81 years
   `score:evidence/github_meta.json#github.com/authelia/authelia@2026-09-29T18:28:27Z:releases.totalCount`
 - dimensions: community contributors 77.9 · documentation usability 100.0 · issue pr responsiveness 100.0 · licence 100.0 · maintenance momentum 99.2 · maturity continuity 100.0 · operational readiness 99.0 · security governance 100.0
 - Automatically computed from public repository metadata. Not tested, reviewed or endorsed by Keith de Alwis, and not an editorial recommendation.
@@ -152,15 +152,15 @@ Expectations written before the first full run (`config/score_calibration.yaml`)
 - Project Health **93.5/100 · Exceptional** · trajectory **Rising** · Evidence Confidence **92.1/100**
 - Replacement Fit for Make: **85.3/100** (core gate passed, confidence 80.0, credible: False, publish: False)
 - Replacement Fit for Zapier: **85.3/100** (core gate passed, confidence 90.5, credible: False, publish: False)
-- why: Last commit 0 days before evaluation; 3593 commits in 90 days  
+- why: Last commit 0 days before evaluation; 3593 commits in 90 days
   `score:evidence/github_meta.json#github.com/n8n-io/n8n@2026-09-29T18:28:27Z:defaultBranchRef.target.c365.nodes[0].committedDate`
-- why: 45 distinct commit authors in the last 12 months (of the latest 100 commits)  
+- why: 45 distinct commit authors in the last 12 months (of the latest 100 commits)
   `score:evidence/github_meta.json#github.com/n8n-io/n8n@2026-09-29T18:28:27Z:c365.nodes[].author.user.login`
-- why: 826 published releases; project age 7.27 years  
+- why: 826 published releases; project age 7.27 years
   `score:evidence/github_meta.json#github.com/n8n-io/n8n@2026-09-29T18:28:27Z:releases.totalCount`
-- why: Repository has container/deploy files, CI workflows, security policy, docs  
+- why: Repository has container/deploy files, CI workflows, security policy, docs
   `score:evidence/github_meta.json#github.com/n8n-io/n8n@2026-09-29T18:28:27Z:root.entries`
-- disqualifier `licence_unclear`: No recognised open-source licence, or licence needs review.  
+- disqualifier `licence_unclear`: No recognised open-source licence, or licence needs review.
   `graph:views/scoring_inputs.jsonl#github:193215554:licence`
 - dimensions: community contributors 100.0 · documentation usability 81.1 · issue pr responsiveness 100.0 · licence 20.0 · maintenance momentum 100.0 · maturity continuity 100.0 · operational readiness 100.0 · security governance 88.0
 - Automatically computed from public repository metadata. Not tested, reviewed or endorsed by Keith de Alwis, and not an editorial recommendation.

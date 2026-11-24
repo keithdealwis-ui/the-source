@@ -62,7 +62,7 @@ Artefacts and tests: `TestBuiltDataset::test_rebuild_is_byte_identical`, `TestNo
 
 609 harvested repository keys reconciled to 590 projects; 19 were the same repository under an old name or URL and were merged on the host's own canonical identity. SaaS spellings resolve through the reviewed catalogue. One edge per (SaaS, OSS) pair, with each upstream statement kept as its own provenance entry. Rules are in `docs/SCHEMA.md`.
 
-Artefacts and tests: `TestNormalise` 
+Artefacts and tests: `TestNormalise`
 
 | Check | What it establishes | Result | Failures |
 |---|---|---|---|
