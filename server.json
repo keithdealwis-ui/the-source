@@ -1,0 +1,27 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.keithdealwis-ui/the-source",
+  "title": "The Source",
+  "description": "Discover 25,000+ projects, find open-source alternatives, compare health and track surging momentum.",
+  "repository": {
+    "url": "https://github.com/keithdealwis-ui/the-source",
+    "source": "github"
+  },
+  "version": "1.2.0",
+  "websiteUrl": "https://the-source.dev/agents/",
+  "icons": [
+    {
+      "src": "https://the-source.dev/assets/brand/source-s-glow.svg",
+      "mimeType": "image/svg+xml",
+      "sizes": [
+        "any"
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.the-source.dev/mcp"
+    }
+  ]
+}
