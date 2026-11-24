@@ -2254,6 +2254,7 @@ _NEED_CATEGORY_SYNONYMS = {
     "newsletter": ("Email marketing", "Publishing"), "mailing list": ("Email marketing",),
     "email campaign": ("Email marketing",), "email list": ("Email marketing",),
     "booking": ("Scheduling",), "appointment": ("Scheduling",),
+    "helpdesk": ("Customer support",), "help desk": ("Customer support",),
 }
 # Category words that say nothing on their own ("management" in "Password management").
 _GENERIC_CATEGORY_WORDS = {"management", "platform", "tool", "tooling", "service", "software", "app", "a", "an",
