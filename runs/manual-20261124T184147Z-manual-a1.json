@@ -1,0 +1,581 @@
+{
+  "anomalies": [],
+  "attempt": 1,
+  "canonical": {
+    "changed": false,
+    "commit_tag": null,
+    "dataset_version_after": "00d8417ab8ebec02",
+    "dataset_version_before": "00d8417ab8ebec02"
+  },
+  "counts": {},
+  "cycle_key": "manual-20261124T184147Z",
+  "ended_at": "2026-11-24T18:41:54Z",
+  "error": "LicenceDrift: job_match: licence file hash a5bbf4585b11a6b3a15847a3d4397e32f504ac4869214ebd06bd715c278d24df differs from the reviewed 199e9c1378d77da147e67bbc9465d65492650b458b77aafb627444c75a4110c7; the licence decision must be re-reviewed",
+  "failed_step": "intake_ledger",
+  "failures": [],
+  "retries": {},
+  "run_id": "manual-20261124T184147Z-manual-a1",
+  "schedule": {
+    "cadence": "daily",
+    "time": "03:00",
+    "timezone": "Asia/Dubai",
+    "weekday": null,
+    "window_hours": 4
+  },
+  "started_at": "2026-11-24T18:41:47Z",
+  "status": "failed",
+  "strategies": [
+    {
+      "advanced": 0,
+      "detail": [
+        {
+          "from": "5008048500e9a7856862ea87e2be30ac0048e1c8",
+          "source_id": "solvohq",
+          "status": "unchanged"
+        },
+        {
+          "from": "c3277baea787dd69c4e082573bf945d135e24e73",
+          "source_id": "awesome-selfhosted",
+          "status": "unchanged"
+        },
+        {
+          "from": "e5a1bd6153c602404c6f25a97b178228b755aebb",
+          "source_id": "runacapital",
+          "status": "unchanged"
+        },
+        {
+          "from": "bce3d3144b245b2146e6e3032d716f27b70a7ef9",
+          "source_id": "opensaasdirectory",
+          "status": "unchanged"
+        },
+        {
+          "from": "faee982e0cc2f5cec6caebfaa23e6e2bd1816e8d",
+          "source_id": "emmraan",
+          "status": "unchanged"
+        },
+        {
+          "from": "5e019c471bcb398dde3e3dff38fbedc2da2ee2f6",
+          "source_id": "btwso",
+          "status": "unchanged"
+        },
+        {
+          "from": "401bc408a04e8442ed9370156be98b408cfade16",
+          "source_id": "diegoleme",
+          "status": "unchanged"
+        },
+        {
+          "from": "588139d853f9eab183368cfa2eaa8d6c1640fc74",
+          "source_id": "altstack",
+          "status": "unchanged"
+        },
+        {
+          "from": "bca6ae8e8eab1c12de15e87f98d28732ef79fd70",
+          "source_id": "fossalt",
+          "status": "unchanged"
+        }
+      ],
+      "id": "upstream_lists",
+      "kept": [],
+      "sources": 9,
+      "status": "ok"
+    },
+    {
+      "admitted_to_intake_ledger": [
+        {
+          "oss_id": "github.com/nexu-io/open-design",
+          "saas_ids": [
+            "figma"
+          ]
+        },
+        {
+          "oss_id": "github.com/opencoworkai/open-codesign",
+          "saas_ids": [
+            "figma"
+          ]
+        },
+        {
+          "oss_id": "github.com/anil-matcha/open-generative-ai",
+          "saas_ids": [
+            "midjourney"
+          ]
+        },
+        {
+          "oss_id": "github.com/agricidaniel/claude-obsidian",
+          "saas_ids": [
+            "notion"
+          ]
+        },
+        {
+          "oss_id": "github.com/every-app/open-seo",
+          "saas_ids": [
+            "ahrefs",
+            "semrush"
+          ]
+        }
+      ],
+      "blocked": [
+        {
+          "oss_id": "github.com/tooljet/tooljet",
+          "quick_fit": 100.0,
+          "reasons": [
+            "evidence_not_contradicted",
+            "held_for_review: licence--github.com/tooljet/tooljet (contradictory_evidence; see review_queue.jsonl)"
+          ],
+          "saas_id": "mendix",
+          "stars": 41289,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/tooljet/tooljet",
+          "quick_fit": 100.0,
+          "reasons": [
+            "evidence_not_contradicted",
+            "held_for_review: licence--github.com/tooljet/tooljet (contradictory_evidence; see review_queue.jsonl)"
+          ],
+          "saas_id": "retool",
+          "stars": 41289,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/chatwoot/chatwoot",
+          "quick_fit": 100.0,
+          "reasons": [
+            "evidence_not_contradicted",
+            "held_for_review: licence--github.com/chatwoot/chatwoot (contradictory_evidence; see review_queue.jsonl)"
+          ],
+          "saas_id": "crisp",
+          "stars": 40417,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/chatwoot/chatwoot",
+          "quick_fit": 100.0,
+          "reasons": [
+            "evidence_not_contradicted",
+            "held_for_review: licence--github.com/chatwoot/chatwoot (contradictory_evidence; see review_queue.jsonl)"
+          ],
+          "saas_id": "drift",
+          "stars": 40417,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/chatwoot/chatwoot",
+          "quick_fit": 100.0,
+          "reasons": [
+            "evidence_not_contradicted",
+            "held_for_review: licence--github.com/chatwoot/chatwoot (contradictory_evidence; see review_queue.jsonl)"
+          ],
+          "saas_id": "help-scout",
+          "stars": 40417,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/chatwoot/chatwoot",
+          "quick_fit": 100.0,
+          "reasons": [
+            "evidence_not_contradicted",
+            "held_for_review: licence--github.com/chatwoot/chatwoot (contradictory_evidence; see review_queue.jsonl)"
+          ],
+          "saas_id": "intercom",
+          "stars": 40417,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/chatwoot/chatwoot",
+          "quick_fit": 100.0,
+          "reasons": [
+            "evidence_not_contradicted",
+            "held_for_review: licence--github.com/chatwoot/chatwoot (contradictory_evidence; see review_queue.jsonl)"
+          ],
+          "saas_id": "livechat",
+          "stars": 40417,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/chatwoot/chatwoot",
+          "quick_fit": 100.0,
+          "reasons": [
+            "evidence_not_contradicted",
+            "held_for_review: licence--github.com/chatwoot/chatwoot (contradictory_evidence; see review_queue.jsonl)"
+          ],
+          "saas_id": "zendesk",
+          "stars": 40417,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/qdrant/qdrant",
+          "quick_fit": 100.0,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: vector database; not a site-search service"
+          ],
+          "saas_id": "algolia",
+          "stars": 35675,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/temporalio/temporal",
+          "quick_fit": 100.0,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: workflow engine programmed in code; not a no-code automation product"
+          ],
+          "saas_id": "zapier",
+          "stars": 24569,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/dagster-io/dagster",
+          "quick_fit": 100.0,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: orchestrator; supplies no managed connectors"
+          ],
+          "saas_id": "fivetran",
+          "stars": 16462,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/getlago/lago",
+          "quick_fit": 99.9,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: billing and metering; does not process payments"
+          ],
+          "saas_id": "stripe",
+          "stars": 10913,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/encoredev/encore",
+          "quick_fit": 99.8,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: backend development framework; not a hosted backend service"
+          ],
+          "saas_id": "firebase",
+          "stars": 12736,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/quickwit-oss/tantivy",
+          "quick_fit": 98.4,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: search library; not a product"
+          ],
+          "saas_id": "algolia",
+          "stars": 16467,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/openstatushq/openstatus",
+          "quick_fit": 95.3,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: status page and uptime monitor; not an observability platform"
+          ],
+          "saas_id": "datadog",
+          "stars": 9280,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/openstatushq/openstatus",
+          "quick_fit": 95.3,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: status page and uptime monitor; not an observability platform"
+          ],
+          "saas_id": "new-relic",
+          "stars": 9280,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/plasmicapp/plasmic",
+          "quick_fit": 95.1,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: visual page builder; not a headless CMS"
+          ],
+          "saas_id": "contentful",
+          "stars": 7178,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/plasmicapp/plasmic",
+          "quick_fit": 95.1,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: visual page builder; not a design tool"
+          ],
+          "saas_id": "figma",
+          "stars": 7178,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/illacloud/illa-builder",
+          "quick_fit": 94.6,
+          "reasons": [
+            "oss_recommendable",
+            "stale_no_meaningful_activity_12_months"
+          ],
+          "saas_id": "retool",
+          "stars": 12360,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/highlight/highlight",
+          "quick_fit": 94.2,
+          "reasons": [
+            "oss_recommendable",
+            "no_recognised_open_source_licence"
+          ],
+          "saas_id": "fullstory",
+          "stars": 9393,
+          "status": "flagged_licence_exception"
+        },
+        {
+          "oss_id": "github.com/radix-ui/primitives",
+          "quick_fit": 93.1,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: UI component library; not a design tool"
+          ],
+          "saas_id": "figma",
+          "stars": 19549,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/mastodon/mastodon",
+          "quick_fit": 90.0,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: social network; not a tool for scheduling posts to other networks"
+          ],
+          "saas_id": "buffer",
+          "stars": 50702,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/lovell/sharp",
+          "quick_fit": 90.0,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: image processing library; not a media service"
+          ],
+          "saas_id": "cloudinary",
+          "stars": 32866,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/kestra-io/kestra",
+          "quick_fit": 90.0,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: orchestrator; supplies no managed connectors"
+          ],
+          "saas_id": "fivetran",
+          "stars": 30322,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/prefecthq/prefect",
+          "quick_fit": 90.0,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: orchestrator; supplies no managed connectors"
+          ],
+          "saas_id": "fivetran",
+          "stars": 24212,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/datarhei/restreamer",
+          "quick_fit": 86.0,
+          "reasons": [
+            "oss_recommendable",
+            "stale_no_meaningful_activity_12_months"
+          ],
+          "saas_id": "twitch",
+          "stars": 5247,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/jellyfin/jellyfin",
+          "quick_fit": 80.0,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: personal media server; not video hosting for publishing"
+          ],
+          "saas_id": "vimeo",
+          "stars": 59669,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/qdrant/qdrant",
+          "quick_fit": 80.0,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: vector database; not a machine-learning platform"
+          ],
+          "saas_id": "google-vertex-ai",
+          "stars": 35675,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/pulumi/pulumi",
+          "quick_fit": 80.0,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: infrastructure-as-code tool; not a platform that runs applications"
+          ],
+          "saas_id": "heroku",
+          "stars": 25938,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/huggingface/sentence-transformers",
+          "quick_fit": 80.0,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: embedding library; not a model-serving API"
+          ],
+          "saas_id": "openai-api",
+          "stars": 19304,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "codeberg.org/forgejo/forgejo",
+          "quick_fit": 79.6,
+          "reasons": [
+            "evidence_not_contradicted",
+            "held_for_review: licence--codeberg.org/forgejo/forgejo (contradictory_evidence; see review_queue.jsonl)"
+          ],
+          "saas_id": "bitbucket",
+          "stars": 5856,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "codeberg.org/forgejo/forgejo",
+          "quick_fit": 79.6,
+          "reasons": [
+            "evidence_not_contradicted",
+            "held_for_review: licence--codeberg.org/forgejo/forgejo (contradictory_evidence; see review_queue.jsonl)"
+          ],
+          "saas_id": "github",
+          "stars": 5856,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "codeberg.org/forgejo/forgejo",
+          "quick_fit": 79.6,
+          "reasons": [
+            "evidence_not_contradicted",
+            "held_for_review: licence--codeberg.org/forgejo/forgejo (contradictory_evidence; see review_queue.jsonl)"
+          ],
+          "saas_id": "gitlab",
+          "stars": 5856,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/permitio/opal",
+          "quick_fit": 79.0,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: policy administration layer; not an identity provider"
+          ],
+          "saas_id": "auth0",
+          "stars": 5527,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/permitio/opal",
+          "quick_fit": 79.0,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: policy administration layer; not an identity provider"
+          ],
+          "saas_id": "okta",
+          "stars": 5527,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/excalidraw/excalidraw",
+          "quick_fit": 78.4,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: whiteboard; not an interface design tool"
+          ],
+          "saas_id": "figma",
+          "stars": 136174,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/usefathom/fathom",
+          "quick_fit": 76.2,
+          "reasons": [
+            "oss_recommendable",
+            "stale_no_meaningful_activity_12_months"
+          ],
+          "saas_id": "google-analytics",
+          "stars": 8036,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/discourse/discourse",
+          "quick_fit": 75.5,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: forum; not real-time chat"
+          ],
+          "saas_id": "discord",
+          "stars": 48107,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/postgres/postgres",
+          "quick_fit": 75.5,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: relational database; not a key-value store"
+          ],
+          "saas_id": "amazon-dynamodb",
+          "stars": 22915,
+          "status": "rejected"
+        },
+        {
+          "oss_id": "github.com/postgres/postgres",
+          "quick_fit": 75.5,
+          "reasons": [
+            "passed_plausibility_review",
+            "review: the claim is generic; the product is a managed database platform, not a database engine"
+          ],
+          "saas_id": "planetscale",
+          "stars": 22915,
+          "status": "rejected"
+        }
+      ],
+      "blocked_count": 40,
+      "candidates": 109,
+      "deferred_admissions": 6,
+      "full_scored_not_canonical": 54,
+      "id": "promotion_queue",
+      "scoring_priority": [
+        "github.com/jellyfin/jellyfin"
+      ],
+      "status": "ok",
+      "thresholds": {
+        "max_admissions_per_cycle": 5,
+        "min_quick_fit": 75,
+        "min_stars": 5000
+      }
+    }
+  ],
+  "timings_s": {
+    "intake_ledger": 1.4,
+    "promotion_queue": 1.0,
+    "upstream_lists": 3.8
+  },
+  "transitions": {},
+  "trigger": "manual"
+}
