@@ -1,0 +1,463 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-24T05:59:04Z",
+  "canonical": {
+    "promoted_in_run": null,
+    "status": "pending_promotion"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "AGPL-3.0",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "usetuff/tuff",
+      "created_at": "2026-11-13T23:25:01Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-24T05:59:05Z",
+      "forks": 19,
+      "found": true,
+      "host_repo_id": 1457199238,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "GNU Affero General Public License v3.0",
+      "licence_spdx": "AGPL-3.0",
+      "observed": {
+        "commits_in_12m_window": 63,
+        "commits_inspected": 1,
+        "issues_closed_12m": 0,
+        "merged_prs_inspected": 0,
+        "releases_seen": 2,
+        "tags_seen": 2
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-23T22:37:20Z",
+      "stars": 180
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a code_commit",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-23T22:15:21Z",
+      "status": "active"
+    },
+    "saas_relationships": [
+      {
+        "category": "Project management",
+        "excerpt": "open-source, self-hosted alternative to linear, clickup, asana and basecamp. tasks, docs and chat in one place, whe",
+        "field": "description",
+        "matched": "asana",
+        "saas_id": "asana",
+        "saas_name": "Asana"
+      },
+      {
+        "category": "Project management",
+        "excerpt": "open-source, self-hosted alternative to linear, clickup, asana and basecamp. tasks, docs and chat in one place, whe",
+        "field": "description",
+        "matched": "basecamp",
+        "saas_id": "basecamp",
+        "saas_name": "Basecamp"
+      },
+      {
+        "category": "Project management",
+        "excerpt": "open-source, self-hosted alternative to linear, clickup, asana and basecamp. tasks, docs and chat in one place, whe",
+        "field": "description",
+        "matched": "clickup",
+        "saas_id": "clickup",
+        "saas_name": "ClickUp"
+      },
+      {
+        "category": "Project management",
+        "excerpt": "topic jira-alternative",
+        "field": "topics",
+        "matched": "jira-alternative",
+        "saas_id": "jira",
+        "saas_name": "Jira"
+      },
+      {
+        "category": "Project management",
+        "excerpt": "open-source, self-hosted alternative to linear, clickup, asana and basecamp. tasks, docs and chat in one place, whe",
+        "field": "description",
+        "matched": "linear",
+        "saas_id": "linear",
+        "saas_name": "Linear"
+      },
+      {
+        "category": "Team chat",
+        "excerpt": "topic slack-alternative",
+        "field": "topics",
+        "matched": "slack-alternative",
+        "saas_id": "slack",
+        "saas_name": "Slack"
+      },
+      {
+        "category": "Project management",
+        "excerpt": "topic trello-alternative",
+        "field": "topics",
+        "matched": "trello-alternative",
+        "saas_id": "trello",
+        "saas_name": "Trello"
+      }
+    ],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 20
+    }
+  },
+  "note": "waiting-room batch wr-20261123; 1 observation(s)",
+  "oss_id": "github.com/usetuff/tuff",
+  "outcome": "accepted",
+  "reasons": [
+    "passes every rule; relationship evidenced"
+  ],
+  "repo_url": "https://github.com/usetuff/tuff",
+  "request_id": "wr-480d02eb58e985c5",
+  "saas_hint": "linear",
+  "scores": {
+    "errors": [],
+    "preliminary": true,
+    "project_health": {
+      "band": "Healthy",
+      "confidence": 87.6,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-24T05:59:05Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/usetuff/tuff",
+      "score": 71.6,
+      "score_version": "1.3.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": [
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described",
+            "readme_names_product"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 93.8,
+          "ease_of_adoption": 100.0,
+          "economic_advantage": 60.0,
+          "feature_equivalence": 73.3,
+          "integrations_extensibility": 75.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 100.0
+        },
+        "evaluated_at": "2026-11-24T05:59:05Z",
+        "evidence_families": [
+          "api",
+          "cloud_option",
+          "data_ownership",
+          "demo",
+          "import",
+          "multi_user",
+          "quickstart",
+          "self_host",
+          "sso",
+          "support",
+          "webhook"
+        ],
+        "oss_id": "github.com/usetuff/tuff",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "asana",
+        "score": 90.9,
+        "score_version": "1.3.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 90.9
+      },
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described",
+            "readme_names_product"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 93.8,
+          "ease_of_adoption": 100.0,
+          "economic_advantage": 60.0,
+          "feature_equivalence": 73.3,
+          "integrations_extensibility": 75.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 100.0
+        },
+        "evaluated_at": "2026-11-24T05:59:05Z",
+        "evidence_families": [
+          "api",
+          "cloud_option",
+          "data_ownership",
+          "demo",
+          "import",
+          "multi_user",
+          "quickstart",
+          "self_host",
+          "sso",
+          "support",
+          "webhook"
+        ],
+        "oss_id": "github.com/usetuff/tuff",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "basecamp",
+        "score": 90.9,
+        "score_version": "1.3.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 90.9
+      },
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described",
+            "readme_names_product"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 93.8,
+          "ease_of_adoption": 100.0,
+          "economic_advantage": 60.0,
+          "feature_equivalence": 73.3,
+          "integrations_extensibility": 75.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 100.0
+        },
+        "evaluated_at": "2026-11-24T05:59:05Z",
+        "evidence_families": [
+          "api",
+          "cloud_option",
+          "data_ownership",
+          "demo",
+          "import",
+          "multi_user",
+          "quickstart",
+          "self_host",
+          "sso",
+          "support",
+          "webhook"
+        ],
+        "oss_id": "github.com/usetuff/tuff",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "clickup",
+        "score": 90.9,
+        "score_version": "1.3.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 90.9
+      },
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 93.8,
+          "ease_of_adoption": 100.0,
+          "economic_advantage": 60.0,
+          "feature_equivalence": 73.3,
+          "integrations_extensibility": 75.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 100.0
+        },
+        "evaluated_at": "2026-11-24T05:59:05Z",
+        "evidence_families": [
+          "api",
+          "cloud_option",
+          "data_ownership",
+          "demo",
+          "import",
+          "multi_user",
+          "quickstart",
+          "self_host",
+          "sso",
+          "support",
+          "webhook"
+        ],
+        "oss_id": "github.com/usetuff/tuff",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "jira",
+        "score": 90.9,
+        "score_version": "1.3.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 90.9
+      },
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described",
+            "readme_names_product"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 93.8,
+          "ease_of_adoption": 100.0,
+          "economic_advantage": 60.0,
+          "feature_equivalence": 73.3,
+          "integrations_extensibility": 75.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 100.0
+        },
+        "evaluated_at": "2026-11-24T05:59:05Z",
+        "evidence_families": [
+          "api",
+          "cloud_option",
+          "data_ownership",
+          "demo",
+          "import",
+          "multi_user",
+          "quickstart",
+          "self_host",
+          "sso",
+          "support",
+          "webhook"
+        ],
+        "oss_id": "github.com/usetuff/tuff",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "linear",
+        "score": 90.9,
+        "score_version": "1.3.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 90.9
+      },
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 93.8,
+          "ease_of_adoption": 100.0,
+          "economic_advantage": 60.0,
+          "feature_equivalence": 50.0,
+          "integrations_extensibility": 75.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 100.0
+        },
+        "evaluated_at": "2026-11-24T05:59:05Z",
+        "evidence_families": [
+          "api",
+          "cloud_option",
+          "data_ownership",
+          "demo",
+          "import",
+          "multi_user",
+          "quickstart",
+          "self_host",
+          "sso",
+          "support",
+          "webhook"
+        ],
+        "oss_id": "github.com/usetuff/tuff",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "slack",
+        "score": 87.4,
+        "score_version": "1.3.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 87.4
+      },
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 93.8,
+          "ease_of_adoption": 100.0,
+          "economic_advantage": 60.0,
+          "feature_equivalence": 73.3,
+          "integrations_extensibility": 75.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 100.0
+        },
+        "evaluated_at": "2026-11-24T05:59:05Z",
+        "evidence_families": [
+          "api",
+          "cloud_option",
+          "data_ownership",
+          "demo",
+          "import",
+          "multi_user",
+          "quickstart",
+          "self_host",
+          "sso",
+          "support",
+          "webhook"
+        ],
+        "oss_id": "github.com/usetuff/tuff",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "trello",
+        "score": 90.9,
+        "score_version": "1.3.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 90.9
+      }
+    ]
+  },
+  "submitted_at": "2026-11-23T12:31:24Z",
+  "submitted_by": "waiting-room:grokbot"
+}
