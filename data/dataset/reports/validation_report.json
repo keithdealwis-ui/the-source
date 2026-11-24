@@ -70,7 +70,7 @@
       "kind": "assertion",
       "observed": {
         "items": 9,
-        "open": 9
+        "open": 7
       },
       "ok": true
     },
@@ -310,8 +310,8 @@
         },
         "relationships": {
           "licence_exception": 34,
-          "recommendable": 2093,
-          "rejected": 3045
+          "recommendable": 2098,
+          "rejected": 3040
         }
       },
       "ok": true
@@ -434,7 +434,7 @@
       "failures": 0,
       "id": "dedupe.one_repository_per_product_per_saas",
       "kind": "assertion",
-      "observed": 1614,
+      "observed": 1616,
       "ok": true
     },
     {
@@ -444,7 +444,7 @@
       "failures": 0,
       "id": "launch.only_validated_edges",
       "kind": "assertion",
-      "observed": 1614,
+      "observed": 1616,
       "ok": true
     },
     {
@@ -479,9 +479,9 @@
       "id": "launch.targets",
       "kind": "assertion",
       "observed": {
-        "oss_distinct_products": 661,
-        "oss_projects": 662,
-        "relationships": 1614,
+        "oss_distinct_products": 662,
+        "oss_projects": 663,
+        "relationships": 1616,
         "saas_products": 406
       },
       "ok": true
@@ -526,7 +526,7 @@
         "oss_recommendable": 1443,
         "rejections_recorded": 3275,
         "relationship_claims_read": 5992,
-        "relationships_validated": 2093
+        "relationships_validated": 2098
       }
     }
   ],

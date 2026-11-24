@@ -36,6 +36,6 @@ overrides:
       so the check correctly finds no production path inside the repository. The maintainers publish it in
       github.com/mattermost/docker. The confirmer should check, before confirming, that this deployment runs the
       AGPL-3.0 core without server/enterprise (the team edition).
-    confirmed_by: null      # PENDING: needs Keith's confirmation (and approval_ref) before it clears anything
-    confirmed_at: null
-    approval_ref: null
+    confirmed_by: keith
+    confirmed_at: "2026-11-24"
+    approval_ref: keith-chat-2026-11-24-mcp-stress-test

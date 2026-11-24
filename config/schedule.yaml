@@ -67,7 +67,7 @@ scoring:
   promotion:
     min_quick_fit: 75
     min_stars: 5000
-    max_admissions_per_cycle: 20
+    max_admissions_per_cycle: 5
 
 history:
   retain_days: 400                 # enough for 90-day deltas with a year of look-back
