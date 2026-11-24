@@ -1,12 +1,10 @@
-# The Source — Discover lane (KEI-811)
+# How project discovery works
 
-**Status: internal. Nothing here is published, recommended or endorsed.**
+Discovery finds useful software beyond the projects already mapped to paid products. It records candidates, checks repository facts and preserves evidence about where each project was found.
 
-KEI-805 built the **Replace** lane: open-source projects with a credible SaaS
-replacement relationship. KEI-811 adds the **Discover** lane: useful, emerging or
-strategically interesting open-source projects, whether or not any SaaS product maps
-to them. Both lanes feed one graph-ready corpus for KEI-844 (entity resolution and
-knowledge graph) and KEI-806 (scoring). No SaaS mapping is forced.
+This guide describes the internal discovery build under `data/discover/`. Its publication stage is documented separately in [the public corpus guide](CORPUS.md). Discovery, graph membership and quick scores do not establish a recommendation.
+
+For public discovery, [connect your assistant](MCP.md) or [explore measured momentum](https://the-source.dev/#radar). The commands below are for maintainers with the required inputs.
 
 ## Run it
 
@@ -34,7 +32,7 @@ dates set in the future by a committer's machine are ignored.
 |---|---|---|
 | `discover-harvest` | `config/discover.yaml`, `config/discover_seeds.md`, GitHub | `data/discover/frontier.json` |
 | `discover-verify` | frontier, GitHub | `data/discover/live.json`; appends `data/discover/history/observations.jsonl` |
-| `discover-build` | frontier, live, history, KEI-805 `data/dataset/` (read-only) | `data/discover/corpus/` |
+| `discover-build` | frontier, live, history, evaluation `data/dataset/` (read-only) | `data/discover/corpus/` |
 | `discover-validate` | corpus | `corpus/reports/validation_report.json`, `corpus/MANIFEST.json` |
 
 ## Where candidates come from
@@ -43,9 +41,9 @@ Everything is declared, with its bound, in `config/discover.yaml`.
 
 | Depth | Strategy | What it adds |
 |---|---|---|
-| 0 | `keith_seed` | every GitHub URL in `config/discover_seeds.md` (Keith's corpus, pasted verbatim) |
+| 0 | `keith_seed` | every GitHub URL in `config/discover_seeds.md` (maintainer-provided seed inputs) |
 | 0 | `github_starred` / `github_watching` | stars and watches of configured GitHub accounts, read on every harvest |
-| 0 | `replace_lane` | every repository in the KEI-805 dataset |
+| 0 | `replace_lane` | every repository in the evaluation dataset |
 | 1 | `owner_neighbourhood` | the seed owner's other public non-fork repositories (top 25 by stars) |
 | 1 | `readme_links` | repositories a seed's README links to: integrations, dependencies, companions |
 | 1 | `topic_search` | the most-starred repositories on the topics the seeds carry (90 topics x 100) |
@@ -81,14 +79,14 @@ host and, where the host cannot identify it, from the licence files themselves.
 A failed lookup is recorded as `verification_incomplete` or
 `live_verification_failed`; it is never read as inactivity.
 
-Replace-lane projects keep their KEI-805 verdict (`quality.basis = "kei805"`). They are
-referenced, not re-verified, and the KEI-805 dataset is never written.
+Replace-lane projects keep their evaluation verdict (`quality.basis = "kei805"`). They are
+referenced, not re-verified, and the evaluation dataset is never written.
 
 ## Outcomes and counts
 
 | Outcome | Meaning |
 |---|---|
-| `recommendation_eligible` | passed the full KEI-805 bar. Eligible to be considered by KEI-806, nothing more |
+| `recommendation_eligible` | passed the full evaluation bar. Eligible to be considered by scoring, nothing more |
 | `retained` | passed existence, archive, alias and activity checks; licence not recognised (licence-exception lane) |
 | rejected | in `rejections.jsonl` with machine-readable reasons, the routes that found it and the evidence |
 
@@ -104,9 +102,9 @@ recommendation-eligible and rejected, with rejection reasons and lanes.
 |---|---|
 | `projects.jsonl` | one record per retained repository, keyed by a stable id |
 | `rejections.jsonl` | every rejected candidate with reasons, stage, routes and evidence |
-| `relationship_candidates.jsonl` | `from`, `relation`, `to`, `evidence`: evidence for KEI-844, not resolved edges |
+| `relationship_candidates.jsonl` | `from`, `relation`, `to`, `evidence`: evidence for knowledge graph, not resolved edges |
 | `nodes.jsonl` | owners, topics, languages, curated lists and SaaS products referenced by edges |
-| `seed_coverage.json` | the outcome of every row of Keith's seed corpus |
+| `seed_coverage.json` | the outcome of every row of the maintainer seed corpus |
 | `sources.json` | every strategy's query, status, pinned commit and licence decision |
 | `summary.json` | counts, input hashes, reason meanings, field origins |
 
@@ -117,7 +115,7 @@ record, with all of them listed in `aliases`. Replace-lane projects outside GitH
 
 **Relationship candidates.** `owned_by`, `has_topic`, `written_in`, `listed_in`,
 `readme_links_to`, `discovered_via_topic`, and `saas_replacement_candidate` (from
-KEI-805's relationships). A Discover-lane project may have no SaaS edge at all.
+evaluation's relationships). A Discover-lane project may have no SaaS edge at all.
 
 **Freshness.** `discover-verify` appends one observation per repository per run to
 `history/observations.jsonl`, never rewriting a row. Each record's

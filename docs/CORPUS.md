@@ -1,12 +1,10 @@
-# Discovery corpus (KEI-912)
+# The 25,000+ project discovery catalogue
 
-`data/corpus/` is every project the Discover lane ([DISCOVER.md](DISCOVER.md), KEI-811) found and
-kept, published as facts so that the MCP server can serve it as a **discovery tier** beside the
-canonical layer. About 9,400 projects; the canonical layer scores a few hundred of them.
+The discovery catalogue brings together 25,000+ public software projects. It is the broad starting point for search and research. Selected projects receive deeper assessment; discovery entries retain their own evidence, dates and warnings.
 
-Publication was approved by Keith de Alwis, gate `gate-KEI-912-dba84c8b` (2026-10-10): the full
-export, the licence-issue projects only as discovery entries with the issue shown, and the
-licence and provenance posture below.
+Explore the catalogue through [your AI assistant](https://the-source.dev/agents/#setup). For a replacement task, [start with a paid product](https://the-source.dev/#explore). Current counts are in [the corpus manifest](../data/corpus/MANIFEST.json); the corpus and assessed layer overlap.
+
+`data/corpus/` publishes discovery facts beside the canonical assessed layer. Quick scores are lightweight indicators, not the full Project Health/Replacement Fit assessment and never sufficient for recommendation.
 
 ## Tiers
 
@@ -15,11 +13,11 @@ serves beside, so a tier can never disagree with the recommendations being serve
 
 | Tier | Meaning | Recommended? |
 |---|---|---|
-| `recommended` | in the canonical layer with at least one recommended relationship | yes, exactly as before |
+| `recommended` | in the canonical layer with at least one recommended relationship | yes, when the recommendation rules pass |
 | `scored` | in the canonical layer, with Replacement Fit / Project Health, no recommended relationship | no |
-| `discovery` | discovered, not scored: no Replacement Fit or Project Health | never |
+| `discovery` | not fully assessed for recommendation; may have separately labelled quick scores | never |
 
-Projects whose licence The Source does not recognise (about 1,400: no licence, `NOASSERTION`,
+Projects whose licence The Source does not recognise (for example no licence, `NOASSERTION`,
 added or removed terms, or a licence that is not an open-source software licence) are published
 only as `discovery`, with `licence.status: "issue"`, the reason, and a plain warning. They are
 never offered, even as `discovery_candidates`, by the recommendation tools. A project that is
@@ -41,11 +39,11 @@ also in the canonical layer takes its tier from the canonical layer.
 | `host_repo_id` | the host's numeric repository id |
 | `name`, `full_name`, `url`, `aliases` | as the host reports them now; `aliases` holds earlier keys (renames, transfers) |
 | `description`, `homepage`, `topics`, `languages` | host-reported metadata; descriptions truncated to 300 characters |
-| `licence` | `spdx`, `status` (`recognised` or `issue`), `issue` (`category`, `reason`) when there is one; on `issue` rows also `classification` and `eligibility` (KEI-919, below) |
+| `licence` | `spdx`, `status` (`recognised` or `issue`), `issue` (`category`, `reason`) when there is one; on `issue` rows also `classification` and `eligibility` (below) |
 | `maintenance` | `status` (`active` or `maintained`) and `last_meaningful_activity_at`, as the Discover lane evaluated them at `MANIFEST.membership.as_of` |
 | `lanes` | `discover` and/or `replace` |
 | `provenance` | every route that found it: `strategy`, `source`, `commit`, `locator`, `depth`, `via` |
-| `identity` | KEI-919, `null` when there is nothing to say; see [Identity](#identity-renames-forks-mirrors-siblings) |
+| `identity` | `null` when there is nothing to say; see [Identity](#identity-renames-forks-mirrors-siblings) |
 
 Provenance names a curated list with its pinned commit and line (`list:owner/repo`, `commit`,
 `line N`), a GitHub topic (`github-topic:x`), a recorded search (`search:id`), an owner's other
@@ -53,7 +51,7 @@ repositories (`github-owner:x`), a README link (`readme:owner/repo`), or the Rep
 Routes from the maintainer's private seed list are published as `maintainer_seed` with no file,
 line or other detail.
 
-**Licence classification (KEI-919).** Every `issue` row also carries a project-level class read
+**Licence classification.** Every `issue` row also carries a project-level class read
 from the repository itself at a pinned commit (`python -m source_pipeline corpus-licence-classify`,
 network): `licence.classification` = `class` (`open`, `open_core`, `source_available`,
 `restricted`, `missing`, `unclear`), `reason`, `method`, for `open` the `spdx`, for `open_core`
@@ -77,7 +75,7 @@ python -m source_pipeline corpus-export     # data/corpus/ from data/discover/co
 python -m source_pipeline corpus-refresh    # re-read every project's live facts from the host (network)
 python -m source_pipeline corpus-validate   # MANIFEST, schema and publication-rule checks
 python -m source_pipeline corpus-due        # is a scheduled refresh due
-python -m source_pipeline corpus-licence-classify  # classify every licence-issue row (network; KEI-919)
+python -m source_pipeline corpus-licence-classify  # classify every licence-issue row (network)
 python -m source_pipeline corpus-admit      # admit new discovery-pool candidates (network; also a cycle step)
 ```
 
@@ -94,10 +92,6 @@ is not recognised is admitted as `retained`, with its issue named, exactly as th
 Maintenance status is read from `pushed_at`, not from commits, tags and releases as the Discover
 lane does; `MANIFEST.membership.admission` says so. A re-export keeps admitted rows.
 
-Until admission existed, nothing in CI could add a member: `corpus-refresh` only re-reads the
-live facts of existing rows, and the daily lanes reconciled their finds against the canonical
-corpus only. Membership stood at its 2026-09-29 build while every job ran green.
-
 Each cycle's run record (`runs/<run_id>.json`) carries a `corpus` block (`corpus_added`,
 `corpus_removed`, `corpus_collapsed`, `membership_before`, `membership_after`,
 `candidates_found_by_strategy`, `top_new_by_stars`, what was dropped and why) and `anomalies`:
@@ -106,14 +100,14 @@ Each cycle's run record (`runs/<run_id>.json`) carries a `corpus` block (`corpus
 `scheduled_run_missing` (a cycle key in the cadence has no scheduled record). The MCP server's
 `last_run` serves both.
 
-**Live facts** are refreshed without the Mac by `.github/workflows/corpus-refresh.yml`: a daily
+**Live facts** are refreshed by automation by `.github/workflows/corpus-refresh.yml`: a daily
 wake-up that refreshes when `corpus-due` says so (weekly: due after 6 days,
 `config/corpus.yaml`). One GraphQL request carries 50 repositories and costs one rate-limit
 point, so a pass over the ~25k corpus is ~500 requests and, measured in Actions, about 30
 minutes, plus a REST call for each rename and a few calls per GitLab or Codeberg member.
-Actions minutes on a public repository are free, so there is no new spend.
+Consult the current hosting plan for execution quotas and costs.
 
-A pass is resumable (KEI-961). Rows are read in id order, `chunk_size` (2,500) at a time, and
+A pass is resumable. Rows are read in id order, `chunk_size` (2,500) at a time, and
 every chunk read in full is promoted, each row with the moment it was actually read as its
 `observed_as_of`. A run stops on its own clock at `max_runtime_minutes` (40, inside the job's
 60-minute timeout) and records the unfinished pass in `MANIFEST.refresh.in_progress`
@@ -134,20 +128,15 @@ A failed or cancelled run opens or comments on a `corpus-refresh-failure` issue,
 cycle does, and every wake-up, due or not, opens a `corpus-stale` issue (and an error in the
 job summary) when the last full refresh is older than `stale_after_days`.
 
-Why (KEI-961, 2026-10-29 to 11-04): every due run was cancelled at the 60-minute timeout.
-After the GitHub batches (~33 min), GitLab's anonymous API answered 429 with `Retry-After`
-~1,160 s (`ratelimit-name: unauthenticated_traffic_per_ip`; Actions runners share IPs), and the
-HTTP client slept on it, silently, up to 30 minutes a retry, five tries a call, four threads.
-
 ## Identity: renames, forks, mirrors, siblings
 
-One real project is one row (KEI-919). Every write of the layer (`corpus-export`,
+One real project is one row. Every write of the layer (`corpus-export`,
 `corpus-refresh`, `corpus-identity`) runs `source_pipeline/identity.py`, a deterministic,
 idempotent step over the rows, the canonical project keys (`data/canonical/oss_projects.jsonl`:
 `oss_id`, `repo_url`, `github_url`) and GitHub's own identity facts in
 `data/identity/github.jsonl` (current name, repository id, `isFork` and `parent`, `isMirror` and
 `mirrorUrl`). Those facts are re-read by `corpus-identity --refresh`: GraphQL batches of 100
-(about 94 requests for the corpus), REST only to follow a transfer GraphQL does not, refused
+(the number of requests depends on corpus size), REST only to follow a transfer GraphQL does not, refused
 above 150 batches. A repository GitHub cannot answer keeps its previous facts.
 
 ```bash
@@ -196,6 +185,6 @@ The export carries facts: identities, host-reported metadata, licence identifier
 and where each project was found. No list text is copied; a list contributes only the fact that
 a URL appears in it, at a pinned commit and line, and only lists with a recognised licence are
 read ([LICENCE-REVIEW.md](LICENCE-REVIEW.md)). Descriptions and topics are the host's metadata,
-written by each repository's maintainers, shown truncated as identifying metadata. Nothing
-private to AIQ is included: the private seed list contributes only the `maintainer_seed` label,
+written by each repository's maintainers, shown truncated as identifying metadata. No
+private maintainer data is included: the private seed list contributes only the `maintainer_seed` label,
 and `corpus-validate` refuses any route that names it.

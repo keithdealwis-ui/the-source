@@ -1,17 +1,8 @@
-# Rejection reason codes and the review queue (KEI-919 S1.5)
+# Why a project or recommendation is excluded
 
-Every record in `data/dataset/rejections.jsonl` carries exactly one **code** from a
-closed enumeration, and a **detail** that says it in words. The machine `reason` written
-before KEI-919 is kept unchanged beside them, so existing readers keep working.
+A missing recommendation should have an explanation. Rejection records distinguish problems such as insufficient evidence, licensing uncertainty and maintenance failures, with a machine-readable code and a human-readable detail.
 
-The enumeration lives in `source_pipeline/reasons.py` (`CODES`) and in the JSON schema
-(`schema/the-source.schema.json`, `$defs.rejection_code`). Both must agree: a test
-checks they do. The set is closed in two places:
-
-- **Build:** a rejection whose reason has no code stops the build (`reasons.UnknownReason`).
-  Nothing is written under an unknown or catch-all code.
-- **Validation:** check `schema.rejection` fails on any record whose code is missing, not in
-  the enum, or disagrees with its `reason`.
+The code enumeration is shared by `source_pipeline/reasons.py` and the schema. Builds and validation refuse unknown codes. Existing `reason` fields remain for compatibility. This reference preserves the code meanings and the review-queue safeguards.
 
 ## Codes
 

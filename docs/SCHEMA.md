@@ -1,9 +1,10 @@
-# Canonical schema
+# Data schemas and record formats
 
-Machine-readable definition: `schema/the-source.schema.json` (JSON Schema 2020-12),
-version `1.0.0`. Every record in `data/dataset/` is validated against it on each run.
+This reference describes the evaluated dataset records under `data/dataset/`, validated by `schema/the-source.schema.json` (JSON Schema 2020-12).
 
-There are four record types.
+The published canonical read layer has a separate schema, `schema/the-source.canonical.schema.json`, and a consumer contract in the [read API guide](READ-API.md). Discovery, momentum, radar and quick scores each have their own schemas and manifests. Do not treat these layers as interchangeable.
+
+The evaluated dataset's core record types are sources, products, projects and relationships.
 
 ## Source — `sources.json`
 

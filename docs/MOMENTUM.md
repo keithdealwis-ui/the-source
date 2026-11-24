@@ -1,13 +1,10 @@
-# Repository momentum and acceleration (KEI-849)
+# Repository momentum: growth, acceleration and coverage
 
-Methodology `the-source.momentum`, version `1.1.0`. Parameters: `config/momentum.yaml`.
-Code: `source_pipeline/momentum.py`. Schema: `schema/the-source.momentum.schema.json`.
+See which projects are gaining attention and how that pace is changing. Repository momentum measures dated changes in star counts; it does not establish usage, quality or suitability.
 
-Momentum shows how fast a repository is gaining (or losing) adoption right now.
-Acceleration shows whether that pace is picking up or slowing down. Both are measured
-over 1, 7, 30 and 90 days. Both come only from the dated daily snapshots the daily cycle
-already keeps (`data/history/`, KEI-848). They add no network calls and do not change
-the canonical dataset, its version or the read API.
+[Explore the radar](https://the-source.dev/#radar) for fastest growth and stars gained, or [connect your assistant](MCP.md) to inspect a project's available windows and acceleration.
+
+The reference below defines the calculations, coverage and sanity checks. Methodology `the-source.momentum`, version `1.1.0`; parameters in `config/momentum.yaml`, implementation in `source_pipeline/momentum.py`, schema in `schema/the-source.momentum.schema.json`. Measurements use dated daily snapshots over 1, 7, 30 and 90 days where history is sufficient.
 
 ## What is measured
 
@@ -58,7 +55,7 @@ is not: the 2026-10-02 snapshot was taken 0.35 d before the 2026-10-03 one. The 
 90-day windows become measurable from 2026-10-09, 2026-11-01 and 2026-12-31, and their
 acceleration from 2026-10-16, 2026-12-01 and 2027-03-31.
 
-## Sanity gate (KEI-961)
+## Sanity gate
 
 Before a window is published as `measured` it passes two checks (`sanity` in
 `config/momentum.yaml`). A window that fails is published as `suppressed` with the failed
@@ -114,7 +111,7 @@ fails. Version history:
 | Version | Date | Change |
 |---|---|---|
 | `1.0.0` | 2026-10-06 | First release: stars-based momentum and acceleration over 1/7/30/90 days. |
-| `1.1.0` | 2026-11-05 | Sanity gate (KEI-961): endpoint checked against the live snapshot; sudden jumps published only once confirmed; new status `suppressed`. |
+| `1.1.0` | 2026-11-05 | Sanity gate : endpoint checked against the live snapshot; sudden jumps published only once confirmed; new status `suppressed`. |
 
 ## Where it runs and how to read it
 

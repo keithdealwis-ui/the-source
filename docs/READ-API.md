@@ -1,9 +1,14 @@
-# Read API (v1)
+# Open-source alternatives data API
 
-The read surface is a set of static JSON files under `api/v1/`. The daily cycle
-generates them from the canonical dataset. They are meant to be fetched and cached by
-clients (the Chrome extension, the de-alwis.com template, internal tools). No client
-needs to call GitHub or any upstream to render a recommendation.
+Build software comparisons with The Source's published JSON. Read product alternatives, project facts, scores, licensing disclosures and evidence dates without running the assessment pipeline.
+
+Start with the [product index](https://raw.githubusercontent.com/keithdealwis-ui/the-source/main/api/v1/index.json), then follow a product record such as [Notion alternatives](https://raw.githubusercontent.com/keithdealwis-ui/the-source/main/api/v1/saas/notion.json):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/keithdealwis-ui/the-source/main/api/v1/saas/notion.json
+```
+
+These are static files regenerated from the canonical dataset. No Source account is required. Preserve evidence dates and attribution, and cache consistent dataset versions. For interactive questions, use the [MCP server](MCP.md); for browsing, [visit the website](https://the-source.dev/).
 
 ## Files
 
@@ -12,11 +17,11 @@ needs to call GitHub or any upstream to render a recommendation.
 | `index.json` | `dataset_version`, `data_as_of`, `live_checked_at` (oldest/newest), one row per supported SaaS product (`saas_id`, `name`, `slug`, `path`, `compare_path`, `recommendations`, `status`), and `catalogue` (path and status counts) |
 | `domains.json` | Host rules for detecting a supported product locally, plus `match_semantics` |
 | `saas/<saas_id>.json` | One product's support record: `saas`, `status`, `catalogue`, up to 5 `recommendations`, `more_available`, `last_checked`, `scoring`, `provenance` |
-| `catalogue.json` | The 500-product catalogue (KEI-922, [`CATALOGUE.md`](CATALOGUE.md)): per entry `audience`, `category`, `status` (`ok` / `partial` / `none_yet`), `reasons` and `reason`, evidence counts, `path` of its support record or null, `compare_path` or null, and its detection rules `match` |
+| `catalogue.json` | The 500-product catalogue ([`CATALOGUE.md`](CATALOGUE.md)): per entry `audience`, `category`, `status` (`ok` / `partial` / `none_yet`), `reasons` and `reason`, evidence counts, `path` of its support record or null, `compare_path` or null, and its detection rules `match` |
 
 A product is supported (it has a support record) when it has at least one recommendation
 that passed the full evaluation, or is one of the products configured in
-`config/supported_saas.yaml`. Since KEI-922, `compare_path` is null for a product that
+`config/supported_saas.yaml`. Since catalogue, `compare_path` is null for a product that
 is not yet `ok`, apart from those configured ones.
 
 Every file carries the same `dataset_version`, a 16-hex content hash of the canonical
@@ -95,13 +100,12 @@ Examples: `acme.atlassian.net/jira/...` gives `jira`, `acme.atlassian.net/wiki/.
 `shop.myshopify.com` gives `shopify`. `source_pipeline/detect.py` is the reference
 implementation; `catalogue.json` carries the same kind of rules for every catalogue entry, so
 `app.hubspot.com/email/...` resolves to HubSpot Marketing Hub there (see `CATALOGUE.md`).
-Rules from before KEI-922 behave the same under these semantics, apart from the
+Rules from before catalogue behave the same under these semantics, apart from the
 whole-segment rule.
 
 ## Serving
 
-While the repository is private, clients need a GitHub token with read access. Once it
-is public, the files can be fetched with no credentials from
+The public files can be fetched with no credentials from
 `https://raw.githubusercontent.com/keithdealwis-ui/the-source/main/api/v1/...`, or through
 a CDN such as `https://cdn.jsdelivr.net/gh/keithdealwis-ui/the-source@main/api/v1/...`.
 For a fixed version, pin a `cycle/<run_id>` tag in place of `main`.

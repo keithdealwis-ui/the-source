@@ -1,23 +1,18 @@
-# The Source — scoring (KEI-806)
+# Replacement fit, project health and evidence confidence
 
-Three separate outputs for every project in the canonical graph (KEI-844). They are never
-blended into one number:
+A project can be healthy without being the right replacement for your software. The Source keeps three measures separate so you can see what each assessment supports.
 
-| Output | Applies to | Answers |
-|---|---|---|
-| **Project Health** 0–100 + band | every retained OSS project | "Is this an open-source project I can sensibly depend on?" |
-| **Replacement Fit** 0–100 | only a project with a `REPLACES` edge, once per SaaS product | "How credible is this as an alternative to *this specific* SaaS product?" |
-| **Evidence Confidence** 0–100 | beside each of the above | "How confident are we that the score is correct?" |
+| Measure | What it answers |
+|---|---|
+| **Project Health** | What do maintenance, community and other project signals tell us? |
+| **Replacement Fit** | How well does the evidence support replacing a particular paid product? |
+| **Evidence Confidence** | How complete and strong is the evidence behind the assessment? |
 
-The rubric is Keith's, approved 29 Sep 2026 (the KEI-806 description). It lives, in full
-and machine-readable, in `config/scoring.yaml`. This document explains it. If the two ever
-disagree, the YAML is what runs.
+For example, a maintained knowledge-base project may have a strong health assessment but limited evidence for replacing a particular collaboration suite. A fit score is specific to that pairing, not a universal project rating. Confidence is not a calibrated probability.
 
-**Automatic scoring is not an endorsement.** Every record carries
-`endorsement: {keith_tested: false, keith_endorsed: false, editorial_recommendation: false}`
-and the statement *"Automatically computed from public repository metadata. Not tested,
-reviewed or endorsed by Keith de Alwis, and not an editorial recommendation."* Health bands
-describe project health, not endorsement.
+The machine-readable rubric is `config/scoring.yaml`; current recommendation floors are in `config/policy.yaml`. A score alone is not a recommendation: [methodology](METHODOLOGY.md) explains eligibility and the final gate. [Quick scores](QUICK-SCORING.md) are a separate, lighter assessment.
+
+Assessments are computed from public evidence, not hands-on reviews or personal endorsements. Keep the dates, missing information, caps and licence disclosures visible alongside scores.
 
 ## Commands
 
@@ -26,7 +21,7 @@ describe project health, not endorsement.
 .venv/bin/python -m source_pipeline score-harvest --refresh  # re-observe everything under a new as_of (weekly refresh)
 .venv/bin/python -m source_pipeline score-build              # no network: extract signals, score, append history, validate
 .venv/bin/python -m source_pipeline score-validate           # no network: acceptance checks + calibration set
-.venv/bin/python -m source_pipeline scores-recap             # network (README reads): apply a newer rubric's caps to stored data/scores/ rows (KEI-961)
+.venv/bin/python -m source_pipeline scores-recap             # network (README reads): apply a newer rubric's caps to stored data/scores/ rows
 .venv/bin/python scripts/run_score_tests.py                  # unit tests, stdlib runner, no network
 .venv/bin/python scripts/score_refresh_probe.py              # AC11/AC12 probe: refresh a sample in an isolated copy
 ```
@@ -34,8 +29,8 @@ describe project health, not endorsement.
 ## Pipeline
 
 ```
-KEI-844 graph view ─┐
-KEI-811 deep store ─┤                     ┌─ signals.jsonl        (per project, every raw signal + provenance)
+knowledge graph view ─┐
+discovery deep store ─┤                     ┌─ signals.jsonl        (per project, every raw signal + provenance)
 score-harvest ──────┼─► extract (stage 1) ┤
  (github_meta.json, │                     └─ pair_signals.jsonl   (per SaaS pair: the text it is judged on + facts)
   readmes.json)     │                                 │
@@ -52,7 +47,7 @@ The record schema (`schema/the-source.score.schema.json`) does not change with t
 
 ### Evidence gathered for scoring (`score-harvest`)
 
-The KEI-805/811 stores held stars, forks, commit counts, merged PRs, releases and licence,
+The discovery and evaluation stores held stars, forks, commit counts, merged PRs, releases and licence,
 but not what several rubric dimensions need. `score-harvest` makes one read-only GraphQL
 pass per repository (batches of 4) and records, for each: creation/push dates, archived and
 disabled state, stars, forks, security-policy status, licence, topics, homepage, the last 10
@@ -105,7 +100,7 @@ Below 50% of rubric weight known, the record carries `evidence_insufficient: tru
 Held outside the number, with the reason and the evidence ref. A disqualified project keeps
 its Health score and is never recommendation-eligible while the flag stands:
 `archived` · `disabled` · `licence_unclear` (no recognised open-source licence, as decided by
-KEI-805/811) · `demonstrably_dead` (no commit in 24 months) · `not_found` ·
+the evaluation policy) · `demonstrably_dead` (no commit in 24 months) · `not_found` ·
 `security_concern`. There is no automated vulnerability source yet, so `security_concern` is
 raised only from `config/score_overrides.yaml` (project, reason, evidence).
 
@@ -125,7 +120,7 @@ prior year by construction, and that is not growth. Once stars have two observat
 
 ## Replacement Fit
 
-Only for a `REPLACES` edge in the graph (KEI-805 validated or licence-flagged
+Only for a `REPLACES` edge in the graph (validated or licence-flagged
 relationships). One score per (project, SaaS product). Discover-lane projects with no SaaS
 edge get none, and no edge is ever invented.
 
@@ -143,7 +138,7 @@ rescore, not a re-harvest.
 | Dimension | Weight | Evidence |
 |---|---|---|
 | Core use-case coverage | 25 | credited share of the category's core groups: 1.0 for a group found in the project's *identity text* (description, topics, upstream category, first 2,000 chars of README), 0.25 for a group found only deeper in the README, where long READMEs mention everything |
-| Feature equivalence | 15 | share of the category's feature checklist evidenced; capped when the README rules features out (KEI-961, below) |
+| Feature equivalence | 15 | share of the category's feature checklist evidenced; capped when the README rules features out (below) |
 | Ease of adoption | 15 | quick-start/install section; demo/screenshots; container files; docs; README depth |
 | Deployment & ownership | 10 | self-host evidence or container files; cloud option; data-ownership language; licence usability |
 | Migration friction | 10 | import/export/migration language; the incumbent named within 120 chars of import/migrate/switch/alternative; API |
@@ -159,7 +154,7 @@ established at all (no README and nothing in the identity text: `core_gate: unpr
 **The gate is proven to discriminate.** `score-validate` runs a negative control: every
 scored pair is re-judged against a randomly chosen *wrong* category (seeded). The gate must
 pass at most 15% of those mismatched pairs, and the true pass rate must be at least three
-times the mismatched rate. The first version of the job definitions failed this badly
+times the mismatched rate. Historical calibration of the first job definitions failed this badly
 (49% of mismatched pairs passed, e.g. a newsletter tool as a data warehouse, because generic
 stems like "analytic" and "docs" matched almost any README). v1.1.0 tightened the defining
 groups, and the control now runs at about 4% mismatched against about 97% true. The true
@@ -171,7 +166,7 @@ Stack, and GIMP is not Canva. A project that cannot be shown to do
 the incumbent's main job never reads as a strong replacement for it. The uncapped figure is
 kept in `uncapped_score` for inspection.
 
-**Evidence caps (KEI-961, rubric v1.3.0).** Two further caps, configured in
+**Evidence caps (rubric v1.3.0).** Two further caps, configured in
 `config/scoring.yaml` (`replacement_fit.feature_scope`, `replacement_fit.corroboration_cap`). Each one
 that lowers a number is recorded on the row in `caps` (`id`, `cap`, `reason`), carried into
 `data/canonical/relationships.jsonl`, every `api/v1` recommendation and the MCP relationship verdict,
@@ -206,7 +201,7 @@ AC4 is checked symmetrically about the Healthy band edge. There must be Healthy 
 (≥ 70) with a poor Fit (< 50), strong Fits (≥ 70) from projects below Healthy, and projects
 whose Fit differs by 20+ points between incumbents. A genuinely weak project (Health < 55)
 with a strong Fit is rare in this corpus, because the replace lane is pre-filtered by the
-KEI-805 live quality bar. That direction is proven synthetically in
+evaluation live quality bar. That direction is proven synthetically in
 `tests/test_score.py::TestIndependence` and reported as a count, not assumed.
 
 ## Evidence Confidence
@@ -217,7 +212,7 @@ KEI-805 live quality bar. That direction is proven synthetically in
 | Evidence freshness | 25 | age of the observation at evaluation (100 ≤ 7 d → 0 at 365 d) | age of the README observation |
 | Source quality | 20 | mean over known signals: host API 90, host listing 80, graph inference 50 | README + host API 75; description/topics only 55 |
 | Relationship confidence | 15 | not applicable (renormalised away) | the graph `REPLACES` edge confidence, +10 if corroborated |
-| Cross-source agreement | 10 | this pass vs the KEI-811 REST record: stars ±15%, forks ±20%, archived, licence | number of upstream lists claiming the pair (1 → 40, 2 → 70, 3+ → 100), +20 if the README names the incumbent |
+| Cross-source agreement | 10 | this pass vs the discovery REST record: stars ±15%, forks ±20%, archived, licence | number of upstream lists claiming the pair (1 → 40, 2 → 70, 3+ → 100), +20 if the README names the incumbent |
 
 Confidence changes nothing about the score it sits beside. A score ≥ 70 with confidence
 below 50 is labelled **"Promising, uncertain"** (`presentation_label`), not presented as
@@ -230,7 +225,7 @@ authoritative.
 | Health status | the band |
 | **Credible alternative** | Fit ≥ 60 **and** core coverage ≥ 50 **and** Fit confidence ≥ 50 **and** no disqualifier |
 | **Mapping publishable** | Fit confidence ≥ 50 **and** relationship status `validated` **and** no disqualifier **and** core gate passed. A refused mapping stays out of publication while the project stays in the corpus with its Health (AC7) |
-| **Recommendation-eligible** | Health ≥ 55 **and** Health confidence ≥ 50 **and** no disqualifier **and** the graph already recommendation-eligible (licence/lane, KEI-805/811) |
+| **Recommendation-eligible** | Health ≥ 55 **and** Health confidence ≥ 50 **and** no disqualifier **and** the graph already recommendation-eligible (licence/lane, evaluation and discovery) |
 
 `score-validate` recomputes every one of these decisions from the stored numbers and fails
 on any mismatch. `tests/test_score.py` exercises each edge.
@@ -252,30 +247,30 @@ on any mismatch. `tests/test_score.py` exercises each edge.
 
 Every known signal, reason and flag cites where it came from:
 
-- `score:evidence/github_meta.json#<canonical>@<as_of>:<field path>`: this ticket's GraphQL observation
+- `score:evidence/github_meta.json#<canonical>@<as_of>:<field path>`: the recorded GraphQL observation
 - `score:evidence/readmes.json#<canonical>@<as_of>`: README text read for Replacement Fit
-- `graph:edges.jsonl#<edge id>`: a KEI-844 graph edge (REPLACES, OWNED_BY), which carries its own upstream provenance
-- `graph:views/scoring_inputs.jsonl#<project>:<field>`: the KEI-844 scoring view
-- `kei811:live.json#deep/<owner/name>`: the KEI-811 REST observation
+- `graph:edges.jsonl#<edge id>`: a knowledge graph edge (REPLACES, OWNED_BY), which carries its own upstream provenance
+- `graph:views/scoring_inputs.jsonl#<project>:<field>`: the knowledge graph scoring view
+- `kei811:live.json#deep/<owner/name>`: the discovery REST observation
 
 `score-validate` resolves every one of them to an existing record.
 
 ## Refresh and history
 
-Weekly: `score-harvest --refresh` then `score-build`. The refresh appends to both history
+To refresh the full scoring evidence, run `score-harvest --refresh` then `score-build`. The refresh appends to both history
 files and never rewrites them. Trajectory and star velocity sharpen as observations
 accumulate. `scripts/score_refresh_probe.py` demonstrates the cycle end to end on a sample,
 in an isolated copy, and records the result in `evidence/KEI-806-refresh-probe.json`.
 
 ## Known limitations
 
-- **Confidence is compressed on the first run.** Every observation is under a day old, so freshness is 100 everywhere and Health confidence sits at 61–97. Low-completeness projects still reach about 61 under the approved component weights. They carry `evidence_insufficient: true` separately. Spread widens as evidence ages between refreshes.
+- **Confidence depends on evidence coverage and freshness.** Recent observations can have similar freshness scores; inspect completeness and `evidence_insufficient` separately.
 
 - **Price.** No SaaS price data exists in the catalogue. Economic advantage is a self-host/licence proxy.
 - **Vulnerabilities.** No automated vulnerability feed. `security_concern` is override-only.
 - **Response sampling.** The first 3 comments of the 20 most recent issues. A maintainer who answers after three community comments is missed, so responsiveness is slightly pessimistic for very busy trackers.
 - **Contributor spread.** Measured on the latest 100 commits of the last year, not the full history.
-- **Star velocity.** Insufficient history until the first refresh ≥ 28 days after 2026-09-29.
+- **Star velocity.** Requires observations spanning the measurement window; insufficient history is reported explicitly.
 - **Job definitions.** `config/saas_jobs.yaml` is a desk-authored description of what each category is bought to do. It shapes Replacement Fit, is versioned (v1.1.0), and is policed by the negative control. A real alternative that describes itself in words no definition anticipates can still be gated, and it shows as `core_gate: failed` with the uncapped score kept for review.
 - **External docs sites are not crawled.** A short README (< 6,000 chars) that defers to a docs site leaves absent terms *unknown*, not zero. Crawling the docs would firm up those Fit dimensions (follow-on).
-- **Non-GitHub hosts** (2 GitLab, 2 Codeberg): scored from the KEI-811/805 observations only, with lower completeness.
+- **Non-GitHub hosts:** scored from the discovery and evaluation observations only, with lower completeness.

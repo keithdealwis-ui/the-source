@@ -1,19 +1,23 @@
-# The Source: Open Source Alternatives (Chrome extension)
+# The Source Chrome extension — Alternatives while you browse
 
-A deliberately thin client of The Source's read surface (`../api/v1/`, see
-[`docs/READ-API.md`](../docs/READ-API.md)). On a supported SaaS site the toolbar icon
-shows a seedling with the number of credible open-source alternatives. Clicking it
-opens a panel with 3–5 recommendations. No popups, no account, no AI chat.
+Find potential open-source replacements while using a supported SaaS website. The toolbar icon shows the available recommendation count; open it to inspect replacement fit, maintenance and licensing evidence.
 
-Built for KEI-808.
+For immediate access without installing an extension, [explore the website](https://the-source.dev/#explore) or [connect your AI assistant](https://the-source.dev/agents/#setup).
+
+## Install from this repository
+
+This repository contains the extension source and packaging tools. To try this checkout in Chrome, open `chrome://extensions`, enable Developer mode, choose **Load unpacked**, and select this `extension/` folder. Visit a supported site such as Trello and open the toolbar icon.
+
+This guide documents installation from source. It does not claim a public Chrome Web Store release. Store packaging and submission are described in the [maintainer release guide](RELEASING.md).
 
 ## What the panel shows
 
 For each recommendation: project name (linked to GitHub), Replacement Fit (0–100),
 GitHub stars, maintenance status (Active / Maintained), licence (SPDX), self-hosting
 ("Self-hostable" only with evidence), and the machine-derived best-fit/gap note,
-labelled "(auto-summary)". Under the list is a "Compare" link to
-`de-alwis.com/open-source/<product>-alternatives`. The footer shows when GitHub data
+labelled "(auto-summary)". The existing "Compare" action uses the legacy
+`de-alwis.com/open-source/<product>-alternatives` destination when a path is provided.
+For the current product-discovery interface, use [The Source website](https://the-source.dev/#explore). The footer shows when GitHub data
 was last checked.
 
 | State | Behaviour |
@@ -29,7 +33,7 @@ was last checked.
 ## Data
 
 The extension bundles no data. The service worker downloads the whole read surface
-(`index.json`, `domains.json` and every `saas/<id>.json`, about 0.9 MB for 114 products) on install, at
+(`index.json`, `domains.json` and every `saas/<id>.json`, the size varies with the published catalogue) on install, at
 browser start if more than 6 hours old, and every 6 hours. It uses
 `raw.githubusercontent.com/keithdealwis-ui/the-source/main/api/v1/`, falling back to
 the jsDelivr mirror. A snapshot is accepted only when every file arrived and all carry
@@ -86,6 +90,4 @@ folder, then visit e.g. `https://trello.com/`.
 
 ## Release
 
-`npm run package` builds the zip for the Chrome Web Store. Submission, the developer
-account and publishing are Keith's decision. `store/LISTING.md` holds the listing copy,
-permission justifications and privacy answers.
+See the [maintainer release guide](RELEASING.md) for packaging, verification and store submission.

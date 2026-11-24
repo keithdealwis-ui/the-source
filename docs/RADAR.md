@@ -1,14 +1,10 @@
-# Community Radar (KEI-850, KEI-913)
+# Community Radar: discover projects people are discussing
 
-Methodology `the-source.radar`, version `1.1.0`. Parameters: `config/radar.yaml`.
-Code: `source_pipeline/radar.py`. Schema: `schema/the-source.radar.schema.json`.
+Find projects being discussed on Hacker News, Forem and Bluesky, and follow the links to the conversations. Community attention gives you another reason to investigate a project; it is not a recommendation.
 
-The radar shows which repositories people are discussing right now on Hacker News, on
-Forem (dev.to) and on Bluesky, and on X and Instagram once Keith grants a credential for
-either ([`RADAR-SOCIAL.md`](RADAR-SOCIAL.md)). For each one it says whether The Source already holds it (canonical or in
-the corpus), already has it as a discovery candidate, or has not seen it before. It is a
-signal to look closer, not a recommendation. It never changes the canonical dataset, its
-version or `api/v1/`.
+[See community buzz on the website](https://the-source.dev/#radar) or [query it through MCP](MCP.md). The response distinguishes known projects from new discoveries and includes source status and measurement dates.
+
+Methodology `the-source.radar`, version `1.1.0`; configuration in `config/radar.yaml`, implementation in `source_pipeline/radar.py`, schema in `schema/the-source.radar.schema.json`. X and Instagram adapters require separate configuration and are not part of the active-source claim above. See [adapter availability](RADAR-SOCIAL.md).
 
 ## Sources, and why they are lawful to use
 
@@ -17,8 +13,8 @@ version or `api/v1/`.
 | Hacker News | The official API, `https://hacker-news.firebaseio.com/v0` ([docs](https://github.com/HackerNews/API)): "we're making the public Hacker News data available"; no key; "there is currently no rate limit". | The [Y Combinator terms](https://www.ycombinator.com/legal/) prohibit scraping and data mining of the *site* and access "through any means not intentionally made available". The API is the means YC made available. The radar never fetches an HTML page. | `showstories`, `beststories`, `topstories` (the first 150 ids of each), then each distinct story, at most 300 a day. |
 | Forem (dev.to) | The public Forem v1 API, `https://dev.to/api` ([docs](https://developers.forem.com/api/v1)): published-article endpoints need no key. | The [DEV terms](https://dev.to/terms) restrict copying and redisplaying the site's *materials* (articles). The radar uses the documented API and redisplays nothing an author wrote. | The most popular articles of the last 7 days for each of `opensource`, `selfhosted`, `showdev` and `github` (30 per tag), then the body of at most 60, read only to find repository links. |
 | Bluesky | The documented public search, `app.bsky.feed.searchPosts` on the public AppView ([endpoints.bsky.app](https://endpoints.bsky.app/): "Most `app.bsky.*` GETs are public and can be called without authentication"), with its `domain` filter; no key. | The AT Protocol is open and posts are public by design; the public AppView exists for exactly this kind of read. If the documented public host refuses the search method (it answered 403 on 2026-10-10), the AppView the Bluesky app itself uses is asked instead; nothing else is tried. | One page of up to 100 posts of the last 7 days that link `github.com`, most-liked first, for the query `github`. |
-| X | The X API v2 recent search, `GET /2/tweets/search/recent` ([docs](https://docs.x.com/x-api/posts/recent-search)), under a bearer token X issues. | X's [developer agreement and policy](https://docs.x.com/developer-terms/policy): use the API as documented, keep stored content current, redistribute only ids. Reads are pay-per-use ($0.005 a post), so this source stays `unconfigured` until Keith funds it ([`RADAR-SOCIAL.md`](RADAR-SOCIAL.md)). | One page of up to 100 posts for `url:"github.com" -is:retweet -is:reply`, a day. |
-| Instagram | The Instagram Platform hashtag endpoints, `ig_hashtag_search` and `/{hashtag-id}/top_media` ([docs](https://developers.facebook.com/docs/instagram-api/guides/hashtag-search)), under a token Meta issues for a professional account after App Review. | [Meta platform terms](https://developers.facebook.com/terms/): access as licensed, data kept only while needed. 30 hashtags per account per week. Stays `unconfigured` until Keith applies. | Up to 50 top posts for each of `opensource`, `github` and `selfhosted`, captions read in memory for links only. |
+| X | The X API v2 recent search, `GET /2/tweets/search/recent` ([docs](https://docs.x.com/x-api/posts/recent-search)), under a bearer token X issues. | X's [developer agreement and policy](https://docs.x.com/developer-terms/policy): use the API as documented, keep stored content current, redistribute only ids. Reads are pay-per-use ($0.005 a post), so this source stays `unconfigured` until provider access is configured ([`RADAR-SOCIAL.md`](RADAR-SOCIAL.md)). | One page of up to 100 posts for `url:"github.com" -is:retweet -is:reply`, a day. |
+| Instagram | The Instagram Platform hashtag endpoints, `ig_hashtag_search` and `/{hashtag-id}/top_media` ([docs](https://developers.facebook.com/docs/instagram-api/guides/hashtag-search)), under a token Meta issues for a professional account after App Review. | [Meta platform terms](https://developers.facebook.com/terms/): access as licensed, data kept only while needed. 30 hashtags per account per week. Stays `unconfigured` until provider access is configured. | Up to 50 top posts for each of `opensource`, `github` and `selfhosted`, captions read in memory for links only. |
 | GitHub | `GET /repos/{owner}/{name}`, authenticated with the cycle's `GITHUB_TOKEN`, under the same terms as the rest of the pipeline (`docs/BUILD-VS-INGEST.md`). | As for the light refresh: aggregate repository metadata only. | One call per linked github.com address not already resolved in the last 30 days, at most 60 a day. |
 
 **What is stored.** A mention keeps only these fields: the item id, the item's own
@@ -112,7 +108,7 @@ it counted, its own `points_per_day` when it has been observed more than once, a
    sources, signals and explanation. Repositories already canonical or in the corpus are
    observations, never candidates; `not_found` addresses are left out.
 
-6. **Stars for radar-only repositories (KEI-919).** A repository that is neither canonical
+6. **Stars for radar-only repositories .** A repository that is neither canonical
    nor in the corpus has no live facts anywhere else in The Source, so the radar reads its
    star count itself: after reconciliation, ONE batched GitHub GraphQL request per run
    (`repository(owner, name)`, which follows renames) for the radar-only github.com rows,
@@ -147,7 +143,7 @@ what a rank means.
 | Version | Date | Change |
 |---|---|---|
 | `1.0.0` | 2026-10-06 | First release: HN and Forem mentions, log engagement, 3-day half-life, 7-day window. |
-| `1.1.0` | 2026-10-10 | KEI-913: Bluesky, X and Instagram sources with their weights; velocity from kept observations; same-author cut; corroboration bonus per source, capped at three; the candidate list (`max_candidates` 30). Existing HN/Forem mentions carry no author and one observation, so their contributions are unchanged. |
+| `1.1.0` | 2026-10-10 | social adapter: Bluesky, X and Instagram sources with their weights; velocity from kept observations; same-author cut; corroboration bonus per source, capped at three; the candidate list (`max_candidates` 30). Existing HN/Forem mentions carry no author and one observation, so their contributions are unchanged. |
 
 ## Where it runs and how to read it
 
@@ -189,7 +185,7 @@ Once a successful cycle has produced it, its absence is a failure.
   between two daily runs can be missed. Forem coverage is four tags; Bluesky coverage is the
   100 most-liked posts of the week linking github.com for one query; Instagram, when
   configured, is three hashtags.
-- X and Instagram are `unconfigured` until Keith funds X or applies for Instagram access
+- X and Instagram are `unconfigured` until provider access is configured
   ([`RADAR-SOCIAL.md`](RADAR-SOCIAL.md)). Until then their adapters are proven only against
   their documented response shapes in the tests.
 - Velocity needs two observations of the same item, so a mention is never "rising" on the

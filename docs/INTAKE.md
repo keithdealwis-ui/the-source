@@ -1,24 +1,17 @@
-# Manual intake
+# Repository submissions for maintainers and integrations
 
-A second, on-demand way in for repositories found during the week. Examples: a repository
-Keith spots himself, or one first discussed with ChatGPT. It uses the same pipeline and
-lands in the same corpus as scheduled discovery. The rules are in
-[`INTAKE-POLICY.md`](INTAKE-POLICY.md).
+Found a project or a fact that needs attention? [Suggest it through support](https://the-source.dev/support/) or follow the [contribution guide](../CONTRIBUTING.md). You do not need access to an authenticated producer API to make a suggestion.
 
-Producers that submit routinely (GitWatch, Community Radar adapters, future community
-submissions) use the shared waiting room ([`WAITING-ROOM.md`](WAITING-ROOM.md)). It batches and
-deduplicates their submissions daily and then calls this same assessment.
+The reference below is for maintainers and approved integrations. Intake assesses submitted repositories through the same rules as scheduled discovery. A submission requests assessment; it does not approve a project or directly publish a recommendation.
 
-## The intended flow
+Routine producers use the shared [authenticated submission service](WAITING-ROOM.md). The reviewed [intake policy](INTAKE-POLICY.md) is pinned by hash and must be updated through its policy-review process.
 
-1. Keith pastes a repository URL into a conversation and reviews a preliminary
-   assessment. That assessment is advisory only.
-2. Keith says "add it". The tool submits the URL through the intake surface.
-3. The intake job assesses it and records one outcome.
-4. The tool reads the outcome back and reports it to Keith.
-5. If the outcome is `accepted`, the next daily cycle promotes the repository into the
-   canonical dataset. Its outcome record then shows `canonical.status: canonical` and the
-   run that promoted it.
+## Submission flow
+
+1. A contributor supplies a public repository URL and supporting context.
+2. An authorised maintainer or producer submits it to intake.
+3. The pipeline assesses the repository and records the outcome and reasons.
+4. The submitting integration reports that outcome. Accepted records still require normal cycle validation and promotion before publication.
 
 ## The surface
 
@@ -85,4 +78,4 @@ The checks run in this order, and the first failure decides the outcome.
   `not_promoted` (with the pipeline's reasons), `not_admitted`, or the lane of a
   rejected project
 
-That is enough for the submitting tool to tell Keith what happened, and why.
+That is enough for the submitting tool to report what happened, and why.

@@ -51,4 +51,4 @@ opt in, will never include page addresses, and this policy will be updated first
 
 ## Contact
 
-Keith de Alwis — issues at https://github.com/keithdealwis-ui/the-source/issues
+For questions or a private concern, contact Keith through [The Source support](https://the-source.dev/support/). Public bug reports can be filed in [GitHub issues](https://github.com/keithdealwis-ui/the-source/issues). This policy applies to the extension; the website has its own [privacy notice](https://the-source.dev/privacy/).

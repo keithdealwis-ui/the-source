@@ -1,11 +1,8 @@
-# Licence review of upstream sources
+# Upstream source licensing and reuse decisions
 
-Reviewed 2026-09-27 by claude-heavy under KEI-805. The machine-readable record, with
-full rationale and conditions, is `config/sources.yaml`.
+The Source checks the terms of upstream material before importing it. The machine-readable source decisions, conditions and licence-file hashes are in `config/sources.yaml`. Attribution is retained in the published notices.
 
-These are engineering readings of licence texts. They are not legal advice. The
-questions that need a human decision before anything is published are listed at the
-end.
+The source-specific readings below retain their original evidence; they are engineering records, not a new legal opinion or permission to reuse adjacent websites and APIs.
 
 ## Method
 
@@ -43,10 +40,6 @@ pricing, setup estimates, referral links, logos.
 | altstackHQ/altstack-data | Apache-2.0 file, CC BY 4.0 per README | allow with conditions | meet both licences' terms |
 | sfermigier/awesome-foss-alternatives | CC BY 4.0 | allow with conditions | attribution; state changes |
 
-The first five rows are the seeds named on the ticket. The last four were added
-because the seeds alone could not reach the launch targets once the quality bar was
-applied.
-
 ## Decisions — refused or not applicable
 
 | Target | Decision | Why |
@@ -68,12 +61,11 @@ applied.
 | Attribution and notices accompany an export | `export.py` writes `NOTICE.md` for every contributing source |
 | Share-alike material is not published under other terms | relationships whose only sources are share-alike are marked `share_alike_only` and withheld from an export by default |
 | A refused source contributes nothing | harvest skips it; export refuses if one appears |
-| Nothing is published by the pipeline | `export.py` writes to a local directory and records `published: false` |
+| Local export is separate from publication | `export.py` writes locally; the scheduled publication workflow promotes validated outputs |
 
-## Discovery corpus (KEI-912)
+## Discovery corpus
 
-`data/corpus/` publishes the Discover lane's corpus as facts ([CORPUS.md](CORPUS.md)). Keith
-approved it on 2026-10-10, gate `gate-KEI-912-dba84c8b`, option A:
+`data/corpus/` publishes discovery facts under the following boundaries ([corpus guide](CORPUS.md)):
 
 - **Curated lists.** Only lists with a recognised licence (MIT, Apache-2.0, CC0-1.0, CC-BY-4.0,
   BSD-3-Clause, Unlicense; `config/discover.yaml`) are read, and from them only the fact that a
@@ -82,43 +74,11 @@ approved it on 2026-10-10, gate `gate-KEI-912-dba84c8b`, option A:
 - **Host metadata.** Names, descriptions (truncated), homepages, topics, languages, licence
   identifiers, stars, forks, dates and release tags, as GitHub reports them for public
   repositories. Facts and short identifying metadata, signed off as such.
-- **Licence-issue projects.** About 1,400 projects whose licence The Source does not recognise
-  are published only as `discovery`, with the issue and a warning, and are never recommended or
-  offered as discovery candidates. This widens Keith's 2026-09-27 retention decision (KEI-805,
-  comment 258b38dd: "schema inclusion and flagged retention only; not recommendation, publication
-  or redistribution") to publication of the facts above, under the same no-recommendation rule.
+- **Licence-issue projects.** Unresolved licence records remain discovery entries with warnings. A separately reviewed exception can qualify a specific scope; eligibility and disclosures must be preserved. Counts and classifications are in the corpus manifest.
 - **Private seed list.** Not published. Routes from it appear only as `maintainer_seed`.
 
-## Open questions for Keith before any publication
+## Current publication responsibilities
 
-These do not affect the internal dataset. Each needs a decision before the data is
-shown publicly.
+Preserve the path-specific terms in [DATA-LICENCE.md](../DATA-LICENCE.md) and the required text in [NOTICE.md](../NOTICE.md) and [the canonical notice](../data/canonical/NOTICE.md). An upstream licence-file change requires review before the pin advances. Changes to exception eligibility require the normal policy review and regeneration; documentation edits do not grant new reuse rights.
 
-1. **Share-alike.** Some launch relationships rest only on awesome-selfhosted
-   (CC BY-SA 3.0). The count is reported, per run, in `summary.json` at
-   `launch.relationships_share_alike_only` and is not repeated here, so that this
-   document cannot disagree with the data. The export withholds them by default. The alternatives are to
-   publish that portion under CC BY-SA, or to corroborate those relationships from a
-   second source. Relationships that awesome-selfhosted shares with a permissive
-   source are exported on the permissive source alone.
-
-2. **Compilation rights.** We import facts, which copyright does not protect. A
-   curated list may still attract protection as a compilation, and in the UK and EU a
-   database right can apply to substantial extraction. Our extraction from each list
-   is partial and every fact is re-verified, but whether it is "substantial" is a legal
-   judgement. Worth a short legal review before launch.
-
-3. **altstack-data licence inconsistency.** Its LICENSE file is Apache-2.0; its README
-   says CC BY 4.0. Both permit reuse and we meet both. An issue asking the maintainers
-   to reconcile them would settle it; raising one is an external action and has not
-   been done.
-
-4. **Attribution placement.** Where and how attribution appears on the website is a
-   rendering decision outside this ticket. `NOTICE.md` holds the required text.
-
-5. **Licence exceptions.** Decided in part. Keith directed on 2026-09-27 (Linear
-   KEI-805, comment 258b38dd) that projects with licence issues are retained as
-   flagged, non-recommendable records. That is done: see the `licence_exception` lane.
-   Still open is whether any named project should be recommended despite its licence,
-   and how The Source should label it. Candidates, with category and reason, are in
-   `data/dataset/reports/licence_exception_candidates.json`.
+Source terms can cover compilation or database rights as well as individual content. Retain the recorded conditions, including any overlapping attribution obligations, and review new uses on their own terms.

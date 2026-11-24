@@ -11,8 +11,6 @@ Attribution to The Source: "The Source (github.com/keithdealwis-ui/the-source), 
 
 Material from upstream lists keeps the attribution its licence requires: see `NOTICE.md` and
 `data/canonical/NOTICE.md`. Imported facts are names, repository URLs, declared licence
-identifiers, category labels and relationship claims. No descriptions or other text are copied.
+identifiers, category labels and relationship claims. No descriptions or other text from those lists are copied. The discovery corpus separately includes truncated host-reported descriptions and identifying metadata; see [the corpus guide](docs/CORPUS.md).
 
-Approved for publication by Keith de Alwis, gate `gate-KEI-807-bfaf2354` (2026-09-30).
-`data/corpus/` (the discovery corpus: facts and host-reported metadata, no list text) was
-approved under gate `gate-KEI-912-dba84c8b` (2026-10-10); see `docs/CORPUS.md`.
+This table specifies the listed paths. For other layers, inspect their accompanying notices and source conditions before redistribution; do not assume that a project’s software licence is the licence of The Source’s dataset.

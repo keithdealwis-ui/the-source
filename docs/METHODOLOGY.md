@@ -1,180 +1,88 @@
-# Methodology
+# How The Source evaluates software alternatives
 
-How The Source decides what it recommends. The pipeline was built in stages: the data
-foundation (KEI-805), discovery (KEI-811), the knowledge graph (KEI-844), scoring (KEI-806),
-and the canonical repository with its cycle (weekly under KEI-807, daily since KEI-848) and intake. This document
-covers the rules every recommendation must pass. For the canonical dataset and read
-surface see `docs/READ-API.md`; for the daily cycle see `docs/OPERATIONS.md`; for manual
-intake see `docs/INTAKE.md`.
+The Source helps you judge whether a project deserves a place on your shortlist. A recommendation combines evidence about a specific product–project pairing with checks on maintenance, licensing and project identity. This guide explains those checks and their limits.
 
-Nothing an upstream list says about a project's licence, archive state or activity is
-trusted. Each repository is asked directly through its host's API, and stars never decide
-anything.
+[Explore alternatives](https://the-source.dev/#explore) · [Ask through MCP](MCP.md) · [Understand the scores](SCORING.md)
 
-## What the pipeline does
+## Discovery, assessment and recommendation
 
+The [discovery catalogue](CORPUS.md) is the broad starting point: public projects with identifying facts, evidence dates and explicit warnings. Discovery entries may have [quick scores](QUICK-SCORING.md). These are lightweight indicators, not full assessments or recommendations.
 
-| Stage | Module | Reads | Writes |
-|---|---|---|---|
-| Harvest | `harvest.py`, `parsers.py` | `config/sources.yaml`, upstream repos at pinned commits | `data/staging/claims.jsonl` |
-| Normalise and reconcile | `normalise.py` | claims, `config/saas_catalogue.yaml`, `config/repo_overrides.yaml` | in memory |
-| Verify live | `enrich.py` | GitHub, GitLab and Codeberg APIs | `data/live/snapshot.json` |
-| Classify and select | `build.py`, `activity.py`, `licence_detect.py` | snapshot, `config/policy.yaml`, `config/licence_exceptions.yaml` | `data/dataset/` |
-| Validate | `validate.py` | dataset, schema | `data/dataset/reports/validation_report.json` |
-| Export guard | `export.py` | dataset | a local directory; publishes nothing |
+The canonical layer contains projects and product–project relationships that have gone through deeper evaluation. A project can be assessed without any of its relationships qualifying as recommended. A recommendation applies to a particular replacement task; it is not a universal endorsement of the project.
 
-Harvest fails closed: each upstream is pinned to a commit **and** to the SHA-256 of the
-licence file its reuse decision was made about. If the licence file changes, that
-source is not parsed until the decision is reviewed again.
+The MCP server labels results `discovery`, `scored` or `recommended`. Preserve those labels and the distinction between quick scores and full assessments when displaying results.
+
+## Where candidate alternatives come from
+
+Candidates can be identified by a licence-cleared upstream list, a project's own description of what it replaces, or a documented match between the job a product does and the project's capabilities.
+
+| Evidence | Meaning |
+|---|---|
+| Listed | An upstream source names the product–project pairing. |
+| Self-described | The project's own repository describes it as an alternative. |
+| Job-matched | Recorded capability evidence suggests the project does the category's job. This is not an independent listing or corroboration. |
+
+Upstream claims do not establish current maintenance or licensing. Those facts are checked against the project's own repository host. See [provenance](../PROVENANCE.md) and [job matching](JOB-MATCH.md).
 
 ## The quality bar
 
-Declared in `config/policy.yaml`. A project is recommended only if all of these hold,
-each established by asking the repository host directly:
+The executable policy is in `config/policy.yaml`. Eligibility checks include:
 
-- it exists, and is not archived, disabled or empty;
-- it carries a recognised open-source licence (OSI-approved SPDX identifier), or has a
-  licence exception approved by a named human;
-- it shows **meaningful activity** within 12 months, which is one of:
-  - a commit or merged pull request, made by a person, that touches at least one
-    path that is neither documentation nor housekeeping;
-  - a published release or a tag whose name is a version and which ships more than
-    documentation, judged from what changed since the previous version;
-- the repository is still the project it was listed as. One that has since been
-  renamed into something its listings never described is excluded.
+- The repository exists and is not archived, disabled, empty or repurposed.
+- Its licensing is recognised, or a reviewed exception permits the specific scope with a disclosure.
+- It has meaningful activity within the policy's maintained window, currently 365 days.
+- The claimed replacement relationship has sufficient evidence and survives the evaluation rules.
 
-What does not count:
+Meaningful activity can be a human code change or merged pull request, a qualifying release, or a version tag supported by relevant changes. Documentation-only changes, housekeeping, automation and floating tags do not by themselves establish maintenance. The observation bounds inspect recent commits and merged pull requests, so evidence outside those bounds may remain unknown.
 
-| Not counted | Examples |
-|---|---|
-| Documentation | README, changelog, docs directories, images, translations |
-| Housekeeping | CI definitions, dependency manifests, lockfiles, editor and lint configuration |
-| Automation | commits and pull requests by dependency, CI, release and translation bots |
-| Floating tags | `nightly`, `latest`, `stable` |
-| Closed issues | recorded as a supporting signal only |
+`active` means meaningful activity within 90 days; `maintained` means within 365 days. The dates and basis travel with the assessment. A historical observation is not a guarantee of current status.
 
-Live verification inspects the 15 newest commits and 10 most recently updated merged
-pull requests. A project whose newest activity is all automation and whose code
-changes lie deeper than that is judged on its releases alone.
+## Licensing and editions
 
-| Class | Meaning |
-|---|---|
-| `active` | meaningful activity within 90 days |
-| `maintained` | meaningful activity within 12 months |
-| `stale` | none within 12 months; not recommended |
+Open-source, open-core and source-available are different licensing situations. Retained discovery records may also have missing, restricted or unclear licences; retaining a record does not establish reuse rights.
 
-**Stars decide nothing.** They are stored as a live field and are not an input to
-eligibility, to edge validation, or to any ordering in the launch selection.
+Reviewed exceptions and edition checks can qualify a specific open-core or source-available scope. Recommendations must preserve the associated licence disclosure. A capability available only in an excluded edition must not be presented as part of the eligible core. [Edition checks](LICENCE-EDITION-CHECK.md) describe the evidence and limits; [source licensing](LICENCE-REVIEW.md) describes reuse of upstream information.
 
-## The three lanes
+## Scores answer separate questions
 
-Every project and every relationship is in exactly one lane.
+**Project Health** describes maintenance and other project signals. **Replacement Fit** assesses a particular product–project pairing. **Evidence Confidence** describes the evidence behind an assessment. They should not be combined into a single verdict.
 
-| Lane | Meaning | Recommendation-eligible | In launch set or export |
-|---|---|---|---|
-| `recommendable` | passed every rule | yes | may be |
-| `licence_exception` | the ONLY shortcoming is the licence: open-core, source-available, restricted, missing, conflicting or unrecognised | no | never |
-| `rejected` | archived, stale, missing, repurposed, or implausible | no | never |
+Fit considers the core job, feature evidence, adoption, deployment, migration signals, integrations and other documented factors. Missing evidence remains unknown. Caps apply where the core job is unproven, features are explicitly out of scope or supporting evidence is limited. Scores and caps retain their explanations.
 
-Keith directed (Linear KEI-805, comment 258b38dd) that licence-issue projects are kept
-as flagged records rather than discarded. Each carries `derived.licence.issue`: the
-category, the exact reason, what was detected, what upstream lists claimed, the
-evidence and the review status. Keeping a record establishes no right to reuse it, and
-every one is marked `reuse_rights_established: false`.
+Popularity alone does not qualify a recommendation. Stars are used in some health and quick-score indicators and as a read-surface tie-breaker; repository momentum measures attention separately. Neither a large star count nor a surge proves suitability.
 
-One project is moved from this lane into recommendations only by a named entry in
-`config/licence_exceptions.yaml` with a human approver. None has been made.
+## Recommendation rules
 
-The lane is counted apart from the recommendable corpus and from the launch set, in
-`summary.json` under `licence_exception_lane` and `lanes`.
+A recommended relationship must be exportable, fully scored, publishable and a credible alternative. The enabled recommendation gate also applies evidence-specific minimum Replacement Fit scores:
 
-## What "validated" means, and what it does not
+| Evidence behind the pairing | Minimum fit |
+|---|---:|
+| Corroborated by independent listing sources | 60 |
+| A single listing source or self-described replacement | 65 |
+| Job-matched evidence only | 75 |
 
-A relationship is `validated` when all of these hold:
+These are policy thresholds, not probabilities of success. The live rules are `config/policy.yaml` → `recommendation_gate` and `config/scoring.yaml`. The [canonical manifest](../data/canonical/MANIFEST.json) reports how many evaluated relationships pass and why others fail.
 
-- it has provenance from at least one licence-cleared source;
-- it names a SaaS product in the reviewed catalogue;
-- it points at a project that passed live verification and the quality bar;
-- it was left standing by a desk review of plausibility. Every relationship that passed
-  the first three was read, and those where the project is plainly a different kind
-  of software were rejected with a reason (`config/edge_review.yaml`).
+`validated` means a relationship passed its evidence and quality checks. It does not mean someone tested the software, nor does it automatically make the relationship a recommendation. [Rejection records](REJECTIONS.md) explain excluded cases.
 
-It does **not** mean anyone has tested how well the project replaces the product.
-Fitness is scored separately (Replacement Fit, KEI-806); see `docs/SCORING.md`. Relationships stated by two or more
-independent sources are marked `corroborated`; the rest rest on a single upstream's
-word.
+## What gets published
 
-## Launch selection
+The canonical build produces the [read API](READ-API.md), project records and relationships. The current policy combines ranked selection with enabled catalogue serving and preservation of previously served valid relationships. Budgets and per-product limits are declared in `config/policy.yaml`; the original launch target is not the full current coverage.
 
-1. Rank SaaS products by the number of independent sources naming them, then by number
-   of validated alternatives, then by name.
-2. Take the first 100. **100 is a floor** (strategy decision `dr-KEI-805-507e4f70`): the
-   same ranking then continues, one product at a time, only until the launch set holds
-   250 distinct OSS projects, and never past 400 relationships.
-3. For each SaaS product, order alternatives by number of independent sources, then by
-   most recent meaningful activity, then by id. A product with several repositories is
-   listed once.
-4. Cap alternatives per SaaS at the largest number that keeps the total within 400.
+The catalogue distinguishes `ok` (at least three qualifying recommendations), `partial` (one or two) and `none_yet`. Clients must show the available evidence rather than fill a short list with weaker candidates. [Product coverage](CATALOGUE.md) explains these states.
 
-Nothing in the ranking is skipped or promoted to reach a number; a validation check
-confirms the launch set is exactly the first N of the ranking. The SaaS products added
-beyond the first 100 are less well attested, and `summary.json` reports how many of the
-launch products are named by a single source.
+## Freshness and validation
 
-## Layout
+The scheduled daily cycle refreshes observations and rebuilds the recommendation layer. The larger discovery catalogue has a separate refresh schedule. Fields can have different observation dates; the dataset's publication time is not the age of every fact.
 
-```
-config/     sources + licence decisions, policy, SaaS catalogue, overrides, exceptions
-schema/     the-source.schema.json (JSON Schema 2020-12)
-source_pipeline/   the pipeline
-tests/      test suite
-raw/        upstream checkouts at pinned commits (third-party material; do not publish)
-data/staging/   raw claims
-data/live/      dated snapshot of live observations
-data/dataset/   the canonical dataset, MANIFEST.json, reports/
-docs/       SCHEMA.md, LICENCE-REVIEW.md, ACCEPTANCE.md
-NOTICE.md   third-party attributions
-```
+Builds check schemas, hashes, counts, provenance, eligibility and reproducibility. The MCP service verifies published layers before serving them and reports stale or unavailable layers. When an update cannot be verified, the last valid snapshot can remain available with its status disclosed. See [operations](OPERATIONS.md) and [MCP verification](MCP-REFERENCE.md#guarantees).
 
-## The Discover lane (KEI-811)
+## What the evidence cannot promise
 
-Beyond the replacement mappings above (the **Replace** lane), a second pipeline builds a
-broad **Discover** corpus: useful open-source projects found from Keith's seed corpus by
-bounded, recorded strategies, judged by this same quality bar, with no SaaS mapping
-required. It reads `data/dataset/` and never writes it. See `docs/DISCOVER.md`;
-criterion-by-criterion evidence in `docs/DISCOVER-ACCEPTANCE.md`.
+Assessments are machine-derived from public evidence, not hands-on product reviews, security audits or guarantees of feature parity. Migration effort, operating costs, implementation quality and suitability for a particular team may need additional investigation.
 
-```bash
-.venv/bin/python -m source_pipeline discover-harvest   # network
-.venv/bin/python -m source_pipeline discover-verify    # network, hours; resumable with --only-failed
-.venv/bin/python -m source_pipeline discover-build     # offline, deterministic
-```
+Keep unknown values, `not_evaluated` requirements, caps, licensing disclosures and dates visible. Inspect the project's own documentation and test the workflow before depending on it.
 
-## Scoring (KEI-806)
+## Improve an assessment
 
-Three separate outputs per project, never blended: **Project Health** (every retained
-project), **Replacement Fit** (only where a `REPLACES` edge exists, per SaaS product) and
-**Evidence Confidence** beside each. Keith's approved rubric lives in `config/scoring.yaml`
-and the category job definitions in `config/saas_jobs.yaml`. Automatic scoring is never
-presented as Keith-tested or endorsed. Method in `docs/SCORING.md`; criterion-by-criterion
-evidence in `docs/SCORING-ACCEPTANCE.md`.
-
-```bash
-.venv/bin/python -m source_pipeline score-harvest            # network, read-only GraphQL; resumable
-.venv/bin/python -m source_pipeline score-harvest --refresh  # weekly: re-observe under a new as_of (history appends)
-.venv/bin/python -m source_pipeline score-build              # offline: signals -> scores -> history -> validate
-```
-
-## Changing things
-
-| To | Edit | Then |
-|---|---|---|
-| add an upstream list | `config/sources.yaml` (pin commit, hash the licence file, record the decision), add a parser, add the id to the schema enum | `run` |
-| move an upstream to a newer commit | `pinned_commit`; re-hash and re-read the licence file | `run` |
-| admit a SaaS product | `config/saas_catalogue.yaml` | `run --offline` |
-| change the quality bar | `config/policy.yaml` | `run` (a live run is required) |
-| reject an implausible relationship | `config/edge_review.yaml` | `run --offline` |
-| admit a project despite its licence | `config/licence_exceptions.yaml`, with a human approver and a reference | `run --offline` |
-| refresh live facts | nothing | `run` |
-| change the scoring rubric | `config/scoring.yaml` (bump `version`) | `score-build` (rescores stored signals; no re-harvest) |
-| refresh scoring evidence | nothing | `score-harvest --refresh`, then `score-build` |
+[Report a correction](../CONTRIBUTING.md) with the affected product/project, the claim and a supporting source. Maintainers update the relevant evidence or rule and regenerate the data; they do not fix a recurring problem by editing a generated result alone.

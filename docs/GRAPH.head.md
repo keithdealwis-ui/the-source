@@ -1,11 +1,10 @@
-# The Source — knowledge graph and retrieval model (KEI-844)
+# Knowledge graph and retrieval model
 
-**Status: internal. Nothing here is published, recommended or endorsed.** Graph membership
-and edges are evidence about projects, not verdicts on them.
+The knowledge graph connects projects, products, capabilities, technologies and evidence. It supports retrieval and scoring while preserving the distinction between a discovered relationship and an assessed recommendation.
 
-The graph sits between discovery and scoring. KEI-811 discovers and normalises the universe
-(`data/discover/corpus/`); this layer resolves entities and relationships over it
-(`data/graph/`); KEI-806 scores against the result (`data/graph/views/scoring_inputs.jsonl`).
+This is a developer reference for the internal graph build, not a separate public query endpoint. Use the [MCP server](MCP.md) or [read API](READ-API.md) for public access. Graph membership does not imply endorsement.
+
+The build reads the discovery corpus, resolves identities and relationships, and produces graph views for retrieval and scoring.
 
 ## Run it
 
@@ -25,10 +24,10 @@ inputs give the same bytes (`rebuild_is_byte_identical` checks this on every val
 
 | Input | What it contributes |
 |---|---|
-| `data/discover/corpus/` (KEI-811) | retained projects, owners, topics, languages, list memberships, README links |
+| `data/discover/corpus/`  | retained projects, owners, topics, languages, list memberships, README links |
 | `data/discover/history/observations.jsonl` | append-only observations, one per verify run |
-| `data/dataset/` (KEI-805) | the reviewed SaaS catalogue and validated SaaS↔OSS claims |
-| `data/live/snapshot.json` (KEI-805) | an earlier observation of every Replace-lane project |
+| `data/dataset/`  | the reviewed SaaS catalogue and validated SaaS↔OSS claims |
+| `data/live/snapshot.json`  | an earlier observation of every Replace-lane project |
 | `config/graph_ontology.yaml` | the reviewed vocabulary that turns topics, languages and keywords into concepts |
 
 The two upstream datasets are read, never written. Validation checks both still match their
@@ -44,7 +43,7 @@ own manifests.
 | `identity.jsonl` | every alias key and the entity it resolves to, with the reason |
 | `excluded_claims.jsonl` | claims seen and deliberately not made into edges, with the reason |
 | `retrieval/documents.jsonl`, `retrieval/model.json` | the hybrid-retrieval representation |
-| `views/scoring_inputs.jsonl` | the per-project view KEI-806 consumes |
+| `views/scoring_inputs.jsonl` | the per-project view scoring consumes |
 | `export/property_graph/` | the same graph as property-graph CSV (a storage adapter, not an input) |
 | `reports/query_results.json`, `reports/validation_report.json` | the query suite and acceptance checks |
 | `summary.json`, `MANIFEST.json` | counts, pinned input digests, and a SHA-256 of every file |
@@ -55,7 +54,7 @@ One real-world thing is one entity. Every alias that resolves into an entity is 
 `identity.jsonl`, and the build refuses to finish if one alias would resolve to two entities.
 
 - **Projects** keep the corpus id (`github:<numeric host id>`), which survives renames and
-  transfers. Every address a project was ever listed under, and its KEI-805 `oss_id`, is an
+  transfers. Every address a project was ever listed under, and its evaluation `oss_id`, is an
   alias. The same owner/name on two hosts (a mirror) is one project; the record with the
   numeric host id is kept and the other becomes its alias.
 - **Organisations and maintainers** are host accounts, case-insensitive
@@ -76,7 +75,7 @@ relied on. `graph_build.resolve_ref()` returns that record, and validation resol
 ref in the graph.
 
 `assertion` is `explicit` when a named source stated the fact (the host API, a curated list
-at a pinned commit, a validated KEI-805 claim), and `inferred` when a documented rule derived
+at a pinned commit, a validated evaluation claim), and `inferred` when a documented rule derived
 it. An inferred edge always has confidence below 1.0 and names its rule or ontology entry.
 When several routes support one edge, all of them are kept as evidence, and the edge takes the
 strongest assertion and the highest confidence.
@@ -88,7 +87,7 @@ is not inspected; an unrecognised licence produces no `LICENSED_UNDER`.
 
 ## Replace and Discover lanes
 
-`REPLACES` comes only from KEI-805 claims whose validation status is `validated` or
+`REPLACES` comes only from evaluation claims whose validation status is `validated` or
 `flagged_licence_exception`. The 158 rejected claims are listed in `excluded_claims.jsonl`.
 Every project records its lanes. A Discover-only project has no `REPLACES` edge, and nothing in
 the build creates one: the semantic layer can surface Discover projects that look like
@@ -96,8 +95,8 @@ alternatives (query q24) without writing an edge.
 
 ## Longitudinal observations
 
-`observations.jsonl` holds one row per project per observation time, from KEI-811's
-append-only history and KEI-805's earlier snapshot. Each project's `trend` summarises its
+`observations.jsonl` holds one row per project per observation time, from discovery's
+append-only history and evaluation's earlier snapshot. Each project's `trend` summarises its
 series. A trend is reported only when there are at least two observations at least
 28 days apart. Until then its status is `insufficient_history`: the model supports trend
 questions, but the current data cannot yet answer them, and they are not answered.
@@ -130,10 +129,10 @@ The canonical form is the three JSONL files above, validated by
 validation reads it back and checks the round trip is exact. Moving to a graph database or a
 vector index means writing another adapter. The canonical Source schema does not change.
 
-## For KEI-806 scoring
+## Scoring inputs
 
 `views/scoring_inputs.jsonl` holds one row per project: lanes, licence, maintenance, the
-observation series and trend, and, with confidence and edge ids, its `REPLACES` (with KEI-805
+observation series and trend, and, with confidence and edge ids, its `REPLACES` (with evaluation
 status and licence lane), `INTEGRATES_WITH`, capabilities, use cases, technologies, categories,
 owner, maintainers and nearest similar projects. `replacement_fit_applicable` is true only
 when a `REPLACES` edge exists. Nothing is marked endorsed.

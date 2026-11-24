@@ -1,55 +1,36 @@
-# Contributing
+# Contribute to The Source
 
-The Source is curated by rules, not by hand. Most changes are to a rule or a reviewed
-list in `config/`. Hand-editing the data is never the way in: CI rebuilds everything
-from the committed inputs and fails if the committed data differs.
+Help people find better software by suggesting projects, correcting evidence or improving the tools behind The Source.
 
-## Suggest a repository
+## Suggest a project
 
-Use the intake surface (`docs/INTAKE.md`). A suggestion is judged by the same pipeline as
-everything else. A repository qualifies only if it passes the quality bar and its own
-repository states which catalogued SaaS product it replaces.
+[Send a suggestion](https://the-source.dev/support/) with the public repository URL and a short explanation of what the project does. If it could replace a paid product, name that product and link to evidence of the relevant capabilities.
 
-## Report a wrong recommendation
+You can also [open a public issue](https://github.com/keithdealwis-ui/the-source/issues). Please keep private information out of issues.
 
-Open an issue with the SaaS product, the project, and what is wrong. Most fixes land in one of:
+Suggestions enter the same assessment process as other discoveries. A suggestion does not guarantee inclusion or a recommendation. Maintainers and approved integrations can use the [authenticated intake workflow](docs/INTAKE.md).
 
-| Problem | Where it is fixed |
-|---|---|
-| The project is not really an alternative to that product | `config/edge_review.yaml` (a reasoned rejection) |
-| The product is missing, or is not a hosted SaaS product | `config/saas_catalogue.yaml` |
-| A project is listed under the wrong repository, or was renamed | `config/repo_overrides.yaml` |
-| A licence reading is wrong | `config/licence_exceptions.yaml` (needs a named human approver) |
-| The quality bar itself | `config/policy.yaml` (a policy change forces a full live refresh) |
-| A score looks wrong | `config/scoring.yaml` or `config/saas_jobs.yaml` (bump `version`; history is append-only) |
-| A product should or should not be served to the extension and site | `config/supported_saas.yaml` |
+## Correct a fact or recommendation
 
-## Add an upstream list
+Include the project and product names, a link to the affected result, what needs changing, and a source that supports the correction. Useful reports include licence changes, repository moves, outdated maintenance information and claims about replacement capabilities.
 
-1. Read its licence file at a specific commit, not the badge. Record the decision,
-   rationale and conditions in `config/sources.yaml`, pinned to the commit and to the
-   licence file's SHA-256. Add a row to `docs/LICENCE-REVIEW.md`.
-2. Add a parser in `source_pipeline/parsers.py` and the id to the `source_id` enum in
-   `schema/the-source.schema.json`.
-3. Run a cycle (`python -m source_pipeline cycle --trigger local`) and open a pull request.
+You do not need to understand the pipeline or edit generated data to report a problem.
 
-Lists without a licence that permits reuse are refused. Scraping a website in place of a
-list is refused.
+## Improve the documentation or code
 
-## Before you open a pull request
+Documentation improvements are welcome. For code or policy changes, explain the problem, the intended behaviour and how you checked it. The maintained rules and source inputs generate the published data; editing an output file alone will not fix the next build.
 
-```bash
-.venv/bin/python -m source_pipeline build
-.venv/bin/python -m source_pipeline canonical-build
-.venv/bin/python -m pytest tests/test_canonical.py -q
-```
+Use the [developer guide](docs/DEVELOPMENT.md) for setup, build commands and checks. Consult the [schema reference](docs/SCHEMA.md) before changing a data contract.
 
-Commit the regenerated `data/` and `api/` with the change that caused them. CI runs the
-same steps with the network refused, and fails on any difference.
+## Propose another source of projects
 
-## Ground rules
+Include the source URL, its licence, and what it would add to the catalogue. Upstream material must permit the intended reuse and retain its required attribution. The [source licence review](docs/LICENCE-REVIEW.md) explains the criteria.
 
-- Stars never decide anything.
-- Imported facts are never presented as verified; live facts always carry when they were checked.
-- Nothing is recommended on anyone's say-so. A human or chatbot assessment is advisory.
-- Scores are automatic and are never presented as a personal endorsement.
+## Keep the evidence clear
+
+- Preserve the distinction between discovered, assessed and recommended projects.
+- Retain evidence dates, unknown values, licence disclosures and attribution.
+- Popularity alone does not qualify a project for recommendation.
+- Automated scores are not personal endorsements or hands-on reviews.
+
+For a security concern or private request, [contact Keith privately](https://the-source.dev/support/). For product discovery, [explore the website](https://the-source.dev/) or [connect an AI assistant](https://the-source.dev/agents/#setup).

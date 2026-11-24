@@ -23,6 +23,11 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
 
+      - name: Documentation links and coverage rendering
+        run: |
+          python scripts/check_docs.py
+          python -m pytest tests/test_readme_stats.py -q
+
       - name: Rebuild the dataset from committed claims and live snapshot (no network)
         env:
           THE_SOURCE_NO_NETWORK: "1"

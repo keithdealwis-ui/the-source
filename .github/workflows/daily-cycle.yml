@@ -116,7 +116,10 @@ jobs:
           git config user.name "the-source-cycle"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add runs/
-          if [ "$STATUS" = "succeeded" ]; then git add data api; fi
+          if [ "$STATUS" = "succeeded" ]; then
+            python scripts/refresh_readme_stats.py
+            git add data api README.md
+          fi
           git commit -m "cycle: $RUN $STATUS (dataset $VERSION)" || echo "nothing to commit"
           for i in 1 2 3 4 5; do
             git pull --rebase origin "$BRANCH" && git push origin "HEAD:$BRANCH" && break

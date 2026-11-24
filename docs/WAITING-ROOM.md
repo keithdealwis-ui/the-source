@@ -1,14 +1,10 @@
-# The waiting room
+# Authenticated producer submissions
 
-Shared, authenticated intake for every producer that finds repositories for The Source
-(KEI-932). GitWatch in ChatGPT, the Community Radar adapters (YouTube, X, Instagram, Bluesky),
-a future "Submit your project" form, and any other approved producer all use the same
-boundary. They do not each get their own queue.
+This service lets approved producers submit public repositories for assessment through a shared queue. It validates and deduplicates submissions before the normal intake and daily publication process.
 
-A submission is a **request for assessment**. It is never a recommendation, an endorsement, a
-trending claim or a direct write to the corpus. Every repository is judged by the existing
-intake assessment ([`INTAKE.md`](INTAKE.md)) and promoted by the daily cycle, which applies the
-same rules as scheduled discovery.
+It is separate from the public, read-only [MCP service](MCP.md). A submission does not create a recommendation or write directly to the published corpus. Public contributors should use [support](https://the-source.dev/support/) or [the contribution guide](../CONTRIBUTING.md).
+
+The reference below covers producer authentication, endpoints, outcomes and operations. Endpoint names here belong to the submission service; they should not be replaced with the public MCP URL.
 
 ## How it fits
 
@@ -29,10 +25,10 @@ What is reused, not rebuilt:
 - Identity and dedupe: the pipeline's own `repo_key` rules, checked against the corpus
   (`data/corpus`), the canonical dataset, the Replace-lane dataset and the intake ledger.
 - Eligibility, licence, activity and quick scoring: `intake.assess` (single-project scoring
-  path) and the cycle's corpus admission controls (KEI-919, KEI-921, KEI-923).
+  path) and the cycle's corpus admission controls .
 - Relationship evidence and canonical matching: the intake's catalogue matching. The cycle's
   reconciliation then sets `canonical.status` on each outcome.
-- Momentum and Community Radar signals (KEI-849, KEI-850): these attach to the repository once
+- Momentum and Community Radar signals : these attach to the repository once
   the cycle holds it, as for any other corpus member.
 
 ## The contract: `source-submission/1`
@@ -170,13 +166,13 @@ create a small "GitWatch" custom GPT for submitting (Explore GPTs → Create →
    enter
    `https://source-mcp.de-alwis.com/intake/v1/openapi.json`.
 2. For authentication, choose **API key → Bearer** and paste the `gitwatch` credential.
-3. Add this instruction: *"When Keith says 'add it' about a repository, call submitRepository
+3. Add this instruction: *"When the authorised user explicitly requests submission about a repository, call submitRepository
    with contract source-submission/1, provider chatgpt, observed_at now, and an
    idempotency_key of gitwatch-<date>-<short id>. Report the repository state and corpus
    record that come back. Never describe a submission as a recommendation. Next day, use
    getSubmission for the result."*
 
-The conversational assessment Keith reviews before saying "add it" is still advisory only, as
+A conversational assessment reviewed before submission is still advisory only, as
 in [`INTAKE.md`](INTAKE.md).
 
 ### GitWatch as a ChatGPT connector (MCP)
@@ -186,12 +182,12 @@ GitWatch can also reach the waiting room as a remote MCP connector instead of a 
 `getSubmission` (`source_pipeline/gitwatch_mcp.py`, deployed by
 `deploy/the-source-gitwatch-mcp/install.sh` on 127.0.0.1:8853).
 
-- **Access** is OAuth 2.1 for Keith alone: authorization code with PKCE (S256), rotating refresh
+- **Access** is OAuth 2.1 restricted to the authorised owner: authorization code with PKCE (S256), rotating refresh
   tokens (connections re-authorise at least every 90 days), dynamic registration limited to
   ChatGPT's callback addresses, and metadata at
   `/.well-known/oauth-protected-resource/gitwatch/mcp` and
   `/.well-known/oauth-authorization-server/gitwatch` only (never at the host root, so the
-  anonymous `/mcp` is unaffected). Keith approves a connection with a passphrase; the server holds
+  anonymous `/mcp` is unaffected). The authorised owner approves a connection with a passphrase; the server holds
   only its scrypt hash. Tokens are opaque, bound to this resource, and useless anywhere else;
   tokens from other issuers (OpenSEO's included) are unknown here.
 - **The producer credential** is the `gitwatch` one, held root-only at
@@ -205,7 +201,7 @@ GitWatch can also reach the waiting room as a remote MCP connector instead of a 
 ### Adding a new producer
 
 Add the producer, give it a credential, and use the contract. No code change is needed. A
-public community form (KEI-933) would be a producer of its own, sitting behind its own
+public community form  would be a producer of its own, sitting behind its own
 anti-abuse front end. It is never an unauthenticated route to this endpoint.
 
 ## Operations

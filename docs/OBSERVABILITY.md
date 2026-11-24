@@ -1,22 +1,10 @@
-# Observability (KEI-918, The Source V2.1 WP1)
+# Monitoring data freshness, quality and service health
 
-This file covers how to see what the daily cycle took in, what went wrong, how good the
-retrieval answers are, how the hosted MCP is used, and where every published dataset came from.
-It has six parts, S0.1 to S0.6.
+Inspect what a cycle processed, diagnose failures, measure retrieval quality and trace the origin of a published dataset. This maintainer guide also describes the hosted MCP service's aggregate telemetry and retention.
 
-| | What | Command | Where it lives |
-|---|---|---|---|
-| S0.1 | Intake report per run | `obs-intake-report [--run ID] [--write]` | `runs/reports/<run_id>.intake.json`, written by every cycle |
-| S0.2 | Failure fingerprints and alerts | `obs-alerts [--run ID]`, `obs-fingerprints` | one GitHub issue per fingerprint, via the daily-cycle workflow |
-| S0.3 | `last_run` in `source_dataset_info` | MCP tool `source_dataset_info` | read from `runs/*.json` |
-| S0.4 | Golden queries: recall@5, precision@5, constraint violations | `obs-golden` | `config/golden_queries.yaml`, `observability/golden-baseline.json`, CI and cycle step 14 |
-| S0.5 | Privacy-preserving MCP telemetry and weekly reports | `obs-telemetry-report` | `/var/lib/the-source-mcp/` on the MCP host only |
-| S0.6 | Reproducible lineage; catalogue reconciliation | `obs-lineage history\|verify\|reconcile` | computed from git, nothing stored |
+For users, `source_dataset_info` reports freshness and the served snapshot. [Support](https://the-source.dev/support/) explains what to include when reporting a problem. The sections below preserve the operational commands and record formats.
 
-All commands are `python -m source_pipeline <command>`. None of them uses the network, and
-only the cycle's report writer changes any file.
-
-## S0.1 Intake reports
+## Intake reports
 
 Each cycle writes `runs/reports/<run_id>.intake.json` (schema `the-source.intake-report/1`)
 next to its run record, and the workflow commits both. The report follows the run's material
@@ -56,7 +44,7 @@ Verified live: `runs/reports/2026-10-17-schedule-a1.intake.json`, for dataset
 - 358 relationships in the launch set
 - 333 exported, the same 333 canonical (25 withheld as share-alike-only)
 
-## S0.2 Failure fingerprints and alerts
+## Failure fingerprints and alerts
 
 Each failure signal in a run record gets a fingerprint. A signal is one of:
 
@@ -105,11 +93,11 @@ the SaaS catalogue from the next cycle. Older records do not have that count. Re
 2026-10-14 cycle (117 → 107 products), the rule therefore raises nothing: projects did not move,
 and relationships fell only 348 → 337 (3%). For past drops, use `obs-lineage reconcile` (S0.6).
 
-## S0.3 `last_run` in `source_dataset_info`
+## `last_run` in `source_dataset_info`
 
 `source_dataset_info` now carries `last_run`:
 
-- the newest run record, using the KEI-887 rule (latest end; a running record counts by its
+- the newest run record, using the latest-record rule (latest end; a running record counts by its
   start), with:
   - its status, times, error (truncated to 300 characters) and `failed_step`
   - the dataset versions before and after the run
@@ -128,7 +116,7 @@ The records are the public `runs/*.json` committed to `main`. The hosted server'
 clone gains `runs` (`deploy/the-source-mcp/install.sh`). A read layer without `runs/` still
 serves, with `last_run.status: unavailable`.
 
-## S0.4 Golden queries
+## Golden queries
 
 `config/golden_queries.yaml` holds 48 real tool calls:
 
@@ -157,25 +145,7 @@ serves, with `last_run.status: unavailable`.
 
 The target is zero violations.
 
-**Baseline** (dataset `02568a5dd656e3a8`, `observability/golden-baseline.json`):
-
-| | Queries | recall@5 | precision@5 |
-|---|---|---|---|
-| All | 48 (46 measured, 2 must-fail) | **0.714** | **0.778** |
-| `source_get_alternatives` | 28 | 0.738 | 0.836 |
-| `source_recommend` | 15 | 0.664 | 0.719 |
-| `source_search` | 3 | 0.722 | 0.533 |
-
-Constraint violations: **0**. Must-fail queries passed: 2/2.
-
-The weakest answers point to work for the ranking and the catalogue (each to be its own ticket):
-
-- **Notion, three ways (0.2 / 0.2).** By name, by URL and as "a workspace wiki like Notion",
-  the top rows are Folio Wiki, Dexio and Notabase rather than AppFlowy, SiYuan or Logseq.
-- **"Self-hosted password manager for a team" (precision 0.25).** It returns Jitsi Meet and
-  Zulip before Passbolt.
-- **Recommendation coverage.** Vaultwarden is not a recommended 1Password alternative.
-  Confluence and Slack each have a single recommendation.
+The checked-in reference results are in `observability/golden-baseline.json`. They describe that baseline dataset, not a live assessment of today’s recommendations. Inspect the latest run for current results.
 
 `obs-golden --baseline observability/golden-baseline.json --check` fails on any of these:
 
@@ -189,19 +159,9 @@ raises a fingerprinted alert, but it never blocks the canonical data. To accept 
 baseline deliberately, run `obs-golden --write-baseline observability/golden-baseline.json`
 and commit the file.
 
-**Label review.** The relevance labels were written by linux-claude from domain knowledge,
-against the list of projects only (not their ranks, fit or health). They name projects The
-Source may not hold yet, which then count as misses. Keith reviewed them on 2026-10-20 (KEI-930)
-and approved them unchanged. The baseline was re-recorded that day, on the KEI-930 tree (precision@5
-0.663, recall@5 0.687). The fall from 0.778 is mostly genuine alternatives the labels do not name,
-admitted by KEI-930's licence decisions (KeePassXC, GitLab, Rocket.Chat, Outline, ...). A precision@5
-regression is measured from the new baseline.
+**Label review.** Relevance labels are a separately reviewed reference set, not inferred from the ranks being tested. They can name projects not yet held by The Source, which count as misses. Review label changes deliberately and record a new baseline only when appropriate; current values live in `observability/golden-baseline.json`.
 
-On 2026-10-21 Keith added `supabase/storage` (S3-compatible object storage, admitted by KEI-923) to
-`search-object-storage`. Unlabelled, it outranked `openstack/swift` and moved that query's recall@5 from
-1.0 to 0.8. The baseline was not re-recorded.
-
-## S0.5 Privacy-preserving MCP telemetry and weekly reports
+## Privacy-preserving MCP telemetry and weekly reports
 
 **Off by default.** The engine counts nothing unless a transport gives the counters somewhere
 to go:
@@ -220,7 +180,7 @@ to go:
 No arguments, queries, results, client names, sessions or addresses are kept. Retention is
 90 days.
 
-**Restarts keep the counters (KEI-927).** Every flush replaces the file with the in-memory
+**Restarts keep the counters .** Every flush replaces the file with the in-memory
 counters, so the server resumes an existing `/1` or `/2` file at start before it serves. Before
 this fix a deploy or reboot erased the retained days, and the weeks it touched read as zero use.
 A file that cannot be resumed (unparseable, unknown schema, malformed cells) is moved aside to
@@ -240,9 +200,9 @@ the counters coarser still:
 - **Latency as buckets.** Latency appears only as the histogram bucket holding the median and
   the 95th percentile.
 
-The reports stay on the host. Publishing them anywhere is a separate decision for Keith.
+The reports stay on the host. Publishing them requires a separate review of the data and privacy implications.
 
-## S0.6 Reproducible lineage and catalogue reconciliation
+## Reproducible lineage and catalogue reconciliation
 
 Every cycle commits its canonical MANIFEST, the dataset it was built from and its run record
 together. The lineage of the published layer can therefore be recomputed from git alone.
@@ -260,7 +220,7 @@ together. The lineage of the published layer can therefore be recomputed from gi
     `dataset_version_before`
 
   CI runs it. Today it checks 24 versions, all of which pass. The one not produced by a cycle
-  is the initial KEI-807 build, `8b122029564c`.
+  is the initial published build, `8b122029564c`.
 - `obs-lineage reconcile --from A --to B`: compares the canonical SaaS products at A and B,
   attributing every product that left or joined to the cycle that changed it. To do that, it
   re-runs the launch selection (`build.select_launch`) on that cycle's own committed dataset
@@ -268,33 +228,3 @@ together. The lineage of the published layer can therefore be recomputed from gi
   is then read from it.
 
 `A` and `B` may be git revisions or dataset versions.
-
-### The 118 → 102 catalogue
-
-`obs-lineage reconcile --from a6e5bef0eaf47a24 --to 02568a5dd656e3a8`: dataset
-`a6e5bef0eaf47a24` (cycle `2026-10-10-schedule-a1`, the version KEI-851 served) held 118
-canonical SaaS products. Dataset `02568a5dd656e3a8` (cycle `2026-10-17-schedule-a1`) holds 102.
-Of the 11 versions in between, every one reproduces, and the count balances:
-118 − 17 + 1 = 102.
-
-| Cycle | Products | Change |
-|---|---|---|
-| `manual-20261010T142835Z` | 118 → 117 | −Otter.ai |
-| `2026-10-14-schedule` | 117 → 107 | −Discourse hosting, Ecwid, Grammarly, LastPass, Loggly, MongoDB Atlas, Papertrail, Power BI, Render, Webex |
-| `2026-10-15-schedule` | 107 → 100 | −Circle, Fivetran, Gmail, Pingdom, Splunk, Twitch, Wix |
-| `2026-10-16-schedule` | 100 → 102 | +Pingdom (back), +SAP Business One |
-
-**Cause.** All 17 departures share one cause, `below_launch_cutoff`. None of them lost its
-validated relationships. They were ranked past the launch cut-off:
-
-- The launch rule (decision dr-KEI-805-507e4f70) takes the first 100 products as a floor.
-  It extends down the same ranking only as far as the 250-distinct-OSS minimum requires, and
-  never past 400 edges.
-- As relationships were validated and the computed per-product cap moved from 10 to 12 to 11,
-  the minimum was reached sooner.
-- The extension beyond the floor therefore shrank from 19 products to 18, then 8, then 1,
-  then 3.
-
-The products that left are the tail of that extension. This is the rule working as written,
-not data loss. Whether the launch floor should keep products once published is a strategy
-question for Keith and Draper.

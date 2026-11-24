@@ -1,19 +1,10 @@
-# Controlled corpus expansion (KEI-923, V2.1 WP6)
+# Growing the project catalogue responsibly
 
-The discovery corpus (`data/corpus/`, [CORPUS.md](CORPUS.md)) stood at about 9,900 projects, growing by
-around ten a day through the daily lanes. WP6 grows it toward **25,000**. It may only do that while
-candidate quality and the cost of ingestion stay acceptable. **50,000 is a separate checkpoint** that needs a
-review; admission never goes past `milestones.target` on its own.
+The Source expands discovery through configured sources, quotas, evidence requirements and noise filters. Growth should increase useful coverage without lowering the recommendation bar.
 
-Nothing here changes a recommendation. Recommendations come only from `data/canonical`. Every member added
-here is a `discovery` tier project ("discovered, not scored") with a quick score. The one derived file that
-moves is `api/v1/catalogue.json`: its entries count the corpus projects that name themselves an alternative
-(`corpus_pairings`), so after admission it is rebuilt (`canonical.build`) and only those counts, their reason
-text and the corpus version change. No entry's status changes.
+The catalogue has passed 25,000 projects; [the corpus manifest](../data/corpus/MANIFEST.json) holds current membership. Configured milestones and budgets remain operational controls, not marketing targets. A new discovery is not automatically a recommendation.
 
-Discovery answers (`source_get_alternatives`, `source_search`) also leave out plugins, extensions, add-ons and
-connectors, and repositories that describe themselves as lists, cheat sheets, study notes or interview
-questions (`mcp_server.not_a_product`).
+Admission updates the discovery and quick-score layers together. Product catalogue counts may reflect new detected pairings, but only the full assessment can qualify recommendations. This guide covers sources, admission, noise controls and cost limits.
 
 ## Run it
 
@@ -40,7 +31,7 @@ reads only that record, so the same frontier always admits the same rows.
 | `github_topics` | github_topics | One GitHub search per product-domain topic (about 330: work management, communication, CRM and support, finance and ERP, commerce and CMS, analytics and BI, no-code and automation, files and media, identity and security, developer platform, AI applications, self-hosting). It asks only for repositories that clear the active floor (`pushed:>=` the policy window, `archived:false`, the star floor). A topic past the API's 1,000-result cap is sliced by star band until every slice fits. |
 | `docker_signals` | docker_helm | The same, for repositories that ship a compose file, an image, a Helm chart or an operator. These are the ones a person can self-host. |
 | `artifacthub` | docker_helm | Artifact Hub Helm charts, operators and container images, most-starred first. A package's `links` or `home_url` is kept only if it is a repository root. A chart inside a chart monorepo (`…/tree/…`) never stands in for the application it packages. |
-| `awesome_lists` | awesome_lists | Curated lists as awesome.ecosyste.ms parses them. Only the addresses are kept (the lists are CC BY-SA; see LICENCE-REVIEW.md, KEI-912). |
+| `awesome_lists` | awesome_lists | Curated lists as awesome.ecosyste.ms parses them. Only the addresses are kept (the lists are CC BY-SA; see LICENCE-REVIEW.md). |
 | `gitlab`, `codeberg` | gitlab, codeberg | The independent forges, by topic, most-starred first (`source_pipeline/hosts.py`). Anonymous public APIs only. |
 
 All of these are public, documented APIs read without any new credential. GitHub is read with the cycle's
@@ -94,7 +85,7 @@ their own name, description and topics:
 - `documentation`: repositories that are documentation, wiki pages, RFCs or proposals, or episodes
 
 The last three, and the skill-pack and wider template and learning rules, were added after a blind desk review
-of 400 admissions (KEI-923) rated 10.75% of them as material, against an audit reading of 1.3%. Each rule was
+of 400 admissions  rated 10.75% of them as material, against an audit reading of 1.3%. Each rule was
 checked against the 9,901-member corpus and the review sample for products it would wrongly refuse.
 
 The gate applies to every admission, daily ones included, while `noise.gate` is on. Each refusal is counted as
@@ -134,11 +125,11 @@ The check therefore fails only on a recommendation flagged that the baseline did
 ## Quick scoring on intake (S4.4)
 
 `corpus-expand-admit` runs `quick_score.run` straight after admission and validates the quick layer, exactly as
-the daily cycle does (cycle.py, KEI-921). If quick scoring cannot follow, the previous corpus *and* quick layer
+the daily cycle does (cycle.py). If quick scoring cannot follow, the previous corpus *and* quick layer
 are put back. No member is left without a quick score.
 
 ## Cost
 
 GitHub search is paced at one request per 2.1 s. Metadata lookups go in GraphQL batches of 50. The weekly
 `corpus-refresh` cost scales with membership: about 500 GraphQL requests at 25k, inside `max_graphql_points`
-(1,500). Measured figures for the 25k run are in [ACCEPTANCE-KEI-923.md](ACCEPTANCE-KEI-923.md).
+(1,500). Measured figures for the 25k run are in [Historical expansion results](ACCEPTANCE-KEI-923.md).

@@ -1,7 +1,8 @@
-# Operations: the daily intelligence cycle
+# Operate and refresh The Source
 
-Daily since KEI-848; the KEI-807 weekly cycle with its guarantees, run every day and split
-into a cheap tier for everything and an expensive tier only where something changed.
+The scheduled intelligence cycle refreshes evidence, rebuilds recommendations and publishes validated results. The broader discovery corpus has a separate refresh schedule and records the age of its observations.
+
+This guide is for maintainers handling schedules, budgets, failures, retries and promotion. For the age of a result, inspect its timestamps or use `source_dataset_info` through the [MCP server](MCP.md).
 
 ## Schedule
 
@@ -22,7 +23,7 @@ catch-up), today's cycle has not yet succeeded, and fewer than `max_attempts` at
 made. GitHub's hourly cron is best effort and has gone 4-6 h between wake-ups, so a missed
 window still runs on the first wake-up within `catch_up_hours`, marked `late`.
 `window_hours + catch_up_hours` must stay under 24 h, so one day's catch-up can never run
-into the next day's window. `cadence: weekly` plus `weekday:` restores the KEI-807
+into the next day's window. `cadence: weekly` plus `weekday:` restores the publication
 behaviour. To change anything, edit the YAML; no code or workflow change is needed.
 
 To run one now, use Actions, then *Daily intelligence cycle*, then *Run workflow*
@@ -37,15 +38,15 @@ To run one now, use Actions, then *Daily intelligence cycle*, then *Run workflow
 | 3 | `light_refresh` | Ask every corpus repository's host the cheap questions: stars, forks, pushed_at, archive state, licence, newest release, default-branch head, repository id and current name. GitHub in GraphQL batches of 50 (~13 calls for ~600 repositories). Transient failures are retried twice; any left fail the cycle. |
 | 4 | `discovery_search` | The approved lanes in `config/discovery.yaml` (GitHub topic searches, the awesome-selfhosted seed). Candidates are reconciled against the corpus by key, resolved name and repository id; only genuinely new ones join `data/discovery/candidates.jsonl`. A lane failure is recorded; discovery is additive and its look-back overlaps, so nothing is lost. |
 | 5 | `corroboration` | A rotating sample (120/day) checked against ecosyste.ms and deps.dev. Flags only; see `docs/BUILD-VS-INGEST.md`. |
-| 6 | `deep_enrichment` | The full KEI-805 observation (commits and PRs with the files they touched, release diffs, licence probes) only for: **new** repositories, **materially changed** ones (archive/disable flip, licence change, rename or transfer, new release, star change of max(500, 10%), found/not-found flip, or pushed since the last deep look while near a maintenance boundary), and **rotation**: any whose deep observation is 7 days old, oldest first, within `deep.max_per_cycle` (150). New and changed always go; rotation beyond the budget is deferred and counted. A known project whose deep lookup fails keeps its last good observation (recorded in `failures`); a new one that fails fails the cycle. Everyone else keeps their deep evidence with today's light fields laid over it (`deep_fetched_at` vs `fetched_at`). |
+| 6 | `deep_enrichment` | The full evaluation observation (commits and PRs with the files they touched, release diffs, licence probes) only for: **new** repositories, **materially changed** ones (archive/disable flip, licence change, rename or transfer, new release, star change of max(500, 10%), found/not-found flip, or pushed since the last deep look while near a maintenance boundary), and **rotation**: any whose deep observation is 7 days old, oldest first, within `deep.max_per_cycle` (150). New and changed always go; rotation beyond the budget is deferred and counted. A known project whose deep lookup fails keeps its last good observation (recorded in `failures`); a new one that fails fails the cycle. Everyone else keeps their deep evidence with today's light fields laid over it (`deep_fetched_at` vs `fetched_at`). |
 | 7 | (build) | Rebuild the dataset and run its validation (maintenance classes, lanes, launch selection). |
 | 8 | `new_pair_scoring`, `rescoring` | Score unscored recommendable projects and relationships (up to 60), and re-score materially changed projects that already hold a score (up to 40). Overflow is deferred to the next day and counted. |
 | 9 | (canonical) | Rebuild `data/canonical/` and `api/v1/`, then run canonical validation, including a byte-for-byte rebuild check. |
 | 10 | (intake) | Record on each pending intake outcome whether it is now canonical. |
 | 11 | `history` | Write the day's light observations to `data/history/daily/<day>.jsonl.gz` (deterministic gzip) and `data/history/INDEX.json` (hash, rows, run, dataset version). Kept `history.retain_days` (400). |
-| 12 | `momentum` | Measure every repository's momentum and acceleration over 1/7/30/90 days from the history, including today's snapshot (KEI-849, [`MOMENTUM.md`](MOMENTUM.md)). Write `data/momentum/` and validate it (released methodology version, schema, byte-identical rebuild). A window without enough history says so per repository. A failure fails the cycle. |
-| 13 | `community_radar` | Ask Hacker News (official API), Forem (public API), Bluesky (public search) and, where a credential is configured, X and Instagram which repositories are being discussed, rank them (capped, deterministic), reconcile each with the corpus and pool by name and GitHub repository id, and admit new ones to the discovery pool (KEI-850, [`RADAR.md`](RADAR.md)). A source outage degrades the strategy. A radar that fails its own validation is rolled back to the previous one, and the cycle carries on. |
-| 14 | `golden_queries` | Run the 48 golden queries against the layer just built: recall@5, precision@5 and constraint violations, compared with `observability/golden-baseline.json` (KEI-918, [`OBSERVABILITY.md`](OBSERVABILITY.md)). A violation, a must-fail query that answers, or a drop of more than 0.05 below the baseline degrades the strategy and raises an alert. It never blocks the canonical data. |
+| 12 | `momentum` | Measure every repository's momentum and acceleration over 1/7/30/90 days from the history, including today's snapshot ([`MOMENTUM.md`](MOMENTUM.md)). Write `data/momentum/` and validate it (released methodology version, schema, byte-identical rebuild). A window without enough history says so per repository. A failure fails the cycle. |
+| 13 | `community_radar` | Ask Hacker News (official API), Forem (public API), Bluesky (public search) and, where a credential is configured, X and Instagram which repositories are being discussed, rank them (capped, deterministic), reconcile each with the corpus and pool by name and GitHub repository id, and admit new ones to the discovery pool ([`RADAR.md`](RADAR.md)). A source outage degrades the strategy. A radar that fails its own validation is rolled back to the previous one, and the cycle carries on. |
+| 14 | `golden_queries` | Run the 48 golden queries against the layer just built: recall@5, precision@5 and constraint violations, compared with `observability/golden-baseline.json` ([`OBSERVABILITY.md`](OBSERVABILITY.md)). A violation, a must-fail query that answers, or a drop of more than 0.05 below the baseline degrades the strategy and raises an alert. It never blocks the canonical data. |
 
 Typical cost: a steady-state day with nothing changed made ~33 light calls plus discovery
 and corroboration, no deep calls, and took about 4 minutes; the first daily run, which
@@ -110,7 +111,7 @@ Methodology, sources and their terms: [`RADAR.md`](RADAR.md).
   `status: failed` and the error. A GitHub issue labelled `cycle-failure` and titled with the
   failure's fingerprint is opened, or commented on if that fault already has one, and the
   workflow run is marked failed. The next hourly wake-up inside the window (or catch-up)
-  retries. A run without that fault closes the issue (KEI-918).
+  retries. A run without that fault closes the issue .
 - **History and the discovery pool are promoted with everything else.** A failed day
   writes no snapshot and changes no pool; the next success writes its own day.
 - **Retries are safe.** Every output is a deterministic function of its inputs. Keys are
@@ -135,7 +136,7 @@ Methodology, sources and their terms: [`RADAR.md`](RADAR.md).
   agreement, projects scored and re-scored, deferrals, the history day and its hash)
 - `counts`: `discovered` (in the corpus plus new pool candidates), `added` (new canonical
   projects), `changed`, `unchanged`, `deep_enriched`, `rescored`, `failed`, `deferred`,
-  `refreshed_records`, plus the KEI-807 counts (`candidates`, `retained`, `rejected`,
+  `refreshed_records`, plus the publication counts (`candidates`, `retained`, `rejected`,
   `stale_or_abandoned_detected`, canonical relationships added or removed, intake promotions)
 - `timings_s`: seconds per step; `retries`: retry rounds per step; `failures`: per-repository
   failures the cycle survived and what it did about each
@@ -143,14 +144,14 @@ Methodology, sources and their terms: [`RADAR.md`](RADAR.md).
 - `canonical`: `dataset_version_before` and `dataset_version_after`, `changed`, and
   `commit_tag` (`cycle/<run_id>`, the resulting canonical commit)
 - `history_day`: the snapshot this run wrote
-- `error`: set when the run failed; `failed_step`: the step that was running (KEI-918)
+- `error`: set when the run failed; `failed_step`: the step that was running
 
 Beside each record, `runs/reports/<run_id>.intake.json` is the run's intake report: the
 funnel from upstream lists to the canonical layer, with what stopped at each stage and why
-(KEI-918 S0.1). After each cycle, `obs-alerts` fingerprints its failures and keeps one
+(observability S0.1). After each cycle, `obs-alerts` fingerprints its failures and keeps one
 GitHub issue per fingerprint (S0.2). See [`OBSERVABILITY.md`](OBSERVABILITY.md).
 
-The schema requires the KEI-848 counts and `history_day` on every successful daily record.
+The schema requires the daily-cycle counts and `history_day` on every successful daily record.
 
 ## API budget
 
@@ -164,7 +165,7 @@ with read-only access to public repositories. It is used automatically when pres
 
 ## Scoring lanes
 
-The full scoring lane (KEI-806) and the knowledge graph (KEI-844) run where their evidence
+The full scoring lane  and the knowledge graph  run where their evidence
 lives, not in this repository. After a full-lane run, `python -m source_pipeline
 scores-extract` compacts its output into `data/scores/`. The newest evaluation per project
 and pair wins; single-project rows are superseded by the next full-lane run.
@@ -176,7 +177,7 @@ To prove the failure path on the real system, run the workflow manually with
 Nothing is promoted, the run record says `failed`, and the `cycle-failure` issue is opened.
 The next successful run closes the issue. Scheduled runs ignore the drill setting.
 
-## Discovery corpus refresh (KEI-912)
+## Discovery corpus refresh
 
 `.github/workflows/corpus-refresh.yml` keeps `data/corpus/` fresh, separately from the daily
 cycle and in the same `canonical-writer` concurrency group. It wakes daily at 04:41 UTC and

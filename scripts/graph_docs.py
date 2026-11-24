@@ -45,5 +45,10 @@ Direction is always `from -> to` as written.
 |---|---|
 {conf}
 """
+# Public prose describes the layer rather than the internal delivery ticket.
+# Stable identifiers (for example kei805: prefixes) stay unchanged.
+for old, new in (("KEI-805/811", "evaluation and discovery"),
+                 ("KEI-805", "evaluation"), ("KEI-811", "discovery")):
+    ref = ref.replace(old, new)
 (ROOT / "docs" / "GRAPH.md").write_text((ROOT / "docs" / "GRAPH.head.md").read_text() + ref)
 print("wrote docs/GRAPH.md")

@@ -1,15 +1,10 @@
-# Quick scoring (KEI-921, The Source V2.1 WP4)
+# Quick project scores: what they measure and what they do not
 
-The discovery corpus (`data/corpus/`, about 9,400 projects) was searchable but not comparable. Only the canonical layer had Project Health and Replacement Fit. Quick scoring gives every corpus project a cheap programmatic **quick Health**. It infers the SaaS products a project is **detectably paired** with, and it gives each pairing a lightweight **quick Fit**. The output is in `data/quick/`.
+Quick scores help you explore a large catalogue before committing to a deeper assessment. They use the public facts already held for a project to calculate lightweight health indicators and potential product pairings.
 
-**Quick scores are never recommendations.** Every quick row is labelled `quick` and carries `recommendation_eligible: false` and `publish: false`. Only the full evaluation can recommend or publish (`data/scores/`, `docs/METHODOLOGY.md`, the canonical layer and `api/v1/`). `quick-validate` enforces this, and the read surface refuses a layer that breaks it.
+**Quick scores are never recommendations.** Rows are labelled `quick`, with `recommendation_eligible: false` and `publish: false`. Only the full evaluation can qualify a recommendation. The scores are programmatic and uncalibrated; confidence describes evidence completeness, not a probability of success.
 
-**No calibration.** Quick confidence measures how complete the data is. It is not a calibrated probability. Calibration is V3.
-
-```
-python -m source_pipeline quick-score [--full]   # incremental by default; no network
-python -m source_pipeline quick-validate         # exit 1 on any failed check
-```
+See [the manifest](../data/quick/MANIFEST.json) for current coverage and [the corpus guide](CORPUS.md) for tiers. Run `python -m source_pipeline quick-score` to update the layer and `python -m source_pipeline quick-validate` to check it.
 
 ## Quick Health (`the-source.quick-health/1`)
 

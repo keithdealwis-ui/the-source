@@ -1,141 +1,150 @@
-# The Source
+# The Source — Open-source discovery, alternatives and momentum
 
-The Source maps commercial SaaS products to open-source projects that can credibly
-replace them. Every recommendation passes three tests: it is verified against the
-project's own repository host, maintained within the last 12 months, and under a
-recognised open-source licence, or under an open-core or source-available licence that
-was approved one project at a time and is disclosed with the recommendation
-(`licence_disclosure`). Each one is scored for fit and health, and each carries
-its provenance and the time it was last checked.
+**25,000+ software projects. See what’s emerging, what’s surging and what could replace your stack.**
 
-This repository is the single source of truth. The Source Chrome extension, the
-comparison pages on de-alwis.com and every future Source workflow read from it.
-Nothing downstream keeps its own copy.
+The Source helps people and AI agents discover software, follow projects gaining momentum and find open-source alternatives to paid tools. Explore a catalogue of 25,000+ public software projects, with deeper assessments of selected projects covering replacement fit, project health, licensing and maintenance.
 
-> **Licence:** code MIT (`LICENSE`); data CC BY 4.0, with the parts adapted from a share-alike source under CC BY-SA 3.0 (`DATA-LICENCE.md`).
+Browse the website, ask your AI assistant through MCP, or build with the published data.
 
-## What is here
+**[Explore alternatives](https://the-source.dev/#explore) · [See what’s moving](https://the-source.dev/#radar) · [Connect your AI assistant](https://the-source.dev/agents/#setup)**
 
-| Path | What it is |
+## What will you discover?
+
+### Spot what’s breaking out
+
+Find emerging projects gathering attention. Explore measured growth and community conversations to decide which projects deserve a closer look.
+
+**Ask your agent:** “Which projects under 10,000 stars are gaining momentum this week? Show the measurement dates and the conversations behind the signal.”
+
+### Follow what’s surging
+
+Compare growth over available measurement windows and see where the pace is accelerating. Distinguish the projects adding the most stars from those growing fastest relative to their starting point.
+
+**[Explore the momentum radar](https://the-source.dev/#radar)** — fastest growth, stars gained and community buzz.
+
+### Find your next software swap
+
+Start with a paid tool such as Notion, Slack, Airtable or Dropbox. Find potential open-source replacements and compare their fit, maintenance, licensing and documented self-hosting support.
+
+**Ask your agent:** “What could replace Notion for a self-hosted knowledge base? Compare the strongest candidates and flag migration questions I still need to investigate.”
+
+**[Find alternatives to your software](https://the-source.dev/#explore)**
+
+### Choose between the contenders
+
+Put two to five projects side by side. Compare the evidence for the things that matter to you, and see where information is missing.
+
+**Ask your agent:** “Compare Docmost and AppFlowy on licensing, project health and replacement fit. What does the evidence establish, and what would we need to test?”
+
+### Check a project before you depend on it
+
+Inspect maintenance, releases, licensing and evidence dates. Understand whether a project has a full assessment, a quick score or only discovery information.
+
+**Ask your agent:** “Check this repository’s maintenance and licence. Show when the facts were observed and explain any warnings.”
+
+### Discover tools for what you’re building
+
+Search by a need, category or project name. Explore options for a new workflow, then narrow the shortlist using supported constraints such as licence and self-hosting.
+
+**Ask your agent:** “Find options for a self-hosted team knowledge base. Separate recommended alternatives from discovery candidates and explain any requirements you cannot assess.”
+
+[Connect your AI assistant to try these questions](https://the-source.dev/agents/#setup). Emerging and surging describe measured attention, not a prediction of success. A potential swap is a candidate to evaluate, not an automatic migration or a guarantee of feature parity.
+
+## Explore broadly. Assess in depth.
+
+The catalogue has several levels of evidence. Finding a project is the beginning of an assessment, not its conclusion.
+
+<!-- source-stats:start -->
+| Published coverage | What it means |
 |---|---|
-| `api/v1/` | **The read surface.** Static JSON per supported SaaS product, for clients. See [`docs/READ-API.md`](docs/READ-API.md). |
-| `data/canonical/` | **The canonical dataset.** SaaS products, OSS projects, relationships and scores, plus `MANIFEST.json` and `NOTICE.md`. |
-| `data/dataset/` | The full evaluated corpus behind it, every lane included, with validation reports. |
-| `data/staging/`, `data/live/` | Harvested claims and the dated live snapshot the dataset is rebuilt from. |
-| `data/scores/` | Project Health and Replacement Fit summaries, plus append-only score history. |
-| `data/history/` | One dated, hashed snapshot per day of every repository's light metadata, for 1/7/30/90-day deltas (`history-delta`). |
-| `data/momentum/` | Momentum and acceleration per repository over 1/7/30/90 days, derived from `data/history/`, with honest per-window coverage (KEI-849). |
-| `data/radar/` | Community Radar: repositories being discussed on Hacker News, Forem and Bluesky (and X and Instagram once a credential is granted), ranked and reconciled against the corpus, with a daily list of candidates new to The Source (KEI-850, KEI-913). Facts and addresses only. |
-| `data/discovery/` | Candidate repositories found by the daily discovery lanes, reconciled against the corpus, awaiting relationship evidence. |
-| `data/intake/` | Manual intake: outcome records and the ledger of admitted repositories. |
-| `data/catalogue/` | The demand-led catalogue (KEI-922): 602 candidates with their ranking evidence, the selected 500, and any imported demand. |
-| `data/state/` | Operational state, such as upstream pins advanced by the daily research. |
-| `runs/` | One record per cycle (daily since KEI-848): what ran, what was found, what changed. |
-| `config/` | Sources and licence decisions, quality policy, SaaS catalogue, scoring rubric, supported products, schedule, discovery lanes, corroboration. |
-| `schema/` | JSON Schema for every record, validated in CI. |
-| `extension/` | **The Chrome extension** (KEI-808): a thin client of `api/v1/`. See [`extension/README.md`](extension/README.md). |
-| `source_pipeline/` | The pipeline. Python 3.12, standard library plus PyYAML and jsonschema. |
-| `docs/` | Methodology, scoring, read API, intake, operations, licence review. |
+| **25,294 discovered projects** | The broad discovery corpus: public project records with evidence dates and licensing information or warnings. |
+| **662 projects in the assessed layer** | Projects with the fuller assessment of health and replacement fit where applicable. |
+| **1,256 recommended product–project pairings** | Specific relationships that pass the recommendation rules. One project can replace more than one product. |
+| **377 products with published alternative records** | Product coverage in the read API; the number of alternatives varies. |
 
-## Using the data
+Assessment snapshot: **24 November 2026**. Discovery snapshot: **24 November 2026**. Individual observation dates can differ.
+[Discovery counts](data/corpus/MANIFEST.json) · [Assessment and recommendation counts](data/canonical/MANIFEST.json)
+<!-- source-stats:end -->
 
-Clients read `api/v1/`, never the GitHub API:
+The discovery corpus and assessed layer overlap; these figures should not be added together. Discovery entries may have lightweight automated health scores. Those quick scores do not make a project a recommendation. Some entries have unresolved licences or other warnings, and these remain visible.
+
+## Three ways to use The Source
+
+### Explore on the website
+
+[Visit the-source.dev](https://the-source.dev/) to find alternatives, compare their evidence and follow the momentum radar. Start with a familiar product, or explore what is gaining attention.
+
+### Ask your AI assistant
+
+Connect an MCP-compatible assistant to the same published evidence. Ask it to spot emerging projects, inspect a surge, find software swaps, compare a shortlist or check a project's health.
+
+**Hosted MCP endpoint**
 
 ```text
-api/v1/index.json            supported products, dataset version, when live data was last checked
-api/v1/domains.json          hostname rules, so a client can detect a product locally
-api/v1/catalogue.json        the 500-product catalogue: ok / partial / none_yet, reasons, detection rules
-api/v1/saas/<saas_id>.json   3-5 ranked recommendations for one product, with their evidence
+https://mcp.the-source.dev/mcp
 ```
 
-Each recommendation carries the GitHub link, stars, maintenance status, licence, latest
-release, Replacement Fit, Project Health, self-hosting evidence, a short machine-derived
-strengths/gaps note, its sources, and `live_checked_at`. The files are regenerated only
-by the daily cycle, so they can be cached or served from a CDN. Full contract:
-[`docs/READ-API.md`](docs/READ-API.md).
+Public, read-only access over Streamable HTTP. No Source account or API key required. Client availability and workspace permissions vary; requests are rate-limited.
 
-AI clients can ask the same data, plus Repository and Community Momentum, through an MCP
-server at **`https://source-mcp.de-alwis.com/mcp`** (public, read-only, no account), or run
-it locally with `python -m source_pipeline mcp-serve`. It verifies every layer before it
-answers. Beyond the scored layer it serves every project the Discover lane found (about
-9,400) as a clearly labelled discovery tier: searchable and inspectable, never presented as a
-recommendation. See [`docs/MCP.md`](docs/MCP.md) and [`docs/CORPUS.md`](docs/CORPUS.md).
-
-## How it stays current
-
-A scheduled GitHub Actions workflow runs a **daily intelligence cycle** (KEI-848; weekly under
-KEI-807), every day at 03:00 Asia/Dubai by default. To change the timing, edit
-`config/schedule.yaml`. Each cycle does the following:
-
-1. Moves each licence-cleared upstream list to its newest commit, but only if its licence
-   file is byte-identical to the reviewed one, and harvests the lists plus the
-   manual-intake ledger.
-2. Refreshes cheap metadata for every known repository from its own host (stars, forks,
-   pushes, archive state, licence, releases, identity), in batches.
-3. Runs the daily discovery lanes and reconciles what they find against the corpus, so a
-   renamed or re-found repository never becomes a second entity.
-4. Checks a rotating sample against independent services (ecosyste.ms, deps.dev). They can
-   flag a disagreement; they never change a value.
-5. Re-reads the full evidence only for new, materially changed, or week-old projects, and
-   re-scores the ones that changed. Newly stale, archived or missing projects drop out.
-6. Rebuilds and validates the dataset, the canonical dataset and the read surface, and
-   keeps a dated snapshot for 1/7/30/90-day deltas, from which it measures each
-   repository's momentum and acceleration wherever the history is long enough.
-7. Ranks the repositories being discussed on Hacker News, Forem and Bluesky (Community Radar),
-   reconciles each with what The Source already holds, and adds new ones to the discovery
-   pool. This step can never block the steps above.
-8. Promotes the result only if every check passes, and commits it with a run record,
-   tagged `cycle/<run_id>`.
-
-A failed cycle changes nothing and opens a GitHub issue. It is retried automatically at
-the next hourly wake-up inside the window or its catch-up. Details: [`docs/OPERATIONS.md`](docs/OPERATIONS.md).
-
-## Suggesting a repository
-
-Submit a GitHub URL through the authenticated intake workflow, either with
-`scripts/source_intake.py submit <url>` or through the equivalent REST calls. The
-repository is judged by exactly the same pipeline as scheduled discovery. A preliminary
-assessment by a person or a chatbot is advisory only. Every submission gets one recorded
-outcome: accepted, rejected, already_known, needs_more_evidence or failed.
-Details: [`docs/INTAKE.md`](docs/INTAKE.md).
-
-Approved producers (GitWatch in ChatGPT, Community Radar adapters and others) submit through one
-shared, authenticated waiting room instead. It deduplicates across producers and feeds the same intake
-assessment once a day. Details: [`docs/WAITING-ROOM.md`](docs/WAITING-ROOM.md).
-
-## Run it locally
+**Claude Code**
 
 ```bash
-python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-
-.venv/bin/python -m source_pipeline build               # rebuild the dataset from committed inputs; no network
-.venv/bin/python -m source_pipeline canonical-build     # data/canonical + api/v1; validates itself
-.venv/bin/python -m source_pipeline canonical-validate  # what CI runs
-.venv/bin/python -m pytest tests/test_canonical.py -q
-
-GITHUB_TOKEN=... .venv/bin/python -m source_pipeline cycle --trigger local   # a full cycle, with network
+claude mcp add --transport http the-source https://mcp.the-source.dev/mcp
 ```
 
-## Documentation
+**Codex CLI**
 
-- [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md): the quality bar, lanes, validation and launch selection
-- [`docs/SCORING.md`](docs/SCORING.md): Project Health, Replacement Fit and Evidence Confidence
-- [`docs/MOMENTUM.md`](docs/MOMENTUM.md): repository momentum and acceleration (versioned methodology, coverage)
-- [`docs/RADAR.md`](docs/RADAR.md): Community Radar (Hacker News, Forem, Bluesky; sources, terms, ranking, reconciliation)
-- [`docs/RADAR-SOCIAL.md`](docs/RADAR-SOCIAL.md): the X, Instagram and Bluesky feasibility spike and what each adapter may ask (KEI-913)
-- [`docs/READ-API.md`](docs/READ-API.md): the consumer contract
-- [`docs/CATALOGUE.md`](docs/CATALOGUE.md): the 500-product demand-led catalogue, its ok / partial / none_yet states and detection rules (KEI-922)
-- [`docs/MCP.md`](docs/MCP.md): the MCP retrieval server over the read layer (tools, gates, protocol)
-- [`docs/CORPUS.md`](docs/CORPUS.md): the public discovery corpus and its tiers (KEI-912)
-- [`docs/OPERATIONS.md`](docs/OPERATIONS.md): the daily cycle, failures, retries, run records and history
-- [`docs/OBSERVABILITY.md`](docs/OBSERVABILITY.md): intake reports, failure fingerprints and alerts, golden queries, MCP telemetry and weekly reports, dataset lineage (KEI-918)
-- [`docs/BUILD-VS-INGEST.md`](docs/BUILD-VS-INGEST.md): which upstream services are used, for what, under which terms, and why the rest are not
-- [`docs/INTAKE.md`](docs/INTAKE.md) and [`docs/INTAKE-POLICY.md`](docs/INTAKE-POLICY.md): manual intake
-- [`docs/WAITING-ROOM.md`](docs/WAITING-ROOM.md): the shared producer waiting room (contract, states, security, producer guide)
-- [`PROVENANCE.md`](PROVENANCE.md): where every fact comes from, and how to trace it
-- [`docs/LICENCE-REVIEW.md`](docs/LICENCE-REVIEW.md) and [`NOTICE.md`](NOTICE.md): upstream licences and attribution
-- [`CONTRIBUTING.md`](CONTRIBUTING.md): how to propose changes
-- [`docs/SCHEMA.md`](docs/SCHEMA.md), [`docs/DISCOVER.md`](docs/DISCOVER.md) and [`docs/GRAPH.md`](docs/GRAPH.md): the research lanes
+```bash
+codex mcp add the-source --url https://mcp.the-source.dev/mcp
+```
 
-Scores are computed automatically from public evidence. They are not an endorsement,
-and no project here has been tested by hand.
+Then try:
+
+> Find credible open-source alternatives to Notion. Compare their licences, project health and replacement fit. Cite the evidence dates and explain anything the data cannot assess.
+
+[Set up Claude, ChatGPT, Cursor or Codex](https://the-source.dev/agents/#setup) · [MCP connection and tool guide](docs/MCP.md)
+
+### Build with the open data
+
+Use the published JSON to power a comparison tool, research workflow or integration. Product records include recommendations, scores, licensing disclosures, sources and evidence dates.
+
+| Resource | Start here |
+|---|---|
+| Product alternatives | [`api/v1/`](api/v1/) and the [read API guide](docs/READ-API.md) |
+| Assessed projects and relationships | [`data/canonical/`](data/canonical/) |
+| Broad project discovery | [`data/corpus/`](data/corpus/) and the [corpus guide](docs/CORPUS.md) |
+| Repository growth and community discussion | [Momentum](docs/MOMENTUM.md) and [Community Radar](docs/RADAR.md) |
+
+The website and hosted MCP service require no local installation. Developers can also run the MCP server from a checkout: see [the MCP guide](docs/MCP.md#run-it-yourself).
+
+## Understand the evidence
+
+**Replacement Fit** asks how well a project could replace a particular product. **Project Health** describes maintenance and other project signals. **Momentum** shows attention and growth over a measured period. These are separate measures.
+
+Recommendations pass checks for project identity, maintenance, licensing and replacement evidence. Each carries its sources and evidence dates. Open-core and source-available projects are identified with their licensing disclosures.
+
+Assessments are machine-derived from public evidence. They are not hands-on product reviews or a guarantee of security, suitability or a painless migration. Check the project's own documentation before making a commitment.
+
+[How recommendations work](docs/METHODOLOGY.md) · [How scoring works](docs/SCORING.md) · [Trace the sources](PROVENANCE.md)
+
+## How fresh is the data?
+
+A scheduled daily cycle refreshes the recommendation layer and publishes measured signals. The broader discovery corpus has a separate refresh schedule. Individual records carry their own observation dates, and unavailable or stale evidence is reported.
+
+Use the manifests or the MCP tool `source_dataset_info` to check the snapshot you are using. A newly published dataset does not mean every project was checked at the same moment.
+
+## Contribute or get help
+
+Found a useful project, an incorrect fact or a comparison that needs attention? [Read the contribution guide](CONTRIBUTING.md). Include the project, the affected product or result, and the supporting evidence.
+
+[Get support](https://the-source.dev/support/) · [Report an issue](https://github.com/keithdealwis-ui/the-source/issues) · [Browse the documentation](docs/README.md)
+
+The repository also includes a [Chrome extension](extension/README.md) for showing alternatives on supported SaaS sites. See its own guide for installation and release status.
+
+## Licence and attribution
+
+Code is [MIT licensed](LICENSE). Published data is generally CC BY 4.0, with share-alike terms applying to specified upstream-derived material. See [the data licence](DATA-LICENCE.md) and [attribution notices](NOTICE.md) for the scope and conditions.
+
+Created by [Keith De Alwis](https://de-alwis.com/).
+
+**[Find your next alternative](https://the-source.dev/#explore) · [Give your AI the evidence](https://the-source.dev/agents/#setup)**

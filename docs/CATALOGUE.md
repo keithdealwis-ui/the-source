@@ -1,21 +1,22 @@
-# The demand-led catalogue (KEI-922, The Source V2.1 WP5)
+# Product coverage and catalogue selection
 
-The catalogue is the list of SaaS products The Source covers: 500 products, each tagged with its audience, its category and the domains and paths it can be detected on. Each one carries an honest coverage state of `ok`, `partial` or `none_yet`, with the reasons.
+See which paid products The Source covers and where the evidence is still limited. The [published catalogue](../api/v1/catalogue.json) records each product's category, audience and coverage state:
 
-```
-python -m source_pipeline catalogue-rank        # rank the candidates, select 500; no network
-python -m source_pipeline catalogue-demand --kwi REPORT.json   # import an aiq-kwi run as demand evidence
-python -m source_pipeline catalogue-validate    # candidates, detection for every entry, reproducible selection
-python -m source_pipeline canonical-build       # publishes api/v1/catalogue.json and the support records
-```
+- **ok:** at least three recommendations that passed the full evaluation.
+- **partial:** one or two recommendations.
+- **none_yet:** no qualifying recommendations yet.
+
+A catalogue entry is not a promise of alternatives. Check the current counts in [the canonical manifest](../data/canonical/MANIFEST.json), or [search the website](https://the-source.dev/#explore).
+
+For maintainers: `catalogue-rank` selects the configured catalogue, `catalogue-demand --kwi REPORT.json` imports demand evidence, `catalogue-validate` checks it, and `canonical-build` produces the read surface. The following sections describe selection and detection.
 
 ## Candidates (602)
 
-Every product in `config/saas_catalogue.yaml` is a candidate. There are 268 from before V2.1 and 334 added by KEI-922. The additions were reviewed against the catalogue's existing admission rule: each is a commercially operated, hosted product sold or metered on its own. That rule leaves out open-source projects, desktop software and products that have shut down. Where an upstream list already named a product the catalogue lacked (Clover, Square POS, Noun Project, Agora, M-Files, DocuWare, Prisma Cloud, Oracle Fusion ERP Cloud, ...), it was added under the spelling the list used. That evidence now validates.
+Every product in `config/saas_catalogue.yaml` is a candidate. Current candidate and selection counts are recorded in the catalogue outputs. The additions were reviewed against the catalogue's existing admission rule: each is a commercially operated, hosted product sold or metered on its own. That rule leaves out open-source projects, desktop software and products that have shut down. Where an upstream list already named a product the catalogue lacked (Clover, Square POS, Noun Project, Agora, M-Files, DocuWare, Prisma Cloud, Oracle Fusion ERP Cloud, ...), it was added under the spelling the list used. That evidence now validates.
 
 `config/catalogue.yaml` gives each candidate:
 
-- **audience**: `b2b`, `b2c` or `both`. The split is 416, 82 and 104 across the 602 candidates.
+- **audience**: `b2b`, `b2c` or `both`. Current counts are recorded in the catalogue outputs.
 - **detection rules**: the hosts and paths where a browser is on the product. See "Detection" below.
 
 Name, domain, category and aliases stay in `config/saas_catalogue.yaml`, so there is one source of truth.
@@ -34,21 +35,21 @@ Each candidate is scored from evidence. Every signal is recorded on its row in `
 | corpus_pairings | 15 | 10 | corpus projects whose own description or topics call them its alternative |
 | category_supply | 20 | 300, log | maintained corpus projects whose identity text has the category's defining phrases (`config/saas_jobs.yaml`) |
 
-**Demand** is monthly alternative-intent search volume from aiq-kwi runs ("notion alternative", "open source notion", "self-hosted slack"). `catalogue-demand --kwi` imports a run's `report.json` into `data/catalogue/demand/`. Those files hold Google Ads Keyword Planner volumes and are not committed (`.gitignore`; KEI-922 f2, Keith 2026-10-20). `candidates.jsonl` publishes a demand band instead (`high` ≥1,000 a month, `medium` ≥100, `low` ≥1, `none`), and leaves out the rank score, which would give the volume back. The selection is reproducible only where the demand files are present. A keyword only counts if it carries an alternative-intent modifier and names exactly one candidate; the longest name wins. A candidate the run could not have found (it was neither a seed nor matched) has no demand figure. It gets `null`, never zero. Where demand is measured, rank = 0.5 × demand + 0.5 × supply.
+**Demand** is monthly alternative-intent search volume from aiq-kwi runs ("notion alternative", "open source notion", "self-hosted slack"). `catalogue-demand --kwi` imports a run's `report.json` into `data/catalogue/demand/`. Those files hold Google Ads Keyword Planner volumes and are not committed (`.gitignore`). `candidates.jsonl` publishes a demand band instead (`high` ≥1,000 a month, `medium` ≥100, `low` ≥1, `none`), and leaves out the rank score, which would give the volume back. The selection is reproducible only where the demand files are present. A keyword only counts if it carries an alternative-intent modifier and names exactly one candidate; the longest name wins. A candidate the run could not have found (it was neither a seed nor matched) has no demand figure. It gets `null`, never zero. Where demand is measured, rank = 0.5 × demand + 0.5 × supply.
 
-**Demand is measured for 600 of the 602 candidates.** Two aiq-kwi Google Ads runs from Bravo (US, en) supply it, imported with `catalogue-demand` (2026-10-18 and 2026-10-19). The two not covered say `demand.status: not_covered` and rank by supply alone. A new run is imported the same way, followed by `catalogue-rank`.
+Demand measurements are dated inputs, not live search volumes. Consult the candidate records for coverage and import a new run before treating them as current.
 
-**KEI-918 telemetry** counts MCP calls per tool and outcome. It records no product argument, by design, so it carries no per-product demand. It is reported as `no_product_dimension` and is not used.
+**Aggregate MCP telemetry** counts MCP calls per tool and outcome. It records no product argument, by design, so it carries no per-product demand. It is reported as `no_product_dimension` and is not used.
 
 **Selection** keeps these products whatever their rank, then fills to 500 by rank:
 
 - the products already served (`config/supported_saas.yaml`, 20);
-- the products the ticket names (Slack, Salesforce, Zapier, 1Password);
+- explicitly prioritised products (Slack, Salesforce, Zapier, 1Password);
 - every product with a fully evaluated recommendation, so evidence is never dropped.
 
 Ties go to more upstream sources, then `saas_id`. `catalogue-validate` re-runs the ranking on the committed inputs and fails unless it selects exactly the committed products.
 
-The 102 candidates left out have low demand, low supply, or both. 47 of them are in categories with no job definition. Once demand was measured, 69 products changed places: high-demand products such as Google Sheets came in, and low-demand cloud primitives such as Amazon SQS dropped out.
+Candidates outside the published selection remain available for future ranking as evidence and demand change.
 
 ## Status: ok, partial, none_yet
 
@@ -67,7 +68,7 @@ Every `partial` and `none_yet` entry lists its reasons, as codes and as a senten
 | `fewer_than_minimum` | some recommendations passed, fewer than 3 |
 | `awaiting_full_evaluation` | relationships in the published layer that have not been fully evaluated yet |
 | `evaluated_not_recommended` | fully evaluated relationships that did not qualify (not publishable, not credible, core gate) |
-| `outside_launch_selection` | validated relationships outside the published launch corpus. The KEI-805 launch policy (`config/policy.yaml`, `edges_max: 400`) caps it; publishing them is a launch-policy decision |
+| `outside_launch_selection` | validated relationships outside the published launch corpus. Current selection and catalogue-serving budgets in `config/policy.yaml` govern inclusion; a validated relationship is not automatically served |
 | `share_alike_only` | validated relationships that rest only on a share-alike source, withheld from the public layer |
 | `licence_review` | candidate relationships waiting on a licence decision (the licence-exception lane) |
 | `no_job_definition` | the category has no job definition in `config/saas_jobs.yaml`, so its alternatives cannot be fully evaluated |
@@ -82,7 +83,7 @@ Every catalogue product with at least one fully evaluated recommendation (`ok` o
 - the catalogue state;
 - for every recommendation, an `evidence` block: the relationship's upstream provenance (source, commit, locator) and the full evaluation's scoring path, core gate, evidence families and dimension scores.
 
-A `compare_path` (a de-alwis.com comparison page) is given only to `ok` products, and to the 20 that already had one. Nothing here publishes a page. The comparison cluster is KEI-809.
+`compare_path` is a legacy comparison-route field, populated according to catalogue status and configured product rules. A populated field does not prove a page exists. The current public browsing route is [The Source website](https://the-source.dev/#explore); consumers must verify any product-specific destination before linking to it.
 
 ## Detection
 

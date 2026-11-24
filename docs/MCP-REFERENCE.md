@@ -1,0 +1,191 @@
+# MCP tool and protocol reference
+
+Technical contracts for The Source’s public, read-only MCP server. For client setup and example questions, use the [connection guide](MCP.md).
+
+Hosted endpoint: `https://mcp.the-source.dev/mcp`. The sections below describe local hosting, published layers, tools, verification and errors.
+
+## Run it yourself
+
+```bash
+python -m source_pipeline mcp-serve                 # stdio server over this checkout's read layer
+python -m source_pipeline.mcp_server --root DIR     # the same, without loading the pipeline CLI
+python -m source_pipeline.mcp_server --check        # verify the read layer, print a summary, exit
+python -m source_pipeline.mcp_http --port 8851  # Streamable HTTP on 127.0.0.1:8851/mcp
+python -m pytest tests/test_mcp_server.py tests/test_mcp_v1_tools.py tests/test_mcp_http.py -q
+```
+
+The hosted deployment is `deploy/the-source-mcp/` (systemd units, nginx, installer).
+
+Client configuration (stdio):
+
+```json
+{"mcpServers": {"the-source": {
+  "command": "python3",
+  "args": ["-S", "-m", "source_pipeline.mcp_server", "--root", "/path/to/the-source"],
+  "env": {"PYTHONPATH": "/path/to/the-source"}}}}
+```
+
+## What it reads
+
+The published read layers, with attribution and licensing described in [DATA-LICENCE.md](../DATA-LICENCE.md):
+
+| File | Used for |
+|---|---|
+| `data/canonical/MANIFEST.json` | dataset_version, counts, file hashes, sources |
+| `data/canonical/saas_products.jsonl` | the catalogue: names, aliases, domains, categories |
+| `data/canonical/oss_projects.jsonl` | live project facts, maintenance, Project Health |
+| `data/canonical/relationships.jsonl` | SaaS↔OSS relationships, provenance, Replacement Fit, `recommended` |
+| `data/canonical/NOTICE.md` | upstream attribution |
+| `api/v1/index.json`, `api/v1/domains.json`, `api/v1/saas/<saas_id>.json` | the published pages and domain rules |
+| `data/momentum/MANIFEST.json`, `projects.jsonl` | Repository Momentum: star growth and acceleration over 1/7/30/90 days ([MOMENTUM.md](MOMENTUM.md)) |
+| `data/radar/MANIFEST.json`, `radar.jsonl` | Community Momentum: ranked Hacker News / DEV / Bluesky (and, where configured, X and Instagram) mentions in the Radar window ([RADAR.md](RADAR.md)) |
+| `data/corpus/MANIFEST.json`, `projects.jsonl`, `live.jsonl` | the discovery corpus: every project the Discover lane found, served as the `discovery` tier ([CORPUS.md](CORPUS.md)) |
+| `data/quick/MANIFEST.json`, `health.jsonl`, `pairings.jsonl` | Lightweight scores for discovery projects; never recommendations ([QUICK-SCORING.md](QUICK-SCORING.md)) |
+| `runs/*.json` | the public daily-cycle records, read only by `source_dataset_info` for `last_run` ([OBSERVABILITY.md](OBSERVABILITY.md)) |
+
+It reads nothing else: not the internal Discover lane build (`data/discover/`), staging,
+`data/live/`, history or intake, and no private maintainer data. A test runs the server against a directory holding only
+these folders, with an audit hook recording every file it opens and every socket event.
+
+Each signal layer is verified against its own MANIFEST sha256s. A signal layer that is
+missing, fails verification, or is older than 48 hours is reported in every answer that uses
+it (`signals.<name>.status`: `ok`, `stale` or `unavailable`, with the reason), and the
+canonical tools keep serving. The discovery corpus is verified the same way and reported as
+`corpus.status` (`ok`, `stale` after 10 days without a refresh, or `unavailable` with the
+reason); without it, search covers the canonical layer only and says so. A window that cannot be measured yet (for example 7-day
+acceleration before 14 days of history exist) is reported with the date it becomes
+measurable, never filled in.
+
+## Guarantees
+
+- **Verified before served.** At start the server checks every canonical file against its
+  MANIFEST sha256, recomputes `dataset_version` from those hashes, checks the counts, and
+  checks every `api/v1` file carries the same `dataset_version`. If anything fails it exits 2
+  with a message on stderr and serves nothing.
+- **Follows the daily cycle safely.** Each request checks whether `MANIFEST.json` changed. A
+  new layer that verifies is switched to; one that does not (for example, a half-written
+  update) is ignored, the previous snapshot keeps serving, and every answer says
+  `snapshot_current: false`, with the reason in `source_dataset_info`.
+- **Tiers.** Every project in an answer carries `tier`: `recommended`, `scored` or `discovery`
+  ([CORPUS.md](CORPUS.md)). Discovery projects do not have the full recommendation assessment. They may carry
+  separately labelled quick scores and are never recommendations on that basis. `source_get_alternatives` and `source_recommend` answer byte for byte
+  as before; `include_discovery: true` adds a separate, labelled `discovery_candidates` list.
+- **Publication gate.** Only relationships with `recommended: true` are returned as
+  recommendations. For a supported product the first rows are exactly its published
+  `api/v1` page, byte for byte. Further rows continue the same ranking over the canonical
+  layer and are flagged `beyond_published_page`. Non-recommended relationships are counted,
+  and `source_get_relationship` explains why each one was not recommended. Relationships the
+  export guard withholds are not in the layer, so the server cannot serve them.
+- **Attribution travels with the data.** Every tool result has a `meta` block:
+  `dataset_version`, `data_as_of`, `licence` (CC BY 4.0), `attribution`, `notice`.
+- **Read-only and private.** Standard library only. The engine opens no sockets and writes
+  nothing; the HTTP transport adds only the listener. Queries, URLs and client addresses are
+  never logged or stored.
+- **Telemetry is optional and aggregate.** A stdio server counts nothing and has no telemetry
+  option. The HTTP transport counts only when given `--telemetry FILE`, as the hosted server
+  is. What it counts, per UTC day, per tool and per outcome (`ok`, `tool_error`,
+  `internal_error`), is a count, a latency histogram (`<10ms` ... `>=1000ms`) and, for the list
+  tools, how many answers were empty. It is kept 90 days. No arguments, results, client
+  names, sessions or addresses are recorded. The hosted server writes it to
+  `/var/lib/the-source-mcp/telemetry.json` (schema `the-source.mcp-telemetry/2`). A weekly
+  report adds up whole weeks only and suppresses counts under 5; it stays on the host
+  ([OBSERVABILITY.md](OBSERVABILITY.md)). `source_detect_saas` matches a URL against
+  `domains.json` and never fetches it. stdout carries only protocol messages.
+- **Deterministic.** The same layer and the same `--now` give byte-identical responses.
+  The clock is used only for `freshness` in `source_dataset_info`.
+
+## Tools
+
+All tools are annotated `readOnlyHint: true`, `openWorldHint: false`. Their input schemas
+set `additionalProperties: false`.
+
+| Tool | Answers |
+|---|---|
+| `source_dataset_info` | which snapshot is served, when repositories were last checked (stale after 14 days), counts, sources, licence, and `last_run`: the newest daily-cycle run (status, times, error, degraded strategies, counts), the last success, and whether the snapshot served is its output  |
+| `source_list_supported_saas` | the products with a published page |
+| `source_get_alternatives` | `saas` (id, name, alias, domain or URL), `limit` 1-50 (default 5), `include_discovery`: ranked recommendations with status, last checked, scoring version and provenance; optionally a separate `discovery_candidates` list |
+| `source_detect_saas` | `url`: the supported product it belongs to, by the READ-API.md rules |
+| `source_search` | `query`, `kind` (any, saas, project), `tier` (any, recommended, scored, discovery), `licence`, `maintenance_status`, `min_health`, `supported_only`, `mode`, `limit`: retrieval over the catalogue and every project in the canonical layer and the discovery corpus, each result with its `tier` |
+| `source_get_project` | `project` (oss_id, repository URL or name, canonical or discovery): live facts, tier and every relationship, recommended or not; a discovery project with its provenance (list + pinned commit + line) and `observed_as_of` |
+| `source_get_relationship` | `saas`, `project`: the full relationship with upstream provenance (list, pinned commit, line), Replacement Fit dimensions and the reason it is or is not recommended |
+| `source_compare_projects` | `projects` (2-5, any tier): licence and family, stars, maintenance, Project Health, Replacement Fit per product replaced (head to head on shared products), Repository and Community Momentum, and the uncertainty in each |
+| `source_recommend` | `need` (words) and/or `saas`, plus hard constraints: `licence`, `licence_family` (permissive, weak_copyleft, copyleft), `self_hostable`, `maintenance_status`, `min_fit`, `min_health`, `min_stars`, `max_stars`, `max_days_since_activity`, `repository_momentum_7d`, `limit`, `include_discovery`. Returns the products matched and how, every constraint applied, counts excluded per constraint, and `not_evaluated`: requirements the data cannot judge |
+| `source_emerging_projects` | `window` (1, 7, 30 days), `momentum` labels, `accelerating_only`, `min_stars`, `max_stars`, `query`, `limit`: repositories by star growth, and the Community Radar ranking, with window coverage and every degradation stated |
+| `source_get_momentum` | `project` (canonical or any tracked repository): every momentum window with its explanation, and each counted community mention with its permalink |
+
+### Response detail
+
+Every tool also takes `detail` (`compact`, the default, or `full`) and `include` (a list of
+block names). A compact answer leaves out, or cuts to their status and freshness fields, these
+blocks: `meta` (kept: dataset_version, data_as_of, licence, attribution, notice), `signals`,
+`corpus` and `quick_scores` state, `notes` (ranking, tier and measure definitions, boilerplate
+notes), `explanations` (momentum derivations), `retrieval` (score components, matched terms),
+`evidence` (per-row Replacement Fit dimensions and provenance detail), `topics` and `links`.
+`response.left_out` names the blocks left out; `include` brings named ones back, and
+`detail: "full"` returns the answer exactly as before. Hybrid search keeps its score
+components; `source_get_relationship` and `source_get_project` keep their evidence.
+
+Compact never drops a trust field, wherever it sits: `tier`, recommended flags,
+`licence*` and `licence_disclosure`, `warning`, `caveat`, `live_checked_at`, `observed_as_of`
+and other `*_as_of`, `status`, `attribution`, and any `*_reason`, `capped`, `cap` or
+`suppressed` field (matched by name, so fields added later survive). Answers are roughly half
+the size (`source_list_supported_saas` 117 KB to 56 KB of text). Operators can restore the old
+default with `--default-detail full` on `mcp_server.py` or `mcp_http.py`.
+
+The four measures are never folded into one another: **Project Health** (is the project
+healthy), **Replacement Fit** (does it replace this product), **Repository Momentum** (is its
+star growth rising or accelerating) and **Community Momentum** (is it being discussed now).
+
+Resources: `source://data/canonical/MANIFEST.json`, `source://data/canonical/NOTICE.md`,
+`source://api/v1/index.json`, `source://api/v1/domains.json`, and
+`source://api/v1/saas/{saas_id}` for each supported product.
+
+### Retrieval
+
+`source_search` ranks with BM25 over weighted fields. For a SaaS product the fields are
+name ×3, aliases and id ×2.5, category ×1.5 and domain ×1. For a project they are name ×3,
+owner/repository ×2, the names and aliases of the products it is recommended for ×1.5,
+their categories ×1, topics ×1.2, host description ×1, languages ×0.5 and licence ×0.5
+(topics, description and languages come from the discovery corpus). With the corpus
+available, search ranks over the full corpus; recommendations always rank over the canonical
+layer alone, so the corpus cannot move them. An exact name match adds 10. Ties sort by kind, then
+id. Every hit reports which query terms matched which fields. This is `mode: "lexical"`, the default.
+
+`mode: "hybrid"` (and `source_recommend`, `source_emerging_projects` with `query`) combine
+three signals, each returned per result as `score_components`:
+
+- **lexical**: the BM25 above on the query without the retrieval model’s stopwords, normalised to the best hit;
+- **semantic**: cosine similarity under the retrieval model (`tfidf-sublinear/1`,
+  `source_pipeline/graph_retrieval.py`; the tokeniser is the same, and a test asserts it)
+  over each product's name, aliases and category and each project's name, repository, the
+  products it replaces and their categories;
+- **graph**: traversal of `SaaS -REPLACES-> project` edges from the best-matched products,
+  weighted by Replacement Fit, reported as `graph_path`.
+
+Score = 0.45 lexical + 0.35 semantic + 0.20 graph. A product named outright in a `need`
+("... like Notion") is taken as the product meant. For search, the semantic
+model is fitted over the full corpus, including host descriptions and topics; for
+recommendations, over the canonical layer, exactly as before.
+
+### Errors
+
+Protocol errors use JSON-RPC codes: -32700 for a parse error, -32600 for an invalid request
+(including a batch, or a request before `initialize`), -32601 for an unknown method, -32602
+for an unknown tool and -32002 for an unknown resource. A call the server cannot answer
+returns `isError: true` with a message naming the problem: a bad or unknown argument, a
+`limit` out of range, an unknown or ambiguous product or project, or no such relationship.
+An unexpected exception becomes -32603, and the server keeps running.
+
+## Protocol
+
+Newline-delimited JSON-RPC 2.0 on stdio, or Streamable HTTP (`source_pipeline/mcp_http.py`):
+`POST /mcp` with one JSON-RPC message, answered as `application/json`; notifications get 202.
+Stateless (no `Mcp-Session-Id`); each request is answered under its `MCP-Protocol-Version`
+header (2025-03-26 when absent). `GET /mcp` and `DELETE /mcp` are 405, batches 400, bodies
+over 64 KB 413, a browser `Origin` not on the allow-list 403, over the rate 429. `GET /healthz`
+returns the dataset version served. Protocol versions `2025-06-18` (with
+`structuredContent`), `2025-03-26` and `2024-11-05` (text content only). A client asking for
+another version gets `2025-06-18`. Capabilities: `tools`, `resources`. Neither list changes
+during a session.
+
+Hosting: `https://mcp.the-source.dev/mcp`. No authentication by design; the data is already public.
