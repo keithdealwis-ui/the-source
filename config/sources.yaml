@@ -313,6 +313,9 @@ sources:
     # Replaced at harvest by the ledger's content hash.
     pinned_commit: "0000000000000000000000000000000000000000"
     licence_file: docs/JOB-MATCH.md
+    # Licence review 2026-11-24 (Keith, via Claude Code): 199e9c13...4110c7 (70b6e2ef) -> a5bbf458...8d24df
+    # (9e5f428d docs rewrite). The ## Licence section is byte-identical; the edit retitled the page and
+    # dropped internal ticket IDs. Unchanged in substance: decision stays allow.
     licence_file_sha256: a5bbf4585b11a6b3a15847a3d4397e32f504ac4869214ebd06bd715c278d24df
     licence_spdx: "n/a (The Source's own derivation)"
     decision: allow

@@ -201,7 +201,11 @@ def test_dataset_info_reports_the_last_run():
     assert lr["run"]["dataset_version_after"] == common.read_json(
         ROOT / "data" / "canonical" / "MANIFEST.json")["dataset_version"]
     assert set(lr["run"]["counts"]) <= set(M.RUN_COUNTS)
-    assert _info(ROOT, M.datetime(2026, 10, 25, tzinfo=M.timezone.utc))["last_run"]["status"] == "stale"
+    # Stale is measured from the newest run, not a fixed date: a fixed date falls before the newest run once the
+    # cycle moves past it, and a negative age reads as fresh.
+    ended = M.datetime.fromisoformat(newest["ended_at"].replace("Z", "+00:00"))
+    later = ended + M.timedelta(hours=M.RUN_STALE_AFTER_HOURS + 1)
+    assert _info(ROOT, later)["last_run"]["status"] == "stale"
 
 
 def test_last_run_degrades_and_names_a_failure(tmp_path):
