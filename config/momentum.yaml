@@ -67,3 +67,12 @@ sanity:
     min_abs_stars: 100
     relative: 1.0
     confirm_retained: 0.5
+
+serving:
+  # How the MCP server presents the published labels. Presentation only: it is outside the
+  # methodology fingerprint (momentum.parameters_sha256 skips it) and never changes
+  # data/momentum/. The headline label of an answer is this window's; a measured 1-day
+  # window whose star change is smaller than one_day_min_abs_delta (either direction) has
+  # its label withheld as noise, so a -60 blip on a large repository is not "declining".
+  headline_window: "7"
+  one_day_min_abs_delta: 100

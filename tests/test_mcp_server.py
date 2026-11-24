@@ -475,7 +475,7 @@ def test_module_is_standard_library_only():
                 assert node.module is None and [a.name for a in node.names] == ["detect"], ast.dump(node)
                 continue
             imports.add(node.module.split(".")[0])
-    assert imports <= {"__future__", "argparse", "hashlib", "json", "math", "re", "sys", "time", "unicodedata",
+    assert imports <= {"__future__", "argparse", "difflib", "hashlib", "json", "math", "re", "sys", "time", "unicodedata",
                        "datetime", "pathlib", "urllib"}
     assert "urlopen" not in src and "socket" not in src and "subprocess" not in src
     det = (ROOT / "source_pipeline" / "detect.py").read_text()
