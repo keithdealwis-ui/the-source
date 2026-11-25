@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "788f74b12ccef7c4",
+  "dataset_version": "7b73f72d1a113d42",
   "last_checked": {
-    "newest": "2026-11-24T18:47:13Z",
-    "oldest": "2026-11-24T18:47:13Z"
+    "newest": "2026-11-25T02:14:18Z",
+    "oldest": "2026-11-25T02:14:18Z"
   },
   "more_available": 2,
   "provenance": {
@@ -54,7 +54,7 @@
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-24T18:47:13Z"
+          "validated_as_of": "2026-11-25T02:14:18Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -96,7 +96,7 @@
         "tag": "7.0.0rc3"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-24T18:47:13Z",
+      "live_checked_at": "2026-11-25T02:14:18Z",
       "maintenance_status": "active",
       "name": "superset",
       "note": {
@@ -136,7 +136,7 @@
         "opensaasdirectory",
         "altstack"
       ],
-      "stars": 75655
+      "stars": 75663
     },
     {
       "evidence": {
@@ -150,7 +150,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-11-24T18:47:13Z"
+          "validated_as_of": "2026-11-25T02:14:18Z"
         },
         "replacement_fit": {
           "caps": [
@@ -194,7 +194,7 @@
         "tag": "v26.9.0"
       },
       "licence_spdx": "BSD-2-Clause",
-      "live_checked_at": "2026-11-24T18:47:13Z",
+      "live_checked_at": "2026-11-25T02:14:18Z",
       "maintenance_status": "active",
       "name": "Redash",
       "note": {
@@ -235,7 +235,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 28901
+      "stars": 28902
     },
     {
       "evidence": {
@@ -249,7 +249,7 @@
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-24T18:47:13Z"
+          "validated_as_of": "2026-11-25T02:14:18Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -285,7 +285,7 @@
         "tag": "v0.0.0-edge.146.89c0dd9"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-24T18:47:13Z",
+      "live_checked_at": "2026-11-25T02:14:18Z",
       "maintenance_status": "active",
       "name": "DAC",
       "note": {
@@ -303,16 +303,16 @@
       "project_health": {
         "band": "Healthy",
         "confidence": 93.7,
-        "score": 80.9,
+        "score": 81.0,
         "trajectory": "Insufficient history"
       },
       "rank": 3,
       "replacement_fit": {
         "caps": [],
         "confidence": 81.5,
-        "evaluated_at": "2026-11-17T03:40:57Z",
+        "evaluated_at": "2026-11-25T02:14:18Z",
         "score": 79.1,
-        "score_version": "1.3.0"
+        "score_version": "1.4.0"
       },
       "repo_url": "https://github.com/bruin-data/dac",
       "self_hosting": {
@@ -322,7 +322,7 @@
       "sources": [
         "altstack"
       ],
-      "stars": 805
+      "stars": 806
     },
     {
       "evidence": {
@@ -332,11 +332,11 @@
           "provenance": [
             {
               "locator": "data/intake/admitted/kei807-accept-01.json",
-              "source_commit": "0f281826159cb3eb3b3912f99f1f3d86dafcd944",
+              "source_commit": "6d6ce5cf8068d532e5c2e8af498846afdd6aeef2",
               "source_id": "intake"
             }
           ],
-          "validated_as_of": "2026-11-24T18:47:13Z"
+          "validated_as_of": "2026-11-25T02:14:18Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -379,7 +379,7 @@
         "tag": "v0.6.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-24T18:47:13Z",
+      "live_checked_at": "2026-11-25T02:14:18Z",
       "maintenance_status": "active",
       "name": "graphic-walker",
       "note": {
@@ -414,7 +414,7 @@
       "sources": [
         "intake"
       ],
-      "stars": 3442
+      "stars": 3457
     },
     {
       "evidence": {
@@ -448,7 +448,7 @@
               "source_id": "altstack"
             }
           ],
-          "validated_as_of": "2026-11-24T18:47:13Z"
+          "validated_as_of": "2026-11-25T02:14:18Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -493,7 +493,7 @@
       },
       "licence_disclosure": "open core: recommendation covers the AGPL-3.0 core; parts under Metabase Commercial License are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-24T18:47:13Z",
+      "live_checked_at": "2026-11-25T02:14:18Z",
       "maintenance_status": "active",
       "name": "Metabase",
       "note": {
@@ -532,7 +532,7 @@
         "btwso",
         "altstack"
       ],
-      "stars": 50506
+      "stars": 50508
     }
   ],
   "saas": {
@@ -546,7 +546,8 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.3.0"
+      "1.3.0",
+      "1.4.0"
     ]
   },
   "status": "ok"

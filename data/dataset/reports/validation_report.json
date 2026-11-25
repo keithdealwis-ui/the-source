@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-24T18:47:13Z",
+  "as_of": "2026-11-25T02:14:18Z",
   "checks": [
     {
       "criterion": 1,
@@ -28,7 +28,7 @@
       "failures": 0,
       "id": "schema.oss",
       "kind": "assertion",
-      "observed": 1601,
+      "observed": 1604,
       "ok": true
     },
     {
@@ -38,7 +38,7 @@
       "failures": 0,
       "id": "schema.edge",
       "kind": "assertion",
-      "observed": 5185,
+      "observed": 5190,
       "ok": true
     },
     {
@@ -81,7 +81,7 @@
       "failures": 0,
       "id": "provenance.edge",
       "kind": "assertion",
-      "observed": 5185,
+      "observed": 5190,
       "ok": true
     },
     {
@@ -91,7 +91,7 @@
       "failures": 0,
       "id": "provenance.oss",
       "kind": "assertion",
-      "observed": 1601,
+      "observed": 1604,
       "ok": true
     },
     {
@@ -138,7 +138,7 @@
           "piotrkulpinski/open-source-alternatives",
           "tycrek/degoogle"
         ],
-        "staged_claims": 3629
+        "staged_claims": 3634
       },
       "ok": true
     },
@@ -159,7 +159,7 @@
       "failures": 0,
       "id": "dedupe.oss_ids_unique",
       "kind": "assertion",
-      "observed": 1601,
+      "observed": 1604,
       "ok": true
     },
     {
@@ -169,7 +169,7 @@
       "failures": 0,
       "id": "dedupe.edge_ids_unique",
       "kind": "assertion",
-      "observed": 5185,
+      "observed": 5190,
       "ok": true
     },
     {
@@ -179,7 +179,7 @@
       "failures": 0,
       "id": "dedupe.one_record_per_repository",
       "kind": "assertion",
-      "observed": 1583,
+      "observed": 1586,
       "ok": true
     },
     {
@@ -209,7 +209,7 @@
       "failures": 0,
       "id": "activity.recommended_within_12_months",
       "kind": "assertion",
-      "observed": 1448,
+      "observed": 1451,
       "ok": true
     },
     {
@@ -219,7 +219,7 @@
       "failures": 0,
       "id": "activity.evidence_is_not_docs_only",
       "kind": "assertion",
-      "observed": 5332,
+      "observed": 5346,
       "ok": true
     },
     {
@@ -249,7 +249,7 @@
       "failures": 0,
       "id": "licence.recommended_have_recognised_licence",
       "kind": "assertion",
-      "observed": 1448,
+      "observed": 1451,
       "ok": true
     },
     {
@@ -305,12 +305,12 @@
       "observed": {
         "oss_projects": {
           "licence_exception": 29,
-          "recommendable": 1448,
+          "recommendable": 1451,
           "rejected": 124
         },
         "relationships": {
           "licence_exception": 34,
-          "recommendable": 2111,
+          "recommendable": 2116,
           "rejected": 3040
         }
       },
@@ -334,7 +334,7 @@
       "id": "maintenance.classification_matches_definition",
       "kind": "assertion",
       "observed": {
-        "active": 1357,
+        "active": 1360,
         "maintained": 134,
         "stale": 92,
         "unverified": 18
@@ -358,7 +358,7 @@
       "failures": 0,
       "id": "stars.do_not_change_any_verdict",
       "kind": "assertion",
-      "observed": 1601,
+      "observed": 1604,
       "ok": true
     },
     {
@@ -378,7 +378,7 @@
       "failures": 0,
       "id": "origin.no_unlabelled_fields",
       "kind": "assertion",
-      "observed": 1601,
+      "observed": 1604,
       "ok": true
     },
     {
@@ -388,7 +388,7 @@
       "failures": 0,
       "id": "origin.live_matches_snapshot",
       "kind": "assertion",
-      "observed": 1601,
+      "observed": 1604,
       "ok": true
     },
     {
@@ -434,7 +434,7 @@
       "failures": 0,
       "id": "dedupe.one_repository_per_product_per_saas",
       "kind": "assertion",
-      "observed": 1625,
+      "observed": 1629,
       "ok": true
     },
     {
@@ -444,7 +444,7 @@
       "failures": 0,
       "id": "launch.only_validated_edges",
       "kind": "assertion",
-      "observed": 1625,
+      "observed": 1629,
       "ok": true
     },
     {
@@ -479,9 +479,9 @@
       "id": "launch.targets",
       "kind": "assertion",
       "observed": {
-        "oss_distinct_products": 667,
-        "oss_projects": 668,
-        "relationships": 1625,
+        "oss_distinct_products": 670,
+        "oss_projects": 671,
+        "relationships": 1629,
         "saas_products": 406
       },
       "ok": true
@@ -505,11 +505,11 @@
       "kind": "observation",
       "observed": {
         "examples": [
-          "github.com/stirling-tools/stirling-pdf (97380 stars: no_recognised_open_source_licence)",
-          "github.com/opendatalab/mineru (84282 stars: no_recognised_open_source_licence)",
-          "github.com/nomic-ai/gpt4all (77330 stars: stale_no_meaningful_activity_12_months)",
-          "github.com/pi-hole/pi-hole (62205 stars: no_recognised_open_source_licence)",
-          "github.com/pocketbase/pocketbase (61565 stars: archived)"
+          "github.com/stirling-tools/stirling-pdf (97400 stars: no_recognised_open_source_licence)",
+          "github.com/opendatalab/mineru (84293 stars: no_recognised_open_source_licence)",
+          "github.com/nomic-ai/gpt4all (77331 stars: stale_no_meaningful_activity_12_months)",
+          "github.com/pi-hole/pi-hole (62208 stars: no_recognised_open_source_licence)",
+          "github.com/pocketbase/pocketbase (61567 stars: archived)"
         ],
         "launch_projects_under_500_stars": 106,
         "rejected_with_10k_plus_stars": 36
@@ -521,12 +521,12 @@
       "id": "strategy.harvest_broad_reject_aggressive",
       "kind": "observation",
       "observed": {
-        "entries_read": 3629,
-        "oss_candidates": 1601,
-        "oss_recommendable": 1448,
+        "entries_read": 3634,
+        "oss_candidates": 1604,
+        "oss_recommendable": 1451,
         "rejections_recorded": 3275,
-        "relationship_claims_read": 6005,
-        "relationships_validated": 2111
+        "relationship_claims_read": 6010,
+        "relationships_validated": 2116
       }
     }
   ],

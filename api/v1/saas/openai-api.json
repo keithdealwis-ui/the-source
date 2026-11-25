@@ -10,10 +10,10 @@
     ],
     "status": "partial"
   },
-  "dataset_version": "788f74b12ccef7c4",
+  "dataset_version": "7b73f72d1a113d42",
   "last_checked": {
-    "newest": "2026-11-24T18:47:13Z",
-    "oldest": "2026-11-24T18:47:13Z"
+    "newest": "2026-11-25T02:14:18Z",
+    "oldest": "2026-11-25T02:14:18Z"
   },
   "more_available": 0,
   "provenance": {
@@ -41,7 +41,7 @@
               "source_id": "emmraan"
             }
           ],
-          "validated_as_of": "2026-11-24T18:47:13Z"
+          "validated_as_of": "2026-11-25T02:14:18Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -79,7 +79,7 @@
         "tag": "v0.34.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-24T18:47:13Z",
+      "live_checked_at": "2026-11-25T02:14:18Z",
       "maintenance_status": "active",
       "name": "vLLM",
       "note": {
@@ -117,7 +117,7 @@
         "solvohq",
         "emmraan"
       ],
-      "stars": 97490
+      "stars": 97504
     },
     {
       "evidence": {
@@ -131,7 +131,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-11-24T18:47:13Z"
+          "validated_as_of": "2026-11-25T02:14:18Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -144,7 +144,7 @@
           "dimensions": {
             "core_use_case_coverage": 100.0,
             "deployment_ownership": 75.0,
-            "ease_of_adoption": 100.0,
+            "ease_of_adoption": 60.0,
             "economic_advantage": 60.0,
             "feature_equivalence": 16.7,
             "integrations_extensibility": 75.0,
@@ -167,14 +167,14 @@
         }
       },
       "github_url": "https://github.com/BerriAI/litellm",
-      "last_meaningful_activity_at": "2026-11-18T03:36:47Z",
+      "last_meaningful_activity_at": "2026-11-25T02:06:09Z",
       "latest_release": {
-        "published_at": "2026-11-18T02:22:41Z",
-        "tag": "v1.111.0-rc.1"
+        "published_at": "2026-11-25T01:42:50Z",
+        "tag": "v1.111.0"
       },
       "licence_disclosure": "open core: recommendation covers the MIT core; parts under LiteLLM Enterprise licence are excluded",
       "licence_spdx": "NOASSERTION",
-      "live_checked_at": "2026-11-24T18:47:13Z",
+      "live_checked_at": "2026-11-25T02:14:18Z",
       "maintenance_status": "active",
       "name": "LiteLLM",
       "note": {
@@ -184,24 +184,24 @@
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
-          "ease of adoption"
+          "production readiness"
         ],
-        "text": "Strongest on core use-case coverage and ease of adoption; weakest on feature parity."
+        "text": "Strongest on core use-case coverage and production readiness; weakest on feature parity."
       },
       "oss_id": "github.com/berriai/litellm",
       "project_health": {
         "band": "Exceptional",
         "confidence": 92.1,
-        "score": 98.1,
+        "score": 94.6,
         "trajectory": "Rising"
       },
       "rank": 2,
       "replacement_fit": {
         "caps": [],
         "confidence": 86.5,
-        "evaluated_at": "2026-11-12T02:50:11Z",
-        "score": 77.2,
-        "score_version": "1.3.0"
+        "evaluated_at": "2026-11-25T02:14:18Z",
+        "score": 71.2,
+        "score_version": "1.4.0"
       },
       "repo_url": "https://github.com/BerriAI/litellm",
       "self_hosting": {
@@ -211,7 +211,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 63830
+      "stars": 63836
     }
   ],
   "saas": {
@@ -225,7 +225,6 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.3.0",
       "1.4.0"
     ]
   },

@@ -4,16 +4,16 @@
   "catalogue": {
     "entries": 500,
     "none_yet": 123,
-    "ok": 214,
-    "partial": 163,
+    "ok": 215,
+    "partial": 162,
     "path": "catalogue.json"
   },
-  "data_as_of": "2026-11-24T18:47:13Z",
-  "dataset_version": "788f74b12ccef7c4",
+  "data_as_of": "2026-11-25T02:14:18Z",
+  "dataset_version": "7b73f72d1a113d42",
   "domains": "domains.json",
   "live_checked_at": {
-    "newest": "2026-11-24T18:47:13Z",
-    "oldest": "2026-11-24T18:47:13Z"
+    "newest": "2026-11-25T02:14:18Z",
+    "oldest": "2026-11-25T02:14:18Z"
   },
   "supported_saas": [
     {
@@ -362,7 +362,7 @@
       "compare_path": "/open-source/slack-alternatives",
       "name": "Slack",
       "path": "saas/slack.json",
-      "recommendations": 3,
+      "recommendations": 4,
       "saas_id": "slack",
       "slug": "slack",
       "status": "ok"
@@ -1667,7 +1667,7 @@
       "compare_path": null,
       "name": "Qualtrics",
       "path": "saas/qualtrics.json",
-      "recommendations": 1,
+      "recommendations": 2,
       "saas_id": "qualtrics",
       "slug": "qualtrics",
       "status": "insufficient_recommendations"
@@ -1970,13 +1970,13 @@
       "status": "insufficient_recommendations"
     },
     {
-      "compare_path": null,
+      "compare_path": "/open-source/fireflies-ai-alternatives",
       "name": "Fireflies.ai",
       "path": "saas/fireflies-ai.json",
-      "recommendations": 2,
+      "recommendations": 3,
       "saas_id": "fireflies-ai",
       "slug": "fireflies-ai",
-      "status": "insufficient_recommendations"
+      "status": "ok"
     },
     {
       "compare_path": null,

@@ -1,67 +1,58 @@
 {
-  "as_of": "2026-11-24T18:47:13Z",
+  "as_of": "2026-11-25T02:14:18Z",
   "counts": {
-    "measured_any_window": 1601,
-    "projects": 1626
+    "measured_any_window": 1599,
+    "projects": 1629
   },
   "coverage": {
     "1": {
       "acceleration": {
-        "labels": {
-          "accelerating": 342,
-          "decelerating": 148,
-          "steady": 1111
-        },
+        "labels": {},
         "measurable_from": "2026-10-04",
         "prior_base": {
-          "base_day": "2026-11-22",
+          "base_day": "2026-11-23",
           "base_gap_days": 0,
           "exact": true,
-          "target_day": "2026-11-22"
+          "target_day": "2026-11-23"
         },
         "projects": {
           "identity_changed": 0,
           "insufficient_history": 0,
-          "measured": 1601,
+          "measured": 0,
           "no_baseline": 0,
           "not_observed": 0,
           "suppressed": 0
         },
-        "status": "measured"
+        "status": "insufficient_history"
       },
       "base": {
-        "base_day": "2026-11-23",
+        "base_day": "2026-11-24",
         "base_gap_days": 0,
         "exact": true,
-        "target_day": "2026-11-23",
+        "target_day": "2026-11-24",
         "tolerance_days": 0
       },
       "calendar_days_in_window": 2,
       "measurable_from": "2026-10-03",
-      "momentum": {
-        "declining": 10,
-        "flat": 1139,
-        "rising": 386,
-        "surging": 66
-      },
+      "momentum": {},
       "projects": {
         "identity_changed": 0,
-        "insufficient_history": 0,
-        "measured": 1601,
-        "no_baseline": 7,
+        "insufficient_history": 1608,
+        "measured": 0,
+        "no_baseline": 3,
         "not_observed": 18,
         "suppressed": 0
       },
       "snapshots_in_window": 2,
-      "status": "measured"
+      "status": "insufficient_history"
     },
     "30": {
       "acceleration": {
         "labels": {},
         "measurable_from": "2026-12-01",
         "prior_base": {
-          "reason": "no snapshot on or before 2026-09-25; oldest held is 2026-10-02",
-          "target_day": "2026-09-25"
+          "reason": "no snapshot on or before 2026-09-26; oldest held is 2026-10-02",
+          "target_day": "2026-09-26"
         },
         "projects": {
           "identity_changed": 0,
@@ -74,25 +65,25 @@
         "status": "insufficient_history"
       },
       "base": {
-        "base_day": "2026-10-25",
+        "base_day": "2026-10-26",
         "base_gap_days": 0,
         "exact": true,
-        "target_day": "2026-10-25",
+        "target_day": "2026-10-26",
         "tolerance_days": 3
       },
       "calendar_days_in_window": 31,
       "measurable_from": "2026-11-01",
       "momentum": {
         "declining": 8,
-        "flat": 809,
-        "rising": 566,
-        "surging": 86
+        "flat": 815,
+        "rising": 563,
+        "surging": 83
       },
       "projects": {
         "identity_changed": 1,
         "insufficient_history": 0,
         "measured": 1469,
-        "no_baseline": 138,
+        "no_baseline": 141,
         "not_observed": 18,
         "suppressed": 0
       },
@@ -102,47 +93,47 @@
     "7": {
       "acceleration": {
         "labels": {
-          "accelerating": 185,
-          "decelerating": 362,
-          "steady": 1040
+          "accelerating": 157,
+          "decelerating": 391,
+          "steady": 1042
         },
         "measurable_from": "2026-10-16",
         "prior_base": {
-          "base_day": "2026-11-10",
+          "base_day": "2026-11-11",
           "base_gap_days": 0,
           "exact": true,
-          "target_day": "2026-11-10"
+          "target_day": "2026-11-11"
         },
         "projects": {
           "identity_changed": 0,
           "insufficient_history": 0,
-          "measured": 1587,
-          "no_baseline": 11,
+          "measured": 1590,
+          "no_baseline": 8,
           "not_observed": 1,
           "suppressed": 0
         },
         "status": "measured"
       },
       "base": {
-        "base_day": "2026-11-17",
+        "base_day": "2026-11-18",
         "base_gap_days": 0,
         "exact": true,
-        "target_day": "2026-11-17",
+        "target_day": "2026-11-18",
         "tolerance_days": 1
       },
       "calendar_days_in_window": 8,
       "measurable_from": "2026-10-09",
       "momentum": {
-        "declining": 20,
-        "flat": 1028,
-        "rising": 471,
-        "surging": 80
+        "declining": 22,
+        "flat": 1043,
+        "rising": 453,
+        "surging": 81
       },
       "projects": {
         "identity_changed": 0,
         "insufficient_history": 0,
         "measured": 1599,
-        "no_baseline": 9,
+        "no_baseline": 12,
         "not_observed": 18,
         "suppressed": 0
       },
@@ -165,8 +156,8 @@
         "status": "insufficient_history"
       },
       "base": {
-        "reason": "no snapshot on or before 2026-08-26; oldest held is 2026-10-02",
-        "target_day": "2026-08-26",
+        "reason": "no snapshot on or before 2026-08-27; oldest held is 2026-10-02",
+        "target_day": "2026-08-27",
         "tolerance_days": 7
       },
       "calendar_days_in_window": null,
@@ -174,7 +165,7 @@
       "momentum": {},
       "projects": {
         "identity_changed": 0,
-        "insufficient_history": 1626,
+        "insufficient_history": 1629,
         "measured": 0,
         "no_baseline": 0,
         "not_observed": 0,
@@ -185,13 +176,12 @@
     }
   },
   "files": {
-    "live.json": "715edf1c4baee29ccf3cd120e1b7123e1ebe850e684750a71814ef8f2c88837e",
-    "projects.jsonl": "8d01a6f867382388566128a473f10b2f0cd409a2171c4d76bc48faa1139c6d44"
+    "live.json": "aaf89734252b1b88bb2915160787cbd9cfab69468bb1f417bda86a9087ad2a1c",
+    "projects.jsonl": "77b472f91ebd0c76511c13bf956b2bd1fa48e57164481823f465d6b539fe3ba3"
   },
   "history": {
-    "dataset_version": "788f74b12ccef7c4",
+    "dataset_version": "7b73f72d1a113d42",
     "day_sha256": {
-      "2026-10-24": "f5d3e398f23d4f8120abfc342159d406c5d5c99737c863710a911fe01746ba91",
       "2026-10-25": "e1d6faf2c8a02c59964eb0783b49d604c6fb4dedb936afc7967c82f559414fd2",
       "2026-10-26": "97ae9ec90a20a29992eca75469ecfcacfa205f8d7779402fdd0e8a58eb5ab8fb",
       "2026-10-27": "1db3ae565f329cf9b57354efc2b1267ae3afe5b77289284051bc00422e5b2978",
@@ -222,11 +212,11 @@
       "2026-11-21": "fbfb0ab6b5258bcf4eb7e12c0e0076fc1c9a48ec20819c6868450456eda03f8a",
       "2026-11-22": "aa04e784330e3a582e18baf3c8264335e74f506485e47a896af4f3967f302e68",
       "2026-11-23": "b83261ed179145de4311935a9fa928e6dc8ccd87d7ec0ce74ff546378ca0b36f",
-      "2026-11-24": "d3e9d195a163aaf45c7e8c8612a856a1b6e43f248540874c5427f0d1635b11e0"
+      "2026-11-24": "d3e9d195a163aaf45c7e8c8612a856a1b6e43f248540874c5427f0d1635b11e0",
+      "2026-11-25": "121677a143c4ed4c9715fb8f0e65c508ccdf075162472d034165b5bb5050ac2d"
     },
-    "days_held": 54,
+    "days_held": 55,
     "days_read": [
-      "2026-10-24",
       "2026-10-25",
       "2026-10-26",
       "2026-10-27",
@@ -257,11 +247,12 @@
       "2026-11-21",
       "2026-11-22",
       "2026-11-23",
-      "2026-11-24"
+      "2026-11-24",
+      "2026-11-25"
     ],
-    "newest": "2026-11-24",
+    "newest": "2026-11-25",
     "oldest": "2026-10-02",
-    "run_id": "manual-20261124T184712Z-manual-a1"
+    "run_id": "2026-11-25-schedule-a1"
   },
   "methodology": {
     "doc": "docs/MOMENTUM.md",
@@ -269,14 +260,14 @@
     "parameters_sha256": "01af1682dfe9465e76bead08cab61e44e88e95f3301671879d98082dd94a8e65",
     "version": "1.1.0"
   },
-  "on": "2026-11-24",
+  "on": "2026-11-25",
   "sanity": {
     "live": {
-      "as_of": "2026-11-24T18:47:13Z",
-      "endpoint_as_of": "2026-11-24T18:47:13Z",
+      "as_of": "2026-11-25T02:14:18Z",
+      "endpoint_as_of": "2026-11-25T02:14:18Z",
       "lag_hours": 0.0,
       "max_lag_hours": 6,
-      "sha256": "4cbe3e21860af5bfa98355a27c00b131d92125d0141018385363078d49060abf",
+      "sha256": "c423c0a72fbfc8697e1923e3b4d3eb96c22c6d5e03588493609e21bdcc4519d9",
       "status": "compared"
     },
     "parameters": {

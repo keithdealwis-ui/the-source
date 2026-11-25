@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-24T18:47:13Z",
+  "as_of": "2026-11-25T02:14:18Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -69,12 +69,12 @@
       },
       "intake": {
         "decision": "allow",
-        "entries": 25,
-        "entries_with_saas_claim": 25,
+        "entries": 30,
+        "entries_with_saas_claim": 30,
         "harvested": true,
         "licence_file_sha256": "ccc2475e96c83d6774422c036d4e7b7f495de3522c25bd03f852d78edff5a022",
-        "pinned_commit": "0f281826159cb3eb3b3912f99f1f3d86dafcd944",
-        "relationship_claims": 40,
+        "pinned_commit": "6d6ce5cf8068d532e5c2e8af498846afdd6aeef2",
+        "relationship_claims": 45,
         "unparseable_files": 0
       },
       "job_match": {
@@ -118,18 +118,18 @@
         "unparseable_files": 0
       }
     },
-    "entries_read": 3629,
-    "relationship_claims_read": 6005
+    "entries_read": 3634,
+    "relationship_claims_read": 6010
   },
   "lanes": {
     "oss_projects": {
       "licence_exception": 29,
-      "recommendable": 1448,
+      "recommendable": 1451,
       "rejected": 124
     },
     "relationships": {
       "licence_exception": 34,
-      "recommendable": 2111,
+      "recommendable": 2116,
       "rejected": 3040
     }
   },
@@ -335,7 +335,6 @@
       "productboard",
       "proton-mail",
       "qlik-cloud",
-      "qualtrics",
       "quillbot",
       "quizlet",
       "railway",
@@ -417,19 +416,19 @@
       "zoho-mail",
       "zuora"
     ],
-    "catalogue_served_relationships": 1246,
-    "oss_distinct_products": 667,
-    "oss_projects": 668,
+    "catalogue_served_relationships": 1248,
+    "oss_distinct_products": 670,
+    "oss_projects": 671,
     "preserve_served": {
-      "kept": 378,
+      "kept": 380,
       "not_kept": 0,
-      "served_before": 378
+      "served_before": 380
     },
-    "relationships": 1625,
+    "relationships": 1629,
     "relationships_corroborated_by_2plus_sources": 218,
     "relationships_share_alike_only": 0,
-    "saas_added_beyond_floor": 26,
-    "saas_named_by_a_single_source": 115,
+    "saas_added_beyond_floor": 27,
+    "saas_named_by_a_single_source": 114,
     "saas_products": 406,
     "saas_target_decision_ref": "dr-KEI-805-507e4f70",
     "saas_target_is": "floor",
@@ -469,9 +468,9 @@
   },
   "publication_status": "public",
   "reconciled": {
-    "oss_candidates": 1601,
-    "oss_candidates_before_identity_merge": 1626,
-    "relationship_candidates": 5185,
+    "oss_candidates": 1604,
+    "oss_candidates_before_identity_merge": 1629,
+    "relationship_candidates": 5190,
     "renamed_or_duplicate_repositories_merged": 25,
     "saas_products_named": 569
   },
@@ -2385,16 +2384,16 @@
   "schema_version": "1.0.0",
   "verified": {
     "maintenance_status": {
-      "active": 1357,
+      "active": 1360,
       "maintained": 134,
       "stale": 92,
       "unverified": 18
     },
-    "oss_recommendable": 1448,
+    "oss_recommendable": 1451,
     "oss_rejected": 153,
     "relationships_flagged_licence_exception": 34,
     "relationships_rejected": 3040,
-    "relationships_validated": 2111,
+    "relationships_validated": 2116,
     "saas_with_validated_alternatives": 495
   }
 }
