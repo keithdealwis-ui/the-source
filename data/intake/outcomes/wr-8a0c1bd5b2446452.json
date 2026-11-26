@@ -1,0 +1,191 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-26T04:08:58Z",
+  "canonical": {
+    "promoted_in_run": null,
+    "status": "pending_promotion"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "GPL-3.0",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "Digisensus/digisensus-recorder",
+      "created_at": "2026-09-29T05:57:42Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-26T04:08:58Z",
+      "forks": 1,
+      "found": true,
+      "host_repo_id": 1394466104,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "GNU General Public License v3.0",
+      "licence_spdx": "GPL-3.0",
+      "observed": {
+        "commits_in_12m_window": 18,
+        "commits_inspected": 2,
+        "issues_closed_12m": 0,
+        "merged_prs_inspected": 0,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-23T20:56:43Z",
+      "stars": 21
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a release",
+      "days_since_meaningful_activity": 2,
+      "last_meaningful_activity_at": "2026-11-23T20:23:26Z",
+      "status": "active"
+    },
+    "saas_relationships": [
+      {
+        "category": "Transcription",
+        "excerpt": "topic fireflies-alternative",
+        "field": "topics",
+        "matched": "fireflies-alternative",
+        "saas_id": "fireflies-ai",
+        "saas_name": "Fireflies.ai"
+      },
+      {
+        "category": "Transcription",
+        "excerpt": "rdings stay on your mac. an open source alternative to granola, otter.ai and fireflies, made by [digisensus.c",
+        "field": "readme",
+        "matched": "otter",
+        "saas_id": "otter-ai",
+        "saas_name": "Otter.ai"
+      }
+    ],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 20
+    }
+  },
+  "note": "waiting-room batch wr-20261125; 1 observation(s)",
+  "oss_id": "github.com/digisensus/digisensus-recorder",
+  "outcome": "accepted",
+  "reasons": [
+    "passes every rule; relationship evidenced",
+    "hinted SaaS 'granola' is not evidenced by the repository itself"
+  ],
+  "repo_url": "https://github.com/digisensus/digisensus-recorder",
+  "request_id": "wr-8a0c1bd5b2446452",
+  "saas_hint": "granola",
+  "scores": {
+    "errors": [],
+    "preliminary": true,
+    "project_health": {
+      "band": "Developing",
+      "confidence": 87.6,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-26T04:08:58Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/digisensus/digisensus-recorder",
+      "score": 63.0,
+      "score_version": "1.4.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": [
+      {
+        "caps": [],
+        "confidence": 83.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described",
+            "readme_names_product"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 71.2,
+          "ease_of_adoption": 80.0,
+          "economic_advantage": 68.0,
+          "feature_equivalence": 92.5,
+          "integrations_extensibility": 50.0,
+          "migration_friction": 66.7,
+          "production_commercial_readiness": 60.0
+        },
+        "evaluated_at": "2026-11-26T04:08:58Z",
+        "evidence_families": [
+          "api",
+          "data_ownership",
+          "demo",
+          "import",
+          "multi_user",
+          "plugins",
+          "quickstart",
+          "self_host"
+        ],
+        "oss_id": "github.com/digisensus/digisensus-recorder",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "fireflies-ai",
+        "score": 79.1,
+        "score_version": "1.4.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 79.1
+      },
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described",
+            "readme_names_product"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 71.2,
+          "ease_of_adoption": 80.0,
+          "economic_advantage": 68.0,
+          "feature_equivalence": 92.5,
+          "integrations_extensibility": 50.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 60.0
+        },
+        "evaluated_at": "2026-11-26T04:08:58Z",
+        "evidence_families": [
+          "api",
+          "data_ownership",
+          "demo",
+          "import",
+          "multi_user",
+          "plugins",
+          "quickstart",
+          "self_host"
+        ],
+        "oss_id": "github.com/digisensus/digisensus-recorder",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "otter-ai",
+        "score": 82.4,
+        "score_version": "1.4.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 82.4
+      }
+    ]
+  },
+  "submitted_at": "2026-11-25T04:31:05Z",
+  "submitted_by": "waiting-room:grokbot"
+}

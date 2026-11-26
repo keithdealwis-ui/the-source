@@ -1,0 +1,86 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-26T04:09:09Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "bystrex/bystrex",
+      "created_at": "2026-11-24T14:21:41Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-26T04:09:09Z",
+      "forks": 0,
+      "found": true,
+      "host_repo_id": 1470272959,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 15,
+        "commits_inspected": 2,
+        "issues_closed_12m": 0,
+        "merged_prs_inspected": 0,
+        "releases_seen": 0,
+        "tags_seen": 0
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-25T13:28:24Z",
+      "stars": 11
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a code_commit",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-25T13:27:42Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 20
+    }
+  },
+  "note": "waiting-room batch wr-20261125; 1 observation(s)",
+  "oss_id": "github.com/bystrex/bystrex",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship",
+    "hinted SaaS '1c-bitrix' is not evidenced by the repository itself"
+  ],
+  "repo_url": "https://github.com/bystrix/bystrix",
+  "request_id": "wr-22ad60286833cb6f",
+  "saas_hint": "1c-bitrix",
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Developing",
+      "confidence": 85.1,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-26T04:09:09Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/bystrex/bystrex",
+      "score": 56.1,
+      "score_version": "1.4.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "no_releases",
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-25T12:28:41Z",
+  "submitted_by": "waiting-room:grokbot"
+}

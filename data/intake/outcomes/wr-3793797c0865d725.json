@@ -1,0 +1,137 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-26T04:08:37Z",
+  "canonical": {
+    "promoted_in_run": null,
+    "status": "pending_promotion"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "AGPL-3.0",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "ariedotme/vasta",
+      "created_at": "2026-10-22T18:44:07Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-26T04:08:37Z",
+      "forks": 6,
+      "found": true,
+      "host_repo_id": 1430142712,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "GNU Affero General Public License v3.0",
+      "licence_spdx": "AGPL-3.0",
+      "observed": {
+        "commits_in_12m_window": 156,
+        "commits_inspected": 1,
+        "issues_closed_12m": 29,
+        "merged_prs_inspected": 10,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-25T19:54:45Z",
+      "stars": 71
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a release",
+      "days_since_meaningful_activity": 1,
+      "last_meaningful_activity_at": "2026-11-24T18:17:59Z",
+      "status": "active"
+    },
+    "saas_relationships": [
+      {
+        "category": "Knowledge management",
+        "excerpt": "open-source, self-hosted alternative to capacities and notion: notes, tasks and daily notes as typed",
+        "field": "description",
+        "matched": "notion",
+        "saas_id": "notion",
+        "saas_name": "Notion"
+      }
+    ],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 20
+    }
+  },
+  "note": "waiting-room batch wr-20261125; 1 observation(s)",
+  "oss_id": "github.com/ariedotme/vasta",
+  "outcome": "accepted",
+  "reasons": [
+    "passes every rule; relationship evidenced"
+  ],
+  "repo_url": "https://github.com/ariedotme/vasta",
+  "request_id": "wr-3793797c0865d725",
+  "saas_hint": "notion",
+  "scores": {
+    "errors": [],
+    "preliminary": true,
+    "project_health": {
+      "band": "Healthy",
+      "confidence": 93.7,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-26T04:08:37Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/ariedotme/vasta",
+      "score": 77.0,
+      "score_version": "1.4.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "pre_1_0"
+      ]
+    },
+    "replacement_fit": [
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described",
+            "readme_names_product"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 62.5,
+          "deployment_ownership": 68.8,
+          "ease_of_adoption": 80.0,
+          "economic_advantage": 60.0,
+          "feature_equivalence": 92.5,
+          "integrations_extensibility": 50.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 20.0
+        },
+        "evaluated_at": "2026-11-26T04:08:37Z",
+        "evidence_families": [
+          "api",
+          "data_ownership",
+          "import",
+          "plugins",
+          "quickstart",
+          "self_host"
+        ],
+        "oss_id": "github.com/ariedotme/vasta",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "notion",
+        "score": 68.4,
+        "score_version": "1.4.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 68.4
+      }
+    ]
+  },
+  "submitted_at": "2026-11-25T00:28:12Z",
+  "submitted_by": "waiting-room:grokbot"
+}

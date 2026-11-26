@@ -1,0 +1,136 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-26T04:08:44Z",
+  "canonical": {
+    "promoted_in_run": null,
+    "status": "pending_promotion"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "GPL-3.0",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "Comett1225/AbsentMotion",
+      "created_at": "2026-10-18T07:48:46Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-26T04:08:44Z",
+      "forks": 17,
+      "found": true,
+      "host_repo_id": 1424124753,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "GNU General Public License v3.0",
+      "licence_spdx": "GPL-3.0",
+      "observed": {
+        "commits_in_12m_window": 1245,
+        "commits_inspected": 1,
+        "issues_closed_12m": 27,
+        "merged_prs_inspected": 0,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-25T04:11:49Z",
+      "stars": 94
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a release",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-25T04:14:57Z",
+      "status": "active"
+    },
+    "saas_relationships": [
+      {
+        "category": "Video editing",
+        "excerpt": "the free and open-source alight motion and capcut alternative!",
+        "field": "description",
+        "matched": "capcut alternative",
+        "saas_id": "capcut",
+        "saas_name": "CapCut"
+      }
+    ],
+    "searched": {
+      "catalogue_products": 569,
+      "description": true,
+      "readme": true,
+      "topics": 7
+    }
+  },
+  "note": "waiting-room batch wr-20261125; 1 observation(s)",
+  "oss_id": "github.com/comett1225/absentmotion",
+  "outcome": "accepted",
+  "reasons": [
+    "passes every rule; relationship evidenced"
+  ],
+  "repo_url": "https://github.com/comett1225/absentmotion",
+  "request_id": "wr-393e67f87f676239",
+  "saas_hint": "capcut",
+  "scores": {
+    "errors": [],
+    "preliminary": true,
+    "project_health": {
+      "band": "Healthy",
+      "confidence": 88.1,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-26T04:08:44Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/comett1225/absentmotion",
+      "score": 76.9,
+      "score_version": "1.4.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "open_core_markers"
+      ]
+    },
+    "replacement_fit": [
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described",
+            "readme_names_product"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": true,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 46.2,
+          "ease_of_adoption": 60.0,
+          "economic_advantage": 17.0,
+          "feature_equivalence": 100.0,
+          "integrations_extensibility": 25.0,
+          "migration_friction": 100.0,
+          "production_commercial_readiness": 60.0
+        },
+        "evaluated_at": "2026-11-26T04:08:44Z",
+        "evidence_families": [
+          "api",
+          "data_ownership",
+          "import",
+          "quickstart",
+          "support"
+        ],
+        "oss_id": "github.com/comett1225/absentmotion",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "capcut",
+        "score": 73.0,
+        "score_version": "1.4.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 73.0
+      }
+    ]
+  },
+  "submitted_at": "2026-11-25T00:28:13Z",
+  "submitted_by": "waiting-room:grokbot"
+}
