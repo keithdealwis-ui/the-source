@@ -1,6 +1,6 @@
 {
   "api_version": "v1",
-  "dataset_version": "7b73f72d1a113d42",
+  "dataset_version": "ce79d0937da9d34d",
   "match_semantics": "Lowercase the page hostname and strip one leading \"www.\". A rule matches when its host equals the hostname (or the hostname ends with its host_suffix) and, if it has a path_prefix, the URL path equals the prefix or continues it at a \"/\" (a prefix that ends in \"/\" is a plain prefix). When several rules match, the most specific wins: one with a path_prefix beats one without, a longer path_prefix beats a shorter one, an exact host beats a host_suffix, a longer host_suffix beats a shorter one; remaining ties go to the first rule in file order.",
   "rules": [
     {
@@ -151,6 +151,11 @@
       "host_suffix": ".console.aws.amazon.com",
       "path_prefix": "/elasticbeanstalk",
       "saas_id": "aws-elastic-beanstalk"
+    },
+    {
+      "host_suffix": ".console.aws.amazon.com",
+      "path_prefix": "/rds",
+      "saas_id": "amazon-rds"
     },
     {
       "host_suffix": ".console.aws.amazon.com",
@@ -446,6 +451,10 @@
       "saas_id": "basecamp"
     },
     {
+      "host": "ably.com",
+      "saas_id": "ably"
+    },
+    {
       "host": "about.gitlab.com",
       "saas_id": "gitlab"
     },
@@ -464,6 +473,10 @@
     {
       "host": "acumatica.com",
       "saas_id": "acumatica"
+    },
+    {
+      "host": "admin.pubnub.com",
+      "saas_id": "pubnub"
     },
     {
       "host": "admin.shopify.com",
@@ -1010,6 +1023,11 @@
     },
     {
       "host": "aws.amazon.com",
+      "path_prefix": "/rds",
+      "saas_id": "amazon-rds"
+    },
+    {
+      "host": "aws.amazon.com",
       "path_prefix": "/s3",
       "saas_id": "amazon-s3"
     },
@@ -1306,6 +1324,11 @@
     },
     {
       "host": "console.aws.amazon.com",
+      "path_prefix": "/rds",
+      "saas_id": "amazon-rds"
+    },
+    {
+      "host": "console.aws.amazon.com",
       "path_prefix": "/s3",
       "saas_id": "amazon-s3"
     },
@@ -1440,6 +1463,10 @@
     {
       "host": "dashboard.onesignal.com",
       "saas_id": "onesignal"
+    },
+    {
+      "host": "dashboard.pusher.com",
+      "saas_id": "pusher"
     },
     {
       "host": "dashboard.render.com",
@@ -2437,6 +2464,14 @@
       "saas_id": "buffer"
     },
     {
+      "host": "pubnub.com",
+      "saas_id": "pubnub"
+    },
+    {
+      "host": "pusher.com",
+      "saas_id": "pusher"
+    },
+    {
       "host": "qbo.intuit.com",
       "saas_id": "quickbooks"
     },
@@ -2636,15 +2671,6 @@
       "saas_id": "snyk"
     },
     {
-      "host": "sonarcloud.io",
-      "saas_id": "sonarqube-cloud"
-    },
-    {
-      "host": "sonarsource.com",
-      "path_prefix": "/products/sonarcloud",
-      "saas_id": "sonarqube-cloud"
-    },
-    {
       "host": "splashtop.com",
       "saas_id": "splashtop"
     },
@@ -2675,15 +2701,6 @@
     {
       "host": "squareup.com",
       "saas_id": "square-point-of-sale"
-    },
-    {
-      "host": "stackoverflow.co",
-      "path_prefix": "/teams",
-      "saas_id": "stack-overflow-for-teams"
-    },
-    {
-      "host": "stackoverflowteams.com",
-      "saas_id": "stack-overflow-for-teams"
     },
     {
       "host": "statuscake.com",

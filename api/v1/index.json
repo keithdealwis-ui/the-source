@@ -3,17 +3,17 @@
   "canonical_schema": "the-source.canonical/1",
   "catalogue": {
     "entries": 500,
-    "none_yet": 123,
-    "ok": 215,
-    "partial": 162,
+    "none_yet": 121,
+    "ok": 213,
+    "partial": 166,
     "path": "catalogue.json"
   },
-  "data_as_of": "2026-11-25T02:14:18Z",
-  "dataset_version": "7b73f72d1a113d42",
+  "data_as_of": "2026-11-26T04:54:32Z",
+  "dataset_version": "ce79d0937da9d34d",
   "domains": "domains.json",
   "live_checked_at": {
-    "newest": "2026-11-25T02:14:18Z",
-    "oldest": "2026-11-25T02:14:18Z"
+    "newest": "2026-11-26T04:54:32Z",
+    "oldest": "2026-11-26T04:54:32Z"
   },
   "supported_saas": [
     {
@@ -800,13 +800,13 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/midjourney-alternatives",
+      "compare_path": null,
       "name": "Midjourney",
       "path": "saas/midjourney.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "midjourney",
       "slug": "midjourney",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/railway-alternatives",
@@ -1577,7 +1577,7 @@
       "compare_path": null,
       "name": "Snyk",
       "path": "saas/snyk.json",
-      "recommendations": 1,
+      "recommendations": 2,
       "saas_id": "snyk",
       "slug": "snyk",
       "status": "insufficient_recommendations"
@@ -1973,7 +1973,7 @@
       "compare_path": "/open-source/fireflies-ai-alternatives",
       "name": "Fireflies.ai",
       "path": "saas/fireflies-ai.json",
-      "recommendations": 3,
+      "recommendations": 4,
       "saas_id": "fireflies-ai",
       "slug": "fireflies-ai",
       "status": "ok"
@@ -2961,6 +2961,15 @@
     },
     {
       "compare_path": null,
+      "name": "Amazon RDS",
+      "path": "saas/amazon-rds.json",
+      "recommendations": 1,
+      "saas_id": "amazon-rds",
+      "slug": "amazon-rds",
+      "status": "insufficient_recommendations"
+    },
+    {
+      "compare_path": null,
       "name": "Document360",
       "path": "saas/document360.json",
       "recommendations": 2,
@@ -3231,6 +3240,15 @@
     },
     {
       "compare_path": null,
+      "name": "Pusher",
+      "path": "saas/pusher.json",
+      "recommendations": 1,
+      "saas_id": "pusher",
+      "slug": "pusher",
+      "status": "insufficient_recommendations"
+    },
+    {
+      "compare_path": null,
       "name": "Landbot",
       "path": "saas/landbot.json",
       "recommendations": 1,
@@ -3303,6 +3321,15 @@
     },
     {
       "compare_path": null,
+      "name": "Ably",
+      "path": "saas/ably.json",
+      "recommendations": 1,
+      "saas_id": "ably",
+      "slug": "ably",
+      "status": "insufficient_recommendations"
+    },
+    {
+      "compare_path": null,
       "name": "POEditor",
       "path": "saas/poeditor.json",
       "recommendations": 2,
@@ -3357,6 +3384,15 @@
     },
     {
       "compare_path": null,
+      "name": "PubNub",
+      "path": "saas/pubnub.json",
+      "recommendations": 1,
+      "saas_id": "pubnub",
+      "slug": "pubnub",
+      "status": "insufficient_recommendations"
+    },
+    {
+      "compare_path": null,
       "name": "Frame.io",
       "path": "saas/frame-io.json",
       "recommendations": 1,
@@ -3384,30 +3420,12 @@
     },
     {
       "compare_path": null,
-      "name": "Stack Overflow for Teams",
-      "path": "saas/stack-overflow-for-teams.json",
-      "recommendations": 1,
-      "saas_id": "stack-overflow-for-teams",
-      "slug": "stack-overflow-for-teams",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": null,
-      "name": "SonarQube Cloud",
-      "path": "saas/sonarqube-cloud.json",
-      "recommendations": 1,
-      "saas_id": "sonarqube-cloud",
-      "slug": "sonarqube-cloud",
-      "status": "insufficient_recommendations"
-    },
-    {
-      "compare_path": "/open-source/stripe-billing-alternatives",
       "name": "Stripe Billing",
       "path": "saas/stripe-billing.json",
-      "recommendations": 4,
+      "recommendations": 2,
       "saas_id": "stripe-billing",
       "slug": "stripe-billing",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     }
   ]
 }

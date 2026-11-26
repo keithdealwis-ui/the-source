@@ -9,19 +9,112 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "7b73f72d1a113d42",
+  "dataset_version": "ce79d0937da9d34d",
   "last_checked": {
-    "newest": "2026-11-25T02:14:18Z",
-    "oldest": "2026-11-25T02:14:18Z"
+    "newest": "2026-11-26T04:54:32Z",
+    "oldest": "2026-11-26T04:54:32Z"
   },
   "more_available": 3,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
+      "intake",
       "job_match"
     ]
   },
   "recommendations": [
+    {
+      "evidence": {
+        "relationship": {
+          "corroborated": false,
+          "evidence_class": "self_described",
+          "provenance": [
+            {
+              "locator": "data/intake/admitted/wr-50c808c62b622eb6.json",
+              "source_commit": "49306070614b3723ae2121bb0aa0c1febe16d62b",
+              "source_id": "intake"
+            }
+          ],
+          "validated_as_of": "2026-11-26T04:54:32Z"
+        },
+        "replacement_fit": {
+          "caps": [],
+          "core_gate": "passed",
+          "corroboration": {
+            "basis": [
+              "self_described",
+              "readme_names_product"
+            ],
+            "corroborated": true,
+            "readme_checked": true
+          },
+          "dimensions": {
+            "core_use_case_coverage": 100.0,
+            "deployment_ownership": 100.0,
+            "ease_of_adoption": 100.0,
+            "economic_advantage": 80.0,
+            "feature_equivalence": 61.7,
+            "integrations_extensibility": 50.0,
+            "migration_friction": 100.0,
+            "production_commercial_readiness": 25.0
+          },
+          "evidence_families": [
+            "api",
+            "cloud_option",
+            "data_ownership",
+            "demo",
+            "import",
+            "plugins",
+            "quickstart",
+            "self_host",
+            "support"
+          ],
+          "scoring_path": "single_project"
+        }
+      },
+      "github_url": "https://github.com/ivengexnce/NextShare",
+      "last_meaningful_activity_at": "2026-11-12T14:07:23Z",
+      "latest_release": null,
+      "licence_spdx": "MIT",
+      "live_checked_at": "2026-11-26T04:54:32Z",
+      "maintenance_status": "active",
+      "name": "NextShare",
+      "note": {
+        "gaps": [
+          "production readiness"
+        ],
+        "origin": "derived",
+        "strengths": [
+          "core use-case coverage",
+          "self-hosting and data ownership"
+        ],
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership; weakest on production readiness."
+      },
+      "oss_id": "github.com/ivengexnce/nextshare",
+      "project_health": {
+        "band": "Developing",
+        "confidence": 85.1,
+        "score": 61.1,
+        "trajectory": "Insufficient history"
+      },
+      "rank": 1,
+      "replacement_fit": {
+        "caps": [],
+        "confidence": 86.5,
+        "evaluated_at": "2026-11-10T23:09:36Z",
+        "score": 80.8,
+        "score_version": "1.3.0"
+      },
+      "repo_url": "https://github.com/ivengexnce/NextShare",
+      "self_hosting": {
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
+      },
+      "sources": [
+        "intake"
+      ],
+      "stars": 0
+    },
     {
       "evidence": {
         "relationship": {
@@ -34,7 +127,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-25T02:14:18Z"
+          "validated_as_of": "2026-11-26T04:54:32Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -74,7 +167,7 @@
         "tag": "v3.2.6"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-25T02:14:18Z",
+      "live_checked_at": "2026-11-26T04:54:32Z",
       "maintenance_status": "active",
       "name": "kutt",
       "note": {
@@ -93,7 +186,7 @@
         "score": 79.3,
         "trajectory": "Stable"
       },
-      "rank": 1,
+      "rank": 2,
       "replacement_fit": {
         "caps": [],
         "confidence": 84.5,
@@ -109,7 +202,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 11217
+      "stars": 11221
     },
     {
       "evidence": {
@@ -123,7 +216,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-25T02:14:18Z"
+          "validated_as_of": "2026-11-26T04:54:32Z"
         },
         "replacement_fit": {
           "caps": [
@@ -170,7 +263,7 @@
         "tag": "v0.3.1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-25T02:14:18Z",
+      "live_checked_at": "2026-11-26T04:54:32Z",
       "maintenance_status": "active",
       "name": "Sink",
       "note": {
@@ -189,7 +282,7 @@
         "score": 81.2,
         "trajectory": "Stable"
       },
-      "rank": 2,
+      "rank": 3,
       "replacement_fit": {
         "caps": [
           {
@@ -225,7 +318,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-25T02:14:18Z"
+          "validated_as_of": "2026-11-26T04:54:32Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -263,7 +356,7 @@
         "tag": "v0.5.3"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-25T02:14:18Z",
+      "live_checked_at": "2026-11-26T04:54:32Z",
       "maintenance_status": "maintained",
       "name": "slash",
       "note": {
@@ -284,7 +377,7 @@
         "score": 67.1,
         "trajectory": "Declining"
       },
-      "rank": 3,
+      "rank": 4,
       "replacement_fit": {
         "caps": [],
         "confidence": 84.5,
@@ -300,7 +393,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 3193
+      "stars": 3194
     },
     {
       "evidence": {
@@ -314,7 +407,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-25T02:14:18Z"
+          "validated_as_of": "2026-11-26T04:54:32Z"
         },
         "replacement_fit": {
           "caps": [
@@ -355,13 +448,13 @@
         }
       },
       "github_url": "https://github.com/SinTan1729/chhoto-url",
-      "last_meaningful_activity_at": "2026-11-19T21:03:20Z",
+      "last_meaningful_activity_at": "2026-11-25T03:23:11Z",
       "latest_release": {
-        "published_at": "2026-11-19T21:03:20Z",
-        "tag": "7.11.7"
+        "published_at": "2026-11-25T03:23:11Z",
+        "tag": "7.11.9"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-25T02:14:18Z",
+      "live_checked_at": "2026-11-26T04:54:32Z",
       "maintenance_status": "active",
       "name": "chhoto-url",
       "note": {
@@ -380,7 +473,7 @@
         "score": 85.9,
         "trajectory": "Rising"
       },
-      "rank": 4,
+      "rank": 5,
       "replacement_fit": {
         "caps": [
           {
@@ -402,104 +495,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 1022
-    },
-    {
-      "evidence": {
-        "relationship": {
-          "corroborated": false,
-          "evidence_class": "job_matched",
-          "provenance": [
-            {
-              "locator": "data/job_match/ledger.json#github.com/realodix/urlhub",
-              "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
-              "source_id": "job_match"
-            }
-          ],
-          "validated_as_of": "2026-11-25T02:14:18Z"
-        },
-        "replacement_fit": {
-          "caps": [
-            {
-              "cap": 80.0,
-              "id": "uncorroborated_pairing",
-              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Bitly as what it replaces"
-            }
-          ],
-          "core_gate": "passed",
-          "corroboration": {
-            "basis": [],
-            "corroborated": false,
-            "readme_checked": true
-          },
-          "dimensions": {
-            "core_use_case_coverage": 100.0,
-            "deployment_ownership": 100.0,
-            "ease_of_adoption": 55.8,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 61.7,
-            "integrations_extensibility": null,
-            "migration_friction": 100.0,
-            "production_commercial_readiness": 100.0
-          },
-          "evidence_families": [
-            "demo",
-            "import",
-            "quickstart",
-            "self_host"
-          ],
-          "scoring_path": "single_project"
-        }
-      },
-      "github_url": "https://github.com/realodix/urlhub",
-      "last_meaningful_activity_at": "2026-11-17T17:58:05Z",
-      "latest_release": {
-        "published_at": "2026-11-17T17:16:17Z",
-        "tag": "v1.20.1"
-      },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-25T02:14:18Z",
-      "maintenance_status": "active",
-      "name": "urlhub",
-      "note": {
-        "gaps": [],
-        "origin": "derived",
-        "strengths": [
-          "core use-case coverage",
-          "self-hosting and data ownership"
-        ],
-        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
-      },
-      "oss_id": "github.com/realodix/urlhub",
-      "project_health": {
-        "band": "Developing",
-        "confidence": 96.6,
-        "score": 65.9,
-        "trajectory": "Declining"
-      },
-      "rank": 5,
-      "replacement_fit": {
-        "caps": [
-          {
-            "cap": 80.0,
-            "id": "uncorroborated_pairing",
-            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Bitly as what it replaces"
-          }
-        ],
-        "confidence": 81.5,
-        "evaluated_at": "2026-10-20T23:06:47Z",
-        "score": 80.0,
-        "score_version": "1.3.0"
-      },
-      "repo_url": "https://github.com/realodix/urlhub",
-      "self_hosting": {
-        "basis": "self-hosting documented in the project's README",
-        "self_hostable": true
-      },
-      "sources": [
-        "job_match"
-      ],
-      "stars": 543
+      "stars": 1023
     }
   ],
   "saas": {

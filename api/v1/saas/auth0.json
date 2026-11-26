@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "7b73f72d1a113d42",
+  "dataset_version": "ce79d0937da9d34d",
   "last_checked": {
-    "newest": "2026-11-25T02:14:18Z",
-    "oldest": "2026-11-25T02:14:18Z"
+    "newest": "2026-11-26T04:54:32Z",
+    "oldest": "2026-11-26T04:54:32Z"
   },
   "more_available": 3,
   "provenance": {
@@ -46,7 +46,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-11-25T02:14:18Z"
+          "validated_as_of": "2026-11-26T04:54:32Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -92,7 +92,7 @@
         "tag": "2026-11-19.0"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-25T02:14:18Z",
+      "live_checked_at": "2026-11-26T04:54:32Z",
       "maintenance_status": "active",
       "name": "Authgear",
       "note": {
@@ -177,7 +177,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-11-25T02:14:18Z"
+          "validated_as_of": "2026-11-26T04:54:32Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -215,7 +215,7 @@
         "tag": "26.8.2"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-25T02:14:18Z",
+      "live_checked_at": "2026-11-26T04:54:32Z",
       "maintenance_status": "active",
       "name": "Keycloak",
       "note": {
@@ -257,7 +257,7 @@
         "altstack",
         "fossalt"
       ],
-      "stars": 38038
+      "stars": 38060
     },
     {
       "evidence": {
@@ -276,7 +276,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-25T02:14:18Z"
+          "validated_as_of": "2026-11-26T04:54:32Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -322,7 +322,7 @@
         "tag": "backend/v3.2.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-25T02:14:18Z",
+      "live_checked_at": "2026-11-26T04:54:32Z",
       "maintenance_status": "active",
       "name": "Hanko",
       "note": {
@@ -358,7 +358,7 @@
         "runacapital",
         "opensaasdirectory"
       ],
-      "stars": 9075
+      "stars": 9077
     },
     {
       "evidence": {
@@ -382,7 +382,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-25T02:14:18Z"
+          "validated_as_of": "2026-11-26T04:54:32Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -418,13 +418,13 @@
         }
       },
       "github_url": "https://github.com/zitadel/zitadel",
-      "last_meaningful_activity_at": "2026-11-18T20:46:33Z",
+      "last_meaningful_activity_at": "2026-11-25T10:48:12Z",
       "latest_release": {
-        "published_at": "2026-11-18T20:46:33Z",
-        "tag": "v4.20.5"
+        "published_at": "2026-11-25T10:01:44Z",
+        "tag": "v4.20.6"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-25T02:14:18Z",
+      "live_checked_at": "2026-11-26T04:54:32Z",
       "maintenance_status": "active",
       "name": "Zitadel",
       "note": {
@@ -440,18 +440,18 @@
       },
       "oss_id": "github.com/zitadel/zitadel",
       "project_health": {
-        "band": "Healthy",
-        "confidence": 93.1,
-        "score": 84.4,
+        "band": "Exceptional",
+        "confidence": 92.1,
+        "score": 91.1,
         "trajectory": "Stable"
       },
       "rank": 4,
       "replacement_fit": {
         "caps": [],
         "confidence": 95.0,
-        "evaluated_at": "2026-11-14T02:13:41Z",
+        "evaluated_at": "2026-11-26T04:54:32Z",
         "score": 79.7,
-        "score_version": "1.3.0"
+        "score_version": "1.4.0"
       },
       "repo_url": "https://github.com/zitadel/zitadel",
       "self_hosting": {
@@ -463,7 +463,7 @@
         "runacapital",
         "opensaasdirectory"
       ],
-      "stars": 15645
+      "stars": 15654
     },
     {
       "evidence": {
@@ -482,7 +482,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-11-25T02:14:18Z"
+          "validated_as_of": "2026-11-26T04:54:32Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -525,7 +525,7 @@
         "tag": "v1.46.0"
       },
       "licence_spdx": "MPL-2.0",
-      "live_checked_at": "2026-11-25T02:14:18Z",
+      "live_checked_at": "2026-11-26T04:54:32Z",
       "maintenance_status": "active",
       "name": "Logto",
       "note": {
@@ -563,7 +563,7 @@
         "btwso",
         "fossalt"
       ],
-      "stars": 14983
+      "stars": 14996
     }
   ],
   "saas": {
@@ -577,7 +577,8 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.3.0"
+      "1.3.0",
+      "1.4.0"
     ]
   },
   "status": "ok"

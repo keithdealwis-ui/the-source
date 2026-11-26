@@ -1,4 +1,5 @@
 {"aliases":[],"audience":"both","catalogue_status":"ok","category":"Password management","domain":"1password.com","name":"1Password","saas_id":"1password","supported":true}
+{"aliases":[],"audience":"b2b","catalogue_status":"partial","category":"Messaging & queues","domain":"ably.com","name":"Ably","saas_id":"ably","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"partial","category":"Email marketing","domain":"activecampaign.com","name":"ActiveCampaign","saas_id":"activecampaign","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"ok","category":"Scheduling","domain":"acuityscheduling.com","name":"Acuity Scheduling","saas_id":"acuity-scheduling","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"ok","category":"ERP","domain":"acumatica.com","name":"Acumatica","saas_id":"acumatica","supported":true}
@@ -13,6 +14,7 @@
 {"aliases":["AWS Cognito"],"audience":"b2b","catalogue_status":"ok","category":"Identity & access","domain":"aws.amazon.com","name":"Amazon Cognito","saas_id":"amazon-cognito","supported":true}
 {"aliases":["DynamoDB"],"audience":"b2b","catalogue_status":"none_yet","category":"Managed database","domain":"aws.amazon.com","name":"Amazon DynamoDB","saas_id":"amazon-dynamodb","supported":false}
 {"aliases":[],"audience":"b2c","catalogue_status":"partial","category":"Photo management","domain":"amazon.com","name":"Amazon Photos","saas_id":"amazon-photos","supported":true}
+{"aliases":["AWS RDS"],"audience":"b2b","catalogue_status":"partial","category":"Managed database","domain":"aws.amazon.com","name":"Amazon RDS","saas_id":"amazon-rds","supported":true}
 {"aliases":["AWS Redshift"],"audience":"b2b","catalogue_status":"none_yet","category":"Data warehouse","domain":"aws.amazon.com","name":"Amazon Redshift","saas_id":"amazon-redshift","supported":false}
 {"aliases":["AWS S3"],"audience":"b2b","catalogue_status":"ok","category":"Object storage","domain":"aws.amazon.com","name":"Amazon S3","saas_id":"amazon-s3","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"ok","category":"Transactional email","domain":"aws.amazon.com","name":"Amazon SES","saas_id":"amazon-ses","supported":true}
@@ -235,7 +237,7 @@
 {"aliases":["Power Automate"],"audience":"b2b","catalogue_status":"partial","category":"Workflow automation","domain":"microsoft.com","name":"Microsoft Power Automate","saas_id":"microsoft-power-automate","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"partial","category":"Team chat","domain":"microsoft.com","name":"Microsoft Teams","saas_id":"microsoft-teams","supported":true}
 {"aliases":[],"audience":"b2c","catalogue_status":"ok","category":"Task management","domain":"microsoft.com","name":"Microsoft To Do","saas_id":"microsoft-to-do","supported":true}
-{"aliases":[],"audience":"both","catalogue_status":"ok","category":"AI image generation","domain":"midjourney.com","name":"Midjourney","saas_id":"midjourney","supported":true}
+{"aliases":[],"audience":"both","catalogue_status":"partial","category":"AI image generation","domain":"midjourney.com","name":"Midjourney","saas_id":"midjourney","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"partial","category":"Developer documentation","domain":"mintlify.com","name":"Mintlify","saas_id":"mintlify","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"ok","category":"Whiteboarding","domain":"miro.com","name":"Miro","saas_id":"miro","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"partial","category":"Product analytics","domain":"mixpanel.com","name":"Mixpanel","saas_id":"mixpanel","supported":true}
@@ -282,6 +284,8 @@
 {"aliases":[],"audience":"b2b","catalogue_status":"ok","category":"Headless CMS","domain":"prismic.io","name":"Prismic","saas_id":"prismic","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"partial","category":"Product management","domain":"productboard.com","name":"Productboard","saas_id":"productboard","supported":true}
 {"aliases":["ProtonMail"],"audience":"b2c","catalogue_status":"ok","category":"Email","domain":"proton.me","name":"Proton Mail","saas_id":"proton-mail","supported":true}
+{"aliases":[],"audience":"b2b","catalogue_status":"partial","category":"Messaging & queues","domain":"pubnub.com","name":"PubNub","saas_id":"pubnub","supported":true}
+{"aliases":[],"audience":"b2b","catalogue_status":"partial","category":"Messaging & queues","domain":"pusher.com","name":"Pusher","saas_id":"pusher","supported":true}
 {"aliases":["Qlik Sense"],"audience":"b2b","catalogue_status":"ok","category":"Business intelligence","domain":"qlik.com","name":"Qlik Cloud","saas_id":"qlik-cloud","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"partial","category":"Forms & surveys","domain":"qualtrics.com","name":"Qualtrics","saas_id":"qualtrics","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"ok","category":"Accounting","domain":"quickbooks.intuit.com","name":"QuickBooks","saas_id":"quickbooks","supported":true}
@@ -325,7 +329,6 @@
 {"aliases":["SmallPDF"],"audience":"both","catalogue_status":"partial","category":"PDF tools","domain":"smallpdf.com","name":"Smallpdf","saas_id":"smallpdf","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"partial","category":"Data warehouse","domain":"snowflake.com","name":"Snowflake","saas_id":"snowflake","supported":true}
 {"aliases":["Snyk.io"],"audience":"b2b","catalogue_status":"partial","category":"Application security","domain":"snyk.io","name":"Snyk","saas_id":"snyk","supported":true}
-{"aliases":["SonarCloud"],"audience":"b2b","catalogue_status":"partial","category":"Application security","domain":"sonarcloud.io","name":"SonarQube Cloud","saas_id":"sonarqube-cloud","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"partial","category":"Remote access","domain":"splashtop.com","name":"Splashtop","saas_id":"splashtop","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"partial","category":"Feature flags","domain":"split.io","name":"Split","saas_id":"split","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"ok","category":"Observability","domain":"splunk.com","name":"Splunk","saas_id":"splunk","supported":true}
@@ -333,13 +336,12 @@
 {"aliases":[],"audience":"b2b","catalogue_status":"ok","category":"Social media management","domain":"sproutsocial.com","name":"Sprout Social","saas_id":"sprout-social","supported":true}
 {"aliases":["Square POS"],"audience":"b2b","catalogue_status":"ok","category":"Point of sale","domain":"squareup.com","name":"Square Point of Sale","saas_id":"square-point-of-sale","supported":true}
 {"aliases":[],"audience":"both","catalogue_status":"ok","category":"Site builder","domain":"squarespace.com","name":"Squarespace","saas_id":"squarespace","supported":true}
-{"aliases":[],"audience":"b2b","catalogue_status":"partial","category":"Knowledge base","domain":"stackoverflow.co","name":"Stack Overflow for Teams","saas_id":"stack-overflow-for-teams","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"ok","category":"Uptime monitoring","domain":"statuscake.com","name":"StatusCake","saas_id":"statuscake","supported":true}
 {"aliases":["Atlassian Statuspage","Statuspage (Atlassian)"],"audience":"b2b","catalogue_status":"ok","category":"Status pages","domain":"atlassian.com","name":"Statuspage","saas_id":"statuspage","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"ok","category":"Headless CMS","domain":"storyblok.com","name":"Storyblok","saas_id":"storyblok","supported":true}
 {"aliases":[],"audience":"b2c","catalogue_status":"partial","category":"Health & fitness","domain":"strava.com","name":"Strava","saas_id":"strava","supported":true}
 {"aliases":[],"audience":"both","catalogue_status":"ok","category":"Site builder","domain":"strikingly.com","name":"Strikingly","saas_id":"strikingly","supported":true}
-{"aliases":[],"audience":"b2b","catalogue_status":"ok","category":"Billing","domain":"stripe.com","name":"Stripe Billing","saas_id":"stripe-billing","supported":true}
+{"aliases":[],"audience":"b2b","catalogue_status":"partial","category":"Billing","domain":"stripe.com","name":"Stripe Billing","saas_id":"stripe-billing","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"ok","category":"Identity & access","domain":"stytch.com","name":"Stytch","saas_id":"stytch","supported":true}
 {"aliases":[],"audience":"both","catalogue_status":"ok","category":"Publishing","domain":"substack.com","name":"Substack","saas_id":"substack","supported":true}
 {"aliases":[],"audience":"b2b","catalogue_status":"ok","category":"Log management","domain":"sumologic.com","name":"Sumo Logic","saas_id":"sumo-logic","supported":true}

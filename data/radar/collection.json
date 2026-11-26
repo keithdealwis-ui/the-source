@@ -1,12 +1,16 @@
 {
-  "as_of": "2026-11-25T02:14:18Z",
+  "as_of": "2026-11-26T04:54:32Z",
   "resolve": {
-    "asked": 5,
+    "asked": 12,
     "deferred": 0,
     "pool_added": [
-      "github.com/unslothai/unsloth"
+      "github.com/alesha-pro/llm.asm",
+      "github.com/google-research/google-research",
+      "github.com/lsernau/grh-lean",
+      "github.com/samcorcos/legatum",
+      "github.com/xoxorwr/pw-loudness-eq"
     ],
-    "resolved": 5,
+    "resolved": 12,
     "transient_failures": []
   },
   "sources": {
@@ -17,16 +21,16 @@
       "http_calls": 2,
       "items_read": 100,
       "listed": 100,
-      "mentions": 53,
+      "mentions": 65,
       "status": "ok"
     },
     "forem": {
       "errors": [],
-      "gone": 2,
-      "http_calls": 42,
-      "items_read": 36,
-      "listed": 36,
-      "mentions": 31,
+      "gone": 0,
+      "http_calls": 36,
+      "items_read": 30,
+      "listed": 30,
+      "mentions": 25,
       "status": "ok"
     },
     "hn": {
@@ -35,7 +39,7 @@
       "http_calls": 303,
       "items_read": 300,
       "listed": 349,
-      "mentions": 25,
+      "mentions": 22,
       "status": "ok"
     },
     "instagram": {
@@ -62,9 +66,9 @@
     }
   },
   "stars": {
-    "asked": 3,
+    "asked": 35,
     "error": null,
-    "found": 2,
+    "found": 34,
     "http_calls": 1,
     "missing_before": 1,
     "not_found": 1,

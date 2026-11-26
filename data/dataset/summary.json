@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-25T02:14:18Z",
+  "as_of": "2026-11-26T04:54:32Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -23,7 +23,7 @@
         "entries_with_saas_claim": 93,
         "harvested": true,
         "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
-        "pinned_commit": "c3277baea787dd69c4e082573bf945d135e24e73",
+        "pinned_commit": "11bb4605f128bdf6f759bdbcb4eebb1876349f14",
         "relationship_claims": 148,
         "unparseable_files": 0
       },
@@ -69,12 +69,12 @@
       },
       "intake": {
         "decision": "allow",
-        "entries": 30,
-        "entries_with_saas_claim": 30,
+        "entries": 36,
+        "entries_with_saas_claim": 36,
         "harvested": true,
         "licence_file_sha256": "ccc2475e96c83d6774422c036d4e7b7f495de3522c25bd03f852d78edff5a022",
-        "pinned_commit": "6d6ce5cf8068d532e5c2e8af498846afdd6aeef2",
-        "relationship_claims": 45,
+        "pinned_commit": "49306070614b3723ae2121bb0aa0c1febe16d62b",
+        "relationship_claims": 54,
         "unparseable_files": 0
       },
       "job_match": {
@@ -118,24 +118,25 @@
         "unparseable_files": 0
       }
     },
-    "entries_read": 3634,
-    "relationship_claims_read": 6010
+    "entries_read": 3640,
+    "relationship_claims_read": 6019
   },
   "lanes": {
     "oss_projects": {
       "licence_exception": 29,
-      "recommendable": 1451,
+      "recommendable": 1457,
       "rejected": 124
     },
     "relationships": {
       "licence_exception": 34,
-      "recommendable": 2116,
+      "recommendable": 2125,
       "rejected": 3040
     }
   },
   "launch": {
     "cap_per_saas": 2,
     "catalogue_served": [
+      "ably",
       "activecampaign",
       "acuity-scheduling",
       "acumatica",
@@ -148,6 +149,7 @@
       "amazon-cognito",
       "amazon-dynamodb",
       "amazon-photos",
+      "amazon-rds",
       "amazon-redshift",
       "amazon-ses",
       "any-do",
@@ -334,6 +336,8 @@
       "prismic",
       "productboard",
       "proton-mail",
+      "pubnub",
+      "pusher",
       "qlik-cloud",
       "quillbot",
       "quizlet",
@@ -364,11 +368,9 @@
       "slite",
       "smallpdf",
       "snyk",
-      "sonarqube-cloud",
       "splashtop",
       "split",
       "sprout-social",
-      "stack-overflow-for-teams",
       "statuscake",
       "storyblok",
       "strava",
@@ -416,20 +418,20 @@
       "zoho-mail",
       "zuora"
     ],
-    "catalogue_served_relationships": 1248,
-    "oss_distinct_products": 670,
-    "oss_projects": 671,
+    "catalogue_served_relationships": 1250,
+    "oss_distinct_products": 674,
+    "oss_projects": 675,
     "preserve_served": {
-      "kept": 380,
+      "kept": 381,
       "not_kept": 0,
-      "served_before": 380
+      "served_before": 381
     },
-    "relationships": 1629,
+    "relationships": 1631,
     "relationships_corroborated_by_2plus_sources": 218,
     "relationships_share_alike_only": 0,
     "saas_added_beyond_floor": 27,
-    "saas_named_by_a_single_source": 114,
-    "saas_products": 406,
+    "saas_named_by_a_single_source": 116,
+    "saas_products": 408,
     "saas_target_decision_ref": "dr-KEI-805-507e4f70",
     "saas_target_is": "floor",
     "targets": {
@@ -468,26 +470,26 @@
   },
   "publication_status": "public",
   "reconciled": {
-    "oss_candidates": 1604,
-    "oss_candidates_before_identity_merge": 1629,
-    "relationship_candidates": 5190,
+    "oss_candidates": 1610,
+    "oss_candidates_before_identity_merge": 1635,
+    "relationship_candidates": 5199,
     "renamed_or_duplicate_repositories_merged": 25,
-    "saas_products_named": 569
+    "saas_products_named": 571
   },
   "rejections": {
     "by_code": {
-      "archived": 21,
+      "archived": 20,
       "host_unverifiable": 7,
       "identity_unverified": 7,
       "licence_not_open": 44,
       "not_a_replacement": 2873,
       "not_a_repository": 8,
-      "not_found": 11,
+      "not_found": 13,
       "saas_not_in_catalogue": 241,
-      "unmaintained": 63
+      "unmaintained": 62
     },
     "by_reason": {
-      "eligibility:archived": 8,
+      "eligibility:archived": 7,
       "eligibility:archived;no_recognised_open_source_licence;stale_no_meaningful_activity_12_months": 2,
       "eligibility:archived;stale_no_meaningful_activity_12_months": 11,
       "eligibility:host_not_independently_verifiable": 7,
@@ -496,8 +498,8 @@
       "eligibility:no_recognised_open_source_licence;stale_no_meaningful_activity_12_months": 15,
       "eligibility:no_recognised_open_source_licence;stale_no_meaningful_activity_12_months;repository_identity_changed_since_listed": 1,
       "eligibility:repository_identity_changed_since_listed": 5,
-      "eligibility:repository_not_found": 11,
-      "eligibility:stale_no_meaningful_activity_12_months": 63,
+      "eligibility:repository_not_found": 13,
+      "eligibility:stale_no_meaningful_activity_12_months": 62,
       "normalise:repo_url_not_a_repository": 8,
       "normalise:saas_not_in_catalogue": 241,
       "plausibility_review:.NET API docs static site generator; not an interactive API developer hub like ReadMe": 1,
@@ -2384,16 +2386,16 @@
   "schema_version": "1.0.0",
   "verified": {
     "maintenance_status": {
-      "active": 1360,
-      "maintained": 134,
-      "stale": 92,
-      "unverified": 18
+      "active": 1366,
+      "maintained": 133,
+      "stale": 91,
+      "unverified": 20
     },
-    "oss_recommendable": 1451,
+    "oss_recommendable": 1457,
     "oss_rejected": 153,
     "relationships_flagged_licence_exception": 34,
     "relationships_rejected": 3040,
-    "relationships_validated": 2116,
-    "saas_with_validated_alternatives": 495
+    "relationships_validated": 2125,
+    "saas_with_validated_alternatives": 499
   }
 }

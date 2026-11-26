@@ -3,18 +3,18 @@
   "catalogue": {
     "audience": "b2b",
     "rank": 169,
-    "reason": "8 recommendations passed the full evaluation",
+    "reason": "7 recommendations passed the full evaluation",
     "reasons": [
       "full_evaluation"
     ],
     "status": "ok"
   },
-  "dataset_version": "7b73f72d1a113d42",
+  "dataset_version": "ce79d0937da9d34d",
   "last_checked": {
-    "newest": "2026-11-25T02:14:18Z",
-    "oldest": "2026-11-25T02:14:18Z"
+    "newest": "2026-11-26T04:54:32Z",
+    "oldest": "2026-11-26T04:54:32Z"
   },
-  "more_available": 3,
+  "more_available": 2,
   "provenance": {
     "notice": "data/canonical/NOTICE.md",
     "sources": [
@@ -34,7 +34,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-25T02:14:18Z"
+          "validated_as_of": "2026-11-26T04:54:32Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -74,7 +74,7 @@
         "tag": "v3.2.6"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-25T02:14:18Z",
+      "live_checked_at": "2026-11-26T04:54:32Z",
       "maintenance_status": "active",
       "name": "kutt",
       "note": {
@@ -109,7 +109,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 11217
+      "stars": 11221
     },
     {
       "evidence": {
@@ -123,7 +123,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-25T02:14:18Z"
+          "validated_as_of": "2026-11-26T04:54:32Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -164,7 +164,7 @@
         "tag": "v0.3.1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-25T02:14:18Z",
+      "live_checked_at": "2026-11-26T04:54:32Z",
       "maintenance_status": "active",
       "name": "Sink",
       "note": {
@@ -213,7 +213,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-25T02:14:18Z"
+          "validated_as_of": "2026-11-26T04:54:32Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -251,7 +251,7 @@
         "tag": "v0.5.3"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-25T02:14:18Z",
+      "live_checked_at": "2026-11-26T04:54:32Z",
       "maintenance_status": "maintained",
       "name": "slash",
       "note": {
@@ -288,7 +288,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 3193
+      "stars": 3194
     },
     {
       "evidence": {
@@ -302,7 +302,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-25T02:14:18Z"
+          "validated_as_of": "2026-11-26T04:54:32Z"
         },
         "replacement_fit": {
           "caps": [
@@ -343,13 +343,13 @@
         }
       },
       "github_url": "https://github.com/SinTan1729/chhoto-url",
-      "last_meaningful_activity_at": "2026-11-19T21:03:20Z",
+      "last_meaningful_activity_at": "2026-11-25T03:23:11Z",
       "latest_release": {
-        "published_at": "2026-11-19T21:03:20Z",
-        "tag": "7.11.7"
+        "published_at": "2026-11-25T03:23:11Z",
+        "tag": "7.11.9"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-25T02:14:18Z",
+      "live_checked_at": "2026-11-26T04:54:32Z",
       "maintenance_status": "active",
       "name": "chhoto-url",
       "note": {
@@ -390,7 +390,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 1022
+      "stars": 1023
     },
     {
       "evidence": {
@@ -399,21 +399,15 @@
           "evidence_class": "job_matched",
           "provenance": [
             {
-              "locator": "data/job_match/ledger.json#github.com/realodix/urlhub",
+              "locator": "data/job_match/ledger.json#github.com/luadotsh/lua",
               "source_commit": "b9be7c612e7324680852cf3ca79d0efe635c7abd",
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-25T02:14:18Z"
+          "validated_as_of": "2026-11-26T04:54:32Z"
         },
         "replacement_fit": {
-          "caps": [
-            {
-              "cap": 80.0,
-              "id": "uncorroborated_pairing",
-              "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Rebrandly as what it replaces"
-            }
-          ],
+          "caps": [],
           "core_gate": "passed",
           "corroboration": {
             "basis": [],
@@ -422,64 +416,63 @@
           },
           "dimensions": {
             "core_use_case_coverage": 100.0,
-            "deployment_ownership": 100.0,
-            "ease_of_adoption": 55.8,
-            "economic_advantage": 80.0,
-            "feature_equivalence": 61.7,
-            "integrations_extensibility": null,
-            "migration_friction": 100.0,
+            "deployment_ownership": 43.8,
+            "ease_of_adoption": 77.2,
+            "economic_advantage": 60.0,
+            "feature_equivalence": 73.3,
+            "integrations_extensibility": 75.0,
+            "migration_friction": 66.7,
             "production_commercial_readiness": 100.0
           },
           "evidence_families": [
+            "api",
             "demo",
             "import",
+            "multi_user",
+            "plugins",
             "quickstart",
-            "self_host"
+            "self_host",
+            "sso",
+            "support"
           ],
           "scoring_path": "single_project"
         }
       },
-      "github_url": "https://github.com/realodix/urlhub",
-      "last_meaningful_activity_at": "2026-11-17T17:58:05Z",
+      "github_url": "https://github.com/luadotsh/lua",
+      "last_meaningful_activity_at": "2026-09-14T21:22:31Z",
       "latest_release": {
-        "published_at": "2026-11-17T17:16:17Z",
-        "tag": "v1.20.1"
+        "published_at": "2025-01-28T13:15:40Z",
+        "tag": "1.0.5"
       },
-      "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-25T02:14:18Z",
+      "licence_spdx": "AGPL-3.0",
+      "live_checked_at": "2026-11-26T04:54:32Z",
       "maintenance_status": "active",
-      "name": "urlhub",
+      "name": "lua",
       "note": {
         "gaps": [],
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
-          "self-hosting and data ownership"
+          "production readiness"
         ],
-        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
+        "text": "Strongest on core use-case coverage and production readiness."
       },
-      "oss_id": "github.com/realodix/urlhub",
+      "oss_id": "github.com/luadotsh/lua",
       "project_health": {
-        "band": "Developing",
+        "band": "Healthy",
         "confidence": 96.6,
-        "score": 65.9,
-        "trajectory": "Declining"
+        "score": 75.6,
+        "trajectory": "Rising"
       },
       "rank": 5,
       "replacement_fit": {
-        "caps": [
-          {
-            "cap": 80.0,
-            "id": "uncorroborated_pairing",
-            "reason": "Replacement Fit capped at 80: pairing rests on a single upstream source and the project's own README does not name Rebrandly as what it replaces"
-          }
-        ],
-        "confidence": 81.5,
+        "caps": [],
+        "confidence": 84.5,
         "evaluated_at": "2026-10-20T23:06:47Z",
-        "score": 80.0,
+        "score": 79.1,
         "score_version": "1.3.0"
       },
-      "repo_url": "https://github.com/realodix/urlhub",
+      "repo_url": "https://github.com/luadotsh/lua",
       "self_hosting": {
         "basis": "self-hosting documented in the project's README",
         "self_hostable": true
@@ -487,7 +480,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 543
+      "stars": 344
     }
   ],
   "saas": {

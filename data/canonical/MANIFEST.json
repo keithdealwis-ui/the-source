@@ -2,35 +2,35 @@
   "canonical_schema": "the-source.canonical/1",
   "counts": {
     "catalogue_entries": 500,
-    "catalogue_none_yet": 123,
-    "catalogue_ok": 215,
-    "catalogue_partial": 162,
-    "oss_projects": 671,
-    "recommendation_gate_evaluated": 1628,
-    "recommendation_gate_failed": 356,
+    "catalogue_none_yet": 121,
+    "catalogue_ok": 213,
+    "catalogue_partial": 166,
+    "oss_projects": 675,
+    "recommendation_gate_evaluated": 1630,
+    "recommendation_gate_failed": 358,
     "recommendation_gate_passed": 1272,
     "recommended_relationships": 1272,
-    "relationships": 1629,
-    "saas_products": 406,
-    "supported_saas": 377,
-    "supported_saas_ok": 215
+    "relationships": 1631,
+    "saas_products": 408,
+    "supported_saas": 379,
+    "supported_saas_ok": 213
   },
-  "data_as_of": "2026-11-25T02:14:18Z",
-  "dataset_version": "7b73f72d1a113d42",
+  "data_as_of": "2026-11-26T04:54:32Z",
+  "dataset_version": "ce79d0937da9d34d",
   "export_guard": {
     "export_licence_constraint": "none beyond attribution notices",
-    "relationships_exported": 1629,
+    "relationships_exported": 1631,
     "relationships_withheld_share_alike_only": 0
   },
   "files": {
-    "NOTICE.md": "bb876ef4b50cfb3cdfd47780d5c80b5f38fe400b40bcaa4d43f458b1a0a092eb",
-    "oss_projects.jsonl": "0b5a05fcd41df2b44e37bf5a114ef588d2e9fd0ac95bb6df5e62f836cf7b1d8b",
-    "relationships.jsonl": "bf8ab8080d117ec38f4c8b286c5f263284d532b495d8260319b830183f5fabce",
-    "saas_products.jsonl": "a0726b7d15b2be5399af92c5fdfc18714bbc710352b77b7627575a620c0649c6"
+    "NOTICE.md": "39ca0c98e52208799041033507e274914185dc85c16d4d6ff25b1619a7e7e992",
+    "oss_projects.jsonl": "622429cce099d4e528a6e668b8d63ed98fca1d9dc58975c7300e4d0c726cefc5",
+    "relationships.jsonl": "ec63741c0d41e6a67a607b00ec04141ad8d4c9e19dc3c4703b9e2e510b02ece7",
+    "saas_products.jsonl": "21e69978f2fd41e6da6e079be3a8bb60d477835bda98bff08ddbd3eb98897646"
   },
   "live_checked_at": {
-    "newest": "2026-11-25T02:14:18Z",
-    "oldest": "2026-11-25T02:14:18Z"
+    "newest": "2026-11-26T04:54:32Z",
+    "oldest": "2026-11-26T04:54:32Z"
   },
   "recommendation_gate": {
     "by_tier": {
@@ -40,29 +40,29 @@
         "passed": 202
       },
       "job_matched": {
-        "evaluated": 982,
-        "pass_rate": 0.7098,
-        "passed": 697
+        "evaluated": 977,
+        "pass_rate": 0.7073,
+        "passed": 691
       },
       "single_source": {
-        "evaluated": 429,
-        "pass_rate": 0.8695,
-        "passed": 373
+        "evaluated": 436,
+        "pass_rate": 0.8693,
+        "passed": 379
       }
     },
-    "evaluated": 1628,
-    "failed": 356,
+    "evaluated": 1630,
+    "failed": 358,
     "failed_by_reason": {
-      "fit_below_job_matched_floor": 285,
-      "fit_below_single_source_floor": 24,
+      "fit_below_job_matched_floor": 286,
+      "fit_below_single_source_floor": 25,
       "not_credible": 47,
       "not_publishable": 24,
       "not_scored": 1
     },
     "not_scored": 1,
-    "pass_rate": 0.7813,
+    "pass_rate": 0.7804,
     "passed": 1272,
-    "relationships": 1629,
+    "relationships": 1631,
     "replacement_fit_min": {
       "corroborated": 60,
       "job_matched": 75,
@@ -93,7 +93,7 @@
     },
     "intake": {
       "decision": "allow",
-      "pinned_commit": "6d6ce5cf8068d532e5c2e8af498846afdd6aeef2"
+      "pinned_commit": "49306070614b3723ae2121bb0aa0c1febe16d62b"
     },
     "job_match": {
       "decision": "allow",
