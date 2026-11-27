@@ -1,0 +1,86 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-27T04:13:59Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "tcsenpai/LickMyPaw",
+      "created_at": "2026-11-25T07:54:45Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-27T04:13:59Z",
+      "forks": 1,
+      "found": true,
+      "host_repo_id": 1471448612,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 59,
+        "commits_inspected": 1,
+        "issues_closed_12m": 0,
+        "merged_prs_inspected": 0,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-26T08:21:50Z",
+      "stars": 14
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a code_commit",
+      "days_since_meaningful_activity": 0,
+      "last_meaningful_activity_at": "2026-11-26T08:21:47Z",
+      "status": "active"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 571,
+      "description": true,
+      "readme": true,
+      "topics": 0
+    }
+  },
+  "note": "waiting-room batch wr-20261126; 1 observation(s)",
+  "oss_id": "github.com/tcsenpai/lickmypaw",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship",
+    "hinted SaaS 'cleanmymac' is not evidenced by the repository itself"
+  ],
+  "repo_url": "https://github.com/tcsenpai/lickmypaw",
+  "request_id": "wr-a01b5cb761bf9a4e",
+  "saas_hint": "cleanmymac",
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Developing",
+      "confidence": 87.6,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-27T04:13:59Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/tcsenpai/lickmypaw",
+      "score": 60.5,
+      "score_version": "1.4.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "pre_1_0",
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-26T08:27:14Z",
+  "submitted_by": "waiting-room:grokbot"
+}
