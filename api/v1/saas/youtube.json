@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "ce79d0937da9d34d",
+  "dataset_version": "8bd2f1fa499b98bd",
   "last_checked": {
-    "newest": "2026-11-26T04:54:32Z",
-    "oldest": "2026-11-26T04:54:32Z"
+    "newest": "2026-11-26T23:42:16Z",
+    "oldest": "2026-11-26T23:42:16Z"
   },
   "more_available": 0,
   "provenance": {
@@ -35,7 +35,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-11-26T04:54:32Z"
+          "validated_as_of": "2026-11-26T23:42:16Z"
         },
         "replacement_fit": {
           "caps": [
@@ -83,7 +83,7 @@
         "tag": "v9.7.0"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-26T04:54:32Z",
+      "live_checked_at": "2026-11-26T23:42:16Z",
       "maintenance_status": "active",
       "name": "MediaCMS",
       "note": {
@@ -99,7 +99,7 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 96.6,
-        "score": 88.4,
+        "score": 88.7,
         "trajectory": "Rising"
       },
       "rank": 1,
@@ -112,9 +112,9 @@
           }
         ],
         "confidence": 86.5,
-        "evaluated_at": "2026-10-20T23:06:47Z",
+        "evaluated_at": "2026-11-26T23:42:16Z",
         "score": 80.0,
-        "score_version": "1.3.0"
+        "score_version": "1.4.0"
       },
       "repo_url": "https://github.com/mediacms-io/mediacms",
       "self_hosting": {
@@ -143,7 +143,7 @@
               "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-26T04:54:32Z"
+          "validated_as_of": "2026-11-26T23:42:16Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -184,7 +184,7 @@
         "tag": "v9.0.0-rc.1"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-26T04:54:32Z",
+      "live_checked_at": "2026-11-26T23:42:16Z",
       "maintenance_status": "active",
       "name": "PeerTube",
       "note": {
@@ -223,7 +223,7 @@
         "solvohq",
         "diegoleme"
       ],
-      "stars": 15435
+      "stars": 15440
     },
     {
       "evidence": {
@@ -237,7 +237,7 @@
               "source_id": "solvohq"
             }
           ],
-          "validated_as_of": "2026-11-26T04:54:32Z"
+          "validated_as_of": "2026-11-26T23:42:16Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -275,7 +275,7 @@
         "tag": "v0.3.0"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-26T04:54:32Z",
+      "live_checked_at": "2026-11-26T23:42:16Z",
       "maintenance_status": "active",
       "name": "Owncast",
       "note": {
@@ -313,7 +313,7 @@
       "sources": [
         "solvohq"
       ],
-      "stars": 11704
+      "stars": 11705
     }
   ],
   "saas": {
@@ -327,7 +327,8 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.3.0"
+      "1.3.0",
+      "1.4.0"
     ]
   },
   "status": "ok"

@@ -10,10 +10,10 @@
     ],
     "status": "partial"
   },
-  "dataset_version": "ce79d0937da9d34d",
+  "dataset_version": "8bd2f1fa499b98bd",
   "last_checked": {
-    "newest": "2026-11-26T04:54:32Z",
-    "oldest": "2026-11-26T04:54:32Z"
+    "newest": "2026-11-26T23:42:16Z",
+    "oldest": "2026-11-26T23:42:16Z"
   },
   "more_available": 0,
   "provenance": {
@@ -36,7 +36,7 @@
               "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-26T04:54:32Z"
+          "validated_as_of": "2026-11-26T23:42:16Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -72,7 +72,7 @@
       "last_meaningful_activity_at": "2025-12-02T06:53:33Z",
       "latest_release": null,
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-26T04:54:32Z",
+      "live_checked_at": "2026-11-26T23:42:16Z",
       "maintenance_status": "maintained",
       "name": "Wan",
       "note": {
@@ -110,7 +110,7 @@
       "sources": [
         "diegoleme"
       ],
-      "stars": 17495
+      "stars": 17499
     },
     {
       "evidence": {
@@ -124,7 +124,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-26T04:54:32Z"
+          "validated_as_of": "2026-11-26T23:42:16Z"
         },
         "replacement_fit": {
           "caps": [
@@ -145,7 +145,7 @@
             "deployment_ownership": 50.0,
             "ease_of_adoption": 100.0,
             "economic_advantage": 80.0,
-            "feature_equivalence": 85.0,
+            "feature_equivalence": 92.5,
             "integrations_extensibility": 50.0,
             "migration_friction": 66.7,
             "production_commercial_readiness": 80.0
@@ -170,7 +170,7 @@
         "tag": "v2.0.11"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-26T04:54:32Z",
+      "live_checked_at": "2026-11-26T23:42:16Z",
       "maintenance_status": "active",
       "name": "Toonflow-app",
       "note": {
@@ -186,7 +186,7 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 93.7,
-        "score": 87.9,
+        "score": 88.2,
         "trajectory": "Insufficient history"
       },
       "rank": 2,
@@ -199,9 +199,9 @@
           }
         ],
         "confidence": 84.5,
-        "evaluated_at": "2026-11-01T02:05:53Z",
+        "evaluated_at": "2026-11-26T23:42:16Z",
         "score": 80.0,
-        "score_version": "1.3.0"
+        "score_version": "1.4.0"
       },
       "repo_url": "https://github.com/HBAI-Ltd/Toonflow-app",
       "self_hosting": {
@@ -211,7 +211,7 @@
       "sources": [
         "job_match"
       ],
-      "stars": 22846
+      "stars": 22928
     }
   ],
   "saas": {
@@ -225,7 +225,8 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.3.0"
+      "1.3.0",
+      "1.4.0"
     ]
   },
   "status": "insufficient_recommendations"
