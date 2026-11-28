@@ -1,0 +1,134 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-28T03:53:32Z",
+  "canonical": {
+    "promoted_in_run": null,
+    "status": "pending_promotion"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "kurbaitaev/ghost-editor",
+      "created_at": "2026-09-24T02:02:11Z",
+      "default_branch": "main",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-28T03:53:32Z",
+      "forks": 163,
+      "found": true,
+      "host_repo_id": 1384446919,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 14,
+        "commits_inspected": 3,
+        "issues_closed_12m": 0,
+        "merged_prs_inspected": 0,
+        "releases_seen": 3,
+        "tags_seen": 3
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-18T22:49:39Z",
+      "stars": 857
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a release",
+      "days_since_meaningful_activity": 28,
+      "last_meaningful_activity_at": "2026-10-30T08:45:43Z",
+      "status": "active"
+    },
+    "saas_relationships": [
+      {
+        "category": "Video editing",
+        "excerpt": "topic capcut-alternative",
+        "field": "topics",
+        "matched": "capcut-alternative",
+        "saas_id": "capcut",
+        "saas_name": "CapCut"
+      }
+    ],
+    "searched": {
+      "catalogue_products": 571,
+      "description": true,
+      "readme": true,
+      "topics": 20
+    }
+  },
+  "note": "waiting-room batch wr-20261127; 1 observation(s)",
+  "oss_id": "github.com/kurbaitaev/ghost-editor",
+  "outcome": "accepted",
+  "reasons": [
+    "passes every rule; relationship evidenced"
+  ],
+  "repo_url": "https://github.com/kurbaitaev/ghost-editor",
+  "request_id": "wr-108779e83872bd50",
+  "saas_hint": null,
+  "scores": {
+    "errors": [],
+    "preliminary": true,
+    "project_health": {
+      "band": "Caution",
+      "confidence": 88.6,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-28T03:53:32Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/kurbaitaev/ghost-editor",
+      "score": 50.4,
+      "score_version": "1.4.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "pre_1_0",
+        "single_maintainer_risk"
+      ]
+    },
+    "replacement_fit": [
+      {
+        "caps": [],
+        "confidence": 85.0,
+        "core_gate": "passed",
+        "corroboration": {
+          "basis": [
+            "self_described"
+          ],
+          "corroborated": true,
+          "readme_checked": true
+        },
+        "credible_alternative": false,
+        "dimensions": {
+          "core_use_case_coverage": 100.0,
+          "deployment_ownership": 25.0,
+          "ease_of_adoption": 78.1,
+          "economic_advantage": 40.0,
+          "feature_equivalence": 50.0,
+          "integrations_extensibility": 25.0,
+          "migration_friction": 66.7,
+          "production_commercial_readiness": 20.0
+        },
+        "evaluated_at": "2026-11-28T03:53:32Z",
+        "evidence_families": [
+          "api",
+          "demo",
+          "quickstart"
+        ],
+        "oss_id": "github.com/kurbaitaev/ghost-editor",
+        "publish": true,
+        "refusal_reasons": [],
+        "saas_id": "capcut",
+        "score": 59.9,
+        "score_version": "1.4.0",
+        "scoring_path": "single_project",
+        "uncapped_score": 59.9
+      }
+    ]
+  },
+  "submitted_at": "2026-11-27T17:10:10Z",
+  "submitted_by": "waiting-room:gitwatch"
+}

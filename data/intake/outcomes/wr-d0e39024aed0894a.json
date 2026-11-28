@@ -1,0 +1,84 @@
+{
+  "advisory_notice": "A preliminary human or conversational assessment is advisory only and was not used.",
+  "assessed_at": "2026-11-28T03:53:39Z",
+  "canonical": {
+    "status": "not_admitted"
+  },
+  "evidence": {
+    "licence": {
+      "recognised": true,
+      "spdx": "MIT",
+      "status": "recognised"
+    },
+    "live": {
+      "archived": false,
+      "canonical_name": "iart-ai/motion-skills",
+      "created_at": "2026-06-22T12:40:08Z",
+      "default_branch": "master",
+      "disabled": false,
+      "empty": false,
+      "fetched_at": "2026-11-28T03:53:39Z",
+      "forks": 250,
+      "found": true,
+      "host_repo_id": 1276940779,
+      "is_fork": false,
+      "is_mirror": false,
+      "licence_name": "MIT License",
+      "licence_spdx": "MIT",
+      "observed": {
+        "commits_in_12m_window": 11,
+        "commits_inspected": 11,
+        "issues_closed_12m": 0,
+        "merged_prs_inspected": 7,
+        "releases_seen": 0,
+        "tags_seen": 0
+      },
+      "provider": "github",
+      "pushed_at": "2026-11-18T06:14:33Z",
+      "stars": 2303
+    },
+    "maintenance": {
+      "basis": "newest qualifying evidence is a code_commit",
+      "days_since_meaningful_activity": 158,
+      "last_meaningful_activity_at": "2026-06-22T12:40:07Z",
+      "status": "maintained"
+    },
+    "saas_relationships": [],
+    "searched": {
+      "catalogue_products": 571,
+      "description": true,
+      "readme": true,
+      "topics": 20
+    }
+  },
+  "note": "waiting-room batch wr-20261127; 1 observation(s)",
+  "oss_id": "github.com/iart-ai/motion-skills",
+  "outcome": "needs_more_evidence",
+  "reasons": [
+    "no_evidenced_saas_relationship"
+  ],
+  "repo_url": "https://github.com/iart-ai/motion-skills",
+  "request_id": "wr-d0e39024aed0894a",
+  "saas_hint": null,
+  "scores": {
+    "preliminary": true,
+    "project_health": {
+      "band": "Developing",
+      "confidence": 87.6,
+      "disqualifiers": [],
+      "evaluated_at": "2026-11-28T03:53:39Z",
+      "evidence_insufficient": false,
+      "oss_id": "github.com/iart-ai/motion-skills",
+      "score": 62.2,
+      "score_version": "1.4.0",
+      "scoring_path": "single_project",
+      "trajectory": "Insufficient history",
+      "watch_outs": [
+        "no_releases"
+      ]
+    },
+    "replacement_fit": []
+  },
+  "submitted_at": "2026-11-27T17:10:11Z",
+  "submitted_by": "waiting-room:gitwatch"
+}
