@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-26T23:42:16Z",
+  "as_of": "2026-11-28T01:24:55Z",
   "checks": [
     {
       "criterion": 1,
@@ -55,7 +55,7 @@
         "licence_not_open": 44,
         "not_a_replacement": 2873,
         "not_a_repository": 8,
-        "not_found": 13,
+        "not_found": 16,
         "saas_not_in_catalogue": 241,
         "unmaintained": 62
       },
@@ -179,7 +179,7 @@
       "failures": 0,
       "id": "dedupe.one_record_per_repository",
       "kind": "assertion",
-      "observed": 1590,
+      "observed": 1587,
       "ok": true
     },
     {
@@ -209,7 +209,7 @@
       "failures": 0,
       "id": "activity.recommended_within_12_months",
       "kind": "assertion",
-      "observed": 1457,
+      "observed": 1454,
       "ok": true
     },
     {
@@ -219,7 +219,7 @@
       "failures": 0,
       "id": "activity.evidence_is_not_docs_only",
       "kind": "assertion",
-      "observed": 5360,
+      "observed": 5350,
       "ok": true
     },
     {
@@ -249,7 +249,7 @@
       "failures": 0,
       "id": "licence.recommended_have_recognised_licence",
       "kind": "assertion",
-      "observed": 1457,
+      "observed": 1454,
       "ok": true
     },
     {
@@ -305,13 +305,13 @@
       "observed": {
         "oss_projects": {
           "licence_exception": 29,
-          "recommendable": 1457,
-          "rejected": 124
+          "recommendable": 1454,
+          "rejected": 127
         },
         "relationships": {
           "licence_exception": 34,
-          "recommendable": 2125,
-          "rejected": 3040
+          "recommendable": 2124,
+          "rejected": 3041
         }
       },
       "ok": true
@@ -334,10 +334,10 @@
       "id": "maintenance.classification_matches_definition",
       "kind": "assertion",
       "observed": {
-        "active": 1365,
+        "active": 1362,
         "maintained": 134,
         "stale": 91,
-        "unverified": 20
+        "unverified": 23
       },
       "ok": true
     },
@@ -368,7 +368,7 @@
       "failures": 0,
       "id": "strategy.every_rejection_is_recorded",
       "kind": "assertion",
-      "observed": 153,
+      "observed": 156,
       "ok": true
     },
     {
@@ -466,7 +466,7 @@
       "kind": "assertion",
       "observed": {
         "floor": 100,
-        "launch_saas": 408,
+        "launch_saas": 409,
         "mode": "floor"
       },
       "ok": true
@@ -482,7 +482,7 @@
         "oss_distinct_products": 674,
         "oss_projects": 675,
         "relationships": 1631,
-        "saas_products": 408
+        "saas_products": 409
       },
       "ok": true
     }
@@ -505,11 +505,11 @@
       "kind": "observation",
       "observed": {
         "examples": [
-          "github.com/stirling-tools/stirling-pdf (97535 stars: no_recognised_open_source_licence)",
-          "github.com/opendatalab/mineru (84378 stars: no_recognised_open_source_licence)",
-          "github.com/nomic-ai/gpt4all (77347 stars: stale_no_meaningful_activity_12_months)",
-          "github.com/pi-hole/pi-hole (62242 stars: no_recognised_open_source_licence)",
-          "github.com/pocketbase/pocketbase (61577 stars: archived)"
+          "github.com/stirling-tools/stirling-pdf (97609 stars: no_recognised_open_source_licence)",
+          "github.com/opendatalab/mineru (84433 stars: no_recognised_open_source_licence)",
+          "github.com/nomic-ai/gpt4all (77343 stars: stale_no_meaningful_activity_12_months)",
+          "github.com/pi-hole/pi-hole (62258 stars: no_recognised_open_source_licence)",
+          "github.com/pocketbase/pocketbase (61586 stars: archived)"
         ],
         "launch_projects_under_500_stars": 110,
         "rejected_with_10k_plus_stars": 36
@@ -523,10 +523,10 @@
       "observed": {
         "entries_read": 3640,
         "oss_candidates": 1610,
-        "oss_recommendable": 1457,
-        "rejections_recorded": 3275,
+        "oss_recommendable": 1454,
+        "rejections_recorded": 3278,
         "relationship_claims_read": 6019,
-        "relationships_validated": 2125
+        "relationships_validated": 2124
       }
     }
   ],

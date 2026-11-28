@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "8bd2f1fa499b98bd",
+  "dataset_version": "44825db3c02e03e1",
   "last_checked": {
-    "newest": "2026-11-26T23:42:16Z",
-    "oldest": "2026-11-26T23:42:16Z"
+    "newest": "2026-11-28T01:24:55Z",
+    "oldest": "2026-11-28T01:24:55Z"
   },
   "more_available": 3,
   "provenance": {
@@ -44,7 +44,7 @@
               "source_id": "opensaasdirectory"
             }
           ],
-          "validated_as_of": "2026-11-26T23:42:16Z"
+          "validated_as_of": "2026-11-28T01:24:55Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -61,7 +61,7 @@
             "deployment_ownership": 96.2,
             "ease_of_adoption": 100.0,
             "economic_advantage": 68.0,
-            "feature_equivalence": 92.5,
+            "feature_equivalence": 100.0,
             "integrations_extensibility": 75.0,
             "migration_friction": 66.7,
             "production_commercial_readiness": 100.0
@@ -75,6 +75,7 @@
             "multi_user",
             "plugins",
             "quickstart",
+            "self_host",
             "sso",
             "support"
           ],
@@ -88,7 +89,7 @@
         "tag": "v2.13.0"
       },
       "licence_spdx": "GPL-3.0",
-      "live_checked_at": "2026-11-26T23:42:16Z",
+      "live_checked_at": "2026-11-28T01:24:55Z",
       "maintenance_status": "active",
       "name": "Netdata",
       "note": {
@@ -104,27 +105,27 @@
       "project_health": {
         "band": "Exceptional",
         "confidence": 95.0,
-        "score": 94.5,
+        "score": 89.6,
         "trajectory": "Rising"
       },
       "rank": 1,
       "replacement_fit": {
         "caps": [],
         "confidence": 90.5,
-        "evaluated_at": "2026-10-09T01:58:15Z",
-        "score": 91.1,
-        "score_version": "1.3.0"
+        "evaluated_at": "2026-11-28T01:24:55Z",
+        "score": 92.2,
+        "score_version": "1.4.0"
       },
       "repo_url": "https://github.com/netdata/netdata",
       "self_hosting": {
-        "basis": "no self-hosting evidence found; not evidence of absence",
-        "self_hostable": null
+        "basis": "self-hosting documented in the project's README",
+        "self_hostable": true
       },
       "sources": [
         "runacapital",
         "opensaasdirectory"
       ],
-      "stars": 81655
+      "stars": 81668
     },
     {
       "evidence": {
@@ -158,7 +159,7 @@
               "source_id": "diegoleme"
             }
           ],
-          "validated_as_of": "2026-11-26T23:42:16Z"
+          "validated_as_of": "2026-11-28T01:24:55Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -197,7 +198,7 @@
         "tag": "v13.3.2"
       },
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-26T23:42:16Z",
+      "live_checked_at": "2026-11-28T01:24:55Z",
       "maintenance_status": "active",
       "name": "Grafana",
       "note": {
@@ -236,7 +237,7 @@
         "emmraan",
         "diegoleme"
       ],
-      "stars": 78211
+      "stars": 78210
     },
     {
       "evidence": {
@@ -255,7 +256,7 @@
               "source_id": "runacapital"
             }
           ],
-          "validated_as_of": "2026-11-26T23:42:16Z"
+          "validated_as_of": "2026-11-28T01:24:55Z"
         },
         "replacement_fit": {
           "caps": [],
@@ -293,7 +294,7 @@
       "last_meaningful_activity_at": "2026-10-08T08:24:53Z",
       "latest_release": null,
       "licence_spdx": "AGPL-3.0",
-      "live_checked_at": "2026-11-26T23:42:16Z",
+      "live_checked_at": "2026-11-28T01:24:55Z",
       "maintenance_status": "active",
       "name": "Uptrace",
       "note": {
@@ -343,7 +344,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-11-26T23:42:16Z"
+          "validated_as_of": "2026-11-28T01:24:55Z"
         },
         "replacement_fit": {
           "caps": [
@@ -385,7 +386,7 @@
         "tag": "v1.29.4"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-26T23:42:16Z",
+      "live_checked_at": "2026-11-28T01:24:55Z",
       "maintenance_status": "active",
       "name": "Coroot",
       "note": {
@@ -426,7 +427,7 @@
       "sources": [
         "fossalt"
       ],
-      "stars": 8035
+      "stars": 8036
     },
     {
       "evidence": {
@@ -440,7 +441,7 @@
               "source_id": "fossalt"
             }
           ],
-          "validated_as_of": "2026-11-26T23:42:16Z"
+          "validated_as_of": "2026-11-28T01:24:55Z"
         },
         "replacement_fit": {
           "caps": [
@@ -489,7 +490,7 @@
         "tag": "v1.22.39"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-26T23:42:16Z",
+      "live_checked_at": "2026-11-28T01:24:55Z",
       "maintenance_status": "active",
       "name": "Telemetry Tracker",
       "note": {

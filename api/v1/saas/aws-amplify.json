@@ -9,10 +9,10 @@
     ],
     "status": "ok"
   },
-  "dataset_version": "8bd2f1fa499b98bd",
+  "dataset_version": "44825db3c02e03e1",
   "last_checked": {
-    "newest": "2026-11-26T23:42:16Z",
-    "oldest": "2026-11-26T23:42:16Z"
+    "newest": "2026-11-28T01:24:55Z",
+    "oldest": "2026-11-28T01:24:55Z"
   },
   "more_available": 0,
   "provenance": {
@@ -35,7 +35,7 @@
               "source_id": "emmraan"
             }
           ],
-          "validated_as_of": "2026-11-26T23:42:16Z"
+          "validated_as_of": "2026-11-28T01:24:55Z"
         },
         "replacement_fit": {
           "caps": [
@@ -53,20 +53,22 @@
           },
           "dimensions": {
             "core_use_case_coverage": 100.0,
-            "deployment_ownership": 75.0,
+            "deployment_ownership": 100.0,
             "ease_of_adoption": 100.0,
             "economic_advantage": 80.0,
-            "feature_equivalence": 92.5,
-            "integrations_extensibility": 50.0,
+            "feature_equivalence": 85.0,
+            "integrations_extensibility": 75.0,
             "migration_friction": 66.7,
             "production_commercial_readiness": 80.0
           },
           "evidence_families": [
             "api",
+            "cloud_option",
             "data_ownership",
             "demo",
             "import",
             "multi_user",
+            "plugins",
             "quickstart",
             "self_host",
             "support",
@@ -82,7 +84,7 @@
         "tag": "v4.7.9"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-26T23:42:16Z",
+      "live_checked_at": "2026-11-28T01:24:55Z",
       "maintenance_status": "active",
       "name": "Coolify",
       "note": {
@@ -90,15 +92,15 @@
         "origin": "derived",
         "strengths": [
           "core use-case coverage",
-          "ease of adoption"
+          "self-hosting and data ownership"
         ],
-        "text": "Strongest on core use-case coverage and ease of adoption."
+        "text": "Strongest on core use-case coverage and self-hosting and data ownership."
       },
       "oss_id": "github.com/coollabsio/coolify",
       "project_health": {
         "band": "Exceptional",
         "confidence": 92.1,
-        "score": 91.1,
+        "score": 95.5,
         "trajectory": "Rising"
       },
       "rank": 1,
@@ -111,9 +113,9 @@
           }
         ],
         "confidence": 84.5,
-        "evaluated_at": "2026-11-10T23:09:36Z",
+        "evaluated_at": "2026-11-28T01:24:55Z",
         "score": 80.0,
-        "score_version": "1.3.0"
+        "score_version": "1.4.0"
       },
       "repo_url": "https://github.com/coollabsio/coolify",
       "self_hosting": {
@@ -123,7 +125,7 @@
       "sources": [
         "emmraan"
       ],
-      "stars": 66589
+      "stars": 66843
     },
     {
       "evidence": {
@@ -137,7 +139,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-26T23:42:16Z"
+          "validated_as_of": "2026-11-28T01:24:55Z"
         },
         "replacement_fit": {
           "caps": [
@@ -180,7 +182,7 @@
         "tag": "2.23.1-1"
       },
       "licence_spdx": "Apache-2.0",
-      "live_checked_at": "2026-11-26T23:42:16Z",
+      "live_checked_at": "2026-11-28T01:24:55Z",
       "maintenance_status": "active",
       "name": "swiftwave",
       "note": {
@@ -237,7 +239,7 @@
               "source_id": "job_match"
             }
           ],
-          "validated_as_of": "2026-11-26T23:42:16Z"
+          "validated_as_of": "2026-11-28T01:24:55Z"
         },
         "replacement_fit": {
           "caps": [
@@ -281,7 +283,7 @@
         "tag": "v1.3.2"
       },
       "licence_spdx": "MIT",
-      "live_checked_at": "2026-11-26T23:42:16Z",
+      "live_checked_at": "2026-11-28T01:24:55Z",
       "maintenance_status": "active",
       "name": "Peon",
       "note": {
@@ -336,7 +338,8 @@
   "scoring": {
     "methodology": "docs/METHODOLOGY.md",
     "score_version": [
-      "1.3.0"
+      "1.3.0",
+      "1.4.0"
     ]
   },
   "status": "ok"

@@ -3,17 +3,17 @@
   "canonical_schema": "the-source.canonical/1",
   "catalogue": {
     "entries": 500,
-    "none_yet": 121,
-    "ok": 213,
-    "partial": 166,
+    "none_yet": 120,
+    "ok": 212,
+    "partial": 168,
     "path": "catalogue.json"
   },
-  "data_as_of": "2026-11-26T23:42:16Z",
-  "dataset_version": "8bd2f1fa499b98bd",
+  "data_as_of": "2026-11-28T01:24:55Z",
+  "dataset_version": "44825db3c02e03e1",
   "domains": "domains.json",
   "live_checked_at": {
-    "newest": "2026-11-26T23:42:16Z",
-    "oldest": "2026-11-26T23:42:16Z"
+    "newest": "2026-11-28T01:24:55Z",
+    "oldest": "2026-11-28T01:24:55Z"
   },
   "supported_saas": [
     {
@@ -650,7 +650,7 @@
       "compare_path": "/open-source/gmail-alternatives",
       "name": "Gmail",
       "path": "saas/gmail.json",
-      "recommendations": 4,
+      "recommendations": 3,
       "saas_id": "gmail",
       "slug": "gmail",
       "status": "ok"
@@ -1295,13 +1295,13 @@
       "status": "ok"
     },
     {
-      "compare_path": "/open-source/proton-mail-alternatives",
+      "compare_path": null,
       "name": "Proton Mail",
       "path": "saas/proton-mail.json",
-      "recommendations": 3,
+      "recommendations": 2,
       "saas_id": "proton-mail",
       "slug": "proton-mail",
-      "status": "ok"
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": "/open-source/fly-io-alternatives",
@@ -1937,7 +1937,7 @@
       "compare_path": "/open-source/gorgias-alternatives",
       "name": "Gorgias",
       "path": "saas/gorgias.json",
-      "recommendations": 4,
+      "recommendations": 5,
       "saas_id": "gorgias",
       "slug": "gorgias",
       "status": "ok"
@@ -2171,7 +2171,7 @@
       "compare_path": "/open-source/zoho-desk-alternatives",
       "name": "Zoho Desk",
       "path": "saas/zoho-desk.json",
-      "recommendations": 4,
+      "recommendations": 5,
       "saas_id": "zoho-desk",
       "slug": "zoho-desk",
       "status": "ok"
@@ -3417,6 +3417,15 @@
       "saas_id": "mode-analytics",
       "slug": "mode-analytics",
       "status": "ok"
+    },
+    {
+      "compare_path": null,
+      "name": "Stack Overflow for Teams",
+      "path": "saas/stack-overflow-for-teams.json",
+      "recommendations": 1,
+      "saas_id": "stack-overflow-for-teams",
+      "slug": "stack-overflow-for-teams",
+      "status": "insufficient_recommendations"
     },
     {
       "compare_path": null,

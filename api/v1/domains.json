@@ -1,6 +1,6 @@
 {
   "api_version": "v1",
-  "dataset_version": "8bd2f1fa499b98bd",
+  "dataset_version": "44825db3c02e03e1",
   "match_semantics": "Lowercase the page hostname and strip one leading \"www.\". A rule matches when its host equals the hostname (or the hostname ends with its host_suffix) and, if it has a path_prefix, the URL path equals the prefix or continues it at a \"/\" (a prefix that ends in \"/\" is a plain prefix). When several rules match, the most specific wins: one with a path_prefix beats one without, a longer path_prefix beats a shorter one, an exact host beats a host_suffix, a longer host_suffix beats a shorter one; remaining ties go to the first rule in file order.",
   "rules": [
     {
@@ -2701,6 +2701,15 @@
     {
       "host": "squareup.com",
       "saas_id": "square-point-of-sale"
+    },
+    {
+      "host": "stackoverflow.co",
+      "path_prefix": "/teams",
+      "saas_id": "stack-overflow-for-teams"
+    },
+    {
+      "host": "stackoverflowteams.com",
+      "saas_id": "stack-overflow-for-teams"
     },
     {
       "host": "statuscake.com",

@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-26T23:42:16Z",
+  "as_of": "2026-11-28T01:24:55Z",
   "field_origin": {
     "derived": "computed by The Source from live fields and config/policy.yaml",
     "imported": "copied from an upstream list at harvest; never refreshed; each value names its source",
@@ -23,7 +23,7 @@
         "entries_with_saas_claim": 93,
         "harvested": true,
         "licence_file_sha256": "34d1847bcb6c290b476a37bbb1aaab22e83af45f3af6ee20624d66c183249957",
-        "pinned_commit": "11bb4605f128bdf6f759bdbcb4eebb1876349f14",
+        "pinned_commit": "b922f6dce3753b7ab9287534b0d203535cdd1add",
         "relationship_claims": 148,
         "unparseable_files": 0
       },
@@ -124,13 +124,13 @@
   "lanes": {
     "oss_projects": {
       "licence_exception": 29,
-      "recommendable": 1457,
-      "rejected": 124
+      "recommendable": 1454,
+      "rejected": 127
     },
     "relationships": {
       "licence_exception": 34,
-      "recommendable": 2125,
-      "rejected": 3040
+      "recommendable": 2124,
+      "rejected": 3041
     }
   },
   "launch": {
@@ -371,6 +371,7 @@
       "splashtop",
       "split",
       "sprout-social",
+      "stack-overflow-for-teams",
       "statuscake",
       "storyblok",
       "strava",
@@ -423,15 +424,15 @@
     "oss_projects": 675,
     "preserve_served": {
       "kept": 381,
-      "not_kept": 0,
-      "served_before": 381
+      "not_kept": 1,
+      "served_before": 382
     },
     "relationships": 1631,
     "relationships_corroborated_by_2plus_sources": 218,
     "relationships_share_alike_only": 0,
     "saas_added_beyond_floor": 27,
     "saas_named_by_a_single_source": 116,
-    "saas_products": 408,
+    "saas_products": 409,
     "saas_target_decision_ref": "dr-KEI-805-507e4f70",
     "saas_target_is": "floor",
     "targets": {
@@ -484,7 +485,7 @@
       "licence_not_open": 44,
       "not_a_replacement": 2873,
       "not_a_repository": 8,
-      "not_found": 13,
+      "not_found": 16,
       "saas_not_in_catalogue": 241,
       "unmaintained": 62
     },
@@ -498,7 +499,7 @@
       "eligibility:no_recognised_open_source_licence;stale_no_meaningful_activity_12_months": 15,
       "eligibility:no_recognised_open_source_licence;stale_no_meaningful_activity_12_months;repository_identity_changed_since_listed": 1,
       "eligibility:repository_identity_changed_since_listed": 5,
-      "eligibility:repository_not_found": 13,
+      "eligibility:repository_not_found": 16,
       "eligibility:stale_no_meaningful_activity_12_months": 62,
       "normalise:repo_url_not_a_repository": 8,
       "normalise:saas_not_in_catalogue": 241,
@@ -2020,6 +2021,7 @@
       "plausibility_review:Static/upload file server; not a file sync and sharing platform": 2,
       "plausibility_review:Status page generator; different kind of software": 1,
       "plausibility_review:Stealth AI overlay for calls; not a video conferencing platform": 5,
+      "plausibility_review:Stealth Playwright library for scraping; not a cross-browser testing cloud": 1,
       "plausibility_review:Stealth headless browser for developers; not a scraping service": 2,
       "plausibility_review:Story-to-video workflow over third-party model APIs; not an AI video generator": 1,
       "plausibility_review:Streaming ASR server; not a meeting notes transcription product": 1,
@@ -2302,7 +2304,7 @@
       "plausibility_review:inference server; not a multi-provider LLM API router": 1,
       "plausibility_review:infrastructure-as-code tool; not a platform that runs applications": 1,
       "plausibility_review:intranet tunneling reverse proxy; not a privacy VPN service": 1,
-      "plausibility_review:job match not yet desk-reviewed": 68,
+      "plausibility_review:job match not yet desk-reviewed": 67,
       "plausibility_review:layered image editor; not background removal": 1,
       "plausibility_review:layered photo/image editor; not template-based graphic design": 1,
       "plausibility_review:list of newsletter RSS feeds": 1,
@@ -2376,7 +2378,7 @@
       "plausibility_review:workbench front end for third-party image model APIs": 1,
       "plausibility_review:workflow engine programmed in code; not a no-code automation product": 1
     },
-    "total": 3275
+    "total": 3278
   },
   "review_queue": {
     "open": 7,
@@ -2386,16 +2388,16 @@
   "schema_version": "1.0.0",
   "verified": {
     "maintenance_status": {
-      "active": 1365,
+      "active": 1362,
       "maintained": 134,
       "stale": 91,
-      "unverified": 20
+      "unverified": 23
     },
-    "oss_recommendable": 1457,
-    "oss_rejected": 153,
+    "oss_recommendable": 1454,
+    "oss_rejected": 156,
     "relationships_flagged_licence_exception": 34,
-    "relationships_rejected": 3040,
-    "relationships_validated": 2125,
+    "relationships_rejected": 3041,
+    "relationships_validated": 2124,
     "saas_with_validated_alternatives": 499
   }
 }
